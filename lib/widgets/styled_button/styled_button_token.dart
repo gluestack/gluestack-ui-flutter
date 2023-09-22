@@ -29,4 +29,10 @@ class StyledButtonTokens {
     'md': BorderRadius.circular(DesignTokens.radii['md']!),
     'lg': BorderRadius.circular(DesignTokens.radii['lg']!),
   };
+  static Map<String, BorderRadiusGeometry?> fontSize = {
+    'xs': BorderRadius.circular(DesignTokens.fontSizes['xs']!),
+    'sm': BorderRadius.circular(DesignTokens.fontSizes['sm']!),
+    'md': BorderRadius.circular(DesignTokens.fontSizes['md']!),
+    'lg': BorderRadius.circular(DesignTokens.fontSizes['lg']!),
+  };
 }

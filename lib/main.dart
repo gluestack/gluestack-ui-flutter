@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_button/gs_buttonText.dart';
 import 'package:gluestack_flutter_pro/widgets/styled_button/styled_button.dart';
 import 'package:gluestack_flutter_pro/widgets/styled_text/styled_text.dart';
 
@@ -71,6 +73,15 @@ class MyApp extends StatelessWidget {
                 variant: "outline",
                 action: "negative",
               ),
+              GSButton(
+                size: "md",
+                variant: "link",
+                action: "primary",
+                child: const GSButtonText(
+                  text: "Hello",
+                ),
+                onPressed: () => {},
+              )
             ],
           ),
         ),

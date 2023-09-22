@@ -18,10 +18,12 @@ final buttonVariants = ButtonVariants(
         'outline': {
           'backgroundColor': Colors.transparent,
           'borderColor': StyledButtonTokens.actionColors["primary"],
+          'textColor': StyledButtonTokens.actionColors["primary"],
         },
         'link': {
           'backgroundColor': Colors.transparent,
           'borderColor': Colors.transparent,
+          'textColor': StyledButtonTokens.actionColors["primary"],
         },
       },
       'secondary': {
@@ -32,10 +34,12 @@ final buttonVariants = ButtonVariants(
         'outline': {
           'backgroundColor': Colors.transparent,
           'borderColor': StyledButtonTokens.actionColors["secondary"],
+          'textColor': StyledButtonTokens.actionColors["secondary"],
         },
         'link': {
           'backgroundColor': Colors.transparent,
           'borderColor': Colors.transparent,
+          'textColor': StyledButtonTokens.actionColors["secondary"],
         },
       },
       'positive': {
@@ -71,18 +75,22 @@ final buttonVariants = ButtonVariants(
       'xs': {
         'padding': StyledButtonTokens.buttonPadding['xs'],
         'borderRadius': StyledButtonTokens.buttonRadius['xs'],
+        'fontSize': StyledButtonTokens.fontSize['xs']
       },
       'sm': {
         'padding': StyledButtonTokens.buttonPadding['sm'],
         'borderRadius': StyledButtonTokens.buttonRadius['sm'],
+        'fontSize': StyledButtonTokens.fontSize['sm']
       },
       'md': {
         'padding': StyledButtonTokens.buttonPadding['md'],
         'borderRadius': StyledButtonTokens.buttonRadius['md'],
+        'fontSize': StyledButtonTokens.fontSize['md']
       },
       'lg': {
         'padding': StyledButtonTokens.buttonPadding['lg'],
         'borderRadius': StyledButtonTokens.buttonRadius['lg'],
+        'fontSize': StyledButtonTokens.fontSize['lg']
       },
     }
   },
