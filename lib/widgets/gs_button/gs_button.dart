@@ -1,50 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_attributes.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/styled_button/styled_button_variants.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 
 class GSButton extends StatelessWidget {
-  final String action;
-  final String variant;
-  final String size;
+  final GSButtonAction? action;
+  final GSButtonVariant? variant;
+  final GSButtonSize? size;
   final Widget child;
   final VoidCallback onPressed;
 
   const GSButton({
-    required this.action,
-    required this.variant,
+    super.key,
+    this.action,
+    this.variant,
     required this.child,
     required this.onPressed,
-    required this.size,
+    this.size,
   });
 
   @override
   Widget build(BuildContext context) {
-    final buttonAction =
-        buttonVariants.variants['action']![action] != null ? action : 'primary';
+    final buttonAction = GSButtonAttributes.gsButtonCombination[action] != null
+        ? action
+        : GSButtonAction.primary;
 
     final buttonVariant =
-        buttonVariants.variants['action']![buttonAction]![variant] != null
+        GSButtonAttributes.gsButtonCombination[buttonAction]![variant] != null
             ? variant
-            : 'solid';
+            : GSButtonVariant.solid;
 
     final buttonStyle =
-        buttonVariants.variants['action']![buttonAction]![buttonVariant];
+        GSButtonAttributes.gsButtonCombination[buttonAction]![buttonVariant];
+
+    final buttonSize = size ?? GSButtonSize.md;
 
     return GSButtonProvider(
-        action: action,
-        variant: variant,
-        size: size,
+        action: buttonAction!,
+        variant: buttonVariant!,
+        size: buttonSize,
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            padding: buttonVariants.variants['size']?[size]['padding'],
-            backgroundColor: buttonStyle?['backgroundColor'],
+            padding: GSButtonAttributes.buttonPaddings[buttonSize],
+            backgroundColor: buttonStyle!.bgColor,
             shape: RoundedRectangleBorder(
-              borderRadius: buttonVariants.variants['size']?[size]
-                  ['borderRadius'],
+              borderRadius: GSButtonAttributes.buttonBorderRadius[buttonSize]!,
               side: BorderSide(
-                color: buttonStyle?['borderColor'],
+                color: buttonStyle.borderColor!,
                 width: 1.0,
               ),
             ),
