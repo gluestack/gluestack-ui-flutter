@@ -12,41 +12,30 @@ class GSButton extends StatelessWidget {
 
   const GSButton({
     super.key,
-    this.action,
-    this.variant,
+    this.action = GSButtonAction.primary,
+    this.variant = GSButtonVariant.solid,
+    this.size = GSButtonSize.md,
     required this.child,
     required this.onPressed,
-    this.size,
   });
 
   @override
   Widget build(BuildContext context) {
-    final buttonAction = GSButtonAttributes.gsButtonCombination[action] != null
-        ? action
-        : GSButtonAction.primary;
-
-    final buttonVariant =
-        GSButtonAttributes.gsButtonCombination[buttonAction]![variant] != null
-            ? variant
-            : GSButtonVariant.solid;
-
     final buttonStyle =
-        GSButtonAttributes.gsButtonCombination[buttonAction]![buttonVariant];
-
-    final buttonSize = size ?? GSButtonSize.md;
+        GSButtonAttributes.gsButtonCombination[action]![variant];
 
     return GSButtonProvider(
-        action: buttonAction!,
-        variant: buttonVariant!,
-        size: buttonSize,
+        action: action!,
+        variant: variant!,
+        size: size!,
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            padding: GSButtonAttributes.buttonPaddings[buttonSize],
+            padding: GSButtonAttributes.buttonPaddings[size],
             backgroundColor: buttonStyle!.bgColor,
             shape: RoundedRectangleBorder(
-              borderRadius: GSButtonAttributes.buttonBorderRadius[buttonSize]!,
+              borderRadius: GSButtonAttributes.buttonBorderRadius[size]!,
               side: BorderSide(
                 color: buttonStyle.borderColor!,
                 width: 1.0,
