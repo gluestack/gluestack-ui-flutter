@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                 ),
                 onPressed: () => {},
               ),
-              const GSContainer(child: Text("HEYYYY")).styled(
+              const GSContainer(child: Text("HEYYYY")).style(
                 color: Colors.red,
                 width: 200,
                 height: 200,

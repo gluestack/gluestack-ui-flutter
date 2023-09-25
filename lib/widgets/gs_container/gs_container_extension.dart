@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_container/gs_container.dart';
 
 extension GSContainerExtension on Widget {
-  GSContainer styled({
+  GSContainer style({
     Color color = Colors.transparent,
     Color borderColor = Colors.transparent,
     double borderRadius = 0,
