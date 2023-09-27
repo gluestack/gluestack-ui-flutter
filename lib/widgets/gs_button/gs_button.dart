@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_attributes.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
+import 'package:gluestack_flutter_pro/widgets/style/style_data.dart';
 
 class GSButton extends StatelessWidget {
   final GSButtonAction? action;
@@ -9,6 +10,7 @@ class GSButton extends StatelessWidget {
   final GSButtonSize? size;
   final Widget child;
   final VoidCallback onPressed;
+  final StyleData? style;
 
   const GSButton({
     super.key,
@@ -17,6 +19,7 @@ class GSButton extends StatelessWidget {
     this.size = GSButtonSize.md,
     required this.child,
     required this.onPressed,
+    this.style,
   });
 
   @override
@@ -32,13 +35,23 @@ class GSButton extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            padding: GSButtonAttributes.buttonPaddings[size],
-            backgroundColor: buttonStyle!.bgColor,
+            padding: style != null
+                ? style!.padding ?? GSButtonAttributes.buttonPaddings[size]
+                : GSButtonAttributes.buttonPaddings[size],
+            backgroundColor: style != null
+                ? style!.color ?? buttonStyle!.bgColor
+                : buttonStyle!.bgColor,
             shape: RoundedRectangleBorder(
-              borderRadius: GSButtonAttributes.buttonBorderRadius[size]!,
+              borderRadius: style != null
+                  ? style!.borderRadius != null
+                      ? BorderRadius.circular(style!.borderRadius!)
+                      : GSButtonAttributes.buttonBorderRadius[size]!
+                  : GSButtonAttributes.buttonBorderRadius[size]!,
               side: BorderSide(
-                color: buttonStyle.borderColor!,
-                width: 1.0,
+                color: style != null
+                    ? style!.borderColor ?? buttonStyle!.borderColor!
+                    : buttonStyle!.borderColor!,
+                width: style != null ? style!.borderWidth ?? 1.0 : 1.0,
               ),
             ),
           ),

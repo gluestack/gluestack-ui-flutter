@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_attributes.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
+import 'package:gluestack_flutter_pro/widgets/style/style_data.dart';
 
 class GSButtonText extends StatelessWidget {
   final String text;
-  final TextStyle? style;
+  final StyleData? style;
 
   const GSButtonText({
     super.key,
@@ -22,7 +23,8 @@ class GSButtonText extends StatelessWidget {
 
     var defaultTextStyle = TextStyle(color: textColor, fontSize: fontSize);
 
-    final mergedStyle = defaultTextStyle.merge(style);
+    final mergedStyle =
+        defaultTextStyle.merge(style != null ? style!.textStyle : null);
 
     return Text(
       text,
