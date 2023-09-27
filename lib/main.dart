@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/token_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
@@ -21,26 +22,28 @@ class MyApp extends StatelessWidget {
             children: [
               GSButton(
                 size: GSButtonSize.md,
-                variant: GSButtonVariant.outline,
-                action: GSButtonAction.positive,
+                variant: GSButtonVariant.solid,
+                action: GSButtonAction.primary,
                 onPressed: () => {},
-                style: const StyleData(
-                  color: Colors.amber,
-                  borderWidth: 4,
-                  borderColor: Colors.black,
-                ),
+                // style: StyleData(
+                //   color: color("blueGray700"),
+                // ),
                 child: const GSButtonText(
                   text: "Click here",
-                  style: StyleData(textStyle: TextStyle(color: Colors.pink)),
                 ),
               ),
-              const GSContainer(
+              GSBox(
                 style: StyleData(
-                  color: Colors.red,
-                  width: 120,
-                  height: 150,
+                  color: color('primary500'),
+                  width: 200,
+                  height: 200,
+                  padding: EdgeInsets.symmetric(
+                    vertical: space("5"),
+                    horizontal: space("5"),
+                  ),
                 ),
-                child: Text("I am a container"),
+                child: Text("I am a container",
+                    style: TextStyle(color: color("white"))),
               ),
             ],
           ),

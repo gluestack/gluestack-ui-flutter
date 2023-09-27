@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/widgets/style/style_data.dart';
 
-class GSContainer extends StatelessWidget {
+class GSBox extends StatelessWidget {
   final Widget child;
   final StyleData? style;
-  const GSContainer({
+  const GSBox({
     super.key,
     required this.child,
     this.style,
@@ -20,8 +20,8 @@ class GSContainer extends StatelessWidget {
           ? style!.padding ??
               const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
           : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-      height: style!.height,
-      width: style!.width,
+      height: style != null ? style!.height : null,
+      width: style != null ? style!.width : null,
       constraints: BoxConstraints(
         minWidth: style != null ? style!.width ?? 0 : 0,
         minHeight: style != null ? style!.height ?? 0 : 0,

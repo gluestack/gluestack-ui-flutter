@@ -11,7 +11,6 @@ class GSButton extends StatelessWidget {
   final Widget child;
   final VoidCallback onPressed;
   final StyleData? style;
-
   const GSButton({
     super.key,
     this.action = GSButtonAction.primary,
