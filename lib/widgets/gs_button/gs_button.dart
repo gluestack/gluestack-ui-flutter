@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_attributes.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 import 'package:gluestack_flutter_pro/widgets/style/style_data.dart';
+import 'package:provider/provider.dart';
 
 class GSButton extends StatelessWidget {
   final GSButtonAction? action;
@@ -23,8 +25,10 @@ class GSButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeProvider>(context).currentTheme;
+
     final buttonStyle =
-        GSButtonAttributes.gsButtonCombination[action]![variant];
+        GSButtonAttributes.gsButtonCombination[action]![variant]![theme];
 
     return GSButtonProvider(
         action: action!,

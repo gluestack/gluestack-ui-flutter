@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/tokens.dart';
 
 enum GSButtonAction { primary, secondary, positive, negative }
@@ -12,6 +13,8 @@ enum GSButtonPadding { xs, sm, md, lg }
 enum GSButtonBorderRadius { xs, sm, md, lg }
 
 enum GSButtonFontSize { xs, sm, md, lg }
+
+enum Mode { light, dark }
 
 class GSButtonCombinationStyle {
   final Color? bgColor;
@@ -27,11 +30,18 @@ class GSButtonCombinationStyle {
 }
 
 class GSButtonToken {
-  static Map<GSButtonAction, Color?> actionColors = {
-    GSButtonAction.primary: DesignTokens.colors['primary500'],
-    GSButtonAction.secondary: DesignTokens.colors['secondary500'],
-    GSButtonAction.positive: DesignTokens.colors['green600'],
-    GSButtonAction.negative: DesignTokens.colors['rose500']
+  static Map<GSButtonAction, Color?> actionLightColors = {
+    GSButtonAction.primary: $GSColors.primary500,
+    GSButtonAction.secondary: $GSColors.secondary500,
+    GSButtonAction.positive: $GSColors.green600,
+    GSButtonAction.negative: $GSColors.rose500
+  };
+
+  static Map<GSButtonAction, Color?> actionDarkColors = {
+    GSButtonAction.primary: $GSColors.primary800,
+    GSButtonAction.secondary: $GSColors.secondary800,
+    GSButtonAction.positive: $GSColors.green800,
+    GSButtonAction.negative: $GSColors.rose800
   };
 
   static Map<GSButtonPadding, EdgeInsetsGeometry?> buttonPadding = {
