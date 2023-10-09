@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
                 GSBox(
                   style: StyleData(
                     context,
-                    color: $GSColors.purple400,
+                    color: $GSColors.primary500,
                     width: 200,
                     height: 200,
                     padding: const EdgeInsets.symmetric(
