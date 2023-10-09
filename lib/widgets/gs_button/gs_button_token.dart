@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
-import 'package:gluestack_flutter_pro/tokens.dart';
 
 enum GSButtonAction { primary, secondary, positive, negative }
 
@@ -45,29 +44,25 @@ class GSButtonToken {
   };
 
   static Map<GSButtonPadding, EdgeInsetsGeometry?> buttonPadding = {
-    GSButtonPadding.xs: EdgeInsets.symmetric(
-        vertical: DesignTokens.space['3']!,
-        horizontal: DesignTokens.space['6']!),
-    GSButtonPadding.sm: EdgeInsets.symmetric(
-        vertical: DesignTokens.space['3.5']!,
-        horizontal: DesignTokens.space['7']!),
-    GSButtonPadding.md: EdgeInsets.symmetric(
-        vertical: DesignTokens.space['4']!,
-        horizontal: DesignTokens.space['8']!),
-    GSButtonPadding.lg: EdgeInsets.symmetric(
-        vertical: DesignTokens.space['5']!,
-        horizontal: DesignTokens.space['10']!),
+    GSButtonPadding.xs: const EdgeInsets.symmetric(
+        vertical: $GSSpace.$3, horizontal: $GSSpace.$6),
+    GSButtonPadding.sm: const EdgeInsets.symmetric(
+        vertical: $GSSpace.$3_5, horizontal: $GSSpace.$7),
+    GSButtonPadding.md: const EdgeInsets.symmetric(
+        vertical: $GSSpace.$4, horizontal: $GSSpace.$8),
+    GSButtonPadding.lg: const EdgeInsets.symmetric(
+        vertical: $GSSpace.$5, horizontal: $GSSpace.$10),
   };
   static Map<GSButtonBorderRadius, BorderRadiusGeometry?> buttonBorderRadius = {
-    GSButtonBorderRadius.xs: BorderRadius.circular(DesignTokens.radii['xs']!),
-    GSButtonBorderRadius.sm: BorderRadius.circular(DesignTokens.radii['sm']!),
-    GSButtonBorderRadius.md: BorderRadius.circular(DesignTokens.radii['md']!),
-    GSButtonBorderRadius.lg: BorderRadius.circular(DesignTokens.radii['lg']!),
+    GSButtonBorderRadius.xs: BorderRadius.circular($GSRadii.$xs),
+    GSButtonBorderRadius.sm: BorderRadius.circular($GSRadii.$sm),
+    GSButtonBorderRadius.md: BorderRadius.circular($GSRadii.$md),
+    GSButtonBorderRadius.lg: BorderRadius.circular($GSRadii.$lg),
   };
   static Map<GSButtonFontSize, double?> buttonFontSize = {
-    GSButtonFontSize.xs: DesignTokens.fontSizes['xs']!,
-    GSButtonFontSize.sm: DesignTokens.fontSizes['sm']!,
-    GSButtonFontSize.md: DesignTokens.fontSizes['md']!,
-    GSButtonFontSize.lg: DesignTokens.fontSizes['lg']!,
+    GSButtonFontSize.xs: $GSFontSize.$xs,
+    GSButtonFontSize.sm: $GSFontSize.$sm,
+    GSButtonFontSize.md: $GSFontSize.$md,
+    GSButtonFontSize.lg: $GSFontSize.$lg,
   };
 }
