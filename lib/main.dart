@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
-import 'package:gluestack_flutter_pro/widgets/style/style_data.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_container/gs_container.dart';
+import 'package:gluestack_flutter_pro/style/style_data.dart';
 import 'package:provider/provider.dart';
+
+import 'token/index.dart';
 
 void main() {
   runApp(
@@ -30,34 +34,35 @@ class MyApp extends StatelessWidget {
                   action: GSButtonAction.primary,
                   variant: GSButtonVariant.solid,
                   size: GSButtonSize.lg,
-                  child: const GSButtonText(text: "Click Here"),
                   onPressed: () {},
-                  style: const StyleData(
-                          // color: $GSColors.amber600,
-                          )
-                      .onDark(
+                  style: StyleData(context)
+                      .onDark(color: $GSColors.purple800)
+                      .sm(color: $GSColors.green500)
+                      .smDark(color: $GSColors.amber400),
+                  child: const GSButtonText(text: "Click Here"),
+                ),
+                GSBox(
+                  style: StyleData(
                     context,
-                    // color: $GSColors.purple500,
+                    color: $GSColors.purple400,
+                    width: 200,
+                    height: 200,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: $GSSpace.$5,
+                      horizontal: $GSSpace.$5,
+                    ),
+                    borderRadius: $GSRadii.$sm,
+                  )
+                      .onDark(color: $GSColors.purple800)
+                      .sm(color: $GSColors.green500)
+                      .smDark(color: $GSColors.amber400),
+                  child: const Text(
+                    "I am a container",
+                    style: TextStyle(
+                      color: $GSColors.white,
+                    ),
                   ),
                 ),
-                // const GSBox(
-                //   style: StyleData(
-                //     color: $GSColors.purple400,
-                //     width: 200,
-                //     height: 200,
-                //     padding: EdgeInsets.symmetric(
-                //       vertical: $GSSpace.$5,
-                //       horizontal: $GSSpace.$5,
-                //     ),
-                //     borderRadius: $GSRadii.$sm,
-                //   ),
-                //   child: Text(
-                //     "I am a container",
-                //     style: TextStyle(
-                //       color: $GSColors.white,
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -65,7 +70,9 @@ class MyApp extends StatelessWidget {
             onPressed: () {
               themeProvider.toggleTheme();
             },
-            child: const Icon(Icons.change_circle),
+            child: Icon(themeProvider.currentTheme == GSThemeMode.light
+                ? Icons.light_mode
+                : Icons.dark_mode),
           ),
         ),
       );

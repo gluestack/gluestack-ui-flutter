@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_attributes.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/style/style_data.dart';
+import 'package:gluestack_flutter_pro/style/style_data.dart';
 import 'package:provider/provider.dart';
 
 class GSButtonText extends StatelessWidget {

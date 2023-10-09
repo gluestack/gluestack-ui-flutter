@@ -1,18 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/widgets/style/style_data.dart';
+import 'package:gluestack_flutter_pro/style/style_data.dart';
 
 class GSBox extends StatelessWidget {
   final Widget child;
   final StyleData? style;
+  final Clip clipBehavior;
+  final AlignmentGeometry? transformAlignment;
+  final Matrix4? transform;
+  final Decoration? foregroundDecoration;
+  final BoxConstraints? constraints;
+  final BlendMode? backgroundBlendMode;
+  final Gradient? gradient;
+  final List<BoxShadow>? boxShadow;
+  final DecorationImage? image;
+  final BoxShape shape;
   const GSBox({
     super.key,
     required this.child,
     this.style,
+    this.clipBehavior = Clip.none,
+    this.transformAlignment,
+    this.transform,
+    this.foregroundDecoration,
+    this.constraints,
+    this.backgroundBlendMode,
+    this.gradient,
+    this.boxShadow,
+    this.image,
+    this.shape = BoxShape.rectangle,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      clipBehavior: clipBehavior,
+      transform: transform,
+      transformAlignment: transformAlignment,
+      foregroundDecoration: foregroundDecoration,
       alignment: style != null
           ? style!.alignment ?? Alignment.center
           : Alignment.center,
@@ -41,6 +65,11 @@ class GSBox extends StatelessWidget {
                 ? style!.borderColor ?? Colors.transparent
                 : Colors.transparent,
             width: style != null ? style!.borderWidth ?? 0 : 0),
+        gradient: gradient,
+        backgroundBlendMode: backgroundBlendMode,
+        boxShadow: boxShadow,
+        image: image,
+        shape: shape,
       ),
       child: child,
     );
