@@ -5,23 +5,38 @@ enum GSInputVariant { rounded, outline, underlined }
 
 enum GSInputSize { sm, md, lg, xl }
 
-enum GSInputPadding { xs, sm, md, lg }
+enum GSInputPadding { sm, md, lg, xl }
 
-enum GSInputBorderRadius { xs, sm, md, lg }
+enum GSInputBorderRadius { sm, md, lg, xl }
 
-enum GSInputFontSize { xs, sm, md, lg }
+enum GSInputFontSize { sm, md, lg, xl }
 
 enum Mode { light, dark }
 
 class GSInputCombinationStyle {
   final OutlineInputBorder? border;
   final Color? borderColor;
+
+  final EdgeInsetsGeometry? px;
+
   final Color? textColor;
   GSInputCombinationStyle(
-      {required this.border, required this.borderColor, this.textColor});
+      {required this.border,
+      required this.borderColor,
+      this.textColor,
+      required this.px});
 }
 
 class GsInputToken {
+  static Map<GSInputPadding, EdgeInsetsGeometry?> inputPadding = {
+    GSInputPadding.sm: const EdgeInsets.symmetric(
+      horizontal: $GSSpace.$3,
+    ),
+    GSInputPadding.md: const EdgeInsets.symmetric(horizontal: $GSSpace.$3_5),
+    GSInputPadding.lg: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
+    GSInputPadding.xl: const EdgeInsets.symmetric(horizontal: $GSSpace.$5),
+  };
+
   static Map<GSInputSize, double> inputSize = {
     GSInputSize.xl: $GSSpace.$12,
     GSInputSize.lg: $GSSpace.$11,
@@ -30,16 +45,16 @@ class GsInputToken {
   };
 
   static Map<GSInputBorderRadius, BorderRadius?> inputBorderRadius = {
-    GSInputBorderRadius.xs: BorderRadius.circular($GSRadii.$xs),
     GSInputBorderRadius.sm: BorderRadius.circular($GSRadii.$sm),
     GSInputBorderRadius.md: BorderRadius.circular($GSRadii.$md),
     GSInputBorderRadius.lg: BorderRadius.circular($GSRadii.$lg),
+    GSInputBorderRadius.xl: BorderRadius.circular($GSRadii.$xl),
   };
 
   static Map<GSInputFontSize, double?> inputFontSize = {
-    GSInputFontSize.xs: $GSFontSize.$xs,
     GSInputFontSize.sm: $GSFontSize.$sm,
     GSInputFontSize.md: $GSFontSize.$md,
     GSInputFontSize.lg: $GSFontSize.$lg,
+    GSInputFontSize.xl: $GSFontSize.$xl,
   };
 }
