@@ -41,6 +41,17 @@ class MyApp extends StatelessWidget {
                       .smDark(color: $GSColors.amber400),
                   child: const GSButtonText(text: "Click Here"),
                 ),
+                
+                TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        
+                      )
+                    )
+                  ),
+                ),
+
                 GSBox(
                   style: StyleData(
                     context,
