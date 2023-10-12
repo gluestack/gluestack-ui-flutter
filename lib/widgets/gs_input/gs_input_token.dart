@@ -14,7 +14,7 @@ enum GSInputFontSize { xs, sm, md, lg }
 enum Mode { light, dark }
 
 class GSInputCombinationStyle {
-  final InputBorder? border;
+  final OutlineInputBorder? border;
   final Color? borderColor;
   final Color? textColor;
   GSInputCombinationStyle(
@@ -22,18 +22,14 @@ class GSInputCombinationStyle {
 }
 
 class GsInputToken {
-  static Map<GSInputPadding, EdgeInsetsGeometry?> inputPadding = {
-    GSInputPadding.xs: const EdgeInsets.symmetric(
-        vertical: $GSSpace.$3, horizontal: $GSSpace.$6),
-    GSInputPadding.sm: const EdgeInsets.symmetric(
-        vertical: $GSSpace.$3_5, horizontal: $GSSpace.$7),
-    GSInputPadding.md: const EdgeInsets.symmetric(
-        vertical: $GSSpace.$4, horizontal: $GSSpace.$8),
-    GSInputPadding.lg: const EdgeInsets.symmetric(
-        vertical: $GSSpace.$5, horizontal: $GSSpace.$10),
+  static Map<GSInputSize, double> inputSize = {
+    GSInputSize.xs: $GSSpace.$24,
+    GSInputSize.sm: $GSSpace.$32,
+    GSInputSize.md: $GSSpace.$48,
+    GSInputSize.lg: $GSSpace.$80
   };
 
-  static Map<GSInputBorderRadius, BorderRadiusGeometry?> inputBorderRadius = {
+  static Map<GSInputBorderRadius, BorderRadius?> inputBorderRadius = {
     GSInputBorderRadius.xs: BorderRadius.circular($GSRadii.$xs),
     GSInputBorderRadius.sm: BorderRadius.circular($GSRadii.$sm),
     GSInputBorderRadius.md: BorderRadius.circular($GSRadii.$md),

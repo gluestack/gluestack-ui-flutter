@@ -46,14 +46,14 @@ class GsInputAttributes {
     },
   };
 
-  static Map<GSInputSize, EdgeInsetsGeometry> inputPaddings = {
-    GSInputSize.xs: GsInputToken.inputPadding[GSInputPadding.xs]!,
-    GSInputSize.sm: GsInputToken.inputPadding[GSInputPadding.sm]!,
-    GSInputSize.md: GsInputToken.inputPadding[GSInputPadding.md]!,
-    GSInputSize.lg: GsInputToken.inputPadding[GSInputPadding.lg]!,
+  static Map<GSInputSize, double?> inputSize = {
+    GSInputSize.xs: GsInputToken.inputSize[GSInputSize.xs]!,
+    GSInputSize.sm: GsInputToken.inputSize[GSInputSize.sm]!,
+    GSInputSize.md: GsInputToken.inputSize[GSInputSize.md]!,
+    GSInputSize.lg: GsInputToken.inputSize[GSInputSize.lg]!,
   };
 
-  static Map<GSInputSize, BorderRadiusGeometry> inputBorderRadius = {
+  static Map<GSInputSize, BorderRadius> inputBorderRadius = {
     GSInputSize.xs: GsInputToken.inputBorderRadius[GSInputBorderRadius.xs]!,
     GSInputSize.sm: GsInputToken.inputBorderRadius[GSInputBorderRadius.sm]!,
     GSInputSize.md: GsInputToken.inputBorderRadius[GSInputBorderRadius.md]!,

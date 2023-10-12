@@ -6,6 +6,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_container/gs_container.dart';
 import 'package:gluestack_flutter_pro/style/style_data.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
 import 'package:provider/provider.dart';
 
 import 'token/index.dart';
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
                 GSButton(
                   action: GSButtonAction.primary,
                   variant: GSButtonVariant.solid,
-                  size: GSButtonSize.lg,
+                  size: GSButtonSize.xs,
                   onPressed: () {},
                   style: StyleData(context)
                       .onDark(color: $GSColors.purple800)
@@ -41,17 +43,11 @@ class MyApp extends StatelessWidget {
                       .smDark(color: $GSColors.amber400),
                   child: const GSButtonText(text: "Click Here"),
                 ),
-                
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        
-                      )
-                    )
-                  ),
+                GsInput(
+                  variant: GSInputVariant.underlined,
+                  size: GSInputSize.lg,
+                  isInvaild: true,
                 ),
-
                 GSBox(
                   style: StyleData(
                     context,
