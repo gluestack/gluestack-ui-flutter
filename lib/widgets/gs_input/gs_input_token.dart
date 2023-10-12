@@ -3,7 +3,7 @@ import 'package:gluestack_flutter_pro/token/index.dart';
 
 enum GSInputVariant { rounded, outline, underlined }
 
-enum GSInputSize { xs, sm, md, lg }
+enum GSInputSize { sm, md, lg, xl }
 
 enum GSInputPadding { xs, sm, md, lg }
 
@@ -23,10 +23,10 @@ class GSInputCombinationStyle {
 
 class GsInputToken {
   static Map<GSInputSize, double> inputSize = {
-    GSInputSize.xs: $GSSpace.$24,
-    GSInputSize.sm: $GSSpace.$32,
-    GSInputSize.md: $GSSpace.$48,
-    GSInputSize.lg: $GSSpace.$80
+    GSInputSize.xl: $GSSpace.$12,
+    GSInputSize.lg: $GSSpace.$11,
+    GSInputSize.md: $GSSpace.$10,
+    GSInputSize.sm: $GSSpace.$9,
   };
 
   static Map<GSInputBorderRadius, BorderRadius?> inputBorderRadius = {

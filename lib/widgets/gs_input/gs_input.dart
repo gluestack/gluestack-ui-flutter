@@ -15,7 +15,7 @@ class GsInput extends StatelessWidget {
   const GsInput(
       {super.key,
       this.variant = GSInputVariant.underlined,
-      this.size = GSInputSize.md,
+      this.size = GSInputSize.sm,
       this.isReadOnly = false,
       this.isDisabled = false,
       this.isInvaild = false,
@@ -27,11 +27,12 @@ class GsInput extends StatelessWidget {
     final gsInputStyle = GsInputAttributes.gsInputCombination[variant]![theme];
 
     return SizedBox(
-        width: GsInputAttributes.inputSize[size]!,
+        height: GsInputAttributes.inputSize[size]!,
         child: TextField(
           readOnly: isReadOnly,
           enabled: !isDisabled,
           decoration: InputDecoration(
+              hintText: "Enter Text Here",
               enabledBorder: isInvaild
                   ? gsInputStyle != null && gsInputStyle.border != null
                       ? gsInputStyle.border!.copyWith(
@@ -55,11 +56,9 @@ class GsInput extends StatelessWidget {
                         )
                   : null,
               border: gsInputStyle?.border?.copyWith(
-                  borderRadius: style != null
-                      ? style!.borderRadius != null
-                          ? BorderRadius.circular(style!.borderRadius!)
-                          : GsInputAttributes.inputBorderRadius[size]!
-                      : GsInputAttributes.inputBorderRadius[size]!,
+                  borderRadius: style?.borderRadius != null
+                      ? BorderRadius.circular(style!.borderRadius!)
+                      : null,
                   borderSide: BorderSide(
                     color: style != null
                         ? style!.borderColor ?? gsInputStyle.borderColor!
@@ -69,36 +68,3 @@ class GsInput extends StatelessWidget {
         ));
   }
 }
-
-// class GsInput extends StatelessWidget {
-//   final GSInputVariant? variant;
-//   final GSInputSize size;
-//   // final GSInputSize? padding;
-//   final StyleData? style;
-
-//   const GsInput(
-//       {super.key,
-//       this.variant = GSInputVariant.underlined,
-//       this.size = GSInputSize.md,
-//       // this.padding = GSInputSize.xs,
-//       this.style});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final theme = Provider.of<ThemeProvider>(context).currentTheme;
-//     final gsStyle = GsInputAttributes.gsInputCombination[variant]![theme];
-    
-//     return SizedBox(
-//       width: GsInputAttributes.inputSize[size],
-//       child: TextField(
-//         decoration: InputDecoration(
-//           // contentPadding: GsInputAttributes.inputPaddings[padding],
-//           hintText: "Enter Text Here",
-//           // border: gsStyle!.border?.copyWith(
-//           //   borderSide: BorderSide(color: gsStyle.borderColor!),
-//           // ),
-//         ),
-//       ),
-//     );
-//   }
-// }
