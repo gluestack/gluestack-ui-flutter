@@ -22,7 +22,7 @@ class GSInputCombinationStyle {
 }
 
 class GsInputToken {
-  static Map<GSInputPadding, EdgeInsetsGeometry?> buttonPadding = {
+  static Map<GSInputPadding, EdgeInsetsGeometry?> inputPadding = {
     GSInputPadding.xs: const EdgeInsets.symmetric(
         vertical: $GSSpace.$3, horizontal: $GSSpace.$6),
     GSInputPadding.sm: const EdgeInsets.symmetric(
@@ -33,14 +33,14 @@ class GsInputToken {
         vertical: $GSSpace.$5, horizontal: $GSSpace.$10),
   };
 
-  static Map<GSInputBorderRadius, BorderRadiusGeometry?> buttonBorderRadius = {
+  static Map<GSInputBorderRadius, BorderRadiusGeometry?> inputBorderRadius = {
     GSInputBorderRadius.xs: BorderRadius.circular($GSRadii.$xs),
     GSInputBorderRadius.sm: BorderRadius.circular($GSRadii.$sm),
     GSInputBorderRadius.md: BorderRadius.circular($GSRadii.$md),
     GSInputBorderRadius.lg: BorderRadius.circular($GSRadii.$lg),
   };
 
-  static Map<GSInputFontSize, double?> buttonFontSize = {
+  static Map<GSInputFontSize, double?> inputFontSize = {
     GSInputFontSize.xs: $GSFontSize.$xs,
     GSInputFontSize.sm: $GSFontSize.$sm,
     GSInputFontSize.md: $GSFontSize.$md,
