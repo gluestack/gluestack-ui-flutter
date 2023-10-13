@@ -310,7 +310,8 @@ class GSInput extends StatelessWidget {
           smartQuotesType: smartQuotesType,
           spellCheckConfiguration: spellCheckConfiguration,
           strutStyle: strutStyle,
-          style: style?.textStyle,
+          style: style?.textStyle ??
+              TextStyle(fontSize: GSInputAttributes.inputFontSize[size]),
           textAlign: textAlign,
           textAlignVertical: textAlignVertical,
           textCapitalization: textCapitalization,

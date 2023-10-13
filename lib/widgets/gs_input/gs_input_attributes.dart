@@ -83,5 +83,6 @@ class GSInputAttributes {
     GSInputSize.sm: GSInputToken.inputFontSize[GSInputFontSize.sm]!,
     GSInputSize.md: GSInputToken.inputFontSize[GSInputFontSize.md]!,
     GSInputSize.lg: GSInputToken.inputFontSize[GSInputFontSize.lg]!,
+    GSInputSize.xl: GSInputToken.inputFontSize[GSInputFontSize.xl]!,
   };
 }
