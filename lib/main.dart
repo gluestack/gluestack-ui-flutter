@@ -43,13 +43,12 @@ class MyApp extends StatelessWidget {
                       .smDark(color: $GSColors.amber400),
                   child: const GSButtonText(text: "Click Here"),
                 ),
-              const SizedBox(
-                  width: 200,
-                  child: GsInput(
-                    variant: GSInputVariant.underlined,
-                    size: GSInputSize.sm,
-                    isInvaild: true,
-                  ),
+                GSInput(
+                  size: GSInputSize.xl,
+                  variant: GSInputVariant.rounded,
+                  style: StyleData(context, width: 200),
+                
+           
                 ),
                 GSBox(
                   style: StyleData(

@@ -16,22 +16,20 @@ enum Mode { light, dark }
 class GSInputCombinationStyle {
   final OutlineInputBorder? border;
   final Color? borderColor;
-
+  final Color? focusborderColor;
   final EdgeInsetsGeometry? px;
-
   final Color? textColor;
   GSInputCombinationStyle(
       {required this.border,
       required this.borderColor,
+      required this.focusborderColor,
       this.textColor,
       required this.px});
 }
 
 class GsInputToken {
   static Map<GSInputPadding, EdgeInsetsGeometry?> inputPadding = {
-    GSInputPadding.sm: const EdgeInsets.symmetric(
-      horizontal: $GSSpace.$3,
-    ),
+    GSInputPadding.sm: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
     GSInputPadding.md: const EdgeInsets.symmetric(horizontal: $GSSpace.$3_5),
     GSInputPadding.lg: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
     GSInputPadding.xl: const EdgeInsets.symmetric(horizontal: $GSSpace.$5),

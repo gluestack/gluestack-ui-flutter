@@ -9,14 +9,17 @@ class GsInputAttributes {
     GSInputVariant.underlined: {
       GSThemeMode.light: GSInputCombinationStyle(
         border: null,
+        focusborderColor: $GSColors.primary700,
         borderColor: $GSColors.backgroundLight300,
         textColor: $GSColors.white,
+      
         px: const EdgeInsets.symmetric(horizontal: $GSSpace.$0),
       ),
       GSThemeMode.dark: GSInputCombinationStyle(
         border: null,
         borderColor: $GSColors.borderDark400,
         textColor: $GSColors.white,
+        focusborderColor: $GSColors.primary400,
         px: const EdgeInsets.symmetric(horizontal: $GSSpace.$0),
       )
     },
@@ -24,12 +27,14 @@ class GsInputAttributes {
       GSThemeMode.light: GSInputCombinationStyle(
         border: const OutlineInputBorder(),
         borderColor: $GSColors.backgroundLight300,
+        focusborderColor: $GSColors.primary700,
         textColor: $GSColors.white,
         px: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
       ),
       GSThemeMode.dark: GSInputCombinationStyle(
         border: const OutlineInputBorder(),
         borderColor: $GSColors.borderDark400,
+        focusborderColor: $GSColors.primary400,
         px: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
         textColor: $GSColors.white,
       )
@@ -39,6 +44,7 @@ class GsInputAttributes {
         border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular($GSRadii.full))),
         borderColor: $GSColors.backgroundLight300,
+        focusborderColor: $GSColors.primary700,
         px: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
         textColor: $GSColors.white,
       ),
@@ -46,6 +52,7 @@ class GsInputAttributes {
         border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular($GSRadii.full))),
         borderColor: $GSColors.borderDark400,
+        focusborderColor: $GSColors.primary400,
         textColor: $GSColors.white,
         px: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
       )
@@ -63,7 +70,7 @@ class GsInputAttributes {
     GSInputSize.sm: GsInputToken.inputSize[GSInputSize.sm]!,
     GSInputSize.md: GsInputToken.inputSize[GSInputSize.md]!,
     GSInputSize.lg: GsInputToken.inputSize[GSInputSize.lg]!,
-   GSInputSize.xl: GsInputToken.inputSize[GSInputSize.xl]!,
+    GSInputSize.xl: GsInputToken.inputSize[GSInputSize.xl]!,
   };
 
   static Map<GSInputSize, BorderRadius> inputBorderRadius = {
