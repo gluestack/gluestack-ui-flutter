@@ -8,6 +8,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_container/gs_container.dart';
 import 'package:gluestack_flutter_pro/style/style_data.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_radio_icon/gs_radio_icon.dart';
 import 'package:provider/provider.dart';
 
 import 'token/index.dart';
@@ -43,12 +45,13 @@ class MyApp extends StatelessWidget {
                       .smDark(color: $GSColors.amber400),
                   child: const GSButtonText(text: "Click Here"),
                 ),
-                GSInput(
-                  size: GSInputSize.sm,
-                  variant: GSInputVariant.underlined,
-                  style: StyleData(context, width: 200),
-                  hintText: "Enter Text Here",
-                ),
+                 
+               GSRadio(
+                icon: GSRadioIcon<String>(value: 'alan', groupValue: 'alan', onChanged: (p0) {
+                  
+                },),
+               ),
+
                 GSBox(
                   style: StyleData(
                     context,
