@@ -44,11 +44,10 @@ class MyApp extends StatelessWidget {
                   child: const GSButtonText(text: "Click Here"),
                 ),
                 GSInput(
-                  size: GSInputSize.xl,
-                  variant: GSInputVariant.rounded,
+                  size: GSInputSize.sm,
+                  variant: GSInputVariant.underlined,
                   style: StyleData(context, width: 200),
-                
-           
+                  hintText: "Enter Text Here",
                 ),
                 GSBox(
                   style: StyleData(

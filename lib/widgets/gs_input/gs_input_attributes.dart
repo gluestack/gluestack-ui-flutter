@@ -3,7 +3,7 @@ import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
 
-class GsInputAttributes {
+class GSInputAttributes {
   static Map<GSInputVariant, Map<GSThemeMode, GSInputCombinationStyle>>
       gsInputCombination = {
     GSInputVariant.underlined: {
@@ -12,7 +12,6 @@ class GsInputAttributes {
         focusborderColor: $GSColors.primary700,
         borderColor: $GSColors.backgroundLight300,
         textColor: $GSColors.white,
-      
         px: const EdgeInsets.symmetric(horizontal: $GSSpace.$0),
       ),
       GSThemeMode.dark: GSInputCombinationStyle(
@@ -60,29 +59,29 @@ class GsInputAttributes {
   };
 
   static Map<GSInputSize, EdgeInsetsGeometry> inputPaddings = {
-    GSInputSize.sm: GsInputToken.inputPadding[GSInputPadding.sm]!,
-    GSInputSize.md: GsInputToken.inputPadding[GSInputPadding.md]!,
-    GSInputSize.lg: GsInputToken.inputPadding[GSInputPadding.lg]!,
-    GSInputSize.xl: GsInputToken.inputPadding[GSInputPadding.xl]!,
+    GSInputSize.sm: GSInputToken.inputPadding[GSInputPadding.sm]!,
+    GSInputSize.md: GSInputToken.inputPadding[GSInputPadding.md]!,
+    GSInputSize.lg: GSInputToken.inputPadding[GSInputPadding.lg]!,
+    GSInputSize.xl: GSInputToken.inputPadding[GSInputPadding.xl]!,
   };
 
   static Map<GSInputSize, double?> inputSize = {
-    GSInputSize.sm: GsInputToken.inputSize[GSInputSize.sm]!,
-    GSInputSize.md: GsInputToken.inputSize[GSInputSize.md]!,
-    GSInputSize.lg: GsInputToken.inputSize[GSInputSize.lg]!,
-    GSInputSize.xl: GsInputToken.inputSize[GSInputSize.xl]!,
+    GSInputSize.sm: GSInputToken.inputSize[GSInputSize.sm]!,
+    GSInputSize.md: GSInputToken.inputSize[GSInputSize.md]!,
+    GSInputSize.lg: GSInputToken.inputSize[GSInputSize.lg]!,
+    GSInputSize.xl: GSInputToken.inputSize[GSInputSize.xl]!,
   };
 
   static Map<GSInputSize, BorderRadius> inputBorderRadius = {
-    GSInputSize.sm: GsInputToken.inputBorderRadius[GSInputBorderRadius.sm]!,
-    GSInputSize.md: GsInputToken.inputBorderRadius[GSInputBorderRadius.md]!,
-    GSInputSize.lg: GsInputToken.inputBorderRadius[GSInputBorderRadius.lg]!,
-    GSInputSize.xl: GsInputToken.inputBorderRadius[GSInputBorderRadius.xl]!,
+    GSInputSize.sm: GSInputToken.inputBorderRadius[GSInputBorderRadius.sm]!,
+    GSInputSize.md: GSInputToken.inputBorderRadius[GSInputBorderRadius.md]!,
+    GSInputSize.lg: GSInputToken.inputBorderRadius[GSInputBorderRadius.lg]!,
+    GSInputSize.xl: GSInputToken.inputBorderRadius[GSInputBorderRadius.xl]!,
   };
 
   static Map<GSInputSize, double> inputFontSize = {
-    GSInputSize.sm: GsInputToken.inputFontSize[GSInputFontSize.sm]!,
-    GSInputSize.md: GsInputToken.inputFontSize[GSInputFontSize.md]!,
-    GSInputSize.lg: GsInputToken.inputFontSize[GSInputFontSize.lg]!,
+    GSInputSize.sm: GSInputToken.inputFontSize[GSInputFontSize.sm]!,
+    GSInputSize.md: GSInputToken.inputFontSize[GSInputFontSize.md]!,
+    GSInputSize.lg: GSInputToken.inputFontSize[GSInputFontSize.lg]!,
   };
 }

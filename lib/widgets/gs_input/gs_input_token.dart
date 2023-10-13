@@ -27,7 +27,7 @@ class GSInputCombinationStyle {
       required this.px});
 }
 
-class GsInputToken {
+class GSInputToken {
   static Map<GSInputPadding, EdgeInsetsGeometry?> inputPadding = {
     GSInputPadding.sm: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
     GSInputPadding.md: const EdgeInsets.symmetric(horizontal: $GSSpace.$3_5),
