@@ -3,16 +3,17 @@ import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_token.dart';
 
 class GSRadioProvider extends InheritedWidget {
   final GSRadioSize size;
-
+  final bool isEnabled;
   const GSRadioProvider({
     super.key,
     required this.size,
+    this.isEnabled = true,
     required Widget child,
   }) : super(child: child);
 
   @override
   bool updateShouldNotify(GSRadioProvider oldWidget) {
-    return size != oldWidget.size;
+    return isEnabled != oldWidget.isEnabled || size != oldWidget.size;
   }
 
   static GSRadioProvider? of(BuildContext context) {

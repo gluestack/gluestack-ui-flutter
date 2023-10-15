@@ -7,6 +7,14 @@ enum GsRadioPadding { sm, md, lg }
 
 enum Mode { light, dark }
 
+enum GSRadioStatus { active, inactive }
+
+class GSRadioCombinationStyle {
+  final Color labelColor;
+
+  GSRadioCombinationStyle({required this.labelColor});
+}
+
 class GSRadioToken {
   static Map<GsRadioPadding, EdgeInsetsGeometry?> radioPadding = {
     GsRadioPadding.sm: const EdgeInsets.all($GSSpace.$1),
