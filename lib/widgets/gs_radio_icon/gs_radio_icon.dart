@@ -54,7 +54,7 @@ class GSRadioIcon<T> extends StatelessWidget {
           mouseCursor: mouseCursor,
           overlayColor: overlayColor,
           splashRadius: splashRadius,
-          toggleable: toggleable,
+          toggleable: false,
           materialTapTargetSize: materialTapTargetSize,
           visualDensity: visualDensity ??
               const VisualDensity(

@@ -49,10 +49,11 @@ class MyApp extends StatelessWidget {
                 ),
                 GSRadio(
                     size: GSRadioSize.sm,
+                    isEnabled: false,
                     label:const GSRadioText(text: "Label"),
                     icon: GSRadioIcon(
                       value: '1',
-                      groupValue: '1',
+                      groupValue: '2',
                       onChanged: (p0) {},
                     )),                   
                     

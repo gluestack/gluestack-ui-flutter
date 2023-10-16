@@ -7,7 +7,7 @@ class GSRadioProvider extends InheritedWidget {
   const GSRadioProvider({
     super.key,
     required this.size,
-    this.isEnabled = true,
+    required this.isEnabled ,
     required Widget child,
   }) : super(child: child);
 

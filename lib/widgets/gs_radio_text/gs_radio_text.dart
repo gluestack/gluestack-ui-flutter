@@ -17,12 +17,15 @@ class GSRadioText extends StatelessWidget {
     final theme = Provider.of<ThemeProvider>(context).currentTheme;
     final textColor = GSRadioAttributes.gsInputCombination[theme]!.labelColor;
     final fontSize = GSRadioToken.radioSize[value?.size];
-    var defaultTextStyle = TextStyle(fontSize: fontSize, color: textColor);
+    var defaultTextStyle = TextStyle(fontSize: fontSize, color: textColor );
     final mergedStyle =
         defaultTextStyle.merge(style != null ? style!.textStyle : null);
-    return Text(
-      text,
-      style: mergedStyle,
+    return Opacity(
+      opacity: value!.isEnabled ? 1 : 0.5,
+      child: Text(
+        text,
+        style: mergedStyle,
+      ),
     );
   }
 }
