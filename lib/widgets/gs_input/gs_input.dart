@@ -327,7 +327,7 @@ class GSInput extends StatelessWidget {
               fillColor: style?.color,
               filled: style != null && style!.color != null,
               disabledBorder: disabledBorder,
-              error: error,
+              // error: error,
               errorBorder: errorBorder,
               errorMaxLines: errorMaxLines,
               errorStyle: errorStyle,

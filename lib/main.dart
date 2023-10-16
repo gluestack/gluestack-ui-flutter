@@ -4,7 +4,7 @@ import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_container/gs_container.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_box/gs_box.dart';
 import 'package:gluestack_flutter_pro/style/style_data.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
