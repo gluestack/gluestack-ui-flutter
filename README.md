@@ -48,17 +48,17 @@ Here is a little elaboration on how we are creating apis. For every api that we 
 
 This file serves as a token file, defining essential constants, enums, and base styles used in a GS component.
 Enums like action, variant, size, etc, define the possible values for different attributes of a component.
-You can refer [here](lib/gs_button/gs_button_token.dart)
+You can refer [here](lib/widgets/gs_button/gs_button_token.dart)
 
 #### Attributes
 
 This file defines the attributes class, which provides a configuration mechanism for customizing the visual style of GS components. The mapping of this class allows you to configure how component should appear in different scenarios.
-You can refer [here](lib/gs_button/gs_button_attributes.dart)
+You can refer [here](lib/widgets/gs_button/gs_button_attributes.dart)
 
 #### Provider
 
 This file defines the GS Provider class, which is an InheritedWidget used to share the component's attributes throughout the widget tree. The updateShouldNotify method is used to determine if the widget should notify its descendants of changes in component's attributes, ensuring that updates are propagated effectively.
-You can refer [here](lib/gs_button/gs_button_provider.dart)
+You can refer [here](lib/widgets/gs_button/gs_button_provider.dart)
 
 #### Style
 
