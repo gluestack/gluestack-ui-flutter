@@ -3,7 +3,6 @@ import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class StyleData {
-  final BuildContext context;
   final Color? color;
   final Color? borderColor;
   final double? borderRadius;
@@ -14,9 +13,9 @@ class StyleData {
   final EdgeInsetsGeometry? margin;
   final AlignmentGeometry? alignment;
   final TextStyle? textStyle;
+  final StyleData? dark;
 
-  StyleData(
-    this.context, {
+  StyleData({
     this.color,
     this.borderColor,
     this.borderRadius,
@@ -27,340 +26,351 @@ class StyleData {
     this.margin,
     this.alignment,
     this.textStyle,
+    this.dark,
   });
 
-  StyleData onDark({Color? borderColor, Color? color, TextStyle? textStyle}) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
-    return isDarkMode
-        ? StyleData(
-            context,
-            color: color ?? this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width,
-            height: height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // Input field variables
+  OutlineInputBorder? inputBorder;
+  Color? inputFocusedBorderColor;
 
-  StyleData base(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    return isBaseScreen(context)
-        ? StyleData(
-            context,
-            color: (color ?? this.color),
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  void setInputBorder(OutlineInputBorder? _inputBorder) =>
+      inputBorder = _inputBorder;
 
-  StyleData baseLight(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
-    return isBaseScreen(context)
-        ? StyleData(
-            context,
-            color: !isDarkMode ? color : this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  void setInputFocusedBorderColor(Color? _inputFocusedBorderColor) =>
+      inputFocusedBorderColor = _inputFocusedBorderColor;
 
-  StyleData baseDark(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
-    return isBaseScreen(context)
-        ? StyleData(
-            context,
-            color: isDarkMode ? color : this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData onDark({Color? borderColor, Color? color, TextStyle? textStyle}) {
+  //   final isDarkMode =
+  //       Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
+  //   return isDarkMode
+  //       ? StyleData(
+  //           context,
+  //           color: color ?? this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width,
+  //           height: height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  StyleData sm(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    return isSmallScreen(context)
-        ? StyleData(
-            context,
-            color: color ?? this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData base(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   return isBaseScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: (color ?? this.color),
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  StyleData smLight(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
-    return isSmallScreen(context)
-        ? StyleData(
-            context,
-            color: !isDarkMode ? color : this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData baseLight(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   final isDarkMode =
+  //       Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
+  //   return isBaseScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: !isDarkMode ? color : this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  StyleData smDark(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
-    return isSmallScreen(context)
-        ? StyleData(
-            context,
-            color: isDarkMode ? color : this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData baseDark(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   final isDarkMode =
+  //       Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
+  //   return isBaseScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: isDarkMode ? color : this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  StyleData md(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    return isMediumScreen(context)
-        ? StyleData(
-            context,
-            color: color ?? this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData sm(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   return isSmallScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: color ?? this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  StyleData mdLight(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
-    return isMediumScreen(context)
-        ? StyleData(
-            context,
-            color: !isDarkMode ? color : this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData smLight(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   final isDarkMode =
+  //       Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
+  //   return isSmallScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: !isDarkMode ? color : this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  StyleData mdDark(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
-    return isMediumScreen(context)
-        ? StyleData(
-            context,
-            color: isDarkMode ? color : this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData smDark(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   final isDarkMode =
+  //       Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
+  //   return isSmallScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: isDarkMode ? color : this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  StyleData lg(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    return isLargeScreen(context)
-        ? StyleData(
-            context,
-            color: color ?? this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData md(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   return isMediumScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: color ?? this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  StyleData lgLight(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
-    return isLargeScreen(context)
-        ? StyleData(
-            context,
-            color: !isDarkMode ? color : this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData mdLight(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   final isDarkMode =
+  //       Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
+  //   return isMediumScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: !isDarkMode ? color : this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  StyleData lgDark(
-      {double? width,
-      double? height,
-      Color? borderColor,
-      Color? color,
-      TextStyle? textStyle}) {
-    final isDarkMode =
-        Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
-    return isLargeScreen(context)
-        ? StyleData(
-            context,
-            color: isDarkMode ? color : this.color,
-            borderColor: borderColor ?? this.borderColor,
-            borderRadius: borderRadius,
-            width: width ?? this.width,
-            height: height ?? this.height,
-            borderWidth: borderWidth,
-            padding: padding,
-            margin: margin,
-            alignment: alignment,
-            textStyle: textStyle ?? this.textStyle,
-          )
-        : this;
-  }
+  // StyleData mdDark(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   final isDarkMode =
+  //       Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
+  //   return isMediumScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: isDarkMode ? color : this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  bool isBaseScreen(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+  // StyleData lg(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   return isLargeScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: color ?? this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-    return screenWidth < small;
-  }
+  // StyleData lgLight(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   final isDarkMode =
+  //       Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
+  //   return isLargeScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: !isDarkMode ? color : this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  bool isSmallScreen(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    return screenWidth >= small;
-  }
+  // StyleData lgDark(
+  //     {double? width,
+  //     double? height,
+  //     Color? borderColor,
+  //     Color? color,
+  //     TextStyle? textStyle}) {
+  //   final isDarkMode =
+  //       Provider.of<ThemeProvider>(context).currentTheme == GSThemeMode.dark;
+  //   return isLargeScreen(context)
+  //       ? StyleData(
+  //           context,
+  //           color: isDarkMode ? color : this.color,
+  //           borderColor: borderColor ?? this.borderColor,
+  //           borderRadius: borderRadius,
+  //           width: width ?? this.width,
+  //           height: height ?? this.height,
+  //           borderWidth: borderWidth,
+  //           padding: padding,
+  //           margin: margin,
+  //           alignment: alignment,
+  //           textStyle: textStyle ?? this.textStyle,
+  //         )
+  //       : this;
+  // }
 
-  bool isMediumScreen(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    return screenWidth >= medium;
-  }
+  // bool isBaseScreen(BuildContext context) {
+  //   final screenWidth = MediaQuery.of(context).size.width;
 
-  bool isLargeScreen(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    return screenWidth >= large;
-  }
+  //   return screenWidth < small;
+  // }
+
+  // bool isSmallScreen(BuildContext context) {
+  //   final screenWidth = MediaQuery.of(context).size.width;
+  //   return screenWidth >= small;
+  // }
+
+  // bool isMediumScreen(BuildContext context) {
+  //   final screenWidth = MediaQuery.of(context).size.width;
+  //   return screenWidth >= medium;
+  // }
+
+  // bool isLargeScreen(BuildContext context) {
+  //   final screenWidth = MediaQuery.of(context).size.width;
+  //   return screenWidth >= large;
+  // }
 }
 
 const base = 0;

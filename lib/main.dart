@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/style/generated_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
@@ -21,11 +22,14 @@ void main() {
   );
 }
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
       return MaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Center(
@@ -33,44 +37,46 @@ class MyApp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GSButton(
-                  action: GSButtonAction.primary,
+                  action: GSButtonAction.negative,
                   variant: GSButtonVariant.solid,
-                  size: GSButtonSize.xs,
+                  size: GSButtonSize.lg,
                   onPressed: () {},
-                  style: StyleData(context)
-                      .onDark(color: $GSColors.purple800)
-                      .sm(color: $GSColors.green500)
-                      .smDark(color: $GSColors.amber400),
+                  style: GSGeneratedStyle(
+                    dark: GSGeneratedStyle(
+                      color: $GSColors.blueGray700,
+                    ),
+                    borderWidth: $GSBorderWidth.$2,
+                  ),
                   child: const GSButtonText(text: "Click Here"),
                 ),
                 GSInput(
-                  size: GSInputSize.sm,
-                  variant: GSInputVariant.underlined,
-                  style: StyleData(context, width: 200),
+                  size: GSInputSize.xl,
+                  variant: GSInputVariant.outline,
+                  style: GSGeneratedStyle(width: 200),
                   hintText: "Enter Text Here",
                 ),
-                GSBox(
-                  style: StyleData(
-                    context,
-                    color: $GSColors.primary500,
-                    width: 200,
-                    height: 200,
-                    padding: const EdgeInsets.symmetric(
-                      vertical: $GSSpace.$5,
-                      horizontal: $GSSpace.$5,
-                    ),
-                    borderRadius: $GSRadii.$sm,
-                  )
-                      .onDark(color: $GSColors.purple800)
-                      .sm(color: $GSColors.green500)
-                      .smDark(color: $GSColors.amber400),
-                  child: const Text(
-                    "I am a container",
-                    style: TextStyle(
-                      color: $GSColors.white,
-                    ),
-                  ),
-                ),
+                // GSBox(
+                //   style: StyleData(
+                //     context,
+                //     color: $GSColors.primary500,
+                //     width: 200,
+                //     height: 200,
+                //     padding: const EdgeInsets.symmetric(
+                //       vertical: $GSSpace.$5,
+                //       horizontal: $GSSpace.$5,
+                //     ),
+                //     borderRadius: $GSRadii.$sm,
+                //   )
+                //       .onDark(color: $GSColors.purple800)
+                //       .sm(color: $GSColors.green500)
+                //       .smDark(color: $GSColors.amber400),
+                //   child: const Text(
+                //     "I am a container",
+                //     style: TextStyle(
+                //       color: $GSColors.white,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),
