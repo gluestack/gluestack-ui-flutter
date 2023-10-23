@@ -1,4 +1,4 @@
-Map<String, dynamic> flutterJson = {
+Map<String, dynamic> buttonData = {
   'borderRadius': '\$sm',
   'backgroundColor': '\$primary500',
   'flexDirection': 'row',

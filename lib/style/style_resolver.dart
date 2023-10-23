@@ -39,14 +39,22 @@ GSGeneratedStyle? resolveStyles(
   GSGeneratedStyle? inlineStyle,
 }) {
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
-
+  print("VARIANT STYLE ---->    ${variantStyle}");
+  print("INLINE STYLE ---->    ${inlineStyle}");
   GSGeneratedStyle? temp =
       variantStyle != null ? variantStyle.merge(inlineStyle) : inlineStyle;
   GSGeneratedStyle? currentGSStyle = size != null ? size.merge(temp) : temp;
-
-  inlineStyle!.contextStyles.forEach((key, value) {
+  if (inlineStyle == null) {
+    if (theme == GSThemeMode.dark) {
+      return currentGSStyle?.merge(variantStyle?.dark);
+    }
+  }
+  inlineStyle?.contextStyles.forEach((key, value) {
+    print("HEREEEE");
     if (value != null) {
+      print("HEREEEE INSIDE");
       if (key == 'dark' && theme == GSThemeMode.dark) {
+        print("HEREEEE INSIDE DARK");
         currentGSStyle = currentGSStyle?.merge(value);
         GSGeneratedStyle? nestedStyle =
             resolveStyles(context, inlineStyle: value);

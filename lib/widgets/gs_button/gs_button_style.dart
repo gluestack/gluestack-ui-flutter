@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/factory/jsons/button.dart';
 import 'package:gluestack_flutter_pro/style/generated_style.dart';
 import 'package:gluestack_flutter_pro/style/style_data.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
+
+GSGeneratedStyle buttonStyle1 = GSGeneratedStyle.fromMap(data: buttonData);
+GSGeneratedStyle baseStule = GSGeneratedStyle(
+  borderRadius: buttonStyle1.borderRadius,
+  bg: buttonStyle1.bg,
+  dark: buttonStyle1.dark,
+);
 
 GSGeneratedStyle buttonStyle = GSGeneratedStyle(
   variants: Variants(
@@ -10,26 +18,14 @@ GSGeneratedStyle buttonStyle = GSGeneratedStyle(
       primary: GSGeneratedStyle(
         variants: Variants(
           variant: GSVariant(
-            solid: GSGeneratedStyle(
-              color: $GSColors.primary500,
-              borderColor: $GSColors.primary300,
-              textStyle: const TextStyle(color: $GSColors.white),
-              dark: GSGeneratedStyle(
-                color: $GSColors.primary800,
-                borderColor: $GSColors.primary800,
-                textStyle: const TextStyle(color: $GSColors.white),
-              ),
-            ),
-            outline: GSGeneratedStyle(
-              color: Colors.transparent,
-              borderColor: $GSColors.primary500,
-              textStyle: const TextStyle(color: $GSColors.primary500),
-              dark: GSGeneratedStyle(
-                color: Colors.transparent,
-                borderColor: $GSColors.primary800,
-                textStyle: const TextStyle(color: $GSColors.primary800),
-              ),
-            ),
+            solid: baseStule
+                .merge(buttonStyle1.variants?.action?.primary)
+                .merge(buttonStyle1.variants?.variant?.solid)
+                .merge(GSGeneratedStyle(
+                    textStyle: TextStyle(color: Colors.white))),
+            outline: baseStule
+                .merge(buttonStyle1.variants?.action?.primary)
+                .merge(buttonStyle1.variants?.variant?.outline),
             link: GSGeneratedStyle(
               color: Colors.transparent,
               borderColor: Colors.transparent,
@@ -87,14 +83,10 @@ GSGeneratedStyle buttonStyle = GSGeneratedStyle(
         variants: Variants(
           variant: GSVariant(
             solid: GSGeneratedStyle(
-              color: $GSColors.success500,
-              borderColor: $GSColors.success300,
+              color: buttonStyle1.variants?.action?.positive?.bg,
+              borderColor: buttonStyle1.variants?.action?.positive?.borderColor,
               textStyle: const TextStyle(color: $GSColors.white),
-              dark: GSGeneratedStyle(
-                color: $GSColors.success800,
-                borderColor: $GSColors.success800,
-                textStyle: const TextStyle(color: $GSColors.white),
-              ),
+              dark: buttonStyle1.variants?.action?.positive?.dark,
             ),
             outline: GSGeneratedStyle(
               color: Colors.transparent,
