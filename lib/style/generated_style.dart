@@ -62,12 +62,13 @@ class GSAction {
   GSGeneratedStyle? secondary;
   GSGeneratedStyle? positive;
   GSGeneratedStyle? negative;
-
+  GSGeneratedStyle? defaultStyle;
   GSAction({
     this.primary,
     this.secondary,
     this.positive,
     this.negative,
+    this.defaultStyle,
   });
   factory GSAction.fromMap({required Map<String, dynamic>? data}) {
     return GSAction(
@@ -75,6 +76,8 @@ class GSAction {
             GSGeneratedStyle.fromMap(data: data?['primary'], fromVariant: true),
         secondary: GSGeneratedStyle.fromMap(
             data: data?['secondary'], fromVariant: true),
+        defaultStyle:
+            GSGeneratedStyle.fromMap(data: data?['default'], fromVariant: true),
         positive: GSGeneratedStyle.fromMap(
             data: data?['positive'], fromVariant: true),
         negative: GSGeneratedStyle.fromMap(
@@ -96,7 +99,7 @@ class Variants {
   factory Variants.fromMap({required Map<String, dynamic>? data}) {
     return Variants(
       size: GSSize.fromMap(
-        data: data?['size'],
+        data: data?['variant']['size'],
       ),
       variant: GSVariant.fromMap(
         data: data?['variant'],
@@ -121,8 +124,8 @@ class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
   String? outlineStyle;
   double? borderBottomWidth;
   TextStyle? textStyle;
-
   Variants? variants;
+
   GSGeneratedStyle({
     this.borderWidth,
     this.borderColor,
@@ -159,7 +162,6 @@ class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
 
   @override
   merge(other) {
-    print("BG !!!!!     ${other?.bg}");
     return GSGeneratedStyle(
       borderColor: other?.borderColor ?? borderColor,
       borderRadius: other?.borderRadius ?? borderRadius,
@@ -260,7 +262,6 @@ Color? resolveColorFromString(String? color) {
     return null;
   }
   if (color.contains("transparent")) {
-    print("TRANSPARENT");
     return Colors.transparent;
   }
   return $GSColors.colorMap[color.substring(1)];

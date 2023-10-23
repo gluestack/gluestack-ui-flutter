@@ -7,6 +7,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 import 'package:provider/provider.dart';
 
+import '../../token/index.dart';
+
 class GSButton extends StatelessWidget {
   final GSButtonAction? action;
   final GSButtonVariant? variant;
@@ -40,11 +42,6 @@ class GSButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // GSGeneratedStyle styler = styleResolver(context,
-    //     variantStyle: GSButtonStyle.gsButtonCombination[action]![variant],
-    //     size: GSButtonStyle.size[size]!,
-    //     inlineStyle: style);
-
     GSGeneratedStyle styler = resolveStyles(context,
         variantStyle: GSButtonStyle.gsButtonCombination[action]![variant],
         size: GSButtonStyle.size[size]!,
@@ -54,28 +51,33 @@ class GSButton extends StatelessWidget {
       action: action!,
       variant: variant!,
       size: size!,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        onLongPress: onLongPress,
-        onHover: onHover,
-        onFocusChange: onFocusChange,
-        focusNode: focusNode,
-        autofocus: autoFocus,
-        clipBehavior: clipBehavior,
-        statesController: statesController,
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          padding: styler.padding,
-          backgroundColor: styler.color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(styler.borderRadius!),
-            side: BorderSide(
-              color: styler.borderColor!,
-              width: styler.borderWidth ?? 1.0,
+      child: SizedBox(
+        height: styler.height,
+        child: ElevatedButton(
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+          onHover: onHover,
+          onFocusChange: onFocusChange,
+          focusNode: focusNode,
+          autofocus: autoFocus,
+          clipBehavior: clipBehavior,
+          statesController: statesController,
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            padding: styler.padding,
+            backgroundColor: styler.bg,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(styler.borderRadius!),
+              side: variant == GSButtonVariant.link
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: styler.borderColor!,
+                      width: styler.borderWidth ?? 1.0,
+                    ),
             ),
           ),
+          child: child,
         ),
-        child: child,
       ),
     );
 

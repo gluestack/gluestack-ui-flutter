@@ -29,8 +29,6 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    GSGeneratedStyle _tempVar = GSGeneratedStyle.fromMap(data: buttonData);
-    print("BUTTON DATA --->      ${_tempVar.variants?.variant?.outline?.bg}");
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
       return MaterialApp(
         navigatorKey: navigatorKey,
@@ -41,28 +39,27 @@ class MyApp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GSButton(
-                  action: GSButtonAction.primary,
+                  action: GSButtonAction.secondary,
                   variant: GSButtonVariant.outline,
                   size: GSButtonSize.lg,
                   onPressed: () {},
-                  // style: GSGeneratedStyle(),
-                  // style: GSGeneratedStyle(
-                  //   xs: GSGeneratedStyle(
-                  //     color: $GSColors.purple400,
-                  //   ),
-                  //   lg: GSGeneratedStyle(
-                  //     color: $GSColors.warning800,
-                  //   ),
-                  //   dark: GSGeneratedStyle(
-                  //     color: $GSColors.blueGray700,
-                  //     sm: GSGeneratedStyle(
-                  //       color: $GSColors.amber300,
-                  //     ),
-                  //     md: GSGeneratedStyle(
-                  //       color: $GSColors.green400,
-                  //     ),
-                  //   ),
-                  // ),
+                  style: GSGeneratedStyle(
+                    xs: GSGeneratedStyle(
+                      bg: $GSColors.purple400,
+                    ),
+                    lg: GSGeneratedStyle(
+                      bg: $GSColors.warning800,
+                    ),
+                    dark: GSGeneratedStyle(
+                      bg: $GSColors.blueGray700,
+                      sm: GSGeneratedStyle(
+                        bg: $GSColors.amber300,
+                      ),
+                      md: GSGeneratedStyle(
+                        bg: $GSColors.green400,
+                      ),
+                    ),
+                  ),
                   child: const GSButtonText(text: "Click Here"),
                 ),
                 // GSInput(

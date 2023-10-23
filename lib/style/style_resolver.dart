@@ -39,8 +39,6 @@ GSGeneratedStyle? resolveStyles(
   GSGeneratedStyle? inlineStyle,
 }) {
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
-  print("VARIANT STYLE ---->    ${variantStyle}");
-  print("INLINE STYLE ---->    ${inlineStyle}");
   GSGeneratedStyle? temp =
       variantStyle != null ? variantStyle.merge(inlineStyle) : inlineStyle;
   GSGeneratedStyle? currentGSStyle = size != null ? size.merge(temp) : temp;
@@ -50,11 +48,8 @@ GSGeneratedStyle? resolveStyles(
     }
   }
   inlineStyle?.contextStyles.forEach((key, value) {
-    print("HEREEEE");
     if (value != null) {
-      print("HEREEEE INSIDE");
       if (key == 'dark' && theme == GSThemeMode.dark) {
-        print("HEREEEE INSIDE DARK");
         currentGSStyle = currentGSStyle?.merge(value);
         GSGeneratedStyle? nestedStyle =
             resolveStyles(context, inlineStyle: value);
@@ -63,7 +58,7 @@ GSGeneratedStyle? resolveStyles(
       }
       if (key == 'md' && isMediumScreen(context)) {
         currentGSStyle = currentGSStyle?.merge(value);
-        // print("IN HERE MD AFTER   ${currentGSStyle!.color}");
+
         GSGeneratedStyle? nestedStyle =
             resolveStyles(context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
@@ -92,39 +87,3 @@ GSGeneratedStyle? resolveStyles(
   });
   return currentGSStyle;
 }
-
-// GSGeneratedStyle styleResolver(BuildContext context,
-//     {GSGeneratedStyle? variantStyle,
-//     GSGeneratedStyle? size,
-//     GSGeneratedStyle? inlineStyle}) {
-//   final theme = Provider.of<ThemeProvider>(context).currentTheme;
-
-//   if (theme == GSThemeMode.dark) {
-//     return GSGeneratedStyle(
-//       color: inlineStyle?.dark?.color ??
-//           inlineStyle?.color ??
-//           variantStyle?.dark?.color ??
-//           variantStyle?.dark!.color,
-//       borderColor: inlineStyle?.dark?.borderColor ??
-//           inlineStyle?.borderColor ??
-//           variantStyle?.dark?.borderColor ??
-//           variantStyle?.dark!.borderColor,
-//       padding:
-//           inlineStyle?.dark?.padding ?? inlineStyle?.padding ?? size!.padding,
-//       borderWidth:
-//           inlineStyle?.dark?.borderWidth ?? inlineStyle?.borderWidth ?? 1.0,
-//       borderRadius: inlineStyle?.dark?.borderRadius ??
-//           inlineStyle?.borderRadius ??
-//           size!.borderRadius,
-//     );
-//   }
-//   return GSGeneratedStyle(
-//     color: inlineStyle?.color ?? variantStyle?.color ?? variantStyle!.color,
-//     borderColor: inlineStyle?.borderColor ??
-//         variantStyle?.borderColor ??
-//         variantStyle!.borderColor,
-//     padding: inlineStyle?.padding ?? size!.padding,
-//     borderWidth: inlineStyle?.borderWidth ?? 1.0,
-//     borderRadius: inlineStyle?.borderRadius ?? size!.borderRadius,
-//   );
-// }
