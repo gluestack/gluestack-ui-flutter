@@ -5,6 +5,7 @@ import 'package:gluestack_flutter_pro/style/generated_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_box/gs_box.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+    
       return MaterialApp(
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
@@ -41,7 +43,7 @@ class MyApp extends StatelessWidget {
                 GSButton(
                   action: GSButtonAction.secondary,
                   variant: GSButtonVariant.outline,
-                  size: GSButtonSize.lg,
+                  size: GSButtonSize.md,
                   onPressed: () {},
                   style: GSGeneratedStyle(
                     xs: GSGeneratedStyle(

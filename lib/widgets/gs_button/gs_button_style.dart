@@ -8,6 +8,7 @@ GSGeneratedStyle baseStyle = GSGeneratedStyle(
   borderRadius: buttonStyle.borderRadius,
   bg: buttonStyle.bg,
   dark: buttonStyle.dark,
+  
 );
 
 GSGeneratedStyle compoundVariants = GSGeneratedStyle(
@@ -107,7 +108,7 @@ GSGeneratedStyle compoundVariants = GSGeneratedStyle(
         ),
       ),
     ),
-    size: buttonStyle.variants?.size,
+    size: buttonStyle.variants?.size , 
   ),
 );
 
@@ -149,6 +150,7 @@ class GSButtonStyle {
   };
 
   static Map<GSButtonSize, GSGeneratedStyle> size = {
+    
     GSButtonSize.xs: compoundVariants.variants!.size!.xs!,
     GSButtonSize.sm: compoundVariants.variants!.size!.sm!,
     GSButtonSize.md: compoundVariants.variants!.size!.md!,

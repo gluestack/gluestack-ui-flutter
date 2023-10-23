@@ -48,7 +48,8 @@ class GSSize {
   });
   factory GSSize.fromMap({required Map<String, dynamic>? data}) {
     return GSSize(
-      lg: GSGeneratedStyle.fromMap(data: data?['lg'], fromVariant: true),
+      lg: GSGeneratedStyle.fromMap(
+          data: data?['lg'], fromVariant: true,),
       md: GSGeneratedStyle.fromMap(data: data?['md'], fromVariant: true),
       sm: GSGeneratedStyle.fromMap(data: data?['sm'], fromVariant: true),
       xl: GSGeneratedStyle.fromMap(data: data?['xl'], fromVariant: true),
@@ -180,7 +181,11 @@ class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
       opacity: other?.opacity ?? opacity,
       outlineStyle: other?.outlineStyle ?? outlineStyle,
       outlineWidth: other?.outlineWidth ?? outlineWidth,
-      textStyle: other?.textStyle ?? textStyle,
+      textStyle: other?.textStyle != null
+          ? TextStyle(
+              color: other?.textStyle?.color ?? textStyle?.color,
+              fontSize: other?.textStyle?.fontSize ?? textStyle?.fontSize)
+          : textStyle,
       variants: other?.variants ?? variants,
       width: other?.width ?? width,
       height: other?.height ?? height,
@@ -193,10 +198,19 @@ class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
   }
 
   factory GSGeneratedStyle.fromMap(
-      {required Map<String, dynamic>? data, bool fromVariant = false}) {
+      {required Map<String, dynamic>? data,
+      bool fromVariant = false,
+     }) {
+
     return GSGeneratedStyle(
       height: resolveSpaceFromString(
         data?['h'],
+      ),
+      textStyle: TextStyle(
+        fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
+        color: resolveColorFromString(
+          data?['_text']?['color'],
+        ),
       ),
       bg: resolveColorFromString(data?['bg']),
       borderWidth: data?['borderWidth'] != null
@@ -226,6 +240,8 @@ class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
         ),
       ),
       dark: GSGeneratedStyle(
+        textStyle: TextStyle(
+            color: resolveColorFromString(data?['_text']?['_dark']?['color'])),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
         bg: resolveColorFromString(data?['_dark']?['bg']),
         onHover: GSGeneratedStyle(
@@ -292,4 +308,11 @@ double? resolveSpaceFromString(String? space) {
     return $GSSpace.spaceMap[space];
   }
   return $GSSpace.spaceMap[space.substring(1)];
+}
+
+double? resolveFontSizeFromString(String? fontSzie) {
+  if (fontSzie == null) {
+    return null;
+  }
+  return $GSFontSize.fontMap[fontSzie];
 }

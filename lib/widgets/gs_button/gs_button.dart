@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/generated_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
-import 'package:gluestack_flutter_pro/theme_provider.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
-import 'package:provider/provider.dart';
-
-import '../../token/index.dart';
 
 class GSButton extends StatelessWidget {
   final GSButtonAction? action;

@@ -41,7 +41,9 @@ GSGeneratedStyle? resolveStyles(
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
   GSGeneratedStyle? temp =
       variantStyle != null ? variantStyle.merge(inlineStyle) : inlineStyle;
+
   GSGeneratedStyle? currentGSStyle = size != null ? size.merge(temp) : temp;
+  
   if (inlineStyle == null) {
     if (theme == GSThemeMode.dark) {
       return currentGSStyle?.merge(variantStyle?.dark);
