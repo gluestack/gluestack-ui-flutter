@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/style/base_style.dart';
 
 class GSVariant {
   GSGeneratedStyle? underlined;
@@ -53,7 +54,7 @@ class Variants {
   });
 }
 
-class GSGeneratedStyle {
+class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
   double? borderWidth;
   Color? borderColor;
   double? borderRadius;
@@ -66,13 +67,7 @@ class GSGeneratedStyle {
   String? outlineStyle;
   double? borderBottomWidth;
   TextStyle? textStyle;
-  GSGeneratedStyle? onHover;
-  GSGeneratedStyle? onFocus;
-  GSGeneratedStyle? disabled;
-  GSGeneratedStyle? input;
-  GSGeneratedStyle? icon;
-  GSGeneratedStyle? dark;
-  GSGeneratedStyle? invaild;
+
   Variants? variants;
   GSGeneratedStyle({
     this.borderWidth,
@@ -87,13 +82,52 @@ class GSGeneratedStyle {
     this.outlineStyle,
     this.borderBottomWidth,
     this.textStyle,
-    this.onHover,
-    this.onFocus,
-    this.disabled,
-    this.input,
-    this.icon,
-    this.dark,
-    this.invaild,
+    super.onHover,
+    super.onFocus,
+    super.disabled,
+    super.input,
+    super.icon,
+    super.dark,
+    super.xs,
+    super.sm,
+    super.md,
+    super.lg,
+    super.invaild,
     this.variants,
   });
+
+  @override
+  copy() {
+    return this;
+  }
+
+  @override
+  merge(other) {
+    return GSGeneratedStyle(
+      borderColor: other?.borderColor ?? borderColor,
+      borderRadius: other?.borderRadius ?? borderRadius,
+      borderWidth: other?.borderWidth ?? borderWidth,
+      color: other?.color ?? color,
+      borderBottomWidth: other?.borderBottomWidth ?? borderBottomWidth,
+      disabled: other?.disabled ?? disabled,
+      icon: other?.icon ?? icon,
+      input: other?.input ?? input,
+      padding: other?.padding ?? padding,
+      invaild: other?.invaild ?? invaild,
+      onFocus: other?.onFocus ?? onFocus,
+      onHover: other?.onHover ?? onHover,
+      opacity: other?.opacity ?? opacity,
+      outlineStyle: other?.outlineStyle ?? outlineStyle,
+      outlineWidth: other?.outlineWidth ?? outlineWidth,
+      textStyle: other?.textStyle ?? textStyle,
+      variants: other?.variants ?? variants,
+      width: other?.width ?? width,
+      height: other?.height ?? height,
+      dark: other?.dark ?? dark,
+      lg: other?.lg ?? lg,
+      md: other?.md ?? md,
+      sm: other?.sm ?? sm,
+      xs: other?.xs ?? xs,
+    );
+  }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/generated_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
+import 'package:provider/provider.dart';
 
 class GSButton extends StatelessWidget {
   final GSButtonAction? action;
@@ -38,10 +40,15 @@ class GSButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSGeneratedStyle styler = styleResolver(context,
+    // GSGeneratedStyle styler = styleResolver(context,
+    //     variantStyle: GSButtonStyle.gsButtonCombination[action]![variant],
+    //     size: GSButtonStyle.size[size]!,
+    //     inlineStyle: style);
+
+    GSGeneratedStyle styler = resolveStyles(context,
         variantStyle: GSButtonStyle.gsButtonCombination[action]![variant],
         size: GSButtonStyle.size[size]!,
-        inlineStyle: style);
+        inlineStyle: style)!;
 
     return GSButtonProvider(
       action: action!,
@@ -64,7 +71,7 @@ class GSButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(styler.borderRadius!),
             side: BorderSide(
               color: styler.borderColor!,
-              width: styler.borderWidth!,
+              width: styler.borderWidth ?? 1.0,
             ),
           ),
         ),

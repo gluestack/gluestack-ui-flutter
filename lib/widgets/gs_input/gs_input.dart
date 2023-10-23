@@ -4,15 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gluestack_flutter_pro/style/generated_style.dart';
-import 'package:gluestack_flutter_pro/style/style_data.dart';
-import 'package:gluestack_flutter_pro/theme_provider.dart';
-
 import 'package:gluestack_flutter_pro/token/index.dart';
-// import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_attributes.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_style.dart';
-
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
-import 'package:provider/provider.dart';
 
 class GSInput extends StatelessWidget {
   final GSInputVariant? variant;
@@ -138,7 +132,7 @@ class GSInput extends StatelessWidget {
       this.autofocus = false,
       this.isCollapsed = false,
       this.autofillHints,
-      this.canRequestFocus = false,
+      this.canRequestFocus = true,
       this.clipBehavior = Clip.hardEdge,
       this.enableIMEPersonalizedLearning = true,
       this.enableSuggestions = true,
@@ -272,8 +266,8 @@ class GSInput extends StatelessWidget {
         cursorRadius: cursorRadius,
         cursorWidth: cursorWidth,
         dragStartBehavior: dragStartBehavior,
-        enabled: enabled,
-        readOnly: readOnly,
+        enabled: true,
+        readOnly: false,
         enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
         enableInteractiveSelection: enableInteractiveSelection,
         enableSuggestions: enableSuggestions,

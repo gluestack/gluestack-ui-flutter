@@ -42,19 +42,48 @@ class MyApp extends StatelessWidget {
                   size: GSButtonSize.lg,
                   onPressed: () {},
                   style: GSGeneratedStyle(
+                    xs: GSGeneratedStyle(
+                      color: $GSColors.purple400,
+                    ),
+                    lg: GSGeneratedStyle(
+                      color: $GSColors.warning800,
+                    ),
                     dark: GSGeneratedStyle(
                       color: $GSColors.blueGray700,
+                      sm: GSGeneratedStyle(
+                        color: $GSColors.amber300,
+                      ),
+                      md: GSGeneratedStyle(
+                        color: $GSColors.green400,
+                      ),
                     ),
-                    borderWidth: $GSBorderWidth.$2,
                   ),
                   child: const GSButtonText(text: "Click Here"),
                 ),
-                GSInput(
-                  size: GSInputSize.xl,
-                  variant: GSInputVariant.outline,
-                  style: GSGeneratedStyle(width: 200),
-                  hintText: "Enter Text Here",
-                ),
+                // GSInput(
+                //   size: GSInputSize.xl,
+                //   variant: GSInputVariant.rounded,
+                //   hintText: "Enter Text Here",
+                //   enabled: true,
+                //   style: GSGeneratedStyle(
+                //     width: 200,
+                //     xs: GSGeneratedStyle(
+                //       borderColor: $GSColors.purple400,
+                //     ),
+                //     lg: GSGeneratedStyle(
+                //       borderColor: $GSColors.warning800,
+                //     ),
+                //     dark: GSGeneratedStyle(
+                //       borderColor: $GSColors.blueGray700,
+                //       sm: GSGeneratedStyle(
+                //         borderColor: $GSColors.amber300,
+                //       ),
+                //       md: GSGeneratedStyle(
+                //         borderColor: $GSColors.green400,
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 // GSBox(
                 //   style: StyleData(
                 //     context,
