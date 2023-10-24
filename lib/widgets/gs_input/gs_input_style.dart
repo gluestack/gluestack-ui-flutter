@@ -1,80 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/generated_style.dart';
-import 'package:gluestack_flutter_pro/style/style_data.dart';
-import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
 
-GSGeneratedStyle inputStyle = GSGeneratedStyle(
+GSStyle inputStyle = GSStyle(
   variants: Variants(
     variant: GSVariant(
-      underlined: GSGeneratedStyle(
+      underlined: GSStyle(
         borderColor: $GSColors.backgroundLight300,
         textStyle: const TextStyle(color: $GSColors.white),
         padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$0),
-        onFocus: GSGeneratedStyle(borderColor: $GSColors.primary700),
+        onFocus: GSStyle(borderColor: $GSColors.primary700),
         borderWidth: $GSBorderWidth.$1,
-        dark: GSGeneratedStyle(
+        dark: GSStyle(
           borderColor: $GSColors.borderDark400,
           textStyle: const TextStyle(color: $GSColors.white),
-          onFocus: GSGeneratedStyle(borderColor: $GSColors.primary400),
+          onFocus: GSStyle(borderColor: $GSColors.primary400),
           padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$0),
           borderWidth: $GSBorderWidth.$1,
         ),
       ),
-      outline: GSGeneratedStyle(
+      outline: GSStyle(
         borderColor: $GSColors.backgroundLight300,
-        onFocus: GSGeneratedStyle(borderColor: $GSColors.primary700),
+        onFocus: GSStyle(borderColor: $GSColors.primary700),
         textStyle: const TextStyle(color: $GSColors.white),
         padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
         borderWidth: $GSBorderWidth.$1,
         borderRadius: $GSRadii.$sm,
-        dark: GSGeneratedStyle(
+        dark: GSStyle(
           borderColor: $GSColors.borderDark400,
-          onFocus: GSGeneratedStyle(borderColor: $GSColors.primary400),
+          onFocus: GSStyle(borderColor: $GSColors.primary400),
           textStyle: const TextStyle(color: $GSColors.white),
           padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
           borderWidth: $GSBorderWidth.$1,
           borderRadius: $GSRadii.$sm,
         ),
       ),
-      rounded: GSGeneratedStyle(
+      rounded: GSStyle(
         borderWidth: $GSBorderWidth.$1,
         borderRadius: $GSRadii.full,
         borderColor: $GSColors.backgroundLight300,
-        onFocus: GSGeneratedStyle(borderColor: $GSColors.primary700),
+        onFocus: GSStyle(borderColor: $GSColors.primary700),
         padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
         textStyle: const TextStyle(color: $GSColors.white),
-        dark: GSGeneratedStyle(
+        dark: GSStyle(
           borderWidth: $GSBorderWidth.$1,
           borderRadius: $GSRadii.full,
           borderColor: $GSColors.borderDark400,
-          onFocus: GSGeneratedStyle(borderColor: $GSColors.primary400),
+          onFocus: GSStyle(borderColor: $GSColors.primary400),
           padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
           textStyle: const TextStyle(color: $GSColors.white),
         ),
       ),
     ),
     size: GSSize(
-      sm: GSGeneratedStyle(
+      sm: GSStyle(
         padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
         borderRadius: $GSRadii.$sm,
         height: $GSSpace.$9,
         textStyle: const TextStyle(fontSize: $GSFontSize.$sm),
       ),
-      md: GSGeneratedStyle(
+      md: GSStyle(
         padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$3_5),
         borderRadius: $GSRadii.$md,
         height: $GSSpace.$10,
         textStyle: const TextStyle(fontSize: $GSFontSize.$md),
       ),
-      lg: GSGeneratedStyle(
+      lg: GSStyle(
         padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
         borderRadius: $GSRadii.$lg,
         height: $GSSpace.$11,
         textStyle: const TextStyle(fontSize: $GSFontSize.$lg),
       ),
-      xl: GSGeneratedStyle(
+      xl: GSStyle(
         padding: const EdgeInsets.symmetric(horizontal: $GSSpace.$5),
         borderRadius: $GSRadii.$xl,
         height: $GSSpace.$12,
@@ -85,13 +83,13 @@ GSGeneratedStyle inputStyle = GSGeneratedStyle(
 );
 
 class GSInputStyle {
-  static Map<GSInputVariant, GSGeneratedStyle> gsInputCombination = {
+  static Map<GSInputVariant, GSStyle> gsInputCombination = {
     GSInputVariant.underlined: inputStyle.variants!.variant!.underlined!,
     GSInputVariant.outline: inputStyle.variants!.variant!.outline!,
     GSInputVariant.rounded: inputStyle.variants!.variant!.rounded!,
   };
 
-  static Map<GSInputSize, GSGeneratedStyle> inputSize = {
+  static Map<GSInputSize, GSStyle> inputSize = {
     GSInputSize.sm: inputStyle.variants!.size!.sm!,
     GSInputSize.md: inputStyle.variants!.size!.md!,
     GSInputSize.lg: inputStyle.variants!.size!.lg!,

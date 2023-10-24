@@ -25,7 +25,7 @@ abstract class BaseStyle<T> {
     this.input,
     this.invaild,
   });
-  T merge(T? other);
+  T merge(T? overrideStyle);
   T copy();
   LinkedHashMap<String, T?> get contextStyles => LinkedHashMap.from({
         'dark': dark,

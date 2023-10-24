@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/factory/jsons/button.dart';
-import 'package:gluestack_flutter_pro/factory/jsons/input.dart';
 import 'package:gluestack_flutter_pro/style/generated_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_box/gs_box.dart';
-import 'package:gluestack_flutter_pro/style/style_data.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
 import 'package:provider/provider.dart';
 
 import 'token/index.dart';
@@ -31,7 +24,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
-    
       return MaterialApp(
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
@@ -43,21 +35,21 @@ class MyApp extends StatelessWidget {
                 GSButton(
                   action: GSButtonAction.secondary,
                   variant: GSButtonVariant.outline,
-                  size: GSButtonSize.md,
+                  size: GSButtonSize.lg,
                   onPressed: () {},
-                  style: GSGeneratedStyle(
-                    xs: GSGeneratedStyle(
+                  style: GSStyle(
+                    xs: GSStyle(
                       bg: $GSColors.purple400,
                     ),
-                    lg: GSGeneratedStyle(
+                    lg: GSStyle(
                       bg: $GSColors.warning800,
                     ),
-                    dark: GSGeneratedStyle(
+                    dark: GSStyle(
                       bg: $GSColors.blueGray700,
-                      sm: GSGeneratedStyle(
+                      sm: GSStyle(
                         bg: $GSColors.amber300,
                       ),
-                      md: GSGeneratedStyle(
+                      md: GSStyle(
                         bg: $GSColors.green400,
                       ),
                     ),
@@ -69,20 +61,20 @@ class MyApp extends StatelessWidget {
                 //   variant: GSInputVariant.rounded,
                 //   hintText: "Enter Text Here",
                 //   enabled: true,
-                //   style: GSGeneratedStyle(
+                //   style: GSStyle(
                 //     width: 200,
-                //     xs: GSGeneratedStyle(
+                //     xs: GSStyle(
                 //       borderColor: $GSColors.purple400,
                 //     ),
-                //     lg: GSGeneratedStyle(
+                //     lg: GSStyle(
                 //       borderColor: $GSColors.warning800,
                 //     ),
-                //     dark: GSGeneratedStyle(
+                //     dark: GSStyle(
                 //       borderColor: $GSColors.blueGray700,
-                //       sm: GSGeneratedStyle(
+                //       sm: GSStyle(
                 //         borderColor: $GSColors.amber300,
                 //       ),
-                //       md: GSGeneratedStyle(
+                //       md: GSStyle(
                 //         borderColor: $GSColors.green400,
                 //       ),
                 //     ),

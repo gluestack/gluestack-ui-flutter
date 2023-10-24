@@ -11,7 +11,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
 class GSInput extends StatelessWidget {
   final GSInputVariant? variant;
   final GSInputSize? size;
-  final GSGeneratedStyle? style;
+  final GSStyle? style;
   final bool readOnly;
   final bool enabled;
   final bool vaild;

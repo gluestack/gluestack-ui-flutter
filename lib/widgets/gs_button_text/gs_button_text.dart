@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/token/index.dart';
+import 'package:gluestack_flutter_pro/style/generated_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
-import 'package:gluestack_flutter_pro/style/style_data.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 
 class GSButtonText extends StatelessWidget {
   final String text;
-  final StyleData? style;
+  final GSStyle? style;
 
   const GSButtonText({
     super.key,

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/base_style.dart';
-import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
+import 'package:gluestack_flutter_pro/utils/resolver.dart';
 
 class GSVariant {
-  GSGeneratedStyle? underlined;
-  GSGeneratedStyle? outline;
-  GSGeneratedStyle? rounded;
-  GSGeneratedStyle? solid;
-  GSGeneratedStyle? link;
+  GSStyle? underlined;
+  GSStyle? outline;
+  GSStyle? rounded;
+  GSStyle? solid;
+  GSStyle? link;
 
   GSVariant({
     this.underlined,
@@ -19,25 +19,23 @@ class GSVariant {
   });
   factory GSVariant.fromMap({required Map<String, dynamic>? data}) {
     return GSVariant(
-      underlined: GSGeneratedStyle.fromMap(
-          data: data?['underlined'], fromVariant: true),
-      outline:
-          GSGeneratedStyle.fromMap(data: data?['outline'], fromVariant: true),
-      rounded: GSGeneratedStyle.fromMap(
+      underlined: GSStyle.fromMap(data: data?['underlined'], fromVariant: true),
+      outline: GSStyle.fromMap(data: data?['outline'], fromVariant: true),
+      rounded: GSStyle.fromMap(
         data: data?['rounded'],
         fromVariant: true,
       ),
-      link: GSGeneratedStyle.fromMap(data: data?['link'], fromVariant: true),
+      link: GSStyle.fromMap(data: data?['link'], fromVariant: true),
     );
   }
 }
 
 class GSSize {
-  GSGeneratedStyle? xs;
-  GSGeneratedStyle? sm;
-  GSGeneratedStyle? md;
-  GSGeneratedStyle? lg;
-  GSGeneratedStyle? xl;
+  GSStyle? xs;
+  GSStyle? sm;
+  GSStyle? md;
+  GSStyle? lg;
+  GSStyle? xl;
 
   GSSize({
     this.xs,
@@ -48,22 +46,24 @@ class GSSize {
   });
   factory GSSize.fromMap({required Map<String, dynamic>? data}) {
     return GSSize(
-      lg: GSGeneratedStyle.fromMap(
-          data: data?['lg'], fromVariant: true,),
-      md: GSGeneratedStyle.fromMap(data: data?['md'], fromVariant: true),
-      sm: GSGeneratedStyle.fromMap(data: data?['sm'], fromVariant: true),
-      xl: GSGeneratedStyle.fromMap(data: data?['xl'], fromVariant: true),
-      xs: GSGeneratedStyle.fromMap(data: data?['xs'], fromVariant: true),
+      lg: GSStyle.fromMap(
+        data: data?['lg'],
+        fromVariant: true,
+      ),
+      md: GSStyle.fromMap(data: data?['md'], fromVariant: true),
+      sm: GSStyle.fromMap(data: data?['sm'], fromVariant: true),
+      xl: GSStyle.fromMap(data: data?['xl'], fromVariant: true),
+      xs: GSStyle.fromMap(data: data?['xs'], fromVariant: true),
     );
   }
 }
 
 class GSAction {
-  GSGeneratedStyle? primary;
-  GSGeneratedStyle? secondary;
-  GSGeneratedStyle? positive;
-  GSGeneratedStyle? negative;
-  GSGeneratedStyle? defaultStyle;
+  GSStyle? primary;
+  GSStyle? secondary;
+  GSStyle? positive;
+  GSStyle? negative;
+  GSStyle? defaultStyle;
   GSAction({
     this.primary,
     this.secondary,
@@ -73,16 +73,12 @@ class GSAction {
   });
   factory GSAction.fromMap({required Map<String, dynamic>? data}) {
     return GSAction(
-        primary:
-            GSGeneratedStyle.fromMap(data: data?['primary'], fromVariant: true),
-        secondary: GSGeneratedStyle.fromMap(
-            data: data?['secondary'], fromVariant: true),
+        primary: GSStyle.fromMap(data: data?['primary'], fromVariant: true),
+        secondary: GSStyle.fromMap(data: data?['secondary'], fromVariant: true),
         defaultStyle:
-            GSGeneratedStyle.fromMap(data: data?['default'], fromVariant: true),
-        positive: GSGeneratedStyle.fromMap(
-            data: data?['positive'], fromVariant: true),
-        negative: GSGeneratedStyle.fromMap(
-            data: data?['negative'], fromVariant: true));
+            GSStyle.fromMap(data: data?['default'], fromVariant: true),
+        positive: GSStyle.fromMap(data: data?['positive'], fromVariant: true),
+        negative: GSStyle.fromMap(data: data?['negative'], fromVariant: true));
   }
 }
 
@@ -110,7 +106,7 @@ class Variants {
   }
 }
 
-class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
+class GSStyle extends BaseStyle<GSStyle> {
   double? borderWidth;
   Color? borderColor;
   double? borderRadius;
@@ -127,7 +123,7 @@ class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
   TextStyle? textStyle;
   Variants? variants;
 
-  GSGeneratedStyle({
+  GSStyle({
     this.borderWidth,
     this.borderColor,
     this.borderRadius,
@@ -162,47 +158,47 @@ class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
   }
 
   @override
-  merge(other) {
-    return GSGeneratedStyle(
-      borderColor: other?.borderColor ?? borderColor,
-      borderRadius: other?.borderRadius ?? borderRadius,
-      borderWidth: other?.borderWidth ?? borderWidth,
-      color: other?.color ?? color,
-      bg: other?.bg ?? bg,
-      borderBottomColor: other?.borderBottomColor ?? borderBottomColor,
-      borderBottomWidth: other?.borderBottomWidth ?? borderBottomWidth,
-      disabled: other?.disabled ?? disabled,
-      icon: other?.icon ?? icon,
-      input: other?.input ?? input,
-      padding: other?.padding ?? padding,
-      invaild: other?.invaild ?? invaild,
-      onFocus: other?.onFocus ?? onFocus,
-      onHover: other?.onHover ?? onHover,
-      opacity: other?.opacity ?? opacity,
-      outlineStyle: other?.outlineStyle ?? outlineStyle,
-      outlineWidth: other?.outlineWidth ?? outlineWidth,
-      textStyle: other?.textStyle != null
+  merge(overrideStyle) {
+    return GSStyle(
+      borderColor: overrideStyle?.borderColor ?? borderColor,
+      borderRadius: overrideStyle?.borderRadius ?? borderRadius,
+      borderWidth: overrideStyle?.borderWidth ?? borderWidth,
+      color: overrideStyle?.color ?? color,
+      bg: overrideStyle?.bg ?? bg,
+      borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
+      borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
+      disabled: overrideStyle?.disabled ?? disabled,
+      icon: overrideStyle?.icon ?? icon,
+      input: overrideStyle?.input ?? input,
+      padding: overrideStyle?.padding ?? padding,
+      invaild: overrideStyle?.invaild ?? invaild,
+      onFocus: overrideStyle?.onFocus ?? onFocus,
+      onHover: overrideStyle?.onHover ?? onHover,
+      opacity: overrideStyle?.opacity ?? opacity,
+      outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
+      outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
+      textStyle: overrideStyle?.textStyle != null
           ? TextStyle(
-              color: other?.textStyle?.color ?? textStyle?.color,
-              fontSize: other?.textStyle?.fontSize ?? textStyle?.fontSize)
+              color: overrideStyle?.textStyle?.color ?? textStyle?.color,
+              fontSize:
+                  overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
-      variants: other?.variants ?? variants,
-      width: other?.width ?? width,
-      height: other?.height ?? height,
-      dark: other?.dark ?? dark,
-      lg: other?.lg ?? lg,
-      md: other?.md ?? md,
-      sm: other?.sm ?? sm,
-      xs: other?.xs ?? xs,
+      variants: overrideStyle?.variants ?? variants,
+      width: overrideStyle?.width ?? width,
+      height: overrideStyle?.height ?? height,
+      dark: overrideStyle?.dark ?? dark,
+      lg: overrideStyle?.lg ?? lg,
+      md: overrideStyle?.md ?? md,
+      sm: overrideStyle?.sm ?? sm,
+      xs: overrideStyle?.xs ?? xs,
     );
   }
 
-  factory GSGeneratedStyle.fromMap(
-      {required Map<String, dynamic>? data,
-      bool fromVariant = false,
-     }) {
-
-    return GSGeneratedStyle(
+  factory GSStyle.fromMap({
+    required Map<String, dynamic>? data,
+    bool fromVariant = false,
+  }) {
+    return GSStyle(
       height: resolveSpaceFromString(
         data?['h'],
       ),
@@ -220,45 +216,45 @@ class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
       borderRadius: data?['borderRadius'] != null
           ? resolveRadiusFromString(data?['borderRadius'].toString())
           : null,
-      onHover: GSGeneratedStyle(
+      onHover: GSStyle(
         borderColor: resolveColorFromString(data?[':hover']?['borderColor']),
       ),
-      onFocus: GSGeneratedStyle(
+      onFocus: GSStyle(
         borderColor: resolveColorFromString(data?[':focus']?['borderColor']),
-        onHover: GSGeneratedStyle(
+        onHover: GSStyle(
           borderBottomColor: resolveColorFromString(
             data?[':focus']?[':hover']?['borderColor'],
           ),
         ),
       ),
-      disabled: GSGeneratedStyle(
+      disabled: GSStyle(
         opacity: data?[':disabled']?['opacity'],
-        onHover: GSGeneratedStyle(
+        onHover: GSStyle(
           borderColor: resolveColorFromString(
             data?[':disabled']?[':hover']?['borderColor'],
           ),
         ),
       ),
-      dark: GSGeneratedStyle(
+      dark: GSStyle(
         textStyle: TextStyle(
             color: resolveColorFromString(data?['_text']?['_dark']?['color'])),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
         bg: resolveColorFromString(data?['_dark']?['bg']),
-        onHover: GSGeneratedStyle(
+        onHover: GSStyle(
           borderColor:
               resolveColorFromString(data?['_dark']?[':hover']?['borderColor']),
         ),
-        onFocus: GSGeneratedStyle(
+        onFocus: GSStyle(
           borderColor: resolveColorFromString(
             data?['_dark']?[':focus']?['borderColor'],
           ),
-          onHover: GSGeneratedStyle(
+          onHover: GSStyle(
             borderColor: resolveColorFromString(
                 data?['_dark']?[':focus']?[':hover']?['borderColor']),
           ),
         ),
-        disabled: GSGeneratedStyle(
-          onHover: GSGeneratedStyle(
+        disabled: GSStyle(
+          onHover: GSStyle(
             borderColor: resolveColorFromString(
                 data?['_dark']?[':disabled']?[':hover']?['borderColor']),
           ),
@@ -271,48 +267,4 @@ class GSGeneratedStyle extends BaseStyle<GSGeneratedStyle> {
             ),
     );
   }
-}
-
-Color? resolveColorFromString(String? color) {
-  if (color == null) {
-    return null;
-  }
-  if (color.contains("transparent")) {
-    return Colors.transparent;
-  }
-  return $GSColors.colorMap[color.substring(1)];
-}
-
-double? resolveRadiusFromString(String? radius) {
-  if (radius == null) {
-    return null;
-  }
-  if (radius == '0') {
-    return $GSRadii.none;
-  }
-  if (radius == '999') {
-    return $GSRadii.full;
-  }
-  if (radius == 'full' || radius == 'none') {
-    return $GSRadii.radiiMap[radius]!;
-  } else {
-    return $GSRadii.radiiMap[radius.substring(1)]!;
-  }
-}
-
-double? resolveSpaceFromString(String? space) {
-  if (space == null) {
-    return null;
-  }
-  if (space == 'px') {
-    return $GSSpace.spaceMap[space];
-  }
-  return $GSSpace.spaceMap[space.substring(1)];
-}
-
-double? resolveFontSizeFromString(String? fontSzie) {
-  if (fontSzie == null) {
-    return null;
-  }
-  return $GSFontSize.fontMap[fontSzie];
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/generated_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
-
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
@@ -12,7 +11,7 @@ class GSButton extends StatelessWidget {
   final GSButtonSize? size;
   final Widget child;
   final VoidCallback onPressed;
-  final GSGeneratedStyle? style;
+  final GSStyle? style;
   final VoidCallback? onLongPress;
   final Function(bool)? onHover;
   final Function(bool)? onFocusChange;
@@ -39,7 +38,7 @@ class GSButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSGeneratedStyle styler = resolveStyles(context,
+    GSStyle styler = resolveStyles(context,
         variantStyle: GSButtonStyle.gsButtonCombination[action]![variant],
         size: GSButtonStyle.size[size]!,
         inlineStyle: style)!;
