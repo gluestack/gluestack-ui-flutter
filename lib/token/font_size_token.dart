@@ -15,4 +15,21 @@ class $GSFontSize {
   static const double $7xl = 72.0;
   static const double $8xl = 96.0;
   static const double $9xl = 128.0;
+
+  static const Map<String, double> fontMap = {
+    '2xs': $GSFontSize.$2xs,
+    'xs': $GSFontSize.$xs,
+    'sm': $GSFontSize.$sm,
+    'md': $GSFontSize.$md,
+    'lg': $GSFontSize.$lg,
+    'xl': $GSFontSize.$xl,
+    '2xl': $GSFontSize.$2xl,
+    '3xl': $GSFontSize.$3xl,
+    '4xl': $GSFontSize.$4xl,
+    '5xl': $GSFontSize.$5xl,
+    '6xl': $GSFontSize.$6xl,
+    '7xl': $GSFontSize.$7xl,
+    '8xl': $GSFontSize.$8xl,
+    '9xl': $GSFontSize.$9xl,
+  };
 }

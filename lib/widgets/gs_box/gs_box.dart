@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/style_data.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
 
 class GSBox extends StatelessWidget {
   final Widget child;
-  final StyleData? style;
+  final GSStyle? style;
   final Clip clipBehavior;
   final AlignmentGeometry? transformAlignment;
   final Matrix4? transform;
@@ -37,9 +37,9 @@ class GSBox extends StatelessWidget {
       transform: transform,
       transformAlignment: transformAlignment,
       foregroundDecoration: foregroundDecoration,
-      alignment: style != null
-          ? style!.alignment ?? Alignment.center
-          : Alignment.center,
+      // alignment: style != null
+      //     ? style!.alignment ?? Alignment.center
+      //     : Alignment.center,
       padding: style != null
           ? style!.padding ??
               const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
@@ -50,10 +50,10 @@ class GSBox extends StatelessWidget {
         minWidth: style != null ? style!.width ?? 0 : 0,
         minHeight: style != null ? style!.height ?? 0 : 0,
       ),
-      margin: style != null
-          ? style!.margin ??
-              const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
-          : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+      // margin: style != null
+      //     ? style!.margin ??
+      //         const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
+      //     : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
       decoration: BoxDecoration(
         color: style != null
             ? style!.color ?? Colors.transparent

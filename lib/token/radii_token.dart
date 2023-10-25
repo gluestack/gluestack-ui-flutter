@@ -10,4 +10,16 @@ class $GSRadii {
   static const double $2xl = 16.0;
   static const double $3xl = 24.0;
   static const double full = 9999.0;
+
+  static const Map<String, double> radiiMap = {
+    "none": $GSRadii.none,
+    "xs": $GSRadii.$xs,
+    "sm": $GSRadii.$sm,
+    "md": $GSRadii.$md,
+    "lg": $GSRadii.$lg,
+    "xl": $GSRadii.$xl,
+    "2xl": $GSRadii.$2xl,
+    "3xl": $GSRadii.$3xl,
+    "full": $GSRadii.full,
+  };
 }
