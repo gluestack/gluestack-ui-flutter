@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/style_data.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
+
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_attributes.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 
 class GSRadioText extends StatelessWidget {
   final String text;
-  final StyleData? style;
+  final GSStyle? style;
   const GSRadioText({super.key, this.style, required this.text});
 
   @override
