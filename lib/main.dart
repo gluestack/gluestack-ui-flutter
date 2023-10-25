@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/generated_style.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+    
       return MaterialApp(
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,

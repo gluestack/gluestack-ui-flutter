@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gluestack_flutter_pro/style/generated_style.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/generated_style.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
 

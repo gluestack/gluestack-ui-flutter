@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/generated_style.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme/config/button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 
