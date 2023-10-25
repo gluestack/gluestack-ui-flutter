@@ -12,14 +12,14 @@ class $GSRadii {
   static const double full = 9999.0;
 
   static const Map<String, double> radiiMap = {
-    "none": 0.0,
-    "xs": 2.0,
-    "sm": 4.0,
-    "md": 6.0,
-    "lg": 8.0,
-    "xl": 12.0,
-    "2xl": 16.0,
-    "3xl": 24.0,
-    "full": 9999.0,
+    "none": $GSRadii.none,
+    "xs": $GSRadii.$xs,
+    "sm": $GSRadii.$sm,
+    "md": $GSRadii.$md,
+    "lg": $GSRadii.$lg,
+    "xl": $GSRadii.$xl,
+    "2xl": $GSRadii.$2xl,
+    "3xl": $GSRadii.$3xl,
+    "full": $GSRadii.full,
   };
 }
