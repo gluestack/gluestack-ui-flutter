@@ -28,10 +28,10 @@ abstract class BaseStyle<T> {
   T merge(T? overrideStyle);
   T copy();
   LinkedHashMap<String, T?> get contextStyles => LinkedHashMap.from({
-        'dark': dark,
         'xs': xs,
         'sm': sm,
         'md': md,
         'lg': lg,
+        'dark': dark,
       });
 }
