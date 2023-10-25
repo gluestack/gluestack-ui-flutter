@@ -1,32 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/gs_style.dart';
-
-import 'package:gluestack_flutter_pro/theme_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_attributes.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_token.dart';
-import 'package:provider/provider.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_style.dart';
 
 class GSRadioText extends StatelessWidget {
   final String text;
-  final GSStyle? style;
-  const GSRadioText({super.key, this.style, required this.text});
+  final TextStyle? textStyle;
+  const GSRadioText({super.key, required this.text, this.textStyle});
 
   @override
   Widget build(BuildContext context) {
     final value = GSRadioProvider.of(context);
-    final theme = Provider.of<ThemeProvider>(context).currentTheme;
-    final textColor = GSRadioAttributes.gsInputCombination[theme]!.labelColor;
-    final fontSize = GSRadioToken.radioSize[value?.size];
-    var defaultTextStyle = TextStyle(fontSize: fontSize, color: textColor );
-    final mergedStyle =
-        defaultTextStyle.merge(style != null ? style!.textStyle : null);
-    return Opacity(
-      opacity: value!.isEnabled ? 1 : 0.5,
-      child: Text(
-        text,
-        style: mergedStyle,
-      ),
+    final TextStyle? gsTextStyle =
+        GSRadioStyle.gsRadioStyle[value?.size]?.textStyle;
+
+    final currentTextStyle = TextStyle(
+      fontSize: textStyle?.fontSize ?? gsTextStyle?.fontSize,
+      color: textStyle?.color ?? gsTextStyle?.color,
+    );
+    return Text(
+      text,
+      style: currentTextStyle,
     );
   }
 }

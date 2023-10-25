@@ -42,5 +42,6 @@ double? resolveFontSizeFromString(String? fontSzie) {
   if (fontSzie == null) {
     return null;
   }
+
   return $GSFontSize.fontMap[fontSzie];
 }

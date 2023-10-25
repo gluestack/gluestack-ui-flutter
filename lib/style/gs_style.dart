@@ -96,7 +96,7 @@ class Variants {
   factory Variants.fromMap({required Map<String, dynamic>? data}) {
     return Variants(
       size: GSSize.fromMap(
-        data: data?['variant']['size'],
+        data: data?['size'] ?? data?['variant']?['size'],
       ),
       variant: GSVariant.fromMap(
         data: data?['variant'],
@@ -117,6 +117,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? borderBottomColor;
   double? height;
   double? width;
+  
   double? outlineWidth;
   String? outlineStyle;
   double? borderBottomWidth;
@@ -129,6 +130,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.borderRadius,
     this.padding,
     this.opacity,
+
     this.color,
     this.bg,
     this.borderBottomColor,
@@ -202,6 +204,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       height: resolveSpaceFromString(
         data?['h'],
       ),
+      
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
