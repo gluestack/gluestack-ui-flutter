@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
-    
       return MaterialApp(
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
@@ -33,25 +32,62 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                // GSButton(
+                //   action: GSButtonAction.negative,
+                //   variant: GSButtonVariant.solid,
+                //   size: GSButtonSize.lg,
+                //   onPressed: () {},
+                //   style: GSStyle(
+                //     sm: GSStyle(
+                //       bg: $GSColors.purple400,
+                //       dark: GSStyle(
+                //         bg: $GSColors.indigo800,
+                //       ),
+                //     ),
+                //     lg: GSStyle(
+                //       bg: $GSColors.pink400,
+                //     ),
+                //     dark: GSStyle(
+                //       bg: $GSColors.blueGray800,
+                //       sm: GSStyle(
+                //         bg: $GSColors.indigo800,
+                //       ),
+                //       md: GSStyle(
+                //         bg: $GSColors.cyan800,
+                //       ),
+                //     ),
+                //   ),
+                //   child: const GSButtonText(text: "Click Here"),
+                // ),
+
                 GSButton(
-                  action: GSButtonAction.secondary,
-                  variant: GSButtonVariant.outline,
+                  action: GSButtonAction.negative,
+                  variant: GSButtonVariant.solid,
                   size: GSButtonSize.lg,
+                  // isDisabled: true,
                   onPressed: () {},
                   style: GSStyle(
-                    xs: GSStyle(
-                      bg: $GSColors.purple400,
+                    web: GSStyle(
+                      bg: $GSColors.amber600,
                     ),
-                    lg: GSStyle(
-                      bg: $GSColors.warning800,
+                    ios: GSStyle(
+                      bg: $GSColors.blue600,
                     ),
-                    dark: GSStyle(
-                      bg: $GSColors.blueGray700,
-                      sm: GSStyle(
-                        bg: $GSColors.amber300,
-                      ),
-                      md: GSStyle(
+                    md: GSStyle(
+                      bg: $GSColors.pink400,
+                      onHover: GSStyle(
                         bg: $GSColors.green400,
+                      ),
+                      onFocus: GSStyle(
+                        bg: $GSColors.blueGray600,
+                      ),
+                      active: GSStyle(
+                        bg: $GSColors.amber600,
+                        borderColor: $GSColors.error500,
+                        borderWidth: $GSBorderWidth.$4,
+                      ),
+                      disabled: GSStyle(
+                        bg: $GSColors.blueGray600,
                       ),
                     ),
                   ),

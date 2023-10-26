@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
@@ -40,7 +41,6 @@ GSStyle? resolveStyles(
       variantStyle != null ? variantStyle.merge(inlineStyle) : inlineStyle;
 
   GSStyle? currentGSStyle = size != null ? size.merge(temp) : temp;
-
   if (inlineStyle == null) {
     if (theme == GSThemeMode.dark) {
       return currentGSStyle?.merge(variantStyle?.dark);
@@ -77,7 +77,48 @@ GSStyle? resolveStyles(
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
+      if (key == 'onFocus') {
+        currentGSStyle?.onFocus = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle?.onFocus = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'active') {
+        currentGSStyle?.active = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle?.active = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'onHover') {
+        currentGSStyle?.onHover = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle?.onHover = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'disabled') {
+        currentGSStyle?.disabled = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle?.disabled = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'invalid') {
+        currentGSStyle?.invaild = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle?.invaild = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'web' && kIsWeb) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'ios' && defaultTargetPlatform == TargetPlatform.iOS) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'android' && defaultTargetPlatform == TargetPlatform.android) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
     }
   });
+
   return currentGSStyle;
 }
