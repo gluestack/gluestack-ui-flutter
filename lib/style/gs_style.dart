@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/base_style.dart';
-
 import 'package:gluestack_flutter_pro/utils/resolver.dart';
+
+enum GSActions { primary, secondary, positive, negative }
+
+enum GSVariants { solid, outline, link, underlined, rounded }
+
+enum GSSizes { xs, sm, md, lg, xl }
+
+class GSProps {
+  GSActions? action;
+  GSVariants? variant;
+  GSSizes? size;
+
+  GSProps({
+    this.action,
+    this.variant,
+    this.size,
+  });
+  factory GSProps.fromMap({required Map<String, dynamic>? data}) {
+    return GSProps(
+      action: resolveActionFromString(data?['action']),
+      variant: resolveVariantFromString(data?['variant']),
+      size: resolveSizesFromString(data?['size']),
+    );
+  }
+}
 
 class GSVariant {
   GSStyle? underlined;
@@ -96,7 +120,7 @@ class Variants {
   factory Variants.fromMap({required Map<String, dynamic>? data}) {
     return Variants(
       size: GSSize.fromMap(
-        data: data?['size'] ?? data?['variant']?['size'],
+        data: data?['size'],
       ),
       variant: GSVariant.fromMap(
         data: data?['variant'],
@@ -123,6 +147,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? borderBottomWidth;
   TextStyle? textStyle;
   Variants? variants;
+  GSProps? props;
 
   GSStyle({
     this.borderWidth,
@@ -142,7 +167,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.textStyle,
     super.onHover,
     super.onFocus,
-    super.disabled,
+    super.onActive,
+    super.onDisabled,
     super.input,
     super.icon,
     super.dark,
@@ -150,8 +176,12 @@ class GSStyle extends BaseStyle<GSStyle> {
     super.sm,
     super.md,
     super.lg,
-    super.invaild,
+    super.onInvaild,
+    super.web,
+    super.ios,
+    super.android,
     this.variants,
+    this.props,
   });
 
   @override
@@ -169,13 +199,14 @@ class GSStyle extends BaseStyle<GSStyle> {
       bg: overrideStyle?.bg ?? bg,
       borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
       borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
-      disabled: overrideStyle?.disabled ?? disabled,
       icon: overrideStyle?.icon ?? icon,
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
-      invaild: overrideStyle?.invaild ?? invaild,
+      onDisabled: overrideStyle?.onDisabled ?? onDisabled,
+      onInvaild: overrideStyle?.onInvaild ?? onInvaild,
       onFocus: overrideStyle?.onFocus ?? onFocus,
       onHover: overrideStyle?.onHover ?? onHover,
+      onActive: overrideStyle?.onActive ?? onActive,
       opacity: overrideStyle?.opacity ?? opacity,
       outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
@@ -186,6 +217,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
       variants: overrideStyle?.variants ?? variants,
+      props: overrideStyle?.props ?? props,
       width: overrideStyle?.width ?? width,
       height: overrideStyle?.height ?? height,
       dark: overrideStyle?.dark ?? dark,
@@ -193,6 +225,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       md: overrideStyle?.md ?? md,
       sm: overrideStyle?.sm ?? sm,
       xs: overrideStyle?.xs ?? xs,
+      web: overrideStyle?.web ?? web,
+      ios: overrideStyle?.ios ?? ios,
+      android: overrideStyle?.android ?? android,
     );
   }
 
@@ -220,7 +255,10 @@ class GSStyle extends BaseStyle<GSStyle> {
           ? resolveRadiusFromString(data?['borderRadius'].toString())
           : null,
       onHover: GSStyle(
-        borderColor: resolveColorFromString(data?[':hover']?['borderColor']),
+        bg: resolveColorFromString(data?[':hover']?['bg']),
+        borderColor: resolveColorFromString(
+          data?[':hover']?['borderColor'],
+        ),
       ),
       onFocus: GSStyle(
         borderColor: resolveColorFromString(data?[':focus']?['borderColor']),
@@ -230,7 +268,11 @@ class GSStyle extends BaseStyle<GSStyle> {
           ),
         ),
       ),
-      disabled: GSStyle(
+      onActive: GSStyle(
+        bg: resolveColorFromString(data?[':active']?['bg']),
+        borderColor: resolveColorFromString(data?[':active']?['borderColor']),
+      ),
+      onDisabled: GSStyle(
         opacity: data?[':disabled']?['opacity'],
         onHover: GSStyle(
           borderColor: resolveColorFromString(
@@ -256,7 +298,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                 data?['_dark']?[':focus']?[':hover']?['borderColor']),
           ),
         ),
-        disabled: GSStyle(
+        onDisabled: GSStyle(
           onHover: GSStyle(
             borderColor: resolveColorFromString(
                 data?['_dark']?[':disabled']?[':hover']?['borderColor']),
@@ -267,6 +309,11 @@ class GSStyle extends BaseStyle<GSStyle> {
           ? null
           : Variants.fromMap(
               data: data?['variants'],
+            ),
+      props: fromVariant
+          ? null
+          : GSProps.fromMap(
+              data: data?['props'],
             ),
     );
   }

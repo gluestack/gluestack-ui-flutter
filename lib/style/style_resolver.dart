@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
@@ -40,13 +41,13 @@ GSStyle? resolveStyles(
       variantStyle != null ? variantStyle.merge(inlineStyle) : inlineStyle;
 
   GSStyle? currentGSStyle = size != null ? size.merge(temp) : temp;
-
   if (inlineStyle == null) {
     if (theme == GSThemeMode.dark) {
       return currentGSStyle?.merge(variantStyle?.dark);
     }
   }
   inlineStyle?.contextStyles.forEach((key, value) {
+    // print("RESOLVER VALUE --->   $value");
     if (value != null) {
       if (key == 'dark' && theme == GSThemeMode.dark) {
         currentGSStyle = currentGSStyle?.merge(value);
@@ -77,7 +78,24 @@ GSStyle? resolveStyles(
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
+
+      if (key == 'web' && kIsWeb) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'ios' && defaultTargetPlatform == TargetPlatform.iOS) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'android' && defaultTargetPlatform == TargetPlatform.android) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
     }
   });
+
   return currentGSStyle;
 }

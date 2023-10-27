@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 
 Color? resolveColorFromString(String? color) {
@@ -44,4 +45,62 @@ double? resolveFontSizeFromString(String? fontSzie) {
   }
 
   return $GSFontSize.fontMap[fontSzie];
+}
+
+GSActions? resolveActionFromString(String? action) {
+  if (action == null) {
+    return null;
+  }
+  switch (action) {
+    case 'primary':
+      return GSActions.primary;
+    case 'secondary':
+      return GSActions.secondary;
+    case 'positive':
+      return GSActions.positive;
+    case 'negative':
+      return GSActions.negative;
+    default:
+      return null;
+  }
+}
+
+GSVariants? resolveVariantFromString(String? variant) {
+  if (variant == null) {
+    return null;
+  }
+  switch (variant) {
+    case 'solid':
+      return GSVariants.solid;
+    case 'outline':
+      return GSVariants.outline;
+    case 'rounded':
+      return GSVariants.rounded;
+    case 'underlined':
+      return GSVariants.underlined;
+    case 'link':
+      return GSVariants.link;
+    default:
+      return null;
+  }
+}
+
+GSSizes? resolveSizesFromString(String? size) {
+  if (size == null) {
+    return null;
+  }
+  switch (size) {
+    case 'xs':
+      return GSSizes.xs;
+    case 'sm':
+      return GSSizes.sm;
+    case 'md':
+      return GSSizes.md;
+    case 'lg':
+      return GSSizes.lg;
+    case 'xl':
+      return GSSizes.xl;
+    default:
+      return null;
+  }
 }

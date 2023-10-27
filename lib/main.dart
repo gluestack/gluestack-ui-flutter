@@ -36,10 +36,34 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GSRadio(
-                  icon: SizedBox(),
-                  label: GSRadioText(text: 'hellow world'),
-                  size: GSRadioSize.lg,
+                GSButton(
+                  action: GSActions.negative,
+                  variant: GSVariants.solid,
+                  size: GSSizes.lg,
+                  onPressed: () {},
+                  style: GSStyle(
+                    web: GSStyle(
+                      bg: $GSColors.amber600,
+                    ),
+                    ios: GSStyle(
+                      bg: $GSColors.pink600,
+                    ),
+                    md: GSStyle(
+                      bg: $GSColors.pink400,
+                      onHover: GSStyle(
+                        bg: $GSColors.green400,
+                      ),
+                      onFocus: GSStyle(
+                        bg: $GSColors.blueGray600,
+                      ),
+                      onActive: GSStyle(
+                        bg: $GSColors.amber600,
+                        borderColor: $GSColors.error500,
+                        borderWidth: $GSBorderWidth.$4,
+                      ),
+                    ),
+                  ),
+                  child: const GSButtonText(text: "Click Here"),
                 ),
                 //  GSRadio(icon: GSRadioIcon(value: 'value', groupValue: 'd', onChanged: (p0) =>false ,),label:const GSRadioText(text: 'hello world'),),
 

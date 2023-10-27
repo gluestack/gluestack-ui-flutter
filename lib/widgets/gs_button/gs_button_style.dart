@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme/config/button.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 
 GSStyle buttonStyle = GSStyle.fromMap(data: buttonData);
 GSStyle baseStyle = GSStyle(
   borderRadius: buttonStyle.borderRadius,
   bg: buttonStyle.bg,
   dark: buttonStyle.dark,
+  opacity: buttonStyle.onDisabled?.opacity,
 );
-
 GSStyle compoundVariants = GSStyle(
   variants: Variants(
     action: GSAction(
@@ -112,46 +111,45 @@ GSStyle compoundVariants = GSStyle(
 );
 
 class GSButtonStyle {
-  static Map<GSButtonAction, Map<GSButtonVariant, GSStyle>>
-      gsButtonCombination = {
-    GSButtonAction.primary: {
-      GSButtonVariant.solid:
+  static Map<GSActions, Map<GSVariants, GSStyle>> gsButtonCombination = {
+    GSActions.primary: {
+      GSVariants.solid:
           compoundVariants.variants!.action!.primary!.variants!.variant!.solid!,
-      GSButtonVariant.outline: compoundVariants
+      GSVariants.outline: compoundVariants
           .variants!.action!.primary!.variants!.variant!.outline!,
-      GSButtonVariant.link:
+      GSVariants.link:
           compoundVariants.variants!.action!.primary!.variants!.variant!.link!
     },
-    GSButtonAction.secondary: {
-      GSButtonVariant.solid: compoundVariants
+    GSActions.secondary: {
+      GSVariants.solid: compoundVariants
           .variants!.action!.secondary!.variants!.variant!.solid!,
-      GSButtonVariant.outline: compoundVariants
+      GSVariants.outline: compoundVariants
           .variants!.action!.secondary!.variants!.variant!.outline!,
-      GSButtonVariant.link:
+      GSVariants.link:
           compoundVariants.variants!.action!.secondary!.variants!.variant!.link!
     },
-    GSButtonAction.positive: {
-      GSButtonVariant.solid: compoundVariants
+    GSActions.positive: {
+      GSVariants.solid: compoundVariants
           .variants!.action!.positive!.variants!.variant!.solid!,
-      GSButtonVariant.outline: compoundVariants
+      GSVariants.outline: compoundVariants
           .variants!.action!.positive!.variants!.variant!.outline!,
-      GSButtonVariant.link:
+      GSVariants.link:
           compoundVariants.variants!.action!.positive!.variants!.variant!.link!
     },
-    GSButtonAction.negative: {
-      GSButtonVariant.solid: compoundVariants
+    GSActions.negative: {
+      GSVariants.solid: compoundVariants
           .variants!.action!.negative!.variants!.variant!.solid!,
-      GSButtonVariant.outline: compoundVariants
+      GSVariants.outline: compoundVariants
           .variants!.action!.negative!.variants!.variant!.outline!,
-      GSButtonVariant.link:
+      GSVariants.link:
           compoundVariants.variants!.action!.negative!.variants!.variant!.link!
     },
   };
 
-  static Map<GSButtonSize, GSStyle> size = {
-    GSButtonSize.xs: compoundVariants.variants!.size!.xs!,
-    GSButtonSize.sm: compoundVariants.variants!.size!.sm!,
-    GSButtonSize.md: compoundVariants.variants!.size!.md!,
-    GSButtonSize.lg: compoundVariants.variants!.size!.lg!,
+  static Map<GSSizes, GSStyle> size = {
+    GSSizes.xs: compoundVariants.variants!.size!.xs!,
+    GSSizes.sm: compoundVariants.variants!.size!.sm!,
+    GSSizes.md: compoundVariants.variants!.size!.md!,
+    GSSizes.lg: compoundVariants.variants!.size!.lg!,
   };
 }

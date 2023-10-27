@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
 
 class GSButtonProvider extends InheritedWidget {
-  final GSButtonAction action;
-  final GSButtonVariant variant;
-  final GSButtonSize size;
+  final GSActions action;
+  final GSVariants variant;
+  final GSSizes size;
 
   const GSButtonProvider({
     super.key,
