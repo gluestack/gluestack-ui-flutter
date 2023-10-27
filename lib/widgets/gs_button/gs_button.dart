@@ -4,12 +4,11 @@ import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 
 class GSButton extends StatelessWidget {
-  final GSButtonAction? action;
-  final GSButtonVariant? variant;
-  final GSButtonSize? size;
+  final GSActions? action;
+  final GSVariants? variant;
+  final GSSizes? size;
   final bool? isDisabled;
   final bool? isFocusVisible;
   final Widget child;
@@ -26,9 +25,9 @@ class GSButton extends StatelessWidget {
     super.key,
     required this.child,
     required this.onPressed,
-    this.action = GSButtonAction.primary,
-    this.variant = GSButtonVariant.solid,
-    this.size = GSButtonSize.md,
+    this.action,
+    this.variant,
+    this.size,
     this.isDisabled = false,
     this.isFocusVisible = false,
     this.style,
@@ -43,24 +42,28 @@ class GSButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final buttonAction = action ?? buttonStyle.props?.action;
+    final buttonVariant = variant ?? buttonStyle.props?.variant;
+    final buttonSize = size ?? buttonStyle.props?.size;
     GSStyle styler = resolveStyles(
       context,
-      variantStyle: GSButtonStyle.gsButtonCombination[action]![variant],
-      size: GSButtonStyle.size[size]!,
+      variantStyle:
+          GSButtonStyle.gsButtonCombination[buttonAction]![buttonVariant],
+      size: GSButtonStyle.size[buttonSize]!,
       inlineStyle: style,
     )!;
 
     return GSButtonProvider(
-      action: action!,
-      variant: variant!,
-      size: size!,
+      action: buttonAction!,
+      variant: buttonVariant!,
+      size: buttonSize!,
       child: Opacity(
-        opacity: isDisabled! ? 0.4 : 1,
+        opacity: isDisabled! ? styler.opacity! : 1,
         child: SizedBox(
           height: styler.height,
           child: ElevatedButton(
-            onPressed: onPressed,
-            onLongPress: onLongPress,
+            onPressed: isDisabled! ? null : onPressed,
+            onLongPress: isDisabled! ? null : onLongPress,
             onHover: onHover,
             onFocusChange: onFocusChange,
             focusNode: focusNode,
@@ -74,16 +77,16 @@ class GSButton extends StatelessWidget {
               backgroundColor: MaterialStateProperty.resolveWith<Color?>(
                 (Set<MaterialState> states) {
                   if (states.contains(MaterialState.pressed)) {
-                    return styler.active?.bg ?? styler.bg;
+                    return styler.onActive?.bg ?? styler.bg;
                   } else if (states.contains(MaterialState.hovered)) {
                     return styler.onHover?.bg ?? styler.bg;
                   } else if (states.contains(MaterialState.focused)) {
                     return styler.onFocus?.bg ?? styler.bg;
                   } else if (states.contains(MaterialState.disabled) ||
                       isDisabled!) {
-                    return styler.disabled?.bg ?? styler.bg;
+                    return styler.onDisabled?.bg ?? styler.bg;
                   } else if (states.contains(MaterialState.error)) {
-                    return styler.invaild?.bg ?? styler.bg;
+                    return styler.onInvaild?.bg ?? styler.bg;
                   }
 
                   return styler.bg!;
@@ -94,18 +97,19 @@ class GSButton extends StatelessWidget {
                   if (states.contains(MaterialState.pressed)) {
                     return RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
-                          styler.active?.borderRadius ?? styler.borderRadius!),
+                          styler.onActive?.borderRadius ??
+                              styler.borderRadius!),
                       side: isFocusVisible!
                           ? const BorderSide(
                               color: $GSColors.primary500,
                               width: 2.0,
                             )
-                          : variant == GSButtonVariant.link
+                          : variant == GSVariants.link
                               ? BorderSide.none
                               : BorderSide(
-                                  color: styler.active?.borderColor ??
+                                  color: styler.onActive?.borderColor ??
                                       styler.borderColor!,
-                                  width: styler.active?.borderWidth ?? 1.0,
+                                  width: styler.onActive?.borderWidth ?? 1.0,
                                 ),
                     );
                   } else if (states.contains(MaterialState.hovered)) {
@@ -117,7 +121,7 @@ class GSButton extends StatelessWidget {
                               color: $GSColors.primary500,
                               width: 2.0,
                             )
-                          : variant == GSButtonVariant.link
+                          : variant == GSVariants.link
                               ? BorderSide.none
                               : BorderSide(
                                   color: styler.onHover?.borderColor ??
@@ -135,7 +139,7 @@ class GSButton extends StatelessWidget {
                               color: $GSColors.primary500,
                               width: 2.0,
                             )
-                          : variant == GSButtonVariant.link
+                          : variant == GSVariants.link
                               ? BorderSide.none
                               : BorderSide(
                                   color: styler.onFocus?.borderColor ??
@@ -147,36 +151,37 @@ class GSButton extends StatelessWidget {
                       isDisabled!) {
                     return RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
-                          styler.disabled?.borderRadius ??
+                          styler.onDisabled?.borderRadius ??
                               styler.borderRadius!),
                       side: isFocusVisible!
                           ? const BorderSide(
                               color: $GSColors.primary500,
                               width: 2.0,
                             )
-                          : variant == GSButtonVariant.link
+                          : variant == GSVariants.link
                               ? BorderSide.none
                               : BorderSide(
-                                  color: styler.disabled?.borderColor ??
+                                  color: styler.onDisabled?.borderColor ??
                                       styler.borderColor!,
-                                  width: styler.disabled?.borderWidth ?? 1.0,
+                                  width: styler.onDisabled?.borderWidth ?? 1.0,
                                 ),
                     );
                   } else if (states.contains(MaterialState.error)) {
                     return RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
-                          styler.invaild?.borderRadius ?? styler.borderRadius!),
+                          styler.onInvaild?.borderRadius ??
+                              styler.borderRadius!),
                       side: isFocusVisible!
                           ? const BorderSide(
                               color: $GSColors.primary500,
                               width: 2.0,
                             )
-                          : variant == GSButtonVariant.link
+                          : variant == GSVariants.link
                               ? BorderSide.none
                               : BorderSide(
-                                  color: styler.invaild?.borderColor ??
+                                  color: styler.onInvaild?.borderColor ??
                                       styler.borderColor!,
-                                  width: styler.invaild?.borderWidth ?? 1.0,
+                                  width: styler.onInvaild?.borderWidth ?? 1.0,
                                 ),
                     );
                   }
@@ -188,7 +193,7 @@ class GSButton extends StatelessWidget {
                             color: $GSColors.primary500,
                             width: 2.0,
                           )
-                        : variant == GSButtonVariant.link
+                        : variant == GSVariants.link
                             ? BorderSide.none
                             : BorderSide(
                                 color: styler.borderColor!,

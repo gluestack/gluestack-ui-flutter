@@ -32,46 +32,17 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                // GSButton(
-                //   action: GSButtonAction.negative,
-                //   variant: GSButtonVariant.solid,
-                //   size: GSButtonSize.lg,
-                //   onPressed: () {},
-                //   style: GSStyle(
-                //     sm: GSStyle(
-                //       bg: $GSColors.purple400,
-                //       dark: GSStyle(
-                //         bg: $GSColors.indigo800,
-                //       ),
-                //     ),
-                //     lg: GSStyle(
-                //       bg: $GSColors.pink400,
-                //     ),
-                //     dark: GSStyle(
-                //       bg: $GSColors.blueGray800,
-                //       sm: GSStyle(
-                //         bg: $GSColors.indigo800,
-                //       ),
-                //       md: GSStyle(
-                //         bg: $GSColors.cyan800,
-                //       ),
-                //     ),
-                //   ),
-                //   child: const GSButtonText(text: "Click Here"),
-                // ),
-
                 GSButton(
-                  action: GSButtonAction.negative,
-                  variant: GSButtonVariant.solid,
-                  size: GSButtonSize.lg,
-                  // isDisabled: true,
+                  action: GSActions.negative,
+                  variant: GSVariants.solid,
+                  size: GSSizes.lg,
                   onPressed: () {},
                   style: GSStyle(
                     web: GSStyle(
                       bg: $GSColors.amber600,
                     ),
                     ios: GSStyle(
-                      bg: $GSColors.blue600,
+                      bg: $GSColors.pink600,
                     ),
                     md: GSStyle(
                       bg: $GSColors.pink400,
@@ -81,13 +52,10 @@ class MyApp extends StatelessWidget {
                       onFocus: GSStyle(
                         bg: $GSColors.blueGray600,
                       ),
-                      active: GSStyle(
+                      onActive: GSStyle(
                         bg: $GSColors.amber600,
                         borderColor: $GSColors.error500,
                         borderWidth: $GSBorderWidth.$4,
-                      ),
-                      disabled: GSStyle(
-                        bg: $GSColors.blueGray600,
                       ),
                     ),
                   ),

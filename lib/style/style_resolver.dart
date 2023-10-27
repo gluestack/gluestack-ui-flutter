@@ -47,6 +47,7 @@ GSStyle? resolveStyles(
     }
   }
   inlineStyle?.contextStyles.forEach((key, value) {
+    // print("RESOLVER VALUE --->   $value");
     if (value != null) {
       if (key == 'dark' && theme == GSThemeMode.dark) {
         currentGSStyle = currentGSStyle?.merge(value);
@@ -77,31 +78,7 @@ GSStyle? resolveStyles(
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
-      if (key == 'onFocus') {
-        currentGSStyle?.onFocus = currentGSStyle?.merge(value);
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle?.onFocus = currentGSStyle?.merge(nestedStyle);
-      }
-      if (key == 'active') {
-        currentGSStyle?.active = currentGSStyle?.merge(value);
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle?.active = currentGSStyle?.merge(nestedStyle);
-      }
-      if (key == 'onHover') {
-        currentGSStyle?.onHover = currentGSStyle?.merge(value);
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle?.onHover = currentGSStyle?.merge(nestedStyle);
-      }
-      if (key == 'disabled') {
-        currentGSStyle?.disabled = currentGSStyle?.merge(value);
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle?.disabled = currentGSStyle?.merge(nestedStyle);
-      }
-      if (key == 'invalid') {
-        currentGSStyle?.invaild = currentGSStyle?.merge(value);
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle?.invaild = currentGSStyle?.merge(nestedStyle);
-      }
+
       if (key == 'web' && kIsWeb) {
         currentGSStyle = currentGSStyle?.merge(value);
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
