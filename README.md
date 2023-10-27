@@ -75,9 +75,9 @@ Here is how GSButton component can be easily integrated into your Flutter app. H
 import 'package:your_package/gs_button.dart';
 
 GSButton(
-  action: GSButtonAction.primary,
-  variant: GSButtonVariant.solid,
-  size: GSButtonSize.lg,
+  action: GSActions.primary,
+  variant: GSVariants.solid,
+  size: GSSizes.lg,
   onPressed: () {
     // Add your button click logic here
   },
