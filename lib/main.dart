@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme/config/radio/radio.dart';
+
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-import 'package:gluestack_flutter_pro/token/color_token.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_radio_icon/gs_radio_icon.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_radio_text/gs_radio_text.dart';
 import 'package:provider/provider.dart';
 
@@ -32,10 +33,16 @@ class MyApp extends StatelessWidget {
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: const Center(
+          body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                const GSRadio<String>(
+                  value: '1',
+                  groupValue: '1',
+                  icon: GSRadioIcon(),
+                  label: GSRadioText<String>(text: 'text'),
+                ),
                 GSButton(
                   action: GSActions.negative,
                   variant: GSVariants.solid,

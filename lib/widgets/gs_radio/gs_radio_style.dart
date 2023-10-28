@@ -1,13 +1,12 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme/config/radio/radio.dart';
 
-enum GSRadioSize { sm, md, lg }
+GSStyle radioStyle = GSStyle.fromMap(data: radioData);
 
-class GSRadioStyle {
-  static GSStyle radioGSStyle = GSStyle.fromMap(data: radioData);
-  static Map<GSRadioSize, GSStyle?> gsRadioStyle = {
-    GSRadioSize.lg: radioGSStyle.variants?.size?.lg,
-    GSRadioSize.md: radioGSStyle.variants?.size?.md,
-    GSRadioSize.sm: radioGSStyle.variants?.size?.sm,
-  };
-}
+// class GSRadioStyle {
+//   static Map<GSSizes, GSStyle?> gsRadioStyle = {
+//     GSSizes.lg: radioStyle.variants?.size?.lg,
+//     GSSizes.md: radioStyle.variants?.size?.md,
+//     GSSizes.sm: radioStyle.variants?.size?.sm,
+//   };
+// }
