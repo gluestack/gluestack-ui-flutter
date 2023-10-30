@@ -172,11 +172,13 @@ class _RadioExampleState extends State<RadioExample> {
     return Column(
       children: [
         GSRadio<Value>(
-        
           style: GSStyle(
             checked: GSStyle(
-              color: Colors.red
-            )
+              color: $GSColors.purple500,
+              onHover: GSStyle(
+                color: $GSColors.pink300,
+              )
+            ),
           ),
           value: Value.one,
           groupValue: groupValue,
@@ -186,41 +188,43 @@ class _RadioExampleState extends State<RadioExample> {
             });
           },
           icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text'),
+          label: const GSRadioText<Value>(text: 'text1'),
         ),
         GSRadio<Value>(
-         isDisabled: true,
+        
+          isInvalid: true,
           value: Value.two,
           groupValue: groupValue,
           onChanged: (p0) {
-             setState(() {
+            setState(() {
               groupValue = p0!;
             });
           },
           icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text'),
+          label: const GSRadioText<Value>(text: 'text2'),
         ),
         GSRadio<Value>(
+            isDisabled: true,
           value: Value.three,
           groupValue: groupValue,
           onChanged: (p0) {
-             setState(() {
+            setState(() {
               groupValue = p0!;
             });
           },
           icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text'),
+          label: const GSRadioText<Value>(text: 'text3'),
         ),
         GSRadio<Value>(
           value: Value.four,
           groupValue: groupValue,
           onChanged: (p0) {
-             setState(() {
+            setState(() {
               groupValue = p0!;
             });
           },
           icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text'),
+          label: const GSRadioText<Value>(text: 'text4'),
         ),
       ],
     );

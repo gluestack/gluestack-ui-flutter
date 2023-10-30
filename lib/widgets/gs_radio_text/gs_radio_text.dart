@@ -24,12 +24,11 @@ class GSRadioText<T> extends StatelessWidget {
       inlineStyle: value.style,
     )!;
 
-
     final fontColor = isChecked ? styler.checked?.color : styler.color;
 
     final currentHoverColor =
-        isChecked ? styler.onHover?.checked?.color : styler.onHover?.color;
-
+        isChecked ? styler.checked?.onHover?.color: styler.onHover?.color;
+  
     final currentTextStyle = TextStyle(
       fontSize: textStyle?.fontSize ?? fontSize,
       color: value.isHovered
@@ -37,7 +36,7 @@ class GSRadioText<T> extends StatelessWidget {
           : textStyle?.color ?? fontColor,
     );
     return Opacity(
-           opacity: value.isDisabled?styler.onDisabled!.opacity! :1,
+      opacity: value.isDisabled ? styler.onDisabled!.opacity! : 1,
       child: Text(
         text,
         style: currentTextStyle,
