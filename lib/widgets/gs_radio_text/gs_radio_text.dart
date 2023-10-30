@@ -29,15 +29,19 @@ class _GSRadioTextState<T> extends State<GSRadioText<T>> {
 
     final fontColor = theme.currentTheme == GSThemeMode.light
         ? isChecked
-            ? radioLabelStyle.checkedColor
+            ? radioLabelStyle.checked?.color
             : radioLabelStyle.color
         : isChecked
-            ? radioLabelStyle.dark?.checkedColor
+            ? radioLabelStyle.dark?.checked?.color
             : radioLabelStyle.dark?.color;
 
     final hoverColor = theme.currentTheme == GSThemeMode.light
-        ? radioLabelStyle.onHover?.color
-        : radioLabelStyle.dark?.onHover?.color;
+        ? isChecked
+            ? radioLabelStyle.onHover?.checked?.color
+            : radioLabelStyle.onHover?.color
+        : isChecked
+            ? radioLabelStyle.dark?.onHover?.checked?.color
+            : radioLabelStyle.dark?.onHover?.color;
 
     final currentTextStyle = TextStyle(
       fontSize: widget.textStyle?.fontSize ?? fontSize,

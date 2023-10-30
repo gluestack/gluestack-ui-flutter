@@ -37,11 +37,12 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const GSRadio<String>(
+                GSRadio<String>(
                   value: '1',
-                  groupValue: '1',
-                  icon: GSRadioIcon(),
-                  label: GSRadioText<String>(text: 'text'),
+                  groupValue: '2',
+                  onChanged: (p0) {},
+                  icon: const GSRadioIcon<String>(),
+                  label: const GSRadioText<String>(text: 'text'),
                 ),
                 GSButton(
                   action: GSActions.negative,
