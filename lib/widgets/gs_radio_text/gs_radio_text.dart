@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 
-import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
-
 import 'package:gluestack_flutter_pro/widgets/gs_radio_text/gs_radio_text_style.dart';
-import 'package:provider/provider.dart';
 
-class GSRadioText<T> extends StatefulWidget {
+class GSRadioText<T> extends StatelessWidget {
   final String text;
   final TextStyle? textStyle;
   final Color? hoverColor;
@@ -14,55 +13,33 @@ class GSRadioText<T> extends StatefulWidget {
       {super.key, required this.text, this.textStyle, this.hoverColor});
 
   @override
-  State<GSRadioText> createState() => _GSRadioTextState<T>();
-}
-
-class _GSRadioTextState<T> extends State<GSRadioText<T>> {
-  bool isHovering = false;
-  @override
   Widget build(BuildContext context) {
     final value = GSRadioProvider.of<T>(context);
     final bool isChecked = value!.value == value.groupValue;
-
     final fontSize = GSRadioTextStyle.labelSize[value.size];
-    final theme = Provider.of<ThemeProvider>(context);
 
-    final fontColor = theme.currentTheme == GSThemeMode.light
-        ? isChecked
-            ? radioLabelStyle.checked?.color
-            : radioLabelStyle.color
-        : isChecked
-            ? radioLabelStyle.dark?.checked?.color
-            : radioLabelStyle.dark?.color;
+    GSStyle styler = resolveStyles(
+      variantStyle: radioLabelStyle,
+      context,
+      inlineStyle: value.style,
+    )!;
 
-    final hoverColor = theme.currentTheme == GSThemeMode.light
-        ? isChecked
-            ? radioLabelStyle.onHover?.checked?.color
-            : radioLabelStyle.onHover?.color
-        : isChecked
-            ? radioLabelStyle.dark?.onHover?.checked?.color
-            : radioLabelStyle.dark?.onHover?.color;
+
+    final fontColor = isChecked ? styler.checked?.color : styler.color;
+
+    final currentHoverColor =
+        isChecked ? styler.onHover?.checked?.color : styler.onHover?.color;
 
     final currentTextStyle = TextStyle(
-      fontSize: widget.textStyle?.fontSize ?? fontSize,
-      color: isHovering
-          ? widget.hoverColor ?? hoverColor
-          : widget.textStyle?.color ?? fontColor,
+      fontSize: textStyle?.fontSize ?? fontSize,
+      color: value.isHovered
+          ? hoverColor ?? currentHoverColor
+          : textStyle?.color ?? fontColor,
     );
-
-
-
-    return FocusableActionDetector(
-      mouseCursor: SystemMouseCursors.click,
-      onShowHoverHighlight: (value) {
-        if (value != isHovering) {
-          setState(() {
-            isHovering = value;
-          });
-        }
-      },
+    return Opacity(
+           opacity: value.isDisabled?styler.onDisabled!.opacity! :1,
       child: Text(
-        widget.text,
+        text,
         style: currentTextStyle,
       ),
     );
