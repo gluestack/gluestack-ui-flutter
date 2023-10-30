@@ -5,6 +5,7 @@ import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 import 'package:provider/provider.dart';
 
 import 'token/index.dart';
@@ -32,59 +33,66 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GSButton(
-                  action: GSActions.negative,
-                  variant: GSVariants.solid,
-                  size: GSSizes.lg,
-                  onPressed: () {},
+                // GSButton(
+                //   action: GSActions.negative,
+                //   variant: GSVariants.solid,
+                //   size: GSSizes.lg,
+                //   // isDisabled: true,
+                //   onPressed: () {},
+                //   style: GSStyle(
+                //     web: GSStyle(
+                //         // bg: $GSColors.amber600,
+                //         ),
+                //     ios: GSStyle(
+                //       bg: $GSColors.pink600,
+                //     ),
+                //     onHover: GSStyle(
+                //       bg: $GSColors.green400,
+                //     ),
+                //     // md: GSStyle(
+                //     //   bg: $GSColors.pink400,
+
+                //     //   onFocus: GSStyle(
+                //     //     bg: $GSColors.blueGray600,
+                //     //   ),
+                //     //   onActive: GSStyle(
+                //     //     bg: $GSColors.amber600,
+                //     //     borderColor: $GSColors.error500,
+                //     //     borderWidth: $GSBorderWidth.$4,
+                //     //   ),
+                //     //   onDisabled: GSStyle(bg: $GSColors.purple800),
+                //     // ),
+                //   ),
+                //   child: const GSButtonText(text: "Click Here"),
+                // ),
+                GSInput(
+                  size: GSSizes.xl,
+                  variant: GSVariants.outline,
+                  hintText: "Enter text here",
+                  // isDisabled: true,
+                  // isInvalid: true,
                   style: GSStyle(
-                    web: GSStyle(
-                      bg: $GSColors.amber600,
+                    width: 300,
+                    borderColor: $GSColors.pink500,
+                    onFocus: GSStyle(
+                      borderColor: $GSColors.purple800,
+                      borderWidth: $GSBorderWidth.$2,
+                      borderBottomWidth: $GSBorderWidth.$2,
                     ),
-                    ios: GSStyle(
-                      bg: $GSColors.pink600,
+                    onHover: GSStyle(
+                      borderColor: $GSColors.green600,
+                      borderWidth: $GSBorderWidth.$4,
+                      borderBottomWidth: $GSBorderWidth.$4,
                     ),
-                    md: GSStyle(
-                      bg: $GSColors.pink400,
-                      onHover: GSStyle(
-                        bg: $GSColors.green400,
-                      ),
-                      onFocus: GSStyle(
-                        bg: $GSColors.blueGray600,
-                      ),
-                      onActive: GSStyle(
-                        bg: $GSColors.amber600,
-                        borderColor: $GSColors.error500,
-                        borderWidth: $GSBorderWidth.$4,
-                      ),
+                    xs: GSStyle(
+                      borderColor: $GSColors.purple400,
+                    ),
+                    dark: GSStyle(
+                      borderColor: $GSColors.warmGray900,
+                      borderWidth: $GSBorderWidth.$8,
                     ),
                   ),
-                  child: const GSButtonText(text: "Click Here"),
                 ),
-                // GSInput(
-                //   size: GSInputSize.xl,
-                //   variant: GSInputVariant.rounded,
-                //   hintText: "Enter Text Here",
-                //   enabled: true,
-                //   style: GSStyle(
-                //     width: 200,
-                //     xs: GSStyle(
-                //       borderColor: $GSColors.purple400,
-                //     ),
-                //     lg: GSStyle(
-                //       borderColor: $GSColors.warning800,
-                //     ),
-                //     dark: GSStyle(
-                //       borderColor: $GSColors.blueGray700,
-                //       sm: GSStyle(
-                //         borderColor: $GSColors.amber300,
-                //       ),
-                //       md: GSStyle(
-                //         borderColor: $GSColors.green400,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 // GSBox(
                 //   style: StyleData(
                 //     context,

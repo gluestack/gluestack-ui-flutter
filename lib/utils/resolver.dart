@@ -25,7 +25,21 @@ double? resolveRadiusFromString(String? radius) {
   if (radius == 'full' || radius == 'none') {
     return $GSRadii.radiiMap[radius]!;
   } else {
-    return $GSRadii.radiiMap[radius.substring(1)]!;
+    if (radius.contains('\$')) {
+      return $GSRadii.radiiMap[radius.substring(1)]!;
+    }
+    return $GSRadii.radiiMap[radius]!;
+  }
+}
+
+double? resolveBorderWidthFromString(String? borderWidth) {
+  if (borderWidth == null) {
+    return null;
+  } else {
+    if (borderWidth.contains('\$')) {
+      return $GSBorderWidth.borderWidthMap[borderWidth.substring(1)]!;
+    }
+    return $GSBorderWidth.borderWidthMap[borderWidth]!;
   }
 }
 

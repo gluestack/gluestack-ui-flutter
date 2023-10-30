@@ -4,17 +4,16 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/token/index.dart';
+import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_token.dart';
 
-class GSInput extends StatelessWidget {
-  final GSInputVariant? variant;
-  final GSInputSize? size;
+class GSInput extends StatefulWidget {
+  final GSVariants? variant;
+  final GSSizes? size;
   final GSStyle? style;
-  final bool readOnly;
-  final bool enabled;
-  final bool vaild;
+  final bool? isDisabled;
+  final bool? isInvalid;
+  final bool? readOnly;
   final bool autocorrect;
   final Iterable<String>? autofillHints;
   final bool autofocus;
@@ -122,11 +121,11 @@ class GSInput extends StatelessWidget {
   final bool visualFeedback;
   const GSInput(
       {super.key,
-      this.variant = GSInputVariant.outline,
-      this.size = GSInputSize.md,
+      this.variant = GSVariants.outline,
+      this.size = GSSizes.md,
+      this.isDisabled = false,
+      this.isInvalid = false,
       this.readOnly = false,
-      this.enabled = true,
-      this.vaild = true,
       this.autocorrect = true,
       this.buildCounter,
       this.autofocus = false,
@@ -231,145 +230,240 @@ class GSInput extends StatelessWidget {
       this.style});
 
   @override
-  Widget build(BuildContext context) {
-    final gsInputStyle = GSInputStyle.gsInputCombination[variant];
-    final borderWidth = style?.borderWidth ?? gsInputStyle?.borderWidth ?? 1.0;
-    final borderColor = !vaild
-        ? $GSColors.error700
-        : style?.borderColor ?? gsInputStyle?.borderColor!;
-    final borderRadius = style?.borderRadius ??
-        gsInputStyle?.borderRadius ??
-        GSInputStyle.inputSize[size]!.borderRadius;
-    final borderStyle = variant != GSInputVariant.underlined
-        ? OutlineInputBorder(
-            borderSide: BorderSide(color: borderColor!, width: borderWidth),
-            borderRadius: BorderRadius.circular(borderRadius!))
-        : UnderlineInputBorder(
-            borderSide: BorderSide(color: borderColor!, width: borderWidth));
+  State<GSInput> createState() => _GSInputState();
+}
 
-    return SizedBox(
-      width: style?.width,
-      height: style?.height ?? GSInputStyle.inputSize[size]!.height,
-      child: TextField(
-        autocorrect: autocorrect,
-        autofillHints: autofillHints,
-        autofocus: autofocus,
-        buildCounter: buildCounter,
-        canRequestFocus: canRequestFocus,
-        clipBehavior: clipBehavior,
-        contentInsertionConfiguration: contentInsertionConfiguration,
-        contextMenuBuilder: contextMenuBuilder,
-        controller: controller,
-        cursorColor: cursorColor,
-        cursorHeight: cursorHeight,
-        cursorOpacityAnimates: cursorOpacityAnimates,
-        cursorRadius: cursorRadius,
-        cursorWidth: cursorWidth,
-        dragStartBehavior: dragStartBehavior,
-        enabled: true,
-        readOnly: false,
-        enableIMEPersonalizedLearning: enableIMEPersonalizedLearning,
-        enableInteractiveSelection: enableInteractiveSelection,
-        enableSuggestions: enableSuggestions,
-        expands: expands,
-        focusNode: focusNode,
-        inputFormatters: inputFormatters,
-        key: key,
-        keyboardAppearance: keyboardAppearance,
-        keyboardType: keyboardType,
-        magnifierConfiguration: magnifierConfiguration,
-        maxLength: maxLength,
-        maxLengthEnforcement: maxLengthEnforcement,
-        maxLines: maxLines,
-        minLines: minLines,
-        mouseCursor: mouseCursor,
-        obscureText: obscureText,
-        obscuringCharacter: obscuringCharacter,
-        onAppPrivateCommand: onAppPrivateCommand,
-        onChanged: onChanged,
-        onEditingComplete: onEditingComplete,
-        onSubmitted: onSubmitted,
-        onTap: onTap,
-        onTapOutside: onTapOutside,
-        restorationId: restorationId,
-        scribbleEnabled: scribbleEnabled,
-        scrollController: scrollController,
-        scrollPadding: scrollPadding,
-        scrollPhysics: scrollPhysics,
-        selectionControls: selectionControls,
-        selectionHeightStyle: selectionHeightStyle,
-        selectionWidthStyle: selectionWidthStyle,
-        showCursor: showCursor,
-        smartDashesType: smartDashesType,
-        smartQuotesType: smartQuotesType,
-        spellCheckConfiguration: spellCheckConfiguration,
-        strutStyle: strutStyle,
-        style: style?.textStyle ??
-            TextStyle(
-                fontSize: GSInputStyle.inputSize[size]!.textStyle!.fontSize),
-        textAlign: textAlign,
-        textAlignVertical: textAlignVertical,
-        textCapitalization: textCapitalization,
-        textDirection: textDirection,
-        textInputAction: textInputAction,
-        undoController: undoController,
-        decoration: InputDecoration(
-            alignLabelWithHint: alignLabelWithHint,
-            constraints: constraints,
-            counter: counter,
-            counterStyle: counterStyle,
-            counterText: counterText,
-            fillColor: style?.color,
-            filled: style != null && style!.color != null,
-            disabledBorder: disabledBorder,
-            // error: error,
-            errorBorder: errorBorder,
-            errorMaxLines: errorMaxLines,
-            errorStyle: errorStyle,
-            errorText: errorText,
-            floatingLabelAlignment: floatingLabelAlignment,
-            floatingLabelBehavior: floatingLabelBehavior,
-            floatingLabelStyle: floatingLabelStyle,
-            focusColor: focusColor,
-            focusedErrorBorder: focusedErrorBorder,
-            helperMaxLines: helperMaxLines,
-            helperStyle: helperStyle,
-            helperText: helperText,
-            hintMaxLines: hintMaxLines,
-            hintStyle: hintStyle,
-            hintText: hintText,
-            hintTextDirection: hintTextDirection,
-            isCollapsed: isCollapsed,
-            isDense: isDense,
-            label: label,
-            labelStyle: labelStyle,
-            labelText: labelText,
-            semanticCounterText: semanticCounterText,
-            iconColor: iconColor,
-            hoverColor: hoverColor,
-            icon: icon,
-            prefix: prefix,
-            prefixIcon: prefixIcon,
-            prefixIconColor: prefixIconColor,
-            prefixIconConstraints: prefixIconConstraints,
-            prefixStyle: prefixStyle,
-            prefixText: prefixText,
-            suffix: suffix,
-            suffixIcon: suffixIcon,
-            suffixIconColor: suffixIconColor,
-            suffixIconConstraints: suffixIconConstraints,
-            suffixStyle: suffixStyle,
-            suffixText: suffixText,
-            enabledBorder: borderStyle,
-            contentPadding: style?.padding ?? gsInputStyle?.padding,
-            enabled: visualFeedback,
-            focusedBorder: borderStyle?.copyWith(
-                borderSide: BorderSide(
-                    color: !vaild
-                        ? $GSColors.error700
-                        : gsInputStyle!.onFocus!.borderColor!,
-                    width: borderWidth)),
-            border: borderStyle),
+class _GSInputState extends State<GSInput> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final inputVariant = widget.variant ?? inputStyle.props?.variant;
+    final inputSize = widget.size ?? inputStyle.props?.size;
+    GSStyle styler = resolveStyles(
+      context,
+      variantStyle: GSInputStyle.gsInputCombination[inputVariant],
+      size: GSInputStyle.size[inputSize]!,
+      inlineStyle: widget.style,
+    )!;
+
+    Color? resolveBorderColor() {
+      if (widget.isInvalid!) {
+        if (widget.variant == GSVariants.underlined) {
+          return styler.onInvaild?.borderBottomColor;
+        }
+        return styler.onInvaild?.borderColor ?? styler.borderColor;
+      }
+      if (_isHovered) {
+        return styler.onHover?.borderColor ?? styler.borderColor;
+      }
+      if (widget.isDisabled!) {
+        return styler.onDisabled?.borderColor ?? styler.borderColor;
+      }
+
+      return styler.borderColor;
+    }
+
+    double? resolveBorderWidth() {
+      if (widget.variant == GSVariants.underlined) {
+        if (widget.isInvalid!) {
+          return styler.onInvaild?.borderBottomWidth ??
+              styler.borderBottomWidth;
+        }
+        if (_isHovered) {
+          return styler.onHover?.borderBottomWidth ?? styler.borderBottomWidth;
+        }
+        if (widget.isDisabled!) {
+          return styler.onDisabled?.borderBottomWidth ??
+              styler.borderBottomWidth;
+        }
+        return styler.borderBottomWidth;
+      }
+      if (widget.isInvalid!) {
+        return styler.onInvaild?.borderWidth ?? styler.borderWidth;
+      }
+      if (_isHovered) {
+        return styler.onHover?.borderWidth ?? styler.borderWidth;
+      }
+      if (widget.isDisabled!) {
+        return styler.onDisabled?.borderWidth ?? styler.borderWidth;
+      }
+
+      return styler.borderWidth;
+    }
+
+    Color? resolveFocusBorderColor() {
+      if (widget.isInvalid!) {
+        if (widget.variant == GSVariants.underlined) {
+          return styler.onInvaild?.borderBottomColor;
+        }
+        return styler.onInvaild?.borderColor ?? styler.borderColor;
+      }
+
+      return styler.onFocus?.borderColor;
+    }
+
+    double? resolveFocusBorderWidth() {
+      if (widget.variant == GSVariants.underlined) {
+        return styler.onFocus?.borderBottomWidth ?? styler.borderBottomWidth;
+      }
+
+      return styler.onFocus?.borderWidth ?? styler.borderWidth;
+    }
+
+    final borderColor = resolveBorderColor();
+    final borderWidth = resolveBorderWidth();
+    final focusedBorderColor = resolveFocusBorderColor();
+    final focusedBorderWidth = resolveFocusBorderWidth();
+
+    final borderStyle = widget.variant != GSVariants.underlined
+        ? OutlineInputBorder(
+            borderSide: BorderSide(color: borderColor!, width: borderWidth!),
+            borderRadius: BorderRadius.circular(styler.borderRadius!))
+        : UnderlineInputBorder(
+            borderSide: BorderSide(color: borderColor!, width: borderWidth!),
+          );
+    return FocusableActionDetector(
+      onShowHoverHighlight: (value) {
+        if (widget.isDisabled!) {
+          _isHovered = false;
+        } else {
+          if (value != _isHovered) {
+            setState(() {
+              _isHovered = value;
+            });
+          }
+        }
+      },
+      child: Opacity(
+        opacity: widget.isDisabled! ? styler.opacity! : 1,
+        child: SizedBox(
+          width: styler.width,
+          height: styler.height,
+          child: TextField(
+            autocorrect: widget.autocorrect,
+            autofillHints: widget.autofillHints,
+            autofocus: widget.autofocus,
+            buildCounter: widget.buildCounter,
+            canRequestFocus: widget.canRequestFocus,
+            clipBehavior: widget.clipBehavior,
+            contentInsertionConfiguration: widget.contentInsertionConfiguration,
+            contextMenuBuilder: widget.contextMenuBuilder,
+            controller: widget.controller,
+            cursorColor: widget.cursorColor,
+            cursorHeight: widget.cursorHeight,
+            cursorOpacityAnimates: widget.cursorOpacityAnimates,
+            cursorRadius: widget.cursorRadius,
+            cursorWidth: widget.cursorWidth,
+            dragStartBehavior: widget.dragStartBehavior,
+            enabled: !widget.isDisabled!,
+            readOnly: widget.readOnly!,
+            enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
+            enableInteractiveSelection: widget.enableInteractiveSelection,
+            enableSuggestions: widget.enableSuggestions,
+            expands: widget.expands,
+            focusNode: widget.focusNode,
+            inputFormatters: widget.inputFormatters,
+            keyboardAppearance: widget.keyboardAppearance,
+            keyboardType: widget.keyboardType,
+            magnifierConfiguration: widget.magnifierConfiguration,
+            maxLength: widget.maxLength,
+            maxLengthEnforcement: widget.maxLengthEnforcement,
+            maxLines: widget.maxLines,
+            minLines: widget.minLines,
+            mouseCursor: widget.isDisabled!
+                ? SystemMouseCursors.forbidden
+                : _isHovered
+                    ? SystemMouseCursors.text
+                    : MouseCursor.defer,
+            obscureText: widget.obscureText,
+            obscuringCharacter: widget.obscuringCharacter,
+            onAppPrivateCommand: widget.onAppPrivateCommand,
+            onChanged: widget.onChanged,
+            onEditingComplete: widget.onEditingComplete,
+            onSubmitted: widget.onSubmitted,
+            onTap: widget.onTap,
+            onTapOutside: widget.onTapOutside,
+            restorationId: widget.restorationId,
+            scribbleEnabled: widget.scribbleEnabled,
+            scrollController: widget.scrollController,
+            scrollPadding: widget.scrollPadding,
+            scrollPhysics: widget.scrollPhysics,
+            selectionControls: widget.selectionControls,
+            selectionHeightStyle: widget.selectionHeightStyle,
+            selectionWidthStyle: widget.selectionWidthStyle,
+            showCursor: widget.showCursor,
+            smartDashesType: widget.smartDashesType,
+            smartQuotesType: widget.smartQuotesType,
+            spellCheckConfiguration: widget.spellCheckConfiguration,
+            strutStyle: widget.strutStyle,
+            style: widget.style?.textStyle ??
+                TextStyle(
+                    fontSize:
+                        GSInputStyle.size[widget.size]!.textStyle!.fontSize),
+            textAlign: widget.textAlign,
+            textAlignVertical: widget.textAlignVertical,
+            textCapitalization: widget.textCapitalization,
+            textDirection: widget.textDirection,
+            textInputAction: widget.textInputAction,
+            undoController: widget.undoController,
+            decoration: InputDecoration(
+              alignLabelWithHint: widget.alignLabelWithHint,
+              constraints: widget.constraints,
+              counter: widget.counter,
+              counterStyle: widget.counterStyle,
+              counterText: widget.counterText,
+              fillColor: styler.color,
+              filled: widget.style != null && widget.style!.color != null,
+              disabledBorder: widget.disabledBorder ?? borderStyle,
+              error: widget.error,
+              errorBorder: widget.errorBorder,
+              errorMaxLines: widget.errorMaxLines,
+              errorStyle: widget.errorStyle,
+              errorText: widget.errorText,
+              floatingLabelAlignment: widget.floatingLabelAlignment,
+              floatingLabelBehavior: widget.floatingLabelBehavior,
+              floatingLabelStyle: widget.floatingLabelStyle,
+              focusColor: widget.focusColor,
+              focusedErrorBorder: widget.focusedErrorBorder,
+              helperMaxLines: widget.helperMaxLines,
+              helperStyle: widget.helperStyle,
+              helperText: widget.helperText,
+              hintMaxLines: widget.hintMaxLines,
+              hintStyle: widget.hintStyle,
+              hintText: widget.hintText,
+              hintTextDirection: widget.hintTextDirection,
+              isCollapsed: widget.isCollapsed,
+              isDense: widget.isDense,
+              label: widget.label,
+              labelStyle: widget.labelStyle,
+              labelText: widget.labelText,
+              semanticCounterText: widget.semanticCounterText,
+              iconColor: widget.iconColor,
+              hoverColor: widget.hoverColor,
+              icon: widget.icon,
+              prefix: widget.prefix,
+              prefixIcon: widget.prefixIcon,
+              prefixIconColor: widget.prefixIconColor,
+              prefixIconConstraints: widget.prefixIconConstraints,
+              prefixStyle: widget.prefixStyle,
+              prefixText: widget.prefixText,
+              suffix: widget.suffix,
+              suffixIcon: widget.suffixIcon,
+              suffixIconColor: widget.suffixIconColor,
+              suffixIconConstraints: widget.suffixIconConstraints,
+              suffixStyle: widget.suffixStyle,
+              suffixText: widget.suffixText,
+              enabledBorder: borderStyle,
+              contentPadding: styler.padding,
+              enabled: widget.visualFeedback,
+              focusedBorder: borderStyle.copyWith(
+                  borderSide: BorderSide(
+                      color: focusedBorderColor!, width: focusedBorderWidth!)),
+              border: borderStyle,
+            ),
+          ),
+        ),
       ),
     );
   }
