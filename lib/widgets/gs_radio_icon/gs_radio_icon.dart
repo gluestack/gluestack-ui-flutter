@@ -6,7 +6,24 @@ import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio_icon/gs_radio_icon_style.dart';
 
 class GSRadioIcon<T> extends StatelessWidget {
-  const GSRadioIcon({super.key});
+  final Color? activeColor;
+  final bool autofocus;
+  final Color? focusColor;
+  final FocusNode? focusNode;
+  final Color? hoverColor;
+  final MaterialStateProperty<Color?>? overlayColor;
+  final bool toggleable;
+  final VisualDensity? visualDensity;
+  const GSRadioIcon(
+      {super.key,
+      this.activeColor,
+      this.autofocus = false,
+      this.focusColor,
+      this.focusNode,
+      this.hoverColor,
+      this.overlayColor,
+      this.toggleable = false,
+      this.visualDensity});
 
   @override
   Widget build(BuildContext context) {
@@ -19,22 +36,29 @@ class GSRadioIcon<T> extends StatelessWidget {
       inlineStyle: value.style,
     )!;
 
-    final hoverColor = isChecked ? styler.checked?.onHover?.color : null;
-
-    final currentColor = value.isInvalid
-        ? styler.onInvaild?.borderColor
-        : value.isHovered
-            ? hoverColor
-            : isChecked
-                ? styler.checked?.color
-                : null;
     return Opacity(
       opacity: value.isDisabled ? styler.onDisabled!.opacity! : 1,
       child: Radio(
-          mouseCursor: value.isDisabled?SystemMouseCursors.forbidden:null,
+          activeColor: activeColor,
+          autofocus: autofocus,
+          focusColor: focusColor,
+          focusNode: focusNode,
+          hoverColor: hoverColor,
+          overlayColor: overlayColor,
+          toggleable: toggleable,
+          visualDensity: visualDensity,
+          mouseCursor: value.isDisabled ? SystemMouseCursors.forbidden : null,
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          fillColor:
-              MaterialStateProperty.resolveWith((states) => currentColor),
+          fillColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.hovered)) {
+              return styler.checked?.onHover?.color;
+            }
+            return value.isInvalid
+                ? styler.onInvaild?.borderColor
+                : isChecked
+                    ? styler.checked?.color
+                    : null;
+          }),
           splashRadius: 0.0,
           value: value.value,
           groupValue: value.groupValue,

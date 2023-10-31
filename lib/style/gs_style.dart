@@ -70,14 +70,24 @@ class GSSize {
   });
   factory GSSize.fromMap({required Map<String, dynamic>? data}) {
     return GSSize(
-      lg: GSStyle.fromMap(
-        data: data?['lg'],
-        fromVariant: true,
-      ),
-      md: GSStyle.fromMap(data: data?['md'], fromVariant: true),
-      sm: GSStyle.fromMap(data: data?['sm'], fromVariant: true),
-      xl: GSStyle.fromMap(data: data?['xl'], fromVariant: true),
-      xs: GSStyle.fromMap(data: data?['xs'], fromVariant: true),
+      lg: data?['lg'] != null
+          ? GSStyle.fromMap(
+              data: data?['lg'],
+              fromVariant: true,
+            )
+          : null,
+      md: data?['md'] != null
+          ? GSStyle.fromMap(data: data?['md'], fromVariant: true)
+          : null,
+      sm: data?['sm'] != null
+          ? GSStyle.fromMap(data: data?['sm'], fromVariant: true)
+          : null,
+      xl: data?['xl'] != null
+          ? GSStyle.fromMap(data: data?['xl'], fromVariant: true)
+          : null,
+      xs: data?['xs'] != null
+          ? GSStyle.fromMap(data: data?['xs'], fromVariant: true)
+          : null,
     );
   }
 }
@@ -193,7 +203,6 @@ class GSStyle extends BaseStyle<GSStyle> {
 
   @override
   merge(overrideStyle) {
-  
     return GSStyle(
       borderColor: overrideStyle?.borderColor ?? borderColor,
       borderRadius: overrideStyle?.borderRadius ?? borderRadius,
@@ -294,8 +303,8 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
       ),
       onInvaild: GSStyle(
-        borderColor:resolveColorFromString( data?[':invalid']?['borderColor'])
-      ),
+          borderColor:
+              resolveColorFromString(data?[':invalid']?['borderColor'])),
       dark: GSStyle(
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(

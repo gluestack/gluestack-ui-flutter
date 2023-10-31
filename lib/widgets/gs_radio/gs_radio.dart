@@ -3,7 +3,6 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_style.dart';
 
-
 /*
 
 what is achieved so far
@@ -21,9 +20,6 @@ what is pending
     3) passing props to children
 
 */
-
-
-
 
 class GSRadio<T> extends StatefulWidget {
   final GSSizes? size;
@@ -61,11 +57,12 @@ class _GSRadioState<T> extends State<GSRadio<T>> {
     isHovered = widget.isHovered;
     super.initState();
   }
+  
 
   @override
   Widget build(BuildContext context) {
     final radioSize = widget.size ?? radioStyle.props!.size!;
-
+  
     return FocusableActionDetector(
       mouseCursor: widget.isDisabled
           ? SystemMouseCursors.forbidden
