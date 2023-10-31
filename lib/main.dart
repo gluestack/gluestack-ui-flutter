@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-import 'package:gluestack_flutter_pro/token/color_token.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_token.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_radio_icon/gs_radio_icon.dart';
+
+import 'package:gluestack_flutter_pro/widgets/gs_radio_text/gs_radio_text.dart';
 import 'package:provider/provider.dart';
 
 import 'token/index.dart';
@@ -32,6 +37,7 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                const RadioExample(),
                 GSButton(
                   action: GSActions.negative,
                   variant: GSVariants.solid,
@@ -61,6 +67,32 @@ class MyApp extends StatelessWidget {
                   ),
                   child: const GSButtonText(text: "Click Here"),
                 ),
+                //  GSRadio(icon: GSRadioIcon(value: 'value', groupValue: 'd', onChanged: (p0) =>false ,),label:const GSRadioText(text: 'hello world'),),
+
+                // GSButton(
+                //   action: GSButtonAction.secondary,
+                //   variant: GSButtonVariant.outline,
+                //   size: GSButtonSize.lg,
+                //   onPressed: () {},
+                //   style: GSStyle(
+                //     xs: GSStyle(
+                //       bg: $GSColors.purple400,
+                //     ),
+                //     lg: GSStyle(
+                //       bg: $GSColors.warning800,
+                //     ),
+                //     dark: GSStyle(
+                //       bg: $GSColors.blueGray700,
+                //       sm: GSStyle(
+                //         bg: $GSColors.amber300,
+                //       ),
+                //       md: GSStyle(
+                //         bg: $GSColors.green400,
+                //       ),
+                //     ),
+                //   ),
+                //   child: const GSButtonText(text: "Click Here"),
+                // ),
                 // GSInput(
                 //   size: GSInputSize.xl,
                 //   variant: GSInputVariant.rounded,
@@ -121,5 +153,80 @@ class MyApp extends StatelessWidget {
         ),
       );
     });
+  }
+}
+
+class RadioExample extends StatefulWidget {
+  const RadioExample({super.key});
+
+  @override
+  State<RadioExample> createState() => _RadioExampleState();
+}
+
+enum Value { one, two, three, four }
+
+class _RadioExampleState extends State<RadioExample> {
+  Value groupValue = Value.one;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        GSRadio<Value>(
+          style: GSStyle(
+            checked: GSStyle(
+              color: $GSColors.purple500,
+              onHover: GSStyle(
+                color: $GSColors.pink300,
+              )
+            ),
+          ),
+          value: Value.one,
+          groupValue: groupValue,
+          onChanged: (p0) {
+            setState(() {
+              groupValue = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSRadioText<Value>(text: 'text1'),
+        ),
+        GSRadio<Value>(
+        
+          isInvalid: true,
+          value: Value.two,
+          groupValue: groupValue,
+          onChanged: (p0) {
+            setState(() {
+              groupValue = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSRadioText<Value>(text: 'text2'),
+        ),
+        GSRadio<Value>(
+            isDisabled: true,
+          value: Value.three,
+          groupValue: groupValue,
+          onChanged: (p0) {
+            setState(() {
+              groupValue = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSRadioText<Value>(text: 'text3'),
+        ),
+        GSRadio<Value>(
+          value: Value.four,
+          groupValue: groupValue,
+          onChanged: (p0) {
+            setState(() {
+              groupValue = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSRadioText<Value>(text: 'text4'),
+        ),
+      ],
+    );
   }
 }
