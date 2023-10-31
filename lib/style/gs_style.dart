@@ -214,11 +214,27 @@ class GSStyle extends BaseStyle<GSStyle> {
       icon: overrideStyle?.icon ?? icon,
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
-      onDisabled: overrideStyle?.onDisabled ?? onDisabled,
-      onInvaild: overrideStyle?.onInvaild ?? onInvaild,
-      onFocus: overrideStyle?.onFocus ?? onFocus,
-      onHover: overrideStyle?.onHover ?? onHover,
-      onActive: overrideStyle?.onActive ?? onActive,
+
+      onFocus: onFocus != null
+          ? onFocus?.merge(overrideStyle?.onFocus)
+          : overrideStyle?.onFocus,
+      onHover: onHover != null
+          ? onHover?.merge(overrideStyle?.onHover)
+          : overrideStyle?.onHover,
+      onActive: onActive != null
+          ? onActive?.merge(overrideStyle?.onActive)
+          : overrideStyle?.onActive,
+      onDisabled: onDisabled != null
+          ? onDisabled?.merge(overrideStyle?.onDisabled)
+          : overrideStyle?.onDisabled,
+      onInvaild: onInvaild != null
+          ? onInvaild?.merge(overrideStyle?.onInvaild)
+          : overrideStyle?.onInvaild,
+      // onDisabled: overrideStyle?.onDisabled ?? onDisabled,
+      // onInvaild: overrideStyle?.onInvaild ?? onInvaild,
+      // onFocus: overrideStyle?.onFocus?.merge(onFocus) ?? onFocus,
+      // onHover: overrideStyle?.onHover?.merge(onHover) ?? onHover,
+      // onActive: overrideStyle?.onActive ?? onActive,
       opacity: overrideStyle?.opacity ?? opacity,
       checked: overrideStyle?.checked ?? checked,
       outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
@@ -267,6 +283,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderRadius: data?['borderRadius'] != null
           ? resolveRadiusFromString(data?['borderRadius'].toString())
           : null,
+      borderBottomWidth: data?['borderBottomWidth'] != null
+          ? resolveBorderWidthFromString(data?['borderBottomWidth'].toString())
+          : null,
       checked: GSStyle(
           color: resolveColorFromString(data?[':checked']?['color']),
           onHover: GSStyle(
@@ -284,6 +303,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       onFocus: GSStyle(
         borderColor: resolveColorFromString(data?[':focus']?['borderColor']),
+        bg: resolveColorFromString(data?[':focus']?['bg']),
+        borderBottomColor:
+            resolveColorFromString(data?[':focus']?['borderBottomColor']),
         onHover: GSStyle(
           borderBottomColor: resolveColorFromString(
             data?[':focus']?[':hover']?['borderColor'],
@@ -293,6 +315,32 @@ class GSStyle extends BaseStyle<GSStyle> {
       onActive: GSStyle(
         bg: resolveColorFromString(data?[':active']?['bg']),
         borderColor: resolveColorFromString(data?[':active']?['borderColor']),
+        borderBottomColor:
+            resolveColorFromString(data?[':active']?['borderBottomColor']),
+      ),
+      onInvaild: GSStyle(
+        bg: resolveColorFromString(data?[':invalid']?['bg']),
+        borderColor: resolveColorFromString(data?[':invalid']?['borderColor']),
+        borderBottomColor:
+            resolveColorFromString(data?[':invalid']?['borderBottomColor']),
+        onHover: GSStyle(
+          borderColor: resolveColorFromString(
+              data?[':invalid']?[':hover']?['borderColor']),
+          borderBottomColor: resolveColorFromString(
+              data?[':invalid']?[':hover']?['borderBottomColor']),
+        ),
+        onFocus: GSStyle(
+          borderColor: resolveColorFromString(
+              data?[':invalid']?[':focus']?['borderColor']),
+          borderBottomColor: resolveColorFromString(
+              data?[':invalid']?[':focus']?['borderBottomColor']),
+        ),
+        onDisabled: GSStyle(
+          borderColor: resolveColorFromString(
+              data?[':invalid']?[':disabled']?[':hover']?['borderColor']),
+          borderBottomColor: resolveColorFromString(
+              data?[':invalid']?[':disabled']?[':hover']?['borderBottomColor']),
+        ),
       ),
       onDisabled: GSStyle(
         opacity: data?[':disabled']?['opacity'],
@@ -302,9 +350,6 @@ class GSStyle extends BaseStyle<GSStyle> {
           ),
         ),
       ),
-      onInvaild: GSStyle(
-          borderColor:
-              resolveColorFromString(data?[':invalid']?['borderColor'])),
       dark: GSStyle(
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(

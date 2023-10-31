@@ -236,5 +236,5 @@ const Map<String, dynamic> inputData = {
       }
     }
   },
-  "defaultProps": {"size": "md", "variant": "outline"}
+  "props": {"size": "md", "variant": "outline"}
 };

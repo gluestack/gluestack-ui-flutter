@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
-
-import 'package:gluestack_flutter_pro/widgets/gs_button_text/gs_button_text.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio_icon/gs_radio_icon.dart';
 
@@ -37,86 +33,66 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                const RadioExample(),
-                GSButton(
-                  action: GSActions.negative,
-                  variant: GSVariants.solid,
-                  size: GSSizes.lg,
-                  onPressed: () {},
-                  style: GSStyle(
-                    web: GSStyle(
-                      bg: $GSColors.amber600,
-                    ),
-                    ios: GSStyle(
-                      bg: $GSColors.pink600,
-                    ),
-                    md: GSStyle(
-                      bg: $GSColors.pink400,
-                      onHover: GSStyle(
-                        bg: $GSColors.green400,
-                      ),
-                      onFocus: GSStyle(
-                        bg: $GSColors.blueGray600,
-                      ),
-                      onActive: GSStyle(
-                        bg: $GSColors.amber600,
-                        borderColor: $GSColors.error500,
-                        borderWidth: $GSBorderWidth.$4,
-                      ),
-                    ),
-                  ),
-                  child: const GSButtonText(text: "Click Here"),
-                ),
-                //  GSRadio(icon: GSRadioIcon(value: 'value', groupValue: 'd', onChanged: (p0) =>false ,),label:const GSRadioText(text: 'hello world'),),
-
                 // GSButton(
-                //   action: GSButtonAction.secondary,
-                //   variant: GSButtonVariant.outline,
-                //   size: GSButtonSize.lg,
+                //   action: GSActions.negative,
+                //   variant: GSVariants.solid,
+                //   size: GSSizes.lg,
+                //   // isDisabled: true,
                 //   onPressed: () {},
                 //   style: GSStyle(
-                //     xs: GSStyle(
-                //       bg: $GSColors.purple400,
+                //     web: GSStyle(
+                //         // bg: $GSColors.amber600,
+                //         ),
+                //     ios: GSStyle(
+                //       bg: $GSColors.pink600,
                 //     ),
-                //     lg: GSStyle(
-                //       bg: $GSColors.warning800,
+                //     onHover: GSStyle(
+                //       bg: $GSColors.green400,
                 //     ),
-                //     dark: GSStyle(
-                //       bg: $GSColors.blueGray700,
-                //       sm: GSStyle(
-                //         bg: $GSColors.amber300,
-                //       ),
-                //       md: GSStyle(
-                //         bg: $GSColors.green400,
-                //       ),
-                //     ),
+                //     // md: GSStyle(
+                //     //   bg: $GSColors.pink400,
+
+                //     //   onFocus: GSStyle(
+                //     //     bg: $GSColors.blueGray600,
+                //     //   ),
+                //     //   onActive: GSStyle(
+                //     //     bg: $GSColors.amber600,
+                //     //     borderColor: $GSColors.error500,
+                //     //     borderWidth: $GSBorderWidth.$4,
+                //     //   ),
+                //     //   onDisabled: GSStyle(bg: $GSColors.purple800),
+                //     // ),
                 //   ),
                 //   child: const GSButtonText(text: "Click Here"),
                 // ),
-                // GSInput(
-                //   size: GSInputSize.xl,
-                //   variant: GSInputVariant.rounded,
-                //   hintText: "Enter Text Here",
-                //   enabled: true,
-                //   style: GSStyle(
-                //     width: 200,
-                //     xs: GSStyle(
-                //       borderColor: $GSColors.purple400,
-                //     ),
-                //     lg: GSStyle(
-                //       borderColor: $GSColors.warning800,
-                //     ),
-                //     dark: GSStyle(
-                //       borderColor: $GSColors.blueGray700,
-                //       sm: GSStyle(
-                //         borderColor: $GSColors.amber300,
-                //       ),
-                //       md: GSStyle(
-                //         borderColor: $GSColors.green400,
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                GSInput(
+                  size: GSSizes.xl,
+                  variant: GSVariants.outline,
+                  hintText: "Enter text here",
+                  // isDisabled: true,
+                  // isInvalid: true,
+                  style: GSStyle(
+                    width: 300,
+                    borderColor: $GSColors.pink500,
+                    onFocus: GSStyle(
+                      borderColor: $GSColors.purple800,
+                      borderWidth: $GSBorderWidth.$2,
+                      borderBottomWidth: $GSBorderWidth.$2,
+                    ),
+                    onHover: GSStyle(
+                      borderColor: $GSColors.green600,
+                      borderWidth: $GSBorderWidth.$4,
+                      borderBottomWidth: $GSBorderWidth.$4,
+                    ),
+                    xs: GSStyle(
+                      borderColor: $GSColors.purple400,
+                    ),
+                    dark: GSStyle(
+                      borderColor: $GSColors.warmGray900,
+                      borderWidth: $GSBorderWidth.$8,
+                    ),
+                  ),
+                ),
                 // GSBox(
                 //   style: StyleData(
                 //     context,
@@ -174,11 +150,10 @@ class _RadioExampleState extends State<RadioExample> {
         GSRadio<Value>(
           style: GSStyle(
             checked: GSStyle(
-              color: $GSColors.purple500,
-              onHover: GSStyle(
-                color: $GSColors.pink300,
-              )
-            ),
+                color: $GSColors.purple500,
+                onHover: GSStyle(
+                  color: $GSColors.pink300,
+                )),
           ),
           value: Value.one,
           groupValue: groupValue,
@@ -191,7 +166,6 @@ class _RadioExampleState extends State<RadioExample> {
           label: const GSRadioText<Value>(text: 'text1'),
         ),
         GSRadio<Value>(
-        
           isInvalid: true,
           value: Value.two,
           groupValue: groupValue,
@@ -204,7 +178,7 @@ class _RadioExampleState extends State<RadioExample> {
           label: const GSRadioText<Value>(text: 'text2'),
         ),
         GSRadio<Value>(
-            isDisabled: true,
+          isDisabled: true,
           value: Value.three,
           groupValue: groupValue,
           onChanged: (p0) {
