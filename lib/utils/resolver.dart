@@ -118,3 +118,29 @@ GSSizes? resolveSizesFromString(String? size) {
       return null;
   }
 }
+
+GSSpaces? resolveSpacesFromString(String? space) {
+  if (space == null) {
+    return null;
+  }
+  switch (space) {
+    case 'xs':
+      return GSSpaces.xs;
+    case 'sm':
+      return GSSpaces.sm;
+    case 'md':
+      return GSSpaces.md;
+    case 'lg':
+      return GSSpaces.lg;
+    case 'xl':
+      return GSSpaces.xl;
+    case '2xl':
+      return GSSpaces.$2xl;
+    case '3xl':
+      return GSSpaces.$3xl;
+    case '4xl':
+      return GSSpaces.$4xl;
+    default:
+      return null;
+  }
+}

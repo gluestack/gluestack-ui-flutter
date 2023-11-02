@@ -1,5 +1,5 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme/config/input.dart';
+import 'package:gluestack_flutter_pro/theme/config/input/input.dart';
 
 GSStyle inputStyle = GSStyle.fromMap(data: inputData);
 GSStyle baseStyle = GSStyle(
