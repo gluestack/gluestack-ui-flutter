@@ -57,17 +57,22 @@ class _GSRadioState<T> extends State<GSRadio<T>> {
     isHovered = widget.isHovered;
     super.initState();
   }
-  
 
   @override
   Widget build(BuildContext context) {
     final radioSize = widget.size ?? radioStyle.props!.size!;
-  
-    return FocusableActionDetector(
+
+    return InkWell(
+      hoverColor: Colors.transparent,
       mouseCursor: widget.isDisabled
           ? SystemMouseCursors.forbidden
           : SystemMouseCursors.click,
-      onShowHoverHighlight: (value) {
+      onTap: () {
+        if (!widget.isDisabled && widget.value != widget.groupValue) {
+          widget.onChanged!.call(widget.value);
+        }
+      },
+      onHover: (value) {
         if (value != isHovered) {
           setState(() {
             isHovered = value;
@@ -77,7 +82,7 @@ class _GSRadioState<T> extends State<GSRadio<T>> {
       child: GSRadioProvider<T>(
           value: widget.value,
           groupValue: widget.groupValue,
-          onChanged: widget.onChanged,
+          onChanged: null,
           isHovered: isHovered,
           size: radioSize,
           style: widget.style,
