@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector_proider.dart';
 
 class GSFocusableActionDetector extends StatefulWidget {
   final Widget child;
@@ -21,7 +22,9 @@ class _GSFocusableActionDetectorState extends State<GSFocusableActionDetector> {
 
   @override
   Widget build(BuildContext context) {
+
     return FocusableActionDetector(
+   
         onFocusChange: (value) {
           if (isFocused != value) {
             setState(() {
@@ -36,6 +39,9 @@ class _GSFocusableActionDetectorState extends State<GSFocusableActionDetector> {
             });
           }
         },
-        child: widget.child);
+        child: GSFocusableActionDetectorProvider(
+            focusStatus: isFocused,
+            hoverStatus: isHovered,
+            child: widget.child));
   }
 }
