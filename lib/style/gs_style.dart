@@ -236,7 +236,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       // onHover: overrideStyle?.onHover?.merge(onHover) ?? onHover,
       // onActive: overrideStyle?.onActive ?? onActive,
       opacity: overrideStyle?.opacity ?? opacity,
-      checked: overrideStyle?.checked ?? checked,
+      checked: checked!=null?checked?.merge(overrideStyle?.checked):overrideStyle?.checked,
+      // checked: overrideStyle?.checked ?? checked,
       outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
       textStyle: overrideStyle?.textStyle != null
@@ -264,6 +265,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     required Map<String, dynamic>? data,
     bool fromVariant = false,
   }) {
+   
     return GSStyle(
       height: resolveSpaceFromString(
         data?['h'],

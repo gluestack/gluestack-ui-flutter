@@ -3,9 +3,9 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio_icon/gs_radio_icon.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_icon.dart';
 
-import 'package:gluestack_flutter_pro/widgets/gs_radio_text/gs_radio_text.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_text.dart';
 import 'package:provider/provider.dart';
 
 import 'token/index.dart';
@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+               const RadioExample(),
                 // GSButton(
                 //   action: GSActions.negative,
                 //   variant: GSVariants.solid,
