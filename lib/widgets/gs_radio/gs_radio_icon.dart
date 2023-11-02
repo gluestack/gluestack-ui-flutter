@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
-import 'package:gluestack_flutter_pro/theme/config/radio/radio_icon.dart';
-import 'package:gluestack_flutter_pro/theme/config/radio/radio_indicator.dart';
+
 
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_style.dart';
 
 class GSRadioIcon<T> extends StatelessWidget {
   final Color? activeColor;
@@ -29,8 +29,7 @@ class GSRadioIcon<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = GSRadioProvider.of<T>(context);
-    final radioIconStyle = GSStyle.fromMap(data: radioIconData);
-    final radioIndicatorStyle = GSStyle.fromMap(data: radioIndicatorData);
+   
     final bool isChecked = value!.value == value.groupValue;
     GSStyle styler = resolveStyles(
       variantStyle: radioIconStyle.merge(radioIndicatorStyle),
@@ -64,7 +63,7 @@ class GSRadioIcon<T> extends StatelessWidget {
           splashRadius: 0.0,
           value: value.value,
           groupValue: value.groupValue,
-          onChanged: value.isDisabled ? null : value.onChanged),
+          onChanged: value.onChanged),
     );
   }
 }

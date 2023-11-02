@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
-import 'package:gluestack_flutter_pro/theme/config/radio/radio_label.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
 import 'gs_radio_style.dart';
 
@@ -15,7 +14,7 @@ class GSRadioText<T> extends StatelessWidget {
     final value = GSRadioProvider.of<T>(context);
     final bool isChecked = value!.value == value.groupValue;
     final fontSize = GSRadioTextStyle.labelSize[value.size];
-    final GSStyle radioLabelStyle = GSStyle.fromMap(data: radioLabelData);
+
     GSStyle styler = resolveStyles(
       variantStyle: radioLabelStyle,
       context,
