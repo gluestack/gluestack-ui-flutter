@@ -26,12 +26,10 @@ class GSRadioText<T> extends StatelessWidget {
 
     final currentHoverColor =
         isChecked ? styler.checked?.onHover?.color : styler.onHover?.color;
-
+    final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final currentTextStyle = TextStyle(
       fontSize: textStyle?.fontSize ?? fontSize,
-      color: GSFocusableActionDetectorProvider.isHovered(context)
-          ? currentHoverColor
-          : textStyle?.color ?? fontColor,
+      color: isHovered ? currentHoverColor : textStyle?.color ?? fontColor,
     );
     return Opacity(
       opacity: value.isDisabled ? styler.onDisabled!.opacity! : 1,

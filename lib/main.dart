@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               children: [
                const RadioExample(),
                 
-                GSFocusableActionDetector(child:Text('d')),
+           
                 
                 // GSButton(
                 //   action: GSActions.negative,

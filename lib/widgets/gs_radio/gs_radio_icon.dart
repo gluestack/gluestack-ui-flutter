@@ -29,7 +29,7 @@ class GSRadioIcon<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = GSRadioProvider.of<T>(context);
-
+    final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final bool isChecked = value!.value == value.groupValue;
     GSStyle styler = resolveStyles(
       variantStyle: radioIconStyle.merge(radioIndicatorStyle),
@@ -48,12 +48,14 @@ class GSRadioIcon<T> extends StatelessWidget {
           overlayColor: overlayColor,
           toggleable: toggleable,
           visualDensity: visualDensity,
-          mouseCursor: value.isDisabled ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
+          mouseCursor: value.isDisabled
+              ? SystemMouseCursors.forbidden
+              : SystemMouseCursors.click,
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           fillColor: MaterialStateColor.resolveWith((states) {
             return value.isInvalid
                 ? styler.onInvaild!.borderColor!
-                : GSFocusableActionDetectorProvider.isHovered(context)
+                : isHovered
                     ? isChecked
                         ? styler.checked!.onHover!.color!
                         : styler.onHover!.borderColor!
