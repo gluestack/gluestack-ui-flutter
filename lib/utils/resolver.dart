@@ -62,59 +62,51 @@ double? resolveFontSizeFromString(String? fontSzie) {
 }
 
 GSActions? resolveActionFromString(String? action) {
-  if (action == null) {
-    return null;
-  }
-  switch (action) {
-    case 'primary':
-      return GSActions.primary;
-    case 'secondary':
-      return GSActions.secondary;
-    case 'positive':
-      return GSActions.positive;
-    case 'negative':
-      return GSActions.negative;
-    default:
-      return null;
-  }
+  const actionMap = {
+    'primary': GSActions.primary,
+    'secondary': GSActions.secondary,
+    'positive': GSActions.positive,
+    'negative': GSActions.negative,
+  };
+
+  return action != null ? actionMap[action] : null;
 }
 
 GSVariants? resolveVariantFromString(String? variant) {
-  if (variant == null) {
-    return null;
-  }
-  switch (variant) {
-    case 'solid':
-      return GSVariants.solid;
-    case 'outline':
-      return GSVariants.outline;
-    case 'rounded':
-      return GSVariants.rounded;
-    case 'underlined':
-      return GSVariants.underlined;
-    case 'link':
-      return GSVariants.link;
-    default:
-      return null;
-  }
+  const variantMap = {
+    'solid': GSVariants.solid,
+    'outline': GSVariants.outline,
+    'rounded': GSVariants.rounded,
+    'underlined': GSVariants.underlined,
+    'link': GSVariants.link,
+  };
+
+  return variant != null ? variantMap[variant] : null;
 }
 
 GSSizes? resolveSizesFromString(String? size) {
-  if (size == null) {
-    return null;
-  }
-  switch (size) {
-    case 'xs':
-      return GSSizes.xs;
-    case 'sm':
-      return GSSizes.sm;
-    case 'md':
-      return GSSizes.md;
-    case 'lg':
-      return GSSizes.lg;
-    case 'xl':
-      return GSSizes.xl;
-    default:
-      return null;
-  }
+  const sizeMap = {
+    'xs': GSSizes.xs,
+    'sm': GSSizes.sm,
+    'md': GSSizes.md,
+    'lg': GSSizes.lg,
+    'xl': GSSizes.xl,
+  };
+
+  return size != null ? sizeMap[size] : null;
+}
+
+GSSpaces? resolveSpacesFromString(String? space) {
+  const spaceMap = {
+    'xs': GSSpaces.xs,
+    'sm': GSSpaces.sm,
+    'md': GSSpaces.md,
+    'lg': GSSpaces.lg,
+    'xl': GSSpaces.xl,
+    '2xl': GSSpaces.$2xl,
+    '3xl': GSSpaces.$3xl,
+    '4xl': GSSpaces.$4xl,
+  };
+
+  return space != null ? spaceMap[space] : null;
 }
