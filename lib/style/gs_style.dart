@@ -210,11 +210,9 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? color;
   Color? bg;
   double? gap;
-
   Color? borderBottomColor;
   double? height;
   double? width;
-
   double? outlineWidth;
   String? outlineStyle;
   double? borderBottomWidth;
