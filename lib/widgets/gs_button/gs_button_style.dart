@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme/config/button.dart';
+import 'package:gluestack_flutter_pro/theme/config/button/button.dart';
 
 GSStyle buttonStyle = GSStyle.fromMap(data: buttonData);
 GSStyle baseStyle = GSStyle(
