@@ -56,7 +56,8 @@ class GSButton extends StatelessWidget {
       size: GSButtonStyle.size[buttonSize]!,
       inlineStyle: style,
     )!;
-
+    // print(GSButtonStyle
+    //     .gsButtonCombination[buttonAction]![buttonVariant]?.textStyle);
     return GSButtonProvider(
       action: buttonAction!,
       variant: buttonVariant!,
@@ -176,7 +177,12 @@ class GSButton extends StatelessWidget {
                 );
               }),
             ),
-            child: child,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                child,
+              ],
+            ),
           ),
         ),
       ),

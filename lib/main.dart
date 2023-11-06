@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
                       decoration: TextDecoration.underline,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

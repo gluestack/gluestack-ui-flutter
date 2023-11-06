@@ -15,94 +15,85 @@ GSStyle compoundVariants = GSStyle(
       primary: GSStyle(
         variants: Variants(
           variant: GSVariant(
-              solid: baseStyle
-                  .merge(buttonStyle.variants?.action?.primary)
-                  .merge(buttonStyle.variants?.variant?.solid)
-                  .merge(
-                      GSStyle(textStyle: const TextStyle(color: Colors.white))),
-              outline: baseStyle
-                  .merge(buttonStyle.variants?.action?.primary)
-                  .merge(buttonStyle.variants?.variant?.outline)
-                  .merge(GSStyle(
-                      textStyle: TextStyle(
-                          color: buttonStyle.variants?.action?.primary?.bg))),
-              link: baseStyle
-                  .merge(buttonStyle.variants?.action?.primary)
-                  .merge(buttonStyle.variants?.variant?.link)
-                  .merge(buttonStyle.variants?.action?.defaultStyle)
-                  .merge(GSStyle(
-                      textStyle: TextStyle(
-                          color: buttonStyle.variants?.action?.primary?.bg)))),
+            solid: baseStyle
+                .merge(buttonStyle.variants?.action?.primary)
+                .merge(buttonStyle.variants?.variant?.solid)
+                .merge(GSStyle(
+                  textStyle: TextStyle(color: buttonStyle.textStyle?.color),
+                  iconColor: buttonStyle.iconColor,
+                  spinnerColor: buttonStyle.spinnerColor,
+                )),
+            outline: baseStyle
+                .merge(buttonStyle.variants?.action?.primary)
+                .merge(buttonStyle.variants?.variant?.outline),
+            link: baseStyle
+                .merge(buttonStyle.variants?.action?.primary)
+                .merge(buttonStyle.variants?.variant?.link)
+                .merge(buttonStyle.variants?.action?.defaultStyle),
+          ),
         ),
       ),
       secondary: GSStyle(
         variants: Variants(
           variant: GSVariant(
-              solid: baseStyle
-                  .merge(buttonStyle.variants?.action?.secondary)
-                  .merge(buttonStyle.variants?.variant?.solid)
-                  .merge(
-                      GSStyle(textStyle: const TextStyle(color: Colors.white))),
-              outline: baseStyle
-                  .merge(buttonStyle.variants?.action?.secondary)
-                  .merge(buttonStyle.variants?.variant?.outline)
-                  .merge(GSStyle(
-                      textStyle: TextStyle(
-                          color: buttonStyle.variants?.action?.secondary?.bg))),
-              link: baseStyle
-                  .merge(buttonStyle.variants?.action?.secondary)
-                  .merge(buttonStyle.variants?.variant?.link)
-                  .merge(buttonStyle.variants?.action?.defaultStyle)
-                  .merge(GSStyle(
-                      textStyle: TextStyle(
-                          color:
-                              buttonStyle.variants?.action?.secondary?.bg)))),
+            solid: baseStyle
+                .merge(buttonStyle.variants?.action?.secondary)
+                .merge(buttonStyle.variants?.variant?.solid)
+                .merge(GSStyle(
+                  textStyle: TextStyle(color: buttonStyle.textStyle?.color),
+                  iconColor: buttonStyle.iconColor,
+                  spinnerColor: buttonStyle.spinnerColor,
+                )),
+            outline: baseStyle
+                .merge(buttonStyle.variants?.action?.secondary)
+                .merge(buttonStyle.variants?.variant?.outline),
+            link: baseStyle
+                .merge(buttonStyle.variants?.action?.secondary)
+                .merge(buttonStyle.variants?.variant?.link)
+                .merge(buttonStyle.variants?.action?.defaultStyle),
+          ),
         ),
       ),
       positive: GSStyle(
         variants: Variants(
           variant: GSVariant(
-              solid: baseStyle
-                  .merge(buttonStyle.variants?.action?.positive)
-                  .merge(buttonStyle.variants?.variant?.solid)
-                  .merge(
-                      GSStyle(textStyle: const TextStyle(color: Colors.white))),
-              outline: baseStyle
-                  .merge(buttonStyle.variants?.action?.positive)
-                  .merge(buttonStyle.variants?.variant?.outline)
-                  .merge(GSStyle(
-                      textStyle: TextStyle(
-                          color: buttonStyle.variants?.action?.positive?.bg))),
-              link: baseStyle
-                  .merge(buttonStyle.variants?.action?.positive)
-                  .merge(buttonStyle.variants?.variant?.link)
-                  .merge(buttonStyle.variants?.action?.defaultStyle)
-                  .merge(GSStyle(
-                      textStyle: TextStyle(
-                          color: buttonStyle.variants?.action?.positive?.bg)))),
+            solid: baseStyle
+                .merge(buttonStyle.variants?.action?.positive)
+                .merge(buttonStyle.variants?.variant?.solid)
+                .merge(GSStyle(
+                  textStyle: TextStyle(color: buttonStyle.textStyle?.color),
+                  iconColor: buttonStyle.iconColor,
+                  spinnerColor: buttonStyle.spinnerColor,
+                )),
+            outline: baseStyle
+                .merge(buttonStyle.variants?.action?.positive)
+                .merge(buttonStyle.variants?.variant?.outline),
+            link: baseStyle
+                .merge(buttonStyle.variants?.action?.positive)
+                .merge(buttonStyle.variants?.variant?.link)
+                .merge(buttonStyle.variants?.action?.defaultStyle),
+          ),
         ),
       ),
       negative: GSStyle(
         variants: Variants(
           variant: GSVariant(
-              solid: baseStyle
-                  .merge(buttonStyle.variants?.action?.negative)
-                  .merge(buttonStyle.variants?.variant?.solid)
-                  .merge(
-                      GSStyle(textStyle: const TextStyle(color: Colors.white))),
-              outline: baseStyle
-                  .merge(buttonStyle.variants?.action?.negative)
-                  .merge(buttonStyle.variants?.variant?.outline)
-                  .merge(GSStyle(
-                      textStyle: TextStyle(
-                          color: buttonStyle.variants?.action?.negative?.bg))),
-              link: baseStyle
-                  .merge(buttonStyle.variants?.action?.negative)
-                  .merge(buttonStyle.variants?.variant?.link)
-                  .merge(buttonStyle.variants?.action?.defaultStyle)
-                  .merge(GSStyle(
-                      textStyle: TextStyle(
-                          color: buttonStyle.variants?.action?.negative?.bg)))),
+            solid: baseStyle
+                .merge(buttonStyle.variants?.action?.negative)
+                .merge(buttonStyle.variants?.variant?.solid)
+                .merge(GSStyle(
+                  textStyle: TextStyle(color: buttonStyle.textStyle?.color),
+                  iconColor: buttonStyle.iconColor,
+                  spinnerColor: buttonStyle.spinnerColor,
+                )),
+            outline: baseStyle
+                .merge(buttonStyle.variants?.action?.negative)
+                .merge(buttonStyle.variants?.variant?.outline),
+            link: baseStyle
+                .merge(buttonStyle.variants?.action?.negative)
+                .merge(buttonStyle.variants?.variant?.link)
+                .merge(buttonStyle.variants?.action?.defaultStyle),
+          ),
         ),
       ),
     ),
