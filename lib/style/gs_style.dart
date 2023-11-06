@@ -6,7 +6,7 @@ enum GSActions { primary, secondary, positive, negative }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
-enum GSSizes { xs, sm, md, lg, xl }
+enum GSSizes { xxs, xs, sm, md, lg, xl, xxl, xxxl, xxxxl, xxxxxl, xxxxxxxl }
 
 class GSProps {
   GSActions? action;
@@ -55,11 +55,17 @@ class GSVariant {
 }
 
 class GSSize {
+  GSStyle? xxs;
   GSStyle? xs;
   GSStyle? sm;
   GSStyle? md;
   GSStyle? lg;
   GSStyle? xl;
+  GSStyle? xxl;
+  GSStyle? xxxl;
+  GSStyle? xxxxl;
+  GSStyle? xxxxxl;
+  GSStyle? xxxxxxl;
 
   GSSize({
     this.xs,
@@ -67,6 +73,12 @@ class GSSize {
     this.md,
     this.lg,
     this.xl,
+    this.xxl,
+    this.xxs,
+    this.xxxl,
+    this.xxxxl,
+    this.xxxxxl,
+    this.xxxxxxl,
   });
   factory GSSize.fromMap({required Map<String, dynamic>? data}) {
     return GSSize(
@@ -87,6 +99,24 @@ class GSSize {
           : null,
       xs: data?['xs'] != null
           ? GSStyle.fromMap(data: data?['xs'], fromVariant: true)
+          : null,
+      xxl: data?['2xl'] != null
+          ? GSStyle.fromMap(data: data?['2xl'], fromVariant: true)
+          : null,
+      xxs: data?['2xs'] != null
+          ? GSStyle.fromMap(data: data?['2xs'], fromVariant: true)
+          : null,
+      xxxl: data?['3xl'] != null
+          ? GSStyle.fromMap(data: data?['3xl'], fromVariant: true)
+          : null,
+      xxxxl: data?['4xl'] != null
+          ? GSStyle.fromMap(data: data?['4xl'], fromVariant: true)
+          : null,
+      xxxxxl: data?['5xl'] != null
+          ? GSStyle.fromMap(data: data?['5xl'], fromVariant: true)
+          : null,
+      xxxxxxl: data?['6xl'] != null
+          ? GSStyle.fromMap(data: data?['6xl'], fromVariant: true)
           : null,
     );
   }
@@ -236,7 +266,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       // onHover: overrideStyle?.onHover?.merge(onHover) ?? onHover,
       // onActive: overrideStyle?.onActive ?? onActive,
       opacity: overrideStyle?.opacity ?? opacity,
-      checked: checked!=null?checked?.merge(overrideStyle?.checked):overrideStyle?.checked,
+      checked: checked != null
+          ? checked?.merge(overrideStyle?.checked)
+          : overrideStyle?.checked,
       // checked: overrideStyle?.checked ?? checked,
       outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
@@ -271,7 +303,9 @@ class GSStyle extends BaseStyle<GSStyle> {
         data?['h'],
       ),
       textStyle: TextStyle(
-        fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
+        fontSize: resolveFontSizeFromString(data?['fontSize']),
+        height: resolveFontSizeFromString(data?['lineHeight']),
+        // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
           data?['_text']?['color'],
         ),

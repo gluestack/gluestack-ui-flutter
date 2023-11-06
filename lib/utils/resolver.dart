@@ -54,9 +54,13 @@ double? resolveSpaceFromString(String? space) {
 }
 
 double? resolveFontSizeFromString(String? fontSzie) {
+
   if (fontSzie == null) {
     return null;
   }
+  if (fontSzie.contains('\$')) {
+      return $GSFontSize.fontMap[fontSzie.substring(1)]!;
+    }
 
   return $GSFontSize.fontMap[fontSzie];
 }
