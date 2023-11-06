@@ -6,7 +6,7 @@ class GSRadioProvider<T> extends InheritedWidget {
   final T value;
   final T groupValue;
   final void Function(T?)? onChanged;
-  final bool isHovered;
+
   final GSStyle? style;
   final bool isDisabled;
   final bool isInvalid;
@@ -14,7 +14,7 @@ class GSRadioProvider<T> extends InheritedWidget {
     super.key,
     required this.size,
     required this.groupValue,
-    required this.isHovered,
+
     required this.value,
     required this.onChanged,
     required this.isDisabled,
@@ -27,7 +27,7 @@ class GSRadioProvider<T> extends InheritedWidget {
   bool updateShouldNotify(GSRadioProvider oldWidget) {
     return size != oldWidget.size ||
         groupValue != oldWidget.groupValue ||
-        isHovered != oldWidget.isHovered ||
+
         isDisabled != oldWidget.isDisabled || isInvalid!=oldWidget.isInvalid;
   }
 

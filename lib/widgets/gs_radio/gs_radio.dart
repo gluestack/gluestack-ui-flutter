@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_style.dart';
 
@@ -21,13 +22,12 @@ what is pending
 
 */
 
-class GSRadio<T> extends StatefulWidget {
+class GSRadio<T> extends StatelessWidget {
   final GSSizes? size;
   final Widget icon;
   final Widget? label;
   final T value;
   final T groupValue;
-  final bool isHovered;
   final bool isDisabled;
   final bool isInvalid;
   final GSStyle? style;
@@ -40,58 +40,39 @@ class GSRadio<T> extends StatefulWidget {
       required this.value,
       required this.onChanged,
       this.style,
-      this.isHovered = false,
       this.isDisabled = false,
       this.isInvalid = false,
       this.label,
       this.size});
 
   @override
-  State<GSRadio<T>> createState() => _GSRadioState<T>();
-}
-
-class _GSRadioState<T> extends State<GSRadio<T>> {
-  late bool isHovered;
-  @override
-  void initState() {
-    isHovered = widget.isHovered;
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final radioSize = widget.size ?? radioStyle.props!.size!;
+    final radioSize = size ?? radioStyle.props!.size!;
 
-    return InkWell(
-      hoverColor: Colors.transparent,
-      mouseCursor: widget.isDisabled
-          ? SystemMouseCursors.forbidden
-          : SystemMouseCursors.click,
-      onTap: () {
-        if (!widget.isDisabled && widget.value != widget.groupValue) {
-          widget.onChanged!.call(widget.value);
-        }
-      },
-      onHover: (value) {
-        if (value != isHovered) {
-          setState(() {
-            isHovered = value;
-          });
-        }
-      },
-      child: GSRadioProvider<T>(
-          value: widget.value,
-          groupValue: widget.groupValue,
-          onChanged: null,
-          isHovered: isHovered,
-          size: radioSize,
-          style: widget.style,
-          isInvalid: widget.isInvalid,
-          isDisabled: widget.isDisabled,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [widget.icon, if (widget.label != null) widget.label!],
-          )),
+    return GSFocusableActionDetector(
+      child: InkWell(
+        hoverColor: Colors.transparent,
+        mouseCursor: isDisabled
+            ? SystemMouseCursors.forbidden
+            : SystemMouseCursors.click,
+        onTap: () {
+          if (!isDisabled && value != groupValue) {
+            onChanged!.call(value);
+          }
+        },
+        child: GSRadioProvider<T>(
+            value: value,
+            groupValue: groupValue,
+            onChanged: null,
+            size: radioSize,
+            style: style,
+            isInvalid: isInvalid,
+            isDisabled: isDisabled,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [icon, if (label != null) label!],
+            )),
+      ),
     );
   }
 }
