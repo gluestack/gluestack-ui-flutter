@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/example/button_example.dart';
+import 'package:gluestack_flutter_pro/example/image_example.dart';
 import 'package:gluestack_flutter_pro/example/input_example.dart';
 import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 
@@ -47,6 +48,23 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ),
+                
+                GestureDetector(
+                  onTap: () {
+                    navigatorKey.currentState!.push(MaterialPageRoute(
+                      builder: (context) => const ImageExample(),
+                    ));
+                  },
+                  child: const Text(
+                    'GS Image',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+
                 GestureDetector(
                   onTap: () {
                     navigatorKey.currentState!.push(MaterialPageRoute(

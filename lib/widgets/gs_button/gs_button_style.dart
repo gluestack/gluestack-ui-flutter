@@ -147,9 +147,9 @@ class GSButtonStyle {
   };
 
   static Map<GSSizes, GSStyle> size = {
-    GSSizes.xs: compoundVariants.variants!.size!.xs!,
-    GSSizes.sm: compoundVariants.variants!.size!.sm!,
-    GSSizes.md: compoundVariants.variants!.size!.md!,
-    GSSizes.lg: compoundVariants.variants!.size!.lg!,
+    GSSizes.$xs: compoundVariants.variants!.size!.$xs!,
+    GSSizes.$sm: compoundVariants.variants!.size!.$sm!,
+    GSSizes.$md: compoundVariants.variants!.size!.$md!,
+    GSSizes.$lg: compoundVariants.variants!.size!.$lg!,
   };
 }

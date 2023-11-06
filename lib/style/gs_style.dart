@@ -6,11 +6,11 @@ enum GSActions { primary, secondary, positive, negative }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
-enum GSSizes { xs, sm, md, lg, xl }
+enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl }
 
 enum GSDirection { row, column }
 
-enum GSSpaces { xs, sm, md, lg, xl, $2xl, $3xl, $4xl }
+enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 class GSProps {
   GSActions? action;
@@ -61,38 +61,41 @@ class GSVariant {
 }
 
 class GSSize {
-  GSStyle? xs;
-  GSStyle? sm;
-  GSStyle? md;
-  GSStyle? lg;
-  GSStyle? xl;
+  GSStyle? $xs;
+  GSStyle? $sm;
+  GSStyle? $md;
+  GSStyle? $lg;
+  GSStyle? $xl;
+  GSStyle? $2xs;
+  GSStyle? $2xl;
 
-  GSSize({
-    this.xs,
-    this.sm,
-    this.md,
-    this.lg,
-    this.xl,
-  });
+  GSSize(
+      {this.$xs, this.$sm, this.$md, this.$lg, this.$xl, this.$2xl, this.$2xs});
   factory GSSize.fromMap({required Map<String, dynamic>? data}) {
     return GSSize(
-      lg: data?['lg'] != null
+      $lg: data?['lg'] != null
           ? GSStyle.fromMap(
               data: data?['lg'],
               fromVariant: true,
             )
           : null,
-      md: data?['md'] != null
+      $md: data?['md'] != null
           ? GSStyle.fromMap(data: data?['md'], fromVariant: true)
           : null,
-      sm: data?['sm'] != null
+      $sm: data?['sm'] != null
           ? GSStyle.fromMap(data: data?['sm'], fromVariant: true)
           : null,
-      xl: data?['xl'] != null
+      $xl: data?['xl'] != null
           ? GSStyle.fromMap(data: data?['xl'], fromVariant: true)
           : null,
-      xs: data?['xs'] != null
+      $xs: data?['xs'] != null
           ? GSStyle.fromMap(data: data?['xs'], fromVariant: true)
+          : null,
+      $2xl: data?['2xl'] != null
+          ? GSStyle.fromMap(data: data?['2xl'], fromVariant: true)
+          : null,
+      $2xs: data?['2xs'] != null
+          ? GSStyle.fromMap(data: data?['2xs'], fromVariant: true)
           : null,
     );
   }
@@ -123,43 +126,43 @@ class GSAction {
 }
 
 class GSSpace {
-  GSStyle? xs;
-  GSStyle? sm;
-  GSStyle? md;
-  GSStyle? lg;
-  GSStyle? xl;
+  GSStyle? $xs;
+  GSStyle? $sm;
+  GSStyle? $md;
+  GSStyle? $lg;
+  GSStyle? $xl;
   GSStyle? $2xl;
   GSStyle? $3xl;
   GSStyle? $4xl;
 
   GSSpace({
-    this.xs,
-    this.sm,
-    this.md,
-    this.lg,
-    this.xl,
+    this.$xs,
+    this.$sm,
+    this.$md,
+    this.$lg,
+    this.$xl,
     this.$2xl,
     this.$3xl,
     this.$4xl,
   });
   factory GSSpace.fromMap({required Map<String, dynamic>? data}) {
     return GSSpace(
-      xs: data?['xs'] != null
+      $xs: data?['xs'] != null
           ? GSStyle.fromMap(data: data?['xs'], fromVariant: true)
           : null,
-      sm: data?['sm'] != null
+      $sm: data?['sm'] != null
           ? GSStyle.fromMap(data: data?['sm'], fromVariant: true)
           : null,
-      md: data?['md'] != null
+      $md: data?['md'] != null
           ? GSStyle.fromMap(data: data?['md'], fromVariant: true)
           : null,
-      lg: data?['lg'] != null
+      $lg: data?['lg'] != null
           ? GSStyle.fromMap(
               data: data?['lg'],
               fromVariant: true,
             )
           : null,
-      xl: data?['xl'] != null
+      $xl: data?['xl'] != null
           ? GSStyle.fromMap(data: data?['xl'], fromVariant: true)
           : null,
       $2xl: data?['2xl'] != null
@@ -331,6 +334,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       height: resolveSpaceFromString(
         data?['h'],
       ),
+      width: resolveSpaceFromString(data?['w']),
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
