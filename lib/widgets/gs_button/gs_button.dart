@@ -97,143 +97,84 @@ class GSButton extends StatelessWidget {
                 },
               ),
               shape: MaterialStateProperty.resolveWith<RoundedRectangleBorder?>(
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.pressed)) {
-                    return RoundedRectangleBorder(
-                      borderRadius: isAttached
-                          ? BorderRadius.zero
-                          : BorderRadius.circular(
-                              styler.onActive?.borderRadius ??
-                                  styler.borderRadius!),
-                      side: isAttached
-                          ? BorderSide.none
-                          : isFocusVisible!
-                              ? const BorderSide(
-                                  color: $GSColors.primary500,
-                                  width: 2.0,
-                                )
-                              : variant == GSVariants.link
-                                  ? BorderSide.none
-                                  : BorderSide(
-                                      color: styler.onActive?.borderColor ??
-                                          styler.borderColor!,
-                                      width:
-                                          styler.onActive?.borderWidth ?? 1.0,
-                                    ),
-                    );
-                  } else if (states.contains(MaterialState.hovered)) {
-                    return RoundedRectangleBorder(
-                      borderRadius: isAttached
-                          ? BorderRadius.zero
-                          : BorderRadius.circular(
-                              styler.onHover?.borderRadius ??
-                                  styler.borderRadius!),
-                      side: isAttached
-                          ? BorderSide.none
-                          : isFocusVisible!
-                              ? const BorderSide(
-                                  color: $GSColors.primary500,
-                                  width: 2.0,
-                                )
-                              : variant == GSVariants.link
-                                  ? BorderSide.none
-                                  : BorderSide(
-                                      color: styler.onHover?.borderColor ??
-                                          styler.borderColor!,
-                                      width: styler.onHover?.borderWidth ?? 1.0,
-                                    ),
-                    );
-                  } else if (states.contains(MaterialState.focused)) {
-                    return RoundedRectangleBorder(
-                      borderRadius: isAttached
-                          ? BorderRadius.zero
-                          : BorderRadius.circular(
-                              styler.onFocus?.borderRadius ??
-                                  styler.borderRadius!),
-                      side: isAttached
-                          ? BorderSide.none
-                          : isFocusVisible!
-                              ? const BorderSide(
-                                  color: $GSColors.primary500,
-                                  width: 2.0,
-                                )
-                              : variant == GSVariants.link
-                                  ? BorderSide.none
-                                  : BorderSide(
-                                      color: styler.onFocus?.borderColor ??
-                                          styler.borderColor!,
-                                      width: styler.onFocus?.borderWidth ?? 1.0,
-                                    ),
-                    );
-                  } else if (states.contains(MaterialState.disabled) ||
-                      disabled) {
-                    return RoundedRectangleBorder(
-                      borderRadius: isAttached
-                          ? BorderRadius.zero
-                          : BorderRadius.circular(
-                              styler.onDisabled?.borderRadius ??
-                                  styler.borderRadius!),
-                      side: isAttached
-                          ? BorderSide.none
-                          : isFocusVisible!
-                              ? const BorderSide(
-                                  color: $GSColors.primary500,
-                                  width: 2.0,
-                                )
-                              : variant == GSVariants.link
-                                  ? BorderSide.none
-                                  : BorderSide(
-                                      color: styler.onDisabled?.borderColor ??
-                                          styler.borderColor!,
-                                      width:
-                                          styler.onDisabled?.borderWidth ?? 1.0,
-                                    ),
-                    );
-                  } else if (states.contains(MaterialState.error)) {
-                    return RoundedRectangleBorder(
-                      borderRadius: isAttached
-                          ? BorderRadius.zero
-                          : BorderRadius.circular(
-                              styler.onInvaild?.borderRadius ??
-                                  styler.borderRadius!),
-                      side: isAttached
-                          ? BorderSide.none
-                          : isFocusVisible!
-                              ? const BorderSide(
-                                  color: $GSColors.primary500,
-                                  width: 2.0,
-                                )
-                              : variant == GSVariants.link
-                                  ? BorderSide.none
-                                  : BorderSide(
-                                      color: styler.onInvaild?.borderColor ??
-                                          styler.borderColor!,
-                                      width:
-                                          styler.onInvaild?.borderWidth ?? 1.0,
-                                    ),
-                    );
+                  (Set<MaterialState> states) {
+                double resolveBorderRadius(MaterialState state) {
+                  switch (state) {
+                    case MaterialState.pressed:
+                      return styler.onActive?.borderRadius ??
+                          styler.borderRadius!;
+                    case MaterialState.hovered:
+                      return styler.onHover?.borderRadius ??
+                          styler.borderRadius!;
+                    case MaterialState.focused:
+                      return styler.onFocus?.borderRadius ??
+                          styler.borderRadius!;
+                    case MaterialState.disabled:
+                      return styler.onDisabled?.borderRadius ??
+                          styler.borderRadius!;
+                    case MaterialState.error:
+                      return styler.onInvaild?.borderRadius ??
+                          styler.borderRadius!;
+                    default:
+                      return styler.borderRadius!;
                   }
+                }
 
-                  return RoundedRectangleBorder(
-                    borderRadius: isAttached
-                        ? BorderRadius.zero
-                        : BorderRadius.circular(styler.borderRadius!),
-                    side: isAttached
-                        ? BorderSide.none
-                        : isFocusVisible!
-                            ? const BorderSide(
-                                color: $GSColors.primary500,
-                                width: 2.0,
-                              )
-                            : variant == GSVariants.link
-                                ? BorderSide.none
-                                : BorderSide(
-                                    color: styler.borderColor!,
-                                    width: styler.borderWidth ?? 1.0,
-                                  ),
-                  );
-                },
-              ),
+                // Common borderSide resolution.
+                BorderSide resolveBorderSide(MaterialState state) {
+                  if (isAttached) return BorderSide.none;
+                  if (isFocusVisible!) {
+                    return const BorderSide(
+                        color: $GSColors.primary500, width: 2.0);
+                  } else if (variant == GSVariants.link) {
+                    return BorderSide.none;
+                  } else {
+                    switch (state) {
+                      case MaterialState.pressed:
+                        return BorderSide(
+                            color: styler.onActive?.borderColor ??
+                                styler.borderColor!,
+                            width: styler.onActive?.borderWidth ?? 1.0);
+                      case MaterialState.hovered:
+                        return BorderSide(
+                            color: styler.onHover?.borderColor ??
+                                styler.borderColor!,
+                            width: styler.onHover?.borderWidth ?? 1.0);
+                      case MaterialState.focused:
+                        return BorderSide(
+                            color: styler.onFocus?.borderColor ??
+                                styler.borderColor!,
+                            width: styler.onFocus?.borderWidth ?? 1.0);
+                      case MaterialState.disabled:
+                        return BorderSide(
+                            color: styler.onDisabled?.borderColor ??
+                                styler.borderColor!,
+                            width: styler.onDisabled?.borderWidth ?? 1.0);
+                      case MaterialState.error:
+                        return BorderSide(
+                            color: styler.onInvaild?.borderColor ??
+                                styler.borderColor!,
+                            width: styler.onInvaild?.borderWidth ?? 1.0);
+                      default:
+                        return BorderSide(
+                            color: styler.borderColor!,
+                            width: styler.borderWidth ?? 1.0);
+                    }
+                  }
+                }
+
+                // Identify the current state to apply styles for.
+                MaterialState currentState = MaterialState.values.firstWhere(
+                    states.contains,
+                    orElse: () => MaterialState.values.last);
+                return RoundedRectangleBorder(
+                  borderRadius: isAttached
+                      ? BorderRadius.zero
+                      : BorderRadius.circular(
+                          resolveBorderRadius(currentState)),
+                  side: resolveBorderSide(currentState),
+                );
+              }),
             ),
             child: child,
           ),

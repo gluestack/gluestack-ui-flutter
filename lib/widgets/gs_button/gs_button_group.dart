@@ -6,7 +6,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group_provider
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group_style.dart';
 
 class GSButtonGroup extends StatelessWidget {
-  final List<GSButton>? gsButtons;
+  final List<GSButton>? buttons;
   final GSDirection? direction;
   final GSSizes? size;
   final GSSpaces? space;
@@ -17,7 +17,7 @@ class GSButtonGroup extends StatelessWidget {
 
   const GSButtonGroup({
     super.key,
-    this.gsButtons = const [],
+    this.buttons = const [],
     this.direction = GSDirection.row,
     this.isDisabled = false,
     this.reversed = false,
@@ -29,7 +29,7 @@ class GSButtonGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final buttonList = reversed! ? gsButtons!.reversed : gsButtons!;
+    final buttonList = reversed! ? buttons!.reversed : buttons!;
     final buttonGroupSize = size ?? buttonGroupStyle.props?.size;
     final buttonGroupSpace = space ?? buttonGroupStyle.props?.space;
     GSStyle styler = resolveStyles(

@@ -92,6 +92,8 @@ import 'package:your_package/gs_button.dart';
 
 This code snippet demonstrates how to create a GSButton with various customization options, such as action, variant, size, and style. You can easily customize the button's appearance and behavior to match your app's design.
 
+![gs button](./assets/images/button.png)
+
 - Here is how GSInput component can be easily integrated into your Flutter app. Here's an example of how to use it:
 
 ```
@@ -126,6 +128,7 @@ import 'package:your_package/gs_input.dart';
 ```
 
 This code snippet demonstrates how to create GSInput with various customization options, such as variant, size, and style. You can easily customize the input's appearance and behavior to match your app's design.
+![gs input](./assets/images/input.png)
 
 - Here is how GSRadio component can be easily integrated into your Flutter app. Here's an example of how to use it:
 
@@ -156,6 +159,8 @@ import 'package:your_package/gs_radio.dart';
 ```
 
 This code snippet demonstrates how to create GSRadio with various customization options. You can easily customize the radio button's appearance and behavior to match your app's design.
+
+![gs radio button](./assets/images/radio_button.png)
 
 ## Contributing
 
