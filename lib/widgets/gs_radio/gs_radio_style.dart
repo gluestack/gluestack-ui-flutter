@@ -12,10 +12,10 @@ final GSStyle radioLabelStyle = GSStyle.fromMap(data: radioLabelData);
 
 class GSRadioTextStyle {
   static Map<GSSizes, double?> labelSize = {
-    GSSizes.xs: $GSFontSize.$xs,
-    GSSizes.sm: $GSFontSize.$sm,
-    GSSizes.md: $GSFontSize.$md,
-    GSSizes.lg: $GSFontSize.$lg,
-    GSSizes.xl: $GSFontSize.$xl,
+    GSSizes.$xs: $GSFontSize.$xs,
+    GSSizes.$sm: $GSFontSize.$sm,
+    GSSizes.$md: $GSFontSize.$md,
+    GSSizes.$lg: $GSFontSize.$lg,
+    GSSizes.$xl: $GSFontSize.$xl,
   };
 }

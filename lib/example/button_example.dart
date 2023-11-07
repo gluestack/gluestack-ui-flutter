@@ -20,8 +20,8 @@ class ButtonExample extends StatelessWidget {
           children: [
             GSButton(
               action: GSActions.negative,
-              variant: GSVariants.outline,
-              size: GSSizes.lg,
+              variant: GSVariants.solid,
+              size: GSSizes.$lg,
               onPressed: () {},
               // style: GSStyle(
               //   web: GSStyle(
@@ -41,7 +41,7 @@ class ButtonExample extends StatelessWidget {
                 children: [
                   GSButtonIcon(
                     icon: Icons.add,
-                    iconSize: GSSizes.lg,
+                    iconSize: GSSizes.$lg,
                     style: GSStyle(
                       iconColor: $GSColors.green600,
                       iconSize: 24,
@@ -68,8 +68,8 @@ class ButtonExample extends StatelessWidget {
               reversed: true,
               isAttached: false,
               direction: GSDirection.row,
-              size: GSSizes.md,
-              space: GSSpaces.xl,
+              size: GSSizes.$md,
+              space: GSSpaces.$xl,
               style: GSStyle(
                   // bg: $GSColors.green500,
                   // height: 200,
