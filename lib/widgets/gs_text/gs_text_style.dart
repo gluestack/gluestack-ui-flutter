@@ -5,16 +5,16 @@ final gstextStyle = GSStyle.fromMap(data: textData);
 
 class GSTextStyles {
   static Map<GSSizes, GSStyle> size = {
-    GSSizes.xs: gstextStyle.variants!.size!.xs!,
-    GSSizes.sm: gstextStyle.variants!.size!.sm!,
-    GSSizes.md: gstextStyle.variants!.size!.md!,
-    GSSizes.lg: gstextStyle.variants!.size!.lg!,
-    GSSizes.xl: gstextStyle.variants!.size!.xl!,
-    GSSizes.xxl: gstextStyle.variants!.size!.xxl!,
-    GSSizes.xxxl: gstextStyle.variants!.size!.xxxl!,
-    GSSizes.xxxxl: gstextStyle.variants!.size!.xxxxl!,
-    GSSizes.xxs: gstextStyle.variants!.size!.xxs!,
-    GSSizes.xxxxxl: gstextStyle.variants!.size!.xxxxxl!,
-    GSSizes.xxxxxxxl: gstextStyle.variants!.size!.xxxxxxl!,
+    GSSizes.$2xs: gstextStyle.variants!.size!.$2xs!,
+    GSSizes.$xs: gstextStyle.variants!.size!.$xs!,
+    GSSizes.$sm: gstextStyle.variants!.size!.$sm!,
+    GSSizes.$md: gstextStyle.variants!.size!.$md!,
+    GSSizes.$lg: gstextStyle.variants!.size!.$lg!,
+    GSSizes.$xl: gstextStyle.variants!.size!.$xl!,
+    GSSizes.$2xl: gstextStyle.variants!.size!.$2xl!,
+    GSSizes.$3xl: gstextStyle.variants!.size!.$3xl!,
+    GSSizes.$4xl: gstextStyle.variants!.size!.$4xl!,
+    GSSizes.$5xl: gstextStyle.variants!.size!.$5xl!,
+    GSSizes.$6xl: gstextStyle.variants!.size!.$6xl!,
   };
 }

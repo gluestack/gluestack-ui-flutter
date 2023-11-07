@@ -6,7 +6,7 @@ enum GSActions { primary, secondary, positive, negative }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
-enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl }
+enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $6xl }
 
 enum GSDirection { row, column }
 
@@ -60,6 +60,8 @@ class GSVariant {
   }
 }
 
+//enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $6xl }
+
 class GSSize {
   GSStyle? $xs;
   GSStyle? $sm;
@@ -69,8 +71,23 @@ class GSSize {
   GSStyle? $2xs;
   GSStyle? $2xl;
 
+  GSStyle? $3xl;
+  GSStyle? $4xl;
+  GSStyle? $5xl;
+  GSStyle? $6xl;
+
   GSSize(
-      {this.$xs, this.$sm, this.$md, this.$lg, this.$xl, this.$2xl, this.$2xs});
+      {this.$xs,
+      this.$sm,
+      this.$md,
+      this.$lg,
+      this.$xl,
+      this.$2xl,
+      this.$2xs,
+      this.$3xl,
+      this.$4xl,
+      this.$5xl,
+      this.$6xl});
   factory GSSize.fromMap({required Map<String, dynamic>? data}) {
     return GSSize(
       $lg: data?['lg'] != null
@@ -96,6 +113,18 @@ class GSSize {
           : null,
       $2xs: data?['2xs'] != null
           ? GSStyle.fromMap(data: data?['2xs'], fromVariant: true)
+          : null,
+      $3xl: data?['3xl'] != null
+          ? GSStyle.fromMap(data: data?['3xl'], fromVariant: true)
+          : null,
+      $4xl: data?['4xl'] != null
+          ? GSStyle.fromMap(data: data?['4xl'], fromVariant: true)
+          : null,
+      $5xl: data?['5xl'] != null
+          ? GSStyle.fromMap(data: data?['5xl'], fromVariant: true)
+          : null,
+      $6xl: data?['6xl'] != null
+          ? GSStyle.fromMap(data: data?['6xl'], fromVariant: true)
           : null,
     );
   }
