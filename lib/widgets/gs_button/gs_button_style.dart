@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme/config/button.dart';
+import 'package:gluestack_flutter_pro/theme/config/button/button.dart';
 
 GSStyle buttonStyle = GSStyle.fromMap(data: buttonData);
 GSStyle baseStyle = GSStyle(
@@ -147,9 +147,9 @@ class GSButtonStyle {
   };
 
   static Map<GSSizes, GSStyle> size = {
-    GSSizes.xs: compoundVariants.variants!.size!.xs!,
-    GSSizes.sm: compoundVariants.variants!.size!.sm!,
-    GSSizes.md: compoundVariants.variants!.size!.md!,
-    GSSizes.lg: compoundVariants.variants!.size!.lg!,
+    GSSizes.$xs: compoundVariants.variants!.size!.$xs!,
+    GSSizes.$sm: compoundVariants.variants!.size!.$sm!,
+    GSSizes.$md: compoundVariants.variants!.size!.$md!,
+    GSSizes.$lg: compoundVariants.variants!.size!.$lg!,
   };
 }

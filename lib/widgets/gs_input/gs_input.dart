@@ -122,7 +122,7 @@ class GSInput extends StatefulWidget {
   const GSInput(
       {super.key,
       this.variant = GSVariants.outline,
-      this.size = GSSizes.md,
+      this.size = GSSizes.$md,
       this.isDisabled = false,
       this.isInvalid = false,
       this.readOnly = false,

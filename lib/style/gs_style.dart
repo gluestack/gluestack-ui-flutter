@@ -6,24 +6,30 @@ enum GSActions { primary, secondary, positive, negative }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
-enum GSSizes { xxs, xs, sm, md, lg, xl, xxl, xxxl, xxxxl, xxxxxl, xxxxxxxl }
+enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl }
+
+enum GSDirection { row, column }
+
+enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 class GSProps {
   GSActions? action;
   GSVariants? variant;
   GSSizes? size;
+  GSSpaces? space;
 
   GSProps({
     this.action,
     this.variant,
     this.size,
+    this.space,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
     return GSProps(
-      action: resolveActionFromString(data?['action']),
-      variant: resolveVariantFromString(data?['variant']),
-      size: resolveSizesFromString(data?['size']),
-    );
+        action: resolveActionFromString(data?['action']),
+        variant: resolveVariantFromString(data?['variant']),
+        size: resolveSizesFromString(data?['size']),
+        space: resolveSpacesFromString(data?['space']));
   }
 }
 
@@ -55,68 +61,41 @@ class GSVariant {
 }
 
 class GSSize {
-  GSStyle? xxs;
-  GSStyle? xs;
-  GSStyle? sm;
-  GSStyle? md;
-  GSStyle? lg;
-  GSStyle? xl;
-  GSStyle? xxl;
-  GSStyle? xxxl;
-  GSStyle? xxxxl;
-  GSStyle? xxxxxl;
-  GSStyle? xxxxxxl;
+  GSStyle? $xs;
+  GSStyle? $sm;
+  GSStyle? $md;
+  GSStyle? $lg;
+  GSStyle? $xl;
+  GSStyle? $2xs;
+  GSStyle? $2xl;
 
-  GSSize({
-    this.xs,
-    this.sm,
-    this.md,
-    this.lg,
-    this.xl,
-    this.xxl,
-    this.xxs,
-    this.xxxl,
-    this.xxxxl,
-    this.xxxxxl,
-    this.xxxxxxl,
-  });
+  GSSize(
+      {this.$xs, this.$sm, this.$md, this.$lg, this.$xl, this.$2xl, this.$2xs});
   factory GSSize.fromMap({required Map<String, dynamic>? data}) {
     return GSSize(
-      lg: data?['lg'] != null
+      $lg: data?['lg'] != null
           ? GSStyle.fromMap(
               data: data?['lg'],
               fromVariant: true,
             )
           : null,
-      md: data?['md'] != null
+      $md: data?['md'] != null
           ? GSStyle.fromMap(data: data?['md'], fromVariant: true)
           : null,
-      sm: data?['sm'] != null
+      $sm: data?['sm'] != null
           ? GSStyle.fromMap(data: data?['sm'], fromVariant: true)
           : null,
-      xl: data?['xl'] != null
+      $xl: data?['xl'] != null
           ? GSStyle.fromMap(data: data?['xl'], fromVariant: true)
           : null,
-      xs: data?['xs'] != null
+      $xs: data?['xs'] != null
           ? GSStyle.fromMap(data: data?['xs'], fromVariant: true)
           : null,
-      xxl: data?['2xl'] != null
+      $2xl: data?['2xl'] != null
           ? GSStyle.fromMap(data: data?['2xl'], fromVariant: true)
           : null,
-      xxs: data?['2xs'] != null
+      $2xs: data?['2xs'] != null
           ? GSStyle.fromMap(data: data?['2xs'], fromVariant: true)
-          : null,
-      xxxl: data?['3xl'] != null
-          ? GSStyle.fromMap(data: data?['3xl'], fromVariant: true)
-          : null,
-      xxxxl: data?['4xl'] != null
-          ? GSStyle.fromMap(data: data?['4xl'], fromVariant: true)
-          : null,
-      xxxxxl: data?['5xl'] != null
-          ? GSStyle.fromMap(data: data?['5xl'], fromVariant: true)
-          : null,
-      xxxxxxl: data?['6xl'] != null
-          ? GSStyle.fromMap(data: data?['6xl'], fromVariant: true)
           : null,
     );
   }
@@ -146,26 +125,78 @@ class GSAction {
   }
 }
 
+class GSSpace {
+  GSStyle? $xs;
+  GSStyle? $sm;
+  GSStyle? $md;
+  GSStyle? $lg;
+  GSStyle? $xl;
+  GSStyle? $2xl;
+  GSStyle? $3xl;
+  GSStyle? $4xl;
+
+  GSSpace({
+    this.$xs,
+    this.$sm,
+    this.$md,
+    this.$lg,
+    this.$xl,
+    this.$2xl,
+    this.$3xl,
+    this.$4xl,
+  });
+  factory GSSpace.fromMap({required Map<String, dynamic>? data}) {
+    return GSSpace(
+      $xs: data?['xs'] != null
+          ? GSStyle.fromMap(data: data?['xs'], fromVariant: true)
+          : null,
+      $sm: data?['sm'] != null
+          ? GSStyle.fromMap(data: data?['sm'], fromVariant: true)
+          : null,
+      $md: data?['md'] != null
+          ? GSStyle.fromMap(data: data?['md'], fromVariant: true)
+          : null,
+      $lg: data?['lg'] != null
+          ? GSStyle.fromMap(
+              data: data?['lg'],
+              fromVariant: true,
+            )
+          : null,
+      $xl: data?['xl'] != null
+          ? GSStyle.fromMap(data: data?['xl'], fromVariant: true)
+          : null,
+      $2xl: data?['2xl'] != null
+          ? GSStyle.fromMap(data: data?['2xl'], fromVariant: true)
+          : null,
+      $3xl: data?['3xl'] != null
+          ? GSStyle.fromMap(data: data?['3xl'], fromVariant: true)
+          : null,
+      $4xl: data?['4xl'] != null
+          ? GSStyle.fromMap(data: data?['4xl'], fromVariant: true)
+          : null,
+    );
+  }
+}
+
 class Variants {
   GSVariant? variant;
   GSSize? size;
   GSAction? action;
+  GSSpace? space;
 
   Variants({
     this.variant,
     this.size,
     this.action,
+    this.space,
   });
 
   factory Variants.fromMap({required Map<String, dynamic>? data}) {
     return Variants(
-      size: GSSize.fromMap(
-        data: data?['size'],
-      ),
-      variant: GSVariant.fromMap(
-        data: data?['variant'],
-      ),
+      size: GSSize.fromMap(data: data?['size']),
+      variant: GSVariant.fromMap(data: data?['variant']),
       action: GSAction.fromMap(data: data?['action']),
+      space: GSSpace.fromMap(data: data?['space']),
     );
   }
 }
@@ -178,11 +209,10 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? opacity;
   Color? color;
   Color? bg;
-
+  double? gap;
   Color? borderBottomColor;
   double? height;
   double? width;
-
   double? outlineWidth;
   String? outlineStyle;
   double? borderBottomWidth;
@@ -202,6 +232,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.borderBottomColor,
     this.height,
     this.width,
+    this.gap,
     this.outlineWidth,
     this.outlineStyle,
     this.borderBottomWidth,
@@ -244,7 +275,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       icon: overrideStyle?.icon ?? icon,
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
-
+      gap: overrideStyle?.gap ?? gap,
       onFocus: onFocus != null
           ? onFocus?.merge(overrideStyle?.onFocus)
           : overrideStyle?.onFocus,
@@ -297,11 +328,11 @@ class GSStyle extends BaseStyle<GSStyle> {
     required Map<String, dynamic>? data,
     bool fromVariant = false,
   }) {
-   
     return GSStyle(
       height: resolveSpaceFromString(
         data?['h'],
       ),
+      width: resolveSpaceFromString(data?['w']),
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
         height: resolveFontSizeFromString(data?['lineHeight']),
@@ -315,6 +346,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderWidth: data?['borderWidth'] != null
           ? double.tryParse(data!['borderWidth']!.toString())
           : null,
+      gap: resolveSpaceFromString(data?['gap']),
       borderColor: resolveColorFromString(data?['borderColor']),
       borderRadius: data?['borderRadius'] != null
           ? resolveRadiusFromString(data?['borderRadius'].toString())

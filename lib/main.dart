@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_icon.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_text.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
-import 'package:provider/provider.dart';
+import 'package:gluestack_flutter_pro/example/button_example.dart';
+import 'package:gluestack_flutter_pro/example/image_example.dart';
+import 'package:gluestack_flutter_pro/example/input_example.dart';
+import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 
-import 'token/index.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+
+// import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
+
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(
@@ -33,93 +33,68 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-              //  const RadioExample(),
-                
-                GSText(text: 'sample',textStyle: TextStyle(
-                ),),
-                
-                // GSButton(
-                //   action: GSActions.negative,
-                //   variant: GSVariants.solid,
-                //   size: GSSizes.lg,
-                //   // isDisabled: true,
-                //   onPressed: () {},
-                //   style: GSStyle(
-                //     web: GSStyle(
-                //         // bg: $GSColors.amber600,
-                //         ),
-                //     ios: GSStyle(
-                //       bg: $GSColors.pink600,
-                //     ),
-                //     onHover: GSStyle(
-                //       bg: $GSColors.green400,
-                //     ),
-                //     // md: GSStyle(
-                //     //   bg: $GSColors.pink400,
-
-                //     //   onFocus: GSStyle(
-                //     //     bg: $GSColors.blueGray600,
-                //     //   ),
-                //     //   onActive: GSStyle(
-                //     //     bg: $GSColors.amber600,
-                //     //     borderColor: $GSColors.error500,
-                //     //     borderWidth: $GSBorderWidth.$4,
-                //     //   ),
-                //     //   onDisabled: GSStyle(bg: $GSColors.purple800),
-                //     // ),
-                //   ),
-                //   child: const GSButtonText(text: "Click Here"),
-                // ),
-                GSInput(
-                  size: GSSizes.xl,
-                  variant: GSVariants.outline,
-                  hintText: "Enter text here",
-                  // isDisabled: true,
-                  // isInvalid: true,
-                  style: GSStyle(
-                    width: 300,
-                    borderColor: $GSColors.pink500,
-                    onFocus: GSStyle(
-                      borderColor: $GSColors.purple800,
-                      borderWidth: $GSBorderWidth.$2,
-                      borderBottomWidth: $GSBorderWidth.$2,
-                    ),
-                    onHover: GSStyle(
-                      borderColor: $GSColors.green600,
-                      borderWidth: $GSBorderWidth.$4,
-                      borderBottomWidth: $GSBorderWidth.$4,
-                    ),
-                    xs: GSStyle(
-                      borderColor: $GSColors.purple400,
-                    ),
-                    dark: GSStyle(
-                      borderColor: $GSColors.warmGray900,
-                      borderWidth: $GSBorderWidth.$8,
+                GestureDetector(
+                  onTap: () {
+                    navigatorKey.currentState!.push(MaterialPageRoute(
+                      builder: (context) => const ButtonExample(),
+                    ));
+                  },
+                  child: const Text(
+                    'GS Button',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
                     ),
                   ),
                 ),
-                // GSBox(
-                //   style: StyleData(
-                //     context,
-                //     color: $GSColors.primary500,
-                //     width: 200,
-                //     height: 200,
-                //     padding: const EdgeInsets.symmetric(
-                //       vertical: $GSSpace.$5,
-                //       horizontal: $GSSpace.$5,
-                //     ),
-                //     borderRadius: $GSRadii.$sm,
-                //   )
-                //       .onDark(color: $GSColors.purple800)
-                //       .sm(color: $GSColors.green500)
-                //       .smDark(color: $GSColors.amber400),
-                //   child: const Text(
-                //     "I am a container",
-                //     style: TextStyle(
-                //       color: $GSColors.white,
-                //     ),
-                //   ),
-                // ),
+                
+                GestureDetector(
+                  onTap: () {
+                    navigatorKey.currentState!.push(MaterialPageRoute(
+                      builder: (context) => const ImageExample(),
+                    ));
+                  },
+                  child: const Text(
+                    'GS Image',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+
+                GestureDetector(
+                  onTap: () {
+                    navigatorKey.currentState!.push(MaterialPageRoute(
+                      builder: (context) => const InputExample(),
+                    ));
+                  },
+                  child: const Text(
+                    'GS Input',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    navigatorKey.currentState!.push(MaterialPageRoute(
+                      builder: (context) => const RadioButtonExample(),
+                    ));
+                  },
+                  child: const Text(
+                    'GS Radio Button',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -134,78 +109,5 @@ class MyApp extends StatelessWidget {
         ),
       );
     });
-  }
-}
-
-class RadioExample extends StatefulWidget {
-  const RadioExample({super.key});
-
-  @override
-  State<RadioExample> createState() => _RadioExampleState();
-}
-
-enum Value { one, two, three, four }
-
-class _RadioExampleState extends State<RadioExample> {
-  Value groupValue = Value.one;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GSRadio<Value>(
-          style: GSStyle(
-            checked: GSStyle(
-                color: $GSColors.purple500,
-                onHover: GSStyle(
-                  color: $GSColors.pink300,
-                )),
-          ),
-          value: Value.one,
-          groupValue: groupValue,
-          onChanged: (p0) {
-            setState(() {
-              groupValue = p0!;
-            });
-          },
-          icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text1'),
-        ),
-        GSRadio<Value>(
-          isInvalid: true,
-          value: Value.two,
-          groupValue: groupValue,
-          onChanged: (p0) {
-            setState(() {
-              groupValue = p0!;
-            });
-          },
-          icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text2'),
-        ),
-        GSRadio<Value>(
-          isDisabled: true,
-          value: Value.three,
-          groupValue: groupValue,
-          onChanged: (p0) {
-            setState(() {
-              groupValue = p0!;
-            });
-          },
-          icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text3'),
-        ),
-        GSRadio<Value>(
-          value: Value.four,
-          groupValue: groupValue,
-          onChanged: (p0) {
-            setState(() {
-              groupValue = p0!;
-            });
-          },
-          icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text4'),
-        ),
-      ],
-    );
   }
 }
