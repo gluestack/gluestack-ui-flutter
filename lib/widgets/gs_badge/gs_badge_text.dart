@@ -44,7 +44,7 @@ class GSBadgeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = GSBadgeProvider.of(context);
-    final fontSize = GSBadgeTextStyle.textSize[value!.size];
+    final fontSize = GSBadgeStyle.textSize[value!.size];
     final textColor = value.iconAndTextColor;
 
     var defaultTextStyle = TextStyle(color: textColor, fontSize: fontSize);

@@ -12,20 +12,22 @@ class BadgeExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GSBadge(
-              size: GSSizes.$xs,
+              size: GSSizes.$lg,
               action: GSActions.muted,
+              variant: GSVariants.outline,
               iconData: Icons.info_outline,
-              borderRadius: 4,
+              // borderRadius: 4,
               text: GSBadgeText('Halleluyah'),
             ),
             GSBadge(
-              size: GSSizes.$2xl,
+              size: GSSizes.$sm,
               action: GSActions.info,
+              variant: GSVariants.solid,
               text: GSBadgeText(
                 'hihi',
               ),

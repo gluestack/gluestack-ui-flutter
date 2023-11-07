@@ -7,47 +7,75 @@ import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_text.dart';
 
 class GSBadge extends StatelessWidget {
-  const GSBadge({
-    super.key,
-    this.action = GSActions.muted,
-    this.variant = GSVariants.outline,
-    this.size = GSSizes.$2xl,
-    this.child,
-    this.style,
-    this.iconData,
-    required this.text,
-    this.borderRadius,
-  }) : assert(
-          action == GSActions.error ||
-              action == GSActions.warning ||
-              action == GSActions.success ||
-              action == GSActions.info ||
-              action == GSActions.muted,
-          'Badges can only have the types: error, warning, success, info and muted!\n'
-          'To resolve this error, ensure only the above mentioned GSAction is specified.',
-        );
   final GSActions? action;
   final GSSizes? size;
   final double? borderRadius;
-  final GSVariants variant;
+  final GSVariants? variant;
   final GSStyle? style;
   final Widget? child;
   final IconData? iconData;
   final GSBadgeText text;
 
+  const GSBadge({
+    super.key,
+    this.action,
+    this.variant,
+    this.size,
+    this.child,
+    this.style,
+    this.iconData,
+    required this.text,
+    this.borderRadius,
+  })  : assert(
+          action == null ||
+              action == GSActions.error ||
+              action == GSActions.warning ||
+              action == GSActions.success ||
+              action == GSActions.info ||
+              action == GSActions.muted,
+          'Badges can only have the types: error, warning, success, info and muted!\n'
+          'To resolve this error, ensure only the above mentioned GSActions is specified.',
+        ),
+        assert(
+          size == null ||
+              size == GSSizes.$lg ||
+              size == GSSizes.$md ||
+              size == GSSizes.$sm,
+          'Badges can only have the sizes: \$lg, \$md and \$sm\n'
+          'To resolve this error, ensure only the above mentioned GSSizes is specified.',
+        ),
+        assert(
+          variant == null ||
+              variant == GSVariants.outline ||
+              variant == GSVariants.solid,
+          'Badges can only have the vairants: solid and outline\n'
+          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
+        );
+
   @override
   Widget build(BuildContext context) {
     final value = GSBadgeProvider.of(context);
-    final badgeAction = action ?? value?.action ?? badgeStyle.props?.action;
+    final badgeAction = action ?? badgeStyle.props?.action;
+    final badgeVariant = variant ?? badgeStyle.props?.variant;
     final badgeSize = size ?? value?.size ?? badgeStyle.props?.size;
+
+    GSStyle styler = resolveStyles(
+      context,
+      variantStyle: GSBadgeStyle.gsBadgeCombination[badgeAction]![badgeVariant],
+      size: GSBadgeStyle.size[badgeSize],
+      inlineStyle: style,
+    )!;
+    print('----------');
+    print(styler.variants?.action?.warning?.bg);
 
     return GSBadgeProvider(
       action: badgeAction!,
       size: badgeSize!,
       iconAndTextColor: resolveIconAndTextColor(badgeAction),
       child: Container(
-        decoration: resolveBadgeDecoration(badgeAction, variant)
-            .copyWith(borderRadius: BorderRadius.circular(borderRadius ?? 0)),
+        decoration: resolveBadgeDecoration(badgeAction, badgeVariant!).copyWith(
+          borderRadius: BorderRadius.circular(borderRadius ?? 0),
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         child: Row(
             mainAxisSize: MainAxisSize.min,

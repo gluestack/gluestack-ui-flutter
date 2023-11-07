@@ -1,5 +1,3 @@
-enum GSBorderRadius {$none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full}
-
 class $GSRadii {
   const $GSRadii._();
 
