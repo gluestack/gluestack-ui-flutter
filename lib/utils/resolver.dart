@@ -86,11 +86,11 @@ GSVariants? resolveVariantFromString(String? variant) {
 
 GSSizes? resolveSizesFromString(String? size) {
   const sizeMap = {
-    'xs': GSSizes.xs,
-    'sm': GSSizes.sm,
-    'md': GSSizes.md,
-    'lg': GSSizes.lg,
-    'xl': GSSizes.xl,
+    'xs': GSSizes.$xs,
+    'sm': GSSizes.$sm,
+    'md': GSSizes.$md,
+    'lg': GSSizes.$lg,
+    'xl': GSSizes.$xl,
   };
 
   return size != null ? sizeMap[size] : null;
@@ -98,11 +98,11 @@ GSSizes? resolveSizesFromString(String? size) {
 
 GSSpaces? resolveSpacesFromString(String? space) {
   const spaceMap = {
-    'xs': GSSpaces.xs,
-    'sm': GSSpaces.sm,
-    'md': GSSpaces.md,
-    'lg': GSSpaces.lg,
-    'xl': GSSpaces.xl,
+    'xs': GSSpaces.$xs,
+    'sm': GSSpaces.$sm,
+    'md': GSSpaces.$md,
+    'lg': GSSpaces.$lg,
+    'xl': GSSpaces.$xl,
     '2xl': GSSpaces.$2xl,
     '3xl': GSSpaces.$3xl,
     '4xl': GSSpaces.$4xl,

@@ -15,7 +15,7 @@ class InputExample extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GSInput(
-              size: GSSizes.xl,
+              size: GSSizes.$xl,
               variant: GSVariants.outline,
               hintText: "Enter text here",
               style: GSStyle(
