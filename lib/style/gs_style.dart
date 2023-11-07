@@ -2,7 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/base_style.dart';
 import 'package:gluestack_flutter_pro/utils/resolver.dart';
 
-enum GSActions { primary, secondary, positive, negative }
+enum GSActions {
+  primary,
+  secondary,
+  positive,
+  negative,
+  error,
+  warning,
+  success,
+  info,
+  muted
+}
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
@@ -107,21 +117,35 @@ class GSAction {
   GSStyle? positive;
   GSStyle? negative;
   GSStyle? defaultStyle;
-  GSAction({
-    this.primary,
-    this.secondary,
-    this.positive,
-    this.negative,
-    this.defaultStyle,
-  });
+  GSStyle? error;
+  GSStyle? warning;
+  GSStyle? success;
+  GSStyle? info;
+  GSStyle? muted;
+  GSAction(
+      {this.primary,
+      this.secondary,
+      this.positive,
+      this.negative,
+      this.defaultStyle,
+      this.error,
+      this.warning,
+      this.success,
+      this.info,
+      this.muted});
   factory GSAction.fromMap({required Map<String, dynamic>? data}) {
     return GSAction(
-        primary: GSStyle.fromMap(data: data?['primary'], fromVariant: true),
-        secondary: GSStyle.fromMap(data: data?['secondary'], fromVariant: true),
-        defaultStyle:
-            GSStyle.fromMap(data: data?['default'], fromVariant: true),
-        positive: GSStyle.fromMap(data: data?['positive'], fromVariant: true),
-        negative: GSStyle.fromMap(data: data?['negative'], fromVariant: true));
+      primary: GSStyle.fromMap(data: data?['primary'], fromVariant: true),
+      secondary: GSStyle.fromMap(data: data?['secondary'], fromVariant: true),
+      defaultStyle: GSStyle.fromMap(data: data?['default'], fromVariant: true),
+      positive: GSStyle.fromMap(data: data?['positive'], fromVariant: true),
+      negative: GSStyle.fromMap(data: data?['negative'], fromVariant: true),
+      error: GSStyle.fromMap(data: data?['error'], fromVariant: true),
+      warning: GSStyle.fromMap(data: data?['warning'], fromVariant: true),
+      success: GSStyle.fromMap(data: data?['success'], fromVariant: true),
+      info: GSStyle.fromMap(data: data?['info'], fromVariant: true),
+      muted: GSStyle.fromMap(data: data?['muted'], fromVariant: true),
+    );
   }
 }
 
