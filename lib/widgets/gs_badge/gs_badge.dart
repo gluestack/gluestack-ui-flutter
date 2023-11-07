@@ -95,8 +95,8 @@ class GSBadge extends StatelessWidget {
       iconAndTextColor: resolveIconAndTextColor(badgeAction),
       child: Container(
         decoration: resolveBadgeDecoration(badgeAction, badgeVariant!).copyWith(
-          borderRadius: BorderRadius.circular(borderRadius ?? 0),
-        ),
+            borderRadius: BorderRadius.circular(borderRadius ?? 0),
+            color: styler.bg),
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         child: Row(
             mainAxisSize: MainAxisSize.min,
