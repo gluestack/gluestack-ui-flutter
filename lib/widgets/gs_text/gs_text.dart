@@ -7,61 +7,87 @@ class GSText extends StatelessWidget {
   final String text;
   final GSSizes? size;
   final GSStyle? style;
-  final TextStyle? textStyle;
+  final bool isTruncated;
+  final bool bold;
+  final bool italic;
+  final bool underline;
+  final bool strikeThrough;
+  final bool highlight;
+  final Locale? locale;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final Color? selectionColor;
+  final String? semanticsLabel;
+  final bool? softWrap;
+  final StrutStyle? strutStyle;
+  final TextAlign? textAlign;
+  final TextDirection? textDirection;
+  final TextHeightBehavior? textHeightBehavior;
+  final double? textScaleFactor;
+  final TextWidthBasis? textWidthBasis;
   const GSText(
-      {super.key, required this.text, this.size, this.style, this.textStyle});
+      {super.key,
+      required this.text,
+      this.size,
+      this.style,
+      this.locale,
+      this.maxLines,
+      this.overflow,
+      this.selectionColor,
+      this.semanticsLabel,
+      this.softWrap,
+      this.strutStyle,
+      this.textAlign,
+      this.textDirection,
+      this.textHeightBehavior,
+      this.textScaleFactor,
+      this.textWidthBasis,
+      this.bold = false,
+      this.highlight = false,
+      this.isTruncated = false,
+      this.italic = false,
+      this.strikeThrough = false,
+      this.underline = false});
 
   @override
   Widget build(BuildContext context) {
     final textSize = size ?? gstextStyle.props?.size;
+
     GSStyle styler = resolveStyles(
       context,
+      variantStyle: highlight ? gstextStyle.variants?.highlight : null,
       size: GSTextStyles.size[textSize],
       inlineStyle: style,
     )!;
 
-    final currentTextStyle = TextStyle(
-      
-      background: textStyle?.background ?? styler.textStyle?.background,
+    final currentTextStyle = styler.textStyle?.copyWith(
+      fontWeight: bold ? FontWeight.bold : styler.textStyle?.fontWeight,
+      fontStyle: italic ? FontStyle.italic : styler.textStyle?.fontStyle,
+      decoration: TextDecoration.combine([
+        if (strikeThrough) TextDecoration.lineThrough,
+        if (underline) TextDecoration.underline,
+      ]),
       backgroundColor:
-          textStyle?.backgroundColor ?? styler.textStyle?.backgroundColor,
-      color: textStyle?.color ?? styler.textStyle?.color,
-      debugLabel: textStyle?.debugLabel ?? styler.textStyle?.debugLabel,
-      decoration: textStyle?.decoration ?? styler.textStyle?.decoration,
-      decorationColor:
-          textStyle?.decorationColor ?? styler.textStyle?.decorationColor,
-      decorationStyle:
-          textStyle?.decorationStyle ?? styler.textStyle?.decorationStyle,
-      decorationThickness: textStyle?.decorationThickness ??
-          styler.textStyle?.decorationThickness,
-      fontFamily: textStyle?.fontFamily ?? styler.textStyle?.fontFamily,
-      fontFamilyFallback:
-          textStyle?.fontFamilyFallback ?? styler.textStyle?.fontFamilyFallback,
-      fontFeatures: textStyle?.fontFeatures ?? styler.textStyle?.fontFeatures,
-      fontSize: textStyle?.fontSize ?? styler.textStyle?.fontSize,
-      fontStyle: textStyle?.fontStyle ?? styler.textStyle?.fontStyle,
-      fontVariations:
-          textStyle?.fontVariations ?? styler.textStyle?.fontVariations,
-      fontWeight: textStyle?.fontWeight ?? styler.textStyle?.fontWeight,
-      foreground: textStyle?.foreground ?? styler.textStyle?.foreground,
-      height: textStyle?.height ?? styler.textStyle?.height,
-      inherit: textStyle?.inherit ?? styler.textStyle?.inherit ?? true,
-      leadingDistribution: textStyle?.leadingDistribution ??
-          styler.textStyle?.leadingDistribution,
-      letterSpacing:
-          textStyle?.letterSpacing ?? styler.textStyle?.letterSpacing,
-      locale: textStyle?.locale ?? styler.textStyle?.locale,
-      overflow: textStyle?.overflow ?? styler.textStyle?.overflow,
-      shadows: textStyle?.shadows ?? styler.textStyle?.shadows,
-      textBaseline: textStyle?.textBaseline ?? styler.textStyle?.textBaseline,
-      wordSpacing: textStyle?.wordSpacing ?? styler.textStyle?.wordSpacing,
+          highlight ? styler.bg : styler.textStyle?.backgroundColor,
+      overflow:
+          isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
     );
-    print(currentTextStyle);
-    return Text(
 
-      
+    return Text(
       text,
       style: currentTextStyle,
+      locale: locale,
+      maxLines: maxLines,
+      overflow: overflow,
+      selectionColor: selectionColor,
+      semanticsLabel: semanticsLabel,
+      softWrap: softWrap,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      textHeightBehavior: textHeightBehavior,
+      textScaleFactor: textScaleFactor,
+      textWidthBasis: textWidthBasis,
     );
   }
 }

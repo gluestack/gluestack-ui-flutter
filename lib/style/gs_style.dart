@@ -40,27 +40,29 @@ class GSVariant {
   GSStyle? solid;
   GSStyle? link;
 
+
   GSVariant({
     this.underlined,
     this.outline,
     this.rounded,
     this.solid,
     this.link,
+
   });
   factory GSVariant.fromMap({required Map<String, dynamic>? data}) {
+
     return GSVariant(
-      underlined: GSStyle.fromMap(data: data?['underlined'], fromVariant: true),
-      outline: GSStyle.fromMap(data: data?['outline'], fromVariant: true),
-      rounded: GSStyle.fromMap(
-        data: data?['rounded'],
-        fromVariant: true,
-      ),
-      link: GSStyle.fromMap(data: data?['link'], fromVariant: true),
-    );
+        underlined:
+            GSStyle.fromMap(data: data?['underlined'], fromVariant: true),
+        outline: GSStyle.fromMap(data: data?['outline'], fromVariant: true),
+        rounded: GSStyle.fromMap(
+          data: data?['rounded'],
+          fromVariant: true,
+        ),
+        link: GSStyle.fromMap(data: data?['link'], fromVariant: true),
+      );
   }
 }
-
-//enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $6xl }
 
 class GSSize {
   GSStyle? $xs;
@@ -70,7 +72,6 @@ class GSSize {
   GSStyle? $xl;
   GSStyle? $2xs;
   GSStyle? $2xl;
-
   GSStyle? $3xl;
   GSStyle? $4xl;
   GSStyle? $5xl;
@@ -212,20 +213,23 @@ class Variants {
   GSSize? size;
   GSAction? action;
   GSSpace? space;
-
+    GSStyle? highlight;
   Variants({
     this.variant,
     this.size,
     this.action,
     this.space,
+    this.highlight,
   });
 
   factory Variants.fromMap({required Map<String, dynamic>? data}) {
+    
     return Variants(
       size: GSSize.fromMap(data: data?['size']),
       variant: GSVariant.fromMap(data: data?['variant']),
       action: GSAction.fromMap(data: data?['action']),
       space: GSSpace.fromMap(data: data?['space']),
+      highlight:GSStyle.fromMap(data: data?['highlight'][true],fromVariant: true)
     );
   }
 }
@@ -237,6 +241,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   EdgeInsetsGeometry? padding;
   double? opacity;
   Color? color;
+
   Color? bg;
   double? gap;
   Color? borderBottomColor;
@@ -261,6 +266,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.borderBottomColor,
     this.height,
     this.width,
+
     this.gap,
     this.outlineWidth,
     this.outlineStyle,
@@ -299,6 +305,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderWidth: overrideStyle?.borderWidth ?? borderWidth,
       color: overrideStyle?.color ?? color,
       bg: overrideStyle?.bg ?? bg,
+    
       borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
       borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
       icon: overrideStyle?.icon ?? icon,
@@ -362,6 +369,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         data?['h'],
       ),
       width: resolveSpaceFromString(data?['w']),
+    
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
         height: resolveFontSizeFromString(data?['lineHeight']),
