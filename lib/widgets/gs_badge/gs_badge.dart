@@ -6,16 +6,33 @@ import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_text.dart';
 
+/// `GSBadge` is a Flutter widget used to display badges with various styles.
 class GSBadge extends StatelessWidget {
+  /// The type of action for the badge (e.g., error, warning, success, info, muted).
   final GSActions? action;
+
+  /// The size of the badge (e.g., lg, md, sm).
   final GSSizes? size;
+
+  /// The border radius for the badge container.
   final double? borderRadius;
+
+  /// The variant of the badge (e.g., solid, outline).
   final GSVariants? variant;
+
+  /// The custom style for the badge.
   final GSStyle? style;
+
+  /// The child widget to be displayed inside the badge.
   final Widget? child;
+
+  /// The optional icon data to be displayed in the badge.
   final IconData? iconData;
+
+  /// The text content to be displayed within the badge.
   final GSBadgeText text;
 
+  /// `GSBadge` is a Flutter widget used to display badges with various styles. Constructor for the `GSBadge` widget:
   const GSBadge({
     super.key,
     this.action,
@@ -54,19 +71,23 @@ class GSBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Access the badge provider to retrieve badge style information.
     final value = GSBadgeProvider.of(context);
     final badgeAction = action ?? badgeStyle.props?.action;
     final badgeVariant = variant ?? badgeStyle.props?.variant;
     final badgeSize = size ?? value?.size ?? badgeStyle.props?.size;
 
+    // Resolve the style for the badge.
     GSStyle styler = resolveStyles(
       context,
       variantStyle: GSBadgeStyle.gsBadgeCombination[badgeAction]![badgeVariant],
       size: GSBadgeStyle.size[badgeSize],
       inlineStyle: style,
     )!;
+//for testing purpose | TODO: Remove before reaching production level
     print('----------');
     print(styler.variants?.action?.warning?.bg);
+    print('+++++ ${styler.bg}');
 
     return GSBadgeProvider(
       action: badgeAction!,
@@ -94,8 +115,10 @@ class GSBadge extends StatelessWidget {
     );
   }
 
+  // Resolve the badge's decoration based on the action and variant provided.
   BoxDecoration resolveBadgeDecoration(
       GSActions badgeAction, GSVariants badgeVariant) {
+    // Helper function to create a border.
     BoxBorder borderHelper({required Color borderColor}) {
       if (badgeVariant == GSVariants.outline) {
         return Border.all(
@@ -139,6 +162,7 @@ class GSBadge extends StatelessWidget {
     }
   }
 
+  // Resolve the icon and text color based on the badge action provided.
   resolveIconAndTextColor(GSActions badgeAction) {
     if (badgeAction == GSActions.error) {
       return badgeStyle.variants?.action?.error?.textStyle?.color;

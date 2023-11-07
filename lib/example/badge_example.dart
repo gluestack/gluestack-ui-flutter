@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_text.dart';
 
@@ -12,15 +13,24 @@ class BadgeExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GSBadge(
               size: GSSizes.$lg,
-              action: GSActions.muted,
+              action: GSActions.error,
               variant: GSVariants.outline,
-
+              style: GSStyle(
+                md: GSStyle(
+                  bg: $GSColors.pink400,
+                ),
+                variants: Variants(
+                  action: GSAction(
+                    error: GSStyle(bg: Colors.green),
+                  ),
+                ),
+              ),
               // borderRadius: 4,
               text: GSBadgeText('Halleluyah'),
             ),
