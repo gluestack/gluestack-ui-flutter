@@ -146,18 +146,18 @@ class GSBadge extends StatelessWidget {
         border: borderHelper(
             borderColor: badgeStyle.variants!.action!.success!.borderColor!),
       );
-    } else if (badgeAction == GSActions.info) {
-      return BoxDecoration(
-        color: badgeStyle.variants?.action?.info?.bg,
-        border: borderHelper(
-            borderColor: badgeStyle.variants!.action!.info!.borderColor!),
-      );
-    } else {
-      //muted
+    } else if (badgeAction == GSActions.muted) {
       return BoxDecoration(
         color: badgeStyle.variants?.action?.muted?.bg,
         border: borderHelper(
             borderColor: badgeStyle.variants!.action!.muted!.borderColor!),
+      );
+    } else {
+      //info
+      return BoxDecoration(
+        color: badgeStyle.variants?.action?.info?.bg,
+        border: borderHelper(
+            borderColor: badgeStyle.variants!.action!.info!.borderColor!),
       );
     }
   }
@@ -170,11 +170,11 @@ class GSBadge extends StatelessWidget {
       return badgeStyle.variants?.action?.warning?.textStyle?.color;
     } else if (badgeAction == GSActions.success) {
       return badgeStyle.variants?.action?.success?.textStyle?.color;
-    } else if (badgeAction == GSActions.info) {
-      return badgeStyle.variants?.action?.info?.textStyle?.color;
-    } else {
-      //muted
+    } else if (badgeAction == GSActions.muted) {
       return badgeStyle.variants?.action?.muted?.textStyle?.color;
+    } else {
+      //info
+      return badgeStyle.variants?.action?.info?.textStyle?.color;
     }
   }
 }
