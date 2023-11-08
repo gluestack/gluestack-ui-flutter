@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
+import 'package:gluestack_flutter_pro/token/line_height.dart';
 
 Color? resolveColorFromString(String? color) {
   if (color == null) {
@@ -57,8 +58,22 @@ double? resolveFontSizeFromString(String? fontSzie) {
   if (fontSzie == null) {
     return null;
   }
+  if (fontSzie.contains('\$')) {
+    return $GSFontSize.fontMap[fontSzie.substring(1)]!;
+  }
 
   return $GSFontSize.fontMap[fontSzie];
+}
+
+double? resolveLineHeightFromString(String? lineHeight,String? fontSize) {
+  if (lineHeight == null||fontSize==null) {
+    return null;
+  }
+  if (lineHeight.contains('\$')) {
+    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]!/resolveFontSizeFromString(fontSize)!;
+  }
+
+  return $GSLineHeight.lineHeightMap[lineHeight]!/resolveFontSizeFromString(fontSize)!;
 }
 
 GSActions? resolveActionFromString(String? action) {
