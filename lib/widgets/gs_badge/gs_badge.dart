@@ -88,7 +88,7 @@ class GSBadge extends StatelessWidget {
     return GSBadgeProvider(
       action: badgeAction!,
       size: badgeSize!,
-      iconAndTextColor: resolveIconAndTextColor(badgeAction),
+      iconAndTextColor: styler.textStyle!.color ?? styler.bg!,
       child: Container(
         decoration: BoxDecoration(
             color: style == null ? styler.bg : style!.bg ?? styler.bg,
@@ -115,21 +115,5 @@ class GSBadge extends StatelessWidget {
             ]),
       ),
     );
-  }
-
-  // Resolve the icon and text color based on the badge action provided.
-  resolveIconAndTextColor(GSActions badgeAction) {
-    if (badgeAction == GSActions.error) {
-      return badgeStyle.variants?.action?.error?.textStyle?.color;
-    } else if (badgeAction == GSActions.warning) {
-      return badgeStyle.variants?.action?.warning?.textStyle?.color;
-    } else if (badgeAction == GSActions.success) {
-      return badgeStyle.variants?.action?.success?.textStyle?.color;
-    } else if (badgeAction == GSActions.muted) {
-      return badgeStyle.variants?.action?.muted?.textStyle?.color;
-    } else {
-      //info
-      return badgeStyle.variants?.action?.info?.textStyle?.color;
-    }
   }
 }
