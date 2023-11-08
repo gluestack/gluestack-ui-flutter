@@ -217,6 +217,9 @@ class GSStyle extends BaseStyle<GSStyle> {
   String? outlineStyle;
   double? borderBottomWidth;
   TextStyle? textStyle;
+  Color? iconColor;
+  Color? spinnerColor;
+  double? iconSize;
   GSStyle? checked;
   Variants? variants;
   GSProps? props;
@@ -237,6 +240,9 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.outlineStyle,
     this.borderBottomWidth,
     this.textStyle,
+    this.iconColor,
+    this.spinnerColor,
+    this.iconSize,
     this.checked,
     super.onHover,
     super.onFocus,
@@ -309,6 +315,9 @@ class GSStyle extends BaseStyle<GSStyle> {
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
+      iconColor: overrideStyle?.iconColor ?? iconColor,
+      spinnerColor: overrideStyle?.spinnerColor ?? spinnerColor,
+      iconSize: overrideStyle?.iconSize ?? iconSize,
       variants: overrideStyle?.variants ?? variants,
       props: overrideStyle?.props ?? props,
       width: overrideStyle?.width ?? width,
@@ -339,6 +348,10 @@ class GSStyle extends BaseStyle<GSStyle> {
           data?['_text']?['color'],
         ),
       ),
+      iconColor: resolveColorFromString(data?['_icon']?['color']),
+      spinnerColor:
+          resolveColorFromString(data?['_spinner']?['props']?['color']),
+      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg']),
       borderWidth: data?['borderWidth'] != null
@@ -418,6 +431,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       dark: GSStyle(
         color: resolveColorFromString((data?['_dark']?['color'])),
+        iconColor: resolveColorFromString(data?['_icon']?['color']),
+        spinnerColor:
+            resolveColorFromString(data?['_spinner']?['props']?['color']),
+        iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
         textStyle: TextStyle(
             color: resolveColorFromString(data?['_text']?['_dark']?['color'])),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),

@@ -47,7 +47,6 @@ GSStyle? resolveStyles(
     }
   }
   inlineStyle?.contextStyles.forEach((key, value) {
-    // print("RESOLVER VALUE --->   $value");
     if (value != null) {
       if (key == 'dark' && theme == GSThemeMode.dark) {
         currentGSStyle = currentGSStyle?.merge(value);
@@ -68,12 +67,11 @@ GSStyle? resolveStyles(
       }
       if (key == 'sm' && isSmallScreen(context)) {
         currentGSStyle = currentGSStyle?.merge(value);
-        // print("IN HERE sm AFTER   ${currentGSStyle!.color}");
+
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
       if (key == 'xs' && isBaseScreen(context)) {
-        // print("IN HERE xs");
         currentGSStyle = currentGSStyle?.merge(value);
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
