@@ -73,6 +73,7 @@ class GSText extends StatelessWidget {
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
     );
 
+
     return Text(
       text,
       style: currentTextStyle,

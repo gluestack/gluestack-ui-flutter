@@ -18,6 +18,7 @@ class TextExample extends StatelessWidget {
               text: 'test 1',
               bold: true,
               underline: true,
+              
               style: GSStyle(
                   textStyle:
                       const TextStyle(letterSpacing: $GSLetterSpacing.$lg)),

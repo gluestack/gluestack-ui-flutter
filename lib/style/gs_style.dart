@@ -341,6 +341,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
       textStyle: overrideStyle?.textStyle != null
           ? TextStyle(
+              height:overrideStyle?.textStyle?.height ?? textStyle?.height ,
               color: overrideStyle?.textStyle?.color ?? textStyle?.color,
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
@@ -372,7 +373,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
-        height: resolveFontSizeFromString(data?['lineHeight']),
+        height: resolveLineHeightFromString(data?['lineHeight'],data?['fontSize']),
+        
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
           data?['_text']?['color'],
