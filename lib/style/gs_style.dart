@@ -254,7 +254,7 @@ class Variants {
       variant: GSVariant.fromMap(data: data?['variant']),
       action: GSAction.fromMap(data: data?['action']),
       space: GSSpace.fromMap(data: data?['space']),
-      highlight:GSStyle.fromMap(data: data?['highlight'][true],fromVariant: true)
+      highlight:GSStyle.fromMap(data: data?['highlight']?[true],fromVariant: true)
     );
   }
 }
