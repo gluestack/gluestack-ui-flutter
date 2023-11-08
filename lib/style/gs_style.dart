@@ -343,6 +343,8 @@ class GSStyle extends BaseStyle<GSStyle> {
           ? TextStyle(
               height:overrideStyle?.textStyle?.height ?? textStyle?.height ,
               color: overrideStyle?.textStyle?.color ?? textStyle?.color,
+              letterSpacing: overrideStyle?.textStyle?.letterSpacing??textStyle?.letterSpacing,
+              fontWeight: overrideStyle?.textStyle?.fontWeight??textStyle?.fontWeight,
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
@@ -374,7 +376,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
         height: resolveLineHeightFromString(data?['lineHeight'],data?['fontSize']),
-        
+        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
+        fontWeight: resolveFontWeightFromString(data?['fontWeight']),
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
           data?['_text']?['color'],

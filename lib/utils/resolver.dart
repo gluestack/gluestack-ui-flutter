@@ -65,15 +65,38 @@ double? resolveFontSizeFromString(String? fontSzie) {
   return $GSFontSize.fontMap[fontSzie];
 }
 
-double? resolveLineHeightFromString(String? lineHeight,String? fontSize) {
-  if (lineHeight == null||fontSize==null) {
+double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
+  if (lineHeight == null || fontSize == null) {
     return null;
   }
   if (lineHeight.contains('\$')) {
-    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]!/resolveFontSizeFromString(fontSize)!;
+    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]! /
+        resolveFontSizeFromString(fontSize)!;
   }
 
-  return $GSLineHeight.lineHeightMap[lineHeight]!/resolveFontSizeFromString(fontSize)!;
+  return $GSLineHeight.lineHeightMap[lineHeight]! /
+      resolveFontSizeFromString(fontSize)!;
+}
+
+FontWeight? resolveFontWeightFromString(String? fontWeight) {
+  if (fontWeight == null) {
+    return null;
+  } else if (fontWeight == '\$bold' || fontWeight == 'bold') {
+    return FontWeight.bold;
+  } else {
+    return null;
+  }
+}
+
+double? resolveLetterSpacingFromString(String? letterSpacing) {
+  if (letterSpacing == null) {
+    return null;
+  }
+  if (letterSpacing.contains('\$')) {
+    return $GSLetterSpacing.letterSpacingMap[letterSpacing.substring(1)]!;
+  }
+
+  return $GSLetterSpacing.letterSpacingMap[letterSpacing];
 }
 
 GSActions? resolveActionFromString(String? action) {

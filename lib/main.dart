@@ -6,6 +6,8 @@ import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
 
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_heading/gs_heading.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
 
 // import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 
@@ -34,6 +36,7 @@ class MyApp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+           
                  GestureDetector(
                   onTap: () {
                     navigatorKey.currentState!.push(MaterialPageRoute(

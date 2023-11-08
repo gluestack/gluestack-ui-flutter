@@ -7,4 +7,13 @@ class $GSLetterSpacing {
   static const double $lg = 0.2;
   static const double $xl = 0.4;
   static const double $2xl = 1.6;
+
+  static const Map<String, double> letterSpacingMap = {
+    "xs": $GSLetterSpacing.$xs,
+    "sm": $GSLetterSpacing.$sm,
+    "md": $GSLetterSpacing.$md,
+    "lg": $GSLetterSpacing.$lg,
+    "xl": $GSLetterSpacing.$xl,
+    "2xl": $GSLetterSpacing.$2xl,
+  };
 }
