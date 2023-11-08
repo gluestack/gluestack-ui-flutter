@@ -23,7 +23,7 @@ class BadgeExample extends StatelessWidget {
               variant: GSVariants.outline,
               style: GSStyle(
                 md: GSStyle(
-                  bg: $GSColors.amber100,
+                  bg: $GSColors.green400,
                 ),
                 variants: Variants(
                   action: GSAction(
