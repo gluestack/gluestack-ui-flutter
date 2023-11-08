@@ -90,27 +90,27 @@ class GSBadgeStyle {
     },
     GSActions.warning: {
       GSVariants.solid:
-          compoundVariants.variants!.action!.error!.variants!.variant!.solid!,
-      GSVariants.outline:
-          compoundVariants.variants!.action!.error!.variants!.variant!.outline!,
+          compoundVariants.variants!.action!.warning!.variants!.variant!.solid!,
+      GSVariants.outline: compoundVariants
+          .variants!.action!.warning!.variants!.variant!.outline!,
     },
     GSActions.success: {
       GSVariants.solid:
-          compoundVariants.variants!.action!.error!.variants!.variant!.solid!,
-      GSVariants.outline:
-          compoundVariants.variants!.action!.error!.variants!.variant!.outline!,
+          compoundVariants.variants!.action!.success!.variants!.variant!.solid!,
+      GSVariants.outline: compoundVariants
+          .variants!.action!.success!.variants!.variant!.outline!,
     },
     GSActions.info: {
       GSVariants.solid:
-          compoundVariants.variants!.action!.error!.variants!.variant!.solid!,
+          compoundVariants.variants!.action!.info!.variants!.variant!.solid!,
       GSVariants.outline:
-          compoundVariants.variants!.action!.error!.variants!.variant!.outline!,
+          compoundVariants.variants!.action!.info!.variants!.variant!.outline!,
     },
     GSActions.muted: {
       GSVariants.solid:
-          compoundVariants.variants!.action!.error!.variants!.variant!.solid!,
+          compoundVariants.variants!.action!.muted!.variants!.variant!.solid!,
       GSVariants.outline:
-          compoundVariants.variants!.action!.error!.variants!.variant!.outline!,
+          compoundVariants.variants!.action!.muted!.variants!.variant!.outline!,
     }
   };
 

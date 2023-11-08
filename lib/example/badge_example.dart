@@ -32,9 +32,9 @@ class BadgeExample extends StatelessWidget {
                 ),
               ),
               // borderRadius: 4,
-              text: GSBadgeText('Halleluyah'),
+              text: const GSBadgeText('Halleluyah'),
             ),
-            GSBadge(
+            const GSBadge(
               size: GSSizes.$sm,
               action: GSActions.info,
               variant: GSVariants.solid,

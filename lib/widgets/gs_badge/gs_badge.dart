@@ -84,19 +84,21 @@ class GSBadge extends StatelessWidget {
       size: GSBadgeStyle.size[badgeSize],
       inlineStyle: style,
     )!;
-//for testing purpose | TODO: Remove before reaching production level
-    print('----------');
-    print(styler.variants?.action?.warning?.bg);
-    print('+++++ ${styler.bg}');
 
     return GSBadgeProvider(
       action: badgeAction!,
       size: badgeSize!,
       iconAndTextColor: resolveIconAndTextColor(badgeAction),
       child: Container(
-        decoration: resolveBadgeDecoration(badgeAction, badgeVariant!).copyWith(
-            borderRadius: BorderRadius.circular(borderRadius ?? 0),
-            color: style != null ? styler.bg : null),
+        decoration: BoxDecoration(
+            color: style == null ? styler.bg : style!.bg ?? styler.bg,
+            border: Border.all(
+                style: badgeVariant == GSVariants.outline
+                    ? BorderStyle.solid
+                    : BorderStyle.none,
+                color: style == null
+                    ? styler.borderColor!
+                    : style!.borderColor ?? styler.borderColor!)),
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
         child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -113,53 +115,6 @@ class GSBadge extends StatelessWidget {
             ]),
       ),
     );
-  }
-
-  // Resolve the badge's decoration based on the action and variant provided.
-  BoxDecoration resolveBadgeDecoration(
-      GSActions badgeAction, GSVariants badgeVariant) {
-    // Helper function to create a border.
-    BoxBorder borderHelper({required Color borderColor}) {
-      if (badgeVariant == GSVariants.outline) {
-        return Border.all(
-            style: BorderStyle.solid, width: 1, color: borderColor);
-      } else {
-        return Border.all(style: BorderStyle.none);
-      }
-    }
-
-    if (badgeAction == GSActions.error) {
-      return BoxDecoration(
-        color: badgeStyle.variants?.action?.error?.bg,
-        border: borderHelper(
-            borderColor: badgeStyle.variants!.action!.error!.borderColor!),
-      );
-    } else if (badgeAction == GSActions.warning) {
-      return BoxDecoration(
-        color: badgeStyle.variants?.action?.warning?.bg,
-        border: borderHelper(
-            borderColor: badgeStyle.variants!.action!.warning!.borderColor!),
-      );
-    } else if (badgeAction == GSActions.success) {
-      return BoxDecoration(
-        color: badgeStyle.variants?.action?.success?.bg,
-        border: borderHelper(
-            borderColor: badgeStyle.variants!.action!.success!.borderColor!),
-      );
-    } else if (badgeAction == GSActions.muted) {
-      return BoxDecoration(
-        color: badgeStyle.variants?.action?.muted?.bg,
-        border: borderHelper(
-            borderColor: badgeStyle.variants!.action!.muted!.borderColor!),
-      );
-    } else {
-      //info
-      return BoxDecoration(
-        color: badgeStyle.variants?.action?.info?.bg,
-        border: borderHelper(
-            borderColor: badgeStyle.variants!.action!.info!.borderColor!),
-      );
-    }
   }
 
   // Resolve the icon and text color based on the badge action provided.
