@@ -82,6 +82,11 @@ GSActions? resolveActionFromString(String? action) {
     'secondary': GSActions.secondary,
     'positive': GSActions.positive,
     'negative': GSActions.negative,
+    'error':GSActions.error,
+    'warning':GSActions.warning,
+    'success':GSActions.success,
+    'info':GSActions.info,
+    'muted':GSActions.muted,
   };
 
   return action != null ? actionMap[action] : null;
