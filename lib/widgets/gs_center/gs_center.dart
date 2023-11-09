@@ -8,8 +8,6 @@ enum GSJustifyContent { start, center, end }
 
 class GSCenter extends StatelessWidget {
   final GSStyle? style;
-  final double? height;
-  final double? width;
   final GSAlignItems? alignItems;
   final GSJustifyContent? justifyContent;
   final Widget child;
@@ -18,8 +16,6 @@ class GSCenter extends StatelessWidget {
       {super.key,
       required this.child,
       this.style,
-      this.height,
-      this.width,
       this.alignItems = GSAlignItems.center,
       this.justifyContent = GSJustifyContent.center});
 
@@ -46,8 +42,8 @@ class GSCenter extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(color: styler.bg ?? styler.color),
-      height: height,
-      width: width,
+      height: style?.height,
+      width: style?.width,
       child: Align(
         alignment: Alignment(
             resolveAlignment(alignItems), resolveAlignment(justifyContent)),
