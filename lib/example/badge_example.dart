@@ -3,7 +3,8 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_text.dart';
-
+import 'package:gluestack_flutter_pro/widgets/gs_center/gs_center.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_divider/gs_divider.dart';
 
 class BadgeExample extends StatelessWidget {
   const BadgeExample({super.key});
@@ -12,7 +13,7 @@ class BadgeExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
+      body: GSCenter(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
