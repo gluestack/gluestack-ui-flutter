@@ -13,6 +13,7 @@ enum GSActions {
   info,
   muted
 }
+
 enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
@@ -22,6 +23,10 @@ enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $6xl }
 enum GSDirection { row, column }
 
 enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
+
+enum GSAlignItems { start, center, end }
+
+enum GSJustifyContents { start, center, end }
 
 class GSProps {
   GSActions? action;
@@ -51,27 +56,23 @@ class GSVariant {
   GSStyle? solid;
   GSStyle? link;
 
-
   GSVariant({
     this.underlined,
     this.outline,
     this.rounded,
     this.solid,
     this.link,
-
   });
   factory GSVariant.fromMap({required Map<String, dynamic>? data}) {
-
     return GSVariant(
-        underlined:
-            GSStyle.fromMap(data: data?['underlined'], fromVariant: true),
-        outline: GSStyle.fromMap(data: data?['outline'], fromVariant: true),
-        rounded: GSStyle.fromMap(
-          data: data?['rounded'],
-          fromVariant: true,
-        ),
-        link: GSStyle.fromMap(data: data?['link'], fromVariant: true),
-      );
+      underlined: GSStyle.fromMap(data: data?['underlined'], fromVariant: true),
+      outline: GSStyle.fromMap(data: data?['outline'], fromVariant: true),
+      rounded: GSStyle.fromMap(
+        data: data?['rounded'],
+        fromVariant: true,
+      ),
+      link: GSStyle.fromMap(data: data?['link'], fromVariant: true),
+    );
   }
 }
 
@@ -238,7 +239,7 @@ class Variants {
   GSSize? size;
   GSAction? action;
   GSSpace? space;
-    GSStyle? highlight;
+  GSStyle? highlight;
   Variants({
     this.variant,
     this.size,
@@ -248,14 +249,13 @@ class Variants {
   });
 
   factory Variants.fromMap({required Map<String, dynamic>? data}) {
-    
     return Variants(
-      size: GSSize.fromMap(data: data?['size']),
-      variant: GSVariant.fromMap(data: data?['variant']),
-      action: GSAction.fromMap(data: data?['action']),
-      space: GSSpace.fromMap(data: data?['space']),
-      highlight:GSStyle.fromMap(data: data?['highlight']?[true],fromVariant: true)
-    );
+        size: GSSize.fromMap(data: data?['size']),
+        variant: GSVariant.fromMap(data: data?['variant']),
+        action: GSAction.fromMap(data: data?['action']),
+        space: GSSpace.fromMap(data: data?['space']),
+        highlight: GSStyle.fromMap(
+            data: data?['highlight']?[true], fromVariant: true));
   }
 }
 
@@ -282,46 +282,48 @@ class GSStyle extends BaseStyle<GSStyle> {
   GSStyle? checked;
   Variants? variants;
   GSProps? props;
+  GSAlignItems? alignItems;
+  GSJustifyContents? justifyContent;
 
-  GSStyle({
-    this.borderWidth,
-    this.borderColor,
-    this.borderRadius,
-    this.padding,
-    this.opacity,
-    this.color,
-    this.bg,
-    this.borderBottomColor,
-    this.height,
-    this.width,
-
-    this.gap,
-    this.outlineWidth,
-    this.outlineStyle,
-    this.borderBottomWidth,
-    this.textStyle,
-    this.iconColor,
-    this.spinnerColor,
-    this.iconSize,
-    this.checked,
-    super.onHover,
-    super.onFocus,
-    super.onActive,
-    super.onDisabled,
-    super.input,
-    super.icon,
-    super.dark,
-    super.xs,
-    super.sm,
-    super.md,
-    super.lg,
-    super.onInvaild,
-    super.web,
-    super.ios,
-    super.android,
-    this.variants,
-    this.props,
-  });
+  GSStyle(
+      {this.borderWidth,
+      this.borderColor,
+      this.borderRadius,
+      this.padding,
+      this.opacity,
+      this.color,
+      this.bg,
+      this.borderBottomColor,
+      this.height,
+      this.width,
+      this.gap,
+      this.outlineWidth,
+      this.outlineStyle,
+      this.borderBottomWidth,
+      this.textStyle,
+      this.iconColor,
+      this.spinnerColor,
+      this.iconSize,
+      this.checked,
+      super.onHover,
+      super.onFocus,
+      super.onActive,
+      super.onDisabled,
+      super.input,
+      super.icon,
+      super.dark,
+      super.xs,
+      super.sm,
+      super.md,
+      super.lg,
+      super.onInvaild,
+      super.web,
+      super.ios,
+      super.android,
+      this.variants,
+      this.props,
+      this.alignItems,
+      this.justifyContent});
 
   @override
   copy() {
@@ -336,7 +338,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderWidth: overrideStyle?.borderWidth ?? borderWidth,
       color: overrideStyle?.color ?? color,
       bg: overrideStyle?.bg ?? bg,
-    
+
       borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
       borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
       icon: overrideStyle?.icon ?? icon,
@@ -372,7 +374,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
       textStyle: overrideStyle?.textStyle != null
           ? TextStyle(
-              height:overrideStyle?.textStyle?.height ?? textStyle?.height ,
+              height: overrideStyle?.textStyle?.height ?? textStyle?.height,
               color: overrideStyle?.textStyle?.color ?? textStyle?.color,
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
@@ -392,6 +394,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       web: overrideStyle?.web ?? web,
       ios: overrideStyle?.ios ?? ios,
       android: overrideStyle?.android ?? android,
+      alignItems: overrideStyle?.alignItems ?? alignItems,
+      justifyContent: overrideStyle?.justifyContent ?? justifyContent,
     );
   }
 
@@ -404,11 +408,11 @@ class GSStyle extends BaseStyle<GSStyle> {
         data?['h'],
       ),
       width: resolveSpaceFromString(data?['w']),
-    
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
-        height: resolveLineHeightFromString(data?['lineHeight'],data?['fontSize']),
-        
+        height:
+            resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
+
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
           data?['_text']?['color'],
@@ -546,6 +550,15 @@ class GSStyle extends BaseStyle<GSStyle> {
           : GSProps.fromMap(
               data: data?['props'] ?? data?['defaultProps'],
             ),
+      alignItems: data?['alignItems'] != null
+          ? resolveItemAlignmentFromString(data?['alignItems'].toString())
+          : null,
+      justifyContent: data?['justifyContent'] != null
+          ? resolveContentJustificationFromString(
+              data?['justifyContent'].toString())
+          : null,
+
+      ///aaa
     );
   }
 }

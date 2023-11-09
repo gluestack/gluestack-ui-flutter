@@ -13,14 +13,14 @@ class CenterExample extends StatelessWidget {
         children: [
           const GSCenter(child: Text('GlueStack - Flutter UI')),
           GSCenter(
-              alignItems: GSAlignItems.start,
-              justifyContent: GSJustifyContent.end,
               style: GSStyle(
+                alignItems: GSAlignItems.end,
+                justifyContent: GSJustifyContents.start,
                 height: 150,
                 bg: Colors.pink,
                 md: GSStyle(bg: Colors.yellow),
               ),
-              child: const Text('Center Widget')),
+              child: const Text('Testing Center Widget')),
         ],
       ),
     );

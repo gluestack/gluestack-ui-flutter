@@ -116,6 +116,26 @@ GSSizes? resolveSizesFromString(String? size) {
   return size != null ? sizeMap[size] : null;
 }
 
+GSAlignItems? resolveItemAlignmentFromString(String? itemAlignment) {
+  const itemAlignmentMap = {
+    'center': GSAlignItems.center,
+    'start': GSAlignItems.start,
+    'end': GSAlignItems.end,
+  };
+
+  return itemAlignment != null ? itemAlignmentMap[itemAlignment] : null;
+}
+
+GSJustifyContents? resolveContentJustificationFromString(String? contentJustification) {
+  const contentJustificationMap = {
+    'center': GSJustifyContents.center,
+    'start': GSJustifyContents.start,
+    'end': GSJustifyContents.end,
+  };
+
+  return contentJustification != null ? contentJustificationMap[contentJustification] : null;
+}
+
 GSSpaces? resolveSpacesFromString(String? space) {
   const spaceMap = {
     'xs': GSSpaces.$xs,
