@@ -4,20 +4,20 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 class GSBadgeProvider extends InheritedWidget {
   final GSActions action;
   final GSSizes size;
-  final Color iconAndTextColor;
+  final GSVariants variant;
 
   const GSBadgeProvider({
     super.key,
     required this.size,
     required this.action,
-    required this.iconAndTextColor,
+    required this.variant,
     required Widget child,
 
   }) : super(child: child);
 
   @override
   bool updateShouldNotify(GSBadgeProvider oldWidget) {
-    return action != oldWidget.action || size != oldWidget.size || iconAndTextColor != oldWidget.iconAndTextColor;
+    return action != oldWidget.action || size != oldWidget.size || variant != oldWidget.variant;
   }
 
   static GSBadgeProvider? of(BuildContext context) {

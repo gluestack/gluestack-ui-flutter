@@ -128,4 +128,5 @@ class GSBadgeStyle {
     GSSizes.$lg: $GSFontSize.$lg,
     GSSizes.$xl: $GSFontSize.$xl,
   };
+
 }

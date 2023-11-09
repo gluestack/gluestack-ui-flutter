@@ -17,17 +17,16 @@ class GSBadgeIcon extends StatelessWidget {
     /// Get the badge provider from the context
     final value = GSBadgeProvider.of(context);
 
-    /// Calculating the font size for the icon based on the text size.
-    final fontSize = GSBadgeStyle.textSize[value!.size];
-
-    /// Get the icon color from the badge provider, which may be associated with the badge.
-    final iconColor = value.iconAndTextColor;
+    // Retrieve icon size and text color based on the text size.
+    final iconSize = GSBadgeStyle.textSize[value!.size];
+    final iconColor = GSBadgeStyle
+        .gsBadgeCombination[value.action]?[value.variant]?.textStyle?.color;
 
     // Create an Icon widget with the given icon data, color, and font size.
     return Icon(
       iconData,
       color: iconColor,
-      size: fontSize,
+      size: iconSize,
     );
   }
 }

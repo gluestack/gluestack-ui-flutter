@@ -87,8 +87,8 @@ class GSBadge extends StatelessWidget {
 
     return GSBadgeProvider(
       action: badgeAction!,
+      variant: badgeVariant!,
       size: badgeSize!,
-      iconAndTextColor: styler.textStyle!.color ?? styler.bg!,
       child: Container(
         decoration: BoxDecoration(
             color: style == null ? styler.bg : style!.bg ?? styler.bg,

@@ -4,7 +4,6 @@ import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_text.dart';
 
-
 class BadgeExample extends StatelessWidget {
   const BadgeExample({super.key});
 
@@ -31,7 +30,9 @@ class BadgeExample extends StatelessWidget {
                 ),
               ),
               // borderRadius: 4,
-              text: const GSBadgeText('Halleluyah'),
+              text: const GSBadgeText(
+                'Error',
+              ),
             ),
             const GSBadge(
               size: GSSizes.$sm,
