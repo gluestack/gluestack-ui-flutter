@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme/config/badge/badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 
 /// This widget represents an icon which is optional with GSBadge widget. It's used to display icons along with text in GSBadge widget.
 class GSBadgeIcon extends StatelessWidget {

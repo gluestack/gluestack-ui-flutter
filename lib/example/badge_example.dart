@@ -4,7 +4,6 @@ import 'package:gluestack_flutter_pro/token/color_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_text.dart';
 
-import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image.dart';
 
 class BadgeExample extends StatelessWidget {
   const BadgeExample({super.key});

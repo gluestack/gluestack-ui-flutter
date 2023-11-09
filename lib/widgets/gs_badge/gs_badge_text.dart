@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme/config/badge/badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 
 /// GSBadgeText is a Flutter widget that displays a text within a GSBadge widget.
 class GSBadgeText extends StatelessWidget {
