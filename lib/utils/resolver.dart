@@ -65,15 +65,17 @@ double? resolveFontSizeFromString(String? fontSzie) {
   return $GSFontSize.fontMap[fontSzie];
 }
 
-double? resolveLineHeightFromString(String? lineHeight,String? fontSize) {
-  if (lineHeight == null||fontSize==null) {
+double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
+  if (lineHeight == null || fontSize == null) {
     return null;
   }
   if (lineHeight.contains('\$')) {
-    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]!/resolveFontSizeFromString(fontSize)!;
+    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]! /
+        resolveFontSizeFromString(fontSize)!;
   }
 
-  return $GSLineHeight.lineHeightMap[lineHeight]!/resolveFontSizeFromString(fontSize)!;
+  return $GSLineHeight.lineHeightMap[lineHeight]! /
+      resolveFontSizeFromString(fontSize)!;
 }
 
 GSActions? resolveActionFromString(String? action) {
@@ -82,11 +84,11 @@ GSActions? resolveActionFromString(String? action) {
     'secondary': GSActions.secondary,
     'positive': GSActions.positive,
     'negative': GSActions.negative,
-    'error':GSActions.error,
-    'warning':GSActions.warning,
-    'success':GSActions.success,
-    'info':GSActions.info,
-    'muted':GSActions.muted,
+    'error': GSActions.error,
+    'warning': GSActions.warning,
+    'success': GSActions.success,
+    'info': GSActions.info,
+    'muted': GSActions.muted,
   };
 
   return action != null ? actionMap[action] : null;
@@ -129,4 +131,13 @@ GSSpaces? resolveSpacesFromString(String? space) {
   };
 
   return space != null ? spaceMap[space] : null;
+}
+
+GSOrientations? resolveOrientationsFromString(String? orientation) {
+  const orientationMap = {
+    'vertical': GSOrientations.vertical,
+    'horizontal': GSOrientations.horizontal,
+  };
+
+  return orientation != null ? orientationMap[orientation] : null;
 }
