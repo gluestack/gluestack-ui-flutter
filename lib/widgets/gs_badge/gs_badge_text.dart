@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme/config/badge/badge.dart';
+import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 
 /// GSBadgeText is a Flutter widget that displays a text within a GSBadge widget.
 class GSBadgeText extends StatelessWidget {
   // The text to be displayed inside the badge.
   final String text;
   // Style for the badge text. Can be customized using GSStyle.
-  final GSStyle? gsStyle;
-  // The visual style for the text, such as font size and color.
-  final TextStyle? style;
+  final GSStyle? style;
   // The strut style used for vertical layout.
   final StrutStyle? strutStyle;
   // The alignment of the text within the badge.
@@ -42,7 +38,6 @@ class GSBadgeText extends StatelessWidget {
     //takes string as input just like inbuilt Text widget from flutter
     String this.text, {
     super.key,
-    this.gsStyle,
     this.style,
     this.strutStyle,
     this.textAlign,
@@ -63,12 +58,26 @@ class GSBadgeText extends StatelessWidget {
     final value = GSBadgeProvider.of(context);
     // Retrieve font size and text color based on the badge size.
     final fontSize = GSBadgeStyle.textSize[value!.size];
-    final textColor = value.iconAndTextColor;
+
+    final badgeTextStyle = value.textStyle;
+    final badgeAction = value.action;
+    final badgeVariant = value.variant;
+    final badgeSize = value.size;
+
+    //resolve style being called regardless
+    // Resolve the style for the badge.text
+    GSStyle styler = resolveStyles(
+      context,
+      variantStyle: GSBadgeStyle.gsBadgeCombination[badgeAction]![badgeVariant],
+      size: GSBadgeStyle.size[badgeSize],
+      inlineStyle: badgeTextStyle,
+    )!;
+    
     // Define a default text style with the computed font size and text color.
-    var defaultTextStyle = TextStyle(color: textColor, fontSize: fontSize);
+    var defaultTextStyle = TextStyle(
+        color: styler.color ?? styler.textStyle?.color, fontSize: fontSize);
     // Merge the default text style with the provided GSStyle or custom style.
-    final mergedStyle =
-        defaultTextStyle.merge(gsStyle != null ? gsStyle!.textStyle : style);
+    final mergedStyle = defaultTextStyle.merge(style?.textStyle);
     // Create a Text widget with the specified text and merged style.
     return Text(
       text,

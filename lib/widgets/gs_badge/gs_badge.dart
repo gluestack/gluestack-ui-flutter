@@ -21,7 +21,7 @@ class GSBadge extends StatelessWidget {
   final GSVariants? variant;
 
   /// The custom style for the badge.
-  final GSStyle? style;
+  final GSBadgeStyle? style;
 
   /// The child widget to be displayed inside the badge.
   final Widget? child;
@@ -87,8 +87,13 @@ class GSBadge extends StatelessWidget {
 
     return GSBadgeProvider(
       action: badgeAction!,
+      variant: badgeVariant!,
       size: badgeSize!,
-      iconAndTextColor: styler.textStyle!.color ?? styler.bg!,
+      textStyle: style?.badgeTextStyle ?? styler,
+      iconStyle: style?.iconStyle ?? styler,
+      // iconAndTextColor: style == null
+      //     ? styler.textStyle!.color ?? styler.bg!
+      //     : style!.badgeTextStyle!.color!,
       child: Container(
         decoration: BoxDecoration(
             color: style == null ? styler.bg : style!.bg ?? styler.bg,

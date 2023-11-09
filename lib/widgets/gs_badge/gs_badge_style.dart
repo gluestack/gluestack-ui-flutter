@@ -80,7 +80,50 @@ GSStyle compoundVariants = GSStyle(
   ),
 );
 
-class GSBadgeStyle {
+class GSBadgeStyle extends GSStyle {
+  GSStyle? badgeTextStyle;
+  GSStyle? iconStyle;
+  GSBadgeStyle({
+    this.iconStyle,
+    this.badgeTextStyle,
+    super.borderWidth,
+    super.borderColor,
+    super.borderRadius,
+    super.padding,
+    super.opacity,
+    super.color,
+    super.bg,
+    super.borderBottomColor,
+    super.height,
+    super.width,
+    super.gap,
+    super.outlineWidth,
+    super.outlineStyle,
+    super.borderBottomWidth,
+    super.textStyle,
+    super.iconColor,
+    super.spinnerColor,
+    super.iconSize,
+    super.checked,
+    super.onHover,
+    super.onFocus,
+    super.onActive,
+    super.onDisabled,
+    super.input,
+    super.icon,
+    super.dark,
+    super.xs,
+    super.sm,
+    super.md,
+    super.lg,
+    super.onInvaild,
+    super.web,
+    super.ios,
+    super.android,
+    super.variants,
+    super.props,
+  });
+
   static Map<GSActions, Map<GSVariants, GSStyle>> gsBadgeCombination = {
     GSActions.error: {
       GSVariants.solid:
