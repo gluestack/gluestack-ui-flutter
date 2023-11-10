@@ -24,9 +24,7 @@ enum GSDirection { row, column }
 
 enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
-enum GSAlignItems { start, center, end }
-
-enum GSJustifyContents { start, center, end }
+enum GSAlignments { start, center, end }
 
 class GSProps {
   GSActions? action;
@@ -282,8 +280,8 @@ class GSStyle extends BaseStyle<GSStyle> {
   GSStyle? checked;
   Variants? variants;
   GSProps? props;
-  GSAlignItems? alignItems;
-  GSJustifyContents? justifyContent;
+  GSAlignments? alignItems;
+  GSAlignments? justifyContent;
 
   GSStyle(
       {this.borderWidth,
@@ -551,11 +549,11 @@ class GSStyle extends BaseStyle<GSStyle> {
               data: data?['props'] ?? data?['defaultProps'],
             ),
       alignItems: data?['alignItems'] != null
-          ? resolveItemAlignmentFromString(data?['alignItems'].toString())
+          ? resolveAlignmentFromString(data?['alignItems'])
           : null,
       justifyContent: data?['justifyContent'] != null
-          ? resolveContentJustificationFromString(
-              data?['justifyContent'].toString())
+          ? resolveAlignmentFromString(
+              data?['justifyContent'])
           : null,
 
       ///aaa
