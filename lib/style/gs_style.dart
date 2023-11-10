@@ -24,6 +24,8 @@ enum GSDirection { row, column }
 
 enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
+enum GSAlignments { start, center, end }
+
 enum GSOrientations { horizontal, vertical }
 
 class GSProps {
@@ -301,45 +303,48 @@ class GSStyle extends BaseStyle<GSStyle> {
   GSStyle? checked;
   Variants? variants;
   GSProps? props;
+  GSAlignments? alignItems;
+  GSAlignments? justifyContent;
 
-  GSStyle({
-    this.borderWidth,
-    this.borderColor,
-    this.borderRadius,
-    this.padding,
-    this.opacity,
-    this.color,
-    this.bg,
-    this.borderBottomColor,
-    this.height,
-    this.width,
-    this.gap,
-    this.outlineWidth,
-    this.outlineStyle,
-    this.borderBottomWidth,
-    this.textStyle,
-    this.iconColor,
-    this.spinnerColor,
-    this.iconSize,
-    this.checked,
-    super.onHover,
-    super.onFocus,
-    super.onActive,
-    super.onDisabled,
-    super.input,
-    super.icon,
-    super.dark,
-    super.xs,
-    super.sm,
-    super.md,
-    super.lg,
-    super.onInvaild,
-    super.web,
-    super.ios,
-    super.android,
-    this.variants,
-    this.props,
-  });
+  GSStyle(
+      {this.borderWidth,
+      this.borderColor,
+      this.borderRadius,
+      this.padding,
+      this.opacity,
+      this.color,
+      this.bg,
+      this.borderBottomColor,
+      this.height,
+      this.width,
+      this.gap,
+      this.outlineWidth,
+      this.outlineStyle,
+      this.borderBottomWidth,
+      this.textStyle,
+      this.iconColor,
+      this.spinnerColor,
+      this.iconSize,
+      this.checked,
+      super.onHover,
+      super.onFocus,
+      super.onActive,
+      super.onDisabled,
+      super.input,
+      super.icon,
+      super.dark,
+      super.xs,
+      super.sm,
+      super.md,
+      super.lg,
+      super.onInvaild,
+      super.web,
+      super.ios,
+      super.android,
+      this.variants,
+      this.props,
+      this.alignItems,
+      this.justifyContent});
 
   @override
   copy() {
@@ -410,6 +415,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       web: overrideStyle?.web ?? web,
       ios: overrideStyle?.ios ?? ios,
       android: overrideStyle?.android ?? android,
+      alignItems: overrideStyle?.alignItems ?? alignItems,
+      justifyContent: overrideStyle?.justifyContent ?? justifyContent,
     );
   }
 
@@ -564,6 +571,15 @@ class GSStyle extends BaseStyle<GSStyle> {
           : GSProps.fromMap(
               data: data?['props'] ?? data?['defaultProps'],
             ),
+      alignItems: data?['alignItems'] != null
+          ? resolveAlignmentFromString(data?['alignItems'])
+          : null,
+      justifyContent: data?['justifyContent'] != null
+          ? resolveAlignmentFromString(
+              data?['justifyContent'])
+          : null,
+
+      ///aaa
     );
   }
 }

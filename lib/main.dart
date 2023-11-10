@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/example/badge_example.dart';
 import 'package:gluestack_flutter_pro/example/button_example.dart';
+import 'package:gluestack_flutter_pro/example/center_example.dart';
 import 'package:gluestack_flutter_pro/example/divider_example.dart';
 import 'package:gluestack_flutter_pro/example/hstack_example.dart';
 import 'package:gluestack_flutter_pro/example/image_example.dart';
@@ -151,6 +152,21 @@ class MyApp extends StatelessWidget {
                   },
                   child: const Text(
                     'GS Badge',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    navigatorKey.currentState!.push(MaterialPageRoute(
+                      builder: (context) => const CenterExample(),
+                    ));
+                  },
+                  child: const Text(
+                    'GS Center',
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.blue,
