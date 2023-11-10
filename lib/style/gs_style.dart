@@ -2,7 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/base_style.dart';
 import 'package:gluestack_flutter_pro/utils/resolver.dart';
 
-enum GSActions { primary, secondary, positive, negative }
+enum GSActions {
+  primary,
+  secondary,
+  positive,
+  negative,
+  error,
+  warning,
+  success,
+  info,
+  muted
+}
+
+enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
@@ -11,6 +23,8 @@ enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $6xl }
 enum GSDirection { row, column }
 
 enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
+
+enum GSAlignments { start, center, end }
 
 class GSProps {
   GSActions? action;
@@ -213,6 +227,35 @@ class GSAction {
             data: data?['negative'],
             decedentStylesList: decedentStylesList,
             fromVariant: true));
+  GSStyle? error;
+  GSStyle? warning;
+  GSStyle? success;
+  GSStyle? info;
+  GSStyle? muted;
+  GSAction(
+      {this.primary,
+      this.secondary,
+      this.positive,
+      this.negative,
+      this.defaultStyle,
+      this.error,
+      this.warning,
+      this.success,
+      this.info,
+      this.muted});
+  factory GSAction.fromMap({required Map<String, dynamic>? data}) {
+    return GSAction(
+      primary: GSStyle.fromMap(data: data?['primary'], fromVariant: true),
+      secondary: GSStyle.fromMap(data: data?['secondary'], fromVariant: true),
+      defaultStyle: GSStyle.fromMap(data: data?['default'], fromVariant: true),
+      positive: GSStyle.fromMap(data: data?['positive'], fromVariant: true),
+      negative: GSStyle.fromMap(data: data?['negative'], fromVariant: true),
+      error: GSStyle.fromMap(data: data?['error'], fromVariant: true),
+      warning: GSStyle.fromMap(data: data?['warning'], fromVariant: true),
+      success: GSStyle.fromMap(data: data?['success'], fromVariant: true),
+      info: GSStyle.fromMap(data: data?['info'], fromVariant: true),
+      muted: GSStyle.fromMap(data: data?['muted'], fromVariant: true),
+    );
   }
 }
 
@@ -377,6 +420,48 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.variants,
     this.props,
   });
+  GSAlignments? alignItems;
+  GSAlignments? justifyContent;
+
+  GSStyle(
+      {this.borderWidth,
+      this.borderColor,
+      this.borderRadius,
+      this.padding,
+      this.opacity,
+      this.color,
+      this.bg,
+      this.borderBottomColor,
+      this.height,
+      this.width,
+      this.gap,
+      this.outlineWidth,
+      this.outlineStyle,
+      this.borderBottomWidth,
+      this.textStyle,
+      this.iconColor,
+      this.spinnerColor,
+      this.iconSize,
+      this.checked,
+      super.onHover,
+      super.onFocus,
+      super.onActive,
+      super.onDisabled,
+      super.input,
+      super.icon,
+      super.dark,
+      super.xs,
+      super.sm,
+      super.md,
+      super.lg,
+      super.onInvaild,
+      super.web,
+      super.ios,
+      super.android,
+      this.variants,
+      this.props,
+      this.alignItems,
+      this.justifyContent});
 
   @override
   copy() {
@@ -457,6 +542,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       web: overrideStyle?.web ?? web,
       ios: overrideStyle?.ios ?? ios,
       android: overrideStyle?.android ?? android,
+      alignItems: overrideStyle?.alignItems ?? alignItems,
+      justifyContent: overrideStyle?.justifyContent ?? justifyContent,
     );
   }
 
@@ -614,6 +701,15 @@ class GSStyle extends BaseStyle<GSStyle> {
           : GSProps.fromMap(
               data: data?['props'] ?? data?['defaultProps'],
             ),
+      alignItems: data?['alignItems'] != null
+          ? resolveAlignmentFromString(data?['alignItems'])
+          : null,
+      justifyContent: data?['justifyContent'] != null
+          ? resolveAlignmentFromString(
+              data?['justifyContent'])
+          : null,
+
+      ///aaa
     );
   }
 }

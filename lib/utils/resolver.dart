@@ -121,6 +121,11 @@ GSActions? resolveActionFromString(String? action) {
     'secondary': GSActions.secondary,
     'positive': GSActions.positive,
     'negative': GSActions.negative,
+    'error': GSActions.error,
+    'warning': GSActions.warning,
+    'success': GSActions.success,
+    'info': GSActions.info,
+    'muted': GSActions.muted,
   };
 
   return action != null ? actionMap[action] : null;
@@ -150,6 +155,16 @@ GSSizes? resolveSizesFromString(String? size) {
   return size != null ? sizeMap[size] : null;
 }
 
+GSAlignments? resolveAlignmentFromString(String? itemAlignment) {
+  const itemAlignmentMap = {
+    'center': GSAlignments.center,
+    'start': GSAlignments.start,
+    'end': GSAlignments.end,
+  };
+
+  return itemAlignment != null ? itemAlignmentMap[itemAlignment] : null;
+}
+
 GSSpaces? resolveSpacesFromString(String? space) {
   const spaceMap = {
     'xs': GSSpaces.$xs,
@@ -163,4 +178,16 @@ GSSpaces? resolveSpacesFromString(String? space) {
   };
 
   return space != null ? spaceMap[space] : null;
+}
+
+double resolveAlignment(GSAlignments? suppliedAlignment) {
+  Map<dynamic, double> alignOrJustifyItems = {
+    GSAlignments.start: -1,
+    GSAlignments.center: 0,
+    GSAlignments.end: 1,
+  };
+
+  return suppliedAlignment != null
+      ? alignOrJustifyItems[suppliedAlignment]!
+      : 0;
 }
