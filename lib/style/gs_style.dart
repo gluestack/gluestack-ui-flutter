@@ -18,13 +18,26 @@ enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
-enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $6xl }
+enum GSSizes {
+  $2xs,
+  $xs,
+  $sm,
+  $md,
+  $lg,
+  $xl,
+  $2xl,
+  $3xl,
+  $4xl,
+  $5xl,
+  $6xl,
+  $full
+}
 
 enum GSDirection { row, column }
 
 enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
-enum GSAlignments { start, center, end }
+enum GSAlignments { start, center, end, spaceBetween, flexEnd }
 
 class GSProps {
   GSActions? action;
@@ -64,6 +77,7 @@ class GSVariant {
   factory GSVariant.fromMap({required Map<String, dynamic>? data}) {
     return GSVariant(
       underlined: GSStyle.fromMap(data: data?['underlined'], fromVariant: true),
+      solid: GSStyle.fromMap(data: data?['solid'], fromVariant: true),
       outline: GSStyle.fromMap(data: data?['outline'], fromVariant: true),
       rounded: GSStyle.fromMap(
         data: data?['rounded'],
@@ -86,19 +100,22 @@ class GSSize {
   GSStyle? $4xl;
   GSStyle? $5xl;
   GSStyle? $6xl;
+  GSStyle? $full;
 
-  GSSize(
-      {this.$xs,
-      this.$sm,
-      this.$md,
-      this.$lg,
-      this.$xl,
-      this.$2xl,
-      this.$2xs,
-      this.$3xl,
-      this.$4xl,
-      this.$5xl,
-      this.$6xl});
+  GSSize({
+    this.$xs,
+    this.$sm,
+    this.$md,
+    this.$lg,
+    this.$xl,
+    this.$2xl,
+    this.$2xs,
+    this.$3xl,
+    this.$4xl,
+    this.$5xl,
+    this.$6xl,
+    this.$full,
+  });
   factory GSSize.fromMap({required Map<String, dynamic>? data}) {
     return GSSize(
       $lg: data?['lg'] != null
@@ -136,6 +153,9 @@ class GSSize {
           : null,
       $6xl: data?['6xl'] != null
           ? GSStyle.fromMap(data: data?['6xl'], fromVariant: true)
+          : null,
+      $full: data?['full'] != null
+          ? GSStyle.fromMap(data: data?['full'], fromVariant: true)
           : null,
     );
   }
@@ -264,7 +284,6 @@ class GSStyle extends BaseStyle<GSStyle> {
   EdgeInsetsGeometry? padding;
   double? opacity;
   Color? color;
-
   Color? bg;
   double? gap;
   Color? borderBottomColor;
@@ -282,46 +301,52 @@ class GSStyle extends BaseStyle<GSStyle> {
   GSProps? props;
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
+  double? contentWidth;
+  double? contentMaxWidth;
+  AlignmentGeometry? alignment;
 
-  GSStyle(
-      {this.borderWidth,
-      this.borderColor,
-      this.borderRadius,
-      this.padding,
-      this.opacity,
-      this.color,
-      this.bg,
-      this.borderBottomColor,
-      this.height,
-      this.width,
-      this.gap,
-      this.outlineWidth,
-      this.outlineStyle,
-      this.borderBottomWidth,
-      this.textStyle,
-      this.iconColor,
-      this.spinnerColor,
-      this.iconSize,
-      this.checked,
-      super.onHover,
-      super.onFocus,
-      super.onActive,
-      super.onDisabled,
-      super.input,
-      super.icon,
-      super.dark,
-      super.xs,
-      super.sm,
-      super.md,
-      super.lg,
-      super.onInvaild,
-      super.web,
-      super.ios,
-      super.android,
-      this.variants,
-      this.props,
-      this.alignItems,
-      this.justifyContent});
+  GSStyle({
+    this.borderWidth,
+    this.borderColor,
+    this.borderRadius,
+    this.padding,
+    this.opacity,
+    this.color,
+    this.bg,
+    this.borderBottomColor,
+    this.height,
+    this.width,
+    this.gap,
+    this.outlineWidth,
+    this.outlineStyle,
+    this.borderBottomWidth,
+    this.textStyle,
+    this.iconColor,
+    this.spinnerColor,
+    this.iconSize,
+    this.checked,
+    super.onHover,
+    super.onFocus,
+    super.onActive,
+    super.onDisabled,
+    super.input,
+    super.icon,
+    super.dark,
+    super.xs,
+    super.sm,
+    super.md,
+    super.lg,
+    super.onInvaild,
+    super.web,
+    super.ios,
+    super.android,
+    this.variants,
+    this.props,
+    this.alignItems,
+    this.justifyContent,
+    this.contentWidth,
+    this.contentMaxWidth,
+  });
 
   @override
   copy() {
@@ -336,7 +361,6 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderWidth: overrideStyle?.borderWidth ?? borderWidth,
       color: overrideStyle?.color ?? color,
       bg: overrideStyle?.bg ?? bg,
-
       borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
       borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
       icon: overrideStyle?.icon ?? icon,
@@ -358,16 +382,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       onInvaild: onInvaild != null
           ? onInvaild?.merge(overrideStyle?.onInvaild)
           : overrideStyle?.onInvaild,
-      // onDisabled: overrideStyle?.onDisabled ?? onDisabled,
-      // onInvaild: overrideStyle?.onInvaild ?? onInvaild,
-      // onFocus: overrideStyle?.onFocus?.merge(onFocus) ?? onFocus,
-      // onHover: overrideStyle?.onHover?.merge(onHover) ?? onHover,
-      // onActive: overrideStyle?.onActive ?? onActive,
       opacity: overrideStyle?.opacity ?? opacity,
       checked: checked != null
           ? checked?.merge(overrideStyle?.checked)
           : overrideStyle?.checked,
-      // checked: overrideStyle?.checked ?? checked,
       outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
       textStyle: overrideStyle?.textStyle != null
@@ -394,6 +412,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       android: overrideStyle?.android ?? android,
       alignItems: overrideStyle?.alignItems ?? alignItems,
       justifyContent: overrideStyle?.justifyContent ?? justifyContent,
+      contentWidth: overrideStyle?.contentWidth ?? contentWidth,
+      contentMaxWidth: overrideStyle?.contentMaxWidth ?? contentMaxWidth,
     );
   }
 
@@ -406,6 +426,26 @@ class GSStyle extends BaseStyle<GSStyle> {
         data?['h'],
       ),
       width: resolveSpaceFromString(data?['w']),
+      //To be removed later
+      contentWidth: data?['_content']?['w'] != null
+          ? data?['_content']?['w']?.contains('%')
+              ? double.tryParse(data?['_content']?['w']?.replaceAll('%', ''))! /
+                  100
+              : 1
+          : null,
+      //To be removed later
+      contentMaxWidth: data?['_content']?['maxWidth']?.toDouble(),
+      padding: data?['p'] != null
+          ? resolvePaddingFromString(data?['p'], 'all')
+          : data?['px'] != null && data?['py'] != null
+              ? resolvePaddingFromString(data?['px'], 'symmetric',
+                  paddingy: data?['py'])
+              : data?['px'] != null
+                  ? resolvePaddingFromString(data?['px'], 'horizontal')
+                  : data?['py'] != null
+                      ? resolvePaddingFromString(data?['py'], 'vertical')
+                      : null,
+      // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
         height:
@@ -552,8 +592,7 @@ class GSStyle extends BaseStyle<GSStyle> {
           ? resolveAlignmentFromString(data?['alignItems'])
           : null,
       justifyContent: data?['justifyContent'] != null
-          ? resolveAlignmentFromString(
-              data?['justifyContent'])
+          ? resolveAlignmentFromString(data?['justifyContent'])
           : null,
 
       ///aaa
