@@ -196,37 +196,37 @@ class GSAction {
   GSStyle? positive;
   GSStyle? negative;
   GSStyle? defaultStyle;
-  GSAction({
-    this.primary,
-    this.secondary,
-    this.positive,
-    this.negative,
-    this.defaultStyle,
-  });
-  factory GSAction.fromMap(
-      {required Map<String, dynamic>? data,
-      List<String> decedentStylesList = const []}) {
-    return GSAction(
-        primary: GSStyle.fromMap(
-            data: data?['primary'],
-            decedentStylesList: decedentStylesList,
-            fromVariant: true),
-        secondary: GSStyle.fromMap(
-            data: data?['secondary'],
-            decedentStylesList: decedentStylesList,
-            fromVariant: true),
-        defaultStyle: GSStyle.fromMap(
-            data: data?['default'],
-            decedentStylesList: decedentStylesList,
-            fromVariant: true),
-        positive: GSStyle.fromMap(
-            data: data?['positive'],
-            decedentStylesList: decedentStylesList,
-            fromVariant: true),
-        negative: GSStyle.fromMap(
-            data: data?['negative'],
-            decedentStylesList: decedentStylesList,
-            fromVariant: true));
+  // GSAction({
+  //   this.primary,
+  //   this.secondary,
+  //   this.positive,
+  //   this.negative,
+  //   this.defaultStyle,
+  // });
+  // factory GSAction.fromMap(
+  //     {required Map<String, dynamic>? data,
+  //     List<String> decedentStylesList = const []}) {
+  //   return GSAction(
+  //       primary: GSStyle.fromMap(
+  //           data: data?['primary'],
+  //           decedentStylesList: decedentStylesList,
+  //           fromVariant: true),
+  //       secondary: GSStyle.fromMap(
+  //           data: data?['secondary'],
+  //           decedentStylesList: decedentStylesList,
+  //           fromVariant: true),
+  //       defaultStyle: GSStyle.fromMap(
+  //           data: data?['default'],
+  //           decedentStylesList: decedentStylesList,
+  //           fromVariant: true),
+  //       positive: GSStyle.fromMap(
+  //           data: data?['positive'],
+  //           decedentStylesList: decedentStylesList,
+  //           fromVariant: true),
+  //       negative: GSStyle.fromMap(
+  //           data: data?['negative'],
+  //           decedentStylesList: decedentStylesList,
+  //           fromVariant: true));
   GSStyle? error;
   GSStyle? warning;
   GSStyle? success;
@@ -243,18 +243,50 @@ class GSAction {
       this.success,
       this.info,
       this.muted});
-  factory GSAction.fromMap({required Map<String, dynamic>? data}) {
+  factory GSAction.fromMap(
+      {required Map<String, dynamic>? data,
+      List<String> decedentStylesList = const []}) {
     return GSAction(
-      primary: GSStyle.fromMap(data: data?['primary'], fromVariant: true),
-      secondary: GSStyle.fromMap(data: data?['secondary'], fromVariant: true),
-      defaultStyle: GSStyle.fromMap(data: data?['default'], fromVariant: true),
-      positive: GSStyle.fromMap(data: data?['positive'], fromVariant: true),
-      negative: GSStyle.fromMap(data: data?['negative'], fromVariant: true),
-      error: GSStyle.fromMap(data: data?['error'], fromVariant: true),
-      warning: GSStyle.fromMap(data: data?['warning'], fromVariant: true),
-      success: GSStyle.fromMap(data: data?['success'], fromVariant: true),
-      info: GSStyle.fromMap(data: data?['info'], fromVariant: true),
-      muted: GSStyle.fromMap(data: data?['muted'], fromVariant: true),
+      primary: GSStyle.fromMap(
+          data: data?['primary'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
+      secondary: GSStyle.fromMap(
+          data: data?['secondary'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
+      defaultStyle: GSStyle.fromMap(
+          data: data?['default'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
+      positive: GSStyle.fromMap(
+          data: data?['positive'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
+      negative: GSStyle.fromMap(
+          data: data?['negative'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
+      error: GSStyle.fromMap(
+          data: data?['error'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
+      warning: GSStyle.fromMap(
+          data: data?['warning'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
+      success: GSStyle.fromMap(
+          data: data?['success'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
+      info: GSStyle.fromMap(
+          data: data?['info'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
+      muted: GSStyle.fromMap(
+          data: data?['muted'],
+          decedentStylesList: decedentStylesList,
+          fromVariant: true),
     );
   }
 }
@@ -378,48 +410,6 @@ class GSStyle extends BaseStyle<GSStyle> {
   Variants? variants;
   GSProps? props;
   Map<String, GSStyle?>? descendantStyles;
-
-  GSStyle({
-    this.borderWidth,
-    this.borderColor,
-    this.borderRadius,
-    this.padding,
-    this.margin,
-    this.opacity,
-    this.color,
-    this.fontWeight,
-    this.bg,
-    this.borderBottomColor,
-    this.height,
-    this.width,
-    this.gap,
-    this.outlineWidth,
-    this.outlineStyle,
-    this.borderBottomWidth,
-    this.textStyle,
-    this.iconColor,
-    this.spinnerColor,
-    this.iconSize,
-    this.checked,
-    this.descendantStyles,
-    super.onHover,
-    super.onFocus,
-    super.onActive,
-    super.onDisabled,
-    super.input,
-    super.icon,
-    super.dark,
-    super.xs,
-    super.sm,
-    super.md,
-    super.lg,
-    super.onInvaild,
-    super.web,
-    super.ios,
-    super.android,
-    this.variants,
-    this.props,
-  });
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
 
@@ -433,6 +423,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.bg,
       this.borderBottomColor,
       this.height,
+      this.margin,
+      this.fontWeight,
       this.width,
       this.gap,
       this.outlineWidth,
@@ -460,6 +452,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       super.android,
       this.variants,
       this.props,
+      this.descendantStyles,
       this.alignItems,
       this.justifyContent});
 
@@ -705,8 +698,7 @@ class GSStyle extends BaseStyle<GSStyle> {
           ? resolveAlignmentFromString(data?['alignItems'])
           : null,
       justifyContent: data?['justifyContent'] != null
-          ? resolveAlignmentFromString(
-              data?['justifyContent'])
+          ? resolveAlignmentFromString(data?['justifyContent'])
           : null,
 
       ///aaa
