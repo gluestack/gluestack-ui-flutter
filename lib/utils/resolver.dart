@@ -1,7 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/token/font_weight.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/token/line_height.dart';
+
+Map<String, GSStyle?> mergeStyledMaps(
+    {required Map<String, GSStyle?>? map1,
+    required Map<String, GSStyle?>? map2,
+    required List<String> keys}) {
+  Map<String, GSStyle?> mergedStyleMap = {};
+  for (var element in keys) {
+    mergedStyleMap[element] = map1?[element] != null
+        ? map1![element]?.merge(map2?[element])
+        : map2?[element];
+  }
+  return mergedStyleMap;
+}
+
+Map<String, GSStyle>? resolvedescendantStylesFromMap(
+    Map<String, dynamic>? data, List<String> descendantStyles) {
+  if (descendantStyles.isEmpty || data == null) {
+    return null;
+  }
+  Map<String, GSStyle> descendantStylesMap = {};
+  for (var element in descendantStyles) {
+    descendantStylesMap[element] = GSStyle.fromMap(data: data[element]);
+  }
+  return descendantStylesMap;
+}
 
 Color? resolveColorFromString(String? color) {
   if (color == null) {
@@ -44,6 +70,17 @@ double? resolveBorderWidthFromString(String? borderWidth) {
   }
 }
 
+FontWeight? resolveFontWeightFromString(String? fontWeight) {
+  if (fontWeight == null) {
+    return null;
+  }
+  if (fontWeight.contains('\$')) {
+    return $GSFontWeights.fontWeightMap[fontWeight.substring(1)]!;
+  }
+
+  return $GSFontWeights.fontWeightMap[fontWeight];
+}
+
 double? resolveSpaceFromString(String? space) {
   if (space == null) {
     return null;
@@ -65,15 +102,17 @@ double? resolveFontSizeFromString(String? fontSzie) {
   return $GSFontSize.fontMap[fontSzie];
 }
 
-double? resolveLineHeightFromString(String? lineHeight,String? fontSize) {
-  if (lineHeight == null||fontSize==null) {
+double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
+  if (lineHeight == null || fontSize == null) {
     return null;
   }
   if (lineHeight.contains('\$')) {
-    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]!/resolveFontSizeFromString(fontSize)!;
+    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]! /
+        resolveFontSizeFromString(fontSize)!;
   }
 
-  return $GSLineHeight.lineHeightMap[lineHeight]!/resolveFontSizeFromString(fontSize)!;
+  return $GSLineHeight.lineHeightMap[lineHeight]! /
+      resolveFontSizeFromString(fontSize)!;
 }
 
 GSActions? resolveActionFromString(String? action) {

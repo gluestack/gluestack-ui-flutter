@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme/config/button/button.dart';
+import 'package:gluestack_flutter_pro/utils/resolver.dart';
 
-GSStyle buttonStyle = GSStyle.fromMap(data: buttonData);
+
+
+GSStyle buttonStyle =
+    GSStyle.fromMap(data: buttonData, decedentStylesList: descendant);
 GSStyle baseStyle = GSStyle(
   borderRadius: buttonStyle.borderRadius,
   bg: buttonStyle.bg,
   dark: buttonStyle.dark,
   opacity: buttonStyle.onDisabled?.opacity,
 );
+
+List<String> descendant = ['_text', '_icon', '_spinner'];
+
+
 GSStyle compoundVariants = GSStyle(
   variants: Variants(
     action: GSAction(
@@ -143,4 +151,102 @@ class GSButtonStyle {
     GSSizes.$md: compoundVariants.variants!.size!.$md!,
     GSSizes.$lg: compoundVariants.variants!.size!.$lg!,
   };
+
+  static Map<GSActions, Map<GSVariants, Map<String, GSStyle?>>>
+      buttonDescendantStyles = {
+    GSActions.primary: {
+      GSVariants.solid: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.primary?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
+          keys: descendant),
+      GSVariants.outline: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.primary?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.outline?.descendantStyles,
+          keys: descendant),
+      GSVariants.link: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.primary?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.link?.descendantStyles,
+          keys: descendant),
+    },
+    GSActions.secondary: {
+      GSVariants.solid: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.secondary?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
+          keys: descendant),
+      GSVariants.outline: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.secondary?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.outline?.descendantStyles,
+          keys: descendant),
+      GSVariants.link: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.secondary?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.link?.descendantStyles,
+          keys: descendant),
+    },
+    GSActions.positive: {
+      GSVariants.solid: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.positive?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
+          keys: descendant),
+      GSVariants.outline: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.positive?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.outline?.descendantStyles,
+          keys: descendant),
+      GSVariants.link: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.positive?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.link?.descendantStyles,
+          keys: descendant),
+    },
+    GSActions.negative: {
+      GSVariants.solid: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.negative?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
+          keys: descendant),
+      GSVariants.outline: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.negative?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.outline?.descendantStyles,
+          keys: descendant),
+      GSVariants.link: mergeStyledMaps(
+          map1: mergeStyledMaps(
+              map1: buttonStyle.descendantStyles,
+              map2: buttonStyle.variants?.action?.negative?.descendantStyles,
+              keys: descendant),
+          map2: buttonStyle.variants?.variant?.link?.descendantStyles,
+          keys: descendant),
+    },
+  };
+
+
 }
