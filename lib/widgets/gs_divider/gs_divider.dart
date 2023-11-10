@@ -13,7 +13,9 @@ class GSDivider extends StatelessWidget {
     final dividerOrientation = orientation ?? dividerStyle.props?.orientation!;
     GSStyle styler = resolveStyles(
       context,
-      variantStyle: GSDividerStyle.gsDividerCombination[dividerOrientation],
+      variantStyle: dividerOrientation == GSOrientations.horizontal
+          ? dividerStyle.variants?.orientation?.horizontal
+          : dividerStyle.variants?.orientation?.vertical,
       inlineStyle: style,
     )!;
 
