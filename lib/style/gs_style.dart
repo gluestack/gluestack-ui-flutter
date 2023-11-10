@@ -40,27 +40,23 @@ class GSVariant {
   GSStyle? solid;
   GSStyle? link;
 
-
   GSVariant({
     this.underlined,
     this.outline,
     this.rounded,
     this.solid,
     this.link,
-
   });
   factory GSVariant.fromMap({required Map<String, dynamic>? data}) {
-
     return GSVariant(
-        underlined:
-            GSStyle.fromMap(data: data?['underlined'], fromVariant: true),
-        outline: GSStyle.fromMap(data: data?['outline'], fromVariant: true),
-        rounded: GSStyle.fromMap(
-          data: data?['rounded'],
-          fromVariant: true,
-        ),
-        link: GSStyle.fromMap(data: data?['link'], fromVariant: true),
-      );
+      underlined: GSStyle.fromMap(data: data?['underlined'], fromVariant: true),
+      outline: GSStyle.fromMap(data: data?['outline'], fromVariant: true),
+      rounded: GSStyle.fromMap(
+        data: data?['rounded'],
+        fromVariant: true,
+      ),
+      link: GSStyle.fromMap(data: data?['link'], fromVariant: true),
+    );
   }
 }
 
@@ -213,7 +209,7 @@ class Variants {
   GSSize? size;
   GSAction? action;
   GSSpace? space;
-    GSStyle? highlight;
+  GSStyle? highlight;
   Variants({
     this.variant,
     this.size,
@@ -223,14 +219,13 @@ class Variants {
   });
 
   factory Variants.fromMap({required Map<String, dynamic>? data}) {
-    
     return Variants(
-      size: GSSize.fromMap(data: data?['size']),
-      variant: GSVariant.fromMap(data: data?['variant']),
-      action: GSAction.fromMap(data: data?['action']),
-      space: GSSpace.fromMap(data: data?['space']),
-      highlight:GSStyle.fromMap(data: data?['highlight'][true],fromVariant: true)
-    );
+        size: GSSize.fromMap(data: data?['size']),
+        variant: GSVariant.fromMap(data: data?['variant']),
+        action: GSAction.fromMap(data: data?['action']),
+        space: GSSpace.fromMap(data: data?['space']),
+        highlight: GSStyle.fromMap(
+            data: data?['highlight']?[true], fromVariant: true));
   }
 }
 
@@ -239,6 +234,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? borderColor;
   double? borderRadius;
   EdgeInsetsGeometry? padding;
+  EdgeInsetsGeometry? margin;
   double? opacity;
   Color? color;
 
@@ -263,13 +259,13 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.borderColor,
     this.borderRadius,
     this.padding,
+    this.margin,
     this.opacity,
     this.color,
     this.bg,
     this.borderBottomColor,
     this.height,
     this.width,
-
     this.gap,
     this.outlineWidth,
     this.outlineStyle,
@@ -311,7 +307,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderWidth: overrideStyle?.borderWidth ?? borderWidth,
       color: overrideStyle?.color ?? color,
       bg: overrideStyle?.bg ?? bg,
-    
+      margin: overrideStyle?.margin??margin,
       borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
       borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
       icon: overrideStyle?.icon ?? icon,
@@ -347,7 +343,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
       textStyle: overrideStyle?.textStyle != null
           ? TextStyle(
-              height:overrideStyle?.textStyle?.height ?? textStyle?.height ,
+              height: overrideStyle?.textStyle?.height ?? textStyle?.height,
               color: overrideStyle?.textStyle?.color ?? textStyle?.color,
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
@@ -379,11 +375,11 @@ class GSStyle extends BaseStyle<GSStyle> {
         data?['h'],
       ),
       width: resolveSpaceFromString(data?['w']),
-    
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
-        height: resolveLineHeightFromString(data?['lineHeight'],data?['fontSize']),
-        
+        height:
+            resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
+
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
           data?['_text']?['color'],

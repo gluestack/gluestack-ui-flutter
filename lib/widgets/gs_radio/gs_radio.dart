@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_style.dart';
@@ -49,29 +51,32 @@ class GSRadio<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final radioSize = size ?? radioStyle.props!.size!;
 
-    return GSFocusableActionDetector(
-      child: InkWell(
-        hoverColor: Colors.transparent,
-        mouseCursor: isDisabled
-            ? SystemMouseCursors.forbidden
-            : SystemMouseCursors.click,
-        onTap: () {
-          if (!isDisabled && value != groupValue) {
-            onChanged!.call(value);
-          }
-        },
-        child: GSRadioProvider<T>(
-            value: value,
-            groupValue: groupValue,
-            onChanged: null,
-            size: radioSize,
-            style: style,
-            isInvalid: isInvalid,
-            isDisabled: isDisabled,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [icon, if (label != null) label!],
-            )),
+    return GSAncestor(
+      decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize]!,
+      child: GSFocusableActionDetector(
+        child: InkWell(
+          hoverColor: Colors.transparent,
+          mouseCursor: isDisabled
+              ? SystemMouseCursors.forbidden
+              : SystemMouseCursors.click,
+          onTap: () {
+            if (!isDisabled && value != groupValue) {
+              onChanged!.call(value);
+            }
+          },
+          child: GSRadioProvider<T>(
+              value: value,
+              groupValue: groupValue,
+              onChanged: null,
+              size: radioSize,
+              style: style,
+              isInvalid: isInvalid,
+              isDisabled: isDisabled,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [icon, if (label != null) label!],
+              )),
+        ),
       ),
     );
   }
