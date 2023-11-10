@@ -50,7 +50,7 @@ class GSRadio<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final radioSize = size ?? radioStyle.props!.size!;
-
+   
     return GSAncestor(
       decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize]!,
       child: GSFocusableActionDetector(
