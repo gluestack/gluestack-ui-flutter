@@ -26,24 +26,43 @@ enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 enum GSAlignments { start, center, end }
 
+enum GSOrientations { horizontal, vertical }
+
 class GSProps {
   GSActions? action;
   GSVariants? variant;
   GSSizes? size;
   GSSpaces? space;
+  GSOrientations? orientation;
 
   GSProps({
     this.action,
     this.variant,
     this.size,
     this.space,
+    this.orientation,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
     return GSProps(
         action: resolveActionFromString(data?['action']),
         variant: resolveVariantFromString(data?['variant']),
         size: resolveSizesFromString(data?['size']),
-        space: resolveSpacesFromString(data?['space']));
+        space: resolveSpacesFromString(data?['space']),
+        orientation: resolveOrientationsFromString(
+          data?['orientation'],
+        ));
+  }
+}
+
+class GSOrientation {
+  GSStyle? vertical;
+  GSStyle? horizontal;
+  GSOrientation({this.horizontal, this.vertical});
+  factory GSOrientation.fromMap({required Map<String, dynamic>? data}) {
+    return GSOrientation(
+      vertical: GSStyle.fromMap(data: data?['vertical'], fromVariant: true),
+      horizontal: GSStyle.fromMap(data: data?['horizontal'], fromVariant: true),
+    );
   }
 }
 
@@ -238,22 +257,26 @@ class Variants {
   GSAction? action;
   GSSpace? space;
   GSStyle? highlight;
+  GSOrientation? orientation;
   Variants({
     this.variant,
     this.size,
     this.action,
     this.space,
     this.highlight,
+    this.orientation,
   });
 
   factory Variants.fromMap({required Map<String, dynamic>? data}) {
     return Variants(
-        size: GSSize.fromMap(data: data?['size']),
-        variant: GSVariant.fromMap(data: data?['variant']),
-        action: GSAction.fromMap(data: data?['action']),
-        space: GSSpace.fromMap(data: data?['space']),
-        highlight: GSStyle.fromMap(
-            data: data?['highlight']?[true], fromVariant: true));
+      size: GSSize.fromMap(data: data?['size']),
+      variant: GSVariant.fromMap(data: data?['variant']),
+      action: GSAction.fromMap(data: data?['action']),
+      space: GSSpace.fromMap(data: data?['space']),
+      highlight:
+          GSStyle.fromMap(data: data?['highlight']?[true], fromVariant: true),
+      orientation: GSOrientation.fromMap(data: data?['orientation']),
+    );
   }
 }
 
@@ -403,9 +426,9 @@ class GSStyle extends BaseStyle<GSStyle> {
   }) {
     return GSStyle(
       height: resolveSpaceFromString(
-        data?['h'],
+        data?['h'] ?? data?['height'],
       ),
-      width: resolveSpaceFromString(data?['w']),
+      width: resolveSpaceFromString(data?['w'] ?? data?['width']),
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
         height:
