@@ -31,6 +31,7 @@ class $GSSpace {
   static const double $72 = 288.0;
   static const double $80 = 320.0;
   static const double $96 = 384.0;
+  static const double $full = double.maxFinite;
 
   static const Map<String, double> spaceMap = {
     "px": $GSSpace.px,
@@ -62,6 +63,7 @@ class $GSSpace {
     "64": $GSSpace.$64,
     "72": $GSSpace.$72,
     "80": $GSSpace.$80,
-    "96": $GSSpace.$96
+    "96": $GSSpace.$96,
+    "full": $GSSpace.$full,
   };
 }
