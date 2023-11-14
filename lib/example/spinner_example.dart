@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/color_token.dart';
+import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_spinner/gs_spinner.dart';
 
 class SpinnerExample extends StatelessWidget {
@@ -12,8 +13,10 @@ class SpinnerExample extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: GSSpinner(
+          strokeWidth: 6,
           style: GSStyle(
             color: $GSColors.rose500,
+            bg: $GSColors.blueGray300,
           ),
         ),
       ),

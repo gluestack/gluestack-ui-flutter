@@ -13,8 +13,10 @@ class ProgressExample extends StatelessWidget {
       body: Center(
         child: GSProgress(
           value: 0.4,
+          size: GSSizes.$md,
           style: GSStyle(
             progressValueColor: $GSColors.purple500,
+            bg: $GSColors.blueGray300,
           ),
         ),
       ),
