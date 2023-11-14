@@ -15,9 +15,10 @@ class SpinnerExample extends StatelessWidget {
         child: GSSpinner(
           strokeWidth: 6,
           style: GSStyle(
-            color: $GSColors.rose500,
-            bg: $GSColors.blueGray300,
-          ),
+              color: $GSColors.rose500,
+              bg: $GSColors.blueGray300,
+              width: 40,
+              height: 40),
         ),
       ),
     );
