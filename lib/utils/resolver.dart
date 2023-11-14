@@ -191,3 +191,12 @@ double resolveAlignment(GSAlignments? suppliedAlignment) {
       ? alignOrJustifyItems[suppliedAlignment]!
       : 0;
 }
+
+GSOrientations? resolveOrientationsFromString(String? orientation) {
+  const orientationMap = {
+    'vertical': GSOrientations.vertical,
+    'horizontal': GSOrientations.horizontal,
+  };
+
+  return orientation != null ? orientationMap[orientation] : null;
+}

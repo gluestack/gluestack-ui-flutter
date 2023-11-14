@@ -26,12 +26,15 @@ enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 enum GSAlignments { start, center, end }
 
+enum GSOrientations { horizontal, vertical }
+
 class GSProps {
   GSActions? action;
   GSVariants? variant;
   GSSizes? size;
   GSSpaces? space;
   GSStyle? style;
+  GSOrientations? orientation;
 
   GSProps({
     this.action,
@@ -39,6 +42,7 @@ class GSProps {
     this.size,
     this.space,
     this.style,
+    this.orientation,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
     return GSProps(
@@ -46,7 +50,22 @@ class GSProps {
         variant: resolveVariantFromString(data?['variant']),
         size: resolveSizesFromString(data?['size']),
         space: resolveSpacesFromString(data?['space']),
-        style: GSStyle.fromMap(data: data, fromVariant: true));
+        style: GSStyle.fromMap(data: data, fromVariant: true),orientation:resolveOrientationsFromString(
+          data?['orientation'],
+        ) );
+       
+  }
+}
+
+class GSOrientation {
+  GSStyle? vertical;
+  GSStyle? horizontal;
+  GSOrientation({this.horizontal, this.vertical});
+  factory GSOrientation.fromMap({required Map<String, dynamic>? data}) {
+    return GSOrientation(
+      vertical: GSStyle.fromMap(data: data?['vertical'], fromVariant: true),
+      horizontal: GSStyle.fromMap(data: data?['horizontal'], fromVariant: true),
+    );
   }
 }
 
@@ -350,12 +369,14 @@ class Variants {
   GSAction? action;
   GSSpace? space;
   GSStyle? highlight;
+  GSOrientation? orientation;
   Variants({
     this.variant,
     this.size,
     this.action,
     this.space,
     this.highlight,
+    this.orientation,
   });
 
   factory Variants.fromMap({
@@ -375,7 +396,9 @@ class Variants {
         highlight: GSStyle.fromMap(
             data: data?['highlight']?[true],
             decedentStylesList: decedentStylesList,
-            fromVariant: true));
+            fromVariant: true),
+            orientation: GSOrientation.fromMap(data: data?['orientation'])
+            );
   }
 }
 
@@ -549,9 +572,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       descendantStyles:
           resolvedescendantStylesFromMap(data, decedentStylesList),
       height: resolveSpaceFromString(
-        data?['h'],
+        data?['h'] ?? data?['height'],
       ),
-      width: resolveSpaceFromString(data?['w']),
+      width: resolveSpaceFromString(data?['w'] ?? data?['width']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
