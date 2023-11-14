@@ -15,23 +15,17 @@ class GSButtonText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final value = GSButtonProvider.of(context);
+  
     final ancestorTextStyles =
-        GSAncestorProvider.of(context)?.decedentStyles?[gsTextConfig.ancestorStyle[0]];
-   
-    // final textColor = GSButtonStyle
-    //         .gsButtonCombination[value?.action]![value?.variant]
-    //         ?.textStyle
-    //         ?.color ??
-    //     buttonTextStyle.color;
-    // final fontSize = GSButtonStyle.size[value?.size]?.textStyle?.fontSize;
-
+        GSAncestorProvider.of(context)?.decedentStyles?[gsTextConfig.ancestorStyle.first];
+        
     var defaultTextStyle = TextStyle(
         color: ancestorTextStyles?.color,
         fontWeight: ancestorTextStyles?.fontWeight);
 
     final mergedStyle =
-        defaultTextStyle.merge(style != null ? style!.textStyle : null);
+        defaultTextStyle.merge(
+          style != null ? style!.textStyle : null);
 
     return Text(
       text,

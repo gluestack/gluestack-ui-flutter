@@ -26,15 +26,17 @@ class GSButtonIcon extends StatelessWidget {
 
     GSStyle styler = resolveStyles(
       context,
-      variantStyle: GSStyle(iconColor: ancestorTextStyles?.color),
+      variantStyle: GSStyle(color: ancestorTextStyles?.color),
       size: GSButtonStyle
           .size[iconSize ?? value?.size ?? buttonIconStyle.props?.size],
       inlineStyle: style,
     )!;
 
+
+
     return Icon(
       icon,
-      color: styler.iconColor,
+      color: styler.color,
       size: styler.iconSize,
     );
   }

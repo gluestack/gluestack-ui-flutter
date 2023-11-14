@@ -429,8 +429,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   String? outlineStyle;
   double? borderBottomWidth;
   TextStyle? textStyle;
-  Color? iconColor;
-  Color? spinnerColor;
+
   double? iconSize;
   GSStyle? checked;
   Variants? variants;
@@ -457,8 +456,6 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.outlineStyle,
       this.borderBottomWidth,
       this.textStyle,
-      this.iconColor,
-      this.spinnerColor,
       this.iconSize,
       this.checked,
       super.onHover,
@@ -493,7 +490,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderColor: overrideStyle?.borderColor ?? borderColor,
       borderRadius: overrideStyle?.borderRadius ?? borderRadius,
       borderWidth: overrideStyle?.borderWidth ?? borderWidth,
-      color: overrideStyle?.color??props?.style?.color   ?? color,
+      color: overrideStyle?.color ?? props?.style?.color ?? color,
       bg: overrideStyle?.bg ?? bg,
       margin: overrideStyle?.margin ?? margin,
       borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
@@ -543,8 +540,7 @@ class GSStyle extends BaseStyle<GSStyle> {
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
-      iconColor: overrideStyle?.iconColor ?? iconColor,
-      spinnerColor: overrideStyle?.spinnerColor ?? spinnerColor,
+
       iconSize: overrideStyle?.iconSize ?? iconSize,
       variants: overrideStyle?.variants ?? variants,
       props: GSProps(
@@ -593,9 +589,7 @@ class GSStyle extends BaseStyle<GSStyle> {
           data?['_text']?['color'],
         ),
       ),
-      iconColor: resolveColorFromString(data?['_icon']?['color']),
-      spinnerColor:
-          resolveColorFromString(data?['_spinner']?['props']?['color']),
+
       iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg']),
@@ -676,9 +670,6 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       dark: GSStyle(
         color: resolveColorFromString((data?['_dark']?['color'])),
-        iconColor: resolveColorFromString(data?['_icon']?['color']),
-        spinnerColor:
-            resolveColorFromString(data?['_spinner']?['props']?['color']),
         iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
         textStyle: TextStyle(
             color: resolveColorFromString(data?['_text']?['_dark']?['color'])),

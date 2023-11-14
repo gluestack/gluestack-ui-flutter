@@ -18,11 +18,11 @@ class GSButtonSpinner extends StatelessWidget {
     final ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsButtonSpinnerConfig.ancestorStyle.first];
 
-    final spinnerColor = ancestorTextStyles?.props?.style?.color;
-    
+    final spinnerColor = ancestorTextStyles?.color;
+
     GSStyle styler = resolveStyles(
       context,
-      variantStyle: GSStyle(spinnerColor: spinnerColor),
+      variantStyle: GSStyle(color: spinnerColor),
       size: GSButtonStyle.size[value?.size],
       inlineStyle: style,
     )!;
@@ -32,8 +32,8 @@ class GSButtonSpinner extends StatelessWidget {
       height: styler.height,
       child: CircularProgressIndicator(
         strokeWidth: $GSBorderWidth.$2,
-        valueColor: AlwaysStoppedAnimation<Color>(
-            styler.spinnerColor ?? $GSColors.primary500),
+        valueColor:
+            AlwaysStoppedAnimation<Color>(styler.color ?? $GSColors.primary500),
       ),
     );
   }

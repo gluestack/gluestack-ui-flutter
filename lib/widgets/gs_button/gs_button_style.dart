@@ -19,7 +19,7 @@ GSStyle baseStyle = GSStyle(
   opacity: buttonStyle.onDisabled?.opacity,
 );
 
-// List<String> descendant = ['_text', '_icon', '_spinner'];
+
 
 GSStyle compoundVariants = GSStyle(
   variants: Variants(
@@ -32,8 +32,6 @@ GSStyle compoundVariants = GSStyle(
                 .merge(buttonStyle.variants?.variant?.solid)
                 .merge(GSStyle(
                   textStyle: TextStyle(color: buttonStyle.textStyle?.color),
-                  iconColor: buttonStyle.iconColor,
-                  spinnerColor: buttonStyle.spinnerColor,
                 )),
             outline: baseStyle
                 .merge(buttonStyle.variants?.action?.primary)
@@ -53,8 +51,6 @@ GSStyle compoundVariants = GSStyle(
                 .merge(buttonStyle.variants?.variant?.solid)
                 .merge(GSStyle(
                   textStyle: TextStyle(color: buttonStyle.textStyle?.color),
-                  iconColor: buttonStyle.iconColor,
-                  spinnerColor: buttonStyle.spinnerColor,
                 )),
             outline: baseStyle
                 .merge(buttonStyle.variants?.action?.secondary)
@@ -74,8 +70,6 @@ GSStyle compoundVariants = GSStyle(
                 .merge(buttonStyle.variants?.variant?.solid)
                 .merge(GSStyle(
                   textStyle: TextStyle(color: buttonStyle.textStyle?.color),
-                  iconColor: buttonStyle.iconColor,
-                  spinnerColor: buttonStyle.spinnerColor,
                 )),
             outline: baseStyle
                 .merge(buttonStyle.variants?.action?.positive)
@@ -95,8 +89,6 @@ GSStyle compoundVariants = GSStyle(
                 .merge(buttonStyle.variants?.variant?.solid)
                 .merge(GSStyle(
                   textStyle: TextStyle(color: buttonStyle.textStyle?.color),
-                  iconColor: buttonStyle.iconColor,
-                  spinnerColor: buttonStyle.spinnerColor,
                 )),
             outline: baseStyle
                 .merge(buttonStyle.variants?.action?.negative)
@@ -234,7 +226,6 @@ class GSButtonStyle {
               map2: buttonStyle.variants?.action?.negative?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
           map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
-       
           keys: gsButtonConfig.descendantStyle),
       GSVariants.outline: mergeStyledMaps(
           map1: mergeStyledMaps(

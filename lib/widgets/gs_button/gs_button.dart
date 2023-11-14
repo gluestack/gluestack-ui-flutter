@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
-import 'package:gluestack_flutter_pro/utils/resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
@@ -60,8 +59,9 @@ class GSButton extends StatelessWidget {
         descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
             ?[variant],
         descendantStyleKeys: gsButtonConfig.descendantStyle)!;
-    print(GSButtonStyle.buttonDescendantStyles[action]
-            ?[variant]?['_icon']?.color);
+      
+
+
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSButtonProvider(

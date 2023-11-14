@@ -3,6 +3,7 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_spinner.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_text.dart';
@@ -18,6 +19,7 @@ class ButtonExample extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+     
             GSButton(
               action: GSActions.negative,
               variant: GSVariants.solid,
@@ -26,6 +28,15 @@ class ButtonExample extends StatelessWidget {
                   dark: GSStyle(
                     descendantStyles: {
                       "_text": GSStyle(color: $GSColors.black),
+                      "_icon":GSStyle(color: $GSColors.pink900),
+                      "_spinner":GSStyle(
+                        color: $GSColors.yellow900,
+                        props:GSProps(
+                        
+                        style: GSStyle(
+                          color: $GSColors.blue900
+                        )
+                      ))
                     }
                   ),
                   descendantStyles: {
@@ -51,18 +62,18 @@ class ButtonExample extends StatelessWidget {
                   GSButtonIcon(
                     icon: Icons.add,
                     iconSize: GSSizes.$lg,
-                    // style: GSStyle(
-                    //   iconColor: $GSColors.green600,
-                    //   iconSize: 24,
-                    // ),
+                    style: GSStyle(
+                      color: $GSColors.green600,
+                      iconSize: 24,
+                    ),
                   ),
                   GSButtonText(
                     text: "Add",
-                    // style: GSStyle(
-                    //   textStyle: const TextStyle(
-                    //     color: $GSColors.pink200,
-                    //   ),
-                    // ),
+                    style: GSStyle(
+                      textStyle: const TextStyle(
+                        color: $GSColors.pink200,
+                      ),
+                    ),
                   ),
                   GSButtonSpinner(
                     style: GSStyle(
@@ -73,34 +84,34 @@ class ButtonExample extends StatelessWidget {
                 ],
               ),
             ),
-            // GSButtonGroup(
-            //   reversed: true,
-            //   isAttached: false,
-            //   direction: GSDirection.row,
-            //   size: GSSizes.$md,
-            //   space: GSSpaces.$xl,
-            //   style: GSStyle(
-            //       // bg: $GSColors.green500,
-            //       // height: 200,
-            //       ),
-            //   buttons: [
-            //     GSButton(
-            //       onPressed: () {},
-            //       isDisabled: false,
-            //       action: GSActions.negative,
-            //       style: GSStyle(
-            //         onHover: GSStyle(
-            //           bg: $GSColors.amber300,
-            //         ),
-            //       ),
-            //       child: const GSButtonText(text: "Click Here"),
-            //     ),
-            //     GSButton(
-            //       child: const GSButtonText(text: "Click Here"),
-            //       onPressed: () {},
-            //     )
-            //   ],
-            // ),
+            GSButtonGroup(
+              reversed: true,
+              isAttached: false,
+              direction: GSDirection.row,
+              size: GSSizes.$md,
+              space: GSSpaces.$xl,
+              style: GSStyle(
+                  // bg: $GSColors.green500,
+                  // height: 200,
+                  ),
+              buttons: [
+                GSButton(
+                  onPressed: () {},
+                  isDisabled: false,
+                  action: GSActions.negative,
+                  style: GSStyle(
+                    onHover: GSStyle(
+                      bg: $GSColors.amber300,
+                    ),
+                  ),
+                  child: const GSButtonText(text: "Click Here"),
+                ),
+                GSButton(
+                  child: const GSButtonText(text: "Click Here"),
+                  onPressed: () {},
+                )
+              ],
+            ),
           ],
         ),
       ),
