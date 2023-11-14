@@ -30,7 +30,7 @@ class GSProgress extends StatelessWidget {
     final progressColor = styler.bg ?? progressStyle.bg;
     final valueColor = styler.progressValueColor ?? $GSColors.primary500;
     final borderRadius = styler.borderRadius ?? progressStyle.borderRadius;
-    print(styler.height);
+
     return SizedBox(
       width: 200,
       height: styler.height,
