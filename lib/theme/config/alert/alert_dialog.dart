@@ -1,6 +1,7 @@
 Map<String, dynamic> alertDialogData = {
-  'w': '\$full',
-  'h': '\$full',
+  //TODO : what's with this width and height?
+  // 'w': '\$full',
+  // 'h': '\$full',
   'justifyContent': 'center',
   'alignItems': 'center',
   'variants': {
