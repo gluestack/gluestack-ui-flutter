@@ -4,14 +4,15 @@ import 'package:gluestack_flutter_pro/token/font_weight.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/token/line_height.dart';
 
-Map<String, GSStyle?> mergeStyledMaps(
-    {required Map<String, GSStyle?>? map1,
-    required Map<String, GSStyle?>? map2,
-    required List<String> keys,
-    }) {
+Map<String, GSStyle?> mergeStyledMaps({
+  required Map<String, GSStyle?>? map1,
+  required Map<String, GSStyle?>? map2,
+  required List<String> keys,
 
+}) {
   Map<String, GSStyle?> mergedStyleMap = {};
   for (var element in keys) {
+
     mergedStyleMap[element] = map1?[element] != null
         ? map1![element]?.merge(map2?[element])
         : map2?[element];

@@ -234,6 +234,7 @@ class GSButtonStyle {
               map2: buttonStyle.variants?.action?.negative?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
           map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
+       
           keys: gsButtonConfig.descendantStyle),
       GSVariants.outline: mergeStyledMaps(
           map1: mergeStyledMaps(

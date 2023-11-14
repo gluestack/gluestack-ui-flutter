@@ -488,12 +488,12 @@ class GSStyle extends BaseStyle<GSStyle> {
   }
 
   @override
-  merge(overrideStyle) {
+  merge(overrideStyle, {List<String> descendantStyleKeys = const []}) {
     return GSStyle(
       borderColor: overrideStyle?.borderColor ?? borderColor,
       borderRadius: overrideStyle?.borderRadius ?? borderRadius,
       borderWidth: overrideStyle?.borderWidth ?? borderWidth,
-      color: overrideStyle?.color ?? color,
+      color: overrideStyle?.color??props?.style?.color   ?? color,
       bg: overrideStyle?.bg ?? bg,
       margin: overrideStyle?.margin ?? margin,
       borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
@@ -503,7 +503,12 @@ class GSStyle extends BaseStyle<GSStyle> {
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
       gap: overrideStyle?.gap ?? gap,
-      descendantStyles: overrideStyle?.descendantStyles ?? descendantStyles,
+      descendantStyles: descendantStyleKeys.isEmpty
+          ? overrideStyle?.descendantStyles ?? descendantStyles
+          : mergeStyledMaps(
+              map1: descendantStyles,
+              map2: overrideStyle?.descendantStyles,
+              keys: descendantStyleKeys),
       onFocus: onFocus != null
           ? onFocus?.merge(overrideStyle?.onFocus)
           : overrideStyle?.onFocus,

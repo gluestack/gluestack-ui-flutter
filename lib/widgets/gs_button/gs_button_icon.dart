@@ -21,11 +21,8 @@ class GSButtonIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = GSButtonProvider.of(context);
-    final ancestorTextStyles =
-        GSAncestorProvider.of(context)?.decedentStyles?['_icon'];
-   
-    // final buttonIconColor = GSButtonStyle
-    //     .gsButtonCombination[value?.action]![value?.variant]?.iconColor;
+    final ancestorTextStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsButtonIconStyle.ancestorStyle.first];
 
     GSStyle styler = resolveStyles(
       context,

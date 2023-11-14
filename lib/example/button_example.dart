@@ -23,11 +23,11 @@ class ButtonExample extends StatelessWidget {
               variant: GSVariants.solid,
               size: GSSizes.$lg,
               style: GSStyle(
-                  // variants: Variants(
-                  //     variant: GSVariant(
-                  //         solid: GSStyle(descendantStyles: {
-                  //   "_text": GSStyle(color: $GSColors.yellow100),
-                  // }))),
+                  dark: GSStyle(
+                    descendantStyles: {
+                      "_text": GSStyle(color: $GSColors.black),
+                    }
+                  ),
                   descendantStyles: {
                     "_text": GSStyle(color: $GSColors.green500),
                   }),
@@ -51,10 +51,10 @@ class ButtonExample extends StatelessWidget {
                   GSButtonIcon(
                     icon: Icons.add,
                     iconSize: GSSizes.$lg,
-                    style: GSStyle(
-                      iconColor: $GSColors.green600,
-                      iconSize: 24,
-                    ),
+                    // style: GSStyle(
+                    //   iconColor: $GSColors.green600,
+                    //   iconSize: 24,
+                    // ),
                   ),
                   GSButtonText(
                     text: "Add",
@@ -73,34 +73,34 @@ class ButtonExample extends StatelessWidget {
                 ],
               ),
             ),
-            GSButtonGroup(
-              reversed: true,
-              isAttached: false,
-              direction: GSDirection.row,
-              size: GSSizes.$md,
-              space: GSSpaces.$xl,
-              style: GSStyle(
-                  // bg: $GSColors.green500,
-                  // height: 200,
-                  ),
-              buttons: [
-                GSButton(
-                  onPressed: () {},
-                  isDisabled: false,
-                  action: GSActions.negative,
-                  style: GSStyle(
-                    onHover: GSStyle(
-                      bg: $GSColors.amber300,
-                    ),
-                  ),
-                  child: const GSButtonText(text: "Click Here"),
-                ),
-                GSButton(
-                  child: const GSButtonText(text: "Click Here"),
-                  onPressed: () {},
-                )
-              ],
-            ),
+            // GSButtonGroup(
+            //   reversed: true,
+            //   isAttached: false,
+            //   direction: GSDirection.row,
+            //   size: GSSizes.$md,
+            //   space: GSSpaces.$xl,
+            //   style: GSStyle(
+            //       // bg: $GSColors.green500,
+            //       // height: 200,
+            //       ),
+            //   buttons: [
+            //     GSButton(
+            //       onPressed: () {},
+            //       isDisabled: false,
+            //       action: GSActions.negative,
+            //       style: GSStyle(
+            //         onHover: GSStyle(
+            //           bg: $GSColors.amber300,
+            //         ),
+            //       ),
+            //       child: const GSButtonText(text: "Click Here"),
+            //     ),
+            //     GSButton(
+            //       child: const GSButtonText(text: "Click Here"),
+            //       onPressed: () {},
+            //     )
+            //   ],
+            // ),
           ],
         ),
       ),
