@@ -6,7 +6,7 @@ import 'package:gluestack_flutter_pro/theme/config/radio/radio_label.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 
 final GSStyle radioStyle =
-    GSStyle.fromMap(data: radioData, decedentStylesList: descendant);
+    GSStyle.fromMap(data: radioData, descendantStyle: descendant);
 final GSStyle radioIconStyle = GSStyle.fromMap(data: radioIconData);
 final GSStyle radioIndicatorStyle = GSStyle.fromMap(data: radioIndicatorData);
 final GSStyle radioLabelStyle = GSStyle.fromMap(data: radioLabelData);

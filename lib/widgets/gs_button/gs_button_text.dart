@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
-
+import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_text_style.dart';
 
 class GSButtonText extends StatelessWidget {
   final String text;
@@ -17,8 +17,8 @@ class GSButtonText extends StatelessWidget {
   Widget build(BuildContext context) {
     // final value = GSButtonProvider.of(context);
     final ancestorTextStyles =
-        GSAncestorProvider.of(context)?.decedentStyles?['_text'];
-
+        GSAncestorProvider.of(context)?.decedentStyles?[gsTextConfig.ancestorStyle[0]];
+   
     // final textColor = GSButtonStyle
     //         .gsButtonCombination[value?.action]![value?.variant]
     //         ?.textStyle

@@ -22,6 +22,15 @@ class ButtonExample extends StatelessWidget {
               action: GSActions.negative,
               variant: GSVariants.solid,
               size: GSSizes.$lg,
+              style: GSStyle(
+                  // variants: Variants(
+                  //     variant: GSVariant(
+                  //         solid: GSStyle(descendantStyles: {
+                  //   "_text": GSStyle(color: $GSColors.yellow100),
+                  // }))),
+                  descendantStyles: {
+                    "_text": GSStyle(color: $GSColors.green500),
+                  }),
               onPressed: () {},
               // style: GSStyle(
               //   web: GSStyle(
@@ -49,11 +58,11 @@ class ButtonExample extends StatelessWidget {
                   ),
                   GSButtonText(
                     text: "Add",
-                    style: GSStyle(
-                      textStyle: const TextStyle(
-                        color: $GSColors.pink200,
-                      ),
-                    ),
+                    // style: GSStyle(
+                    //   textStyle: const TextStyle(
+                    //     color: $GSColors.pink200,
+                    //   ),
+                    // ),
                   ),
                   GSButtonSpinner(
                     style: GSStyle(

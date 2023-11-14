@@ -26,8 +26,6 @@ class GSButtonSpinner extends StatelessWidget {
       inlineStyle: style,
     )!;
 
-    print(spinnerColor);
-
     return SizedBox(
       width: styler.width,
       height: styler.height,

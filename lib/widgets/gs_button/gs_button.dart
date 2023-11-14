@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
+import 'package:gluestack_flutter_pro/utils/resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
@@ -59,9 +60,11 @@ class GSButton extends StatelessWidget {
       inlineStyle: style,
     )!;
 
-
     return GSAncestor(
-      decedentStyles: GSButtonStyle.buttonDescendantStyles[action]?[variant],
+      decedentStyles: mergeStyledMaps(
+          map1: GSButtonStyle.buttonDescendantStyles[action]?[variant],
+          map2: styler.descendantStyles,
+          keys: gsButtonConfig.descendantStyle),
       child: GSButtonProvider(
         action: buttonAction!,
         variant: buttonVariant!,

@@ -7,7 +7,9 @@ import 'package:gluestack_flutter_pro/token/line_height.dart';
 Map<String, GSStyle?> mergeStyledMaps(
     {required Map<String, GSStyle?>? map1,
     required Map<String, GSStyle?>? map2,
-    required List<String> keys}) {
+    required List<String> keys,
+    }) {
+
   Map<String, GSStyle?> mergedStyleMap = {};
   for (var element in keys) {
     mergedStyleMap[element] = map1?[element] != null
