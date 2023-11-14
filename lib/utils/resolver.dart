@@ -5,16 +5,16 @@ import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/token/line_height.dart';
 
 Map<String, GSStyle?> mergeStyledMaps({
-  required Map<String, GSStyle?>? map1,
-  required Map<String, GSStyle?>? map2,
+  required Map<String, GSStyle?>? styleMap,
+  required Map<String, GSStyle?>? overrideStyleMap,
   required List<String> keys,
 }) {
   Map<String, GSStyle?> mergedStyleMap = {};
   for (var element in keys) {
   
-    mergedStyleMap[element] = map1?[element] != null
-        ? map1![element]?.merge(map2?[element])
-        : map2?[element];
+    mergedStyleMap[element] = styleMap?[element] != null
+        ? styleMap![element]?.merge(overrideStyleMap?[element])
+        : overrideStyleMap?[element];
   }
   return mergedStyleMap;
 }

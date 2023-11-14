@@ -19,8 +19,6 @@ GSStyle baseStyle = GSStyle(
   opacity: buttonStyle.onDisabled?.opacity,
 );
 
-
-
 GSStyle compoundVariants = GSStyle(
   variants: Variants(
     action: GSAction(
@@ -152,94 +150,118 @@ class GSButtonStyle {
       buttonDescendantStyles = {
     GSActions.primary: {
       GSVariants.solid: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.primary?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.primary?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.solid?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
       GSVariants.outline: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.primary?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.primary?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.outline?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.outline?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
       GSVariants.link: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.primary?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.primary?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.link?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.link?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
     },
     GSActions.secondary: {
       GSVariants.solid: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.secondary?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.secondary?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.solid?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
       GSVariants.outline: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.secondary?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.secondary?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.outline?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.outline?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
       GSVariants.link: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.secondary?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.secondary?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.link?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.link?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
     },
     GSActions.positive: {
       GSVariants.solid: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.positive?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.positive?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.solid?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
       GSVariants.outline: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.positive?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.positive?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.outline?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.outline?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
       GSVariants.link: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.positive?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.positive?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.link?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.link?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
     },
     GSActions.negative: {
       GSVariants.solid: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.negative?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.negative?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.solid?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.solid?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
       GSVariants.outline: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.negative?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.negative?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.outline?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.outline?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
       GSVariants.link: mergeStyledMaps(
-          map1: mergeStyledMaps(
-              map1: buttonStyle.descendantStyles,
-              map2: buttonStyle.variants?.action?.negative?.descendantStyles,
+          styleMap: mergeStyledMaps(
+              styleMap: buttonStyle.descendantStyles,
+              overrideStyleMap:
+                  buttonStyle.variants?.action?.negative?.descendantStyles,
               keys: gsButtonConfig.descendantStyle),
-          map2: buttonStyle.variants?.variant?.link?.descendantStyles,
+          overrideStyleMap:
+              buttonStyle.variants?.variant?.link?.descendantStyles,
           keys: gsButtonConfig.descendantStyle),
     },
   };

@@ -503,8 +503,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       descendantStyles: descendantStyleKeys.isEmpty
           ? overrideStyle?.descendantStyles ?? descendantStyles
           : mergeStyledMaps(
-              map1: descendantStyles,
-              map2: overrideStyle?.descendantStyles,
+              styleMap: descendantStyles,
+              overrideStyleMap: overrideStyle?.descendantStyles,
               keys: descendantStyleKeys),
       onFocus: onFocus != null
           ? onFocus?.merge(overrideStyle?.onFocus)
