@@ -14,8 +14,6 @@ enum GSActions {
   muted
 }
 
-
-
 enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
@@ -492,11 +490,11 @@ class GSStyle extends BaseStyle<GSStyle> {
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
       gap: overrideStyle?.gap ?? gap,
-      descendantStyles: 
-           mergeStyledMaps(
-              styleMap: descendantStyles,
-              overrideStyleMap: overrideStyle?.descendantStyles,
-              keys: descendantStyleKeys,),
+      descendantStyles: mergeStyledMaps(
+        styleMap: descendantStyles,
+        overrideStyleMap: overrideStyle?.descendantStyles,
+        keys: descendantStyleKeys,
+      ),
       onFocus: onFocus != null
           ? onFocus?.merge(overrideStyle?.onFocus)
           : overrideStyle?.onFocus,
@@ -766,7 +764,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       case GSVariants.outline:
         return variants?.variant?.outline;
       case GSVariants.link:
-        return variants?.variant?.link;
+        return variants?.variant?.link?.merge(variants?.action?.defaultStyle);
       case GSVariants.underlined:
         return variants?.variant?.underlined;
       case GSVariants.rounded:
