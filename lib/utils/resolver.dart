@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/token/font_weight.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/token/line_height.dart';
+
+Map<String, GSStyle?> mergeStyledMaps({
+  required Map<String, GSStyle?>? styleMap,
+  required Map<String, GSStyle?>? overrideStyleMap,
+  required List<String> keys,
+}) {
+  Map<String, GSStyle?> mergedStyleMap = {};
+  for (var element in keys) {
+    mergedStyleMap[element] = styleMap?[element] != null
+        ? styleMap![element]?.merge(overrideStyleMap?[element])
+        : overrideStyleMap?[element];
+  }
+  return mergedStyleMap;
+}
+
+Map<String, GSStyle>? resolvedescendantStylesFromMap(
+    Map<String, dynamic>? data, List<String> descendantStyles) {
+  if (descendantStyles.isEmpty || data == null) {
+    return null;
+  }
+  Map<String, GSStyle> descendantStylesMap = {};
+  for (var element in descendantStyles) {
+    descendantStylesMap[element] = GSStyle.fromMap(data: data[element]);
+  }
+  return descendantStylesMap;
+}
 
 Color? resolveColorFromString(String? color) {
   if (color == null) {
@@ -44,6 +71,17 @@ double? resolveBorderWidthFromString(String? borderWidth) {
   }
 }
 
+FontWeight? resolveFontWeightFromString(String? fontWeight) {
+  if (fontWeight == null) {
+    return null;
+  }
+  if (fontWeight.contains('\$')) {
+    return $GSFontWeights.fontWeightMap[fontWeight.substring(1)]!;
+  }
+
+  return $GSFontWeights.fontWeightMap[fontWeight];
+}
+
 double? resolveSpaceFromString(String? space) {
   if (space == null) {
     return null;
@@ -52,6 +90,29 @@ double? resolveSpaceFromString(String? space) {
     return $GSSpace.spaceMap[space];
   }
   return $GSSpace.spaceMap[space.substring(1)];
+}
+
+EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
+    {String? paddingy}) {
+  if (padding == null) {
+    return null;
+  }
+
+  if (type == 'all') {
+    return EdgeInsets.all(resolveSpaceFromString(padding)!);
+  }
+  if (type == 'symmetric') {
+    return EdgeInsets.symmetric(
+        horizontal: resolveSpaceFromString(padding)!,
+        vertical: resolveSpaceFromString(paddingy)!);
+  }
+  if (type == 'horizontal') {
+    return EdgeInsets.symmetric(horizontal: resolveSpaceFromString(padding)!);
+  }
+  if (type == 'vertical') {
+    return EdgeInsets.symmetric(vertical: resolveSpaceFromString(padding)!);
+  }
+  return null;
 }
 
 double? resolveFontSizeFromString(String? fontSzie) {
@@ -77,17 +138,6 @@ double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
   return $GSLineHeight.lineHeightMap[lineHeight]! /
       resolveFontSizeFromString(fontSize)!;
 }
-
-FontWeight? resolveFontWeightFromString(String? fontWeight) {
-  if (fontWeight == null) {
-    return null;
-  } else if (fontWeight == '\$bold' || fontWeight == 'bold') {
-    return FontWeight.bold;
-  } else {
-    return null;
-  }
-}
-
 double? resolveLetterSpacingFromString(String? letterSpacing) {
   if (letterSpacing == null) {
     return null;
@@ -105,6 +155,11 @@ GSActions? resolveActionFromString(String? action) {
     'secondary': GSActions.secondary,
     'positive': GSActions.positive,
     'negative': GSActions.negative,
+    'error': GSActions.error,
+    'warning': GSActions.warning,
+    'success': GSActions.success,
+    'info': GSActions.info,
+    'muted': GSActions.muted,
   };
 
   return action != null ? actionMap[action] : null;
@@ -123,15 +178,29 @@ GSVariants? resolveVariantFromString(String? variant) {
 }
 
 GSSizes? resolveSizesFromString(String? size) {
+  
   const sizeMap = {
     'xs': GSSizes.$xs,
     'sm': GSSizes.$sm,
     'md': GSSizes.$md,
     'lg': GSSizes.$lg,
     'xl': GSSizes.$xl,
+    '2xs': GSSizes.$2xs,
   };
 
   return size != null ? sizeMap[size] : null;
+}
+
+GSAlignments? resolveAlignmentFromString(String? itemAlignment) {
+  const itemAlignmentMap = {
+    'center': GSAlignments.center,
+    'start': GSAlignments.start,
+    'end': GSAlignments.end,
+    'space-between': GSAlignments.spaceBetween,
+    'flex-end': GSAlignments.flexEnd
+  };
+
+  return itemAlignment != null ? itemAlignmentMap[itemAlignment] : null;
 }
 
 GSSpaces? resolveSpacesFromString(String? space) {
@@ -147,4 +216,27 @@ GSSpaces? resolveSpacesFromString(String? space) {
   };
 
   return space != null ? spaceMap[space] : null;
+}
+
+double resolveAlignment(GSAlignments? suppliedAlignment) {
+  Map<dynamic, double> alignOrJustifyItems = {
+    GSAlignments.start: -1,
+    GSAlignments.center: 0,
+    GSAlignments.end: 1,
+    GSAlignments.spaceBetween: -1,
+    GSAlignments.flexEnd: 1,
+  };
+
+  return suppliedAlignment != null
+      ? alignOrJustifyItems[suppliedAlignment]!
+      : 0;
+}
+
+GSOrientations? resolveOrientationsFromString(String? orientation) {
+  const orientationMap = {
+    'vertical': GSOrientations.vertical,
+    'horizontal': GSOrientations.horizontal,
+  };
+
+  return orientation != null ? orientationMap[orientation] : null;
 }
