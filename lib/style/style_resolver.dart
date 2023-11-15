@@ -132,16 +132,13 @@ GSStyle? resolveStyles(
 }
 
 GSStyle resolveStyles2(
-    {required BuildContext context,
-    List<GSStyle> styles = const [],
-    GSStyle? inlineStyle}) {
+    {required BuildContext context,List<GSStyle?> styles = const [],GSStyle? inlineStyle}) {
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
   GSStyle? currentGSStyle = GSStyle();
   for (var style in styles) {
-    currentGSStyle.merge(style);
+    currentGSStyle = currentGSStyle?.merge(style);
   }
-  currentGSStyle.merge(inlineStyle);
-
+  currentGSStyle = currentGSStyle?.merge(inlineStyle);
   inlineStyle?.contextStyles.forEach((key, value) {
     if (value != null) {
       if (key == 'dark' && theme == GSThemeMode.dark) {

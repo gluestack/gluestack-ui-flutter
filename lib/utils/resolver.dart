@@ -22,6 +22,7 @@ Map<String, GSStyle?> mergeStyledMaps({
   required Map<String, GSStyle?>? styleMap,
   required Map<String, GSStyle?>? overrideStyleMap,
   required List<String> keys,
+  
 }) {
   Map<String, GSStyle?> mergedStyleMap = {};
   styleMap?.forEach((key, value) {
@@ -34,6 +35,7 @@ Map<String, GSStyle?> mergeStyledMaps({
       mergedStyleMap[key] = value;
     }
   });
+ 
   return mergedStyleMap;
 }
 

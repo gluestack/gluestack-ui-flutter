@@ -14,6 +14,8 @@ enum GSActions {
   muted
 }
 
+
+
 enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
@@ -58,7 +60,6 @@ class GSProps {
     this.orientation,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
-
     return GSProps(
         action: resolveActionFromString(data?['action']),
         variant: resolveVariantFromString(data?['variant']),
@@ -152,8 +153,7 @@ class GSSize {
       this.$4xl,
       this.$5xl,
       this.$6xl,
-      this.$full
-      });
+      this.$full});
   factory GSSize.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
@@ -469,8 +469,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.justifyContent,
       this.alignment,
       this.contentMaxWidth,
-      this.contentWidth
-      });
+      this.contentWidth});
 
   @override
   copy() {
@@ -493,12 +492,11 @@ class GSStyle extends BaseStyle<GSStyle> {
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
       gap: overrideStyle?.gap ?? gap,
-      descendantStyles: descendantStyleKeys.isEmpty
-          ? overrideStyle?.descendantStyles ?? descendantStyles
-          : mergeStyledMaps(
+      descendantStyles: 
+           mergeStyledMaps(
               styleMap: descendantStyles,
               overrideStyleMap: overrideStyle?.descendantStyles,
-              keys: descendantStyleKeys),
+              keys: descendantStyleKeys,),
       onFocus: onFocus != null
           ? onFocus?.merge(overrideStyle?.onFocus)
           : overrideStyle?.onFocus,
@@ -728,5 +726,85 @@ class GSStyle extends BaseStyle<GSStyle> {
 
       ///aaa
     );
+  }
+
+  GSStyle? actionMap(GSActions? gsActions) {
+    if (gsActions == null) {
+      return null;
+    }
+    switch (gsActions) {
+      case GSActions.primary:
+        return variants?.action?.primary;
+      case GSActions.secondary:
+        return variants?.action?.secondary;
+      case GSActions.positive:
+        return variants?.action?.secondary;
+      case GSActions.negative:
+        return variants?.action?.negative;
+      case GSActions.error:
+        return variants?.action?.error;
+      case GSActions.warning:
+        return variants?.action?.warning;
+      case GSActions.success:
+        return variants?.action?.success;
+      case GSActions.info:
+        return variants?.action?.info;
+      case GSActions.muted:
+        return variants?.action?.muted;
+      default:
+        return null;
+    }
+  }
+
+  GSStyle? variantMap(GSVariants? gsVariants) {
+    if (gsVariants == null) {
+      return null;
+    }
+    switch (gsVariants) {
+      case GSVariants.solid:
+        return variants?.variant?.solid;
+      case GSVariants.outline:
+        return variants?.variant?.outline;
+      case GSVariants.link:
+        return variants?.variant?.link;
+      case GSVariants.underlined:
+        return variants?.variant?.underlined;
+      case GSVariants.rounded:
+        return variants?.variant?.rounded;
+      default:
+        return null;
+    }
+  }
+
+  GSStyle? sizeMap(GSSizes? gsSizes) {
+    if (gsSizes == null) {
+      return null;
+    }
+    switch (gsSizes) {
+      case GSSizes.$2xs:
+        return variants?.size?.$2xs;
+      case GSSizes.$xs:
+        return variants?.size?.$xs;
+      case GSSizes.$sm:
+        return variants?.size?.$sm;
+      case GSSizes.$md:
+        return variants?.size?.$md;
+      case GSSizes.$lg:
+        return variants?.size?.$lg;
+      case GSSizes.$xl:
+        return variants?.size?.$xl;
+      case GSSizes.$2xl:
+        return variants?.size?.$2xl;
+      case GSSizes.$3xl:
+        return variants?.size?.$3xl;
+      case GSSizes.$4xl:
+        return variants?.size?.$4xl;
+      case GSSizes.$5xl:
+        return variants?.size?.$5xl;
+      case GSSizes.$6xl:
+        return variants?.size?.$6xl;
+      case GSSizes.$full:
+        return variants?.size?.$full;
+    }
   }
 }

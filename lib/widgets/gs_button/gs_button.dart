@@ -51,15 +51,25 @@ class GSButton extends StatelessWidget {
     final disabled = isDisabled ?? value?.isDisabled ?? false;
     final isAttached = value?.isAttached ?? false;
 
-    GSStyle styler = resolveStyles(context,
-        variantStyle:
-            GSButtonStyle.gsButtonCombination[buttonAction]![buttonVariant],
-        size: GSButtonStyle.size[buttonSize]!,
-        inlineStyle: style,
-        descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
-            ?[variant],
-        descendantStyleKeys: gsButtonConfig.descendantStyle)!;
+    GSStyle styler = resolveStyles2(
+        context: context,
+        styles: [
+          buttonStyle,
+          buttonStyle.actionMap(buttonAction),
+          buttonStyle.variantMap(buttonVariant),
+          buttonStyle.sizeMap(buttonSize),
+        ],
+        inlineStyle: style);
 
+    // GSStyle styler2 = resolveStyles(context,
+    //     variantStyle:
+    //         GSButtonStyle.gsButtonCombination[buttonAction]![buttonVariant],
+    //     size: GSButtonStyle.size[buttonSize]!,
+    //     inlineStyle: style,
+    //     descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
+    //         ?[variant],
+    //     descendantStyleKeys: gsButtonConfig.descendantStyle)!;
+    print(styler.bg);
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSButtonProvider(
