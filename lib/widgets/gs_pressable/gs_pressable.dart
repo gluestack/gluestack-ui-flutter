@@ -6,6 +6,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_pressable/gs_pressable_style.da
 class GSPressable extends StatelessWidget {
   final GSStyle? style;
   final Widget child;
+  ///Sets additional distance outside of element in which a press can be detected.
+  final double? hitSlop;
   final GestureTapCallback? onPress;
   final GestureTapUpCallback? onPressIn;
   final GestureTapDownCallback? onPressOut;
@@ -17,7 +19,8 @@ class GSPressable extends StatelessWidget {
       this.onPress,
       this.onLongPress,
       this.onPressIn,
-      this.onPressOut});
+      this.onPressOut,
+      this.hitSlop});
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +32,16 @@ class GSPressable extends StatelessWidget {
 
     return InkWell(
       onTap: onPress,
+      onTapUp: onPressIn,
+      onTapDown: onPressOut,
       onLongPress: onLongPress,
       hoverColor: styler.onHover?.color,
       splashColor: styler.onHover?.bg,
       borderRadius: BorderRadius.circular(styler.borderRadius ?? 0),
-      child: child,
+      child: Padding(
+        padding: EdgeInsets.all(hitSlop ?? 0),
+        child: child,
+      ),
     );
   }
 }

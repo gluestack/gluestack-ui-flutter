@@ -16,15 +16,20 @@ class PressableExample extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GSPressable(
+              hitSlop: 10,
               style: GSStyle(
                   onHover: GSStyle(color: Colors.green, bg: Colors.red)),
               onPress: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Button Pressed!')));
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('Button Pressed!'),
+                  duration: Duration(milliseconds: 300),
+                ));
               },
               onLongPress: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Long Pressed Triggered!')));
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text('Long Pressed Triggered!'),
+                  duration: Duration(milliseconds: 300),
+                ));
               },
               child: GSText(
                 text: 'Press Me',
