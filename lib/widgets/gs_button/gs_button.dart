@@ -56,6 +56,7 @@ class GSButton extends StatelessWidget {
       size: GSButtonStyle.size[buttonSize]!,
       inlineStyle: style,
     )!;
+
     // print(GSButtonStyle
     //     .gsButtonCombination[buttonAction]![buttonVariant]?.textStyle);
     return GSButtonProvider(
