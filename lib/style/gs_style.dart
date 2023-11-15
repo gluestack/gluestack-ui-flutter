@@ -47,6 +47,7 @@ class GSProps {
   GSSizes? size;
   GSSpaces? space;
   GSOrientations? orientation;
+  Color? color;
 
   GSProps({
     this.action,
@@ -54,16 +55,17 @@ class GSProps {
     this.size,
     this.space,
     this.orientation,
+    this.color,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
     return GSProps(
-        action: resolveActionFromString(data?['action']),
-        variant: resolveVariantFromString(data?['variant']),
-        size: resolveSizesFromString(data?['size']),
-        space: resolveSpacesFromString(data?['space']),
-        orientation: resolveOrientationsFromString(
-          data?['orientation'],
-        ));
+      action: resolveActionFromString(data?['action']),
+      variant: resolveVariantFromString(data?['variant']),
+      size: resolveSizesFromString(data?['size']),
+      space: resolveSpacesFromString(data?['space']),
+      orientation: resolveOrientationsFromString(data?['orientation']),
+      color: resolveColorFromString(data?['color']),
+    );
   }
 }
 
@@ -327,6 +329,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? contentWidth;
   double? contentMaxWidth;
   AlignmentGeometry? alignment;
+  Color? progressValueColor;
 
   GSStyle({
     this.borderWidth,
@@ -369,6 +372,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.justifyContent,
     this.contentWidth,
     this.contentMaxWidth,
+    this.progressValueColor,
   });
 
   @override
@@ -437,6 +441,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       justifyContent: overrideStyle?.justifyContent ?? justifyContent,
       contentWidth: overrideStyle?.contentWidth ?? contentWidth,
       contentMaxWidth: overrideStyle?.contentMaxWidth ?? contentMaxWidth,
+      progressValueColor:
+          overrideStyle?.progressValueColor ?? progressValueColor,
     );
   }
 
