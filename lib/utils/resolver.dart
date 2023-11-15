@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/token/font_weight.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/token/line_height.dart';
+
+Map<String, GSStyle?> mergeStyledMaps({
+  required Map<String, GSStyle?>? styleMap,
+  required Map<String, GSStyle?>? overrideStyleMap,
+  required List<String> keys,
+}) {
+  Map<String, GSStyle?> mergedStyleMap = {};
+  for (var element in keys) {
+    mergedStyleMap[element] = styleMap?[element] != null
+        ? styleMap![element]?.merge(overrideStyleMap?[element])
+        : overrideStyleMap?[element];
+  }
+  return mergedStyleMap;
+}
+
+Map<String, GSStyle>? resolvedescendantStylesFromMap(
+    Map<String, dynamic>? data, List<String> descendantStyles) {
+  if (descendantStyles.isEmpty || data == null) {
+    return null;
+  }
+  Map<String, GSStyle> descendantStylesMap = {};
+  for (var element in descendantStyles) {
+    descendantStylesMap[element] = GSStyle.fromMap(data: data[element]);
+  }
+  return descendantStylesMap;
+}
 
 Color? resolveColorFromString(String? color) {
   if (color == null) {
@@ -42,6 +69,17 @@ double? resolveBorderWidthFromString(String? borderWidth) {
     }
     return $GSBorderWidth.borderWidthMap[borderWidth]!;
   }
+}
+
+FontWeight? resolveFontWeightFromString(String? fontWeight) {
+  if (fontWeight == null) {
+    return null;
+  }
+  if (fontWeight.contains('\$')) {
+    return $GSFontWeights.fontWeightMap[fontWeight.substring(1)]!;
+  }
+
+  return $GSFontWeights.fontWeightMap[fontWeight];
 }
 
 double? resolveSpaceFromString(String? space) {
@@ -130,12 +168,14 @@ GSVariants? resolveVariantFromString(String? variant) {
 }
 
 GSSizes? resolveSizesFromString(String? size) {
+  
   const sizeMap = {
     'xs': GSSizes.$xs,
     'sm': GSSizes.$sm,
     'md': GSSizes.$md,
     'lg': GSSizes.$lg,
     'xl': GSSizes.$xl,
+    '2xs': GSSizes.$2xs,
   };
 
   return size != null ? sizeMap[size] : null;

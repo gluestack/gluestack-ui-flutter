@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/color_token.dart';
+import 'package:gluestack_flutter_pro/token/space_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_text.dart';
@@ -23,7 +24,9 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
       body: Column(
         children: [
           GSRadio<Value>(
+            size: GSSizes.$lg,
             style: GSStyle(
+              margin: const EdgeInsets.only(right: $GSSpace.$2),
               checked: GSStyle(
                 color: $GSColors.purple500,
                 onHover: GSStyle(
