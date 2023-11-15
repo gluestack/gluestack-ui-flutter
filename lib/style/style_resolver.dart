@@ -130,3 +130,66 @@ GSStyle? resolveStyles(
 
   return currentGSStyle;
 }
+
+GSStyle resolveStyles2(
+    {required BuildContext context,
+    List<GSStyle> styles = const [],
+    GSStyle? inlineStyle}) {
+  final theme = Provider.of<ThemeProvider>(context).currentTheme;
+  GSStyle? currentGSStyle = GSStyle();
+  for (var style in styles) {
+    currentGSStyle.merge(style);
+  }
+  currentGSStyle.merge(inlineStyle);
+
+  inlineStyle?.contextStyles.forEach((key, value) {
+    if (value != null) {
+      if (key == 'dark' && theme == GSThemeMode.dark) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'md' && isMediumScreen(context)) {
+        currentGSStyle = currentGSStyle?.merge(value);
+
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'lg' && isLargeScreen(context)) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'sm' && isSmallScreen(context)) {
+        currentGSStyle = currentGSStyle?.merge(value);
+
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'xs' && isBaseScreen(context)) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+
+      if (key == 'web' && kIsWeb) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'ios' && defaultTargetPlatform == TargetPlatform.iOS) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+      if (key == 'android' && defaultTargetPlatform == TargetPlatform.android) {
+        currentGSStyle = currentGSStyle?.merge(value);
+        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+      }
+    }
+  });
+
+  return currentGSStyle!;
+}
