@@ -66,7 +66,7 @@ const Map<String, dynamic> badgeData = {
       }
     },
     "variant": {
-      "solid": {},
+      "solid": {"": ""},
       "outline": {"borderWidth": "\$1"}
     },
     "size": {
