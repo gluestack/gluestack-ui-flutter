@@ -1,46 +1,167 @@
+/// GSPressable is a customizable pressable widget for Gluestack - Flutter.
+/// It allows for easy customization of various press-related interactions and styles.
+
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_pressable/gs_pressable_style.dart';
 
+/// The GSPressable class represents a pressable widget that can respond to various press-related gestures.
 class GSPressable extends StatelessWidget {
+  /// The style to be applied to the GSPressable.
   final GSStyle? style;
-  final Widget child;
-  ///Sets additional distance outside of element in which a press can be detected.
-  final double? hitSlop;
-  final GestureTapCallback? onPress;
-  final GestureTapUpCallback? onPressIn;
-  final GestureTapDownCallback? onPressOut;
-  final GestureLongPressCallback? onLongPress;
-  const GSPressable(
-      {super.key,
-      this.style,
-      required this.child,
-      this.onPress,
-      this.onLongPress,
-      this.onPressIn,
-      this.onPressOut,
-      this.hitSlop});
 
+  /// The child widget to be wrapped by the GSPressable.
+  final Widget child;
+
+  /// Additional distance outside of the element in which a press can be detected, same as react native's Pressable's [hitSlop] prop.
+  final double? hitSlop;
+
+  /// Callback when the user presses this widget.
+  final GestureTapCallback? onPress;
+
+  /// Callback when the user starts to tap/press this widget.
+  final GestureTapUpCallback? onPressIn;
+
+  /// Callback when the user releases the tap/press that was started on this widget.
+  final GestureTapDownCallback? onPressOut;
+
+  /// Callback when the user cancels a press that was started on this widget.
+  final GestureTapCallback? onPressCancel;
+
+  /// Callback when the user long presses this widget.
+  final GestureLongPressCallback? onLongPress;
+
+  /// Callback when the user double taps this part of the material.
+  final GestureTapCallback? onDoubleTap;
+
+  /// Callback when the user taps this part of the material with a secondary button.
+  final GestureTapCallback? onSecondaryTap;
+
+  /// Callback when the user taps down on this part of the material with a
+  /// secondary button.
+  final GestureTapDownCallback? onSecondaryTapDown;
+
+  /// Callback when the user releases a secondary button tap that was started on
+  /// this part of the material. [onSecondaryTap] is called immediately after.
+  final GestureTapUpCallback? onSecondaryTapUp;
+
+  /// Callback when the user cancels a secondary button tap that was started on
+  /// this part of the material.
+  final GestureTapCallback? onSecondaryTapCancel;
+
+  /// Mouse cursor to use when hovering over this widget.
+  final MouseCursor? mouseCursor;
+
+  /// Whether the ink well should be contained within the widget.
+  final bool containedInkWell;
+
+  /// The shape of the ink well highlight.
+  final BoxShape highlightShape;
+
+  /// The radius of the ink splash.
+  final double? radius;
+
+  /// The border radius of the containing rectangle. This is effective only if
+  /// [highlightShape] is [BoxShape.rectangle].
+  ///
+  /// If this is null, it is interpreted as [BorderRadius.zero].
+  final BorderRadius? borderRadius;
+
+  /// Custom shape border for the ink well.
+  final ShapeBorder? customBorder;
+
+  /// Whether to provide haptic feedback on press.
+  final bool enableFeedback;
+
+  /// Whether to exclude this widget from semantics.
+  final bool excludeFromSemantics;
+
+  /// Callback when the focus state changes.
+  final ValueChanged<bool>? onFocusChange;
+
+  /// Whether this widget should be autofocused.
+  final bool autofocus;
+
+  /// The focus node to use for focusing this widget.
+  final FocusNode? focusNode;
+
+  /// Callback when the highlight state changes.
+  final ValueChanged<bool>? onHighlightChanged;
+
+  /// Whether this widget can request focus.
+  final bool canRequestFocus;
+
+  /// Controller for managing material states.
+  final MaterialStatesController? statesController;
+
+  /// Creates a new instance of GSPressable.
+  const GSPressable({
+    super.key,
+    this.enableFeedback = true,
+    this.excludeFromSemantics = false,
+    this.focusNode,
+    this.canRequestFocus = true,
+    this.onFocusChange,
+    this.autofocus = false,
+    this.containedInkWell = false,
+    this.highlightShape = BoxShape.circle,
+    this.style,
+    required this.child,
+    this.onPress,
+    this.onLongPress,
+    this.onPressIn,
+    this.onPressOut,
+    this.hitSlop,
+    this.onPressCancel,
+    this.onDoubleTap,
+    this.onSecondaryTap,
+    this.onSecondaryTapDown,
+    this.onSecondaryTapUp,
+    this.onSecondaryTapCancel,
+    this.mouseCursor,
+    this.radius,
+    this.borderRadius,
+    this.customBorder,
+    this.statesController,
+    this.onHighlightChanged,
+  });
+
+  /// Builds the GSPressable widget.
   @override
   Widget build(BuildContext context) {
+    // Resolve styles using the provided context and optional style variants.
     GSStyle styler = resolveStyles(
       context,
       variantStyle: pressableStyle,
       inlineStyle: style,
     )!;
 
+    // Return the InkWell widget with specified callbacks and styles.
     return InkWell(
       onTap: onPress,
       onTapUp: onPressIn,
       onTapDown: onPressOut,
       onLongPress: onLongPress,
+      onDoubleTap: onDoubleTap,
+      onSecondaryTap: onSecondaryTap,
+      onSecondaryTapUp: onSecondaryTapUp,
+      onSecondaryTapDown: onSecondaryTapDown,
+      onSecondaryTapCancel: onSecondaryTapCancel,
+      radius: radius,
+      customBorder: customBorder,
+      onHighlightChanged: onHighlightChanged,
+      mouseCursor: mouseCursor,
       hoverColor: styler.onHover?.color,
-      splashColor: styler.onHover?.bg,
-      borderRadius: BorderRadius.circular(styler.borderRadius ?? 0),
-      child: Padding(
-        padding: EdgeInsets.all(hitSlop ?? 0),
-        child: child,
+      splashColor: styler.splashColor,
+      highlightColor: styler.highlightColor,
+      borderRadius: borderRadius,
+      child: Ink(
+        color: styler.bg ?? Colors.transparent,
+        child: Padding(
+          padding: EdgeInsets.all(hitSlop ?? 0),
+          child: child,
+        ),
       ),
     );
   }

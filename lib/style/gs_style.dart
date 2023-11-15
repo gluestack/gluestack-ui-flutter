@@ -328,6 +328,10 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? contentMaxWidth;
   AlignmentGeometry? alignment;
 
+  //for splash n highlight for pressable
+  Color? highlightColor;
+  Color? splashColor;
+
   GSStyle({
     this.borderWidth,
     this.borderColor,
@@ -369,6 +373,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.justifyContent,
     this.contentWidth,
     this.contentMaxWidth,
+    this.highlightColor,
+    this.splashColor,
   });
 
   @override
@@ -437,6 +443,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       justifyContent: overrideStyle?.justifyContent ?? justifyContent,
       contentWidth: overrideStyle?.contentWidth ?? contentWidth,
       contentMaxWidth: overrideStyle?.contentMaxWidth ?? contentMaxWidth,
+      highlightColor: overrideStyle?.highlightColor ?? highlightColor,
+      splashColor: overrideStyle?.splashColor ?? splashColor,
     );
   }
 
