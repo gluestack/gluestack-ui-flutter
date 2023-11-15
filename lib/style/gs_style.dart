@@ -18,13 +18,26 @@ enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
-enum GSSizes { $2xs, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $6xl }
+enum GSSizes {
+  $2xs,
+  $xs,
+  $sm,
+  $md,
+  $lg,
+  $xl,
+  $2xl,
+  $3xl,
+  $4xl,
+  $5xl,
+  $6xl,
+  $full
+}
 
 enum GSDirection { row, column }
 
 enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
-enum GSAlignments { start, center, end }
+enum GSAlignments { start, center, end, spaceBetween, flexEnd }
 
 enum GSOrientations { horizontal, vertical }
 
@@ -125,6 +138,7 @@ class GSSize {
   GSStyle? $4xl;
   GSStyle? $5xl;
   GSStyle? $6xl;
+  GSStyle? $full;
 
   GSSize(
       {this.$xs,
@@ -137,7 +151,9 @@ class GSSize {
       this.$3xl,
       this.$4xl,
       this.$5xl,
-      this.$6xl});
+      this.$6xl,
+      this.$full
+      });
   factory GSSize.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
@@ -209,6 +225,9 @@ class GSSize {
               data: data?['6xl'],
               descendantStyle: descendantStyle,
               fromVariant: true)
+          : null,
+      $full: data?['full'] != null
+          ? GSStyle.fromMap(data: data?['full'], fromVariant: true)
           : null,
     );
   }
@@ -405,6 +424,9 @@ class GSStyle extends BaseStyle<GSStyle> {
   Map<String, GSStyle?>? descendantStyles;
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
+  double? contentWidth;
+  double? contentMaxWidth;
+  AlignmentGeometry? alignment;
 
   GSStyle(
       {this.borderWidth,
@@ -444,7 +466,11 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.props,
       this.descendantStyles,
       this.alignItems,
-      this.justifyContent});
+      this.justifyContent,
+      this.alignment,
+      this.contentMaxWidth,
+      this.contentWidth
+      });
 
   @override
   copy() {
@@ -488,16 +514,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       onInvaild: onInvaild != null
           ? onInvaild?.merge(overrideStyle?.onInvaild)
           : overrideStyle?.onInvaild,
-      // onDisabled: overrideStyle?.onDisabled ?? onDisabled,
-      // onInvaild: overrideStyle?.onInvaild ?? onInvaild,
-      // onFocus: overrideStyle?.onFocus?.merge(onFocus) ?? onFocus,
-      // onHover: overrideStyle?.onHover?.merge(onHover) ?? onHover,
-      // onActive: overrideStyle?.onActive ?? onActive,
       opacity: overrideStyle?.opacity ?? opacity,
       checked: checked != null
           ? checked?.merge(overrideStyle?.checked)
           : overrideStyle?.checked,
-      // checked: overrideStyle?.checked ?? checked,
       outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
       textStyle: overrideStyle?.textStyle != null
@@ -529,6 +549,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       android: overrideStyle?.android ?? android,
       alignItems: overrideStyle?.alignItems ?? alignItems,
       justifyContent: overrideStyle?.justifyContent ?? justifyContent,
+      contentWidth: overrideStyle?.contentWidth ?? contentWidth,
+      contentMaxWidth: overrideStyle?.contentMaxWidth ?? contentMaxWidth,
     );
   }
 
@@ -544,6 +566,26 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       width: resolveSpaceFromString(data?['w'] ?? data?['width']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
+      //To be removed later
+      contentWidth: data?['_content']?['w'] != null
+          ? data?['_content']?['w']?.contains('%')
+              ? double.tryParse(data?['_content']?['w']?.replaceAll('%', ''))! /
+                  100
+              : 1
+          : null,
+      //To be removed later
+      contentMaxWidth: data?['_content']?['maxWidth']?.toDouble(),
+      padding: data?['p'] != null
+          ? resolvePaddingFromString(data?['p'], 'all')
+          : data?['px'] != null && data?['py'] != null
+              ? resolvePaddingFromString(data?['px'], 'symmetric',
+                  paddingy: data?['py'])
+              : data?['px'] != null
+                  ? resolvePaddingFromString(data?['px'], 'horizontal')
+                  : data?['py'] != null
+                      ? resolvePaddingFromString(data?['py'], 'vertical')
+                      : null,
+      // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
         height:

@@ -92,6 +92,29 @@ double? resolveSpaceFromString(String? space) {
   return $GSSpace.spaceMap[space.substring(1)];
 }
 
+EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
+    {String? paddingy}) {
+  if (padding == null) {
+    return null;
+  }
+
+  if (type == 'all') {
+    return EdgeInsets.all(resolveSpaceFromString(padding)!);
+  }
+  if (type == 'symmetric') {
+    return EdgeInsets.symmetric(
+        horizontal: resolveSpaceFromString(padding)!,
+        vertical: resolveSpaceFromString(paddingy)!);
+  }
+  if (type == 'horizontal') {
+    return EdgeInsets.symmetric(horizontal: resolveSpaceFromString(padding)!);
+  }
+  if (type == 'vertical') {
+    return EdgeInsets.symmetric(vertical: resolveSpaceFromString(padding)!);
+  }
+  return null;
+}
+
 double? resolveFontSizeFromString(String? fontSzie) {
   if (fontSzie == null) {
     return null;
@@ -163,6 +186,8 @@ GSAlignments? resolveAlignmentFromString(String? itemAlignment) {
     'center': GSAlignments.center,
     'start': GSAlignments.start,
     'end': GSAlignments.end,
+    'space-between': GSAlignments.spaceBetween,
+    'flex-end': GSAlignments.flexEnd
   };
 
   return itemAlignment != null ? itemAlignmentMap[itemAlignment] : null;
@@ -188,6 +213,8 @@ double resolveAlignment(GSAlignments? suppliedAlignment) {
     GSAlignments.start: -1,
     GSAlignments.center: 0,
     GSAlignments.end: 1,
+    GSAlignments.spaceBetween: -1,
+    GSAlignments.flexEnd: 1,
   };
 
   return suppliedAlignment != null
