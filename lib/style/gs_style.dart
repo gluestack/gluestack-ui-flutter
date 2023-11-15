@@ -736,7 +736,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       case GSActions.secondary:
         return variants?.action?.secondary;
       case GSActions.positive:
-        return variants?.action?.secondary;
+        return variants?.action?.positive;
       case GSActions.negative:
         return variants?.action?.negative;
       case GSActions.error:
