@@ -22,6 +22,18 @@ class ButtonExample extends StatelessWidget {
               action: GSActions.negative,
               variant: GSVariants.solid,
               size: GSSizes.$lg,
+              style: GSStyle(
+                  dark: GSStyle(descendantStyles: {
+                    "_text": GSStyle(color: $GSColors.black),
+                    "_icon": GSStyle(color: $GSColors.pink900),
+                    "_spinner": GSStyle(
+                        color: $GSColors.yellow900,
+                        props:
+                            GSProps(style: GSStyle(color: $GSColors.blue900)))
+                  }),
+                  descendantStyles: {
+                    "_text": GSStyle(color: $GSColors.green500),
+                  }),
               onPressed: () {},
               // style: GSStyle(
               //   web: GSStyle(
@@ -43,8 +55,8 @@ class ButtonExample extends StatelessWidget {
                     icon: Icons.add,
                     iconSize: GSSizes.$lg,
                     style: GSStyle(
-                      iconColor: $GSColors.green600,
-                      iconSize: 24,
+                      color: $GSColors.green600,
+                      
                     ),
                   ),
                   GSButtonText(

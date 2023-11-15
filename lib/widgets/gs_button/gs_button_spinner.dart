@@ -3,7 +3,10 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_spinner_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
+
+import '../gs_ancestor/gs_ancestor_provider.dart';
 
 class GSButtonSpinner extends StatelessWidget {
   final GSStyle? style;
@@ -12,12 +15,14 @@ class GSButtonSpinner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = GSButtonProvider.of(context);
-    final spinnerColor = GSButtonStyle
-        .gsButtonCombination[value?.action]![value?.variant]?.spinnerColor;
+    final ancestorTextStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsButtonSpinnerConfig.ancestorStyle.first];
+
+    final spinnerColor = ancestorTextStyles?.color;
 
     GSStyle styler = resolveStyles(
       context,
-      variantStyle: GSStyle(spinnerColor: spinnerColor),
+      variantStyle: GSStyle(color: spinnerColor),
       size: GSButtonStyle.size[value?.size],
       inlineStyle: style,
     )!;
@@ -27,8 +32,8 @@ class GSButtonSpinner extends StatelessWidget {
       height: styler.height,
       child: CircularProgressIndicator(
         strokeWidth: $GSBorderWidth.$2,
-        valueColor: AlwaysStoppedAnimation<Color>(
-            styler.spinnerColor ?? $GSColors.primary500),
+        valueColor:
+            AlwaysStoppedAnimation<Color>(styler.color ?? $GSColors.primary500),
       ),
     );
   }
