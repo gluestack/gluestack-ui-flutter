@@ -3,9 +3,9 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector_proider.dart';
-
+import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_icon_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_style.dart';
+
 
 class GSRadioIcon<T> extends StatelessWidget {
   final Color? activeColor;
@@ -32,16 +32,15 @@ class GSRadioIcon<T> extends StatelessWidget {
     final value = GSRadioProvider.of<T>(context);
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final bool isChecked = value!.value == value.groupValue;
-    final ancestorTextStyles =
-        GSAncestorProvider.of(context)?.decedentStyles?['_icon'];
+    final ancestorIconStyles =
+        GSAncestorProvider.of(context)?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
     final radioSize =
-        GSRadioIconStyle.iconSize[ancestorTextStyles?.props?.size];
+        GSRadioIconStyle.iconSize[ancestorIconStyles?.props?.size];
 
-    GSStyle styler = resolveStyles(
-      variantStyle: radioIconStyle.merge(radioIndicatorStyle),
-      context,
-      inlineStyle: value.style,
-    )!;
+    GSStyle styler = resolveStyles2(context: context,styles: [
+      radioIndicatorStyle,
+      radioIconStyle,
+    ]);
 
     return Opacity(
       opacity: value.isDisabled ? styler.onDisabled!.opacity! : 1,

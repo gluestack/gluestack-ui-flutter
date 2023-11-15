@@ -572,14 +572,14 @@ class GSStyle extends BaseStyle<GSStyle> {
       //To be removed later
       contentMaxWidth: data?['_content']?['maxWidth']?.toDouble(),
       padding: data?['p'] != null
-          ? resolvePaddingFromString(data?['p'], 'all')
+          ? resolvePaddingFromString(data?['p'].toString(), 'all')
           : data?['px'] != null && data?['py'] != null
-              ? resolvePaddingFromString(data?['px'], 'symmetric',
-                  paddingy: data?['py'])
+              ? resolvePaddingFromString(data?['px'].toString(), 'symmetric',
+                  paddingy: data?['py'].toString())
               : data?['px'] != null
-                  ? resolvePaddingFromString(data?['px'], 'horizontal')
+                  ? resolvePaddingFromString(data?['px'].toString(), 'horizontal')
                   : data?['py'] != null
-                      ? resolvePaddingFromString(data?['py'], 'vertical')
+                      ? resolvePaddingFromString(data?['py'].toString(), 'vertical')
                       : null,
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(

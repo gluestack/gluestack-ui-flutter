@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 
 import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
@@ -50,9 +51,13 @@ class GSRadio<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final radioSize = size ?? radioStyle.props!.size!;
-   
+    final styler =
+        resolveStyles2(context: context, styles: [
+          radioStyle,
+          radioStyle.sizeMap(radioSize),
+        ], inlineStyle: style);
     return GSAncestor(
-      decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize]!,
+      decedentStyles: styler.descendantStyles,
       child: GSFocusableActionDetector(
         child: InkWell(
           hoverColor: Colors.transparent,
@@ -68,8 +73,6 @@ class GSRadio<T> extends StatelessWidget {
               value: value,
               groupValue: groupValue,
               onChanged: null,
-              size: radioSize,
-              style: style,
               isInvalid: isInvalid,
               isDisabled: isDisabled,
               child: Row(
