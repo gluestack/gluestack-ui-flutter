@@ -59,8 +59,6 @@ class GSButton extends StatelessWidget {
         descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
             ?[variant],
         descendantStyleKeys: gsButtonConfig.descendantStyle)!;
-      
-
 
     return GSAncestor(
       decedentStyles: styler.descendantStyles,

@@ -11,7 +11,6 @@ Map<String, GSStyle?> mergeStyledMaps({
 }) {
   Map<String, GSStyle?> mergedStyleMap = {};
   for (var element in keys) {
-  
     mergedStyleMap[element] = styleMap?[element] != null
         ? styleMap![element]?.merge(overrideStyleMap?[element])
         : overrideStyleMap?[element];
@@ -146,12 +145,14 @@ GSVariants? resolveVariantFromString(String? variant) {
 }
 
 GSSizes? resolveSizesFromString(String? size) {
+  
   const sizeMap = {
     'xs': GSSizes.$xs,
     'sm': GSSizes.$sm,
     'md': GSSizes.$md,
     'lg': GSSizes.$lg,
     'xl': GSSizes.$xl,
+    '2xs': GSSizes.$2xs,
   };
 
   return size != null ? sizeMap[size] : null;

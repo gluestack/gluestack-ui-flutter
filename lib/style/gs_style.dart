@@ -45,6 +45,7 @@ class GSProps {
     this.orientation,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
+
     return GSProps(
         action: resolveActionFromString(data?['action']),
         variant: resolveVariantFromString(data?['variant']),
@@ -219,37 +220,6 @@ class GSAction {
   GSStyle? positive;
   GSStyle? negative;
   GSStyle? defaultStyle;
-  // GSAction({
-  //   this.primary,
-  //   this.secondary,
-  //   this.positive,
-  //   this.negative,
-  //   this.defaultStyle,
-  // });
-  // factory GSAction.fromMap(
-  //     {required Map<String, dynamic>? data,
-  //     List<String> descendantStyle = const []}) {
-  //   return GSAction(
-  //       primary: GSStyle.fromMap(
-  //           data: data?['primary'],
-  //           descendantStyle: descendantStyle,
-  //           fromVariant: true),
-  //       secondary: GSStyle.fromMap(
-  //           data: data?['secondary'],
-  //           descendantStyle: descendantStyle,
-  //           fromVariant: true),
-  //       defaultStyle: GSStyle.fromMap(
-  //           data: data?['default'],
-  //           descendantStyle: descendantStyle,
-  //           fromVariant: true),
-  //       positive: GSStyle.fromMap(
-  //           data: data?['positive'],
-  //           descendantStyle: descendantStyle,
-  //           fromVariant: true),
-  //       negative: GSStyle.fromMap(
-  //           data: data?['negative'],
-  //           descendantStyle: descendantStyle,
-  //           fromVariant: true));
   GSStyle? error;
   GSStyle? warning;
   GSStyle? success;
@@ -429,8 +399,6 @@ class GSStyle extends BaseStyle<GSStyle> {
   String? outlineStyle;
   double? borderBottomWidth;
   TextStyle? textStyle;
-
-  double? iconSize;
   GSStyle? checked;
   Variants? variants;
   GSProps? props;
@@ -456,7 +424,6 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.outlineStyle,
       this.borderBottomWidth,
       this.textStyle,
-      this.iconSize,
       this.checked,
       super.onHover,
       super.onFocus,
@@ -540,8 +507,6 @@ class GSStyle extends BaseStyle<GSStyle> {
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
-
-      iconSize: overrideStyle?.iconSize ?? iconSize,
       variants: overrideStyle?.variants ?? variants,
       props: GSProps(
         action: overrideStyle?.props?.action ?? props?.action,
@@ -589,8 +554,6 @@ class GSStyle extends BaseStyle<GSStyle> {
           data?['_text']?['color'],
         ),
       ),
-
-      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg']),
       borderWidth: data?['borderWidth'] != null
@@ -670,7 +633,6 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       dark: GSStyle(
         color: resolveColorFromString((data?['_dark']?['color'])),
-        iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
         textStyle: TextStyle(
             color: resolveColorFromString(data?['_text']?['_dark']?['color'])),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),

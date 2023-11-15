@@ -3,8 +3,7 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_icon_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
+
 
 class GSButtonIcon extends StatelessWidget {
   final IconData icon;
@@ -20,24 +19,21 @@ class GSButtonIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final value = GSButtonProvider.of(context);
-    final ancestorTextStyles = GSAncestorProvider.of(context)
+    final ancestorIconStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsButtonIconStyle.ancestorStyle.first];
 
+    final size =
+        GSButtonIconStyle.size[iconSize ?? ancestorIconStyles?.props?.size];
     GSStyle styler = resolveStyles(
       context,
-      variantStyle: GSStyle(color: ancestorTextStyles?.color),
-      size: GSButtonStyle
-          .size[iconSize ?? value?.size ?? buttonIconStyle.props?.size],
+      variantStyle: GSStyle(color: ancestorIconStyles?.color),
       inlineStyle: style,
     )!;
-
-
 
     return Icon(
       icon,
       color: styler.color,
-      size: styler.iconSize,
+      size: size,
     );
   }
 }

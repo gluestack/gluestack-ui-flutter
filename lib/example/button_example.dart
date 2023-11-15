@@ -3,7 +3,6 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group.dart';
-
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_spinner.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_text.dart';
@@ -19,26 +18,19 @@ class ButtonExample extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-     
             GSButton(
               action: GSActions.negative,
               variant: GSVariants.solid,
               size: GSSizes.$lg,
               style: GSStyle(
-                  dark: GSStyle(
-                    descendantStyles: {
-                      "_text": GSStyle(color: $GSColors.black),
-                      "_icon":GSStyle(color: $GSColors.pink900),
-                      "_spinner":GSStyle(
+                  dark: GSStyle(descendantStyles: {
+                    "_text": GSStyle(color: $GSColors.black),
+                    "_icon": GSStyle(color: $GSColors.pink900),
+                    "_spinner": GSStyle(
                         color: $GSColors.yellow900,
-                        props:GSProps(
-                        
-                        style: GSStyle(
-                          color: $GSColors.blue900
-                        )
-                      ))
-                    }
-                  ),
+                        props:
+                            GSProps(style: GSStyle(color: $GSColors.blue900)))
+                  }),
                   descendantStyles: {
                     "_text": GSStyle(color: $GSColors.green500),
                   }),
@@ -64,7 +56,7 @@ class ButtonExample extends StatelessWidget {
                     iconSize: GSSizes.$lg,
                     style: GSStyle(
                       color: $GSColors.green600,
-                      iconSize: 24,
+                      
                     ),
                   ),
                   GSButtonText(
