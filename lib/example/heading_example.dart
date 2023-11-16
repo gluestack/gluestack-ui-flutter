@@ -15,13 +15,6 @@ class HeadingExample extends StatelessWidget {
           children: [
             GSHeading(
               text: 'I am a Heading',
-              bold: true,
-              highlight: true,
-              isTruncated: true,
-              italic: true,
-              strikeThrough: true,
-              underline: true,
-              sub: true,
               style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
             )
           ],

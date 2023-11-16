@@ -65,6 +65,7 @@ class GSHeading extends StatelessWidget {
     )!;
 
     final currentTextStyle = styler.textStyle?.copyWith(
+      color: styler.color,
       fontWeight: bold ? FontWeight.bold : styler.textStyle?.fontWeight,
       fontStyle: italic ? FontStyle.italic : styler.textStyle?.fontStyle,
       fontSize: sub ? subFontSize : styler.textStyle?.fontSize,
@@ -78,6 +79,7 @@ class GSHeading extends StatelessWidget {
       overflow:
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
     );
+   
     return Text(
       text,
       style: currentTextStyle,
