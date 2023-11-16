@@ -142,6 +142,18 @@ double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
       resolveFontSizeFromString(fontSize)!;
 }
 
+TextDecoration? resolveTextDecorationFromString(String? textDecoration) {
+  if (textDecoration == null) {
+    return null;
+  } else if (textDecoration == 'none') {
+
+    return TextDecoration.none;
+  } else if (textDecoration == 'underline') {
+    return TextDecoration.underline;
+  }
+  return null;
+}
+
 GSActions? resolveActionFromString(String? action) {
   const actionMap = {
     'primary': GSActions.primary,
@@ -171,7 +183,6 @@ GSVariants? resolveVariantFromString(String? variant) {
 }
 
 GSSizes? resolveSizesFromString(String? size) {
-  
   const sizeMap = {
     'xs': GSSizes.$xs,
     'sm': GSSizes.$sm,

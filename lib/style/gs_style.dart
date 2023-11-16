@@ -60,7 +60,6 @@ class GSProps {
     this.color,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
-
     return GSProps(
         action: resolveActionFromString(data?['action']),
         variant: resolveVariantFromString(data?['variant']),
@@ -155,8 +154,7 @@ class GSSize {
       this.$4xl,
       this.$5xl,
       this.$6xl,
-      this.$full
-      });
+      this.$full});
   factory GSSize.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
@@ -474,8 +472,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.alignment,
       this.contentMaxWidth,
       this.contentWidth,
-      this.progressValueColor
-      });
+      this.progressValueColor});
 
   @override
   copy() {
@@ -529,6 +526,8 @@ class GSStyle extends BaseStyle<GSStyle> {
           ? TextStyle(
               height: overrideStyle?.textStyle?.height ?? textStyle?.height,
               color: overrideStyle?.textStyle?.color ?? textStyle?.color,
+              decoration:
+                  overrideStyle?.textStyle?.decoration ?? textStyle?.decoration,
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
@@ -582,22 +581,24 @@ class GSStyle extends BaseStyle<GSStyle> {
           : null,
       //To be removed later
       contentMaxWidth: data?['_content']?['maxWidth']?.toDouble(),
-            padding: data?['p'] != null
+      padding: data?['p'] != null
           ? resolvePaddingFromString(data?['p'].toString(), 'all')
           : data?['px'] != null && data?['py'] != null
               ? resolvePaddingFromString(data?['px'].toString(), 'symmetric',
                   paddingy: data?['py'].toString())
               : data?['px'] != null
-                  ? resolvePaddingFromString(data?['px'].toString(), 'horizontal')
+                  ? resolvePaddingFromString(
+                      data?['px'].toString(), 'horizontal')
                   : data?['py'] != null
-                      ? resolvePaddingFromString(data?['py'].toString(), 'vertical')
+                      ? resolvePaddingFromString(
+                          data?['py'].toString(), 'vertical')
                       : null,
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
         height:
             resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
-
+         decoration:resolveTextDecorationFromString(data?['textDecorationLine']),
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
           data?['_text']?['color'],
@@ -623,6 +624,9 @@ class GSStyle extends BaseStyle<GSStyle> {
                   data?[':checked']?[':hover']?['color']))),
       onHover: GSStyle(
         color: resolveColorFromString(data?[':hover']?['color']),
+        textStyle: TextStyle(
+          decoration: resolveTextDecorationFromString(data?[':hover']?['textDecorationLine']),
+        ),
         checked: GSStyle(
             color:
                 resolveColorFromString(data?[':hover']?[':checked']?['color'])),

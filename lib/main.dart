@@ -7,6 +7,7 @@ import 'package:gluestack_flutter_pro/example/divider_example.dart';
 import 'package:gluestack_flutter_pro/example/hstack_example.dart';
 import 'package:gluestack_flutter_pro/example/image_example.dart';
 import 'package:gluestack_flutter_pro/example/input_example.dart';
+import 'package:gluestack_flutter_pro/example/link_example.dart';
 import 'package:gluestack_flutter_pro/example/progress_example.dart';
 import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 import 'package:gluestack_flutter_pro/example/spinner_example.dart';
@@ -14,6 +15,9 @@ import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_link/gs_link.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_link/gs_link_text.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
 
 // import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 
@@ -47,6 +51,21 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const LinkExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Link',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(

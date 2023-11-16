@@ -24,7 +24,7 @@ class _GSFocusableActionDetectorState extends State<GSFocusableActionDetector> {
   Widget build(BuildContext context) {
 
     return FocusableActionDetector(
-   
+         
         onFocusChange: (value) {
           if (isFocused != value) {
             setState(() {
