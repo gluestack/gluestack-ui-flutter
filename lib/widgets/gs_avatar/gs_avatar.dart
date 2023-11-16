@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
+import 'package:gluestack_flutter_pro/utils/resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_image.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_style.dart';
@@ -8,14 +9,12 @@ import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_style.dart';
 class GSAvatar extends StatelessWidget {
   final GSSizes? size;
   final GSStyle? style;
-  final double? radius;
+  final GSBorderRadius? radius;
   final Widget? fallBackText;
   final ImageProvider? backgroundImage;
   final ImageProvider? foregroundImage;
   final ImageErrorListener? onBackgroundImageError;
   final ImageErrorListener? onForegroundImageError;
-  final double? minRadius;
-  final double? maxRadius;
   final GSAvatarImage avatarImage;
 
   const GSAvatar(
@@ -23,8 +22,6 @@ class GSAvatar extends StatelessWidget {
       this.style,
       this.fallBackText,
       this.radius,
-      this.minRadius,
-      this.maxRadius,
       this.backgroundImage,
       this.foregroundImage,
       this.onBackgroundImageError,
@@ -46,16 +43,33 @@ class GSAvatar extends StatelessWidget {
     return GSAvatarProvider(
       badgeRaidus: styler.badgeHeight,
       textStyle: styler.textStyle,
-      child: CircleAvatar(
-        minRadius: minRadius,
-        maxRadius: maxRadius,
-        radius: radius ?? styler.height,
-        backgroundImage: backgroundImage,
-        foregroundImage: NetworkImage(avatarImage.imageUrl),
-        onBackgroundImageError: onBackgroundImageError,
-        onForegroundImageError: onForegroundImageError,
-        backgroundColor: styler.bg,
-        foregroundColor: styler.color,
+      child: Container(
+        decoration: BoxDecoration(
+            color: styler.bg,
+            image: backgroundImage != null
+                ? DecorationImage(
+                    image: backgroundImage!,
+                    onError: onBackgroundImageError,
+                    fit: BoxFit.cover,
+                  )
+                : null,
+            borderRadius: BorderRadius.circular(
+                GSAvatarStyle.borderRadius[radius] ??
+                    styler.borderRadius ??
+                    50)),
+        foregroundDecoration: foregroundImage != null
+            ? BoxDecoration(
+                color: styler.color,
+                image: DecorationImage(
+                  image: foregroundImage!,
+                  onError: onForegroundImageError,
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(
+                    GSAvatarStyle.borderRadius[radius] ??
+                        styler.borderRadius ??
+                        50))
+            : null,
         child: fallBackText,
       ),
     );
