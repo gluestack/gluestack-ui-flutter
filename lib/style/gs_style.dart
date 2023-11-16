@@ -60,7 +60,6 @@ class GSProps {
     this.color,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
-
     return GSProps(
         action: resolveActionFromString(data?['action']),
         variant: resolveVariantFromString(data?['variant']),
@@ -155,8 +154,7 @@ class GSSize {
       this.$4xl,
       this.$5xl,
       this.$6xl,
-      this.$full
-      });
+      this.$full});
   factory GSSize.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
@@ -474,8 +472,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.alignment,
       this.contentMaxWidth,
       this.contentWidth,
-      this.progressValueColor
-      });
+      this.progressValueColor});
 
   @override
   copy() {
@@ -569,7 +566,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
       height: resolveSpaceFromString(
-        data?['h'] ?? data?['height'],
+        data?['h'].toString() ?? data?['height'].toString(),
       ),
       width: resolveSpaceFromString(data?['w'] ?? data?['width']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),

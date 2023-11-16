@@ -11,6 +11,7 @@ import 'package:gluestack_flutter_pro/example/input_example.dart';
 import 'package:gluestack_flutter_pro/example/progress_example.dart';
 import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 import 'package:gluestack_flutter_pro/example/spinner_example.dart';
+import 'package:gluestack_flutter_pro/example/text_area_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 
@@ -251,6 +252,21 @@ class MyApp extends StatelessWidget {
                     },
                     child: const Text(
                       'GS Icon',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const TextAreaExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Text Area',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
