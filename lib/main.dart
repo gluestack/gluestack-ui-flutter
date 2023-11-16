@@ -5,6 +5,7 @@ import 'package:gluestack_flutter_pro/example/button_example.dart';
 import 'package:gluestack_flutter_pro/example/center_example.dart';
 import 'package:gluestack_flutter_pro/example/divider_example.dart';
 import 'package:gluestack_flutter_pro/example/hstack_example.dart';
+import 'package:gluestack_flutter_pro/example/icon_example.dart';
 import 'package:gluestack_flutter_pro/example/image_example.dart';
 import 'package:gluestack_flutter_pro/example/input_example.dart';
 import 'package:gluestack_flutter_pro/example/progress_example.dart';
@@ -235,6 +236,21 @@ class MyApp extends StatelessWidget {
                     },
                     child: const Text(
                       'GS Progress',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const IconExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Icon',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
