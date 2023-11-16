@@ -13,6 +13,7 @@ class GSHeading extends StatelessWidget {
   final bool underline;
   final bool strikeThrough;
   final bool highlight;
+  final bool sub;
   final Locale? locale;
   final int? maxLines;
   final TextOverflow? overflow;
@@ -42,6 +43,7 @@ class GSHeading extends StatelessWidget {
       this.textHeightBehavior,
       this.textScaleFactor,
       this.textWidthBasis,
+      this.sub = false,
       this.bold = false,
       this.highlight = false,
       this.isTruncated = false,
@@ -52,17 +54,21 @@ class GSHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textSize = size ?? headingStyle.props?.size;
+    final subFontSize = headingStyle.variants?.sub?.textStyle?.fontSize;
+    final subLineHeight = headingStyle.variants?.sub?.textStyle?.height;
 
     GSStyle styler = resolveStyles(
       context,
       variantStyle: highlight ? headingStyle.variants?.highlight : null,
       size: GSTextStyles.size[textSize],
-      inlineStyle: headingStyle.merge(style) ,
+      inlineStyle: headingStyle.merge(style),
     )!;
 
     final currentTextStyle = styler.textStyle?.copyWith(
       fontWeight: bold ? FontWeight.bold : styler.textStyle?.fontWeight,
       fontStyle: italic ? FontStyle.italic : styler.textStyle?.fontStyle,
+      fontSize: sub ? subFontSize : styler.textStyle?.fontSize,
+      height: sub ? subLineHeight : styler.textStyle?.height,
       decoration: TextDecoration.combine([
         if (strikeThrough) TextDecoration.lineThrough,
         if (underline) TextDecoration.underline,
@@ -72,9 +78,6 @@ class GSHeading extends StatelessWidget {
       overflow:
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
     );
- 
- 
-
     return Text(
       text,
       style: currentTextStyle,
