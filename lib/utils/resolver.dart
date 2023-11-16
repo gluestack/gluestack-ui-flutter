@@ -230,3 +230,13 @@ GSOrientations? resolveOrientationsFromString(String? orientation) {
 
   return orientation != null ? orientationMap[orientation] : null;
 }
+
+GSTextTransform? resolveTextTransformFromString(String? gsTextTransform){
+   const textTransformationMap = {
+    'uppercase': GSTextTransform.uppercase,
+    'lowercase': GSTextTransform.lowercase,
+  };
+
+  return gsTextTransform != null ? textTransformationMap[gsTextTransform] : null;
+ 
+}

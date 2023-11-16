@@ -14,6 +14,8 @@ enum GSActions {
   muted
 }
 
+enum GSTextTransform { uppercase, lowercase }
+
 enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
@@ -60,7 +62,6 @@ class GSProps {
     this.color,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
-
     return GSProps(
         action: resolveActionFromString(data?['action']),
         variant: resolveVariantFromString(data?['variant']),
@@ -155,8 +156,7 @@ class GSSize {
       this.$4xl,
       this.$5xl,
       this.$6xl,
-      this.$full
-      });
+      this.$full});
   factory GSSize.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
@@ -431,6 +431,9 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? contentMaxWidth;
   AlignmentGeometry? alignment;
   Color? progressValueColor;
+  double? badgeHeight;
+  double? badgeWidth;
+  GSTextTransform? textTransform;
 
   GSStyle(
       {this.borderWidth,
@@ -474,8 +477,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.alignment,
       this.contentMaxWidth,
       this.contentWidth,
-      this.progressValueColor
-      });
+      this.progressValueColor,
+      this.badgeHeight,
+      this.badgeWidth,
+      this.textTransform});
 
   @override
   copy() {
@@ -544,6 +549,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       width: overrideStyle?.width ?? width,
       height: overrideStyle?.height ?? height,
+      badgeHeight: overrideStyle?.badgeHeight ?? badgeHeight,
+      badgeWidth: overrideStyle?.badgeWidth ?? badgeWidth,
       dark: overrideStyle?.dark ?? dark,
       lg: overrideStyle?.lg ?? lg,
       md: overrideStyle?.md ?? md,
@@ -558,6 +565,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       contentMaxWidth: overrideStyle?.contentMaxWidth ?? contentMaxWidth,
       progressValueColor:
           overrideStyle?.progressValueColor ?? progressValueColor,
+      textTransform: overrideStyle?.textTransform ?? textTransform,
     );
   }
 
@@ -572,6 +580,13 @@ class GSStyle extends BaseStyle<GSStyle> {
         data?['h'] ?? data?['height'],
       ),
       width: resolveSpaceFromString(data?['w'] ?? data?['width']),
+      badgeHeight: resolveSpaceFromString(
+        data?['_badge']?['h'],
+      ),
+      badgeWidth: resolveSpaceFromString(
+        data?['_badge']?['w'],
+      ),
+      textTransform: resolveTextTransformFromString(data?['textTransform']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
       //To be removed later
       contentWidth: data?['_content']?['w'] != null
@@ -594,7 +609,9 @@ class GSStyle extends BaseStyle<GSStyle> {
                       : null,
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
-        fontSize: resolveFontSizeFromString(data?['fontSize']),
+        fontWeight: resolveFontWeightFromString(data?['fontWeight']),
+        fontSize: resolveFontSizeFromString(
+            data?['fontSize'] ?? data?['_text']?['props']?['size']),
         height:
             resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
 
@@ -683,6 +700,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       dark: GSStyle(
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(
+            fontWeight: resolveFontWeightFromString(data?['fontWeight']),
             color: resolveColorFromString(data?['_text']?['_dark']?['color'])),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
         bg: resolveColorFromString(data?['_dark']?['bg']),
