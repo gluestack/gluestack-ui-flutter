@@ -60,7 +60,6 @@ class GSProps {
     this.color,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
-
     return GSProps(
         action: resolveActionFromString(data?['action']),
         variant: resolveVariantFromString(data?['variant']),
@@ -155,8 +154,7 @@ class GSSize {
       this.$4xl,
       this.$5xl,
       this.$6xl,
-      this.$full
-      });
+      this.$full});
   factory GSSize.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
@@ -364,13 +362,16 @@ class Variants {
   GSSize? size;
   GSAction? action;
   GSSpace? space;
+  //try to make these properties of heading into a single class
   GSStyle? highlight;
+  GSStyle? sub;
   GSOrientation? orientation;
   Variants({
     this.variant,
     this.size,
     this.action,
     this.space,
+    this.sub,
     this.highlight,
     this.orientation,
   });
@@ -389,8 +390,12 @@ class Variants {
         space: GSSpace.fromMap(
           data: data?['space'],
         ),
+        sub: GSStyle.fromMap(
+            data: data?['sub']?['true'],
+            descendantStyle: descendantStyle,
+            fromVariant: true),
         highlight: GSStyle.fromMap(
-            data: data?['highlight']?[true],
+            data: data?['highlight']?['true'],
             descendantStyle: descendantStyle,
             fromVariant: true),
         orientation: GSOrientation.fromMap(data: data?['orientation']));
@@ -474,8 +479,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.alignment,
       this.contentMaxWidth,
       this.contentWidth,
-      this.progressValueColor
-      });
+      this.progressValueColor});
 
   @override
   copy() {
@@ -529,6 +533,10 @@ class GSStyle extends BaseStyle<GSStyle> {
           ? TextStyle(
               height: overrideStyle?.textStyle?.height ?? textStyle?.height,
               color: overrideStyle?.textStyle?.color ?? textStyle?.color,
+              letterSpacing: overrideStyle?.textStyle?.letterSpacing ??
+                  textStyle?.letterSpacing,
+              fontWeight:
+                  overrideStyle?.textStyle?.fontWeight ?? textStyle?.fontWeight,
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
@@ -597,7 +605,8 @@ class GSStyle extends BaseStyle<GSStyle> {
         fontSize: resolveFontSizeFromString(data?['fontSize']),
         height:
             resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
-
+        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
+        fontWeight: resolveFontWeightFromString(data?['fontWeight']),
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
           data?['_text']?['color'],
