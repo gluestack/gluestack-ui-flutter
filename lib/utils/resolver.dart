@@ -92,10 +92,13 @@ double? resolveSpaceFromString(String? space) {
   if (space == 'px') {
     return $GSSpace.spaceMap[space];
   }
-  if(space.contains('-')){
+  if (space.contains('\$')) {
+    if(space.contains('-')){
       return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
   }
   return $GSSpace.spaceMap[space.substring(1)];
+  }
+  return $GSSpace.spaceMap[space];
 }
 
 EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
@@ -143,6 +146,16 @@ double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
 
   return $GSLineHeight.lineHeightMap[lineHeight]! /
       resolveFontSizeFromString(fontSize)!;
+}
+double? resolveLetterSpacingFromString(String? letterSpacing) {
+  if (letterSpacing == null) {
+    return null;
+  }
+  if (letterSpacing.contains('\$')) {
+    return $GSLetterSpacing.letterSpacingMap[letterSpacing.substring(1)]!;
+  }
+
+  return $GSLetterSpacing.letterSpacingMap[letterSpacing];
 }
 
 GSActions? resolveActionFromString(String? action) {
