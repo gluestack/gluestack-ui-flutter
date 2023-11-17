@@ -25,7 +25,7 @@ class GSAvatarGroup extends StatelessWidget {
       context,
       inlineStyle: style,
     )!;
-    double overlap = styler.gap!;
+    double overlap = styler.gap ?? 40;
 
     List<Widget> stackLayers = List<Widget>.generate(children.length, (index) {
       return Padding(
@@ -42,10 +42,8 @@ class GSAvatarGroup extends StatelessWidget {
     });
 
     return Stack(
-      alignment: direction == GSDirection.column
-          ? AlignmentDirectional.bottomEnd
-          : AlignmentDirectional.topEnd,
-      children: stackLayers.reversed.toList(),
+      alignment: AlignmentDirectional.center,
+      children: stackLayers,
     );
   }
 }

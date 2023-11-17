@@ -67,7 +67,7 @@ class AvatarExample extends StatelessWidget {
               ),
             ),
             GSAvatarGroup(
-              style: GSStyle(gap: -15),
+              style: GSStyle(gap: -25),
               children: [
                 GSAvatar(
                   size: GSSizes.$sm,
