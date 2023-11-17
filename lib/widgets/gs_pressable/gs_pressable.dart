@@ -1,13 +1,14 @@
 /// GSPressable is a customizable pressable widget for Gluestack - Flutter.
 /// It allows for easy customization of various press-related interactions and styles.
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_pressable/gs_pressable_style.dart';
 
 /// The GSPressable class represents a pressable widget that can respond to various press-related gestures.
-class GSPressable extends StatelessWidget {
+class GSPressable extends StatefulWidget {
   /// The style to be applied to the GSPressable.
   final GSStyle? style;
 
@@ -127,6 +128,38 @@ class GSPressable extends StatelessWidget {
     this.onHighlightChanged,
   });
 
+  @override
+  State<GSPressable> createState() => _GSPressableState();
+}
+
+class _GSPressableState extends State<GSPressable> {
+  final FocusNode _focusNode = FocusNode();
+  bool showFocusBorder = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      if (_focusNode.hasFocus && kIsWeb) {
+        setState(() {
+          showFocusBorder = true;
+        });
+      } else {
+        if (showFocusBorder) {
+          setState(() {
+            showFocusBorder = false;
+          });
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
   /// Builds the GSPressable widget.
   @override
   Widget build(BuildContext context) {
@@ -134,33 +167,41 @@ class GSPressable extends StatelessWidget {
     GSStyle styler = resolveStyles(
       context,
       variantStyle: pressableStyle,
-      inlineStyle: style,
+      inlineStyle: widget.style,
     )!;
 
-    // Return the InkWell widget with specified callbacks and styles.
+    // Build the InkWell widget with specified callbacks and styles.
     return InkWell(
-      onTap: onPress,
-      onTapUp: onPressIn,
-      onTapDown: onPressOut,
-      onLongPress: onLongPress,
-      onDoubleTap: onDoubleTap,
-      onSecondaryTap: onSecondaryTap,
-      onSecondaryTapUp: onSecondaryTapUp,
-      onSecondaryTapDown: onSecondaryTapDown,
-      onSecondaryTapCancel: onSecondaryTapCancel,
-      radius: radius,
-      customBorder: customBorder,
-      onHighlightChanged: onHighlightChanged,
-      mouseCursor: mouseCursor,
+      onTap: widget.onPress,
+      focusNode: _focusNode,
+      onTapUp: widget.onPressIn,
+      onTapDown: widget.onPressOut,
+      onLongPress: widget.onLongPress,
+      onDoubleTap: widget.onDoubleTap,
+      onSecondaryTap: widget.onSecondaryTap,
+      onSecondaryTapUp: widget.onSecondaryTapUp,
+      onSecondaryTapDown: widget.onSecondaryTapDown,
+      onSecondaryTapCancel: widget.onSecondaryTapCancel,
+      radius: widget.radius,
+      customBorder: widget.customBorder,
+      onHighlightChanged: widget.onHighlightChanged,
+      mouseCursor: widget.mouseCursor,
       hoverColor: styler.onHover?.color,
       splashColor: styler.splashColor,
       highlightColor: styler.highlightColor,
-      borderRadius: borderRadius,
+      borderRadius: widget.borderRadius,
       child: Ink(
-        color: styler.bg ?? Colors.transparent,
+        decoration: BoxDecoration(
+          color: styler.bg ?? Colors.transparent,
+          border: showFocusBorder
+              ? Border.all(
+                  color: styler.onFocus?.borderColor ?? Colors.transparent,
+                  width: styler.onFocus?.borderWidth ?? 1)
+              : null,
+        ),
         child: Padding(
-          padding: EdgeInsets.all(hitSlop ?? 0),
-          child: child,
+          padding: EdgeInsets.all(widget.hitSlop ?? 0),
+          child: widget.child,
         ),
       ),
     );
