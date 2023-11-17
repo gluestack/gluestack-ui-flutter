@@ -625,7 +625,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderWidth: data?['borderWidth'] != null
           ? double.tryParse(data!['borderWidth']!.toString())
           : null,
-      gap: resolveSpaceFromString(data?['gap']),
+      gap: resolveSpaceFromString(data?['gap']??data?['_avatar']?['ml'].toString()),
       borderColor: resolveColorFromString(data?['borderColor']),
       borderRadius: data?['borderRadius'] != null
           ? resolveRadiusFromString(data?['borderRadius'].toString())

@@ -92,6 +92,9 @@ double? resolveSpaceFromString(String? space) {
   if (space == 'px') {
     return $GSSpace.spaceMap[space];
   }
+  if(space.contains('-')){
+      return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
+  }
   return $GSSpace.spaceMap[space.substring(1)];
 }
 

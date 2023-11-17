@@ -4,6 +4,7 @@ import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_fallBack_text.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_group.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image.dart';
 
 class AvatarExample extends StatelessWidget {
@@ -61,6 +62,47 @@ class AvatarExample extends StatelessWidget {
               fallBackText: const GSAvatarFallBackText(
                 'Flutter',
               ),
+            ),
+            GSAvatarGroup(
+              style: GSStyle(gap: -15),
+              children: [
+                GSAvatar(
+                  size: GSSizes.$sm,
+                  style: GSStyle(
+                    bg: Colors.orange,
+                    textStyle: const TextStyle(color: Colors.white),
+                  ),
+                  avatarBadge: GSAvatarBadge(
+                    style: GSStyle(
+                      bg: Colors.red,
+                      borderRadius: 12,
+                      borderColor: Colors.yellow,
+                    ),
+                  ),
+                  fallBackText: const GSAvatarFallBackText(
+                    'Geeky Stack',
+                  ),
+                ),
+                GSAvatar(
+                  size: GSSizes.$sm,
+                  style: GSStyle(
+                    bg: Colors.red,
+                    textStyle: const TextStyle(color: Colors.white),
+                  ),
+                  avatarBadge: GSAvatarBadge(
+                    left: 0,
+                    bottom: 0,
+                    style: GSStyle(
+                      borderWidth: 1,
+                      borderRadius: 12,
+                      borderColor: Colors.yellow,
+                    ),
+                  ),
+                  fallBackText: const GSAvatarFallBackText(
+                    'Geeky Stack',
+                  ),
+                ),
+              ],
             ),
           ],
         ),
