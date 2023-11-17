@@ -4,6 +4,10 @@ import 'package:gluestack_flutter_pro/token/font_weight.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/token/line_height.dart';
 
+bool parseMap(Map<dynamic, dynamic>? data) {
+  return data?.isNotEmpty ?? false;
+}
+
 Map<String, GSStyle?> mergeStyledMaps({
   required Map<String, GSStyle?>? styleMap,
   required Map<String, GSStyle?>? overrideStyleMap,
@@ -150,6 +154,7 @@ GSActions? resolveActionFromString(String? action) {
     'success': GSActions.success,
     'info': GSActions.info,
     'muted': GSActions.muted,
+    'attention': GSActions.attention,
   };
 
   return action != null ? actionMap[action] : null;
@@ -162,13 +167,13 @@ GSVariants? resolveVariantFromString(String? variant) {
     'rounded': GSVariants.rounded,
     'underlined': GSVariants.underlined,
     'link': GSVariants.link,
+    'accent': GSVariants.accent,
   };
 
   return variant != null ? variantMap[variant] : null;
 }
 
 GSSizes? resolveSizesFromString(String? size) {
-  
   const sizeMap = {
     'xs': GSSizes.$xs,
     'sm': GSSizes.$sm,
