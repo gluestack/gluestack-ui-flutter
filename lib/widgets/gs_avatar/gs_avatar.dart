@@ -1,33 +1,44 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
-import 'package:gluestack_flutter_pro/utils/resolver.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_image.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_badge.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_fallBack_text.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image.dart';
 
 class GSAvatar extends StatelessWidget {
   final GSSizes? size;
   final GSStyle? style;
   final GSBorderRadius? radius;
-  final Widget? fallBackText;
+  final GSAvatarFallBackText? fallBackText;
   final ImageProvider? backgroundImage;
+
+  ///This takes precedence over [avatarImage]!
   final ImageProvider? foregroundImage;
   final ImageErrorListener? onBackgroundImageError;
   final ImageErrorListener? onForegroundImageError;
-  final GSAvatarImage avatarImage;
+  final GSImage? avatarImage;
+  final GSAvatarBadge? avatarBadge;
 
   const GSAvatar(
       {super.key,
       this.style,
       this.fallBackText,
-      this.radius,
+      this.radius = GSBorderRadius.$full,
       this.backgroundImage,
       this.foregroundImage,
       this.onBackgroundImageError,
       this.onForegroundImageError,
       this.size,
-      required this.avatarImage});
+      this.avatarImage,
+      this.avatarBadge})
+      : assert(
+            size != GSSizes.$3xl &&
+                size != GSSizes.$4xl &&
+                size != GSSizes.$5xl,
+            "Size Not Supported");
 
   @override
   Widget build(BuildContext context) {
@@ -41,36 +52,96 @@ class GSAvatar extends StatelessWidget {
     )!;
 
     return GSAvatarProvider(
+      avatarStyle: styler,
       badgeRaidus: styler.badgeHeight,
       textStyle: styler.textStyle,
-      child: Container(
-        decoration: BoxDecoration(
-            color: styler.bg,
-            image: backgroundImage != null
-                ? DecorationImage(
-                    image: backgroundImage!,
-                    onError: onBackgroundImageError,
-                    fit: BoxFit.cover,
+      child: Stack(
+        children: [
+          Container(
+            width: styler.width,
+            height: styler.height,
+            decoration: BoxDecoration(
+              shape: radius == GSBorderRadius.$full
+                  ? BoxShape.circle
+                  : BoxShape.rectangle,
+              color: styler.bg,
+              image: backgroundImage != null
+                  ? DecorationImage(
+                      image: backgroundImage!,
+                      onError: onBackgroundImageError,
+                      fit: BoxFit.cover,
+                    )
+                  : null,
+              borderRadius: radius != GSBorderRadius.$full
+                  ? BorderRadius.circular(GSAvatarStyle.borderRadius[radius] ??
+                      styler.borderRadius ??
+                      50)
+                  : null,
+            ),
+            foregroundDecoration: foregroundImage != null
+                ? BoxDecoration(
+                    color: styler.color,
+                    image: DecorationImage(
+                      image: foregroundImage!,
+                      onError: onForegroundImageError,
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(
+                        GSAvatarStyle.borderRadius[radius] ??
+                            styler.borderRadius ??
+                            50),
                   )
-                : null,
-            borderRadius: BorderRadius.circular(
-                GSAvatarStyle.borderRadius[radius] ??
-                    styler.borderRadius ??
-                    50)),
-        foregroundDecoration: foregroundImage != null
-            ? BoxDecoration(
-                color: styler.color,
-                image: DecorationImage(
-                  image: foregroundImage!,
-                  onError: onForegroundImageError,
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(
-                    GSAvatarStyle.borderRadius[radius] ??
-                        styler.borderRadius ??
-                        50))
-            : null,
-        child: fallBackText,
+                : BoxDecoration(
+                    color: styler.color,
+                    image: avatarImage != null
+                        ? avatarImage?.imageType == GSImageType.network
+                            ? DecorationImage(
+                                image: NetworkImage(avatarImage!.path),
+                                onError: onForegroundImageError,
+                                fit: BoxFit.cover,
+                              )
+                            : avatarImage?.imageType == GSImageType.asset
+                                ? DecorationImage(
+                                    image: AssetImage(avatarImage!.path),
+                                    onError: onForegroundImageError,
+                                    fit: BoxFit.cover,
+                                  )
+                                : DecorationImage(
+                                    image: FileImage(File(avatarImage!.path)),
+                                    onError: onForegroundImageError,
+                                    fit: BoxFit.cover,
+                                  )
+                        : null,
+                    borderRadius: BorderRadius.circular(
+                        GSAvatarStyle.borderRadius[radius] ??
+                            styler.borderRadius ??
+                            50),
+                  ),
+            child: Center(child: fallBackText),
+          ),
+
+          //GS Badge Widget
+          if (avatarBadge != null &&
+              avatarBadge?.right == null &&
+              avatarBadge?.bottom == null &&
+              avatarBadge?.top == null &&
+              avatarBadge?.left == null)
+            Positioned(
+              right: 0,
+              left: avatarBadge?.left,
+              top: avatarBadge?.top,
+              bottom: 0,
+              child: avatarBadge as Widget,
+            )
+          else if (avatarBadge != null)
+            Positioned(
+              right: avatarBadge?.right,
+              left: avatarBadge?.left,
+              top: avatarBadge?.top,
+              bottom: avatarBadge?.bottom,
+              child: avatarBadge as Widget,
+            ),
+        ],
       ),
     );
   }

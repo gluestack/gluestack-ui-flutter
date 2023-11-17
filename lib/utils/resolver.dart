@@ -37,6 +37,9 @@ Color? resolveColorFromString(String? color) {
   if (color.contains("transparent")) {
     return Colors.transparent;
   }
+  if (color.contains("white")) {
+    return Colors.white;
+  }
   return $GSColors.colorMap[color.substring(1)];
 }
 
@@ -168,7 +171,6 @@ GSVariants? resolveVariantFromString(String? variant) {
 }
 
 GSSizes? resolveSizesFromString(String? size) {
-  
   const sizeMap = {
     'xs': GSSizes.$xs,
     'sm': GSSizes.$sm,
@@ -231,12 +233,13 @@ GSOrientations? resolveOrientationsFromString(String? orientation) {
   return orientation != null ? orientationMap[orientation] : null;
 }
 
-GSTextTransform? resolveTextTransformFromString(String? gsTextTransform){
-   const textTransformationMap = {
+GSTextTransform? resolveTextTransformFromString(String? gsTextTransform) {
+  const textTransformationMap = {
     'uppercase': GSTextTransform.uppercase,
     'lowercase': GSTextTransform.lowercase,
   };
 
-  return gsTextTransform != null ? textTransformationMap[gsTextTransform] : null;
- 
+  return gsTextTransform != null
+      ? textTransformationMap[gsTextTransform]
+      : null;
 }

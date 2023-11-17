@@ -58,28 +58,26 @@ class GSAvatarFallBackText extends StatelessWidget {
   Widget build(BuildContext context) {
     // Access the  GS Avatar provider to retrieve  GS Avatar related information.
     final value = GSAvatarProvider.of(context);
-    
+
     String shortTextMaker() {
       if (text.isEmpty) {
         return '';
       }
-      if (text.length == 2) {
-        return text;
-      }
+
       List<String> words = text.split(' ');
 
       if (words.length >= 2) {
-        return " ${words[0][0]} ${words[0][0]}";
+        return " ${words[0][0]}${words[1][0]}";
       } else {
         return text[0];
       }
     }
 
-    final shortHandText = shortTextMaker();
+    final shortHandText = shortTextMaker().trim();
 
     // Define a base text style.
     final baseTextStyle =
-        avatarFallBackStyle.textStyle?.merge(value?.textStyle);
+        avatarFallBackStyle.textStyle?.merge(value?.avatarStyle.textStyle);
 
     // Merge the default text style with the provided GSStyle or custom style.
     final mergedStyle = baseTextStyle?.merge(style?.textStyle);

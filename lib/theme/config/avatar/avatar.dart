@@ -3,7 +3,7 @@ const Map<String, dynamic> avatarData = {
   "justifyContent": "center",
   "alignItems": "center",
   "position": "relative",
-  "bg": "\$primary00",
+  "bg": "\$primary600",
   "variants": {
     "size": {
       "xs": {

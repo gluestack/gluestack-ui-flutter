@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_fallBack_text.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_image.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image.dart';
 
 class AvatarExample extends StatelessWidget {
   const AvatarExample({super.key});
@@ -17,29 +18,48 @@ class AvatarExample extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             GSAvatar(
-              size: GSSizes.$sm,
-              avatarImage: const GSAvatarImage(
-                imageUrl: "https://placehold.co/100x100/png",
+              radius: GSBorderRadius.$xl,
+              size: GSSizes.$md,
+              style: GSStyle(bg: Colors.yellow),
+              avatarImage: const GSImage(
+                imageType: GSImageType.asset,
+                path: "assets/images/button.png",
               ),
               fallBackText: GSAvatarFallBackText(
                 'KS',
                 overflow: TextOverflow.ellipsis,
                 style: GSStyle(
-                    textStyle: const TextStyle(color: $GSColors.primary700)),
+                  textStyle: const TextStyle(color: $GSColors.pink200),
+                ),
               ),
+              avatarBadge: const GSAvatarBadge(),
             ),
             GSAvatar(
               size: GSSizes.$2xl,
               style: GSStyle(
-                bg: Colors.black,
+                bg: Colors.orange,
                 textStyle: const TextStyle(color: Colors.white),
               ),
-              avatarImage: const GSAvatarImage(
-                imageUrl: "https://placehold.co/300x300/png",
+              avatarBadge: GSAvatarBadge(
+                left: 0,
+                bottom: 0,
+                style: GSStyle(
+                  bg: Colors.grey,
+                  borderRadius: 12,
+                ),
               ),
               fallBackText: const GSAvatarFallBackText(
-                'HHasdfns.kdnfskadnfksdfsdfsadf',
-                overflow: TextOverflow.ellipsis,
+                'Geeky Stack',
+              ),
+            ),
+            GSAvatar(
+              size: GSSizes.$xs,
+              style: GSStyle(
+                bg: Colors.blueAccent,
+                textStyle: const TextStyle(color: Colors.white),
+              ),
+              fallBackText: const GSAvatarFallBackText(
+                'Flutter',
               ),
             ),
           ],

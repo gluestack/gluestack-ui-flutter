@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
 
 class GSAvatarProvider extends InheritedWidget {
   final double? badgeRaidus;
   final TextStyle? textStyle;
+  final GSStyle avatarStyle;
 
   const GSAvatarProvider({
     super.key,
     this.badgeRaidus,
     this.textStyle,
+    required this.avatarStyle,
     required Widget child,
   }) : super(child: child);
 
