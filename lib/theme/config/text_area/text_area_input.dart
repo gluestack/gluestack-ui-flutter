@@ -1,1 +1,0 @@
-Map<String, dynamic> textAreaInputData = {};
