@@ -61,7 +61,6 @@ class GSProps {
     this.color,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
-
     return GSProps(
         action: resolveActionFromString(data?['action']),
         variant: resolveVariantFromString(data?['variant']),
@@ -156,8 +155,7 @@ class GSSize {
       this.$4xl,
       this.$5xl,
       this.$6xl,
-      this.$full
-      });
+      this.$full});
   factory GSSize.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
@@ -365,13 +363,16 @@ class Variants {
   GSSize? size;
   GSAction? action;
   GSSpace? space;
+  //try to make these properties of heading into a single class
   GSStyle? highlight;
+  GSStyle? sub;
   GSOrientation? orientation;
   Variants({
     this.variant,
     this.size,
     this.action,
     this.space,
+    this.sub,
     this.highlight,
     this.orientation,
   });
@@ -390,8 +391,12 @@ class Variants {
         space: GSSpace.fromMap(
           data: data?['space'],
         ),
+        sub: GSStyle.fromMap(
+            data: data?['sub']?['true'],
+            descendantStyle: descendantStyle,
+            fromVariant: true),
         highlight: GSStyle.fromMap(
-            data: data?['highlight']?[true],
+            data: data?['highlight']?['true'],
             descendantStyle: descendantStyle,
             fromVariant: true),
         orientation: GSOrientation.fromMap(data: data?['orientation']));
@@ -536,6 +541,10 @@ class GSStyle extends BaseStyle<GSStyle> {
           ? TextStyle(
               height: overrideStyle?.textStyle?.height ?? textStyle?.height,
               color: overrideStyle?.textStyle?.color ?? textStyle?.color,
+              letterSpacing: overrideStyle?.textStyle?.letterSpacing ??
+                  textStyle?.letterSpacing,
+              fontWeight:
+                  overrideStyle?.textStyle?.fontWeight ?? textStyle?.fontWeight,
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
@@ -578,7 +587,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
       height: resolveSpaceFromString(
-        data?['h'] ?? data?['height'],
+        data?['h'].toString() ?? data?['height'].toString(),
       ),
       width: resolveSpaceFromString(data?['w'] ?? data?['width']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
@@ -592,21 +601,24 @@ class GSStyle extends BaseStyle<GSStyle> {
       //To be removed later
       contentMaxWidth: data?['_content']?['maxWidth']?.toDouble(),
       padding: data?['p'] != null
-          ? resolvePaddingFromString(data?['p'], 'all')
+          ? resolvePaddingFromString(data?['p'].toString(), 'all')
           : data?['px'] != null && data?['py'] != null
-              ? resolvePaddingFromString(data?['px'], 'symmetric',
-                  paddingy: data?['py'])
+              ? resolvePaddingFromString(data?['px'].toString(), 'symmetric',
+                  paddingy: data?['py'].toString())
               : data?['px'] != null
-                  ? resolvePaddingFromString(data?['px'], 'horizontal')
+                  ? resolvePaddingFromString(
+                      data?['px'].toString(), 'horizontal')
                   : data?['py'] != null
-                      ? resolvePaddingFromString(data?['py'], 'vertical')
+                      ? resolvePaddingFromString(
+                          data?['py'].toString(), 'vertical')
                       : null,
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontSize: resolveFontSizeFromString(data?['fontSize']),
         height:
             resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
-
+        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
+        fontWeight: resolveFontWeightFromString(data?['fontWeight']),
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
           data?['_text']?['color'],
