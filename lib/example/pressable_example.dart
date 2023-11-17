@@ -18,11 +18,12 @@ class PressableExample extends StatelessWidget {
             GSPressable(
               hitSlop: 10,
               style: GSStyle(
-                  bg: Colors.yellow,
-                  highlightColor: Colors.blue,
-                  splashColor: Colors.red,
-                  onHover: GSStyle(color: Colors.green),
-                  onFocus: GSStyle(borderColor: Colors.red, borderWidth: 20)),
+                bg: Colors.yellow,
+                highlightColor: Colors.blue,
+                splashColor: Colors.red,
+                onHover: GSStyle(color: Colors.green),
+                onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
+              ),
               onPress: () {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text('Button Pressed!'),
