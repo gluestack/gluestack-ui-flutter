@@ -4,6 +4,7 @@ import 'package:gluestack_flutter_pro/example/badge_example.dart';
 import 'package:gluestack_flutter_pro/example/button_example.dart';
 import 'package:gluestack_flutter_pro/example/center_example.dart';
 import 'package:gluestack_flutter_pro/example/divider_example.dart';
+import 'package:gluestack_flutter_pro/example/heading_example.dart';
 import 'package:gluestack_flutter_pro/example/hstack_example.dart';
 import 'package:gluestack_flutter_pro/example/icon_example.dart';
 import 'package:gluestack_flutter_pro/example/image_example.dart';
@@ -15,8 +16,8 @@ import 'package:gluestack_flutter_pro/example/text_area_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/toast_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
-
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+
 
 // import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 
@@ -58,6 +59,21 @@ class MyApp extends StatelessWidget {
                     },
                     child: const Text(
                       'GS Text',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                      GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const HeadingExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Heading',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
