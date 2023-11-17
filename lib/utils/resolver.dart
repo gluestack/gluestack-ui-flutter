@@ -89,7 +89,10 @@ double? resolveSpaceFromString(String? space) {
   if (space == 'px') {
     return $GSSpace.spaceMap[space];
   }
-  return $GSSpace.spaceMap[space.substring(1)];
+  if (space.contains('\$')) {
+    return $GSSpace.spaceMap[space.substring(1)];
+  }
+  return $GSSpace.spaceMap[space];
 }
 
 EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
