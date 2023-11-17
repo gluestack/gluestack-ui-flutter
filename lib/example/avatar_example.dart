@@ -54,10 +54,13 @@ class AvatarExample extends StatelessWidget {
               ),
             ),
             GSAvatar(
-              size: GSSizes.$xs,
               style: GSStyle(
                 bg: Colors.blueAccent,
                 textStyle: const TextStyle(color: Colors.white),
+              ),
+              avatarImage: const GSImage(
+                imageType: GSImageType.network,
+                path: "https://placehold.co/300x300/png",
               ),
               fallBackText: const GSAvatarFallBackText(
                 'Flutter',
