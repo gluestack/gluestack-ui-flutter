@@ -111,10 +111,12 @@ class GSVariant {
           data: data?['outline'],
           descendantStyle: descendantStyle,
           fromVariant: true),
-      solid: GSStyle.fromMap(
-          data: data?['solid'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
+      solid: (data?['solid'] as Map).isNotEmpty
+          ? GSStyle.fromMap(
+              data: data?['solid'],
+              descendantStyle: descendantStyle,
+              fromVariant: true)
+          : null,
       rounded: GSStyle.fromMap(
         data: data?['rounded'],
         descendantStyle: descendantStyle,
