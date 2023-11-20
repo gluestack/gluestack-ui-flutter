@@ -11,8 +11,8 @@ class GSToast extends StatelessWidget {
   const GSToast({
     super.key,
     this.child,
-    this.action = GSActions.error,
-    this.variant = GSVariants.accent,
+    this.action,
+    this.variant,
     this.style,
   });
 
@@ -51,6 +51,7 @@ class GSToast extends StatelessWidget {
 
     return Container(
       padding: styler.padding,
+      // alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
         color: styler.bg,
         border: border,
