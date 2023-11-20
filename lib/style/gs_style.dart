@@ -42,6 +42,8 @@ enum GSAlignments { start, center, end, spaceBetween, flexEnd }
 
 enum GSOrientations { horizontal, vertical }
 
+enum GSCursors {pointer, notAllowed}
+
 class GSProps {
   GSActions? action;
   GSVariants? variant;
@@ -445,6 +447,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? iosBackgroundColor;
   double? scale;
   Color? outlineColor;
+  GSCursors? cursors;
 
   GSStyle({
     this.borderWidth,
@@ -496,6 +499,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.iosBackgroundColor,
     this.scale,
     this.outlineColor,
+    this.cursors,
   });
 
   @override
@@ -589,6 +593,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       thumbColor: overrideStyle?.thumbColor ?? thumbColor,
       activeThumbColor: overrideStyle?.activeThumbColor ?? activeThumbColor,
       scale: overrideStyle?.scale ?? scale,
+      cursors: overrideStyle?.cursors??cursors,
     );
   }
 
@@ -708,7 +713,7 @@ onInvaild: GSStyle(
         bg: resolveColorFromString(data?[':invalid']?['bg']),
         borderColor: resolveColorFromString(data?[':invalid']?['borderColor']),
         borderRadius: data?[':invalid']?['borderRadius'] != null ? double.tryParse(data![':invalid']!['borderRadius']!.toString()) : null,
-        borderWidth: data?[':invalid']?['borderWidth'] != null ? double.tryParse(data![':invalid']!['borderRadius']!.toString()) : null,
+        borderWidth: data?[':invalid']?['borderWidth'] != null ? double.tryParse(data![':invalid']!['borderWidth']!.toString()) : null,
         borderBottomColor:
             resolveColorFromString(data?[':invalid']?['borderBottomColor']),
         onHover: GSStyle(
@@ -732,7 +737,12 @@ onInvaild: GSStyle(
       ),
       onDisabled: GSStyle(
         opacity: data?[':disabled']?['opacity'],
-
+        web: GSStyle(
+          cursors: resolveCursorFromString(data?[':disabled']?['_web']?['cursor']),
+          onDisabled: GSStyle(
+  cursors: resolveCursorFromString(data?[':disabled']?['_web']?[':disabled']?['cursor']),
+          ),
+        ),
           trackColorTrue: 
            resolveColorFromString(data?[':disabled']?['trackColor']?['true'])
 ,
@@ -758,6 +768,18 @@ onInvaild: GSStyle(
         ),
       ),
       dark: GSStyle(
+        web: GSStyle(
+            onFocus: GSStyle(
+       outlineColor: resolveColorFromString(
+                data?['_web']?[':focus']?['_dark']?['outlineColor'])
+          ,
+        outlineWidth:  
+                data?['_web']?[':focus']?['_dark']?['outlineWidth']!=null?double.tryParse(data!['_web']![':focus']!['_dark']!['outlineWidth'].toString()) :null,
+         
+         outlineStyle: data?['_web']?[':focus']?['_dark']?['outlineStyle']
+      
+      ),
+          ),
                trackColorTrue: 
            resolveColorFromString(data?['_dark']?['props']?['trackColor']?['true'])
 ,
@@ -826,6 +848,13 @@ onInvaild: GSStyle(
          
                data?['_dark']?[':disabled']?['opacity'],
             
+              web: GSStyle(
+          cursors: resolveCursorFromString(data?['_dark']?[':disabled']?['_web']?['cursor']),
+          onDisabled: GSStyle(
+  cursors: resolveCursorFromString(data?['_dark']?[':disabled']?['_web']?[':disabled']?['cursor']),
+          ),
+        ),
+
           onHover: GSStyle(
             borderColor: resolveColorFromString(
                 data?['_dark']?[':disabled']?[':hover']?['borderColor']),
@@ -842,7 +871,7 @@ onInvaild: GSStyle(
           onInvaild: GSStyle(
         bg: resolveColorFromString(data?['_dark']?[':invalid']?['bg']),
           borderRadius: data?['_dark']?[':invalid']?['borderRadius'] != null ? double.tryParse(data![':invalid']!['borderRadius']!.toString()) : null,
-        borderWidth: data?['_dark']?[':invalid']?['borderWidth'] != null ? double.tryParse(data![':invalid']!['borderRadius']!.toString()) : null,
+        borderWidth: data?['_dark']?[':invalid']?['borderWidth'] != null ? double.tryParse(data![':invalid']!['borderWidth']!.toString()) : null,
         borderColor: resolveColorFromString(data?['_dark']?[':invalid']?['borderColor']),
        
         borderBottomColor:
@@ -904,6 +933,18 @@ onInvaild: GSStyle(
               ? (data?['transform'].first as Map)['scale']
               : null
           : null,
+          web: GSStyle(
+            onFocus: GSStyle(
+       outlineColor: resolveColorFromString(
+                data?['_web']?[':focus']?['outlineColor'])
+          ,
+        
+         outlineWidth:  
+                data?['_web']?[':focus']?['outlineWidth']!=null?double.tryParse(data!['_web']![':focus']!['outlineWidth'].toString()) :null,
+         outlineStyle: data?['_web']?[':focus']?['outlineStyle']
+      
+      ),
+          ),
     );
   }
 }

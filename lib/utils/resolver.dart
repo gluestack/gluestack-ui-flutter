@@ -243,3 +243,13 @@ GSOrientations? resolveOrientationsFromString(String? orientation) {
 
   return orientation != null ? orientationMap[orientation] : null;
 }
+
+GSCursors? resolveCursorFromString(String? cursor){
+
+  const Map<String, GSCursors> cusorMap = {
+    'pointer': GSCursors.pointer,
+    'not-allowed': GSCursors.notAllowed,
+  };
+
+return cursor != null ? cusorMap[cursor] : null;
+  }

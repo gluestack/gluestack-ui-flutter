@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_center/gs_center.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_switch/gs_switch.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
 
 class SwitchExample extends StatefulWidget {
   const SwitchExample({super.key});
@@ -17,22 +18,33 @@ class _SwitchExampleState extends State<SwitchExample> {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          GSSwitch(
-              // isDisabled: true,
-              size: GSSizes.$lg,
-              style: GSStyle(
-                checked: GSStyle(
-                    thumbColor: Colors.blue.withAlpha(180),
-                    activeThumbColor: Colors.blue),
-              ),
-              value: val1,
-              onToggle: (bool value) {
-                setState(() {
-                  val1 = value;
-                });
-                // print('value: $val1');
-              }),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const GSText(text: 'Selector'),
+              const SizedBox(width: 10),
+              GSSwitch(
+                  // isDisabled: true,
+                  isInvalid: true,
+                  size: GSSizes.$lg,
+                  style: GSStyle(
+                    checked: GSStyle(
+                      thumbColor: Colors.blue.withAlpha(180),
+                      activeThumbColor: Colors.blue,
+                    ),
+                  ),
+                  value: val1,
+                  onToggle: (bool value) {
+                    setState(() {
+                      val1 = value;
+                    });
+                    // print('value: $val1');
+                  }),
+            ],
+          ),
         ],
       ),
     );
