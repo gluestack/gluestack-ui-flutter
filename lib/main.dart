@@ -51,7 +51,9 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
-                     GSCheckBox(icon: GSCheckBoxIndicator(),value: true,isInvalid: true,),
+                     GSCheckBox(icon: GSCheckBoxIndicator(
+                      child: GSCheckBoxIcon(),
+                     ),value: true,isInvalid: true,),
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(

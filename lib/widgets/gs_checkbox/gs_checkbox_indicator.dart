@@ -7,7 +7,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_provider.d
 import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector_proider.dart';
 
 class GSCheckBoxIndicator extends StatelessWidget {
-  const GSCheckBoxIndicator({super.key});
+  final Widget child;
+  const GSCheckBoxIndicator({super.key, required this.child});
 
   Color? _resolvebgColor(GSStyle? styler,
       {bool isHovered = false,
@@ -109,15 +110,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
                 color: borderColor),
             borderRadius: BorderRadius.circular(styler?.borderRadius ?? 0.0),
           ),
-          child:  Center(
-            child: isChecked
-                ? const Icon(
-                    Icons.check,
-                    size: 18,
-                    color: Colors.white, // Set your check color
-                  )
-                : null,
-          ),
+          child: Center(child: child),
         ),
       ),
     );
