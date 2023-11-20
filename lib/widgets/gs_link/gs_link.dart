@@ -10,7 +10,16 @@ class GSLink extends StatelessWidget {
   final String url;
   final GSStyle? style;
   final Widget text;
-  const GSLink({super.key, required this.url, required this.text, this.style});
+  final bool isExternal;
+  final bool isHovered;
+  const GSLink(
+      {super.key,
+      required this.url,
+      required this.text,
+      this.style,
+      this.isExternal = false,
+      this.isHovered=false,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +27,18 @@ class GSLink extends StatelessWidget {
         descendantStyles: linkStyle.descendantStyles,
         descendantStyleKeys: gsLinkConfig.descendantStyle,
         inlineStyle: style)!;
-   
+
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSFocusableActionDetector(
+        isHovered: isHovered,
         child: InkWell(
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
           onTap: () async {
             if (await canLaunchUrlString(url)) {
-              await launchUrlString(url);
+              await launchUrlString(url,
+                  webOnlyWindowName: isExternal ? '_blank' : '_self');
             }
           },
           child: text,

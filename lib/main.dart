@@ -18,9 +18,6 @@ import 'package:gluestack_flutter_pro/example/text_area_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_link/gs_link.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_link/gs_link_text.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
 
 
 

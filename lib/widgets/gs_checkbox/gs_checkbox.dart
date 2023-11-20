@@ -36,7 +36,9 @@ class GSCheckBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final checkBoxSize = size ?? checkboxStyle.props?.size;
     final styler = resolveStyles(context,
-        size: GsCheckBoxStyle.size[checkBoxSize], inlineStyle: style);
+        size: GsCheckBoxStyle.size[checkBoxSize],
+        inlineStyle: style,
+        descendantStyleKeys: checkBoxConfig.descendantStyle);
 
     return GSAncestor(
       decedentStyles: styler?.descendantStyles,

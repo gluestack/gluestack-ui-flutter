@@ -13,18 +13,26 @@ class GSLinkText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
+    final isActive = GSFocusableActionDetectorProvider.isActive(context);
     final ancestorTextStyles =
         GSAncestorProvider.of(context)?.decedentStyles?['_text'];
 
     final styler = resolveStyles(context,
-        variantStyle:
-            isHovered ? linkTextStyle.merge(ancestorTextStyles?.onHover) :linkTextStyle,
+        variantStyle: linkTextStyle.merge(ancestorTextStyles),
         inlineStyle: textStyle != null ? GSStyle(textStyle: textStyle) : null)!;
 
-    var defaultTextStyle = TextStyle(
-        color: styler.color, decoration: styler.textStyle?.decoration);
-
-    print(defaultTextStyle);
+    final color = isActive
+        ? styler.onActive?.color
+        : isHovered
+            ? styler.onHover?.color
+            : styler.color;
+    final TextDecoration? decoration = isActive
+        ? styler.onActive?.textStyle?.decoration
+        : isHovered
+            ? styler.onHover?.textStyle?.decoration
+            : styler.textStyle?.decoration;
+    var defaultTextStyle =
+        TextStyle(color: color, decoration: decoration);
 
     return Text(
       text,
