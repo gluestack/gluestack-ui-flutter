@@ -669,7 +669,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       onHover: GSStyle(
         color: resolveColorFromString(data?[':hover']?['color']),
         bg: resolveColorFromString(data?[':hover']?['bg']),
-        borderColor:resolveColorFromString(data?[':hover']?['borderColor']) ,
+        borderColor: resolveColorFromString(data?[':hover']?['borderColor']),
         borderBottomColor:
             resolveColorFromString(data?[':hover']?['borderColor']),
         onInvaild: GSStyle(
@@ -677,11 +677,10 @@ class GSStyle extends BaseStyle<GSStyle> {
               data?[':hover']?['invalid']?['borderColor']),
         ),
         onDisabled: GSStyle(
-          bg: resolveColorFromString(data?[':hover']?[':disabled']?['bg']),
-          onInvaild: GSStyle(
-            borderColor: resolveColorFromString(data?[':hover']?[':disabled']?[':invalid']?['borderColor'])
-          )
-        ),
+            bg: resolveColorFromString(data?[':hover']?[':disabled']?['bg']),
+            onInvaild: GSStyle(
+                borderColor: resolveColorFromString(data?[':hover']
+                    ?[':disabled']?[':invalid']?['borderColor']))),
         checked: GSStyle(
           bg: resolveColorFromString(data?[':hover']?[':checked']?['bg']),
           borderColor: resolveColorFromString(
@@ -714,6 +713,15 @@ class GSStyle extends BaseStyle<GSStyle> {
         borderColor: resolveColorFromString(data?[':active']?['borderColor']),
         borderBottomColor:
             resolveColorFromString(data?[':active']?['borderBottomColor']),
+        checked: GSStyle(
+          bg: resolveColorFromString(data?[':active']?[":checked"]?['bg']),
+          borderColor: resolveColorFromString(
+              data?[':active']?[":checked"]?['borderColor']),
+        ),
+        onInvaild: GSStyle(
+          borderColor: resolveColorFromString(
+              data?[':active']?[":invalid"]?['borderColor']),
+        ),
       ),
       onInvaild: GSStyle(
         bg: resolveColorFromString(data?[':invalid']?['bg']),
@@ -757,6 +765,23 @@ class GSStyle extends BaseStyle<GSStyle> {
             color: resolveColorFromString(data?['_text']?['_dark']?['color'])),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
         bg: resolveColorFromString(data?['_dark']?['bg']),
+        onActive: GSStyle(
+          bg: resolveColorFromString(data?['_dark']?[':active']?['bg']),
+          borderColor: resolveColorFromString(
+              data?['_dark']?[':active']?['borderColor']),
+          borderBottomColor: resolveColorFromString(
+              data?['_dark']?[':active']?['borderBottomColor']),
+          checked: GSStyle(
+            bg: resolveColorFromString(
+                data?['_dark']?[':active']?[":checked"]?['bg']),
+            borderColor: resolveColorFromString(
+                data?['_dark']?[':active']?[":checked"]?['borderColor']),
+          ),
+          onInvaild: GSStyle(
+            borderColor: resolveColorFromString(
+                data?['_dark']?[':active']?[":invalid"]?['borderColor']),
+          ),
+        ),
         checked: GSStyle(
             color:
                 resolveColorFromString(data?['_dark']?[':checked']?['color']),

@@ -3,7 +3,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focu
 
 class GSFocusableActionDetector extends StatefulWidget {
   final Widget child;
-  const GSFocusableActionDetector({super.key, required this.child});
+  final MouseCursor? mouseCursor;
+  const GSFocusableActionDetector({super.key, required this.child,this.mouseCursor});
 
   @override
   State<GSFocusableActionDetector> createState() =>
@@ -44,7 +45,6 @@ class _GSFocusableActionDetectorState extends State<GSFocusableActionDetector> {
 
   @override
   Widget build(BuildContext context) {
-    print("value of is Active is $isActive");
     return GestureDetector(
       onTapDown: (details) {
         _handleTapDown();
@@ -56,7 +56,7 @@ class _GSFocusableActionDetectorState extends State<GSFocusableActionDetector> {
         _handleTapUp();
       },
       child: FocusableActionDetector(
-        mouseCursor: SystemMouseCursors.click,
+          mouseCursor: widget.mouseCursor?? SystemMouseCursors.click,
           onFocusChange: (value) {
             if (isFocused != value) {
               setState(() {

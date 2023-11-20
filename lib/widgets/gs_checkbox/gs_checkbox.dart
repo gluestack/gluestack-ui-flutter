@@ -39,6 +39,7 @@ class GSCheckBox extends StatelessWidget {
     return GSAncestor(
       decedentStyles: styler?.descendantStyles,
       child: GSFocusableActionDetector(
+        mouseCursor: isDisabled? SystemMouseCursors.forbidden:null,
         child: GSCheckBoxProvider(
           isInvalid: isInvalid,
           isDisabled: isDisabled,

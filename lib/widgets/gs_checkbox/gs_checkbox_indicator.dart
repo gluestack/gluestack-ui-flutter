@@ -10,12 +10,17 @@ class GSCheckBoxIndicator extends StatelessWidget {
   final Widget child;
   const GSCheckBoxIndicator({super.key, required this.child});
 
-  Color? _resolvebgColor(GSStyle? styler,
-      {bool isHovered = false,
-      bool isChecked = false,
-      bool isDisabled = false,
-      bool isInvalid = false}) {
-    if (isHovered && isChecked && isDisabled && isInvalid) {
+  Color? _resolvebgColor(
+    GSStyle? styler, {
+    bool isHovered = false,
+    bool isChecked = false,
+    bool isDisabled = false,
+    bool isInvalid = false,
+    bool isActive = false,
+  }) {
+    if (isActive && isChecked) {
+      return styler?.onActive?.checked?.bg;
+    } else if (isHovered && isChecked && isDisabled && isInvalid) {
       return styler?.onHover?.checked?.onDisabled?.onInvaild?.bg;
     } else if (isHovered && isChecked && isDisabled) {
       return styler?.onHover?.checked?.onDisabled?.bg;
@@ -38,14 +43,17 @@ class GSCheckBoxIndicator extends StatelessWidget {
     return styler?.bg;
   }
 
-  Color? _resolveborderColor(
-    GSStyle? styler, {
-    bool isHovered = false,
-    isChecked = false,
-    isDisabled = false,
-    isInvalid = false,
-  }) {
-    if (isHovered && isChecked && isDisabled && isInvalid) {
+  Color? _resolveborderColor(GSStyle? styler,
+      {bool isHovered = false,
+      isChecked = false,
+      isDisabled = false,
+      isInvalid = false,
+      isActive = false}) {
+    if (isActive && isInvalid) {
+      return styler?.onActive?.onInvaild?.borderColor;
+    } else if (isActive && isChecked) {
+      return styler?.onActive?.checked?.borderColor;
+    } else if (isHovered && isChecked && isDisabled && isInvalid) {
       return styler?.onHover?.checked?.onDisabled?.onInvaild?.borderColor;
     } else if (isHovered && isChecked && isDisabled) {
       return styler?.onHover?.checked?.onDisabled?.borderColor;
@@ -78,7 +86,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
     final value = GSCheckBoxProvider.of(context);
     final isChecked = value?.value ?? false;
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
-    // final isActive = GSFocusableActionDetectorProvider.isActive(context);
+    final isActive = GSFocusableActionDetectorProvider.isActive(context);
     final isDisabled = value?.isDisabled ?? true;
     final isInvalid = value?.isInvalid ?? false;
 
@@ -86,23 +94,23 @@ class GSCheckBoxIndicator extends StatelessWidget {
         isChecked: isChecked,
         isHovered: isHovered,
         isDisabled: isDisabled,
-        isInvalid: isInvalid);
+        isInvalid: isInvalid,
+        isActive: isActive);
     final borderColor = _resolveborderColor(styler,
             isChecked: isChecked,
             isHovered: isHovered,
             isDisabled: isDisabled,
-            isInvalid: isInvalid) ??
+            isInvalid: isInvalid,
+            isActive: isActive) ??
         const Color(0xFF000000);
-
-
 
     return InkWell(
       mouseCursor: isDisabled ? SystemMouseCursors.forbidden : null,
-      onTap: () {
-        // if (value != null && value.onChanged != null) {
-        //   value.onChanged!(value.value);
-        // }
-      },
+      onTap: value?.onChanged != null
+          ? () {
+              value!.onChanged!(!value.value);
+            }
+          : null,
       child: Opacity(
         opacity: isDisabled ? styler?.onDisabled?.opacity ?? 0.0 : 1,
         child: Container(
