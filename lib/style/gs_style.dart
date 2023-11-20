@@ -655,6 +655,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       onHover: GSStyle(
         color: resolveColorFromString(data?[':hover']?['color']),
         bg: resolveColorFromString(data?[':hover']?['bg']),
+        borderColor:resolveColorFromString(data?[':hover']?['borderColor']) ,
         borderBottomColor:
             resolveColorFromString(data?[':hover']?['borderColor']),
         onInvaild: GSStyle(

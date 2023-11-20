@@ -9,8 +9,9 @@ class GSCheckBoxIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ancestorCheckBoxStyle =
-        GSAncestorProvider.of(context)?.decedentStyles?['_icon'];
+    final ancestorCheckBoxStyle = GSAncestorProvider.of(context)
+        ?.decedentStyles?[checkboxIconConfig.ancestorStyle.first];
+   
     final value = GSCheckBoxProvider.of(context);
     final isChecked = value?.value ?? false;
     final isDisabled = value?.isDisabled ?? true;

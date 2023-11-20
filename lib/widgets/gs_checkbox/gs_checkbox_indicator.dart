@@ -34,7 +34,8 @@ class GSCheckBoxIndicator extends StatelessWidget {
     } else if (isDisabled) {
       return styler?.onDisabled?.bg;
     }
-    return styler?.borderColor;
+
+    return styler?.bg;
   }
 
   Color? _resolveborderColor(
@@ -63,6 +64,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
     } else if (isChecked) {
       return styler?.checked?.borderColor;
     }
+
     return styler?.borderColor;
   }
 
@@ -110,7 +112,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
                 color: borderColor),
             borderRadius: BorderRadius.circular(styler?.borderRadius ?? 0.0),
           ),
-          child: Center(child: child),
+          child: isChecked ? Center(child: child) : null,
         ),
       ),
     );
