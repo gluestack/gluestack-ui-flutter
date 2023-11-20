@@ -141,6 +141,16 @@ double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
   return $GSLineHeight.lineHeightMap[lineHeight]! /
       resolveFontSizeFromString(fontSize)!;
 }
+double? resolveLetterSpacingFromString(String? letterSpacing) {
+  if (letterSpacing == null) {
+    return null;
+  }
+  if (letterSpacing.contains('\$')) {
+    return $GSLetterSpacing.letterSpacingMap[letterSpacing.substring(1)]!;
+  }
+
+  return $GSLetterSpacing.letterSpacingMap[letterSpacing];
+}
 
 TextDecoration? resolveTextDecorationFromString(String? textDecoration) {
   if (textDecoration == null) {

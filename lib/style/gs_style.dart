@@ -232,6 +232,23 @@ class GSSize {
           : null,
     );
   }
+
+  GSSize merge(GSSize? overrideStyle) {
+    return GSSize(
+      $2xl: $2xl?.merge(overrideStyle?.$2xl) ?? overrideStyle?.$2xl,
+      $2xs: $2xs?.merge(overrideStyle?.$2xs) ?? overrideStyle?.$2xs,
+      $3xl: $3xl?.merge(overrideStyle?.$3xl) ?? overrideStyle?.$3xl,
+      $4xl: $4xl?.merge(overrideStyle?.$2xl) ?? overrideStyle?.$4xl,
+      $5xl: $5xl?.merge(overrideStyle?.$5xl) ?? overrideStyle?.$5xl,
+      $6xl: $6xl?.merge(overrideStyle?.$6xl) ?? overrideStyle?.$6xl,
+      $lg: $lg?.merge(overrideStyle?.$lg) ?? overrideStyle?.$lg,
+      $md: $md?.merge(overrideStyle?.$md) ?? overrideStyle?.$md,
+      $sm: $sm?.merge(overrideStyle?.$sm) ?? overrideStyle?.$sm,
+      $xl: $xl?.merge(overrideStyle?.$xl) ?? overrideStyle?.$xl,
+      $xs: $xs?.merge(overrideStyle?.$2xl) ?? overrideStyle?.$xs,
+      $full: $full?.merge(overrideStyle?.$full) ?? overrideStyle?.$full,
+    );
+  }
 }
 
 class GSAction {
@@ -362,13 +379,16 @@ class Variants {
   GSSize? size;
   GSAction? action;
   GSSpace? space;
+  //try to make these properties of heading into a single class
   GSStyle? highlight;
+  GSStyle? sub;
   GSOrientation? orientation;
   Variants({
     this.variant,
     this.size,
     this.action,
     this.space,
+    this.sub,
     this.highlight,
     this.orientation,
   });
@@ -387,8 +407,12 @@ class Variants {
         space: GSSpace.fromMap(
           data: data?['space'],
         ),
+        sub: GSStyle.fromMap(
+            data: data?['sub']?['true'],
+            descendantStyle: descendantStyle,
+            fromVariant: true),
         highlight: GSStyle.fromMap(
-            data: data?['highlight']?[true],
+            data: data?['highlight']?['true'],
             descendantStyle: descendantStyle,
             fromVariant: true),
         orientation: GSOrientation.fromMap(data: data?['orientation']));
@@ -528,10 +552,27 @@ class GSStyle extends BaseStyle<GSStyle> {
               color: overrideStyle?.textStyle?.color ?? textStyle?.color,
               decoration:
                   overrideStyle?.textStyle?.decoration ?? textStyle?.decoration,
+              letterSpacing: overrideStyle?.textStyle?.letterSpacing ??
+                  textStyle?.letterSpacing,
+              fontWeight:
+                  overrideStyle?.textStyle?.fontWeight ?? textStyle?.fontWeight,
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
-      variants: overrideStyle?.variants ?? variants,
+
+      // variants: overrideStyle?.variants ?? variants,
+      variants: Variants(
+        action: overrideStyle?.variants?.action ?? variants?.action,
+        highlight: overrideStyle?.variants?.highlight ?? variants?.highlight,
+        orientation:
+            overrideStyle?.variants?.orientation ?? variants?.orientation,
+        // size: overrideStyle?.variants?.size ?? variants?.size,
+        size: variants?.size != null
+            ? variants?.size!.merge(overrideStyle?.variants?.size)
+            : overrideStyle?.variants?.size,
+        space: overrideStyle?.variants?.space ?? variants?.space,
+        variant: overrideStyle?.variants?.variant ?? variants?.variant,
+      ),
       props: GSProps(
         action: overrideStyle?.props?.action ?? props?.action,
         size: overrideStyle?.props?.size ?? props?.size,
@@ -568,7 +609,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
       height: resolveSpaceFromString(
-        data?['h'] ?? data?['height'],
+        data?['h'].toString() ?? data?['height'].toString(),
       ),
       width: resolveSpaceFromString(data?['w'] ?? data?['width']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
@@ -599,6 +640,8 @@ class GSStyle extends BaseStyle<GSStyle> {
         height:
             resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
          decoration:resolveTextDecorationFromString(data?['textDecorationLine']),
+        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
+        fontWeight: resolveFontWeightFromString(data?['fontWeight']),
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
           data?['_text']?['color'],
@@ -612,16 +655,20 @@ class GSStyle extends BaseStyle<GSStyle> {
       gap: resolveSpaceFromString(data?['gap']),
       borderColor: resolveColorFromString(data?['borderColor']),
       borderRadius: data?['borderRadius'] != null
-          ? resolveRadiusFromString(data?['borderRadius'].toString())
+          ? double.tryParse(data!['borderRadius'].toString()) ??
+              resolveRadiusFromString(data['borderRadius'].toString())
           : null,
       borderBottomWidth: data?['borderBottomWidth'] != null
           ? resolveBorderWidthFromString(data?['borderBottomWidth'].toString())
           : null,
       checked: GSStyle(
-          color: resolveColorFromString(data?[':checked']?['color']),
-          onHover: GSStyle(
-              color: resolveColorFromString(
-                  data?[':checked']?[':hover']?['color']))),
+        color: resolveColorFromString(data?[':checked']?['color']),
+        bg: resolveColorFromString(data?[':checked']?['bg']),
+        borderColor: resolveColorFromString(data?[':checked']?['borderColor']),
+        onHover: GSStyle(
+          color: resolveColorFromString(data?[':checked']?[':hover']?['color']),
+        ),
+      ),
       onHover: GSStyle(
         color: resolveColorFromString(data?[':hover']?['color']),
         textStyle: TextStyle(
@@ -631,8 +678,32 @@ class GSStyle extends BaseStyle<GSStyle> {
             color:
                 resolveColorFromString(data?[':hover']?[':checked']?['color'])),
         bg: resolveColorFromString(data?[':hover']?['bg']),
-        borderColor: resolveColorFromString(
-          data?[':hover']?['borderColor'],
+        borderColor: resolveColorFromString(data?[':hover']?['borderColor']),
+        borderBottomColor:
+            resolveColorFromString(data?[':hover']?['borderColor']),
+        onInvaild: GSStyle(
+          borderColor: resolveColorFromString(
+              data?[':hover']?['invalid']?['borderColor']),
+        ),
+        onDisabled: GSStyle(
+            bg: resolveColorFromString(data?[':hover']?[':disabled']?['bg']),
+            onInvaild: GSStyle(
+                borderColor: resolveColorFromString(data?[':hover']
+                    ?[':disabled']?[':invalid']?['borderColor']))),
+        checked: GSStyle(
+          bg: resolveColorFromString(data?[':hover']?[':checked']?['bg']),
+          borderColor: resolveColorFromString(
+              data?[':hover']?[':checked']?['borderColor']),
+          color: resolveColorFromString(data?[':hover']?[':checked']?['color']),
+          onDisabled: GSStyle(
+            bg: resolveColorFromString(
+                data?[':hover']?[':checked']?[':disabled']?['bg']),
+            borderColor: resolveColorFromString(
+                data?[':hover']?[':checked']?[':disabled']?['borderColor']),
+            onInvaild: GSStyle(
+                borderColor: resolveColorFromString(data?[':hover']?[':checked']
+                    ?[':disabled']?['invalid']?['borderColor'])),
+          ),
         ),
       ),
       onFocus: GSStyle(
@@ -651,6 +722,15 @@ class GSStyle extends BaseStyle<GSStyle> {
         borderColor: resolveColorFromString(data?[':active']?['borderColor']),
         borderBottomColor:
             resolveColorFromString(data?[':active']?['borderBottomColor']),
+        checked: GSStyle(
+          bg: resolveColorFromString(data?[':active']?[":checked"]?['bg']),
+          borderColor: resolveColorFromString(
+              data?[':active']?[":checked"]?['borderColor']),
+        ),
+        onInvaild: GSStyle(
+          borderColor: resolveColorFromString(
+              data?[':active']?[":invalid"]?['borderColor']),
+        ),
       ),
       onInvaild: GSStyle(
         bg: resolveColorFromString(data?[':invalid']?['bg']),
@@ -678,18 +758,43 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       onDisabled: GSStyle(
         opacity: data?[':disabled']?['opacity'],
+        borderColor: data?[':disabled']?['borderColor'],
+        onInvaild: GSStyle(
+            borderColor: data?[':disabled']?['invalid']?['borderColor']),
         onHover: GSStyle(
           borderColor: resolveColorFromString(
             data?[':disabled']?[':hover']?['borderColor'],
           ),
         ),
       ),
+
       dark: GSStyle(
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(
             color: resolveColorFromString(data?['_text']?['_dark']?['color'])),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
         bg: resolveColorFromString(data?['_dark']?['bg']),
+        onActive: GSStyle(
+          bg: resolveColorFromString(data?['_dark']?[':active']?['bg']),
+          borderColor: resolveColorFromString(
+              data?['_dark']?[':active']?['borderColor']),
+          borderBottomColor: resolveColorFromString(
+              data?['_dark']?[':active']?['borderBottomColor']),
+          checked: GSStyle(
+            bg: resolveColorFromString(
+                data?['_dark']?[':active']?[":checked"]?['bg']),
+            borderColor: resolveColorFromString(
+                data?['_dark']?[':active']?[":checked"]?['borderColor']),
+          ),
+          onInvaild: GSStyle(
+            borderColor: resolveColorFromString(
+                data?['_dark']?[':active']?[":invalid"]?['borderColor']),
+          ),
+        ),
+        onInvaild: GSStyle(
+          borderColor: resolveColorFromString(
+              data?['_dark']?['":invalid"']?['borderColor']), 
+        ),
         checked: GSStyle(
             color:
                 resolveColorFromString(data?['_dark']?[':checked']?['color']),
@@ -701,9 +806,24 @@ class GSStyle extends BaseStyle<GSStyle> {
           checked: GSStyle(
             color: resolveColorFromString(
                 data?['_dark']?[':hover']?[':checked']?['color']),
+            bg: resolveColorFromString(
+                data?['_dark']?[':hover']?[':checked']?['bg']),
+            borderColor: resolveColorFromString(
+                data?['_dark']?[':hover']?[':checked']?['borderColor']),
+            onDisabled: GSStyle(
+              bg: resolveColorFromString(
+                  data?['_dark']?[':hover']?[':checked']?[':disabled']?['bg']),
+              borderColor: resolveColorFromString(data?['_dark']?[':hover']
+                  ?[':checked']?[':disabled']?['borderColor']),
+              onInvaild: GSStyle(
+                borderColor: resolveColorFromString(data?['_dark']?[':hover']
+                    ?[':checked']?[':disabled']?['borderColor']),
+              ),
+            ),
           ),
           borderColor:
               resolveColorFromString(data?['_dark']?[':hover']?['borderColor']),
+          bg: resolveColorFromString(data?['_dark']?[':hover']?['bg']),
         ),
         onFocus: GSStyle(
           borderColor: resolveColorFromString(
