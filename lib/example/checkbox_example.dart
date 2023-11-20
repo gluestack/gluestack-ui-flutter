@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/token/space_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_indicator.dart';
@@ -31,7 +32,11 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
                   valueList[0] = p0 ?? false;
                 });
               },
-              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+              icon:  GSCheckBoxIndicator(
+                style: GSStyle(
+                  margin:const EdgeInsets.only(right: $GSSpace.$3)
+                ),
+                child:const GSCheckBoxIcon()),
               label: const GSCheckBoxLabel(text: 'check box 1'),
             ),
             GSCheckBox(
@@ -41,7 +46,10 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
                   valueList[1] = p0 ?? false;
                 });
               },
-              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+              icon:  GSCheckBoxIndicator(
+                style: GSStyle(
+                  margin:const EdgeInsets.only(right: $GSSpace.$2),
+                ),child:const GSCheckBoxIcon()),
               label: const GSCheckBoxLabel(text: 'check box 2'),
             ),
             GSCheckBox(
@@ -75,8 +83,18 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
                 });
               },
               value: valueList[4],
-              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-              label: const GSCheckBoxLabel(text: 'check box 3'),
+              icon:  GSCheckBoxIndicator(
+                style: GSStyle(
+                 onDisabled: GSStyle(
+                  borderColor: Colors.amber
+                 )
+                ),
+                child:const GSCheckBoxIcon()),
+              label:  GSCheckBoxLabel(
+                style: GSStyle(
+                  color: Colors.blue
+                ),
+                text: 'check box 4'),
             ),
             GSCheckBox(
               isDisabled: true,

@@ -8,7 +8,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focu
 
 class GSCheckBoxLabel extends StatelessWidget {
   final String text;
-  const GSCheckBoxLabel({super.key, required this.text});
+  final GSStyle? style;
+  const GSCheckBoxLabel({super.key, required this.text, this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +18,20 @@ class GSCheckBoxLabel extends StatelessWidget {
 
     final styler = resolveStyles(context,
         variantStyle: checkBoxLabelStyle,
-        size: GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size]);
+        size: GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size],
+        inlineStyle: style);
     final value = GSCheckBoxProvider.of(context);
     final isChecked = value?.value ?? false;
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final isDisabled = value?.isDisabled ?? true;
 
     final currentTextStyle = styler?.textStyle?.copyWith(
-        color: _resolveColor(styler,
+        color: style?.textStyle?.color ??
+            _resolveColor(styler,
                 isChecked: isChecked,
                 isDisabled: isDisabled,
-                isHovered: isHovered) ??
+                isHovered: isDisabled ? false : isHovered) ??
             styler.textStyle?.color);
-
 
     return Text(
       text,

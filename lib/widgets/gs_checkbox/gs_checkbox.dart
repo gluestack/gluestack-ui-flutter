@@ -13,6 +13,7 @@ class GSCheckBox extends StatelessWidget {
   final GSSizes? size;
   final bool isDisabled;
   final bool isInvalid;
+  final GSStyle? style;
   final void Function(bool?)? onChanged;
   const GSCheckBox(
       {super.key,
@@ -20,6 +21,7 @@ class GSCheckBox extends StatelessWidget {
       this.size,
       this.label,
       this.onChanged,
+      this.style,
       this.isDisabled = false,
       this.isInvalid = false,
       this.value = false})
@@ -33,21 +35,31 @@ class GSCheckBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final checkBoxSize = size ?? checkboxStyle.props?.size;
-    final styler =
-        resolveStyles(context, size: GsCheckBoxStyle.size[checkBoxSize]);
+    final styler = resolveStyles(context,
+        size: GsCheckBoxStyle.size[checkBoxSize], inlineStyle: style);
 
     return GSAncestor(
       decedentStyles: styler?.descendantStyles,
       child: GSFocusableActionDetector(
-        mouseCursor: isDisabled? SystemMouseCursors.forbidden:null,
+        mouseCursor: isDisabled ? SystemMouseCursors.forbidden : null,
         child: GSCheckBoxProvider(
           isInvalid: isInvalid,
           isDisabled: isDisabled,
           value: isDisabled ? false : value,
           onChanged: isDisabled ? null : onChanged,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [icon, if (label != null) label!],
+          child: InkWell(
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            mouseCursor: isDisabled ? SystemMouseCursors.forbidden : null,
+            onTap: onChanged != null
+                ? () {
+                    onChanged!(!value);
+                  }
+                : null,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [icon, if (label != null) label!],
+            ),
           ),
         ),
       ),

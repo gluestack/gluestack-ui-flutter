@@ -8,7 +8,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focu
 
 class GSCheckBoxIndicator extends StatelessWidget {
   final Widget child;
-  const GSCheckBoxIndicator({super.key, required this.child});
+  final GSStyle? style;
+  const GSCheckBoxIndicator({super.key, required this.child,this.style});
 
   Color? _resolvebgColor(
     GSStyle? styler, {
@@ -49,8 +50,8 @@ class GSCheckBoxIndicator extends StatelessWidget {
       isDisabled = false,
       isInvalid = false,
       isActive = false}) {
-    if (isActive && isInvalid) {
-      return styler?.onActive?.onInvaild?.borderColor;
+    if (isInvalid) {
+      return styler?.onInvaild?.borderColor;
     } else if (isActive && isChecked) {
       return styler?.onActive?.checked?.borderColor;
     } else if (isHovered && isChecked && isDisabled && isInvalid) {
@@ -59,8 +60,6 @@ class GSCheckBoxIndicator extends StatelessWidget {
       return styler?.onHover?.checked?.onDisabled?.borderColor;
     } else if (isHovered && isDisabled && isInvalid) {
       return styler?.onHover?.onDisabled?.onInvaild?.borderColor;
-    } else if (isInvalid) {
-      return styler?.onInvaild?.borderColor;
     } else if (isHovered && isDisabled) {
       return styler?.onHover?.onDisabled?.borderColor;
     } else if (isHovered && isChecked) {
@@ -81,7 +80,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
     final ancestorCheckBoxStyle = GSAncestorProvider.of(context)
         ?.decedentStyles?[checkBoxIndicatorConfig.descendantStyle.first];
 
-    final styler = resolveStyles(context, variantStyle: checkBoxIndicatorStyle);
+    final styler = resolveStyles(context, variantStyle: checkBoxIndicatorStyle,inlineStyle: style);
 
     final value = GSCheckBoxProvider.of(context);
     final isChecked = value?.value ?? false;
@@ -104,27 +103,20 @@ class GSCheckBoxIndicator extends StatelessWidget {
             isActive: isActive) ??
         const Color(0xFF000000);
 
-    return InkWell(
-      mouseCursor: isDisabled ? SystemMouseCursors.forbidden : null,
-      onTap: value?.onChanged != null
-          ? () {
-              value!.onChanged!(!value.value);
-            }
-          : null,
-      child: Opacity(
-        opacity: isDisabled ? styler?.onDisabled?.opacity ?? 0.0 : 1,
-        child: Container(
-          width: ancestorCheckBoxStyle?.height,
-          height: ancestorCheckBoxStyle?.width,
-          decoration: BoxDecoration(
-            color: bg,
-            border: Border.all(
-                width: ancestorCheckBoxStyle?.borderWidth ?? 1.0,
-                color: borderColor),
-            borderRadius: BorderRadius.circular(styler?.borderRadius ?? 0.0),
-          ),
-          child: isChecked ? Center(child: child) : null,
+    return Opacity(
+      opacity: isDisabled ? styler?.onDisabled?.opacity ?? 0.0 : 1,
+      child: Container(
+        width: ancestorCheckBoxStyle?.height,
+        height: ancestorCheckBoxStyle?.width,
+        margin: styler?.margin,
+        decoration: BoxDecoration(
+          color: bg,
+          border: Border.all(
+              width: ancestorCheckBoxStyle?.borderWidth ?? 1.0,
+              color: borderColor),
+          borderRadius: BorderRadius.circular(styler?.borderRadius ?? 0.0),
         ),
+        child: isChecked ? Center(child: child) : null,
       ),
     );
   }
