@@ -22,31 +22,41 @@ class _GSFocusableActionDetectorState extends State<GSFocusableActionDetector> {
     super.initState();
   }
 
+  _handleTapDown() {
+    if (!isActive) {
+      setState(() {
+        isActive = true;
+      });
+    }
+  }
+
+  _handleTapUp() {
+    if (isActive) {
+      Future.delayed(const Duration(milliseconds: 100), () {
+        if (mounted) {
+          setState(() {
+            isActive = false;
+          });
+        }
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("value of is Active is $isActive");
     return GestureDetector(
       onTapDown: (details) {
-        if (!isActive) {
-          setState(() {
-            isActive = true;
-          });
-        }
+        _handleTapDown();
       },
       onTapUp: (details) {
-        if (isActive) {
-          setState(() {
-            isActive = false;
-          });
-        }
+        _handleTapUp();
       },
       onTapCancel: () {
-        if (isActive) {
-          setState(() {
-            isActive = false;
-          });
-        }
+        _handleTapUp();
       },
       child: FocusableActionDetector(
+        mouseCursor: SystemMouseCursors.click,
           onFocusChange: (value) {
             if (isFocused != value) {
               setState(() {

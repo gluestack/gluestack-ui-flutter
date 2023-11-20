@@ -44,6 +44,6 @@ class GSFocusableActionDetectorProvider extends InheritedWidget {
   @override
   bool updateShouldNotify(GSFocusableActionDetectorProvider oldWidget) {
     return focusStatus != oldWidget.focusStatus ||
-        hoverStatus != oldWidget.hoverStatus || activeStatus!=oldWidget.hoverStatus;
+        hoverStatus != oldWidget.hoverStatus || activeStatus!=oldWidget.activeStatus;
   }
 }

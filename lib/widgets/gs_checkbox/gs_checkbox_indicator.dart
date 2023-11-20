@@ -78,6 +78,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
     final value = GSCheckBoxProvider.of(context);
     final isChecked = value?.value ?? false;
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
+    // final isActive = GSFocusableActionDetectorProvider.isActive(context);
     final isDisabled = value?.isDisabled ?? true;
     final isInvalid = value?.isInvalid ?? false;
 
@@ -92,6 +93,8 @@ class GSCheckBoxIndicator extends StatelessWidget {
             isDisabled: isDisabled,
             isInvalid: isInvalid) ??
         const Color(0xFF000000);
+
+
 
     return InkWell(
       mouseCursor: isDisabled ? SystemMouseCursors.forbidden : null,
