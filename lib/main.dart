@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/example/alert_example.dart';
+import 'package:gluestack_flutter_pro/example/avatar_example.dart';
 import 'package:gluestack_flutter_pro/example/badge_example.dart';
 import 'package:gluestack_flutter_pro/example/button_example.dart';
 import 'package:gluestack_flutter_pro/example/center_example.dart';
@@ -51,6 +52,21 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const AvatarExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Avatar',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(
