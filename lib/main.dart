@@ -17,6 +17,7 @@ import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab_label.dart';
 
@@ -53,9 +54,20 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
-                      GSFab(
-                        size: GSSizes.$lg,
-                        label: GSFabLabel(text: 'hello world'),
+                      Stack(
+                       
+                        children: [
+                         Container(
+                          height: 360,
+                          width: 320,
+                          color: Colors.red,
+                         ),
+                          GSFab(
+                            size: GSSizes.$sm,
+                            placement: GSPlacements.bottomCenter,
+                            label: GSFabLabel(text: 'hello world'),
+                          ),
+                        ],
                       ),
                   GestureDetector(
                     onTap: () {

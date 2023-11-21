@@ -41,7 +41,6 @@ Color? resolveColorFromString(String? color) {
 }
 
 double? resolveRadiusFromString(String? radius) {
-  
   if (radius == null) {
     return null;
   }
@@ -168,6 +167,20 @@ GSActions? resolveActionFromString(String? action) {
   };
 
   return action != null ? actionMap[action] : null;
+}
+
+GSPlacements? resolvePlacementFromString(String? placement) {
+  
+  const placementMap = {
+    'bottom center': GSPlacements.bottomCenter,
+    'top center': GSPlacements.topCenter,
+    'bottom left': GSPlacements.bottomLeft,
+    'bottom right': GSPlacements.bottomRight,
+    'top left': GSPlacements.topLeft,
+    'top right': GSPlacements.topRight,
+  };
+  
+  return placement != null ? placementMap[placement] : null;
 }
 
 GSVariants? resolveVariantFromString(String? variant) {

@@ -18,7 +18,14 @@ enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
-// enum GSPlacements{topLeft,topCenter,topRight,bottomLeft,bottomCenter,bottomRight}
+enum GSPlacements {
+  topLeft,
+  topCenter,
+  topRight,
+  bottomLeft,
+  bottomCenter,
+  bottomRight
+}
 
 enum GSSizes {
   $2xs,
@@ -44,48 +51,30 @@ enum GSAlignments { start, center, end, spaceBetween, flexEnd }
 enum GSOrientations { horizontal, vertical }
 
 class GSPlacement {
-  double? top;
-  double? bottom;
-  double? right;
-  double? left;
-  GSPlacement({this.bottom, this.left, this.right, this.top});
-
-  factory GSPlacement.fromMap({required Map<String, dynamic>? data}) {
-    return GSPlacement(
-      bottom: resolveSpaceFromString(data?['bottom']),
-      left: resolveSpaceFromString(data?['left']),
-      right: resolveSpaceFromString(data?['right']),
-      top: resolveSpaceFromString(data?['top']),
-    );
-  }
-}
-
-class GSPlacements {
-  GSPlacement? topRight;
-  GSPlacement? topLeft;
-  GSPlacement? bottomRight;
-  GSPlacement? bottomLeft;
-  GSPlacement? topCenter;
-  GSPlacement? bottomCenter;
-  GSPlacements(
+  GSStyle? topRight;
+  GSStyle? topLeft;
+  GSStyle? bottomRight;
+  GSStyle? bottomLeft;
+  GSStyle? topCenter;
+  GSStyle? bottomCenter;
+  GSPlacement(
       {this.bottomCenter,
       this.bottomLeft,
       this.bottomRight,
       this.topCenter,
       this.topLeft,
       this.topRight});
-  factory GSPlacements.fromMap({required Map<String, dynamic>? data}) {
-    return GSPlacements(
-      bottomCenter: GSPlacement.fromMap(
-        data: data?['bottom center'],
-      ),
-      bottomLeft: GSPlacement.fromMap(data: data?['bottom left']),
-      bottomRight: GSPlacement.fromMap(
-        data: data?['bottom right'],
-      ),
-      topCenter: GSPlacement.fromMap(data: data?['top center']),
-      topLeft: GSPlacement.fromMap(data: data?['top left']),
-      topRight: GSPlacement.fromMap(data: data?['top right']),
+  factory GSPlacement.fromMap({required Map<String, dynamic>? data}) {
+    return GSPlacement(
+      bottomCenter:
+          GSStyle.fromMap(data: data?['bottom center'], fromVariant: true),
+      bottomLeft:
+          GSStyle.fromMap(data: data?['bottom left'], fromVariant: true),
+      bottomRight:
+          GSStyle.fromMap(data: data?['bottom right'], fromVariant: true),
+      topCenter: GSStyle.fromMap(data: data?['top center'], fromVariant: true),
+      topLeft: GSStyle.fromMap(data: data?['top left'], fromVariant: true),
+      topRight: GSStyle.fromMap(data: data?['top right'], fromVariant: true),
     );
   }
 }
@@ -97,6 +86,7 @@ class GSProps {
   GSSpaces? space;
   GSStyle? style;
   GSOrientations? orientation;
+  GSPlacements? placement;
   Color? color;
 
   GSProps({
@@ -106,9 +96,11 @@ class GSProps {
     this.space,
     this.style,
     this.orientation,
+    this.placement,
     this.color,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
+  
     return GSProps(
         action: resolveActionFromString(data?['action']),
         variant: resolveVariantFromString(data?['variant']),
@@ -116,6 +108,7 @@ class GSProps {
         space: resolveSpacesFromString(data?['space']),
         style: GSStyle.fromMap(data: data, fromVariant: true),
         color: resolveColorFromString(data?['color']),
+        placement: resolvePlacementFromString(data?['placement']),
         orientation: resolveOrientationsFromString(
           data?['orientation'],
         ));
@@ -415,7 +408,7 @@ class Variants {
   GSStyle? highlight;
   GSStyle? sub;
   GSOrientation? orientation;
-  GSPlacements? placements;
+  GSPlacement? placements;
 
   Variants(
       {this.variant,
@@ -450,7 +443,7 @@ class Variants {
             descendantStyle: descendantStyle,
             fromVariant: true),
         orientation: GSOrientation.fromMap(data: data?['orientation']),
-        placements: GSPlacements.fromMap(data: data?['placement']));
+        placements: GSPlacement.fromMap(data: data?['placement']));
   }
 }
 
@@ -474,6 +467,12 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? borderBottomColor;
   double? height;
   double? width;
+
+  double? top;
+  double? bottom;
+  double? right;
+  double? left;
+
   double? outlineWidth;
   String? outlineStyle;
   double? borderBottomWidth;
@@ -503,6 +502,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.fontWeight,
       this.width,
       this.gap,
+      this.top,
+      this.bottom,
+      this.left,
+      this.right,
       this.outlineWidth,
       this.outlineStyle,
       this.borderBottomWidth,
@@ -554,6 +557,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
       gap: overrideStyle?.gap ?? gap,
+      right: overrideStyle?.right ?? right,
+      left: overrideStyle?.left ?? left,
+      bottom: overrideStyle?.bottom ?? bottom,
+      top: overrideStyle?.top ?? top,
       descendantStyles: descendantStyleKeys.isEmpty
           ? overrideStyle?.descendantStyles ?? descendantStyles
           : mergeStyledMaps(
@@ -598,6 +605,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         size: overrideStyle?.props?.size ?? props?.size,
         space: overrideStyle?.props?.space ?? props?.space,
         variant: overrideStyle?.props?.variant ?? props?.variant,
+        placement: overrideStyle?.props?.placement??props?.placement,
         style: overrideStyle?.props?.style != null
             ? overrideStyle?.props?.style!.merge(props?.style)
             : props?.style,
@@ -626,7 +634,6 @@ class GSStyle extends BaseStyle<GSStyle> {
     List<String> descendantStyle = const [],
     bool fromVariant = false,
   }) {
-   
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
       height: resolveSpaceFromString(
@@ -634,6 +641,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       width: resolveSpaceFromString(data?['w'] ?? data?['width']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
+      bottom: resolveSpaceFromString(data?['bottom']),
+      left: resolveSpaceFromString(data?['left']),
+      right: resolveSpaceFromString(data?['right']),
+      top: resolveSpaceFromString(data?['top']),
       //To be removed later
       contentWidth: data?['_content']?['w'] != null
           ? data?['_content']?['w']?.contains('%')

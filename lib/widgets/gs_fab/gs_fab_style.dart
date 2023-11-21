@@ -9,13 +9,13 @@ GSStyle fabStyle =
     GSStyle.fromMap(data: fabData, descendantStyle: fabConfig.descendantStyle);
 
 GSStyle baseFabStyle = GSStyle(
-  bg: fabStyle.bg,
-  borderRadius: fabStyle.borderRadius,
-  onHover: fabStyle.onHover,
-  onActive: fabStyle.onActive,
-  onDisabled: fabStyle.onDisabled,
-  descendantStyles: fabStyle.descendantStyles
-);
+    bg: fabStyle.bg,
+    borderRadius: fabStyle.borderRadius,
+    onHover: fabStyle.onHover,
+    onActive: fabStyle.onActive,
+    onDisabled: fabStyle.onDisabled,
+    props: fabStyle.props,
+    descendantStyles: fabStyle.descendantStyles);
 
 class GSFabStyle {
   static Map<GSSizes, GSStyle?> size = {
@@ -24,5 +24,18 @@ class GSFabStyle {
     GSSizes.$lg: fabStyle.variants?.size?.$lg,
   };
 
-  static Map<GSSize, GSStyle?> placementVariants = {};
+  static Map<GSPlacements, GSStyle?> placementVariants = {
+    GSPlacements.topLeft:
+        baseFabStyle.merge(fabStyle.variants?.placements?.topLeft),
+    GSPlacements.topRight:
+        baseFabStyle.merge(fabStyle.variants?.placements?.topRight),
+    GSPlacements.bottomRight:
+        baseFabStyle.merge(fabStyle.variants?.placements?.bottomRight),
+    GSPlacements.bottomLeft:
+        baseFabStyle.merge(fabStyle.variants?.placements?.bottomLeft),
+    GSPlacements.topCenter:
+        baseFabStyle.merge(fabStyle.variants?.placements?.topCenter),
+    GSPlacements.bottomCenter:
+        baseFabStyle.merge(fabStyle.variants?.placements?.bottomCenter),
+  };
 }
