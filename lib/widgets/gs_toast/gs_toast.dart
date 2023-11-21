@@ -15,7 +15,24 @@ class GSToast extends StatelessWidget {
     this.action,
     this.variant,
     this.style,
-  });
+  })  : assert(
+          action == null ||
+              action == GSActions.success ||
+              action == GSActions.warning ||
+              action == GSActions.error ||
+              action == GSActions.info ||
+              action == GSActions.attention,
+          'Toast can only have the types: error, warning, success, info and attention!\n'
+          'To resolve this error, ensure only the above mentioned GSActions is specified.',
+        ),
+        assert(
+          variant == null ||
+              variant == GSVariants.outline ||
+              variant == GSVariants.accent ||
+              variant == GSVariants.solid,
+          'Toast can only have the vairants: solid, accent and outline\n'
+          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
+        );
 
   @override
   Widget build(BuildContext context) {
