@@ -23,8 +23,9 @@ class _SwitchExampleState extends State<SwitchExample> {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const GSText(text: 'Selector'),
+              const GSText(text: 'Toggle'),
               const SizedBox(width: 10),
               GSSwitch(
                   // isDisabled: true,
