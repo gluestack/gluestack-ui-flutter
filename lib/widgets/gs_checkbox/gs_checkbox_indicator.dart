@@ -83,7 +83,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
     final styler = resolveStyles(context, variantStyle: checkBoxIndicatorStyle,inlineStyle: style);
 
     final value = GSCheckBoxProvider.of(context);
-    final isChecked = value?.value ?? false;
+    final isChecked = value?.isChecked ?? false;
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final isActive = GSFocusableActionDetectorProvider.isActive(context);
     final isDisabled = value?.isDisabled ?? true;

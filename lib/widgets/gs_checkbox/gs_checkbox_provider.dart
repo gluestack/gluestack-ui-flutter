@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class GSCheckBoxProvider extends InheritedWidget {
-  final bool value;
+  final String value;
+  final bool isChecked;
   final bool isDisabled;
   final bool isInvalid;
   final void Function(bool?)? onChanged;
@@ -9,13 +10,14 @@ class GSCheckBoxProvider extends InheritedWidget {
       {super.key,
       required Widget child,
       required this.value,
+      required this.isChecked,
       required this.isDisabled,
       required this.isInvalid,
       required this.onChanged})
       : super(child: child);
   @override
   bool updateShouldNotify(GSCheckBoxProvider oldWidget) {
-    return value != oldWidget.value ||
+    return isChecked != oldWidget.isChecked ||
         isDisabled != oldWidget.isDisabled ||
         isInvalid != oldWidget.isInvalid;
   }

@@ -15,7 +15,7 @@ class GSCheckBoxIcon extends StatelessWidget {
         ?.decedentStyles?[checkboxIconConfig.ancestorStyle.first];
 
     final value = GSCheckBoxProvider.of(context);
-    final isChecked = value?.value ?? false;
+    final isChecked = value?.isChecked ?? false;
     final isDisabled = value?.isDisabled ?? true;
 
     final iconSize = ancestorCheckBoxStyle?.props?.size;

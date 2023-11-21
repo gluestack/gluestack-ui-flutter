@@ -14,7 +14,7 @@ class CheckBoxExample extends StatefulWidget {
 }
 
 class _CheckBoxExampleState extends State<CheckBoxExample> {
-  final List<bool> valueList = List.generate(6, (index) => false);
+  final List<String> valueList = List.generate(6, (index) => index.toString());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,35 +29,31 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
               value: valueList[0],
               onChanged: (p0) {
                 setState(() {
-                  valueList[0] = p0 ?? false;
+                  
                 });
               },
-              icon:  GSCheckBoxIndicator(
-                style: GSStyle(
-                  margin:const EdgeInsets.only(right: $GSSpace.$3)
-                ),
-                child:const GSCheckBoxIcon()),
+              icon: GSCheckBoxIndicator(
+                  style: GSStyle(
+                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
+                  child: const GSCheckBoxIcon()),
               label: const GSCheckBoxLabel(text: 'check box 1'),
             ),
             GSCheckBox(
               value: valueList[1],
               onChanged: (p0) {
-                setState(() {
-                  valueList[1] = p0 ?? false;
-                });
+                setState(() {});
               },
-              icon:  GSCheckBoxIndicator(
-                style: GSStyle(
-                  margin:const EdgeInsets.only(right: $GSSpace.$2),
-                ),child:const GSCheckBoxIcon()),
+              icon: GSCheckBoxIndicator(
+                  style: GSStyle(
+                    margin: const EdgeInsets.only(right: $GSSpace.$2),
+                  ),
+                  child: const GSCheckBoxIcon()),
               label: const GSCheckBoxLabel(text: 'check box 2'),
             ),
             GSCheckBox(
               size: GSSizes.$lg,
               onChanged: (p0) {
-                setState(() {
-                  valueList[2] = p0 ?? false;
-                });
+                setState(() {});
               },
               value: valueList[2],
               icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
@@ -66,9 +62,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
             GSCheckBox(
               isInvalid: true,
               onChanged: (p0) {
-                setState(() {
-                  valueList[3] = p0 ?? false;
-                });
+                setState(() {});
               },
               value: valueList[3],
               icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
@@ -78,32 +72,22 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
               isDisabled: true,
               size: GSSizes.$lg,
               onChanged: (p0) {
-                setState(() {
-                  valueList[4] = p0 ?? false;
-                });
+                setState(() {});
               },
               value: valueList[4],
-              icon:  GSCheckBoxIndicator(
-                style: GSStyle(
-                 onDisabled: GSStyle(
-                  borderColor: Colors.amber
-                 )
-                ),
-                child:const GSCheckBoxIcon()),
-              label:  GSCheckBoxLabel(
-                style: GSStyle(
-                  color: Colors.blue
-                ),
-                text: 'check box 4'),
+              icon: GSCheckBoxIndicator(
+                  style:
+                      GSStyle(onDisabled: GSStyle(borderColor: Colors.amber)),
+                  child: const GSCheckBoxIcon()),
+              label: GSCheckBoxLabel(
+                  style: GSStyle(color: Colors.blue), text: 'check box 4'),
             ),
             GSCheckBox(
               isDisabled: true,
               isInvalid: true,
               size: GSSizes.$lg,
               onChanged: (p0) {
-                setState(() {
-                  valueList[5] = p0 ?? false;
-                });
+                setState(() {});
               },
               value: valueList[5],
               icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),

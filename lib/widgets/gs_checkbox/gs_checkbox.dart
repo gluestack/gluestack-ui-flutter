@@ -6,8 +6,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_provider.d
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
 
-class GSCheckBox extends StatelessWidget {
-  final bool value;
+class GSCheckBox extends StatefulWidget {
+  final String value;
   final Widget icon;
   final Widget? label;
   final GSSizes? size;
@@ -15,17 +15,17 @@ class GSCheckBox extends StatelessWidget {
   final bool isInvalid;
   final GSStyle? style;
   final void Function(bool?)? onChanged;
-  const GSCheckBox(
-      {super.key,
-      required this.icon,
-      this.size,
-      this.label,
-      this.onChanged,
-      this.style,
-      this.isDisabled = false,
-      this.isInvalid = false,
-      this.value = false})
-      : assert(
+  const GSCheckBox({
+    super.key,
+    required this.icon,
+    required this.value,
+    this.size,
+    this.label,
+    this.onChanged,
+    this.style,
+    this.isDisabled = false,
+    this.isInvalid = false,
+  }) : assert(
             size == GSSizes.$lg ||
                 size == GSSizes.$md ||
                 size == GSSizes.$sm ||
@@ -33,32 +33,49 @@ class GSCheckBox extends StatelessWidget {
             "only support sizes of lg,md,sm");
 
   @override
+  State<GSCheckBox> createState() => _GSCheckBoxState();
+}
+
+class _GSCheckBoxState extends State<GSCheckBox> {
+  late bool isChecked;
+  @override
+  void initState() {
+    isChecked = false;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final checkBoxSize = size ?? checkboxStyle.props?.size;
+    final checkBoxSize = widget.size ?? checkboxStyle.props?.size;
     final styler = resolveStyles(context,
-        size: GsCheckBoxStyle.size[checkBoxSize], inlineStyle: style);
+        size: GsCheckBoxStyle.size[checkBoxSize], inlineStyle: widget.style);
 
     return GSAncestor(
       decedentStyles: styler?.descendantStyles,
       child: GSFocusableActionDetector(
-        mouseCursor: isDisabled ? SystemMouseCursors.forbidden : null,
+        mouseCursor: widget.isDisabled ? SystemMouseCursors.forbidden : null,
         child: GSCheckBoxProvider(
-          isInvalid: isInvalid,
-          isDisabled: isDisabled,
-          value: isDisabled ? false : value,
-          onChanged: isDisabled ? null : onChanged,
+          isInvalid: widget.isInvalid,
+          isDisabled: widget.isDisabled,
+          isChecked: widget.isDisabled ? false : isChecked,
+          value: widget.value,
+          onChanged: widget.isDisabled ? null : widget.onChanged,
           child: InkWell(
             highlightColor: Colors.transparent,
             hoverColor: Colors.transparent,
-            mouseCursor: isDisabled ? SystemMouseCursors.forbidden : null,
-            onTap: onChanged != null
+            mouseCursor:
+                widget.isDisabled ? SystemMouseCursors.forbidden : null,
+            onTap: widget.onChanged != null
                 ? () {
-                    onChanged!(!value);
+                    setState(() {
+                      isChecked = !isChecked;
+                    });
+                    widget.onChanged!(isChecked);
                   }
                 : null,
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              children: [icon, if (label != null) label!],
+              children: [widget.icon, if (widget.label != null) widget.label!],
             ),
           ),
         ),

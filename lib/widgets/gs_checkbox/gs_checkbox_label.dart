@@ -21,7 +21,7 @@ class GSCheckBoxLabel extends StatelessWidget {
         size: GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size],
         inlineStyle: style);
     final value = GSCheckBoxProvider.of(context);
-    final isChecked = value?.value ?? false;
+    final isChecked = value?.isChecked ?? false;
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final isDisabled = value?.isDisabled ?? true;
 
