@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_group_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
@@ -49,6 +50,8 @@ class _GSCheckBoxState extends State<GSCheckBox> {
     final checkBoxSize = widget.size ?? checkboxStyle.props?.size;
     final styler = resolveStyles(context,
         size: GsCheckBoxStyle.size[checkBoxSize], inlineStyle: widget.style);
+    final groupValue = GSCheckBoxGroupProvider.of(context);
+    isChecked = groupValue?.values.contains(widget.value) ?? isChecked;
 
     return GSAncestor(
       decedentStyles: styler?.descendantStyles,
@@ -57,7 +60,7 @@ class _GSCheckBoxState extends State<GSCheckBox> {
         child: GSCheckBoxProvider(
           isInvalid: widget.isInvalid,
           isDisabled: widget.isDisabled,
-          isChecked: widget.isDisabled ? false : isChecked,
+          isChecked: isChecked,
           value: widget.value,
           onChanged: widget.isDisabled ? null : widget.onChanged,
           child: InkWell(
@@ -65,11 +68,16 @@ class _GSCheckBoxState extends State<GSCheckBox> {
             hoverColor: Colors.transparent,
             mouseCursor:
                 widget.isDisabled ? SystemMouseCursors.forbidden : null,
-            onTap: widget.onChanged != null
+            onTap: widget.onChanged != null && !widget.isDisabled
                 ? () {
-                    setState(() {
-                      isChecked = !isChecked;
-                    });
+                    if (groupValue != null) {
+                      groupValue.updateValues(widget.value);
+                      groupValue.onChanged!(groupValue.values);
+                    } else {
+                      setState(() {
+                        isChecked = !isChecked;
+                      });
+                    }
                     widget.onChanged!(isChecked);
                   }
                 : null,

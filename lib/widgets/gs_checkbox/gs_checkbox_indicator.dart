@@ -10,7 +10,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
   final Widget child;
   final GSStyle? style;
   const GSCheckBoxIndicator({super.key, required this.child,this.style});
-
+  //use styleResolver to resolve Color state in future
   Color? _resolvebgColor(
     GSStyle? styler, {
     bool isHovered = false,
@@ -43,7 +43,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
 
     return styler?.bg;
   }
-
+  //use styleResolver to resolve border state in future
   Color? _resolveborderColor(GSStyle? styler,
       {bool isHovered = false,
       isChecked = false,
