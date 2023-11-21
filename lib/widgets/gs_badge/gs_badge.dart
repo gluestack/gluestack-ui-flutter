@@ -87,7 +87,7 @@ class GSBadge extends StatelessWidget {
         descendantStyles: GSBadgeStyle.badgeDescendantStyles[action]?[variant],
         descendantStyleKeys: gsBadgeConfig.descendantStyle)!;
 
-    print("icon size: ${styler.iconSize}");
+    // Return the GSBadge with GSAncestor to handle the decedentStyles
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSBadgeProvider(

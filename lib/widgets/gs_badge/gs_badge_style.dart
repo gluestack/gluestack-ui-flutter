@@ -1,28 +1,34 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/gs_style_config.dart';
 import 'package:gluestack_flutter_pro/theme/config/badge/badge.dart';
-import 'package:gluestack_flutter_pro/token/font_size_token.dart';
 import 'package:gluestack_flutter_pro/utils/resolver.dart';
 
+// GSStyleConfig for the Badge component | needed for descendantStyle
 GSStyleConfig gsBadgeConfig =
     GSStyleConfig(componentName: 'Badge', descendantStyle: ['_text', '_icon']);
 
+// GSStyle representing the base style for the Badge
 final GSStyle badgeStyle = GSStyle.fromMap(
     data: badgeData, descendantStyle: gsBadgeConfig.descendantStyle);
 
+// Base style for the Badge
 GSStyle baseStyle = GSStyle(
   borderRadius: badgeStyle.borderRadius,
 );
 
+// Compound variants for the Badge
 GSStyle compoundVariants = GSStyle(
   variants: Variants(
     action: GSAction(
       error: GSStyle(
+        // Variant styles for the 'error' action
         variants: Variants(
           variant: GSVariant(
+            // Solid variant
             solid: baseStyle
                 .merge(badgeStyle.variants?.action?.error)
                 .merge(badgeStyle.variants?.variant?.solid),
+            // Outline variant
             outline: baseStyle
                 .merge(badgeStyle.variants?.action?.error)
                 .merge(badgeStyle.variants?.variant?.outline),
@@ -30,6 +36,7 @@ GSStyle compoundVariants = GSStyle(
         ),
       ),
       warning: GSStyle(
+        // Variant styles for the 'warning' action
         variants: Variants(
           variant: GSVariant(
             solid: baseStyle
@@ -42,6 +49,7 @@ GSStyle compoundVariants = GSStyle(
         ),
       ),
       success: GSStyle(
+        // Variant styles for the 'success' action
         variants: Variants(
           variant: GSVariant(
             solid: baseStyle
@@ -54,6 +62,7 @@ GSStyle compoundVariants = GSStyle(
         ),
       ),
       info: GSStyle(
+        // Variant styles for the 'info' action
         variants: Variants(
           variant: GSVariant(
             solid: baseStyle
@@ -66,6 +75,7 @@ GSStyle compoundVariants = GSStyle(
         ),
       ),
       muted: GSStyle(
+        // Variant styles for the 'muted' action
         variants: Variants(
           variant: GSVariant(
             solid: baseStyle
@@ -82,7 +92,9 @@ GSStyle compoundVariants = GSStyle(
   ),
 );
 
+// GSBadgeStyle class to define badge styles
 class GSBadgeStyle {
+  // Map of badge combinations for different actions and variants
   static Map<GSActions, Map<GSVariants, GSStyle>> gsBadgeCombination = {
     GSActions.error: {
       GSVariants.solid:
@@ -116,12 +128,14 @@ class GSBadgeStyle {
     }
   };
 
+  // Map of badge sizes
   static Map<GSSizes, GSStyle> size = {
     GSSizes.$sm: compoundVariants.variants!.size!.$sm!,
     GSSizes.$md: compoundVariants.variants!.size!.$md!,
     GSSizes.$lg: compoundVariants.variants!.size!.$lg!,
   };
 
+  // Map of descendant styles for different actions and variants
   static Map<GSActions, Map<GSVariants, Map<String, GSStyle?>>>
       badgeDescendantStyles = {
     GSActions.error: {
