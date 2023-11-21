@@ -32,7 +32,16 @@ class GSFab extends StatelessWidget {
                 borderRadius:
                     BorderRadius.circular(styler.borderRadius ?? 0.0))),
             padding: MaterialStateProperty.all(styler.padding),
-            backgroundColor: MaterialStateProperty.all(styler.bg),
+            backgroundColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return styler.onActive?.bg;
+              }
+              if (states.contains(MaterialState.hovered)) {
+                return styler.onHover?.bg;
+              }
+
+              return styler.bg;
+            }),
           ),
           onPressed: () {},
           child: Row(
