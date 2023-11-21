@@ -7,8 +7,9 @@ import 'package:gluestack_flutter_pro/widgets/gs_link/gs_link_text_style.dart';
 
 class GSLinkText extends StatelessWidget {
   final String text;
-  final TextStyle? textStyle;
-  const GSLinkText({super.key, required this.text, this.textStyle});
+
+  final GSStyle? style;
+  const GSLinkText({super.key, required this.text, this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -19,24 +20,27 @@ class GSLinkText extends StatelessWidget {
 
     final styler = resolveStyles(context,
         variantStyle: linkTextStyle.merge(ancestorTextStyles),
-        inlineStyle: textStyle != null ? GSStyle(textStyle: textStyle) : null)!;
+        inlineStyle: style)!;
+
+
 
     final color = isActive
         ? styler.onActive?.color
         : isHovered
             ? styler.onHover?.color
-            : styler.color;
+            : styler.textStyle?.color??  styler.color;
     final TextDecoration? decoration = isActive
         ? styler.onActive?.textStyle?.decoration
         : isHovered
             ? styler.onHover?.textStyle?.decoration
             : styler.textStyle?.decoration;
-    var defaultTextStyle =
-        TextStyle(color: color, decoration: decoration);
+    var defaultTextStyle = TextStyle(color: color, decoration: decoration);
+    final mergedStyle =
+        style?.textStyle?.merge(defaultTextStyle) ?? defaultTextStyle;
 
     return Text(
       text,
-      style: defaultTextStyle,
+      style: mergedStyle,
     );
   }
 }
