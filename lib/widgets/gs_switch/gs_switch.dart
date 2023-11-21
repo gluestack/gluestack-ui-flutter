@@ -128,134 +128,140 @@ cursor: kIsWeb && widget.isDisabled
           ? MouseCursor.defer
           : SystemMouseCursors.forbidden,
 */
-    return Stack(
-      children: [
-        Opacity(
-          opacity: widget.isDisabled ? styler.onDisabled?.opacity ?? 1 : 1,
-          child: Transform.scale(
-            scale: styler.scale ?? 1,
-            // constraints: const BoxConstraints(maxHeight: 30, maxWidth: 50),
-            child: Switch(
-              value: widget.value,
-              onChanged: widget.isDisabled ? null : widget.onToggle,
-              activeColor: styler.activeThumbColor,
-              inactiveThumbColor: styler.thumbColor,
-              activeTrackColor: styler.trackColorTrue,
-              inactiveTrackColor: styler.trackColorFalse,
-              activeThumbImage: widget.activeThumbImage,
-              onActiveThumbImageError: widget.onActiveThumbImageError,
-              inactiveThumbImage: widget.inactiveThumbImage,
-              onInactiveThumbImageError: widget.onInactiveThumbImageError,
-              thumbColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.selected) &&
-                      styler.checked?.activeThumbColor != null) {
-                    return styler.checked?.activeThumbColor;
-                  }
-                  return styler.checked?.thumbColor;
-                },
-              ),
-              trackColor: MaterialStateProperty.resolveWith<Color?>(
-                (Set<MaterialState> states) {
-                  if (widget.isInvalid &&
-                      states.contains(MaterialState.selected) &&
-                      states.contains(MaterialState.hovered)) {
-                    return styler.onHover?.onInvaild?.trackColorTrue ??
-                        styler.trackColorTrue;
-                  } else if (widget.isInvalid &&
-                      !states.contains(MaterialState.selected) &&
-                      states.contains(MaterialState.hovered)) {
-                    return styler.onHover?.onInvaild?.trackColorFalse ??
-                        styler.trackColorFalse;
-                  } else if (states.contains(MaterialState.hovered) &&
-                      states.contains(MaterialState.selected)) {
-                    return styler.onHover?.trackColorTrue ??
-                        styler.trackColorTrue;
-                  } else if (states.contains(MaterialState.hovered) &&
-                      !states.contains(MaterialState.selected)) {
-                    if (!kIsWeb && Platform.isIOS) {
-                      return styler.onHover?.iosBackgroundColor ??
-                          styler.iosBackgroundColor;
-                    }
-                    return styler.onHover?.trackColorFalse ??
-                        styler.trackColorFalse;
-                  } else if (states.contains(MaterialState.focused) &&
-                      states.contains(MaterialState.selected)) {
-                    return styler.onFocus?.trackColorTrue ??
-                        styler.trackColorTrue;
-                  } else if (states.contains(MaterialState.focused) &&
-                      !states.contains(MaterialState.selected)) {
-                    return styler.onFocus?.trackColorFalse ??
-                        styler.trackColorFalse;
-                  } else if (states.contains(MaterialState.disabled) ||
-                      widget.isDisabled &&
-                          !states.contains(MaterialState.hovered)) {
-                    return styler.onDisabled?.trackColorFalse ??
-                        styler.trackColorFalse;
-                  } else if (states.contains(MaterialState.disabled) ||
-                      widget.isDisabled &&
-                          states.contains(MaterialState.hovered)) {
-                    if (!kIsWeb && Platform.isIOS) {
-                      return styler.onDisabled?.iosBackgroundColor ??
-                          styler.iosBackgroundColor;
-                    } else {
-                      return styler.onDisabled?.trackColorTrue ??
-                          styler.trackColorTrue;
-                    }
-                  } else if (states.contains(MaterialState.selected)) {
-                    return styler.trackColorTrue;
-                  }
-
-                  if (!kIsWeb && Platform.isIOS) {
-                    return styler.iosBackgroundColor;
-                  } else {
-                    return styler.trackColorFalse;
-                  }
-                },
-              ),
-              trackOutlineColor: widget.trackOutlineColor,
-              trackOutlineWidth: widget.trackOutlineWidth,
-              thumbIcon: widget.thumbIcon,
-              materialTapTargetSize: widget.materialTapTargetSize,
-              dragStartBehavior: widget.dragStartBehavior,
-              mouseCursor: widget.mouseCursor,
-              overlayColor: widget.overlayColor,
-              splashRadius: widget.splashRadius,
-              focusNode: _focusNode,
-              onFocusChange: widget.onFocusChange,
-              autofocus: widget.autofocus,
-            ),
-          ),
-        ),
-        if (widget.isInvalid)
-          Positioned.fill(
-            child: IgnorePointer(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                      styler.onInvaild?.borderRadius ?? 0),
-                  border: Border.all(
-                    color: styler.onInvaild?.borderColor ?? Colors.black,
-                    width: styler.onInvaild?.borderWidth ?? 1,
+    return Transform.scale(
+      scale: styler.scale ?? 1,
+      child: ConstrainedBox(
+        constraints: widget.size == GSSizes.$lg ? const BoxConstraints(maxHeight: 30, maxWidth: 50) : const BoxConstraints(maxHeight: 20, maxWidth: 40)  ,
+        child: Stack(
+          children: [
+            Opacity(
+              opacity: widget.isDisabled ? styler.onDisabled?.opacity ?? 1 : 1,
+              child: Transform.scale(
+                scale: styler.scale ?? 1,
+                // constraints: const BoxConstraints(maxHeight: 30, maxWidth: 50),
+                child: Switch(
+                  value: widget.value,
+                  onChanged: widget.isDisabled ? null : widget.onToggle,
+                  activeColor: styler.activeThumbColor,
+                  inactiveThumbColor: styler.thumbColor,
+                  activeTrackColor: styler.trackColorTrue,
+                  inactiveTrackColor: styler.trackColorFalse,
+                  activeThumbImage: widget.activeThumbImage,
+                  onActiveThumbImageError: widget.onActiveThumbImageError,
+                  inactiveThumbImage: widget.inactiveThumbImage,
+                  onInactiveThumbImageError: widget.onInactiveThumbImageError,
+                  thumbColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.selected) &&
+                          styler.checked?.activeThumbColor != null) {
+                        return styler.checked?.activeThumbColor;
+                      }
+                      return styler.checked?.thumbColor;
+                    },
                   ),
+                  trackColor: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                      if (widget.isInvalid &&
+                          states.contains(MaterialState.selected) &&
+                          states.contains(MaterialState.hovered)) {
+                        return styler.onHover?.onInvaild?.trackColorTrue ??
+                            styler.trackColorTrue;
+                      } else if (widget.isInvalid &&
+                          !states.contains(MaterialState.selected) &&
+                          states.contains(MaterialState.hovered)) {
+                        return styler.onHover?.onInvaild?.trackColorFalse ??
+                            styler.trackColorFalse;
+                      } else if (states.contains(MaterialState.hovered) &&
+                          states.contains(MaterialState.selected)) {
+                        return styler.onHover?.trackColorTrue ??
+                            styler.trackColorTrue;
+                      } else if (states.contains(MaterialState.hovered) &&
+                          !states.contains(MaterialState.selected)) {
+                        if (!kIsWeb && Platform.isIOS) {
+                          return styler.onHover?.iosBackgroundColor ??
+                              styler.iosBackgroundColor;
+                        }
+                        return styler.onHover?.trackColorFalse ??
+                            styler.trackColorFalse;
+                      } else if (states.contains(MaterialState.focused) &&
+                          states.contains(MaterialState.selected)) {
+                        return styler.onFocus?.trackColorTrue ??
+                            styler.trackColorTrue;
+                      } else if (states.contains(MaterialState.focused) &&
+                          !states.contains(MaterialState.selected)) {
+                        return styler.onFocus?.trackColorFalse ??
+                            styler.trackColorFalse;
+                      } else if (states.contains(MaterialState.disabled) ||
+                          widget.isDisabled &&
+                              !states.contains(MaterialState.hovered)) {
+                        return styler.onDisabled?.trackColorFalse ??
+                            styler.trackColorFalse;
+                      } else if (states.contains(MaterialState.disabled) ||
+                          widget.isDisabled &&
+                              states.contains(MaterialState.hovered)) {
+                        if (!kIsWeb && Platform.isIOS) {
+                          return styler.onDisabled?.iosBackgroundColor ??
+                              styler.iosBackgroundColor;
+                        } else {
+                          return styler.onDisabled?.trackColorTrue ??
+                              styler.trackColorTrue;
+                        }
+                      } else if (states.contains(MaterialState.selected)) {
+                        return styler.trackColorTrue;
+                      }
+
+                      if (!kIsWeb && Platform.isIOS) {
+                        return styler.iosBackgroundColor;
+                      } else {
+                        return styler.trackColorFalse;
+                      }
+                    },
+                  ),
+                  trackOutlineColor: widget.trackOutlineColor,
+                  trackOutlineWidth: widget.trackOutlineWidth,
+                  thumbIcon: widget.thumbIcon,
+                  materialTapTargetSize: widget.materialTapTargetSize,
+                  dragStartBehavior: widget.dragStartBehavior,
+                  mouseCursor: widget.mouseCursor,
+                  overlayColor: widget.overlayColor,
+                  splashRadius: widget.splashRadius,
+                  focusNode: _focusNode,
+                  onFocusChange: widget.onFocusChange,
+                  autofocus: widget.autofocus,
                 ),
               ),
             ),
-          ),
-        if (showFocusBorder)
-          Positioned.fill(
-            child: IgnorePointer(
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                  color: styler.dark?.web?.onFocus?.outlineColor ??
-                      Colors.transparent,
-                  width: styler.web?.onFocus?.outlineWidth ?? 1,
-                )),
+            if (widget.isInvalid)
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                          styler.onInvaild?.borderRadius ?? 0),
+                      border: Border.all(
+                        color: styler.onInvaild?.borderColor ?? Colors.black,
+                        width: styler.onInvaild?.borderWidth ?? 1,
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-      ],
+            if (showFocusBorder)
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: styler.dark?.web?.onFocus?.outlineColor ??
+                          Colors.transparent,
+                      width: styler.web?.onFocus?.outlineWidth ?? 1,
+                    )),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

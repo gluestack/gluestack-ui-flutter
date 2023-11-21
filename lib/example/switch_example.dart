@@ -28,11 +28,11 @@ class _SwitchExampleState extends State<SwitchExample> {
               const SizedBox(width: 10),
               GSSwitch(
                   // isDisabled: true,
-                  isInvalid: true,
+                  // isInvalid: true,
                   size: GSSizes.$lg,
                   style: GSStyle(
                     checked: GSStyle(
-                      thumbColor: Colors.blue.withAlpha(180),
+                      thumbColor: Colors.grey,
                       activeThumbColor: Colors.blue,
                     ),
                   ),
