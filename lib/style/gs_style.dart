@@ -41,6 +41,53 @@ enum GSAlignments { start, center, end, spaceBetween, flexEnd }
 
 enum GSOrientations { horizontal, vertical }
 
+class GSPlacement {
+  double? top;
+  double? bottom;
+  double? right;
+  double? left;
+  GSPlacement({this.bottom, this.left, this.right, this.top});
+
+  factory GSPlacement.fromMap({required Map<String, dynamic>? data}) {
+    return GSPlacement(
+      bottom: resolveSpaceFromString(data?['bottom']),
+      left: resolveSpaceFromString(data?['left']),
+      right: resolveSpaceFromString(data?['right']),
+      top: resolveSpaceFromString(data?['top']),
+    );
+  }
+}
+
+class GSPlacements {
+  GSPlacement? topRight;
+  GSPlacement? topLeft;
+  GSPlacement? bottomRight;
+  GSPlacement? bottomLeft;
+  GSPlacement? topCenter;
+  GSPlacement? bottomCenter;
+  GSPlacements(
+      {this.bottomCenter,
+      this.bottomLeft,
+      this.bottomRight,
+      this.topCenter,
+      this.topLeft,
+      this.topRight});
+  factory GSPlacements.fromMap({required Map<String, dynamic>? data}) {
+    return GSPlacements(
+      bottomCenter: GSPlacement.fromMap(
+        data: data?['bottom center'],
+      ),
+      bottomLeft: GSPlacement.fromMap(data: data?['bottom left']),
+      bottomRight: GSPlacement.fromMap(
+        data: data?['bottom right'],
+      ),
+      topCenter: GSPlacement.fromMap(data: data?['top center']),
+      topLeft: GSPlacement.fromMap(data: data?['top left']),
+      topRight: GSPlacement.fromMap(data: data?['top right']),
+    );
+  }
+}
+
 class GSProps {
   GSActions? action;
   GSVariants? variant;
@@ -366,15 +413,17 @@ class Variants {
   GSStyle? highlight;
   GSStyle? sub;
   GSOrientation? orientation;
-  Variants({
-    this.variant,
-    this.size,
-    this.action,
-    this.space,
-    this.sub,
-    this.highlight,
-    this.orientation,
-  });
+  GSPlacements? placements;
+
+  Variants(
+      {this.variant,
+      this.size,
+      this.action,
+      this.space,
+      this.sub,
+      this.highlight,
+      this.orientation,
+      this.placements});
 
   factory Variants.fromMap({
     required Map<String, dynamic>? data,
@@ -398,7 +447,8 @@ class Variants {
             data: data?['highlight']?['true'],
             descendantStyle: descendantStyle,
             fromVariant: true),
-        orientation: GSOrientation.fromMap(data: data?['orientation']));
+        orientation: GSOrientation.fromMap(data: data?['orientation']),
+        placements: GSPlacements.fromMap(data: data?['placement']));
   }
 }
 
@@ -550,6 +600,7 @@ class GSStyle extends BaseStyle<GSStyle> {
             ? overrideStyle?.props?.style!.merge(props?.style)
             : props?.style,
       ),
+    
       width: overrideStyle?.width ?? width,
       height: overrideStyle?.height ?? height,
       dark: overrideStyle?.dark ?? dark,

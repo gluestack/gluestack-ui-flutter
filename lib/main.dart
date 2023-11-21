@@ -16,6 +16,7 @@ import 'package:gluestack_flutter_pro/example/text_area_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab.dart';
 
 
 // import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
+                      GSFab(),
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(
