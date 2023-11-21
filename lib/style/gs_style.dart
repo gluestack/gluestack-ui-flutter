@@ -112,9 +112,9 @@ class GSVariant {
           descendantStyle: descendantStyle,
           fromVariant: true),
       solid: GSStyle.fromMap(
-          data: data?['solid'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
+              data: data?['solid'],
+              descendantStyle: descendantStyle,
+              fromVariant: true),
       rounded: GSStyle.fromMap(
         data: data?['rounded'],
         descendantStyle: descendantStyle,
@@ -436,6 +436,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? contentMaxWidth;
   AlignmentGeometry? alignment;
   Color? progressValueColor;
+  double? iconSize;
 
   GSStyle(
       {this.borderWidth,
@@ -479,7 +480,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.alignment,
       this.contentMaxWidth,
       this.contentWidth,
-      this.progressValueColor});
+      this.progressValueColor,
+      this.iconSize,
+      });
 
   @override
   copy() {
@@ -499,6 +502,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
       fontWeight: overrideStyle?.fontWeight ?? fontWeight,
       icon: overrideStyle?.icon ?? icon,
+      iconSize: overrideStyle?.iconSize ?? iconSize,
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
       gap: overrideStyle?.gap ?? gap,
@@ -580,6 +584,8 @@ class GSStyle extends BaseStyle<GSStyle> {
         data?['h'].toString() ?? data?['height'].toString(),
       ),
       width: resolveSpaceFromString(data?['w'] ?? data?['width']),
+       iconSize: resolveFontSizeFromString(
+            data?['_icon']?['props']?['size']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
       //To be removed later
       contentWidth: data?['_content']?['w'] != null
@@ -604,7 +610,8 @@ class GSStyle extends BaseStyle<GSStyle> {
                       : null,
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
-        fontSize: resolveFontSizeFromString(data?['fontSize']),
+        fontSize: resolveFontSizeFromString(
+            data?['fontSize'] ?? data?['_text']?['props']?['size']),
         height:
             resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
         letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_style.dart';
@@ -27,7 +28,7 @@ class GSBadge extends StatelessWidget {
   final Widget? child;
 
   /// The optional icon data to be displayed in the badge.
-  final IconData? iconData;
+  final GSBadgeIcon? icon;
 
   /// The text content to be displayed within the badge.
   final GSBadgeText text;
@@ -40,7 +41,7 @@ class GSBadge extends StatelessWidget {
     this.size,
     this.child,
     this.style,
-    this.iconData,
+    this.icon,
     required this.text,
     this.borderRadius,
   })  : assert(
@@ -71,48 +72,50 @@ class GSBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Access the badge provider to retrieve badge style information.
-    final value = GSBadgeProvider.of(context);
+    // // Access the badge provider to retrieve badge style information.
+    // final value = GSBadgeProvider.of(context);
     final badgeAction = action ?? badgeStyle.props?.action;
     final badgeVariant = variant ?? badgeStyle.props?.variant;
-    final badgeSize = size ?? value?.size ?? badgeStyle.props?.size;
+    final badgeSize = size ?? badgeStyle.props?.size;
 
     // Resolve the style for the badge.
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: GSBadgeStyle.gsBadgeCombination[badgeAction]![badgeVariant],
-      size: GSBadgeStyle.size[badgeSize],
-      inlineStyle: style,
-    )!;
+    GSStyle styler = resolveStyles(context,
+        variantStyle: GSBadgeStyle.gsBadgeCombination[badgeAction]
+            ?[badgeVariant],
+        size: GSBadgeStyle.size[badgeSize],
+        inlineStyle: style,
+        descendantStyles: GSBadgeStyle.badgeDescendantStyles[action]?[variant],
+        descendantStyleKeys: gsBadgeConfig.descendantStyle)!;
 
-    return GSBadgeProvider(
-      action: badgeAction!,
-      variant: badgeVariant!,
-      size: badgeSize!,
-      child: Container(
-        decoration: BoxDecoration(
-            color: style == null ? styler.bg : style!.bg ?? styler.bg,
-            border: Border.all(
-                style: badgeVariant == GSVariants.outline
-                    ? BorderStyle.solid
-                    : BorderStyle.none,
-                color: style == null
-                    ? styler.borderColor!
-                    : style!.borderColor ?? styler.borderColor!)),
-        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              text,
-              if (iconData != null) ...[
-                const SizedBox(width: 2),
-                GSBadgeIcon(
-                  iconData: iconData!,
-                )
-              ],
-            ]),
+    print("icon size: ${styler.iconSize}");
+    return GSAncestor(
+      decedentStyles: styler.descendantStyles,
+      child: GSBadgeProvider(
+        fontSize: styler.textStyle?.fontSize,
+        iconSize: styler.iconSize,
+        child: Container(
+          decoration: BoxDecoration(
+              color: style == null ? styler.bg : style!.bg ?? styler.bg,
+              border: Border.all(
+                  style: badgeVariant == GSVariants.outline
+                      ? BorderStyle.solid
+                      : BorderStyle.none,
+                  color: style == null
+                      ? styler.borderColor!
+                      : style!.borderColor ?? styler.borderColor!)),
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+          child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                text,
+                if (icon != null) ...[
+                  const SizedBox(width: 2),
+                  icon as Widget,
+                ],
+              ]),
+        ),
       ),
     );
   }
