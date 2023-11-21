@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_toast/gs_toast_style.dart';
 
 class GSToast extends StatelessWidget {
@@ -25,6 +26,7 @@ class GSToast extends StatelessWidget {
       context,
       variantStyle: GSToastStyle.gsToastCombination[toastAction]![toastVariant],
       inlineStyle: style,
+      descendantStyleKeys: gsToastConfig.descendantStyle,
     )!;
     final border = toastVariant == GSVariants.outline
         ? Border.all(color: styler.borderColor!)
@@ -49,15 +51,17 @@ class GSToast extends StatelessWidget {
               )
             : null;
 
-    return Container(
-      padding: styler.padding,
-      // alignment: Alignment.centerLeft,
-      decoration: BoxDecoration(
-        color: styler.bg,
-        border: border,
-        borderRadius: BorderRadius.circular(styler.borderRadius!),
+    return GSAncestor(
+      decedentStyles: styler.descendantStyles,
+      child: Container(
+        padding: styler.padding,
+        decoration: BoxDecoration(
+          color: styler.bg,
+          border: border,
+          borderRadius: BorderRadius.circular(styler.borderRadius!),
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 }
