@@ -18,6 +18,8 @@ enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded }
 
+// enum GSPlacements{topLeft,topCenter,topRight,bottomLeft,bottomCenter,bottomRight}
+
 enum GSSizes {
   $2xs,
   $xs,
@@ -600,7 +602,6 @@ class GSStyle extends BaseStyle<GSStyle> {
             ? overrideStyle?.props?.style!.merge(props?.style)
             : props?.style,
       ),
-    
       width: overrideStyle?.width ?? width,
       height: overrideStyle?.height ?? height,
       dark: overrideStyle?.dark ?? dark,
@@ -625,6 +626,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     List<String> descendantStyle = const [],
     bool fromVariant = false,
   }) {
+   
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
       height: resolveSpaceFromString(
@@ -674,7 +676,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderColor: resolveColorFromString(data?['borderColor']),
       borderRadius: data?['borderRadius'] != null
           ? resolveRadiusFromString(data?['borderRadius'].toString())
-          : null,
+          : data?['rounded'] != null
+              ? resolveRadiusFromString(data?['rounded'])
+              : null,
       borderBottomWidth: data?['borderBottomWidth'] != null
           ? resolveBorderWidthFromString(data?['borderBottomWidth'].toString())
           : null,

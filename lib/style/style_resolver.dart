@@ -51,6 +51,8 @@ GSStyle? resolveStyles(
       ? size.merge(temp, descendantStyleKeys: descendantStyleKeys)
       : temp;
 
+  
+
   if (inlineStyle == null) {
     if (theme == GSThemeMode.dark) {
       return currentGSStyle.merge(variantStyle?.dark,

@@ -7,3 +7,22 @@ GSStyleConfig fabConfig =
 
 GSStyle fabStyle =
     GSStyle.fromMap(data: fabData, descendantStyle: fabConfig.descendantStyle);
+
+GSStyle baseFabStyle = GSStyle(
+  bg: fabStyle.bg,
+  borderRadius: fabStyle.borderRadius,
+  onHover: fabStyle.onHover,
+  onActive: fabStyle.onActive,
+  onDisabled: fabStyle.onDisabled,
+  descendantStyles: fabStyle.descendantStyles
+);
+
+class GSFabStyle {
+  static Map<GSSizes, GSStyle?> size = {
+    GSSizes.$sm: fabStyle.variants?.size?.$sm,
+    GSSizes.$md: fabStyle.variants?.size?.$md,
+    GSSizes.$lg: fabStyle.variants?.size?.$lg,
+  };
+
+  static Map<GSSize, GSStyle?> placementVariants = {};
+}

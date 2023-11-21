@@ -41,6 +41,7 @@ Color? resolveColorFromString(String? color) {
 }
 
 double? resolveRadiusFromString(String? radius) {
+  
   if (radius == null) {
     return null;
   }
@@ -141,6 +142,7 @@ double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
   return $GSLineHeight.lineHeightMap[lineHeight]! /
       resolveFontSizeFromString(fontSize)!;
 }
+
 double? resolveLetterSpacingFromString(String? letterSpacing) {
   if (letterSpacing == null) {
     return null;
@@ -181,7 +183,6 @@ GSVariants? resolveVariantFromString(String? variant) {
 }
 
 GSSizes? resolveSizesFromString(String? size) {
-  
   const sizeMap = {
     'xs': GSSizes.$xs,
     'sm': GSSizes.$sm,
