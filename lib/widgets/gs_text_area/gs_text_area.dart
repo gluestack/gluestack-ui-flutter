@@ -154,7 +154,7 @@ class GSTextArea extends StatefulWidget {
       this.keyboardType,
       this.maxLengthEnforcement,
       this.magnifierConfiguration,
-      this.maxLines = 1,
+      this.maxLines = 5,
       this.minLines,
       this.mouseCursor,
       this.obscureText = false,
@@ -226,7 +226,16 @@ class GSTextArea extends StatefulWidget {
       this.suffixStyle,
       this.suffixText,
       this.visualFeedback = true,
-      this.style});
+      this.style})
+      : assert(
+          size == null ||
+              size == GSSizes.$xl ||
+              size == GSSizes.$lg ||
+              size == GSSizes.$md ||
+              size == GSSizes.$sm,
+          'TextArea can only have the sizes: \$xl, \$lg, \$md and \$sm\n'
+          'To resolve this error, ensure only the above mentioned GSSizes is specified.',
+        );
 
   @override
   State<GSTextArea> createState() => _GSTextAreaState();
@@ -243,6 +252,7 @@ class _GSTextAreaState extends State<GSTextArea> {
       variantStyle: textAreaStyle,
       size: GSTextAreaStyle.size[inputSize]!,
       inlineStyle: widget.style,
+      descendantStyleKeys: gsTextAreaConfig.descendantStyle,
     )!;
 
     Color? resolveBorderColor() {
@@ -289,11 +299,12 @@ class _GSTextAreaState extends State<GSTextArea> {
     final borderWidth = resolveBorderWidth();
     final focusedBorderColor = resolveFocusBorderColor();
     final focusedBorderWidth = resolveFocusBorderWidth();
-
     final borderStyle = OutlineInputBorder(
         borderSide: BorderSide(color: borderColor!, width: borderWidth!),
         borderRadius: BorderRadius.circular(styler.borderRadius!));
-    print(GSTextAreaStyle.size[inputSize]?.textStyle?.fontSize);
+    final hintStyle =
+        widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
+
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
         if (widget.isDisabled!) {
@@ -340,7 +351,7 @@ class _GSTextAreaState extends State<GSTextArea> {
             magnifierConfiguration: widget.magnifierConfiguration,
             maxLength: widget.maxLength,
             maxLengthEnforcement: widget.maxLengthEnforcement,
-            maxLines: 5,
+            maxLines: widget.maxLines,
             minLines: widget.minLines,
             mouseCursor: widget.isDisabled!
                 ? SystemMouseCursors.forbidden
@@ -370,8 +381,8 @@ class _GSTextAreaState extends State<GSTextArea> {
             strutStyle: widget.strutStyle,
             style: widget.style?.textStyle ??
                 TextStyle(
-                    fontSize:
-                        GSTextAreaStyle.size[widget.size]!.textStyle!.fontSize),
+                    fontSize: styler
+                        .descendantStyles?['_input']?.textStyle?.fontSize),
             textAlign: widget.textAlign,
             textAlignVertical: widget.textAlignVertical,
             textCapitalization: widget.textCapitalization,
@@ -401,7 +412,7 @@ class _GSTextAreaState extends State<GSTextArea> {
               helperStyle: widget.helperStyle,
               helperText: widget.helperText,
               hintMaxLines: widget.hintMaxLines,
-              hintStyle: widget.hintStyle,
+              hintStyle: hintStyle,
               hintText: widget.hintText,
               hintTextDirection: widget.hintTextDirection,
               isCollapsed: widget.isCollapsed,

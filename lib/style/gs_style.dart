@@ -251,6 +251,23 @@ class GSSize {
           : null,
     );
   }
+
+  GSSize merge(GSSize? overrideStyle) {
+    return GSSize(
+      $2xl: $2xl?.merge(overrideStyle?.$2xl) ?? overrideStyle?.$2xl,
+      $2xs: $2xs?.merge(overrideStyle?.$2xs) ?? overrideStyle?.$2xs,
+      $3xl: $3xl?.merge(overrideStyle?.$3xl) ?? overrideStyle?.$3xl,
+      $4xl: $4xl?.merge(overrideStyle?.$2xl) ?? overrideStyle?.$4xl,
+      $5xl: $5xl?.merge(overrideStyle?.$5xl) ?? overrideStyle?.$5xl,
+      $6xl: $6xl?.merge(overrideStyle?.$6xl) ?? overrideStyle?.$6xl,
+      $lg: $lg?.merge(overrideStyle?.$lg) ?? overrideStyle?.$lg,
+      $md: $md?.merge(overrideStyle?.$md) ?? overrideStyle?.$md,
+      $sm: $sm?.merge(overrideStyle?.$sm) ?? overrideStyle?.$sm,
+      $xl: $xl?.merge(overrideStyle?.$xl) ?? overrideStyle?.$xl,
+      $xs: $xs?.merge(overrideStyle?.$2xl) ?? overrideStyle?.$xs,
+      $full: $full?.merge(overrideStyle?.$full) ?? overrideStyle?.$full,
+    );
+  }
 }
 
 class GSAction {
@@ -569,7 +586,19 @@ class GSStyle extends BaseStyle<GSStyle> {
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
-      variants: overrideStyle?.variants ?? variants,
+      // variants: overrideStyle?.variants ?? variants,
+      variants: Variants(
+        action: overrideStyle?.variants?.action ?? variants?.action,
+        highlight: overrideStyle?.variants?.highlight ?? variants?.highlight,
+        orientation:
+            overrideStyle?.variants?.orientation ?? variants?.orientation,
+        // size: overrideStyle?.variants?.size ?? variants?.size,
+        size: variants?.size != null
+            ? variants?.size!.merge(overrideStyle?.variants?.size)
+            : overrideStyle?.variants?.size,
+        space: overrideStyle?.variants?.space ?? variants?.space,
+        variant: overrideStyle?.variants?.variant ?? variants?.variant,
+      ),
       props: GSProps(
         action: overrideStyle?.props?.action ?? props?.action,
         size: overrideStyle?.props?.size ?? props?.size,

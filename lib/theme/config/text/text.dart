@@ -94,7 +94,7 @@ Map<String, dynamic> textData = {
       },
     },
   },
-  'defaultProps': {
+  'props': {
     'size': 'md',
   },
 };

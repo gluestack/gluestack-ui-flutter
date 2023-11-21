@@ -1,7 +1,13 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/style/gs_style_config.dart';
 import 'package:gluestack_flutter_pro/theme/config/toast/toast.dart';
 
-GSStyle toastStyle = GSStyle.fromMap(data: toastData);
+GSStyleConfig gsToastConfig = GSStyleConfig(
+  componentName: 'Toast',
+  descendantStyle: ['_icon', '_title', '_description'],
+);
+GSStyle toastStyle = GSStyle.fromMap(
+    data: toastData, descendantStyle: gsToastConfig.descendantStyle);
 
 GSStyle compoundVariants = GSStyle(
   variants: Variants(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_toast/gs_toast_style.dart';
 
 class GSToast extends StatelessWidget {
@@ -14,7 +15,24 @@ class GSToast extends StatelessWidget {
     this.action,
     this.variant,
     this.style,
-  });
+  })  : assert(
+          action == null ||
+              action == GSActions.success ||
+              action == GSActions.warning ||
+              action == GSActions.error ||
+              action == GSActions.info ||
+              action == GSActions.attention,
+          'Toast can only have the types: error, warning, success, info and attention!\n'
+          'To resolve this error, ensure only the above mentioned GSActions is specified.',
+        ),
+        assert(
+          variant == null ||
+              variant == GSVariants.outline ||
+              variant == GSVariants.accent ||
+              variant == GSVariants.solid,
+          'Toast can only have the vairants: solid, accent and outline\n'
+          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +43,7 @@ class GSToast extends StatelessWidget {
       context,
       variantStyle: GSToastStyle.gsToastCombination[toastAction]![toastVariant],
       inlineStyle: style,
+      descendantStyleKeys: gsToastConfig.descendantStyle,
     )!;
     final border = toastVariant == GSVariants.outline
         ? Border.all(color: styler.borderColor!)
@@ -49,15 +68,17 @@ class GSToast extends StatelessWidget {
               )
             : null;
 
-    return Container(
-      padding: styler.padding,
-      // alignment: Alignment.centerLeft,
-      decoration: BoxDecoration(
-        color: styler.bg,
-        border: border,
-        borderRadius: BorderRadius.circular(styler.borderRadius!),
+    return GSAncestor(
+      decedentStyles: styler.descendantStyles,
+      child: Container(
+        padding: styler.padding,
+        decoration: BoxDecoration(
+          color: styler.bg,
+          border: border,
+          borderRadius: BorderRadius.circular(styler.borderRadius!),
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 }
