@@ -11,12 +11,13 @@ enum GSActions {
   warning,
   success,
   info,
-  muted
+  muted,
+  attention,
 }
 
 enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
-enum GSVariants { solid, outline, link, underlined, rounded }
+enum GSVariants { solid, outline, link, underlined, rounded, accent }
 
 enum GSSizes {
   $2xs,
@@ -91,6 +92,7 @@ class GSVariant {
   GSStyle? rounded;
   GSStyle? solid;
   GSStyle? link;
+  GSStyle? accent;
 
   GSVariant({
     this.underlined,
@@ -98,32 +100,49 @@ class GSVariant {
     this.rounded,
     this.solid,
     this.link,
+    this.accent,
   });
   factory GSVariant.fromMap(
       {required Map<String, dynamic>? data,
       List<String> descendantStyle = const []}) {
     return GSVariant(
-      underlined: GSStyle.fromMap(
-          data: data?['underlined'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      outline: GSStyle.fromMap(
-          data: data?['outline'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      solid: GSStyle.fromMap(
-          data: data?['solid'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      rounded: GSStyle.fromMap(
-        data: data?['rounded'],
-        descendantStyle: descendantStyle,
-        fromVariant: true,
-      ),
-      link: GSStyle.fromMap(
-          data: data?['link'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
+      underlined: parseMap(data?['underlined'])
+          ? GSStyle.fromMap(
+              data: data?['underlined'],
+              descendantStyle: descendantStyle,
+              fromVariant: true)
+          : null,
+      outline: parseMap(data?['outline'])
+          ? GSStyle.fromMap(
+              data: data?['outline'],
+              descendantStyle: descendantStyle,
+              fromVariant: true)
+          : null,
+      solid: parseMap(data?['solid'])
+          ? GSStyle.fromMap(
+              data: data?['solid'],
+              descendantStyle: descendantStyle,
+              fromVariant: true)
+          : null,
+      rounded: parseMap(data?['rounded'])
+          ? GSStyle.fromMap(
+              data: data?['rounded'],
+              descendantStyle: descendantStyle,
+              fromVariant: true,
+            )
+          : null,
+      link: parseMap(data?['link'])
+          ? GSStyle.fromMap(
+              data: data?['link'],
+              descendantStyle: descendantStyle,
+              fromVariant: true)
+          : null,
+      accent: parseMap(data?['accent'])
+          ? GSStyle.fromMap(
+              data: data?['accent'],
+              descendantStyle: descendantStyle,
+              fromVariant: true)
+          : null,
     );
   }
 }
@@ -245,17 +264,20 @@ class GSAction {
   GSStyle? success;
   GSStyle? info;
   GSStyle? muted;
-  GSAction(
-      {this.primary,
-      this.secondary,
-      this.positive,
-      this.negative,
-      this.defaultStyle,
-      this.error,
-      this.warning,
-      this.success,
-      this.info,
-      this.muted});
+  GSStyle? attention;
+  GSAction({
+    this.primary,
+    this.secondary,
+    this.positive,
+    this.negative,
+    this.defaultStyle,
+    this.error,
+    this.warning,
+    this.success,
+    this.info,
+    this.muted,
+    this.attention,
+  });
   factory GSAction.fromMap(
       {required Map<String, dynamic>? data,
       List<String> descendantStyle = const []}) {
@@ -298,6 +320,10 @@ class GSAction {
           fromVariant: true),
       muted: GSStyle.fromMap(
           data: data?['muted'],
+          descendantStyle: descendantStyle,
+          fromVariant: true),
+      attention: GSStyle.fromMap(
+          data: data?['attention'],
           descendantStyle: descendantStyle,
           fromVariant: true),
     );
@@ -425,6 +451,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? outlineWidth;
   String? outlineStyle;
   double? borderBottomWidth;
+  double? borderLeftWidth;
   TextStyle? textStyle;
   GSStyle? checked;
   Variants? variants;
@@ -454,6 +481,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.outlineWidth,
       this.outlineStyle,
       this.borderBottomWidth,
+      this.borderLeftWidth,
       this.textStyle,
       this.checked,
       super.onHover,
@@ -497,6 +525,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       margin: overrideStyle?.margin ?? margin,
       borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
       borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
+      borderLeftWidth: overrideStyle?.borderLeftWidth ?? borderLeftWidth,
       fontWeight: overrideStyle?.fontWeight ?? fontWeight,
       icon: overrideStyle?.icon ?? icon,
       input: overrideStyle?.input ?? input,
@@ -626,6 +655,9 @@ class GSStyle extends BaseStyle<GSStyle> {
           : null,
       borderBottomWidth: data?['borderBottomWidth'] != null
           ? resolveBorderWidthFromString(data?['borderBottomWidth'].toString())
+          : null,
+      borderLeftWidth: data?['borderLeftWidth'] != null
+          ? resolveBorderWidthFromString(data?['borderLeftWidth'].toString())
           : null,
       checked: GSStyle(
           color: resolveColorFromString(data?[':checked']?['color']),
