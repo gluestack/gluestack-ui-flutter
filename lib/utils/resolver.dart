@@ -174,6 +174,18 @@ double? resolveLetterSpacingFromString(String? letterSpacing) {
   return $GSLetterSpacing.letterSpacingMap[letterSpacing];
 }
 
+TextDecoration? resolveTextDecorationFromString(String? textDecoration) {
+  if (textDecoration == null) {
+    return null;
+  } else if (textDecoration == 'none') {
+
+    return TextDecoration.none;
+  } else if (textDecoration == 'underline') {
+    return TextDecoration.underline;
+  }
+  return null;
+}
+
 GSActions? resolveActionFromString(String? action) {
   const actionMap = {
     'primary': GSActions.primary,
