@@ -482,8 +482,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? contentMaxWidth;
   AlignmentGeometry? alignment;
   Color? progressValueColor;
-  double? badgeHeight;
-  double? badgeWidth;
+  GSStyle? badge;
   GSTextTransform? textTransform;
 
   GSStyle(
@@ -530,8 +529,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.contentMaxWidth,
       this.contentWidth,
       this.progressValueColor,
-      this.badgeHeight,
-      this.badgeWidth,this.textTransform});
+      this.badge,
+      this.textTransform});
 
   @override
   copy() {
@@ -617,8 +616,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       width: overrideStyle?.width ?? width,
       height: overrideStyle?.height ?? height,
-      badgeHeight: overrideStyle?.badgeHeight ?? badgeHeight,
-      badgeWidth: overrideStyle?.badgeWidth ?? badgeWidth,
+      badge: overrideStyle?.badge ?? badge,
       dark: overrideStyle?.dark ?? dark,
       lg: overrideStyle?.lg ?? lg,
       md: overrideStyle?.md ?? md,
@@ -648,11 +646,13 @@ class GSStyle extends BaseStyle<GSStyle> {
         data?['h'].toString() ?? data?['height'].toString(),
       ),
       width: resolveSpaceFromString(data?['w'] ?? data?['width']),
-      badgeHeight: resolveSpaceFromString(
-        data?['_badge']?['h'],
-      ),
-      badgeWidth: resolveSpaceFromString(
-        data?['_badge']?['w'],
+      badge: GSStyle(
+        height: resolveSpaceFromString(
+          data?['_badge']?['h'],
+        ),
+        width: resolveSpaceFromString(
+          data?['_badge']?['w'],
+        ),
       ),
       textTransform: resolveTextTransformFromString(data?['textTransform']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
@@ -681,21 +681,21 @@ class GSStyle extends BaseStyle<GSStyle> {
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
         fontSize: resolveFontSizeFromString(
-            data?['fontSize'] ?? data?['_text']?['props']?['size']),
+            data?['props']?['size'] ?? data?['fontSize']),
         height:
             resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
         letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
-        color: resolveColorFromString(
-          data?['_text']?['color'],
-        ),
+        color:
+            resolveColorFromString(data?['_text']?['color'] ?? data?['color']),
       ),
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg']),
       borderWidth: data?['borderWidth'] != null
           ? double.tryParse(data!['borderWidth']!.toString())
           : null,
-      gap: resolveSpaceFromString(data?['gap']??data?['_avatar']?['ml'].toString()),
+      gap: resolveSpaceFromString(
+          data?['gap'] ?? data?['_avatar']?['ml'].toString()),
       borderColor: resolveColorFromString(data?['borderColor']),
       borderRadius: data?['borderRadius'] != null
           ? resolveRadiusFromString(data?['borderRadius'].toString())
