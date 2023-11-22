@@ -25,7 +25,12 @@ class GSFab extends StatelessWidget {
       this.style,
       this.isHovered=false,
       this.isPressed = false,
-      this.isDisabled = false});
+      this.isDisabled = false}):assert(
+            size == GSSizes.$lg ||
+                size == GSSizes.$md ||
+                size == GSSizes.$sm ||
+                size == null,
+            "only support sizes of lg,md,sm");
 
   @override
   Widget build(BuildContext context) {
