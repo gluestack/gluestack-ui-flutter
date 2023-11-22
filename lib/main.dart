@@ -4,12 +4,14 @@ import 'package:gluestack_flutter_pro/example/avatar_example.dart';
 import 'package:gluestack_flutter_pro/example/badge_example.dart';
 import 'package:gluestack_flutter_pro/example/button_example.dart';
 import 'package:gluestack_flutter_pro/example/center_example.dart';
+import 'package:gluestack_flutter_pro/example/checkbox_example.dart';
 import 'package:gluestack_flutter_pro/example/divider_example.dart';
 import 'package:gluestack_flutter_pro/example/heading_example.dart';
 import 'package:gluestack_flutter_pro/example/hstack_example.dart';
 import 'package:gluestack_flutter_pro/example/icon_example.dart';
 import 'package:gluestack_flutter_pro/example/image_example.dart';
 import 'package:gluestack_flutter_pro/example/input_example.dart';
+import 'package:gluestack_flutter_pro/example/link_example.dart';
 import 'package:gluestack_flutter_pro/example/progress_example.dart';
 import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 import 'package:gluestack_flutter_pro/example/spinner_example.dart';
@@ -71,6 +73,22 @@ class MyApp extends StatelessWidget {
                           ),
                         ],
                       ),
+                 
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const LinkExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Link',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(
@@ -101,7 +119,22 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
                   ),
-                      GestureDetector(
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const CheckBoxExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS CheckBox',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(
                         builder: (context) => const HeadingExample(),
