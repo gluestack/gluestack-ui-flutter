@@ -15,7 +15,7 @@ class TextAreaExample extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GSTextArea(
-              size: GSSizes.$md,
+              size: GSSizes.$xl,
               hintText: "Enter text here",
               style: GSStyle(
                 width: 300,

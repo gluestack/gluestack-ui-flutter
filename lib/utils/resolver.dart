@@ -4,6 +4,10 @@ import 'package:gluestack_flutter_pro/token/font_weight.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/token/line_height.dart';
 
+bool parseMap(Map<dynamic, dynamic>? data) {
+  return data?.isNotEmpty ?? false;
+}
+
 Map<String, GSStyle?> mergeStyledMaps({
   required Map<String, GSStyle?>? styleMap,
   required Map<String, GSStyle?>? overrideStyleMap,
@@ -36,6 +40,9 @@ Color? resolveColorFromString(String? color) {
   }
   if (color.contains("transparent")) {
     return Colors.transparent;
+  }
+  if (color.contains("white")) {
+    return Colors.white;
   }
   return $GSColors.colorMap[color.substring(1)];
 }
@@ -101,7 +108,10 @@ double? resolveSpaceFromString(String? space) {
     return $GSSpace.spaceMap[space];
   }
   if (space.contains('\$')) {
-    return $GSSpace.spaceMap[space.substring(1)];
+    if(space.contains('-')){
+      return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
+  }
+  return $GSSpace.spaceMap[space.substring(1)];
   }
   return $GSSpace.spaceMap[space];
 }
@@ -175,6 +185,7 @@ GSActions? resolveActionFromString(String? action) {
     'success': GSActions.success,
     'info': GSActions.info,
     'muted': GSActions.muted,
+    'attention': GSActions.attention,
   };
 
   return action != null ? actionMap[action] : null;
@@ -187,6 +198,7 @@ GSVariants? resolveVariantFromString(String? variant) {
     'rounded': GSVariants.rounded,
     'underlined': GSVariants.underlined,
     'link': GSVariants.link,
+    'accent': GSVariants.accent,
   };
 
   return variant != null ? variantMap[variant] : null;
@@ -257,75 +269,13 @@ GSOrientations? resolveOrientationsFromString(String? orientation) {
   return orientation != null ? orientationMap[orientation] : null;
 }
 
+GSTextTransform? resolveTextTransformFromString(String? gsTextTransform) {
+  const textTransformationMap = {
+    'uppercase': GSTextTransform.uppercase,
+    'lowercase': GSTextTransform.lowercase,
+  };
 
-Widget resolveFlexWidget(
-      {required GSFlexDirections? flexDirection,
-      required GSAlignments? mainAxisAlignment,
-      required GSAlignments? crossAxisAlignment,
-      required List<Widget> children}) {
-    late MainAxisAlignment resolvedMainAxisAlignment;
-    late CrossAxisAlignment resolvedCrossAxisAlignment;
-
-    switch (mainAxisAlignment) {
-      case GSAlignments.start:
-        resolvedMainAxisAlignment = MainAxisAlignment.start;
-        break;
-      case GSAlignments.center:
-        resolvedMainAxisAlignment = MainAxisAlignment.center;
-        break;
-      case GSAlignments.end:
-        resolvedMainAxisAlignment = MainAxisAlignment.end;
-        break;
-      case GSAlignments.spaceBetween:
-        resolvedMainAxisAlignment = MainAxisAlignment.spaceBetween;
-        break;
-      case GSAlignments.flexEnd:
-        resolvedMainAxisAlignment = MainAxisAlignment.end;
-        break;
-      case GSAlignments.flexStart:
-        resolvedMainAxisAlignment = MainAxisAlignment.start;
-        break;
-      default:
-        resolvedMainAxisAlignment = MainAxisAlignment.start;
-    }
-    switch (crossAxisAlignment) {
-      case GSAlignments.start:
-        resolvedCrossAxisAlignment = CrossAxisAlignment.start;
-        break;
-      case GSAlignments.center:
-        resolvedCrossAxisAlignment = CrossAxisAlignment.center;
-        break;
-      case GSAlignments.end:
-        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
-        break;
-      case GSAlignments.flexEnd:
-        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
-        break;
-      case GSAlignments.flexStart:
-        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
-        break;
-      default:
-        resolvedCrossAxisAlignment = CrossAxisAlignment.center;
-    }
-
-    switch (flexDirection) {
-      case GSFlexDirections.row:
-        return Row(
-          mainAxisAlignment: resolvedMainAxisAlignment,
-          crossAxisAlignment: resolvedCrossAxisAlignment,
-          children: children,
-        );
-      case GSFlexDirections.column:
-        return Column(
-          mainAxisAlignment: resolvedMainAxisAlignment,
-          crossAxisAlignment: resolvedCrossAxisAlignment,
-          children: children,
-        );
-      default:
-        return Row(
-          mainAxisAlignment: resolvedMainAxisAlignment,
-          crossAxisAlignment: resolvedCrossAxisAlignment,
-          children: children,
-        );
-    }
-  }
+  return gsTextTransform != null
+      ? textTransformationMap[gsTextTransform]
+      : null;
+}
