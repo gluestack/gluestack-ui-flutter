@@ -9,7 +9,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focu
 class GSCheckBoxIndicator extends StatelessWidget {
   final Widget child;
   final GSStyle? style;
-  const GSCheckBoxIndicator({super.key, required this.child,this.style});
+  const GSCheckBoxIndicator({super.key, required this.child, this.style});
   //use styleResolver to resolve Color state in future
   Color? _resolvebgColor(
     GSStyle? styler, {
@@ -43,6 +43,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
 
     return styler?.bg;
   }
+
   //use styleResolver to resolve border state in future
   Color? _resolveborderColor(GSStyle? styler,
       {bool isHovered = false,
@@ -80,7 +81,8 @@ class GSCheckBoxIndicator extends StatelessWidget {
     final ancestorCheckBoxStyle = GSAncestorProvider.of(context)
         ?.decedentStyles?[checkBoxIndicatorConfig.descendantStyle.first];
 
-    final styler = resolveStyles(context, variantStyle: checkBoxIndicatorStyle,inlineStyle: style);
+    final styler = resolveStyles(context,
+        variantStyle: checkBoxIndicatorStyle, inlineStyle: style);
 
     final value = GSCheckBoxProvider.of(context);
     final isChecked = value?.isChecked ?? false;

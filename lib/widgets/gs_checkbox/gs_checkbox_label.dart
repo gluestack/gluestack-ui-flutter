@@ -39,6 +39,8 @@ class GSCheckBoxLabel extends StatelessWidget {
     );
   }
 
+
+//resolve this with styleResolver in future
   Color? _resolveColor(GSStyle? styler,
       {bool isChecked = false,
       bool isHovered = false,

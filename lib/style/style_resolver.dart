@@ -38,6 +38,7 @@ GSStyle? resolveStyles(
   Map<String, GSStyle?>? descendantStyles,
   List<String> descendantStyleKeys = const [],
 }) {
+  
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
   GSStyle? temp = variantStyle != null
       ? variantStyle.merge(inlineStyle,

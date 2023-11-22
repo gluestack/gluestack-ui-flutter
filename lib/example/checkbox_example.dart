@@ -28,6 +28,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               GSCheckBox(
                 size: GSSizes.$sm,

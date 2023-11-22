@@ -82,6 +82,17 @@ FontWeight? resolveFontWeightFromString(String? fontWeight) {
   return $GSFontWeights.fontWeightMap[fontWeight];
 }
 
+GSFlexDirections? resolveFlexDirectionFromString(String? flexDirection) {
+  if (flexDirection == null) {
+    return null;
+  }
+  const flexDirectionMap = {
+    'row': GSFlexDirections.row,
+    'column': GSFlexDirections.column,
+  };
+  return flexDirectionMap[flexDirection] ?? GSFlexDirections.row;
+}
+
 double? resolveSpaceFromString(String? space) {
   if (space == null) {
     return null;
@@ -141,6 +152,7 @@ double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
   return $GSLineHeight.lineHeightMap[lineHeight]! /
       resolveFontSizeFromString(fontSize)!;
 }
+
 double? resolveLetterSpacingFromString(String? letterSpacing) {
   if (letterSpacing == null) {
     return null;
@@ -181,7 +193,6 @@ GSVariants? resolveVariantFromString(String? variant) {
 }
 
 GSSizes? resolveSizesFromString(String? size) {
-  
   const sizeMap = {
     'xs': GSSizes.$xs,
     'sm': GSSizes.$sm,
@@ -200,7 +211,8 @@ GSAlignments? resolveAlignmentFromString(String? itemAlignment) {
     'start': GSAlignments.start,
     'end': GSAlignments.end,
     'space-between': GSAlignments.spaceBetween,
-    'flex-end': GSAlignments.flexEnd
+    'flex-end': GSAlignments.flexEnd,
+    'flex-start':GSAlignments.flexStart,
   };
 
   return itemAlignment != null ? itemAlignmentMap[itemAlignment] : null;
@@ -228,6 +240,7 @@ double resolveAlignment(GSAlignments? suppliedAlignment) {
     GSAlignments.end: 1,
     GSAlignments.spaceBetween: -1,
     GSAlignments.flexEnd: 1,
+    GSAlignments.flexStart:1
   };
 
   return suppliedAlignment != null
@@ -243,3 +256,76 @@ GSOrientations? resolveOrientationsFromString(String? orientation) {
 
   return orientation != null ? orientationMap[orientation] : null;
 }
+
+
+Widget resolveFlexWidget(
+      {required GSFlexDirections? flexDirection,
+      required GSAlignments? mainAxisAlignment,
+      required GSAlignments? crossAxisAlignment,
+      required List<Widget> children}) {
+    late MainAxisAlignment resolvedMainAxisAlignment;
+    late CrossAxisAlignment resolvedCrossAxisAlignment;
+
+    switch (mainAxisAlignment) {
+      case GSAlignments.start:
+        resolvedMainAxisAlignment = MainAxisAlignment.start;
+        break;
+      case GSAlignments.center:
+        resolvedMainAxisAlignment = MainAxisAlignment.center;
+        break;
+      case GSAlignments.end:
+        resolvedMainAxisAlignment = MainAxisAlignment.end;
+        break;
+      case GSAlignments.spaceBetween:
+        resolvedMainAxisAlignment = MainAxisAlignment.spaceBetween;
+        break;
+      case GSAlignments.flexEnd:
+        resolvedMainAxisAlignment = MainAxisAlignment.end;
+        break;
+      case GSAlignments.flexStart:
+        resolvedMainAxisAlignment = MainAxisAlignment.start;
+        break;
+      default:
+        resolvedMainAxisAlignment = MainAxisAlignment.start;
+    }
+    switch (crossAxisAlignment) {
+      case GSAlignments.start:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.start;
+        break;
+      case GSAlignments.center:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.center;
+        break;
+      case GSAlignments.end:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      case GSAlignments.flexEnd:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      case GSAlignments.flexStart:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      default:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.center;
+    }
+
+    switch (flexDirection) {
+      case GSFlexDirections.row:
+        return Row(
+          mainAxisAlignment: resolvedMainAxisAlignment,
+          crossAxisAlignment: resolvedCrossAxisAlignment,
+          children: children,
+        );
+      case GSFlexDirections.column:
+        return Column(
+          mainAxisAlignment: resolvedMainAxisAlignment,
+          crossAxisAlignment: resolvedCrossAxisAlignment,
+          children: children,
+        );
+      default:
+        return Row(
+          mainAxisAlignment: resolvedMainAxisAlignment,
+          crossAxisAlignment: resolvedCrossAxisAlignment,
+          children: children,
+        );
+    }
+  }

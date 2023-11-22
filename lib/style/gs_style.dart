@@ -37,9 +37,11 @@ enum GSDirection { row, column }
 
 enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
-enum GSAlignments { start, center, end, spaceBetween, flexEnd }
+enum GSAlignments { start, center, end, spaceBetween, flexEnd,flexStart }
 
 enum GSOrientations { horizontal, vertical }
+
+enum GSFlexDirections { row, column }
 
 class GSProps {
   GSActions? action;
@@ -447,11 +449,13 @@ class GSStyle extends BaseStyle<GSStyle> {
   Variants? variants;
   GSProps? props;
   Map<String, GSStyle?>? descendantStyles;
+  GSFlexDirections? flexDirection;
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
   double? contentWidth;
   double? contentMaxWidth;
   AlignmentGeometry? alignment;
+
   Color? progressValueColor;
 
   GSStyle(
@@ -470,6 +474,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.gap,
       this.outlineWidth,
       this.outlineStyle,
+      this.flexDirection,
       this.borderBottomWidth,
       this.textStyle,
       this.checked,
@@ -546,6 +551,7 @@ class GSStyle extends BaseStyle<GSStyle> {
           : overrideStyle?.checked,
       outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
+      flexDirection: overrideStyle?.flexDirection??flexDirection,
       textStyle: overrideStyle?.textStyle != null
           ? TextStyle(
               height: overrideStyle?.textStyle?.height ?? textStyle?.height,
@@ -594,6 +600,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       justifyContent: overrideStyle?.justifyContent ?? justifyContent,
       contentWidth: overrideStyle?.contentWidth ?? contentWidth,
       contentMaxWidth: overrideStyle?.contentMaxWidth ?? contentMaxWidth,
+      alignment: overrideStyle?.alignment??alignment,
       progressValueColor:
           overrideStyle?.progressValueColor ?? progressValueColor,
     );
@@ -606,6 +613,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   }) {
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
+      flexDirection:resolveFlexDirectionFromString(data?['flexDirection']) ,
       height: resolveSpaceFromString(
         data?['h'].toString() ?? data?['height'].toString(),
       ),
@@ -784,7 +792,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
         onInvaild: GSStyle(
           borderColor: resolveColorFromString(
-              data?['_dark']?['":invalid"']?['borderColor']), 
+              data?['_dark']?['":invalid"']?['borderColor']),
         ),
         checked: GSStyle(
             color:
