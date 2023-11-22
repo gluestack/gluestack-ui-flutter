@@ -5,6 +5,7 @@ class GSCheckBoxGroup extends StatefulWidget {
   final List<String> values;
   final Widget child;
   final void Function(List<String>?)? onChanged;
+
   const GSCheckBoxGroup(
       {super.key, required this.child, this.onChanged, this.values = const []});
 

@@ -13,9 +13,13 @@ class GSCheckBox extends StatefulWidget {
   final Widget icon;
   final Widget? label;
   final GSSizes? size;
+  final bool defaultIsChecked;
+  final bool? isChecked;
   final bool isDisabled;
+  final bool isReadOnly;
+  final bool isFocusVisible;
   final bool isInvalid;
-  
+  final bool isHovered;
   final GSStyle? style;
   final void Function(bool?)? onChanged;
   const GSCheckBox({
@@ -26,6 +30,11 @@ class GSCheckBox extends StatefulWidget {
     this.label,
     this.onChanged,
     this.style,
+    this.isChecked,
+    this.isFocusVisible=false,
+    this.isHovered = false,
+    this.isReadOnly = false,
+    this.defaultIsChecked = false,
     this.isDisabled = false,
     this.isInvalid = false,
   }) : assert(
@@ -43,7 +52,7 @@ class _GSCheckBoxState extends State<GSCheckBox> {
   late bool isChecked;
   @override
   void initState() {
-    isChecked = false;
+    isChecked = widget.defaultIsChecked;
     super.initState();
   }
 
@@ -61,11 +70,12 @@ class _GSCheckBoxState extends State<GSCheckBox> {
     return GSAncestor(
       decedentStyles: styler?.descendantStyles,
       child: GSFocusableActionDetector(
+      
         mouseCursor: widget.isDisabled ? SystemMouseCursors.forbidden : null,
         child: GSCheckBoxProvider(
           isInvalid: widget.isInvalid,
           isDisabled: widget.isDisabled,
-          isChecked: isChecked,
+          isChecked: widget.isChecked ?? isChecked,
           value: widget.value,
           onChanged: widget.isDisabled ? null : widget.onChanged,
           child: InkWell(
@@ -76,12 +86,16 @@ class _GSCheckBoxState extends State<GSCheckBox> {
               onTap: widget.onChanged != null && !widget.isDisabled
                   ? () {
                       if (groupValue != null) {
-                        groupValue.updateValues(widget.value);
+                        if (!widget.isReadOnly) {
+                          groupValue.updateValues(widget.value);
+                        }
                         groupValue.onChanged!(groupValue.values);
                       } else {
-                        setState(() {
-                          isChecked = !isChecked;
-                        });
+                        if (!widget.isReadOnly) {
+                          setState(() {
+                            isChecked = !isChecked;
+                          });
+                        }
                       }
                       widget.onChanged!(isChecked);
                     }

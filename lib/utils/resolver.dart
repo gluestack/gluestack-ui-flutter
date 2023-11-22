@@ -269,6 +269,79 @@ GSOrientations? resolveOrientationsFromString(String? orientation) {
   return orientation != null ? orientationMap[orientation] : null;
 }
 
+
+Widget resolveFlexWidget(
+      {required GSFlexDirections? flexDirection,
+      required GSAlignments? mainAxisAlignment,
+      required GSAlignments? crossAxisAlignment,
+      required List<Widget> children}) {
+    late MainAxisAlignment resolvedMainAxisAlignment;
+    late CrossAxisAlignment resolvedCrossAxisAlignment;
+
+    switch (mainAxisAlignment) {
+      case GSAlignments.start:
+        resolvedMainAxisAlignment = MainAxisAlignment.start;
+        break;
+      case GSAlignments.center:
+        resolvedMainAxisAlignment = MainAxisAlignment.center;
+        break;
+      case GSAlignments.end:
+        resolvedMainAxisAlignment = MainAxisAlignment.end;
+        break;
+      case GSAlignments.spaceBetween:
+        resolvedMainAxisAlignment = MainAxisAlignment.spaceBetween;
+        break;
+      case GSAlignments.flexEnd:
+        resolvedMainAxisAlignment = MainAxisAlignment.end;
+        break;
+      case GSAlignments.flexStart:
+        resolvedMainAxisAlignment = MainAxisAlignment.start;
+        break;
+      default:
+        resolvedMainAxisAlignment = MainAxisAlignment.start;
+    }
+    switch (crossAxisAlignment) {
+      case GSAlignments.start:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.start;
+        break;
+      case GSAlignments.center:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.center;
+        break;
+      case GSAlignments.end:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      case GSAlignments.flexEnd:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      case GSAlignments.flexStart:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      default:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.center;
+    }
+
+    switch (flexDirection) {
+      case GSFlexDirections.row:
+        return Row(
+          mainAxisAlignment: resolvedMainAxisAlignment,
+          crossAxisAlignment: resolvedCrossAxisAlignment,
+          children: children,
+        );
+      case GSFlexDirections.column:
+        return Column(
+          mainAxisAlignment: resolvedMainAxisAlignment,
+          crossAxisAlignment: resolvedCrossAxisAlignment,
+          children: children,
+        );
+      default:
+        return Row(
+          mainAxisAlignment: resolvedMainAxisAlignment,
+          crossAxisAlignment: resolvedCrossAxisAlignment,
+          children: children,
+        );
+    }
+  }
+
 GSTextTransform? resolveTextTransformFromString(String? gsTextTransform) {
   const textTransformationMap = {
     'uppercase': GSTextTransform.uppercase,
