@@ -6,6 +6,7 @@ import 'package:gluestack_flutter_pro/example/button_example.dart';
 import 'package:gluestack_flutter_pro/example/center_example.dart';
 import 'package:gluestack_flutter_pro/example/checkbox_example.dart';
 import 'package:gluestack_flutter_pro/example/divider_example.dart';
+import 'package:gluestack_flutter_pro/example/fab_example.dart';
 import 'package:gluestack_flutter_pro/example/heading_example.dart';
 import 'package:gluestack_flutter_pro/example/hstack_example.dart';
 import 'package:gluestack_flutter_pro/example/icon_example.dart';
@@ -59,23 +60,42 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
-                      Stack(
+                      // Stack(
                        
-                        children: [
-                         Container(
-                          height: 360,
-                          width: 320,
-                          color: Colors.red,
-                         ),
-                         const GSFab(
-                            icon: GSFabIcon(icon: Icons.add),
-                            size: GSSizes.$sm,
-                            placement: GSPlacements.bottomCenter,
-                            label: GSFabLabel(text: 'hello world'),
-                          ),
-                        ],
-                      ),
+                      //   children: [
+                      //    Container(
+                      //     height: 360,
+                      //     width: 320,
+                      //     color: Colors.red,
+                      //    ),
+                      //     GSFab(
+                          
+                      //     onPressed: () {
+                            
+                      //     },
+                      //       icon: GSFabIcon(icon: Icons.add),
+                      //       size: GSSizes.$sm,
+                      //       placement: GSPlacements.bottomCenter,
+                      //       label: GSFabLabel(text: 'hello world'),
+                      //     ),
+                      //   ],
+                      // ),
                  
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const FabExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Fab',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(

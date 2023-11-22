@@ -11,13 +11,21 @@ class GSFab extends StatelessWidget {
   final Widget? label;
   final GSStyle? style;
   final Widget? icon;
+  final bool isDisabled;
+  final bool isPressed;
+  final bool isHovered;
+  final void Function()? onPressed;
   const GSFab(
       {super.key,
+      required this.onPressed,
       this.size,
       this.label,
-       this.icon,
+      this.icon,
       this.placement,
-      this.style});
+      this.style,
+      this.isHovered=false,
+      this.isPressed = false,
+      this.isDisabled = false});
 
   @override
   Widget build(BuildContext context) {
@@ -34,31 +42,34 @@ class GSFab extends StatelessWidget {
 
     final widget = GSAncestor(
       decedentStyles: styler.descendantStyles,
-      child: ElevatedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(styler.borderRadius ?? 0.0))),
-            padding: MaterialStateProperty.all(styler.padding),
-            backgroundColor: MaterialStateProperty.resolveWith((states) {
-              if (states.contains(MaterialState.pressed)) {
-                return styler.onActive?.bg;
-              }
-              if (states.contains(MaterialState.hovered)) {
-                return styler.onHover?.bg;
-              }
+      child: Opacity(
+        opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
+        child: ElevatedButton(
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(styler.borderRadius ?? 0.0))),
+              padding: MaterialStateProperty.all(styler.padding),
+              backgroundColor: MaterialStateProperty.resolveWith((states) {
+                if (states.contains(MaterialState.pressed) || isPressed) {
+                  return styler.onActive?.bg;
+                }
+                if (states.contains(MaterialState.hovered)||isHovered) {
+                  return styler.onHover?.bg;
+                }
 
-              return styler.bg;
-            }),
-          ),
-          onPressed: () {},
-          child: resolveFlexWidget(
-            mainAxisSize: MainAxisSize.min,
-            flexDirection: styler.flexDirection,
-            mainAxisAlignment: styler.justifyContent,
-            crossAxisAlignment: styler.alignItems,
-            children: [if (icon != null) icon!, if (label != null) label!],
-          )),
+                return styler.bg;
+              }),
+            ),
+            onPressed: isDisabled ? null : onPressed,
+            child: resolveFlexWidget(
+              mainAxisSize: MainAxisSize.min,
+              flexDirection: styler.flexDirection,
+              mainAxisAlignment: styler.justifyContent,
+              crossAxisAlignment: styler.alignItems,
+              children: [if (icon != null) icon!, if (label != null) label!],
+            )),
+      ),
     );
 
     return Positioned.fill(
