@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/example/alert_example.dart';
+import 'package:gluestack_flutter_pro/example/avatar_example.dart';
 import 'package:gluestack_flutter_pro/example/badge_example.dart';
 import 'package:gluestack_flutter_pro/example/button_example.dart';
 import 'package:gluestack_flutter_pro/example/center_example.dart';
@@ -14,6 +15,7 @@ import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 import 'package:gluestack_flutter_pro/example/spinner_example.dart';
 import 'package:gluestack_flutter_pro/example/text_area_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
+import 'package:gluestack_flutter_pro/example/toast_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
@@ -69,6 +71,21 @@ class MyApp extends StatelessWidget {
                           ),
                         ],
                       ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const AvatarExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Avatar',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(
@@ -302,6 +319,21 @@ class MyApp extends StatelessWidget {
                     },
                     child: const Text(
                       'GS Text Area',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const ToastExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Toast',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
