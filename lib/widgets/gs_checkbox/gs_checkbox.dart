@@ -15,13 +15,13 @@ class GSCheckBox extends StatefulWidget {
   final GSSizes? size;
   final bool defaultIsChecked;
   final bool? isChecked;
-  final bool isDisabled;
-  final bool isReadOnly;
+  final bool? isDisabled;
+  final bool? isReadOnly;
   final bool isFocusVisible;
-  final bool isInvalid;
+  final bool? isInvalid;
   final bool isHovered;
   final GSStyle? style;
-  final void Function(bool?)? onChanged;
+  final void Function(bool? value)? onChanged;
   const GSCheckBox({
     super.key,
     required this.icon,
@@ -31,12 +31,12 @@ class GSCheckBox extends StatefulWidget {
     this.onChanged,
     this.style,
     this.isChecked,
-    this.isFocusVisible=false,
+    this.isInvalid,
+    this.isDisabled,
+    this.isReadOnly,
+    this.isFocusVisible = false,
     this.isHovered = false,
-    this.isReadOnly = false,
     this.defaultIsChecked = false,
-    this.isDisabled = false,
-    this.isInvalid = false,
   }) : assert(
             size == GSSizes.$lg ||
                 size == GSSizes.$md ||
@@ -50,10 +50,23 @@ class GSCheckBox extends StatefulWidget {
 
 class _GSCheckBoxState extends State<GSCheckBox> {
   late bool isChecked;
+  late GSCheckBoxGroupProvider? groupValue;
   @override
   void initState() {
     isChecked = widget.defaultIsChecked;
+
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    groupValue = GSCheckBoxGroupProvider.of(context);
+    if (widget.defaultIsChecked ||
+        (widget.isChecked != null && widget.isChecked!)) {
+      groupValue?.updateValues(widget.value, shouldUpdate: false);
+    }
+    isChecked = groupValue?.values.contains(widget.value) ?? isChecked;
+    super.didChangeDependencies();
   }
 
   @override
@@ -64,38 +77,41 @@ class _GSCheckBoxState extends State<GSCheckBox> {
         size: GsCheckBoxStyle.size[checkBoxSize],
         descendantStyleKeys: checkBoxConfig.descendantStyle,
         inlineStyle: widget.style);
-
-    final groupValue = GSCheckBoxGroupProvider.of(context);
-    isChecked = groupValue?.values.contains(widget.value) ?? isChecked;
+    final isCheckBoxDisabled =
+        widget.isDisabled ?? groupValue?.isDisabled ?? false;
+    final isCheckBoxInvaild =
+        widget.isInvalid ?? groupValue?.isInvalid ?? false;
+    final isCheckBoxReadOnly =
+        widget.isReadOnly ?? groupValue?.isReadOnly ?? false;
     return GSAncestor(
       decedentStyles: styler?.descendantStyles,
       child: GSFocusableActionDetector(
-      
-        mouseCursor: widget.isDisabled ? SystemMouseCursors.forbidden : null,
+        isFocused: widget.isFocusVisible,
+        isHovered: widget.isHovered,
+        mouseCursor: isCheckBoxDisabled ? SystemMouseCursors.forbidden : null,
         child: GSCheckBoxProvider(
-          isInvalid: widget.isInvalid,
-          isDisabled: widget.isDisabled,
+          isInvalid: isCheckBoxInvaild,
+          isDisabled: isCheckBoxDisabled,
           isChecked: widget.isChecked ?? isChecked,
           value: widget.value,
-          onChanged: widget.isDisabled ? null : widget.onChanged,
+          onChanged: isCheckBoxDisabled ? null : widget.onChanged,
           child: InkWell(
               highlightColor: Colors.transparent,
               hoverColor: Colors.transparent,
               mouseCursor:
-                  widget.isDisabled ? SystemMouseCursors.forbidden : null,
-              onTap: widget.onChanged != null && !widget.isDisabled
+                  isCheckBoxDisabled ? SystemMouseCursors.forbidden : null,
+              onTap: widget.onChanged != null && !isCheckBoxDisabled
                   ? () {
                       if (groupValue != null) {
-                        if (!widget.isReadOnly) {
-                          groupValue.updateValues(widget.value);
+                        if (!isCheckBoxReadOnly && widget.isChecked == null) {
+                          groupValue?.updateValues(widget.value);
                         }
-                        groupValue.onChanged!(groupValue.values);
-                      } else {
-                        if (!widget.isReadOnly) {
-                          setState(() {
-                            isChecked = !isChecked;
-                          });
-                        }
+                        groupValue?.onChanged!(groupValue?.values ?? []);
+                      }
+                      if (!isCheckBoxReadOnly && widget.isChecked == null) {
+                        setState(() {
+                          isChecked = !isChecked;
+                        });
                       }
                       widget.onChanged!(isChecked);
                     }

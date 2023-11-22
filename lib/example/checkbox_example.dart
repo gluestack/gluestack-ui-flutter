@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/token/space_token.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_group.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_icon.dart';
@@ -20,86 +19,134 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SizedBox(
+      body: Container(
+        margin: const EdgeInsets.all(20),
         width: double.infinity,
-        child: GSCheckBoxGroup(
-          onChanged: (p0) {
-            print(p0);
-          },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              GSCheckBox(
-                size: GSSizes.$sm,
-                value: valueList[0],
-                onChanged: (p0) {
-                  print("individual check box ");
-                },
-                icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                    child: const GSCheckBoxIcon()),
-                label: const GSCheckBoxLabel(text: 'check box 1'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            GSCheckBox(
+              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+              value: "value 1",
+              onChanged: (value) {
+                print("is checkbox checked $value");
+              },
+              label: const GSCheckBoxLabel(text: "value1"),
+            ),
+            GSCheckBox(
+              isChecked: true,
+              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+              value: "value 2",
+              onChanged: (value) {
+                print("is checkbox checked $value");
+              },
+              label: const GSCheckBoxLabel(text: "value2"),
+            ),
+            GSCheckBox(
+              defaultIsChecked: true,
+              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+              value: "value 3",
+              onChanged: (value) {
+                print("is checkbox checked $value");
+              },
+              label: const GSCheckBoxLabel(text: "value3"),
+            ),
+            GSCheckBox(
+              isDisabled: true,
+              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+              value: "value 4",
+              onChanged: (value) {
+                print("is checkbox checked $value");
+              },
+              label: const GSCheckBoxLabel(text: "value4"),
+            ),
+            GSCheckBox(
+              isInvalid: true,
+              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+              value: "value 5",
+              onChanged: (value) {
+                print("is checkbox checked $value");
+              },
+              label: const GSCheckBoxLabel(text: "value5"),
+            ),
+            GSCheckBox(
+              isInvalid: true,
+              isDisabled: true,
+              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+              value: "value 6",
+              onChanged: (value) {
+                print("is checkbox checked $value");
+              },
+              label: const GSCheckBoxLabel(text: "value6"),
+            ),
+            GSCheckBoxGroup(
+   
+              onChanged: (values) {
+                print(values);
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GSCheckBox(
+                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+                    value: "value 1",
+                    onChanged: (value) {
+                      print("is checkbox checked $value");
+                    },
+                    label: const GSCheckBoxLabel(text: "value1"),
+                  ),
+                  GSCheckBox(
+                    isChecked: true,
+                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+                    value: "value 2",
+                    onChanged: (value) {
+                      print("is checkbox checked $value");
+                    },
+                    label: const GSCheckBoxLabel(text: "value2"),
+                  ),
+                  GSCheckBox(
+                    defaultIsChecked: true,
+                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+                    value: "value 3",
+                    onChanged: (value) {
+                      print("is checkbox checked $value");
+                    },
+                    label: const GSCheckBoxLabel(text: "value3"),
+                  ),
+                  GSCheckBox(
+                    isDisabled: true,
+                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+                    value: "value 4",
+                    onChanged: (value) {
+                      print("is checkbox checked $value");
+                    },
+                    label: const GSCheckBoxLabel(text: "value4"),
+                  ),
+                  GSCheckBox(
+                    isInvalid: true,
+                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+                    value: "value 5",
+                    onChanged: (value) {
+                      print("is checkbox checked $value");
+                    },
+                    label: const GSCheckBoxLabel(text: "value5"),
+                  ),
+                  GSCheckBox(
+                    isInvalid: true,
+                    isDisabled: true,
+                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+                    value: "value 6",
+                    onChanged: (value) {
+                      print("is checkbox checked $value");
+                    },
+                    label: const GSCheckBoxLabel(text: "value6"),
+                  ),
+                ],
               ),
-              GSCheckBox(
-                value: valueList[1],
-                onChanged: (p0) {
-                  // setState(() {});
-                },
-                icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$2),
-                    ),
-                    child: const GSCheckBoxIcon()),
-                label: const GSCheckBoxLabel(text: 'check box 2'),
-              ),
-              GSCheckBox(
-                size: GSSizes.$lg,
-                onChanged: (p0) {
-                  // setState(() {});
-                },
-                value: valueList[2],
-                icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-                label: const GSCheckBoxLabel(text: 'check box 3'),
-              ),
-              GSCheckBox(
-                isInvalid: true,
-                onChanged: (p0) {
-                  // setState(() {});
-                },
-                value: valueList[3],
-                icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-                label: const GSCheckBoxLabel(text: 'check box 3'),
-              ),
-              GSCheckBox(
-                isDisabled: true,
-                size: GSSizes.$lg,
-                onChanged: (p0) {
-                  // setState(() {});
-                },
-                value: valueList[4],
-                icon: GSCheckBoxIndicator(
-                    style:
-                        GSStyle(onDisabled: GSStyle(borderColor: Colors.amber)),
-                    child: const GSCheckBoxIcon()),
-                label: GSCheckBoxLabel(
-                    style: GSStyle(color: Colors.blue), text: 'check box 4'),
-              ),
-              GSCheckBox(
-                isDisabled: true,
-                isInvalid: true,
-                size: GSSizes.$lg,
-                onChanged: (p0) {
-                  // setState(() {});
-                },
-                value: valueList[5],
-                icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-                label: const GSCheckBoxLabel(text: 'check box 3'),
-              ),
-            ],
-          ),
+            )
+          ],
         ),
+       
       ),
     );
   }
