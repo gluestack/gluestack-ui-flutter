@@ -300,7 +300,9 @@ Widget resolveFlexWidget(
       {required GSFlexDirections? flexDirection,
       required GSAlignments? mainAxisAlignment,
       required GSAlignments? crossAxisAlignment,
-      required List<Widget> children}) {
+      required List<Widget> children,
+      MainAxisSize mainAxisSize=MainAxisSize.max
+      }) {
     late MainAxisAlignment resolvedMainAxisAlignment;
     late CrossAxisAlignment resolvedCrossAxisAlignment;
 
@@ -349,6 +351,7 @@ Widget resolveFlexWidget(
     switch (flexDirection) {
       case GSFlexDirections.row:
         return Row(
+          mainAxisSize: mainAxisSize,
           mainAxisAlignment: resolvedMainAxisAlignment,
           crossAxisAlignment: resolvedCrossAxisAlignment,
           children: children,
@@ -361,6 +364,7 @@ Widget resolveFlexWidget(
         );
       default:
         return Row(
+          mainAxisSize: mainAxisSize,
           mainAxisAlignment: resolvedMainAxisAlignment,
           crossAxisAlignment: resolvedCrossAxisAlignment,
           children: children,

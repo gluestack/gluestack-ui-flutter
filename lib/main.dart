@@ -23,6 +23,7 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 
 import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab_label.dart';
 
 
@@ -66,7 +67,8 @@ class MyApp extends StatelessWidget {
                           width: 320,
                           color: Colors.red,
                          ),
-                          GSFab(
+                         const GSFab(
+                            icon: GSFabIcon(icon: Icons.add),
                             size: GSSizes.$sm,
                             placement: GSPlacements.bottomCenter,
                             label: GSFabLabel(text: 'hello world'),

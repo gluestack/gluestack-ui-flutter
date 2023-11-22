@@ -15,6 +15,9 @@ GSStyle baseFabStyle = GSStyle(
     onActive: fabStyle.onActive,
     onDisabled: fabStyle.onDisabled,
     props: fabStyle.props,
+    flexDirection: fabStyle.flexDirection,
+    alignItems: fabStyle.alignItems,
+    justifyContent: fabStyle.justifyContent,
     descendantStyles: fabStyle.descendantStyles);
 
 class GSFabStyle {

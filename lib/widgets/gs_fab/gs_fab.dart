@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
+import 'package:gluestack_flutter_pro/utils/resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab_style.dart';
 
@@ -9,7 +10,14 @@ class GSFab extends StatelessWidget {
   final GSPlacements? placement;
   final Widget? label;
   final GSStyle? style;
-  const GSFab({super.key, this.size, this.label, this.placement, this.style});
+  final Widget? icon;
+  const GSFab(
+      {super.key,
+      this.size,
+      this.label,
+       this.icon,
+      this.placement,
+      this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +52,12 @@ class GSFab extends StatelessWidget {
             }),
           ),
           onPressed: () {},
-          child: Row(
+          child: resolveFlexWidget(
             mainAxisSize: MainAxisSize.min,
-            children: [if (label != null) label!],
+            flexDirection: styler.flexDirection,
+            mainAxisAlignment: styler.justifyContent,
+            crossAxisAlignment: styler.alignItems,
+            children: [if (icon != null) icon!, if (label != null) label!],
           )),
     );
 
