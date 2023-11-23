@@ -699,7 +699,7 @@ this.textTransform});
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
         fontSize: resolveFontSizeFromString(
-            data?['props']?['size'] ?? data?['fontSize']),
+            data?['fontSize']?? data?['props']?['size'].toString()),
         height:
             resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
          decoration:resolveTextDecorationFromString(data?['textDecorationLine']),
