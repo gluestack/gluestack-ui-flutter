@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_fallBack_text_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_provider.dart';
 
 /// GSAvatarFallBackText is a Flutter widget that displays a text within a GSBadge widget.
 class GSAvatarFallBackText extends StatelessWidget {
@@ -56,9 +56,6 @@ class GSAvatarFallBackText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Access the  GS Avatar provider to retrieve  GS Avatar related information.
-    final value = GSAvatarProvider.of(context);
-
     String shortTextMaker() {
       if (text.isEmpty) {
         return '';
@@ -74,20 +71,28 @@ class GSAvatarFallBackText extends StatelessWidget {
     }
 
     final shortHandText = shortTextMaker().trim();
+    if (avatarFallBackStyle.textTransform == GSTextTransform.uppercase) {
+      shortHandText.toUpperCase();
+    }
+
+    final ancestorStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsAvatarFallbackTextConfig.ancestorStyle.first];
 
     // Define a base text style.
     final baseTextStyle =
-        avatarFallBackStyle.textStyle?.merge(value?.avatarStyle.textStyle);
+        avatarFallBackStyle.textStyle?.merge(ancestorStyles?.textStyle);
 
     // Merge the default text style with the provided GSStyle or custom style.
-    final mergedStyle = baseTextStyle?.merge(style?.textStyle);
+    final mergedStyle =
+        baseTextStyle?.merge(style != null ? style!.textStyle : null);
 
     // Create a Text widget with the specified text and merged style.
     //TODO: handle decendent style overwrite for text transform
     return Text(
-      avatarFallBackStyle.textTransform == null
+      avatarFallBackStyle.textTransform == null || style?.textTransform == null
           ? shortHandText
-          : avatarFallBackStyle.textTransform == GSTextTransform.uppercase
+          : avatarFallBackStyle.textTransform == GSTextTransform.uppercase ||
+                  style?.textTransform == GSTextTransform.uppercase
               ? shortHandText.toUpperCase()
               : shortHandText.toLowerCase(),
       style: mergedStyle,
