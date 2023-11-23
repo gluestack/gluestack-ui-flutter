@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/font_size_token.dart';
+import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_icon.dart';
@@ -47,9 +48,12 @@ class KSMainComponent extends StatelessWidget {
                 child: GSHStack(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const GSButtonIcon(
+                      GSButtonIcon(
                         icon: Icons.list,
                         iconSize: GSSizes.$xl,
+                        style: GSStyle(
+                          color: $GSColors.textLight800,
+                        ),
                       ),
                       const SizedBox(
                         width: 5,
@@ -57,8 +61,18 @@ class KSMainComponent extends StatelessWidget {
                       GSButtonText(
                         text: 'List your place',
                         style: GSStyle(
-                            textStyle:
-                                const TextStyle(fontSize: $GSFontSize.$md)),
+                          textStyle: const TextStyle(
+                            fontSize: $GSFontSize.$md,
+                            color: $GSColors.textLight800,
+                          ),
+                          dark: GSStyle(
+                            textStyle: const TextStyle(
+                              fontSize: $GSFontSize.$md,
+                              color:
+                                  $GSColors.textDark300, //Error: Dpes not work
+                            ),
+                          ),
+                        ),
                       ),
                     ]),
                 onPressed: () {
@@ -108,8 +122,15 @@ class KSMainComponent extends StatelessWidget {
                       child: GSButtonText(
                         text: title,
                         style: GSStyle(
-                          textStyle:
-                              const TextStyle(fontWeight: FontWeight.w400),
+                          textStyle: const TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: $GSColors.textLight900),
+                          dark: GSStyle(
+                            textStyle: const TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: $GSColors.textDark50, //Error: Does not work
+                            ),
+                          ),
                         ),
                       ))
                 ]

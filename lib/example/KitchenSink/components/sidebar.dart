@@ -57,7 +57,7 @@ class _KSSideBarState extends State<KSSideBar> {
               ],
             ),
             GSSwitch(
-              size: GSSizes.$lg,
+              size: GSSizes.$sm,
               value: switchVal1,
               onToggle: (val) {
                 setState(() {

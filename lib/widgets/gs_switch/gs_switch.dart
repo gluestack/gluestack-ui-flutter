@@ -128,7 +128,7 @@ cursor: kIsWeb && widget.isDisabled
           ? MouseCursor.defer
           : SystemMouseCursors.forbidden,
 */
-    print("scale: ${styler.scale}");
+    // print("scale: ${styler.scale}");
     return Transform.scale(
       scale: styler.scale ?? 1,
       child: ConstrainedBox(

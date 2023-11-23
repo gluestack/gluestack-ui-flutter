@@ -30,7 +30,7 @@ class LayoutExample extends StatelessWidget {
                   themeProvider.toggleTheme();
                 },
               ),
-              Expanded(
+              const Expanded(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32, vertical: 21),
                   child: GSHStack(
