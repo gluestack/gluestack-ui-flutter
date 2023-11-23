@@ -1087,6 +1087,28 @@ this.textTransform,
           : null,
 
       ///aaa
+        trackColorTrue: data?['props'] != null && data?['props']?['trackColor'] != null
+          ? resolveColorFromString(data?['props']?['trackColor']?['true'])
+          : null,
+      trackColorFalse: data?['props'] != null && data?['props']?['trackColor'] != null
+          ? resolveColorFromString(data?['props']?['trackColor']?['false'])
+          : null,
+      thumbColor: data?['props'] != null && data?['props']?['thumbColor'] != null
+          ? resolveColorFromString(data?['props']?['thumbColor'])
+          : null,
+      activeThumbColor:
+          data?['props'] != null && data?['props']?['activeThumbColor'] != null
+              ? resolveColorFromString(data?['props']?['activeThumbColor'])
+              : null,
+      iosBackgroundColor:
+          data?['props'] != null && data?['props']?['ios_backgroundColor'] != null
+              ? resolveColorFromString(data?['props']?['ios_backgroundColor'])
+              : null,
+      scale: data?['transform'] != null
+          ? (data?['transform'].first as Map).isNotEmpty
+              ? (data?['transform'].first as Map)['scale']
+              : null
+          : null,
     );
   }
 }
