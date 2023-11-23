@@ -97,10 +97,10 @@ double? resolveSpaceFromString(String? space) {
     return $GSSpace.spaceMap[space];
   }
   if (space.contains('\$')) {
-    if(space.contains('-')){
+    if (space.contains('-')) {
       return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
-  }
-  return $GSSpace.spaceMap[space.substring(1)];
+    }
+    return $GSSpace.spaceMap[space.substring(1)];
   }
   return $GSSpace.spaceMap[space];
 }
@@ -151,6 +151,7 @@ double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
   return $GSLineHeight.lineHeightMap[lineHeight]! /
       resolveFontSizeFromString(fontSize)!;
 }
+
 double? resolveLetterSpacingFromString(String? letterSpacing) {
   if (letterSpacing == null) {
     return null;

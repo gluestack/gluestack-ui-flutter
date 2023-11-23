@@ -249,7 +249,10 @@ class GSSize {
               fromVariant: true)
           : null,
       $full: data?['full'] != null
-          ? GSStyle.fromMap(data: data?['full'], fromVariant: true)
+          ? GSStyle.fromMap(
+              data: data?['full'],
+              descendantStyle: descendantStyle,
+              fromVariant: true)
           : null,
     );
   }
@@ -478,8 +481,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   Map<String, GSStyle?>? descendantStyles;
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
-  double? contentWidth;
-  double? contentMaxWidth;
+  double? maxWidth;
   AlignmentGeometry? alignment;
   Color? progressValueColor;
   double? badgeHeight;
@@ -527,11 +529,11 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.alignItems,
       this.justifyContent,
       this.alignment,
-      this.contentMaxWidth,
-      this.contentWidth,
+      this.maxWidth,
       this.progressValueColor,
       this.badgeHeight,
-      this.badgeWidth,this.textTransform});
+      this.badgeWidth,
+      this.textTransform});
 
   @override
   copy() {
@@ -629,8 +631,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       android: overrideStyle?.android ?? android,
       alignItems: overrideStyle?.alignItems ?? alignItems,
       justifyContent: overrideStyle?.justifyContent ?? justifyContent,
-      contentWidth: overrideStyle?.contentWidth ?? contentWidth,
-      contentMaxWidth: overrideStyle?.contentMaxWidth ?? contentMaxWidth,
+      maxWidth: overrideStyle?.maxWidth ?? maxWidth,
       progressValueColor:
           overrideStyle?.progressValueColor ?? progressValueColor,
       textTransform: overrideStyle?.textTransform ?? textTransform,
@@ -642,12 +643,17 @@ class GSStyle extends BaseStyle<GSStyle> {
     List<String> descendantStyle = const [],
     bool fromVariant = false,
   }) {
+    // print(data?['_content']);
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
       height: resolveSpaceFromString(
         data?['h'].toString() ?? data?['height'].toString(),
       ),
-      width: resolveSpaceFromString(data?['w'] ?? data?['width']),
+      width: data?['w'] != null
+          ? data!['w']?.contains('%')
+              ? double.tryParse(data['w']?.replaceAll('%', ''))! / 100
+              : resolveSpaceFromString(data['w'] ?? data['width'])
+          : resolveSpaceFromString(data?['w'] ?? data?['width']),
       badgeHeight: resolveSpaceFromString(
         data?['_badge']?['h'],
       ),
@@ -656,15 +662,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       textTransform: resolveTextTransformFromString(data?['textTransform']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-      //To be removed later
-      contentWidth: data?['_content']?['w'] != null
-          ? data?['_content']?['w']?.contains('%')
-              ? double.tryParse(data?['_content']?['w']?.replaceAll('%', ''))! /
-                  100
-              : 1
-          : null,
-      //To be removed later
-      contentMaxWidth: data?['_content']?['maxWidth']?.toDouble(),
+
+      maxWidth: data?['maxWidth']?.toDouble(),
       padding: data?['p'] != null
           ? resolvePaddingFromString(data?['p'].toString(), 'all')
           : data?['px'] != null && data?['py'] != null
@@ -695,7 +694,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderWidth: data?['borderWidth'] != null
           ? double.tryParse(data!['borderWidth']!.toString())
           : null,
-      gap: resolveSpaceFromString(data?['gap']??data?['_avatar']?['ml'].toString()),
+      gap: resolveSpaceFromString(
+          data?['gap'] ?? data?['_avatar']?['ml'].toString()),
       borderColor: resolveColorFromString(data?['borderColor']),
       borderRadius: data?['borderRadius'] != null
           ? resolveRadiusFromString(data?['borderRadius'].toString())
