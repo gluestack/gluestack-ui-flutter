@@ -16,7 +16,7 @@ class HStackExample extends StatelessWidget {
           child: GSHStack(
         mainAxisAlignment: MainAxisAlignment.center,
         isReversed: true,
-        space: GSSpaces.$md,
+       
         children: [
           GSBox(
             style: GSStyle(height: 200, width: 200, color: $GSColors.amber900),

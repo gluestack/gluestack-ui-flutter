@@ -4,7 +4,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_vstack/gs_vstack_style.dart';
 
 class GSVStack extends StatelessWidget {
   final List<Widget> children;
-  final GSSpaces space;
+  final GSSpaces? space;
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisSize mainAxisSize;
@@ -14,7 +14,7 @@ class GSVStack extends StatelessWidget {
   final VerticalDirection verticalDirection;
   const GSVStack({
     super.key,
-    required this.space,
+    this.space,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.max,
