@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/base_style.dart';
 import 'package:gluestack_flutter_pro/utils/resolver.dart';
@@ -482,6 +483,10 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? contentMaxWidth;
   AlignmentGeometry? alignment;
   Color? progressValueColor;
+
+  //for splash n highlight for pressable
+  Color? highlightColor;
+  Color? splashColor;
   double? badgeHeight;
   double? badgeWidth;
   GSTextTransform? textTransform;
@@ -531,7 +536,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.contentWidth,
       this.progressValueColor,
       this.badgeHeight,
-      this.badgeWidth,this.textTransform});
+      this.badgeWidth,this.textTransform,
+        this.highlightColor,
+    this.splashColor,
+  });
 
   @override
   copy() {
@@ -633,6 +641,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       contentMaxWidth: overrideStyle?.contentMaxWidth ?? contentMaxWidth,
       progressValueColor:
           overrideStyle?.progressValueColor ?? progressValueColor,
+      highlightColor: overrideStyle?.highlightColor ?? highlightColor,
+      splashColor: overrideStyle?.splashColor ?? splashColor,
       textTransform: overrideStyle?.textTransform ?? textTransform,
     );
   }
@@ -722,7 +732,14 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
       ),
       onFocus: GSStyle(
-        borderColor: resolveColorFromString(data?[':focus']?['borderColor']),
+       borderColor: kIsWeb
+            ? resolveColorFromString(
+                data?['_web']?[':focusVisible']?['outlineColor'])
+            : resolveColorFromString(data?[':focus']?['borderColor']),
+        borderWidth: kIsWeb
+            ? resolveSpaceFromString(
+                data?['_web']?[':focusVisible']?['outlineWidth'])
+            : null,
         bg: resolveColorFromString(data?[':focus']?['bg']),
         borderBottomColor:
             resolveColorFromString(data?[':focus']?['borderBottomColor']),
@@ -793,9 +810,14 @@ class GSStyle extends BaseStyle<GSStyle> {
               resolveColorFromString(data?['_dark']?[':hover']?['borderColor']),
         ),
         onFocus: GSStyle(
-          borderColor: resolveColorFromString(
-            data?['_dark']?[':focus']?['borderColor'],
-          ),
+          borderColor: kIsWeb
+            ? resolveColorFromString(
+                data?['_web']?[':focusVisible']?['_dark']?['outlineColor'])
+            : resolveColorFromString(data?['_dark']?[':focus']?['borderColor']),
+        borderWidth: kIsWeb
+            ? resolveSpaceFromString(
+                data?['_web']?[':focusVisible']?['outlineWidth'])
+            : null,
           onHover: GSStyle(
             borderColor: resolveColorFromString(
                 data?['_dark']?[':focus']?[':hover']?['borderColor']),
