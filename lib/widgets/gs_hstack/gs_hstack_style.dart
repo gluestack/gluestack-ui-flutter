@@ -1,5 +1,8 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/style/gs_style_config.dart';
 import 'package:gluestack_flutter_pro/theme/config/hstack/hstack.dart';
+
+GSStyleConfig gsHStackConfig = GSStyleConfig(componentName: 'HStack');
 
 final hstackStyle = GSStyle.fromMap(data: hstackData);
 

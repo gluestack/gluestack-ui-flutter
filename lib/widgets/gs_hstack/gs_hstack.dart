@@ -4,7 +4,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_hstack/gs_hstack_style.dart';
 
 class GSHStack extends StatelessWidget {
   final List<Widget> children;
-  final GSSpaces space;
+  final GSSpaces? space;
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisSize mainAxisSize;
@@ -14,7 +14,7 @@ class GSHStack extends StatelessWidget {
   final VerticalDirection verticalDirection;
   const GSHStack({
     super.key,
-    required this.space,
+    this.space,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.max,
@@ -23,7 +23,17 @@ class GSHStack extends StatelessWidget {
     this.verticalDirection = VerticalDirection.down,
     this.isReversed = false,
     this.children = const [],
-  });
+  }) : assert(
+            space == GSSpaces.$xs ||
+                space == GSSpaces.$sm ||
+                space == GSSpaces.$md ||
+                space == GSSpaces.$lg ||
+                space == GSSpaces.$xl ||
+                space == GSSpaces.$2xl ||
+                space == GSSpaces.$3xl ||
+                space == GSSpaces.$4xl ||
+                space == null,
+            "only support for spaces of xs, sm, md, lg, xl , 2xl, 3xl and 4xl");
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +47,7 @@ class GSHStack extends StatelessWidget {
         );
       }
     }
+
     return Row(
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
