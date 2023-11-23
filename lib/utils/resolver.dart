@@ -4,6 +4,10 @@ import 'package:gluestack_flutter_pro/token/font_weight.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/token/line_height.dart';
 
+bool parseMap(Map<dynamic, dynamic>? data) {
+  return data?.isNotEmpty ?? false;
+}
+
 Map<String, GSStyle?> mergeStyledMaps({
   required Map<String, GSStyle?>? styleMap,
   required Map<String, GSStyle?>? overrideStyleMap,
@@ -36,6 +40,9 @@ Color? resolveColorFromString(String? color) {
   }
   if (color.contains("transparent")) {
     return Colors.transparent;
+  }
+  if (color.contains("white")) {
+    return Colors.white;
   }
   return $GSColors.colorMap[color.substring(1)];
 }
@@ -82,9 +89,23 @@ FontWeight? resolveFontWeightFromString(String? fontWeight) {
   return $GSFontWeights.fontWeightMap[fontWeight];
 }
 
+GSFlexDirections? resolveFlexDirectionFromString(String? flexDirection) {
+  if (flexDirection == null) {
+    return null;
+  }
+  const flexDirectionMap = {
+    'row': GSFlexDirections.row,
+    'column': GSFlexDirections.column,
+  };
+  return flexDirectionMap[flexDirection] ?? GSFlexDirections.row;
+}
+
 double? resolveSpaceFromString(String? space) {
   if (space == null) {
     return null;
+  }
+  if (space.contains('-')) {
+    return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
   }
   if (space == 'px') {
     return $GSSpace.spaceMap[space];
@@ -141,6 +162,7 @@ double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
   return $GSLineHeight.lineHeightMap[lineHeight]! /
       resolveFontSizeFromString(fontSize)!;
 }
+
 double? resolveLetterSpacingFromString(String? letterSpacing) {
   if (letterSpacing == null) {
     return null;
@@ -150,6 +172,18 @@ double? resolveLetterSpacingFromString(String? letterSpacing) {
   }
 
   return $GSLetterSpacing.letterSpacingMap[letterSpacing];
+}
+
+TextDecoration? resolveTextDecorationFromString(String? textDecoration) {
+  if (textDecoration == null) {
+    return null;
+  } else if (textDecoration == 'none') {
+
+    return TextDecoration.none;
+  } else if (textDecoration == 'underline') {
+    return TextDecoration.underline;
+  }
+  return null;
 }
 
 GSActions? resolveActionFromString(String? action) {
@@ -163,6 +197,7 @@ GSActions? resolveActionFromString(String? action) {
     'success': GSActions.success,
     'info': GSActions.info,
     'muted': GSActions.muted,
+    'attention': GSActions.attention,
   };
 
   return action != null ? actionMap[action] : null;
@@ -175,13 +210,13 @@ GSVariants? resolveVariantFromString(String? variant) {
     'rounded': GSVariants.rounded,
     'underlined': GSVariants.underlined,
     'link': GSVariants.link,
+    'accent': GSVariants.accent,
   };
 
   return variant != null ? variantMap[variant] : null;
 }
 
 GSSizes? resolveSizesFromString(String? size) {
-  
   const sizeMap = {
     'xs': GSSizes.$xs,
     'sm': GSSizes.$sm,
@@ -200,7 +235,8 @@ GSAlignments? resolveAlignmentFromString(String? itemAlignment) {
     'start': GSAlignments.start,
     'end': GSAlignments.end,
     'space-between': GSAlignments.spaceBetween,
-    'flex-end': GSAlignments.flexEnd
+    'flex-end': GSAlignments.flexEnd,
+    'flex-start':GSAlignments.flexStart,
   };
 
   return itemAlignment != null ? itemAlignmentMap[itemAlignment] : null;
@@ -228,6 +264,7 @@ double resolveAlignment(GSAlignments? suppliedAlignment) {
     GSAlignments.end: 1,
     GSAlignments.spaceBetween: -1,
     GSAlignments.flexEnd: 1,
+    GSAlignments.flexStart:1
   };
 
   return suppliedAlignment != null
@@ -242,6 +279,90 @@ GSOrientations? resolveOrientationsFromString(String? orientation) {
   };
 
   return orientation != null ? orientationMap[orientation] : null;
+}
+
+
+Widget resolveFlexWidget(
+      {required GSFlexDirections? flexDirection,
+      required GSAlignments? mainAxisAlignment,
+      required GSAlignments? crossAxisAlignment,
+      required List<Widget> children}) {
+    late MainAxisAlignment resolvedMainAxisAlignment;
+    late CrossAxisAlignment resolvedCrossAxisAlignment;
+
+    switch (mainAxisAlignment) {
+      case GSAlignments.start:
+        resolvedMainAxisAlignment = MainAxisAlignment.start;
+        break;
+      case GSAlignments.center:
+        resolvedMainAxisAlignment = MainAxisAlignment.center;
+        break;
+      case GSAlignments.end:
+        resolvedMainAxisAlignment = MainAxisAlignment.end;
+        break;
+      case GSAlignments.spaceBetween:
+        resolvedMainAxisAlignment = MainAxisAlignment.spaceBetween;
+        break;
+      case GSAlignments.flexEnd:
+        resolvedMainAxisAlignment = MainAxisAlignment.end;
+        break;
+      case GSAlignments.flexStart:
+        resolvedMainAxisAlignment = MainAxisAlignment.start;
+        break;
+      default:
+        resolvedMainAxisAlignment = MainAxisAlignment.start;
+    }
+    switch (crossAxisAlignment) {
+      case GSAlignments.start:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.start;
+        break;
+      case GSAlignments.center:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.center;
+        break;
+      case GSAlignments.end:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      case GSAlignments.flexEnd:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      case GSAlignments.flexStart:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.end;
+        break;
+      default:
+        resolvedCrossAxisAlignment = CrossAxisAlignment.center;
+    }
+
+    switch (flexDirection) {
+      case GSFlexDirections.row:
+        return Row(
+          mainAxisAlignment: resolvedMainAxisAlignment,
+          crossAxisAlignment: resolvedCrossAxisAlignment,
+          children: children,
+        );
+      case GSFlexDirections.column:
+        return Column(
+          mainAxisAlignment: resolvedMainAxisAlignment,
+          crossAxisAlignment: resolvedCrossAxisAlignment,
+          children: children,
+        );
+      default:
+        return Row(
+          mainAxisAlignment: resolvedMainAxisAlignment,
+          crossAxisAlignment: resolvedCrossAxisAlignment,
+          children: children,
+        );
+    }
+  }
+
+GSTextTransform? resolveTextTransformFromString(String? gsTextTransform) {
+  const textTransformationMap = {
+    'uppercase': GSTextTransform.uppercase,
+    'lowercase': GSTextTransform.lowercase,
+  };
+
+  return gsTextTransform != null
+      ? textTransformationMap[gsTextTransform]
+      : null;
 }
 
 GSCursors? resolveCursorFromString(String? cursor){

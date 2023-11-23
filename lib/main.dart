@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/example/alert_example.dart';
+import 'package:gluestack_flutter_pro/example/avatar_example.dart';
 import 'package:gluestack_flutter_pro/example/badge_example.dart';
 import 'package:gluestack_flutter_pro/example/button_example.dart';
 import 'package:gluestack_flutter_pro/example/center_example.dart';
+import 'package:gluestack_flutter_pro/example/checkbox_example.dart';
 import 'package:gluestack_flutter_pro/example/divider_example.dart';
 import 'package:gluestack_flutter_pro/example/heading_example.dart';
 import 'package:gluestack_flutter_pro/example/hstack_example.dart';
 import 'package:gluestack_flutter_pro/example/icon_example.dart';
 import 'package:gluestack_flutter_pro/example/image_example.dart';
 import 'package:gluestack_flutter_pro/example/input_example.dart';
+import 'package:gluestack_flutter_pro/example/link_example.dart';
 import 'package:gluestack_flutter_pro/example/progress_example.dart';
+import 'package:gluestack_flutter_pro/example/pressable_example.dart';
 import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 import 'package:gluestack_flutter_pro/example/spinner_example.dart';
 import 'package:gluestack_flutter_pro/example/switch_example.dart';
 import 'package:gluestack_flutter_pro/example/text_area_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
+import 'package:gluestack_flutter_pro/example/toast_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+
 
 // import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 
@@ -50,7 +56,7 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
-                  GestureDetector(
+                    GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(
                         builder: (context) => const SwitchExample(),
@@ -68,11 +74,56 @@ class MyApp extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const LinkExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Link',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const AvatarExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Avatar',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
                         builder: (context) => const TextExample(),
                       ));
                     },
                     child: const Text(
                       'GS Text',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const CheckBoxExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS CheckBox',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
@@ -298,6 +349,36 @@ class MyApp extends StatelessWidget {
                     },
                     child: const Text(
                       'GS Text Area',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const PressableExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Pressable',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const ToastExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Toast',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
