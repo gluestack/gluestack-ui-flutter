@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_fallBack_text.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image.dart';
 
@@ -49,12 +49,11 @@ class GSAvatar extends StatelessWidget {
       variantStyle: avatarStyle,
       size: GSAvatarStyle.size[avatarSize],
       inlineStyle: style,
+      descendantStyleKeys: gsAvatarConfig.descendantStyle,
     )!;
 
-    return GSAvatarProvider(
-      avatarStyle: styler,
-      badgeRaidus: styler.badgeHeight,
-      textStyle: styler.textStyle,
+    return GSAncestor(
+      decedentStyles: styler.descendantStyles,
       child: Stack(
         children: [
           Container(

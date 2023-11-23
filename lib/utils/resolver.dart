@@ -104,14 +104,14 @@ double? resolveSpaceFromString(String? space) {
   if (space == null) {
     return null;
   }
+  if (space.contains('-')) {
+    return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
+  }
   if (space == 'px') {
     return $GSSpace.spaceMap[space];
   }
   if (space.contains('\$')) {
-    if(space.contains('-')){
-      return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
-  }
-  return $GSSpace.spaceMap[space.substring(1)];
+    return $GSSpace.spaceMap[space.substring(1)];
   }
   return $GSSpace.spaceMap[space];
 }
