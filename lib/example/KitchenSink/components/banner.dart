@@ -38,7 +38,8 @@ class KSBanner extends StatelessWidget {
               style: GSStyle(
                   textStyle: const TextStyle(
                       color: $GSColors
-                          .red600)), //Error: should not descendant style work here?
+                          .red600),
+                          ), //Error: should not descendant style work here?
               text: GSLinkText(
                 text: "Learn More",
                 style: GSStyle(

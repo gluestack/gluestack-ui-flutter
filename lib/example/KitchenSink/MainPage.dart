@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/banner.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/header.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/main_component.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/components/sidebar.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_center/gs_center.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_hstack/gs_hstack.dart';
@@ -20,6 +21,7 @@ class LayoutExample extends StatelessWidget {
         backgroundColor: themeProvider.getThemeData().canvasColor,
         body: SafeArea(
           child: GSVStack(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const KSBanner(),
               KSHeader(
@@ -28,7 +30,32 @@ class LayoutExample extends StatelessWidget {
                   themeProvider.toggleTheme();
                 },
               ),
-              KSMainComponent(),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 32, vertical: 21),
+                  child: GSHStack(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 30),
+                          child: SingleChildScrollView(
+                            child: KSSideBar(),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 3,
+                        child: SingleChildScrollView(
+                          child: KSMainComponent(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
