@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_text_style.dart';
@@ -26,9 +27,9 @@ class GSButtonText extends StatelessWidget {
       fontWeight: ancestorTextStyles?.fontWeight,
       fontSize: fontSize,
     );
+    final styler = resolveStyles(context, inlineStyle: style);
 
-    final mergedStyle =
-        defaultTextStyle.merge(style != null ? style!.textStyle : null);
+    final mergedStyle = defaultTextStyle.merge(styler?.textStyle);
 
     return Text(
       text,

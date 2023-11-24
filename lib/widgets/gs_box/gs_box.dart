@@ -32,6 +32,7 @@ class GSBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(style?.height);
     return Container(
       clipBehavior: clipBehavior,
       transform: transform,
