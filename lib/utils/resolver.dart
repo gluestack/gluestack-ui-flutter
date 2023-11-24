@@ -364,3 +364,13 @@ GSTextTransform? resolveTextTransformFromString(String? gsTextTransform) {
       ? textTransformationMap[gsTextTransform]
       : null;
 }
+
+GSCursors? resolveCursorFromString(String? cursor){
+
+  const Map<String, GSCursors> cusorMap = {
+    'pointer': GSCursors.pointer,
+    'not-allowed': GSCursors.notAllowed,
+  };
+
+return cursor != null ? cusorMap[cursor] : null;
+  }
