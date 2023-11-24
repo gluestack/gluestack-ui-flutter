@@ -7,7 +7,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector_proider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_heading/gs_heading.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_hstack/gs_hstack.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_icon/gs_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image.dart';

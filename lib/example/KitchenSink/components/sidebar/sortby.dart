@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/models/ks_sort_by.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_heading/gs_heading.dart';
@@ -22,6 +23,25 @@ class KSSortBy extends StatefulWidget {
 }
 
 class _KSSortByState extends State<KSSortBy> {
+  final List<KSSortByModel> _sortByData = [
+    KSSortByModel(
+      ksSortOptions: KSSortOptions.topRating,
+      label: 'Top ratings',
+    ),
+    KSSortByModel(
+      ksSortOptions: KSSortOptions.bestPrice,
+      label: 'Best price',
+    ),
+    KSSortByModel(
+      ksSortOptions: KSSortOptions.discount,
+      label: 'Discount',
+    ),
+    KSSortByModel(
+      ksSortOptions: KSSortOptions.whatsNew,
+      label: 'What’s new',
+    ),
+  ];
+
   KSSortOptions currentSelectedOption = KSSortOptions.topRating;
   @override
   Widget build(BuildContext context) {
@@ -30,57 +50,26 @@ class _KSSortByState extends State<KSSortBy> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const GSHeading(
-          size: GSSizes.$md,
+          size: GSSizes.$sm,
           text: 'Sort by',
         ),
-        GSRadio<KSSortOptions>(
-          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3,left: $GSSpace.$1)),
-          icon: const GSRadioIcon<KSSortOptions>(),
-          groupValue: currentSelectedOption,
-          value: KSSortOptions.topRating,
-          label: const GSRadioText<KSSortOptions>(text: "Top Ratings"),
-          onChanged: (value) {
-            setState(() {
-              currentSelectedOption = value!;
-            });
-          },
-        ),
-        GSRadio<KSSortOptions>(
-          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3,left: $GSSpace.$1)),
-          icon: const GSRadioIcon<KSSortOptions>(),
-          groupValue: currentSelectedOption,
-          value: KSSortOptions.bestPrice,
-          label: const GSRadioText<KSSortOptions>(text: "Best Price"),
-          onChanged: (value) {
-            setState(() {
-              currentSelectedOption = value!;
-            });
-          },
-        ),
-        GSRadio<KSSortOptions>(
-          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3,left: $GSSpace.$1)),
-          icon: const GSRadioIcon<KSSortOptions>(),
-          groupValue: currentSelectedOption,
-          value: KSSortOptions.discount,
-          label: const GSRadioText<KSSortOptions>(text: "Discount"),
-          onChanged: (value) {
-            setState(() {
-              currentSelectedOption = value!;
-            });
-          },
-        ),
-        GSRadio<KSSortOptions>(
-          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3,left: $GSSpace.$1)),
-          icon: const GSRadioIcon<KSSortOptions>(),
-          groupValue: currentSelectedOption,
-          value: KSSortOptions.whatsNew,
-          label: const GSRadioText<KSSortOptions>(text: "Whats's new"),
-          onChanged: (value) {
-            setState(() {
-              currentSelectedOption = value!;
-            });
-          },
-        )
+        for (int i = 0; i < _sortByData.length; i++)
+          GSRadio<KSSortOptions>(
+            style: GSStyle(
+                margin: const EdgeInsets.only(
+                    right: $GSSpace.$3, left: $GSSpace.$1)),
+            icon: const GSRadioIcon<KSSortOptions>(
+              size: GSSizes.$sm,
+            ),
+            groupValue: currentSelectedOption,
+            value: _sortByData[i].ksSortOptions,
+            label: GSRadioText<KSSortOptions>(text: _sortByData[i].label),
+            onChanged: (value) {
+              setState(() {
+                currentSelectedOption = value!;
+              });
+            },
+          ),
       ],
     );
   }

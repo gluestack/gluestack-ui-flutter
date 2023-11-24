@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/models/ammenities.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/space_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox.dart';
@@ -22,7 +23,15 @@ class KSAmmenities extends StatefulWidget {
 
 class _KSAmmenitiesState extends State<KSAmmenities> {
   bool showMore = true;
-
+  final List<AmmenitiesModel> _ammenitiesData = [
+    AmmenitiesModel(label: 'Wifi', value: 'wifi'),
+    AmmenitiesModel(label: 'Washing machine', value: 'washing-machine'),
+    AmmenitiesModel(label: 'Air conditioning', value: 'air-conditioning'),
+    AmmenitiesModel(label: 'Kitchen', value: 'kitchen'),
+    AmmenitiesModel(label: 'Dryer', value: 'dryer'),
+    AmmenitiesModel(label: 'Iron', value: 'Iron'),
+    AmmenitiesModel(label: 'Hair Dryer', value: 'hair-dryer'),
+  ];
   @override
   Widget build(BuildContext context) {
     return GSVStack(
@@ -34,78 +43,29 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
           size: GSSizes.$sm,
         ),
         GSCheckBoxGroup(
+            values: [
+              _ammenitiesData[0].value,
+              _ammenitiesData[2].value,
+            ],
             child: GSVStack(
-          space: GSSpaces.$lg,
-          children: [
-            GSCheckBox(
-              onChanged: (value) {},
-              defaultIsChecked: true,
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                  child: const GSCheckBoxIcon()),
-              value: 'wifi',
-              label: const GSCheckBoxLabel(text: 'Wifi'),
-            ),
-            GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                  child: const GSCheckBoxIcon()),
-              value: 'Washing machine',
-              label: const GSCheckBoxLabel(text: 'Washing machine'),
-            ),
-            GSCheckBox(
-              defaultIsChecked: true,
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                  child: const GSCheckBoxIcon()),
-              value: 'Air conditioning',
-              label: const GSCheckBoxLabel(text: 'Air conditioning'),
-            ),
-            GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                  child: const GSCheckBoxIcon()),
-              value: 'Kitchen',
-              label: const GSCheckBoxLabel(text: 'Kitchen'),
-            ),
-            GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                  child: const GSCheckBoxIcon()),
-              value: 'Dryer',
-              label: const GSCheckBoxLabel(text: 'Dryer'),
-            ),
-            if (!showMore)
-              GSCheckBox(
-                defaultIsChecked: true,
-                onChanged: (value) {},
-                icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                    child: const GSCheckBoxIcon()),
-                value: 'Iron',
-                label: const GSCheckBoxLabel(text: 'Iron'),
-              ),
-            GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                  child: const GSCheckBoxIcon()),
-              value: 'Hair Dryer',
-              label: const GSCheckBoxLabel(text: 'Hair Dryer'),
-            ),
-          ],
-        )),
+              space: GSSpaces.$lg,
+              children: [
+                for (int i = 0;
+                    i < (showMore ? 5 : _ammenitiesData.length);
+                    i++)
+                  GSCheckBox(
+                    size: GSSizes.$sm,
+                    onChanged: (value) {},
+                    icon: GSCheckBoxIndicator(
+                        style: GSStyle(
+                            margin: const EdgeInsets.only(right: $GSSpace.$3)),
+                        child: const GSCheckBoxIcon()),
+                    value: _ammenitiesData[i].value,
+                    label: GSCheckBoxLabel(text: _ammenitiesData[i].label),
+                  ),
+
+              ],
+            )),
         GSPressable(
             onPress: () {
               setState(() {

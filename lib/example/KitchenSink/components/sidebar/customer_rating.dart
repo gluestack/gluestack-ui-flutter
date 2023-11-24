@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/models/customer_rating.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/token/space_token.dart';
+import 'package:gluestack_flutter_pro/token/index.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_group.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_icon.dart';
@@ -12,7 +14,26 @@ import 'package:gluestack_flutter_pro/widgets/gs_icon/gs_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_vstack/gs_vstack.dart';
 
 class KSCustomerRating extends StatelessWidget {
-  const KSCustomerRating({super.key});
+  KSCustomerRating({super.key});
+
+  final List<CustomerRatingModel> _customerRatingData = [
+    CustomerRatingModel(
+      label: "5 stars",
+      value: "5 stars",
+    ),
+    CustomerRatingModel(
+      label: "4+ stars",
+      value: "5+ stars",
+    ),
+    CustomerRatingModel(
+      label: "3+ stars",
+      value: "3+ stars",
+    ),
+    CustomerRatingModel(
+      label: "2+ stars",
+      value: "2+ stars",
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,66 +49,29 @@ class KSCustomerRating extends StatelessWidget {
             child: GSVStack(
           space: GSSpaces.$lg,
           children: [
-            GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$2)),
-                  child: const GSCheckBoxIcon()),
-              value: '5 stars',
-              label: const GSHStack(
-                space: GSSpaces.$xs,
-                children: [
-                  GSIcon(icon: Icons.star),
-                  GSCheckBoxLabel(text: '5+ stars')
-                ],
-              ),
-            ),
+            for (int i = 0; i < _customerRatingData.length; i++)
               GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$2)),
-                  child: const GSCheckBoxIcon()),
-              value: '4 stars',
-              label: const GSHStack(
-                space: GSSpaces.$xs,
-                children: [
-                  GSIcon(icon: Icons.star),
-                  GSCheckBoxLabel(text: '4+ stars')
-                ],
+                size: GSSizes.$sm,
+                onChanged: (value) {},
+                icon: GSCheckBoxIndicator(
+                    style: GSStyle(
+                        margin: const EdgeInsets.only(right: $GSSpace.$2)),
+                    child: const GSCheckBoxIcon()),
+                value: _customerRatingData[i].value,
+                label: GSHStack(
+                  space: GSSpaces.$xs,
+                  children: [
+                    GSIcon(
+                      style: GSStyle(
+                          width: 12,
+                          color: $GSColors.black,
+                          dark: GSStyle(color: $GSColors.white)),
+                      icon: Icons.star,
+                    ),
+                    GSCheckBoxLabel(text: _customerRatingData[i].label)
+                  ],
+                ),
               ),
-            ),
-               GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$2)),
-                  child: const GSCheckBoxIcon()),
-              value: '3 stars',
-              label: const GSHStack(
-                space: GSSpaces.$xs,
-                children: [
-                  GSIcon(icon: Icons.star),
-                  GSCheckBoxLabel(text: '3+ stars')
-                ],
-              ),
-            ),
-                 GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$2)),
-                  child: const GSCheckBoxIcon()),
-              value: '2 stars',
-              label: const GSHStack(
-                space: GSSpaces.$xs,
-                children: [
-                  GSIcon(icon: Icons.star),
-                  GSCheckBoxLabel(text: '2+ stars')
-                ],
-              ),
-            ),
           ],
         ))
       ],

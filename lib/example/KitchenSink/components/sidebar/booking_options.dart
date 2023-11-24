@@ -32,30 +32,32 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            GSVStack(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GSText(
-                  text: "Self check-in",
-                  size: GSSizes.$sm,
-                  style: GSStyle(
-                      textStyle: const TextStyle(color: $GSColors.textLight900),
-                      dark: GSStyle(
-                        textStyle: const TextStyle(
-                            color: $GSColors
-                                .textDark100), //Error: No default value to fall back on??
-                      )),
-                ),
-                GSText(
-                  text: "Access a place without needing the Host",
-                  size: GSSizes.$xs,
-                  style: GSStyle(
-                    textStyle: const TextStyle(color: $GSColors.textLight500),
+            Expanded(
+              child: GSVStack(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GSText(
+                    text: "Self check-in",
+                    size: GSSizes.$sm,
+                    style: GSStyle(
+                        textStyle: const TextStyle(color: $GSColors.textLight900),
+                        dark: GSStyle(
+                          textStyle: const TextStyle(
+                              color: $GSColors
+                                  .textDark100), //Error: No default value to fall back on??
+                        )),
                   ),
-                  softWrap: true,
-                  maxLines: 3,
-                ),
-              ],
+                  GSText(
+                    text: "Access a place without needing the Host",
+                    size: GSSizes.$xs,
+                    style: GSStyle(
+                      textStyle: const TextStyle(color: $GSColors.textLight500),
+                    ),
+                    softWrap: true,
+                    maxLines: 3,
+                  ),
+                ],
+              ),
             ),
             GSSwitch(
               size: GSSizes.$sm,
@@ -74,30 +76,32 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            GSVStack(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GSText(
-                  text: "Meals included",
-                  size: GSSizes.$sm,
-                  style: GSStyle(
-                      textStyle: const TextStyle(color: $GSColors.textLight900),
-                      dark: GSStyle(
-                        textStyle: const TextStyle(
-                            color: $GSColors
-                                .textDark100), //Error: No default value to fall back on??
-                      )),
-                ),
-                GSText(
-                  text: "Have a prefered meal for your comfy stay",
-                  size: GSSizes.$xs,
-                  style: GSStyle(
-                    textStyle: const TextStyle(color: $GSColors.textLight500),
+            Expanded(
+              child: GSVStack(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GSText(
+                    text: "Meals included",
+                    size: GSSizes.$sm,
+                    style: GSStyle(
+                        textStyle: const TextStyle(color: $GSColors.textLight900),
+                        dark: GSStyle(
+                          textStyle: const TextStyle(
+                              color: $GSColors
+                                  .textDark100), //Error: No default value to fall back on??
+                        )),
                   ),
-                  softWrap: true,
-                  maxLines: 3,
-                ),
-              ],
+                  GSText(
+                    text: "Have a prefered meal for your comfy stay",
+                    size: GSSizes.$xs,
+                    style: GSStyle(
+                      textStyle: const TextStyle(color: $GSColors.textLight500),
+                    ),
+                    softWrap: true,
+                    maxLines: 3,
+                  ),
+                ],
+              ),
             ),
             GSSwitch(
               size: GSSizes.$sm,

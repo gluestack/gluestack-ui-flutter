@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/models/type_of_places.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/space_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox.dart';
@@ -10,8 +11,12 @@ import 'package:gluestack_flutter_pro/widgets/gs_heading/gs_heading.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_vstack/gs_vstack.dart';
 
 class KSTypesOfPlaces extends StatelessWidget {
-  const KSTypesOfPlaces({super.key});
-
+  KSTypesOfPlaces({super.key});
+  final List<TypeOfPlacesModel> _typeOfPlacesData = [
+    TypeOfPlacesModel(label: 'Entire place', value: 'entirePlace'),
+    TypeOfPlacesModel(label: 'Private room', value: 'privateRoom'),
+    TypeOfPlacesModel(label: 'Shared room', value: 'sharedRoom'),
+  ];
   @override
   Widget build(BuildContext context) {
     return GSVStack(
@@ -23,39 +28,25 @@ class KSTypesOfPlaces extends StatelessWidget {
           size: GSSizes.$sm,
         ),
         GSCheckBoxGroup(
+            values: [
+              _typeOfPlacesData[0].value,
+            ],
             child: GSVStack(
-          space: GSSpaces.$lg,
-          children: [
-            GSCheckBox(
-              onChanged: (value) {},
-              defaultIsChecked: true,
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                  child: const GSCheckBoxIcon()),
-              value: 'Entire place',
-              label: const GSCheckBoxLabel(text: 'Entire place'),
-            ),
-            GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                  child: const GSCheckBoxIcon()),
-              value: 'Private room',
-              label: const GSCheckBoxLabel(text: 'Private room'),
-            ),
-            GSCheckBox(
-              onChanged: (value) {},
-              icon: GSCheckBoxIndicator(
-                  style: GSStyle(
-                      margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                  child: const GSCheckBoxIcon()),
-              value: 'Shared room',
-              label: const GSCheckBoxLabel(text: 'Shared room'),
-            ),
-          ],
-        ))
+              space: GSSpaces.$lg,
+              children: [
+                for (int i = 0; i < _typeOfPlacesData.length; i++)
+                  GSCheckBox(
+                    size: GSSizes.$sm,
+                    onChanged: (value) {},
+                    icon: GSCheckBoxIndicator(
+                        style: GSStyle(
+                            margin: const EdgeInsets.only(right: $GSSpace.$3)),
+                        child: const GSCheckBoxIcon()),
+                    value: _typeOfPlacesData[i].value,
+                    label: GSCheckBoxLabel(text: _typeOfPlacesData[i].label),
+                  ),
+              ],
+            ))
       ],
     );
   }
