@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/example/KitchenSink/components/stacked_card.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/main_page.dart';
 import 'package:gluestack_flutter_pro/example/alert_example.dart';
 import 'package:gluestack_flutter_pro/example/avatar_example.dart';
@@ -57,6 +56,7 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
+                 
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(

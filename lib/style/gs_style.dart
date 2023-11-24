@@ -709,7 +709,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       textTransform: resolveTextTransformFromString(data?['textTransform']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
 
-      maxWidth: data?['maxWidth']?.toDouble(),
+      maxWidth:
+          data?['maxWidth'] != null ? double.tryParse(data?['maxWidth']) : null,
       padding: data?['p'] != null
           ? resolvePaddingFromString(data?['p'].toString(), 'all')
           : data?['px'] != null && data?['py'] != null
@@ -994,13 +995,14 @@ class GSStyle extends BaseStyle<GSStyle> {
             )),
         onFocus: GSStyle(
           borderColor: kIsWeb
-            ? resolveColorFromString(
-                data?['_web']?[':focusVisible']?['_dark']?['outlineColor'])
-            : resolveColorFromString(data?['_dark']?[':focus']?['borderColor']),
-        borderWidth: kIsWeb
-            ? resolveSpaceFromString(
-                data?['_web']?[':focusVisible']?['outlineWidth'].toString())
-            : null,
+              ? resolveColorFromString(
+                  data?['_web']?[':focusVisible']?['_dark']?['outlineColor'])
+              : resolveColorFromString(
+                  data?['_dark']?[':focus']?['borderColor']),
+          borderWidth: kIsWeb
+              ? resolveSpaceFromString(
+                  data?['_web']?[':focusVisible']?['outlineWidth'].toString())
+              : null,
           onHover: GSStyle(
             borderColor: resolveColorFromString(
                 data?['_dark']?[':focus']?[':hover']?['borderColor']),

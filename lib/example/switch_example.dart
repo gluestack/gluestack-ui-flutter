@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_center/gs_center.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_switch/gs_switch.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
 

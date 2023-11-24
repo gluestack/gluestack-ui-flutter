@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/components/stacked_card.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/models/stacked_card.dart';
 
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 
@@ -26,12 +28,39 @@ List<String> titles = [
   "National parks",
 ];
 
+List<StackedCardModel> stackedCardData = [
+  StackedCardModel(
+      imageUrl: 'assets/images/image16.png',
+      price: '\$1,481',
+      rating: 4.9,
+      location: "401 Platte River Rd, Gothenburg, United States",
+      buttonText: 'Explore',
+      title: 'ImageView Inn'),
+  StackedCardModel(
+      imageUrl: 'assets/images/image17.png',
+      price: '\$1,381',
+      rating: 4.89,
+      location: "1502 Silica Ave, Sacramento California",
+      buttonText: 'Explore',
+      title: 'Spinner Resort'),
+  StackedCardModel(
+      imageUrl: 'assets/images/image18.png',
+      price: '\$2,481',
+      rating: 4.6,
+      location: "2945 Entry Point Blvd, Kissimmee, Florida",
+      buttonText: 'Explore',
+      title: 'DropDown Den'),
+];
+
+
+
 class KSMainComponent extends StatelessWidget {
   const KSMainComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GSVStack(
+      space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //r1
@@ -54,9 +83,6 @@ class KSMainComponent extends StatelessWidget {
                         style: GSStyle(
                           color: $GSColors.textLight800,
                         ),
-                      ),
-                      const SizedBox(
-                        width: 5,
                       ),
                       GSButtonText(
                         text: 'List your place',
@@ -136,6 +162,18 @@ class KSMainComponent extends StatelessWidget {
                       ))
                 ]
               ]),
+        ),
+
+        GSHStack(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          space: GSSpaces.$md,
+          children: [
+            for (int i = 0; i < stackedCardData.length; i++)
+              Expanded(child: KSStackedCard(
+                stackedCardModel: stackedCardData[i],
+              )),
+          ],
         )
       ],
     );

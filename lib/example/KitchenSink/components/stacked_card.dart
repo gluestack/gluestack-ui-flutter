@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/models/stacked_card.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_box/gs_box.dart';
@@ -15,7 +16,8 @@ import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_vstack/gs_vstack.dart';
 
 class KSStackedCard extends StatelessWidget {
-  const KSStackedCard({super.key});
+  final StackedCardModel stackedCardModel;
+  const KSStackedCard({super.key, required this.stackedCardModel});
 
   @override
   Widget build(BuildContext context) {
@@ -26,21 +28,33 @@ class KSStackedCard extends StatelessWidget {
         return GSBox(
           style: GSStyle(width: 400),
           child: GSVStack(
+            space: GSSpaces.$xs,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [
                   Opacity(
-                    opacity: isHovered ? .8 : 1,
+                    opacity: isHovered ? .9 : 1,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular($GSRadii.$md),
                       child: GSImage(
                           fit: BoxFit.cover,
-                          style: GSStyle(height: 200, width: double.infinity),
-                          path: "assets/images/image16.png",
+                          style: GSStyle(
+                              height: $GSSpace.$72, width: double.infinity),
+                          path: stackedCardModel.imageUrl,
                           imageType: GSImageType.asset),
                     ),
                   ),
+                  if (isHovered)
+                    Opacity(
+                      opacity: .3,
+                      child: GSBox(
+                        style: GSStyle(
+                            height: $GSSpace.$72,
+                            width: double.infinity,
+                            color: $GSColors.backgroundDark950),
+                      ),
+                    ),
                   if (isHovered)
                     Positioned.fill(
                       child: Align(
@@ -49,12 +63,19 @@ class KSStackedCard extends StatelessWidget {
                           action: GSActions.secondary,
                           variant: GSVariants.outline,
                           style: GSStyle(
-                            onHover: GSStyle(bg: Colors.transparent),
-                          ),
-                          child: const Row(
+                              descendantStyles: {
+                                '_icon': GSStyle(color: $GSColors.white)
+                              },
+                              bg: Colors.transparent,
+                              borderColor: $GSColors.white,
+                              onHover: GSStyle(
+                                bg: Colors.transparent,
+                                borderColor: $GSColors.white,
+                              )),
+                          child: Row(
                             children: [
-                              GSText(text: 'Explore'),
-                              GSButtonIcon(icon: Icons.arrow_forward_ios)
+                              GSText(text: stackedCardModel.buttonText),
+                              const GSButtonIcon(icon: Icons.arrow_forward_ios)
                             ],
                           ),
                           onPressed: () {},
@@ -66,21 +87,84 @@ class KSStackedCard extends StatelessWidget {
                       top: $GSSpace.$4,
                       child: GSPressable(
                           onPress: () {},
-                          child: GSIcon(icon: Icons.favorite_border)))
+                          child: GSIcon(
+                              style: GSStyle(
+                                height: $GSSpace.$6,
+                                width: $GSSpace.$6,
+                              ),
+                              icon: Icons.favorite_border)))
                 ],
               ),
-              const GSHStack(
+              GSHStack(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GSHeading(text: 'ImageView Inn'),
+                  GSText(
+                      style: GSStyle(
+                          textStyle: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: $GSColors.textLight900,
+                          ),
+                          dark: GSStyle(
+                              textStyle: const TextStyle(
+                            color: $GSColors.textDark200,
+                          ))),
+                      text: stackedCardModel.title),
                   GSHStack(
-                    children: [GSIcon(icon: Icons.star), GSText(text: '4.9')],
+                    children: [
+                      const GSIcon(icon: Icons.star),
+                      GSText(
+                          style: GSStyle(
+                              textStyle: const TextStyle(
+                                color: $GSColors.textLight900,
+                              ),
+                              dark: GSStyle(
+                                  textStyle: const TextStyle(
+                                color: $GSColors.textDark200,
+                              ))),
+                          text: stackedCardModel.rating.toString())
+                    ],
                   )
                 ],
               ),
-              const GSText(
-                  text: '401 Platte River Rd, Gothenburg, United States'),
-              const GSText(text: '\$1,481night')
+              GSText(
+                  size: GSSizes.$sm,
+                  style: GSStyle(
+                      textStyle: const TextStyle(
+                        color: $GSColors.textLight500,
+                      ),
+                      dark: GSStyle(
+                          textStyle: const TextStyle(
+                        color: $GSColors.textDark500,
+                      ))),
+                  text: stackedCardModel.location),
+              GSHStack(
+                children: [
+                  GSText(
+                    size: GSSizes.$sm,
+                    text: stackedCardModel.price,
+                    style: GSStyle(
+                        textStyle: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: $GSColors.textLight900,
+                        ),
+                        dark: GSStyle(
+                            textStyle: const TextStyle(
+                          color: $GSColors.textDark200,
+                        ))),
+                  ),
+                  GSText(
+                      size: GSSizes.$sm,
+                      style: GSStyle(
+                          textStyle: const TextStyle(
+                            color: $GSColors.textLight900,
+                          ),
+                          dark: GSStyle(
+                              textStyle: const TextStyle(
+                            color: $GSColors.textDark200,
+                          ))),
+                      text: 'night')
+                ],
+              ),
             ],
           ),
         );

@@ -47,7 +47,7 @@ class LayoutExample extends StatelessWidget {
                         ),
                       ),
                       Flexible(
-                        flex: 5,
+                        flex: 4,
                         child: SingleChildScrollView(
                           child: KSMainComponent(),
                         ),

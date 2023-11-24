@@ -12,7 +12,7 @@ class KSSideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return const GSVStack(
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -21,6 +21,7 @@ class KSSideBar extends StatelessWidget {
         KSAmmenities(),
         KSBookingOptions(),
         KSCustomerRating(),
+        
       ],
     );
   }
