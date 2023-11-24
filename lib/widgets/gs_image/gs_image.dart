@@ -76,12 +76,14 @@ class GSImage extends StatelessWidget {
       size: GSImageStyle.size[imageSize],
       inlineStyle: style,
     )!;
+    
+    
 
     switch (imageType) {
       case GSImageType.network:
         return ClipRRect(
           borderRadius: borderRadius != GSBorderRadius.$none
-              ? BorderRadius.circular($GSRadii.radiiMap[borderRadius]!)
+              ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
               : BorderRadius.zero,
           child: Image.network(
             height: styler.height,
@@ -112,7 +114,7 @@ class GSImage extends StatelessWidget {
       case GSImageType.file:
         return ClipRRect(
           borderRadius: borderRadius != GSBorderRadius.$none
-              ? BorderRadius.circular($GSRadii.radiiMap[borderRadius]!)
+              ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
               : BorderRadius.zero,
           child: Image.file(
             height: styler.height,
@@ -141,7 +143,7 @@ class GSImage extends StatelessWidget {
       case GSImageType.asset:
         return ClipRRect(
           borderRadius: borderRadius != GSBorderRadius.$none
-              ? BorderRadius.circular($GSRadii.radiiMap[borderRadius]!)
+              ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
               : BorderRadius.zero,
           child: Image.asset(
             height: styler.height,
