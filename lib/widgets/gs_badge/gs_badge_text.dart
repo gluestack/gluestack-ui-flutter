@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_text_style.dart';
 
 /// GSBadgeText is a Flutter widget that displays a text within a GSBadge widget.
 class GSBadgeText extends StatelessWidget {
@@ -20,19 +21,23 @@ class GSBadgeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Access the badge provider to retrieve badge related information.
+    // Access the badge provider to retrieve relavant badge prop information.
     final value = GSBadgeProvider.of(context);
-    // Retrieve font size and text color based on the badge size.
-    final fontSize = GSBadgeStyle.textSize[value!.size];
-    final textColor = GSBadgeStyle
-        .gsBadgeCombination[value.action]?[value.variant]?.textStyle?.color;
 
-    // Define a default text style with the computed font size and text color.
-    var defaultTextStyle = TextStyle(color: textColor, fontSize: fontSize);
-    // Merge the default text style with the provided GSStyle or custom style.
+    // Access the ancestor provider to retrieve ancestor text styles.
+    final GSStyle? ancestorTextStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsBadgeTextConfig.ancestorStyle.first];
+
+    // Define default text style based on badge provider and ancestor text styles.
+    var defaultTextStyle = TextStyle(
+        fontSize: value?.fontSize,
+        color: ancestorTextStyles?.color,
+        fontWeight: ancestorTextStyles?.fontWeight);
+
+    // Merge default text style with the provided style.
     final mergedStyle =
         defaultTextStyle.merge(style != null ? style!.textStyle : null);
-    
+
     // Create a Text widget with the specified text and merged style.
     return Text(
       text,

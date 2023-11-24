@@ -1,8 +1,19 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/gs_style_config.dart';
 import 'package:gluestack_flutter_pro/theme/config/button/button_text.dart';
+import 'package:gluestack_flutter_pro/theme/config/text/text.dart';
 
 GSStyleConfig gsTextConfig =
     GSStyleConfig(componentName: 'ButtonText', ancestorStyle: ['_text']);
 
-GSStyle buttonTextStyle = GSStyle.fromMap(data: buttonTextData);
+GSStyle buttonTextStyle = GSStyle.fromMap(data: textData)
+    .merge(GSStyle.fromMap(data: buttonTextData));
+
+class GSButtonTextStyle {
+  static Map<GSSizes, GSStyle?> size = {
+    GSSizes.$xs: buttonTextStyle.variants?.size?.$xs,
+    GSSizes.$sm: buttonTextStyle.variants?.size?.$sm,
+    GSSizes.$md: buttonTextStyle.variants?.size?.$md,
+    GSSizes.$lg: buttonTextStyle.variants?.size?.$lg,
+  };
+}
