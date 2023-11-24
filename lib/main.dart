@@ -16,16 +16,13 @@ import 'package:gluestack_flutter_pro/example/progress_example.dart';
 import 'package:gluestack_flutter_pro/example/pressable_example.dart';
 import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 import 'package:gluestack_flutter_pro/example/spinner_example.dart';
+import 'package:gluestack_flutter_pro/example/switch_example.dart';
 import 'package:gluestack_flutter_pro/example/text_area_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/toast_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_group.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_icon.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_indicator.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_label.dart';
+
 
 // import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 
@@ -59,7 +56,21 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
-                 
+                    GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const SwitchExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Switch',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(
