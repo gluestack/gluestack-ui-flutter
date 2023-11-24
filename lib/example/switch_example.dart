@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/utils/drop_down.dart';
+import 'package:gluestack_flutter_pro/utils/toggle.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_switch/gs_switch.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
 
 class SwitchExample extends StatefulWidget {
   const SwitchExample({super.key});
@@ -12,6 +13,22 @@ class SwitchExample extends StatefulWidget {
 
 class _SwitchExampleState extends State<SwitchExample> {
   bool val1 = false;
+
+  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
+  GSSizes selectedSizeOption = GSSizes.$md;
+  void updateSizeSelectedOption(dynamic newOption) {
+    setState(() {
+      selectedSizeOption = newOption;
+    });
+  }
+
+  bool isDisabled = false;
+  void updateIsDisabled(bool value) {
+    setState(() {
+      isDisabled = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,15 +38,11 @@ class _SwitchExampleState extends State<SwitchExample> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const GSText(text: 'Toggle'),
-              const SizedBox(width: 10),
               GSSwitch(
-                  // isDisabled: true,
-                  // isInvalid: true,
-                  size: GSSizes.$lg,
+                  size: selectedSizeOption,
+                  isDisabled: isDisabled,
                   style: GSStyle(
                     checked: GSStyle(
                       thumbColor: Colors.grey,
@@ -43,6 +56,23 @@ class _SwitchExampleState extends State<SwitchExample> {
                     });
                     // print('value: $val1');
                   }),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomDropDown(
+                    title: "size",
+                    dropdownOptions: dropdownSizeOptions,
+                    selectedOption: selectedSizeOption,
+                    onChanged: updateSizeSelectedOption,
+                  ),
+                  const SizedBox(height: 100),
+                  CustomToggle(
+                    title: "isDisabled",
+                    value: isDisabled,
+                    onToggle: updateIsDisabled,
+                  ),
+                ],
+              ),
             ],
           ),
         ],

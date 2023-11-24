@@ -39,7 +39,7 @@ enum GSSizes {
 
 enum GSDirection { row, column }
 
-enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl,none }
+enum GSSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 enum GSAlignments { start, center, end, spaceBetween, flexEnd, flexStart }
 
@@ -358,6 +358,7 @@ class GSAction {
 }
 
 class GSSpace {
+  GSStyle? $none;
   GSStyle? $xs;
   GSStyle? $sm;
   GSStyle? $md;
@@ -368,6 +369,7 @@ class GSSpace {
   GSStyle? $4xl;
 
   GSSpace({
+    this.$none,
     this.$xs,
     this.$sm,
     this.$md,
@@ -379,6 +381,9 @@ class GSSpace {
   });
   factory GSSpace.fromMap({required Map<String, dynamic>? data}) {
     return GSSpace(
+      $none: data?['none'] != null
+          ? GSStyle.fromMap(data: data?['none'], fromVariant: true)
+          : null,
       $xs: data?['xs'] != null
           ? GSStyle.fromMap(data: data?['xs'], fromVariant: true)
           : null,
