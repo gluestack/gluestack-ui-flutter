@@ -13,9 +13,15 @@ import 'package:gluestack_flutter_pro/widgets/gs_vstack/gs_vstack.dart';
 
 import 'package:provider/provider.dart';
 
-class ListYourPlaceModal1 extends StatelessWidget {
+class ListYourPlaceModal1 extends StatefulWidget {
   const ListYourPlaceModal1({super.key});
 
+  @override
+  State<ListYourPlaceModal1> createState() => _ListYourPlaceModal1State();
+}
+
+class _ListYourPlaceModal1State extends State<ListYourPlaceModal1> {
+  bool isSellSelected = true;
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -47,21 +53,39 @@ class ListYourPlaceModal1 extends StatelessWidget {
                 space: GSSpaces.$md,
                 children: [
                   GSButton(
-                    action: GSActions.secondary,
+                    action: isSellSelected
+                        ? GSActions.negative
+                        : GSActions.secondary,
                     variant: GSVariants.outline,
                     style: GSStyle(borderRadius: 999),
                     child: const GSButtonText(text: "Sell"),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        isSellSelected = true;
+                      });
+                    },
                   ),
                   GSButton(
-                    action: GSActions.negative,
+                    action: !isSellSelected
+                        ? GSActions.negative
+                        : GSActions.secondary,
                     variant: GSVariants.outline,
                     style: GSStyle(borderRadius: 999),
                     child: const GSButtonText(text: "Rent/Lease"),
-                    onPressed: () {},
+                    onPressed: () {
+                       setState(() {
+                        isSellSelected = false;
+                      });
+                    },
                   ),
                 ],
-              )
+              ),
+            ],
+          ),
+
+          GSVStack(
+            children: [
+              
             ],
           )
         ],

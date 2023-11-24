@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
-import 'package:gluestack_flutter_pro/token/index.dart';
+
+
 import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image_style.dart';
 
 enum GSImageType {
@@ -76,98 +77,97 @@ class GSImage extends StatelessWidget {
       size: GSImageStyle.size[imageSize],
       inlineStyle: style,
     )!;
-    
-    
 
+    return borderRadius == GSBorderRadius.$none
+        ? _resolveImageType(imageType, styler)
+        : borderRadius == GSBorderRadius.$full
+            ? ClipOval(
+                child: SizedBox.fromSize(
+                    size: Size(styler.width!, styler.height!),
+                    child: _resolveImageType(imageType, styler,boxFit: BoxFit.cover)))
+            : ClipRRect(
+                borderRadius: borderRadius != GSBorderRadius.$none
+                    ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
+                    : BorderRadius.zero,
+                child: _resolveImageType(imageType, styler));
+  }
+
+  Widget _resolveImageType(GSImageType imageType, GSStyle styler,
+      {BoxFit? boxFit}) {
     switch (imageType) {
       case GSImageType.network:
-        return ClipRRect(
-          borderRadius: borderRadius != GSBorderRadius.$none
-              ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
-              : BorderRadius.zero,
-          child: Image.network(
-            height: styler.height,
-            width: styler.width,
-            alignment: alignment,
-            cacheHeight: cacheHeight,
-            cacheWidth: cacheWidth,
-            centerSlice: centerSlice,
-            color: color,
-            colorBlendMode: colorBlendMode,
-            errorBuilder: errorBuilder,
-            fit: fit,
-            excludeFromSemantics: excludeFromSemantics,
-            filterQuality: filterQuality,
-            frameBuilder: frameBuilder,
-            gaplessPlayback: gaplessPlayback,
-            headers: headers,
-            isAntiAlias: isAntiAlias,
-            loadingBuilder: loadingBuilder,
-            matchTextDirection: matchTextDirection,
-            opacity: opacity,
-            repeat: repeat,
-            scale: scale,
-            semanticLabel: semanticLabel,
-            path,
-          ),
+        return Image.network(
+          height: styler.height,
+          width: styler.width,
+          alignment: alignment,
+          cacheHeight: cacheHeight,
+          cacheWidth: cacheWidth,
+          centerSlice: centerSlice,
+          color: color,
+          colorBlendMode: colorBlendMode,
+          errorBuilder: errorBuilder,
+          fit: boxFit ?? fit,
+          excludeFromSemantics: excludeFromSemantics,
+          filterQuality: filterQuality,
+          frameBuilder: frameBuilder,
+          gaplessPlayback: gaplessPlayback,
+          headers: headers,
+          isAntiAlias: isAntiAlias,
+          loadingBuilder: loadingBuilder,
+          matchTextDirection: matchTextDirection,
+          opacity: opacity,
+          repeat: repeat,
+          scale: scale,
+          semanticLabel: semanticLabel,
+          path,
         );
       case GSImageType.file:
-        return ClipRRect(
-          borderRadius: borderRadius != GSBorderRadius.$none
-              ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
-              : BorderRadius.zero,
-          child: Image.file(
-            height: styler.height,
-            width: styler.width,
-            alignment: alignment,
-            cacheHeight: cacheHeight,
-            cacheWidth: cacheWidth,
-            centerSlice: centerSlice,
-            color: color,
-            colorBlendMode: colorBlendMode,
-            errorBuilder: errorBuilder,
-            fit: fit,
-            excludeFromSemantics: excludeFromSemantics,
-            filterQuality: filterQuality,
-            frameBuilder: frameBuilder,
-            gaplessPlayback: gaplessPlayback,
-            isAntiAlias: isAntiAlias,
-            matchTextDirection: matchTextDirection,
-            opacity: opacity,
-            repeat: repeat,
-            scale: scale,
-            semanticLabel: semanticLabel,
-            File(path),
-          ),
+        return Image.file(
+          height: styler.height,
+          width: styler.width,
+          alignment: alignment,
+          cacheHeight: cacheHeight,
+          cacheWidth: cacheWidth,
+          centerSlice: centerSlice,
+          color: color,
+          colorBlendMode: colorBlendMode,
+          errorBuilder: errorBuilder,
+          fit: fit,
+          excludeFromSemantics: excludeFromSemantics,
+          filterQuality: filterQuality,
+          frameBuilder: frameBuilder,
+          gaplessPlayback: gaplessPlayback,
+          isAntiAlias: isAntiAlias,
+          matchTextDirection: matchTextDirection,
+          opacity: opacity,
+          repeat: repeat,
+          scale: scale,
+          semanticLabel: semanticLabel,
+          File(path),
         );
       case GSImageType.asset:
-        return ClipRRect(
-          borderRadius: borderRadius != GSBorderRadius.$none
-              ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
-              : BorderRadius.zero,
-          child: Image.asset(
-            height: styler.height,
-            width: styler.width,
-            alignment: alignment,
-            cacheHeight: cacheHeight,
-            cacheWidth: cacheWidth,
-            centerSlice: centerSlice,
-            color: color,
-            colorBlendMode: colorBlendMode,
-            errorBuilder: errorBuilder,
-            fit: fit,
-            excludeFromSemantics: excludeFromSemantics,
-            filterQuality: filterQuality,
-            frameBuilder: frameBuilder,
-            gaplessPlayback: gaplessPlayback,
-            isAntiAlias: isAntiAlias,
-            matchTextDirection: matchTextDirection,
-            opacity: opacity,
-            repeat: repeat,
-            scale: scale,
-            semanticLabel: semanticLabel,
-            path,
-          ),
+        return Image.asset(
+          height: styler.height,
+          width: styler.width,
+          alignment: alignment,
+          cacheHeight: cacheHeight,
+          cacheWidth: cacheWidth,
+          centerSlice: centerSlice,
+          color: color,
+          colorBlendMode: colorBlendMode,
+          errorBuilder: errorBuilder,
+          fit: fit,
+          excludeFromSemantics: excludeFromSemantics,
+          filterQuality: filterQuality,
+          frameBuilder: frameBuilder,
+          gaplessPlayback: gaplessPlayback,
+          isAntiAlias: isAntiAlias,
+          matchTextDirection: matchTextDirection,
+          opacity: opacity,
+          repeat: repeat,
+          scale: scale,
+          semanticLabel: semanticLabel,
+          path,
         );
     }
   }
