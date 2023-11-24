@@ -14,7 +14,7 @@ class GSHStack extends StatelessWidget {
   final VerticalDirection verticalDirection;
   const GSHStack({
     super.key,
-    this.space,
+    this.space = GSSpaces.none,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.max,
@@ -32,6 +32,7 @@ class GSHStack extends StatelessWidget {
                 space == GSSpaces.$2xl ||
                 space == GSSpaces.$3xl ||
                 space == GSSpaces.$4xl ||
+                space == GSSpaces.none ||
                 space == null,
             "only support for spaces of xs, sm, md, lg, xl , 2xl, 3xl and 4xl");
 
@@ -43,7 +44,10 @@ class GSHStack extends StatelessWidget {
       spacedChildrenList.add(child);
       if (child != children.last) {
         spacedChildrenList.add(
-          SizedBox(width: GSHStackStyle.space[space]?.gap),
+          SizedBox(
+              width: space == GSSpaces.none
+                  ? null
+                  : GSHStackStyle.space[space]?.gap),
         );
       }
     }

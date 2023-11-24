@@ -29,7 +29,11 @@ class ListYourPlaceModal1 extends StatelessWidget {
                                   child: GSIcon(icon: Icons.close))
                             ],
                           ),
-                          content: Text('Test 2'),
+                          content: GSHStack(
+                            children: [
+                              
+                            ],
+                          ),
                         );
   }
 }

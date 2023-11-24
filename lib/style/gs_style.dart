@@ -39,7 +39,7 @@ enum GSSizes {
 
 enum GSDirection { row, column }
 
-enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
+enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl,none }
 
 enum GSAlignments { start, center, end, spaceBetween, flexEnd, flexStart }
 
