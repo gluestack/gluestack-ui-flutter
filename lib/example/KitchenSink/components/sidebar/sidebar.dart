@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/components/sidebar/ammenities.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/sidebar/booking_options.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/sidebar/sortby.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/sidebar/types_of_places.dart';
@@ -15,8 +16,9 @@ class KSSideBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         KSSortBy(),
-        KSBookingOptions(),
         KSTypesOfPlaces(),
+        KSAmmenities(),
+        KSBookingOptions(),
       ],
     );
   }
