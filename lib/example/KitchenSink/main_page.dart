@@ -32,7 +32,7 @@ class LayoutExample extends StatelessWidget {
               ),
               const Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 32, vertical: 21),
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 21),
                   child: GSHStack(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +47,7 @@ class LayoutExample extends StatelessWidget {
                         ),
                       ),
                       Flexible(
-                        flex: 3,
+                        flex: 5,
                         child: SingleChildScrollView(
                           child: KSMainComponent(),
                         ),

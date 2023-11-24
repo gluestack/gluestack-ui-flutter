@@ -34,7 +34,7 @@ class _KSSortByState extends State<KSSortBy> {
           text: 'Sort by',
         ),
         GSRadio<KSSortOptions>(
-          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3)),
+          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3,left: $GSSpace.$1)),
           icon: const GSRadioIcon<KSSortOptions>(),
           groupValue: currentSelectedOption,
           value: KSSortOptions.topRating,
@@ -46,7 +46,7 @@ class _KSSortByState extends State<KSSortBy> {
           },
         ),
         GSRadio<KSSortOptions>(
-          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3)),
+          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3,left: $GSSpace.$1)),
           icon: const GSRadioIcon<KSSortOptions>(),
           groupValue: currentSelectedOption,
           value: KSSortOptions.bestPrice,
@@ -58,7 +58,7 @@ class _KSSortByState extends State<KSSortBy> {
           },
         ),
         GSRadio<KSSortOptions>(
-          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3)),
+          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3,left: $GSSpace.$1)),
           icon: const GSRadioIcon<KSSortOptions>(),
           groupValue: currentSelectedOption,
           value: KSSortOptions.discount,
@@ -70,7 +70,7 @@ class _KSSortByState extends State<KSSortBy> {
           },
         ),
         GSRadio<KSSortOptions>(
-          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3)),
+          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$3,left: $GSSpace.$1)),
           icon: const GSRadioIcon<KSSortOptions>(),
           groupValue: currentSelectedOption,
           value: KSSortOptions.whatsNew,
