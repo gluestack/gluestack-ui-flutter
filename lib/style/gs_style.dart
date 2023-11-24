@@ -826,7 +826,7 @@ this.textTransform,
             : resolveColorFromString(data?[':focus']?['borderColor']),
         borderWidth: kIsWeb
             ? resolveSpaceFromString(
-                data?['_web']?[':focusVisible']?['outlineWidth'])
+                data?['_web']?[':focusVisible']?['outlineWidth'].toString())
             : null,
         bg: resolveColorFromString(data?[':focus']?['bg']),
         borderBottomColor:
@@ -1003,7 +1003,7 @@ this.textTransform,
             : resolveColorFromString(data?['_dark']?[':focus']?['borderColor']),
         borderWidth: kIsWeb
             ? resolveSpaceFromString(
-                data?['_web']?[':focusVisible']?['outlineWidth'])
+                data?['_web']?[':focusVisible']?['outlineWidth'].toString())
             : null,
           onHover: GSStyle(
             borderColor: resolveColorFromString(
