@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_alert_dialog/gs_alert_dialog_content.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_alert_dialog/gs_alert_dialog_content_style.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_alert_dialog/gs_alert_dialog_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 
 class GSAlertDialog extends StatefulWidget {
   final GSAlertDialogContent content;
@@ -35,7 +37,15 @@ class GSAlertDialog extends StatefulWidget {
     this.insetAnimationCurve = Curves.decelerate,
     this.insetAnimationDuration = const Duration(milliseconds: 100),
     this.size,
-  });
+  }) : assert(
+          size == GSSizes.$full ||
+              size == GSSizes.$lg ||
+              size == GSSizes.$md ||
+              size == GSSizes.$sm ||
+              size == GSSizes.$xs,
+          'AlertDialog can only have the sizes: \$lg, \$md, \$sm and \$xs\n'
+          'To resolve this error, ensure only the above mentioned GSSizes is specified.',
+        );
   static void show(
     BuildContext context, {
     GSAlertDialogContent? content,
@@ -85,37 +95,48 @@ class GSAlertDialog extends StatefulWidget {
 class _GSAlertDialogState extends State<GSAlertDialog> {
   @override
   Widget build(BuildContext context) {
+    print(alertDialogStyle.variants!.size!.$full!.descendantStyles);
     final alertSize = widget.size ?? alertDialogStyle.props?.size;
     GSStyle styler = resolveStyles(
       context,
       variantStyle: alertDialogStyle,
       size: GSAlertDialogStyle.size[alertSize],
       inlineStyle: widget.style,
+      descendantStyleKeys: gsAlertDialogConfig.descendantStyle,
     )!;
     final alertWidth = styler.width ??
         (MediaQuery.of(context).size.width *
-            (GSAlertDialogStyle.size[alertSize]!.contentWidth!.toDouble()));
-    final alertMaxWidth =
-        GSAlertDialogStyle.size[alertSize]?.contentMaxWidth ?? double.infinity;
+            (styler
+                    .descendantStyles?[
+                        gsAlertDialogContentConfig.ancestorStyle.first]
+                    ?.width)!
+                .toDouble());
+    final alertMaxWidth = styler
+            .descendantStyles?[gsAlertDialogContentConfig.ancestorStyle.first]
+            ?.maxWidth ??
+        double.infinity;
 
-    return Dialog(
-      backgroundColor: widget.backgroundColor ?? styler.bg,
-      alignment: widget.alignment,
-      clipBehavior: widget.clipBehavior!,
-      elevation: widget.elevation,
-      insetPadding: widget.insetPadding!,
-      shadowColor: widget.shadowColor,
-      shape: widget.shape,
-      surfaceTintColor: widget.surfaceTintColor,
-      insetAnimationCurve: widget.insetAnimationCurve!,
-      insetAnimationDuration: widget.insetAnimationDuration!,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(styler.borderRadius ?? 4.0),
-        child: Container(
-          width: alertWidth,
-          height: styler.height,
-          constraints: BoxConstraints(maxWidth: alertMaxWidth),
-          child: widget.content,
+    return GSAncestor(
+      decedentStyles: styler.descendantStyles,
+      child: Dialog(
+        backgroundColor: widget.backgroundColor ?? styler.bg,
+        alignment: widget.alignment,
+        clipBehavior: widget.clipBehavior!,
+        elevation: widget.elevation,
+        insetPadding: widget.insetPadding!,
+        shadowColor: widget.shadowColor,
+        shape: widget.shape,
+        surfaceTintColor: widget.surfaceTintColor,
+        insetAnimationCurve: widget.insetAnimationCurve!,
+        insetAnimationDuration: widget.insetAnimationDuration!,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(styler.borderRadius ?? 4.0),
+          child: Container(
+            width: alertWidth,
+            height: styler.height,
+            constraints: BoxConstraints(maxWidth: alertMaxWidth),
+            child: widget.content,
+          ),
         ),
       ),
     );

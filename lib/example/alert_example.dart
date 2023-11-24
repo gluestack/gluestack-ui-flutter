@@ -23,7 +23,7 @@ class AlertExample extends StatelessWidget {
           onPressed: () {
             GSAlertDialog.show(
               context,
-              size: GSSizes.$lg,
+              size: GSSizes.$full,
               content: GSAlertDialogContent(
                 header: GSAlertDialogHeader(
                   style: GSStyle(
