@@ -45,7 +45,12 @@ class GSRadio<T> extends StatelessWidget {
       this.isDisabled = false,
       this.isInvalid = false,
       this.label,
-      this.size});
+      this.size}): assert(
+            size == GSSizes.$lg ||
+                size == GSSizes.$md ||
+                size == GSSizes.$sm ||
+                size == null,
+            "only support sizes of lg,md,sm");
 
   @override
   Widget build(BuildContext context) {

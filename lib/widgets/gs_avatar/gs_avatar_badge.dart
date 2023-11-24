@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_badge_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_provider.dart';
-import 'package:provider/provider.dart';
+
 
 class GSAvatarBadge extends StatelessWidget {
   final GSStyle? style;
@@ -16,16 +16,18 @@ class GSAvatarBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ancestorStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsAvatarBadgeStyle.ancestorStyle.first];
+
     GSStyle styler = resolveStyles(
       context,
       variantStyle: avatarBadgeStyle,
       inlineStyle: style,
     )!;
-    GSStyle value = GSAvatarProvider.of(context)!.avatarStyle;
 
     return Container(
-      height: style?.height ?? value.badgeHeight ?? styler.height,
-      width: style?.width ?? value.badgeWidth ?? styler.width,
+      height: style?.height ?? ancestorStyles?.height ?? styler.height,
+      width: style?.width ?? ancestorStyles?.height ?? styler.width,
       decoration: BoxDecoration(
         color: styler.bg,
         shape: BoxShape.circle,
