@@ -496,6 +496,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? splashColor;
   GSStyle? badge;
   GSTextTransform? textTransform;
+  double? iconSize;
 
   //switch props
   Color? trackColorTrue;

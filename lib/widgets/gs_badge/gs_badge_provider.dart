@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/gs_style.dart';
 
+/// GSBadgeProvider is an InheritedWidget used to provide badge-related information to its descendants.
 class GSBadgeProvider extends InheritedWidget {
-  final GSActions action;
-  final GSSizes size;
-  final GSVariants variant;
+  // Font size for the badge text.
+  final double? fontSize;
+  // Icon size for the badge icon.
+  final double? iconSize;
 
+  /// Constructor for GSBadgeProvider:
   const GSBadgeProvider({
     super.key,
-    required this.size,
-    required this.action,
-    required this.variant,
+    required this.fontSize,
+    required this.iconSize,
     required Widget child,
-
   }) : super(child: child);
 
+  /// Overrides the method to determine whether an update notification is needed.
   @override
   bool updateShouldNotify(GSBadgeProvider oldWidget) {
-    return action != oldWidget.action || size != oldWidget.size || variant != oldWidget.variant;
+    return fontSize != oldWidget.fontSize || iconSize != oldWidget.iconSize;
   }
 
+  /// Static method to obtain the GSBadgeProvider instance from the given context.
   static GSBadgeProvider? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<GSBadgeProvider>();
   }
