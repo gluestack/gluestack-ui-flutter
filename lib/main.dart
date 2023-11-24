@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/components/stacked_card.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/main_page.dart';
 import 'package:gluestack_flutter_pro/example/alert_example.dart';
 import 'package:gluestack_flutter_pro/example/avatar_example.dart';
@@ -23,7 +24,6 @@ import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/toast_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-
 
 // import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 
