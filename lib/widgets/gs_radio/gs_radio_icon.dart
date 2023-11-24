@@ -7,7 +7,6 @@ import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_icon_style.dart'
 
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_provider.dart';
 
-
 class GSRadioIcon<T> extends StatelessWidget {
   final Color? activeColor;
   final bool autofocus;
@@ -33,8 +32,8 @@ class GSRadioIcon<T> extends StatelessWidget {
     final value = GSRadioProvider.of<T>(context);
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final bool isChecked = value!.value == value.groupValue;
-    final ancestorTextStyles =
-        GSAncestorProvider.of(context)?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
+    final ancestorTextStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
     final radioSize =
         GSRadioIconStyle.iconSize[ancestorTextStyles?.props?.size];
 

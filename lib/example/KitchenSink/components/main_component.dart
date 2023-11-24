@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/token/font_size_token.dart';
+
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group.dart';
@@ -10,7 +10,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_text.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_heading/gs_heading.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_hstack/gs_hstack.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_vstack/gs_vstack.dart';
 
 List<String> titles = [
@@ -128,7 +128,8 @@ class KSMainComponent extends StatelessWidget {
                           dark: GSStyle(
                             textStyle: const TextStyle(
                               fontWeight: FontWeight.w400,
-                              color: $GSColors.textDark50, //Error: Does not work
+                              color:
+                                  $GSColors.textDark50, //Error: Does not work
                             ),
                           ),
                         ),

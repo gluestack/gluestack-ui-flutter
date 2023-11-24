@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/banner.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/header.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/main_component.dart';
-import 'package:gluestack_flutter_pro/example/KitchenSink/components/sidebar.dart';
+
+import 'package:gluestack_flutter_pro/example/KitchenSink/components/sidebar/sidebar.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_center/gs_center.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_hstack/gs_hstack.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_link/gs_link.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_text/gs_text.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_vstack/gs_vstack.dart';
 import 'package:provider/provider.dart';
 

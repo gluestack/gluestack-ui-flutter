@@ -6,8 +6,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_fallBack_text.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_box/gs_box.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_center/gs_center.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_divider/gs_divider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_hstack/gs_hstack.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_icon/gs_icon.dart';

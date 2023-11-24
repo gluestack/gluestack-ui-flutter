@@ -33,7 +33,7 @@ class GSRadio<T> extends StatelessWidget {
   final bool isDisabled;
   final bool isInvalid;
   final GSStyle? style;
-  final void Function(T?)? onChanged;
+  final void Function(T? value)? onChanged;
 
   const GSRadio(
       {super.key,
@@ -60,6 +60,7 @@ class GSRadio<T> extends StatelessWidget {
       decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize]!,
       child: GSFocusableActionDetector(
         child: InkWell(
+          focusColor: Colors.transparent,
           hoverColor: Colors.transparent,
           mouseCursor: isDisabled
               ? SystemMouseCursors.forbidden
