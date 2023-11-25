@@ -4,24 +4,18 @@ import 'package:gluestack_flutter_pro/example/KitchenSink/components/stacked_car
 import 'package:gluestack_flutter_pro/example/KitchenSink/models/stacked_card.dart';
 
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme_provider.dart';
-
 import 'package:gluestack_flutter_pro/token/index.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_alert_dialog/gs_alert_dialog.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_alert_dialog/gs_alert_dialog_content.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_box/gs_box.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_text.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_heading/gs_heading.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_hstack/gs_hstack.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_icon/gs_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_pressable/gs_pressable.dart';
-
 import 'package:gluestack_flutter_pro/widgets/gs_vstack/gs_vstack.dart';
-import 'package:provider/provider.dart';
+
+
+
 
 List<String> titles = [
   "Tropical",

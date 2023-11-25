@@ -6,6 +6,7 @@ import 'package:gluestack_flutter_pro/token/font_size_token.dart';
 
 GSStyleConfig gsRadioIconConfig =
     GSStyleConfig(componentName: 'RadioIcon', ancestorStyle: ['_icon']);
+    
 final GSStyle radioIconStyle = GSStyle.fromMap(data: radioIconData);
 final GSStyle radioIndicatorStyle = GSStyle.fromMap(data: radioIndicatorData);
 
