@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/example/KitchenSink/components/list_your_place_modal/modal1.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/components/list_your_place_modal/modal.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/components/stacked_card.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/models/stacked_card.dart';
 
@@ -104,7 +104,7 @@ class KSMainComponent extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (_) {
-                        return ListYourPlaceModal1();
+                        return const ListYourPlaceModal();
                       });
                 },
               ),
