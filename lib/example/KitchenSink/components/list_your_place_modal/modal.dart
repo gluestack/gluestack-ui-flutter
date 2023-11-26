@@ -37,12 +37,6 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
   }
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return AlertDialog(
@@ -59,12 +53,20 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
           ],
         ),
         content: _currentModalContent == 0
-            ? ListYourPlaceModalContent1(nextFunction: _moveToNextModalContent)
+            ? SizedBox(
+                width: 500,
+                child: ListYourPlaceModalContent1(
+                    nextFunction: _moveToNextModalContent))
             : _currentModalContent == 1
-                ? ListYourPlaceModalContent2(
-                    nextFunction: _moveToNextModalContent,
-                    backFunction: _moveBackToPreviousModalContent,
-                  )
-                :const ListYourPlaceModalContent3());
+                ? SizedBox(
+                  width: 500,
+                  child: ListYourPlaceModalContent2(
+                      nextFunction: _moveToNextModalContent,
+                      backFunction: _moveBackToPreviousModalContent,
+                    ),
+                )
+                :const SizedBox(
+                  width: 500,
+                  child:  ListYourPlaceModalContent3()));
   }
 }

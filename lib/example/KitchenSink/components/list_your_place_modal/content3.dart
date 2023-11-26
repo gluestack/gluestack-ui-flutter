@@ -34,17 +34,24 @@ class _ListYourPlaceModalContent3State
       space: GSSpaces.$md,
       children: [
         const GSText(text: "Title", bold: true, size: GSSizes.$sm),
-        const GSInput(),
+        const GSInput(
+          hintText: "Enter property name",
+        ),
         const GSText(text: "Description", bold: true, size: GSSizes.$sm),
-        GSTextArea(
-          size: GSSizes.$xl,
-          hintText: "Enter text here",
-          style: GSStyle(
-            width: 300,
+        SizedBox(
+          width: double.infinity,
+          child: GSTextArea(
+            size: GSSizes.$xl,
+            hintText: "Provide description",
+            style: GSStyle(
+              width: 300,
+            ),
           ),
         ),
         const GSText(text: "Contact me", bold: true, size: GSSizes.$sm),
-        const GSInput(),
+        const GSInput(
+          hintText: "Phone number",
+        ),
         SizedBox(
           width: double.infinity,
           child: GSButton(
