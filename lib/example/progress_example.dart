@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/token/color_token.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_progress/gs_progress.dart';
+import 'package:provider/provider.dart';
 
 class ProgressExample extends StatefulWidget {
   const ProgressExample({super.key});
@@ -30,29 +32,28 @@ class _ProgressExampleState extends State<ProgressExample> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GSProgress(
-              value: 0.4,
-              size: selectedSizeOption,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomDropDown(
-                  title: "size",
-                  dropdownOptions: dropdownSizeOptions,
-                  selectedOption: selectedSizeOption,
-                  onChanged: updateSizeSelectedOption,
-                ),
-              ],
-            )
-          ],
+        child: BaseLayout(
+          component: GSProgress(
+            value: 0.4,
+            size: selectedSizeOption,
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+            ],
+          ),
         ),
       ),
     );

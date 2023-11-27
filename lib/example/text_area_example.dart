@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/token/index.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/utils/toggle.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_text_area/gs_text_area.dart';
+import 'package:provider/provider.dart';
 
 class TextAreaExample extends StatefulWidget {
   const TextAreaExample({super.key});
@@ -51,50 +53,49 @@ class _TextAreaExampleState extends State<TextAreaExample> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GSTextArea(
-              size: selectedSizeOption,
-              isDisabled: isDisabled,
-              readOnly: isReadOnly,
-              isInvalid: isInvalid,
-              hintText: "Enter text here",
-              style: GSStyle(
-                width: 300,
-              ),
+        child: BaseLayout(
+          component: GSTextArea(
+            size: selectedSizeOption,
+            isDisabled: isDisabled,
+            readOnly: isReadOnly,
+            isInvalid: isInvalid,
+            hintText: "Enter text here",
+            style: GSStyle(
+              width: 300,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomDropDown(
-                  title: "size",
-                  dropdownOptions: dropdownSizeOptions,
-                  selectedOption: selectedSizeOption,
-                  onChanged: updateSizeSelectedOption,
-                ),
-                CustomToggle(
-                  title: "isDisabled",
-                  value: isDisabled,
-                  onToggle: updateIsDisabled,
-                ),
-                CustomToggle(
-                  title: "isInvalid",
-                  value: isInvalid,
-                  onToggle: updateIsInvalid,
-                ),
-                CustomToggle(
-                  title: "isReadOnly",
-                  value: isReadOnly,
-                  onToggle: updateIsReadOnly,
-                )
-              ],
-            )
-          ],
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              CustomToggle(
+                title: "isInvalid",
+                value: isInvalid,
+                onToggle: updateIsInvalid,
+              ),
+              CustomToggle(
+                title: "isReadOnly",
+                value: isReadOnly,
+                onToggle: updateIsReadOnly,
+              )
+            ],
+          ),
         ),
       ),
     );

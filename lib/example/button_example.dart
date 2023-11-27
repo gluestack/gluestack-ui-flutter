@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/utils/toggle.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_text.dart';
+import 'package:provider/provider.dart';
 
 class ButtonExample extends StatefulWidget {
   const ButtonExample({super.key});
@@ -72,61 +75,60 @@ class _ButtonExampleState extends State<ButtonExample> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GSButton(
-              action: selectedActionOption,
-              variant: selectedVariantOption,
-              size: selectedSizeOption,
-              isDisabled: isDisabled,
-              isFocusVisible: isFocusVisible,
-              onPressed: () {},
-              child: const Row(
-                children: [
-                  GSButtonText(text: "Add"),
-                  GSButtonIcon(icon: Icons.add)
-                ],
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
+        child: BaseLayout(
+          component: GSButton(
+            action: selectedActionOption,
+            variant: selectedVariantOption,
+            size: selectedSizeOption,
+            isDisabled: isDisabled,
+            isFocusVisible: isFocusVisible,
+            onPressed: () {},
+            child: const Row(
               children: [
-                CustomDropDown(
-                  title: "size",
-                  dropdownOptions: dropdownSizeOptions,
-                  selectedOption: selectedSizeOption,
-                  onChanged: updateSizeSelectedOption,
-                ),
-                CustomDropDown(
-                  title: "variant",
-                  dropdownOptions: dropdownVariantOptions,
-                  selectedOption: selectedVariantOption,
-                  onChanged: updateVariantSelectedOption,
-                ),
-                CustomDropDown(
-                  title: "action",
-                  dropdownOptions: dropdownActionOptions,
-                  selectedOption: selectedActionOption,
-                  onChanged: updateActionSelectedOption,
-                ),
-                CustomToggle(
-                  title: "isDisabled",
-                  value: isDisabled,
-                  onToggle: updateIsDisabled,
-                ),
-                CustomToggle(
-                  title: "isFocusVisible",
-                  value: isFocusVisible,
-                  onToggle: updateIsFocusVisible,
-                )
+                GSButtonText(text: "Add"),
+                GSButtonIcon(icon: Icons.add)
               ],
-            )
-          ],
+            ),
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              CustomDropDown(
+                title: "variant",
+                dropdownOptions: dropdownVariantOptions,
+                selectedOption: selectedVariantOption,
+                onChanged: updateVariantSelectedOption,
+              ),
+              CustomDropDown(
+                title: "action",
+                dropdownOptions: dropdownActionOptions,
+                selectedOption: selectedActionOption,
+                onChanged: updateActionSelectedOption,
+              ),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              CustomToggle(
+                title: "isFocusVisible",
+                value: isFocusVisible,
+                onToggle: updateIsFocusVisible,
+              )
+            ],
+          ),
         ),
       ),
     );

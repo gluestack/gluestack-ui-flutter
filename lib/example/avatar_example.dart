@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_fallBack_text.dart';
+import 'package:provider/provider.dart';
 
 class AvatarExample extends StatefulWidget {
   const AvatarExample({super.key});
@@ -47,42 +50,41 @@ class _AvatarExampleState extends State<AvatarExample> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            GSAvatar(
-              radius: selectedRadiusOption,
-              size: selectedSizeOption,
-              style: GSStyle(
-                bg: Colors.orange,
-                textStyle: const TextStyle(color: Colors.white),
-              ),
-              fallBackText: const GSAvatarFallBackText(
-                'Geeky Stack',
-              ),
+        child: BaseLayout(
+          component: GSAvatar(
+            radius: selectedRadiusOption,
+            size: selectedSizeOption,
+            style: GSStyle(
+              bg: Colors.orange,
+              textStyle: const TextStyle(color: Colors.white),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomDropDown(
-                  title: "size",
-                  dropdownOptions: dropdownSizeOptions,
-                  selectedOption: selectedSizeOption,
-                  onChanged: updateSizeSelectedOption,
-                ),
-                CustomDropDown(
-                  title: "borderRadius",
-                  dropdownOptions: dropdownRadiusOptions,
-                  selectedOption: selectedRadiusOption,
-                  onChanged: updateRadiusSelectedOption,
-                ),
-              ],
+            fallBackText: const GSAvatarFallBackText(
+              'Geeky Stack',
             ),
-          ],
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              CustomDropDown(
+                title: "borderRadius",
+                dropdownOptions: dropdownRadiusOptions,
+                selectedOption: selectedRadiusOption,
+                onChanged: updateRadiusSelectedOption,
+              ),
+            ],
+          ),
         ),
       ),
     );

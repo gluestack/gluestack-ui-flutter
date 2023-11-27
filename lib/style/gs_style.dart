@@ -660,7 +660,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       width: overrideStyle?.width ?? width,
       height: overrideStyle?.height ?? height,
       badge: overrideStyle?.badge ?? badge,
-      dark: overrideStyle?.dark ?? dark,
+      dark:
+          dark != null ? dark?.merge(overrideStyle?.dark) : overrideStyle?.dark,
       lg: overrideStyle?.lg ?? lg,
       md: overrideStyle?.md ?? md,
       sm: overrideStyle?.sm ?? sm,
@@ -828,8 +829,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       onFocus: GSStyle(
         borderColor: kIsWeb
-            ? resolveColorFromString(
-                data?['_web']?[':focusVisible']?['outlineColor'])
+            ? resolveColorFromString(data?['_web']?[':focusVisible']
+                    ?['outlineColor'] ??
+                data?[':focus']?['borderColor'])
             : resolveColorFromString(data?[':focus']?['borderColor']),
         borderWidth: kIsWeb
             ? resolveSpaceFromString(

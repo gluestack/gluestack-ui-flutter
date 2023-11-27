@@ -38,7 +38,6 @@ GSStyle? resolveStyles(
   Map<String, GSStyle?>? descendantStyles,
   List<String> descendantStyleKeys = const [],
 }) {
-  
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
   GSStyle? temp = variantStyle != null
       ? variantStyle.merge(inlineStyle,
@@ -51,7 +50,7 @@ GSStyle? resolveStyles(
   GSStyle? currentGSStyle = size != null
       ? size.merge(temp, descendantStyleKeys: descendantStyleKeys)
       : temp;
- 
+
   if (inlineStyle == null) {
     if (theme == GSThemeMode.dark) {
       return currentGSStyle.merge(variantStyle?.dark,
@@ -61,7 +60,6 @@ GSStyle? resolveStyles(
   inlineStyle?.contextStyles.forEach((key, value) {
     if (value != null) {
       if (key == 'dark' && theme == GSThemeMode.dark) {
- 
         currentGSStyle = currentGSStyle?.merge(value,
             descendantStyleKeys: descendantStyleKeys);
 

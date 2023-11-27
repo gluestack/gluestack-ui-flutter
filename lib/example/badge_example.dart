@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/token/color_token.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
-import 'package:gluestack_flutter_pro/utils/toggle.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_badge/gs_badge_text.dart';
+import 'package:provider/provider.dart';
 
 /// Example widget demonstrating the usage of GSBadge, GSBadgeIcon, and GSBadgeText.
 class BadgeExample extends StatefulWidget {
@@ -73,53 +74,52 @@ class _BadgeExampleState extends State<BadgeExample> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GSBadge(
-              action: selectedActionOption,
-              variant: selectedVariantOption,
-              icon: const GSBadgeIcon(
-                iconData: Icons.info_outline,
-              ),
-              text: const GSBadgeText(
-                'information',
-              ),
+        child: BaseLayout(
+          component: GSBadge(
+            action: selectedActionOption,
+            variant: selectedVariantOption,
+            icon: const GSBadgeIcon(
+              iconData: Icons.info_outline,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomDropDown(
-                  title: "size",
-                  dropdownOptions: dropdownSizeOptions,
-                  selectedOption: selectedSizeOption,
-                  onChanged: updateSizeSelectedOption,
-                ),
-                CustomDropDown(
-                  title: "variant",
-                  dropdownOptions: dropdownVariantOptions,
-                  selectedOption: selectedVariantOption,
-                  onChanged: updateVariantSelectedOption,
-                ),
-                CustomDropDown(
-                  title: "borderRadius",
-                  dropdownOptions: dropdownRadiusOptions,
-                  selectedOption: selectedRadiusOption,
-                  onChanged: updateRadiusSelectedOption,
-                ),
-                CustomDropDown(
-                  title: "action",
-                  dropdownOptions: dropdownActionOptions,
-                  selectedOption: selectedActionOption,
-                  onChanged: updateActionSelectedOption,
-                ),
-              ],
-            )
-          ],
+            text: const GSBadgeText(
+              'information',
+            ),
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              CustomDropDown(
+                title: "variant",
+                dropdownOptions: dropdownVariantOptions,
+                selectedOption: selectedVariantOption,
+                onChanged: updateVariantSelectedOption,
+              ),
+              CustomDropDown(
+                title: "borderRadius",
+                dropdownOptions: dropdownRadiusOptions,
+                selectedOption: selectedRadiusOption,
+                onChanged: updateRadiusSelectedOption,
+              ),
+              CustomDropDown(
+                title: "action",
+                dropdownOptions: dropdownActionOptions,
+                selectedOption: selectedActionOption,
+                onChanged: updateActionSelectedOption,
+              ),
+            ],
+          ),
         ),
       ),
     );

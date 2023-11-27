@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/utils/toggle.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
+import 'package:provider/provider.dart';
 
 class InputExample extends StatefulWidget {
   const InputExample({super.key});
@@ -63,57 +66,56 @@ class _InputExampleState extends State<InputExample> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GSInput(
-              size: selectedSizeOption,
-              variant: selectedVariantOption,
-              hintText: "Enter text here",
-              isDisabled: isDisabled,
-              isInvalid: isInvalid,
-              readOnly: isReadOnly,
-              style: GSStyle(
-                width: 300,
-              ),
+        child: BaseLayout(
+          component: GSInput(
+            size: selectedSizeOption,
+            variant: selectedVariantOption,
+            hintText: "Enter text here",
+            isDisabled: isDisabled,
+            isInvalid: isInvalid,
+            readOnly: isReadOnly,
+            style: GSStyle(
+              width: 300,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomDropDown(
-                  title: "size",
-                  dropdownOptions: dropdownSizeOptions,
-                  selectedOption: selectedSizeOption,
-                  onChanged: updateSizeSelectedOption,
-                ),
-                CustomDropDown(
-                  title: "variant",
-                  dropdownOptions: dropdownVariantOptions,
-                  selectedOption: selectedVariantOption,
-                  onChanged: updateVariantSelectedOption,
-                ),
-                CustomToggle(
-                  title: "isDisabled",
-                  value: isDisabled,
-                  onToggle: updateIsDisabled,
-                ),
-                CustomToggle(
-                  title: "isInvalid",
-                  value: isInvalid,
-                  onToggle: updateIsInvalid,
-                ),
-                CustomToggle(
-                  title: "isReadOnly",
-                  value: isReadOnly,
-                  onToggle: updateIsReadOnly,
-                )
-              ],
-            )
-          ],
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              CustomDropDown(
+                title: "variant",
+                dropdownOptions: dropdownVariantOptions,
+                selectedOption: selectedVariantOption,
+                onChanged: updateVariantSelectedOption,
+              ),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              CustomToggle(
+                title: "isInvalid",
+                value: isInvalid,
+                onToggle: updateIsInvalid,
+              ),
+              CustomToggle(
+                title: "isReadOnly",
+                value: isReadOnly,
+                onToggle: updateIsReadOnly,
+              )
+            ],
+          ),
         ),
       ),
     );

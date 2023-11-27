@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_text.dart';
@@ -7,6 +9,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_toast/gs_toast.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_toast/gs_toast_description.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_toast/gs_toast_title.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_toast/show_toast.dart';
+import 'package:provider/provider.dart';
 
 class ToastExample extends StatefulWidget {
   const ToastExample({super.key});
@@ -45,56 +48,55 @@ class _ToastExampleState extends State<ToastExample> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GSButton(
-              size: GSSizes.$lg,
-              child: const GSButtonText(text: "Click Me"),
-              onPressed: () {
-                showToast(
-                  context,
-                  child: GSToast(
-                    variant: selectedVariantOption,
-                    action: selectedActionOption,
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        GSToastTitle(
-                          title: "Hey",
-                        ),
-                        GSToastDescription(
-                          description: "Desc Desc Desc Desc Desc Desc ",
-                        ),
-                      ],
-                    ),
+        child: BaseLayout(
+          component: GSButton(
+            size: GSSizes.$lg,
+            child: const GSButtonText(text: "Click Me"),
+            onPressed: () {
+              showToast(
+                context,
+                child: GSToast(
+                  variant: selectedVariantOption,
+                  action: selectedActionOption,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GSToastTitle(
+                        title: "Hey",
+                      ),
+                      GSToastDescription(
+                        description: "Desc Desc Desc Desc Desc Desc ",
+                      ),
+                    ],
                   ),
-                );
-              },
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomDropDown(
-                  title: "variant",
-                  dropdownOptions: dropdownVariantOptions,
-                  selectedOption: selectedVariantOption,
-                  onChanged: updateVariantSelectedOption,
                 ),
-                CustomDropDown(
-                  title: "action",
-                  dropdownOptions: dropdownActionOptions,
-                  selectedOption: selectedActionOption,
-                  onChanged: updateActionSelectedOption,
-                ),
-              ],
-            )
-          ],
+              );
+            },
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "variant",
+                dropdownOptions: dropdownVariantOptions,
+                selectedOption: selectedVariantOption,
+                onChanged: updateVariantSelectedOption,
+              ),
+              CustomDropDown(
+                title: "action",
+                dropdownOptions: dropdownActionOptions,
+                selectedOption: selectedActionOption,
+                onChanged: updateActionSelectedOption,
+              ),
+            ],
+          ),
         ),
       ),
     );

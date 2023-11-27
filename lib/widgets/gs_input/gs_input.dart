@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
-import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input_style.dart';
 
 class GSInput extends StatefulWidget {
@@ -301,7 +300,7 @@ class _GSInputState extends State<GSInput> {
         return styler.onInvaild?.borderColor ?? styler.borderColor;
       }
 
-      return styler.onFocus?.borderColor ?? $GSColors.primary700;
+      return styler.onFocus?.borderColor;
     }
 
     double? resolveFocusBorderWidth() {
@@ -459,10 +458,9 @@ class _GSInputState extends State<GSInput> {
               contentPadding: styler.padding,
               enabled: widget.visualFeedback,
               focusedBorder: borderStyle.copyWith(
-                  // handle focusedBorderColor comming null 
+                  // handle focusedBorderColor comming null
                   borderSide: BorderSide(
-                      color: focusedBorderColor ?? const Color(0xFF000000),
-                      width: focusedBorderWidth!)),
+                      color: focusedBorderColor!, width: focusedBorderWidth!)),
               border: borderStyle,
             ),
           ),

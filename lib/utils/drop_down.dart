@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/token/color_token.dart';
+import 'package:provider/provider.dart';
 
 class CustomDropDown extends StatefulWidget {
   final String title;
@@ -28,6 +30,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -49,9 +52,18 @@ class _CustomDropDownState extends State<CustomDropDown> {
               .map<DropdownMenuItem<dynamic>>((dynamic value) {
             return DropdownMenuItem<dynamic>(
               value: value,
-              child: Text(enumValueFromString(value.toString())),
+              child: Text(
+                enumValueFromString(value.toString()),
+                style: TextStyle(
+                    color: themeProvider.currentTheme == GSThemeMode.dark
+                        ? Colors.white
+                        : Colors.black),
+              ),
             );
           }).toList(),
+          dropdownColor: themeProvider.currentTheme == GSThemeMode.dark
+              ? Colors.black
+              : Colors.white,
         ),
       ],
     );

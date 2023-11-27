@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/utils/toggle.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_box/gs_box.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_vstack/gs_vstack.dart';
+import 'package:provider/provider.dart';
 
 class VStackExample extends StatefulWidget {
   const VStackExample({super.key});
@@ -41,35 +44,35 @@ class _VStackExampleState extends State<VStackExample> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-          child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          GSVStack(
+        child: BaseLayout(
+          component: GSVStack(
             mainAxisAlignment: MainAxisAlignment.center,
             isReversed: isReversed,
             space: selectedSpaceOption,
             children: [
               GSBox(
                 style:
-                    GSStyle(height: 200, width: 200, color: $GSColors.blue300),
+                    GSStyle(height: 100, width: 100, color: $GSColors.blue300),
                 child: const Text('1'),
               ),
               GSBox(
                 style:
-                    GSStyle(height: 200, width: 200, color: $GSColors.blue400),
+                    GSStyle(height: 100, width: 100, color: $GSColors.blue400),
                 child: const Text('2'),
               ),
               GSBox(
                 style:
-                    GSStyle(height: 200, width: 200, color: $GSColors.blue500),
+                    GSStyle(height: 100, width: 100, color: $GSColors.blue500),
                 child: const Text('3'),
               ),
             ],
           ),
-          Column(
+          controls: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -85,9 +88,9 @@ class _VStackExampleState extends State<VStackExample> {
                 onToggle: updateIsReversed,
               ),
             ],
-          )
-        ],
-      )),
+          ),
+        ),
+      ),
     );
   }
 }
