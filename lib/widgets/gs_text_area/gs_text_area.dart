@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
+
 import 'package:gluestack_flutter_pro/widgets/gs_text_area/gs_text_area_style.dart';
 
 // TODO : Work on descendant styles (_input)
@@ -441,7 +442,9 @@ class _GSTextAreaState extends State<GSTextArea> {
               enabled: widget.visualFeedback,
               focusedBorder: borderStyle.copyWith(
                   borderSide: BorderSide(
-                      color: focusedBorderColor!, width: focusedBorderWidth!)),
+                      // handle focusedBorderColor comming null
+                      color: focusedBorderColor!,
+                      width: focusedBorderWidth!)),
               border: borderStyle,
             ),
           ),

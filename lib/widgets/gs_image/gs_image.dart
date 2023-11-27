@@ -16,6 +16,7 @@ class GSImage extends StatelessWidget {
   final GSImageType imageType;
   final GSStyle? style;
   final GSSizes? size;
+  final GSBorderRadius? borderRadius;
   final AlignmentGeometry alignment;
   final int? cacheHeight;
   final int? cacheWidth;
@@ -41,6 +42,7 @@ class GSImage extends StatelessWidget {
     required this.path,
     required this.imageType,
     this.style,
+    this.borderRadius = GSBorderRadius.$none,
     this.cacheHeight,
     this.cacheWidth,
     this.centerSlice,
@@ -74,6 +76,26 @@ class GSImage extends StatelessWidget {
       inlineStyle: style,
     )!;
 
+    print(GSImageStyle.radius[borderRadius]);
+
+    return borderRadius == GSBorderRadius.$none
+        ? _resolveImageType(imageType, styler)
+        : borderRadius == GSBorderRadius.$full
+            ? ClipOval(
+                child: SizedBox.fromSize(
+                    size: Size(styler.width!, styler.height!),
+                    child: _resolveImageType(imageType, styler,
+                        boxFit: BoxFit.cover)))
+            : ClipRRect(
+                borderRadius: borderRadius != GSBorderRadius.$none
+                    ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
+                    : BorderRadius.zero,
+                child:
+                    _resolveImageType(imageType, styler, boxFit: BoxFit.cover));
+  }
+
+  Widget _resolveImageType(GSImageType imageType, GSStyle styler,
+      {BoxFit? boxFit}) {
     switch (imageType) {
       case GSImageType.network:
         return Image.network(
@@ -86,7 +108,7 @@ class GSImage extends StatelessWidget {
           color: color,
           colorBlendMode: colorBlendMode,
           errorBuilder: errorBuilder,
-          fit: fit,
+          fit: fit ?? boxFit,
           excludeFromSemantics: excludeFromSemantics,
           filterQuality: filterQuality,
           frameBuilder: frameBuilder,

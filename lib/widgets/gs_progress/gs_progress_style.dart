@@ -1,7 +1,14 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/style/gs_style_config.dart';
 import 'package:gluestack_flutter_pro/theme/config/progress/progress.dart';
 
-GSStyle progressStyle = GSStyle.fromMap(data: progressData);
+GSStyleConfig gsProgressConfig = GSStyleConfig(
+  componentName: 'Progress',
+  descendantStyle: ['_filledTrack'],
+);
+
+GSStyle progressStyle = GSStyle.fromMap(
+    data: progressData, descendantStyle: gsProgressConfig.descendantStyle);
 
 class GSProgressStyle {
   static Map<GSSizes, GSStyle> size = {

@@ -59,7 +59,7 @@ class GSButton extends StatelessWidget {
         descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
             ?[variant],
         descendantStyleKeys: gsButtonConfig.descendantStyle)!;
-
+    print(styler.borderWidth);
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSButtonProvider(
@@ -88,6 +88,7 @@ class GSButton extends StatelessWidget {
                     if (states.contains(MaterialState.pressed)) {
                       return styler.onActive?.bg ?? styler.bg;
                     } else if (states.contains(MaterialState.hovered)) {
+// TODO: Discuss about onHover in dark mode
                       return styler.onHover?.bg ?? styler.bg;
                     } else if (states.contains(MaterialState.focused)) {
                       return styler.onFocus?.bg ?? styler.bg;

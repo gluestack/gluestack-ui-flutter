@@ -33,7 +33,7 @@ class GSRadio<T> extends StatelessWidget {
   final bool isDisabled;
   final bool isInvalid;
   final GSStyle? style;
-  final void Function(T?)? onChanged;
+  final void Function(T? value)? onChanged;
 
   const GSRadio(
       {super.key,
@@ -45,7 +45,12 @@ class GSRadio<T> extends StatelessWidget {
       this.isDisabled = false,
       this.isInvalid = false,
       this.label,
-      this.size});
+      this.size}): assert(
+            size == GSSizes.$lg ||
+                size == GSSizes.$md ||
+                size == GSSizes.$sm ||
+                size == null,
+            "only support sizes of lg,md,sm");
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +60,7 @@ class GSRadio<T> extends StatelessWidget {
       decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize]!,
       child: GSFocusableActionDetector(
         child: InkWell(
+          focusColor: Colors.transparent,
           hoverColor: Colors.transparent,
           mouseCursor: isDisabled
               ? SystemMouseCursors.forbidden

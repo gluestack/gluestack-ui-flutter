@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/token/color_token.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/token/space_token.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
+import 'package:gluestack_flutter_pro/utils/drop_down.dart';
+import 'package:gluestack_flutter_pro/utils/toggle.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio_text.dart';
+import 'package:provider/provider.dart';
 
 class RadioButtonExample extends StatefulWidget {
   const RadioButtonExample({super.key});
@@ -17,64 +21,42 @@ enum Value { one, two, three, four }
 
 class _RadioButtonExampleState extends State<RadioButtonExample> {
   Value groupValue = Value.one;
+  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
+  GSSizes selectedSizeOption = GSSizes.$md;
+
+  bool isDisabled = false;
+  bool isInvalid = false;
+
+  void updateSizeSelectedOption(dynamic newOption) {
+    setState(() {
+      selectedSizeOption = newOption;
+    });
+  }
+
+  void updateIsDisabled(bool value) {
+    setState(() {
+      isDisabled = value;
+    });
+  }
+
+  void updateIsInvalid(bool value) {
+    setState(() {
+      isInvalid = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
-      body: Column(
-        children: [
-          GSRadio<Value>(
-            size: GSSizes.$lg,
-            style: GSStyle(
-              margin: const EdgeInsets.only(right: $GSSpace.$2),
-              checked: GSStyle(
-                color: $GSColors.purple500,
-                onHover: GSStyle(
-                  color: $GSColors.pink300,
-                ),
-              ),
-            ),
-            value: Value.one,
-            groupValue: groupValue,
-            onChanged: (p0) {
-              setState(
-                () {
-                  groupValue = p0!;
-                },
-              );
-            },
-            icon: const GSRadioIcon<Value>(),
-            label: const GSRadioText<Value>(text: 'text1'),
-          ),
-          GSRadio<Value>(
-            isInvalid: true,
-            value: Value.two,
-            groupValue: groupValue,
-            onChanged: (p0) {
-              setState(
-                () {
-                  groupValue = p0!;
-                },
-              );
-            },
-            icon: const GSRadioIcon<Value>(),
-            label: const GSRadioText<Value>(text: 'text2'),
-          ),
-          GSRadio<Value>(
-            isDisabled: true,
-            value: Value.three,
-            groupValue: groupValue,
-            onChanged: (p0) {
-              setState(
-                () {
-                  groupValue = p0!;
-                },
-              );
-            },
-            icon: const GSRadioIcon<Value>(),
-            label: const GSRadioText<Value>(text: 'text3'),
-          ),
-          GSRadio<Value>(
+      body: Center(
+        child: BaseLayout(
+          component: GSRadio<Value>(
+            size: selectedSizeOption,
+            isDisabled: isDisabled,
+            isInvalid: isInvalid,
             value: Value.four,
             groupValue: groupValue,
             onChanged: (p0) {
@@ -84,8 +66,31 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
             },
             icon: const GSRadioIcon<Value>(),
             label: const GSRadioText<Value>(text: 'text4'),
+            style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
           ),
-        ],
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              CustomToggle(
+                title: "isInvalid",
+                value: isInvalid,
+                onToggle: updateIsInvalid,
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

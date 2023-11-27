@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/main_page.dart';
 import 'package:gluestack_flutter_pro/example/alert_example.dart';
 import 'package:gluestack_flutter_pro/example/avatar_example.dart';
 import 'package:gluestack_flutter_pro/example/badge_example.dart';
@@ -17,17 +18,13 @@ import 'package:gluestack_flutter_pro/example/progress_example.dart';
 import 'package:gluestack_flutter_pro/example/pressable_example.dart';
 import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 import 'package:gluestack_flutter_pro/example/spinner_example.dart';
+import 'package:gluestack_flutter_pro/example/switch_example.dart';
 import 'package:gluestack_flutter_pro/example/text_area_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/toast_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-
-import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab_icon.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_fab/gs_fab_label.dart';
-
 
 // import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
 
@@ -37,7 +34,7 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -45,6 +42,8 @@ void main() {
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
@@ -52,6 +51,7 @@ class MyApp extends StatelessWidget {
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          backgroundColor: themeProvider.getThemeData().canvasColor,
           body: SingleChildScrollView(
             child: Container(
               height: 1300,
@@ -61,27 +61,36 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
-                      // Stack(
-                       
-                      //   children: [
-                      //    Container(
-                      //     height: 360,
-                      //     width: 320,
-                      //     color: Colors.red,
-                      //    ),
-                      //     GSFab(
-                          
-                      //     onPressed: () {
-                            
-                      //     },
-                      //       icon: GSFabIcon(icon: Icons.add),
-                      //       size: GSSizes.$sm,
-                      //       placement: GSPlacements.bottomCenter,
-                      //       label: GSFabLabel(text: 'hello world'),
-                      //     ),
-                      //   ],
-                      // ),
-                 
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const LayoutExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'Ex: GS Layout 1',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const SwitchExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Switch',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_alert_dialog/gs_alert_dialog.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_alert_dialog/gs_alert_dialog_body.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_alert_dialog/gs_alert_dialog_content.dart';
@@ -8,13 +9,16 @@ import 'package:gluestack_flutter_pro/widgets/gs_alert_dialog/gs_alert_dialog_he
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_text.dart';
+import 'package:provider/provider.dart';
 
 class AlertExample extends StatelessWidget {
   const AlertExample({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: GSButton(
@@ -23,7 +27,7 @@ class AlertExample extends StatelessWidget {
           onPressed: () {
             GSAlertDialog.show(
               context,
-              size: GSSizes.$lg,
+              size: GSSizes.$full,
               content: GSAlertDialogContent(
                 header: GSAlertDialogHeader(
                   style: GSStyle(

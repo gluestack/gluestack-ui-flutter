@@ -1,113 +1,90 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/token/index.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
+import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_fallBack_text.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_group.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image.dart';
+import 'package:provider/provider.dart';
 
-class AvatarExample extends StatelessWidget {
+class AvatarExample extends StatefulWidget {
   const AvatarExample({super.key});
 
   @override
+  State<AvatarExample> createState() => _AvatarExampleState();
+}
+
+class _AvatarExampleState extends State<AvatarExample> {
+  final List dropdownSizeOptions = [
+    GSSizes.$xs,
+    GSSizes.$sm,
+    GSSizes.$md,
+    GSSizes.$lg,
+    GSSizes.$xl,
+    GSSizes.$2xl,
+  ];
+  GSSizes selectedSizeOption = GSSizes.$md;
+  void updateSizeSelectedOption(dynamic newOption) {
+    setState(() {
+      selectedSizeOption = newOption;
+    });
+  }
+
+  final List dropdownRadiusOptions = [
+    GSBorderRadius.$none,
+    GSBorderRadius.$xs,
+    GSBorderRadius.$sm,
+    GSBorderRadius.$md,
+    GSBorderRadius.$lg,
+    GSBorderRadius.$xl,
+    GSBorderRadius.$2xl,
+    GSBorderRadius.$3xl,
+    GSBorderRadius.$full,
+  ];
+  GSBorderRadius selectedRadiusOption = GSBorderRadius.$full;
+  void updateRadiusSelectedOption(dynamic newOption) {
+    setState(() {
+      selectedRadiusOption = newOption;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            GSAvatar(
-              radius: GSBorderRadius.$xl,
-              size: GSSizes.$md,
-              style: GSStyle(bg: Colors.yellow),
-              avatarImage: const GSImage(
-                imageType: GSImageType.asset,
-                path: "assets/images/button.png",
-              ),
-              fallBackText: GSAvatarFallBackText(
-                'KS',
-                overflow: TextOverflow.ellipsis,
-                style: GSStyle(
-                  textStyle: const TextStyle(color: $GSColors.pink200),
-                ),
-              ),
-              avatarBadge: const GSAvatarBadge(),
+        child: BaseLayout(
+          component: GSAvatar(
+            radius: selectedRadiusOption,
+            size: selectedSizeOption,
+            style: GSStyle(
+              bg: Colors.orange,
+              textStyle: const TextStyle(color: Colors.white),
             ),
-            GSAvatar(
-              size: GSSizes.$2xl,
-              style: GSStyle(
-                bg: Colors.orange,
-                textStyle: const TextStyle(color: Colors.white),
-              ),
-              avatarBadge: GSAvatarBadge(
-                left: 0,
-                bottom: 0,
-                style: GSStyle(
-                  bg: Colors.grey,
-                  borderRadius: 12,
-                ),
-              ),
-              fallBackText: const GSAvatarFallBackText(
-                'Geeky Stack',
-              ),
+            fallBackText: const GSAvatarFallBackText(
+              'Geeky Stack',
             ),
-            GSAvatar(
-              style: GSStyle(
-                bg: Colors.blueAccent,
-                textStyle: const TextStyle(color: Colors.white),
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
               ),
-              avatarImage: const GSImage(
-                imageType: GSImageType.network,
-                path: "https://placehold.co/300x300/png",
+              CustomDropDown(
+                title: "borderRadius",
+                dropdownOptions: dropdownRadiusOptions,
+                selectedOption: selectedRadiusOption,
+                onChanged: updateRadiusSelectedOption,
               ),
-              fallBackText: const GSAvatarFallBackText(
-                'Flutter',
-              ),
-            ),
-            GSAvatarGroup(
-              style: GSStyle(gap: -25),
-              children: [
-                GSAvatar(
-                  size: GSSizes.$sm,
-                  style: GSStyle(
-                    bg: Colors.orange,
-                    textStyle: const TextStyle(color: Colors.white),
-                  ),
-                  avatarBadge: GSAvatarBadge(
-                    style: GSStyle(
-                      bg: Colors.red,
-                      borderRadius: 12,
-                      borderColor: Colors.yellow,
-                    ),
-                  ),
-                  fallBackText: const GSAvatarFallBackText(
-                    'Geeky Stack',
-                  ),
-                ),
-                GSAvatar(
-                  size: GSSizes.$sm,
-                  style: GSStyle(
-                    bg: Colors.red,
-                    textStyle: const TextStyle(color: Colors.white),
-                  ),
-                  avatarBadge: GSAvatarBadge(
-                    left: 0,
-                    bottom: 0,
-                    style: GSStyle(
-                      borderWidth: 1,
-                      borderRadius: 12,
-                      borderColor: Colors.yellow,
-                    ),
-                  ),
-                  fallBackText: const GSAvatarFallBackText(
-                    'Geeky Stack',
-                  ),
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
