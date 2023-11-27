@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/example/KitchenSink/models/ammenities.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/token/space_token.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_group.dart';
@@ -63,7 +64,6 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
                     value: _ammenitiesData[i].value,
                     label: GSCheckBoxLabel(text: _ammenitiesData[i].label),
                   ),
-
               ],
             )),
         GSPressable(
@@ -76,6 +76,10 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GSText(
+                    style: GSStyle(
+                        dark: GSStyle(
+                            textStyle:
+                                TextStyle(color: $GSColors.textDark300))),
                     // size: GSSizes.$xs,
                     text: showMore ? 'Show more' : 'Show less'),
                 GSIcon(

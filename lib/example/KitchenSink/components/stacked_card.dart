@@ -35,15 +35,13 @@ class KSStackedCard extends StatelessWidget {
                 children: [
                   Opacity(
                     opacity: isHovered ? .9 : 1,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular($GSRadii.$md),
-                      child: GSImage(
-                          fit: BoxFit.cover,
-                          style: GSStyle(
-                              height: $GSSpace.$72, width: double.infinity),
-                          path: stackedCardModel.imageUrl,
-                          imageType: GSImageType.asset),
-                    ),
+                    child: GSImage(
+                        borderRadius: GSBorderRadius.$md,
+                        fit: BoxFit.cover,
+                        style: GSStyle(
+                            height: $GSSpace.$72, width: double.infinity),
+                        path: stackedCardModel.imageUrl,
+                        imageType: GSImageType.asset),
                   ),
                   if (isHovered)
                     Opacity(
