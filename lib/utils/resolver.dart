@@ -206,7 +206,6 @@ GSActions? resolveActionFromString(String? action) {
 }
 
 GSPlacements? resolvePlacementFromString(String? placement) {
-  
   const placementMap = {
     'bottom center': GSPlacements.bottomCenter,
     'top center': GSPlacements.topCenter,
@@ -215,7 +214,7 @@ GSPlacements? resolvePlacementFromString(String? placement) {
     'top left': GSPlacements.topLeft,
     'top right': GSPlacements.topRight,
   };
-  
+
   return placement != null ? placementMap[placement] : null;
 }
 
@@ -301,7 +300,8 @@ Widget resolveFlexWidget(
     {required GSFlexDirections? flexDirection,
     required GSAlignments? mainAxisAlignment,
     required GSAlignments? crossAxisAlignment,
-    required List<Widget> children}) {
+    required List<Widget> children,
+    MainAxisSize mainAxisSize = MainAxisSize.min}) {
   late MainAxisAlignment resolvedMainAxisAlignment;
   late CrossAxisAlignment resolvedCrossAxisAlignment;
 
@@ -352,7 +352,7 @@ Widget resolveFlexWidget(
       return Row(
         mainAxisAlignment: resolvedMainAxisAlignment,
         crossAxisAlignment: resolvedCrossAxisAlignment,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: mainAxisSize,
         children: children,
       );
     case GSFlexDirections.column:
@@ -365,7 +365,7 @@ Widget resolveFlexWidget(
       return Row(
         mainAxisAlignment: resolvedMainAxisAlignment,
         crossAxisAlignment: resolvedCrossAxisAlignment,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize:mainAxisSize,
         children: children,
       );
   }
