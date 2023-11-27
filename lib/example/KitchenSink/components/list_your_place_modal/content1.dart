@@ -79,6 +79,7 @@ class _ListYourPlaceModalContent1State
               space: GSSpaces.$md,
               children: [
                 GSRadio<String>(
+                  size: GSSizes.$lg,
                   style: GSStyle(
                       margin: const EdgeInsets.only(
                           right: $GSSpace.$3, left: $GSSpace.$1)),
@@ -93,6 +94,7 @@ class _ListYourPlaceModalContent1State
                   },
                 ),
                 GSRadio<String>(
+                  size: GSSizes.$lg,
                   style: GSStyle(
                       margin: const EdgeInsets.only(
                           right: $GSSpace.$3, left: $GSSpace.$1)),
