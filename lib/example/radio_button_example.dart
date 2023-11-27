@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/token/space_token.dart';
 import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/utils/toggle.dart';
@@ -65,6 +66,7 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
             },
             icon: const GSRadioIcon<Value>(),
             label: const GSRadioText<Value>(text: 'text4'),
+            style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
           ),
           controls: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

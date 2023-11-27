@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/token/space_token.dart';
 import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 import 'package:gluestack_flutter_pro/utils/drop_down.dart';
 import 'package:gluestack_flutter_pro/utils/toggle.dart';
@@ -48,12 +49,15 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
-      body: Container(
-        margin: const EdgeInsets.all(20),
-        width: double.infinity,
+      body: Center(
+        // margin: const EdgeInsets.all(20),
+        // width: double.infinity,
         child: BaseLayout(
           component: GSCheckBox(
-            icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
+            icon: GSCheckBoxIndicator(
+              style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
+              child: const GSCheckBoxIcon(),
+            ),
             value: "value 1",
             onChanged: (value) {},
             label: const GSCheckBoxLabel(text: "value1"),
