@@ -76,11 +76,27 @@ class _ButtonExampleState extends State<ButtonExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSButton(
+                action: GSActions.primary,
+                variant: GSVariants.solid,
+                size: GSSize.\$md,
+                isDisabled: false,
+                isFocusVisible: false,
+                onPressed: () {},
+                child: const Row(
+                  children: [
+                    GSButtonText(text: "Add"),
+                    GSButtonIcon(icon: Icons.add)
+                  ],
+                ),
+              )
+  ''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: BaseLayout(
+          code: code,
           component: GSButton(
             action: selectedActionOption,
             variant: selectedVariantOption,

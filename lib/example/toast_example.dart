@@ -49,11 +49,38 @@ class _ToastExampleState extends State<ToastExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSButton(
+            size: GSSizes.\$lg,
+            child: const GSButtonText(text: "Click Me"),
+            onPressed: () {
+              showToast(
+                context,
+                child: GSToast(
+                  variant: GSVariants.solid,
+                  action: GSActions.attention,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GSToastTitle(
+                        title: "Hey",
+                      ),
+                      GSToastDescription(
+                        description: "Desc Desc Desc Desc Desc Desc ",
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: BaseLayout(
+          code: code,
           component: GSButton(
             size: GSSizes.$lg,
             child: const GSButtonText(text: "Click Me"),

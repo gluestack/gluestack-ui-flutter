@@ -32,11 +32,17 @@ class _IconExampleState extends State<IconExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSIcon(
+            icon: Icons.calendar_month,
+            size: selectedSizeOption,
+          )
+  ''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: BaseLayout(
+          code: code,
           component: GSIcon(
             icon: Icons.calendar_month,
             size: selectedSizeOption,

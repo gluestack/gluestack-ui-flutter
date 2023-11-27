@@ -33,11 +33,17 @@ class _ProgressExampleState extends State<ProgressExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSProgress(
+            value: 0.4,
+            size: selectedSizeOption,
+          )
+  ''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: BaseLayout(
+          code: code,
           component: GSProgress(
             value: 0.4,
             size: selectedSizeOption,
