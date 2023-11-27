@@ -458,8 +458,10 @@ class _GSInputState extends State<GSInput> {
               contentPadding: styler.padding,
               enabled: widget.visualFeedback,
               focusedBorder: borderStyle.copyWith(
+                  // handle focusedBorderColor comming null 
                   borderSide: BorderSide(
-                      color: focusedBorderColor!, width: focusedBorderWidth!)),
+                      color: focusedBorderColor ?? const Color(0xFF000000),
+                      width: focusedBorderWidth!)),
               border: borderStyle,
             ),
           ),

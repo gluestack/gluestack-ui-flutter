@@ -98,15 +98,18 @@ class _GSCheckBoxState extends State<GSCheckBox> {
           child: InkWell(
               highlightColor: Colors.transparent,
               hoverColor: Colors.transparent,
-              mouseCursor:
-                  isCheckBoxDisabled ? SystemMouseCursors.forbidden : null,
+              mouseCursor: isCheckBoxDisabled
+                  ? SystemMouseCursors.forbidden
+                  : SystemMouseCursors.click,
               onTap: widget.onChanged != null && !isCheckBoxDisabled
                   ? () {
                       if (groupValue != null) {
                         if (!isCheckBoxReadOnly && widget.isChecked == null) {
                           groupValue?.updateValues(widget.value);
                         }
-                        groupValue?.onChanged!(groupValue?.values ?? []);
+                        if (groupValue!.onChanged != null) {
+                          groupValue?.onChanged!(groupValue?.values ?? []);
+                        }
                       }
                       if (!isCheckBoxReadOnly && widget.isChecked == null) {
                         setState(() {

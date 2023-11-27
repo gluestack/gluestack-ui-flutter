@@ -441,7 +441,9 @@ class _GSTextAreaState extends State<GSTextArea> {
               enabled: widget.visualFeedback,
               focusedBorder: borderStyle.copyWith(
                   borderSide: BorderSide(
-                      color: focusedBorderColor!, width: focusedBorderWidth!)),
+                      // handle focusedBorderColor comming null
+                      color: focusedBorderColor ?? const Color(0xFF000000),
+                      width: focusedBorderWidth!)),
               border: borderStyle,
             ),
           ),

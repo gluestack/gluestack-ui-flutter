@@ -39,7 +39,7 @@ enum GSSizes {
 
 enum GSDirection { row, column }
 
-enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
+enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl,none }
 
 enum GSAlignments { start, center, end, spaceBetween, flexEnd, flexStart }
 
@@ -709,7 +709,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       textTransform: resolveTextTransformFromString(data?['textTransform']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
 
-      maxWidth: data?['maxWidth']?.toDouble(),
+      maxWidth:
+          data?['maxWidth'] != null ? double.tryParse(data?['maxWidth']) : null,
       padding: data?['p'] != null
           ? resolvePaddingFromString(data?['p'].toString(), 'all')
           : data?['px'] != null && data?['py'] != null
@@ -827,7 +828,7 @@ class GSStyle extends BaseStyle<GSStyle> {
             : resolveColorFromString(data?[':focus']?['borderColor']),
         borderWidth: kIsWeb
             ? resolveSpaceFromString(
-                data?['_web']?[':focusVisible']?['outlineWidth'])
+                data?['_web']?[':focusVisible']?['outlineWidth'].toString())
             : null,
         bg: resolveColorFromString(data?[':focus']?['bg']),
         borderBottomColor:
@@ -1000,7 +1001,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                   data?['_dark']?[':focus']?['borderColor']),
           borderWidth: kIsWeb
               ? resolveSpaceFromString(
-                  data?['_web']?[':focusVisible']?['outlineWidth'])
+                  data?['_web']?[':focusVisible']?['outlineWidth'].toString())
               : null,
           onHover: GSStyle(
             borderColor: resolveColorFromString(
