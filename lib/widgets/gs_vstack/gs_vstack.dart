@@ -14,7 +14,7 @@ class GSVStack extends StatelessWidget {
   final VerticalDirection verticalDirection;
   const GSVStack({
     super.key,
-    this.space = GSSpaces.none,
+    this.space = GSSpaces.$none,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.max,
@@ -32,7 +32,7 @@ class GSVStack extends StatelessWidget {
                 space == GSSpaces.$2xl ||
                 space == GSSpaces.$3xl ||
                 space == GSSpaces.$4xl ||
-                space == GSSpaces.none ||
+                space == GSSpaces.$none ||
                 space == null,
             "only support for spaces of xs, sm, md, lg, xl , 2xl, 3xl and 4xl");
 
@@ -45,7 +45,7 @@ class GSVStack extends StatelessWidget {
       if (child != children.last) {
         spacedChildrenList.add(
           SizedBox(
-              height: space == GSSpaces.none
+              height: space == GSSpaces.$none
                   ? null
                   : GSVStackStyle.space[space]?.gap),
         );

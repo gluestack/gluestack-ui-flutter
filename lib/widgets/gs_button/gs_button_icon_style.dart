@@ -7,6 +7,10 @@ import 'package:gluestack_flutter_pro/token/index.dart';
 GSStyleConfig gsButtonIconStyle =
     GSStyleConfig(componentName: 'ButtonIcon', ancestorStyle: ['_icon']);
 GSStyle buttonIconStyle = GSStyle.fromMap(data: buttonIconData);
+GSStyle baseStyle = GSStyle(
+  color: buttonIconStyle.color,
+  dark: buttonIconStyle.dark,
+);
 
 class GSButtonIconStyle {
   static Map<GSSizes, double?> size = {

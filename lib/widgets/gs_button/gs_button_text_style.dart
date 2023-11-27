@@ -9,11 +9,17 @@ GSStyleConfig gsTextConfig =
 GSStyle buttonTextStyle = GSStyle.fromMap(data: textData)
     .merge(GSStyle.fromMap(data: buttonTextData));
 
+GSStyle baseStyle = GSStyle(
+  color: buttonTextStyle.color,
+  fontWeight: buttonTextStyle.fontWeight,
+  dark: buttonTextStyle.dark,
+);
+
 class GSButtonTextStyle {
   static Map<GSSizes, GSStyle?> size = {
-    GSSizes.$xs: buttonTextStyle.variants?.size?.$xs,
-    GSSizes.$sm: buttonTextStyle.variants?.size?.$sm,
-    GSSizes.$md: buttonTextStyle.variants?.size?.$md,
-    GSSizes.$lg: buttonTextStyle.variants?.size?.$lg,
+    GSSizes.$xs: baseStyle.merge(buttonTextStyle.variants?.size?.$xs),
+    GSSizes.$sm: baseStyle.merge(buttonTextStyle.variants?.size?.$sm),
+    GSSizes.$md: baseStyle.merge(buttonTextStyle.variants?.size?.$md),
+    GSSizes.$lg: baseStyle.merge(buttonTextStyle.variants?.size?.$lg),
   };
 }

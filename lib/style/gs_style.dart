@@ -39,7 +39,7 @@ enum GSSizes {
 
 enum GSDirection { row, column }
 
-enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl,none }
+enum GSSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 enum GSAlignments { start, center, end, spaceBetween, flexEnd, flexStart }
 
@@ -358,6 +358,7 @@ class GSAction {
 }
 
 class GSSpace {
+  GSStyle? $none;
   GSStyle? $xs;
   GSStyle? $sm;
   GSStyle? $md;
@@ -368,6 +369,7 @@ class GSSpace {
   GSStyle? $4xl;
 
   GSSpace({
+    this.$none,
     this.$xs,
     this.$sm,
     this.$md,
@@ -379,6 +381,9 @@ class GSSpace {
   });
   factory GSSpace.fromMap({required Map<String, dynamic>? data}) {
     return GSSpace(
+      $none: data?['none'] != null
+          ? GSStyle.fromMap(data: data?['none'], fromVariant: true)
+          : null,
       $xs: data?['xs'] != null
           ? GSStyle.fromMap(data: data?['xs'], fromVariant: true)
           : null,
@@ -655,7 +660,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       width: overrideStyle?.width ?? width,
       height: overrideStyle?.height ?? height,
       badge: overrideStyle?.badge ?? badge,
-      dark: overrideStyle?.dark ?? dark,
+      dark:
+          dark != null ? dark?.merge(overrideStyle?.dark) : overrideStyle?.dark,
       lg: overrideStyle?.lg ?? lg,
       md: overrideStyle?.md ?? md,
       sm: overrideStyle?.sm ?? sm,
@@ -823,8 +829,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       onFocus: GSStyle(
         borderColor: kIsWeb
-            ? resolveColorFromString(
-                data?['_web']?[':focusVisible']?['outlineColor'])
+            ? resolveColorFromString(data?['_web']?[':focusVisible']
+                    ?['outlineColor'] ??
+                data?[':focus']?['borderColor'])
             : resolveColorFromString(data?[':focus']?['borderColor']),
         borderWidth: kIsWeb
             ? resolveSpaceFromString(

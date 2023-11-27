@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
-
-
 import 'package:gluestack_flutter_pro/widgets/gs_image/gs_image_style.dart';
 
 enum GSImageType {
@@ -78,18 +76,22 @@ class GSImage extends StatelessWidget {
       inlineStyle: style,
     )!;
 
+    print(GSImageStyle.radius[borderRadius]);
+
     return borderRadius == GSBorderRadius.$none
         ? _resolveImageType(imageType, styler)
         : borderRadius == GSBorderRadius.$full
             ? ClipOval(
                 child: SizedBox.fromSize(
                     size: Size(styler.width!, styler.height!),
-                    child: _resolveImageType(imageType, styler,boxFit: BoxFit.cover)))
+                    child: _resolveImageType(imageType, styler,
+                        boxFit: BoxFit.cover)))
             : ClipRRect(
                 borderRadius: borderRadius != GSBorderRadius.$none
                     ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
                     : BorderRadius.zero,
-                child: _resolveImageType(imageType, styler));
+                child:
+                    _resolveImageType(imageType, styler, boxFit: BoxFit.cover));
   }
 
   Widget _resolveImageType(GSImageType imageType, GSStyle styler,
@@ -106,7 +108,7 @@ class GSImage extends StatelessWidget {
           color: color,
           colorBlendMode: colorBlendMode,
           errorBuilder: errorBuilder,
-          fit: boxFit ?? fit,
+          fit: fit ?? boxFit,
           excludeFromSemantics: excludeFromSemantics,
           filterQuality: filterQuality,
           frameBuilder: frameBuilder,

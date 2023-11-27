@@ -338,6 +338,7 @@ Widget resolveFlexWidget(
       return Row(
         mainAxisAlignment: resolvedMainAxisAlignment,
         crossAxisAlignment: resolvedCrossAxisAlignment,
+        mainAxisSize: MainAxisSize.min,
         children: children,
       );
     case GSFlexDirections.column:
@@ -350,6 +351,7 @@ Widget resolveFlexWidget(
       return Row(
         mainAxisAlignment: resolvedMainAxisAlignment,
         crossAxisAlignment: resolvedCrossAxisAlignment,
+        mainAxisSize: MainAxisSize.min,
         children: children,
       );
   }
@@ -366,12 +368,11 @@ GSTextTransform? resolveTextTransformFromString(String? gsTextTransform) {
       : null;
 }
 
-GSCursors? resolveCursorFromString(String? cursor){
-
+GSCursors? resolveCursorFromString(String? cursor) {
   const Map<String, GSCursors> cusorMap = {
     'pointer': GSCursors.pointer,
     'not-allowed': GSCursors.notAllowed,
   };
 
-return cursor != null ? cusorMap[cursor] : null;
-  }
+  return cursor != null ? cusorMap[cursor] : null;
+}

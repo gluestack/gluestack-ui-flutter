@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/token/space_token.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
+import 'package:gluestack_flutter_pro/utils/drop_down.dart';
+import 'package:gluestack_flutter_pro/utils/toggle.dart';
 
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_group.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_icon.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_indicator.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_checkbox/gs_checkbox_label.dart';
+import 'package:provider/provider.dart';
 
 class CheckBoxExample extends StatefulWidget {
   const CheckBoxExample({super.key});
@@ -14,139 +20,74 @@ class CheckBoxExample extends StatefulWidget {
 }
 
 class _CheckBoxExampleState extends State<CheckBoxExample> {
-  final List<String> valueList = List.generate(6, (index) => index.toString());
+  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
+  GSSizes selectedSizeOption = GSSizes.$md;
+  void updateSizeSelectedOption(dynamic newOption) {
+    setState(() {
+      selectedSizeOption = newOption;
+    });
+  }
+
+  bool isDisabled = false;
+  bool isInvalid = false;
+
+  void updateIsDisabled(bool value) {
+    setState(() {
+      isDisabled = value;
+    });
+  }
+
+  void updateIsInvalid(bool value) {
+    setState(() {
+      isInvalid = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
+      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
-      body: Container(
-        margin: const EdgeInsets.all(20),
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GSCheckBox(
-              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-              value: "value 1",
-              onChanged: (value) {
-                print("is checkbox checked $value");
-              },
-              label: const GSCheckBoxLabel(text: "value1"),
+      body: Center(
+        // margin: const EdgeInsets.all(20),
+        // width: double.infinity,
+        child: BaseLayout(
+          component: GSCheckBox(
+            icon: GSCheckBoxIndicator(
+              style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
+              child: const GSCheckBoxIcon(),
             ),
-            GSCheckBox(
-              isChecked: true,
-              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-              value: "value 2",
-              onChanged: (value) {
-                print("is checkbox checked $value");
-              },
-              label: const GSCheckBoxLabel(text: "value2"),
-            ),
-            GSCheckBox(
-              defaultIsChecked: true,
-              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-              value: "value 3",
-              onChanged: (value) {
-                print("is checkbox checked $value");
-              },
-              label: const GSCheckBoxLabel(text: "value3"),
-            ),
-            GSCheckBox(
-              isDisabled: true,
-              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-              value: "value 4",
-              onChanged: (value) {
-                print("is checkbox checked $value");
-              },
-              label: const GSCheckBoxLabel(text: "value4"),
-            ),
-            GSCheckBox(
-              isInvalid: true,
-              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-              value: "value 5",
-              onChanged: (value) {
-                print("is checkbox checked $value");
-              },
-              label: const GSCheckBoxLabel(text: "value5"),
-            ),
-            GSCheckBox(
-              isInvalid: true,
-              isDisabled: true,
-              icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-              value: "value 6",
-              onChanged: (value) {
-                print("is checkbox checked $value");
-              },
-              label: const GSCheckBoxLabel(text: "value6"),
-            ),
-            GSCheckBoxGroup(
-   
-              onChanged: (values) {
-                print(values);
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  GSCheckBox(
-                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-                    value: "value 1",
-                    onChanged: (value) {
-                      print("is checkbox checked $value");
-                    },
-                    label: const GSCheckBoxLabel(text: "value1"),
-                  ),
-                  GSCheckBox(
-                    isChecked: true,
-                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-                    value: "value 2",
-                    onChanged: (value) {
-                      print("is checkbox checked $value");
-                    },
-                    label: const GSCheckBoxLabel(text: "value2"),
-                  ),
-                  GSCheckBox(
-                    defaultIsChecked: true,
-                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-                    value: "value 3",
-                    onChanged: (value) {
-                      print("is checkbox checked $value");
-                    },
-                    label: const GSCheckBoxLabel(text: "value3"),
-                  ),
-                  GSCheckBox(
-                    isDisabled: true,
-                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-                    value: "value 4",
-                    onChanged: (value) {
-                      print("is checkbox checked $value");
-                    },
-                    label: const GSCheckBoxLabel(text: "value4"),
-                  ),
-                  GSCheckBox(
-                    isInvalid: true,
-                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-                    value: "value 5",
-                    onChanged: (value) {
-                      print("is checkbox checked $value");
-                    },
-                    label: const GSCheckBoxLabel(text: "value5"),
-                  ),
-                  GSCheckBox(
-                    isInvalid: true,
-                    isDisabled: true,
-                    icon: const GSCheckBoxIndicator(child: GSCheckBoxIcon()),
-                    value: "value 6",
-                    onChanged: (value) {
-                      print("is checkbox checked $value");
-                    },
-                    label: const GSCheckBoxLabel(text: "value6"),
-                  ),
-                ],
+            value: "value 1",
+            onChanged: (value) {},
+            label: const GSCheckBoxLabel(text: "value1"),
+            size: selectedSizeOption,
+            isDisabled: isDisabled,
+            isInvalid: isInvalid,
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
               ),
-            )
-          ],
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              CustomToggle(
+                title: "isInvalid",
+                value: isInvalid,
+                onToggle: updateIsInvalid,
+              )
+            ],
+          ),
         ),
-       
       ),
     );
   }
