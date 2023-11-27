@@ -81,8 +81,10 @@ class _BadgeExampleState extends State<BadgeExample> {
       body: Center(
         child: BaseLayout(
           component: GSBadge(
+            size: selectedSizeOption,
             action: selectedActionOption,
             variant: selectedVariantOption,
+            borderRadius: selectedRadiusOption,
             icon: const GSBadgeIcon(
               iconData: Icons.info_outline,
             ),

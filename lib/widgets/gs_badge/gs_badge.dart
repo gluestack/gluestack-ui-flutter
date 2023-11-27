@@ -16,7 +16,7 @@ class GSBadge extends StatelessWidget {
   final GSSizes? size;
 
   /// The border radius for the badge container.
-  final double? borderRadius;
+  final GSBorderRadius? borderRadius;
 
   /// The variant of the badge (e.g., solid, outline).
   final GSVariants? variant;
@@ -95,14 +95,17 @@ class GSBadge extends StatelessWidget {
         iconSize: styler.iconSize,
         child: Container(
           decoration: BoxDecoration(
-              color: style == null ? styler.bg : style!.bg ?? styler.bg,
-              border: Border.all(
-                  style: badgeVariant == GSVariants.outline
-                      ? BorderStyle.solid
-                      : BorderStyle.none,
-                  color: style == null
-                      ? styler.borderColor!
-                      : style!.borderColor ?? styler.borderColor!)),
+            color: style == null ? styler.bg : style!.bg ?? styler.bg,
+            borderRadius: BorderRadius.circular(
+                GSBadgeStyle.radius[borderRadius] ?? styler.borderRadius ?? 0),
+            border: Border.all(
+                style: badgeVariant == GSVariants.outline
+                    ? BorderStyle.solid
+                    : BorderStyle.none,
+                color: style == null
+                    ? styler.borderColor!
+                    : style!.borderColor ?? styler.borderColor!),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
           child: Row(
               mainAxisSize: MainAxisSize.min,

@@ -21,16 +21,13 @@ class GSBadgeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Access the badge provider to retrieve relavant badge prop information.
-    final value = GSBadgeProvider.of(context);
-
     // Access the ancestor provider to retrieve ancestor text styles.
     final GSStyle? ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsBadgeTextConfig.ancestorStyle.first];
 
     // Define default text style based on badge provider and ancestor text styles.
     var defaultTextStyle = TextStyle(
-        fontSize: value?.fontSize,
+        fontSize: ancestorTextStyles?.textStyle?.fontSize,
         color: ancestorTextStyles?.color,
         fontWeight: ancestorTextStyles?.fontWeight);
 
