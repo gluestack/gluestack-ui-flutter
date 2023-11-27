@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_switch/gs_switch_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_text_area/gs_text_area_style.dart';
+
 
 class GSSwitch extends StatefulWidget {
   final GSStyle? style;
@@ -128,7 +128,6 @@ cursor: kIsWeb && widget.isDisabled
           ? MouseCursor.defer
           : SystemMouseCursors.forbidden,
 */
-    // print("scale: ${styler.scale}");
     return Transform.scale(
       scale: styler.scale ?? 1,
       child: ConstrainedBox(

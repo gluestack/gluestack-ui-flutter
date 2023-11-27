@@ -71,7 +71,7 @@ class _ListYourPlaceModalContent3State
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.secondary,
             variant: GSVariants.outline,
-            child: const GSButtonText(text: 'Save fo Later'),
+            child: const GSButtonText(text: 'Save for Later'),
             onPressed: () {
               setState(() {
                 shouldShowSpinner = true;
