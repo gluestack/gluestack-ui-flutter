@@ -48,11 +48,28 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSRadio<Value>(
+            size: GSSizes.\$md,
+            isDisabled: false,
+            isInvalid: false,
+            value: Value.four,
+            groupValue: groupValue,
+            onChanged: (p0) {
+              setState(() {
+                groupValue = p0!;
+              });
+            },
+            icon: const GSRadioIcon<Value>(),
+            label: const GSRadioText<Value>(text: 'text4'),
+            style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.\$2)),
+          )
+  ''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: BaseLayout(
+          code: code,
           component: GSRadio<Value>(
             size: selectedSizeOption,
             isDisabled: isDisabled,

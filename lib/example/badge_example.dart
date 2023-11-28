@@ -75,14 +75,28 @@ class _BadgeExampleState extends State<BadgeExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSBadge(
+            action: GSActions.success,
+            variant:  GSVariants.solid,
+            size: GSSizes.\$md,
+            icon: const GSBadgeIcon(
+              iconData: Icons.info_outline,
+            ),
+            text: const GSBadgeText(
+              'information',
+            ),
+          )
+  ''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: BaseLayout(
+          code: code,
           component: GSBadge(
             action: selectedActionOption,
             variant: selectedVariantOption,
+            size: selectedSizeOption,
             icon: const GSBadgeIcon(
               iconData: Icons.info_outline,
             ),
