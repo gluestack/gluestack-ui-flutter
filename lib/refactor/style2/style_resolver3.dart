@@ -17,6 +17,7 @@ GSStyle2 resolveStyles3(
 
   //object is created once
   GSStyle2? currentGSStyle = GSStyle2();
+
   for (var style in styles) {
     currentGSStyle.merge2(style);
   }
@@ -87,5 +88,5 @@ GSStyle2 resolveStyles3(
     }
   });
 
-  return currentGSStyle!;
+  return currentGSStyle;
 }

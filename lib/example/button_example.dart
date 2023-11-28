@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/refactor/widgets/button/gs_button2.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
@@ -32,6 +33,7 @@ class ButtonExample extends StatelessWidget {
                 child: const GSButtonText(text: 'button1'),
                 onPressed: () {},
               ),
+             const GSButton2(),  
               // SizedBox(
               //   height: sizedBoxHeight,
               // ),

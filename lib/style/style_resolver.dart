@@ -136,6 +136,7 @@ GSStyle resolveStyles2(
     {required BuildContext context,
     List<GSStyle?> styles = const [],
     GSStyle? inlineStyle}) {
+  print("i am being called &&&&");
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
   final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
   final isFocused = GSFocusableActionDetectorProvider.isFocused(context);
