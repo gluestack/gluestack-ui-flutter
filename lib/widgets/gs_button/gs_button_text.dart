@@ -27,6 +27,7 @@ class GSButtonText extends StatelessWidget {
       fontWeight: ancestorTextStyles?.fontWeight,
       fontSize: fontSize,
     );
+ 
     final styler = resolveStyles(context, inlineStyle: style);
 
     final mergedStyle = defaultTextStyle.merge(styler?.textStyle);

@@ -124,6 +124,9 @@ double? resolveSpaceFromString(String? space) {
   if (space == null) {
     return null;
   }
+  if (double.tryParse(space) != null) {
+    return double.tryParse(space);
+  }
   if (space.contains('-')) {
     return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
   }

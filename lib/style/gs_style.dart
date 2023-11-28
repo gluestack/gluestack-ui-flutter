@@ -733,6 +733,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                           data?['py'].toString(), 'vertical')
                       : null,
       iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
+
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
@@ -749,9 +750,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg']),
-      borderWidth: data?['borderWidth'] != null
-          ? double.tryParse(data!['borderWidth']!.toString())
-          : null,
+      borderWidth: resolveBorderWidthFromString(data?['borderWidth']),
       gap: resolveSpaceFromString(
           data?['gap'] ?? data?['_avatar']?['ml'].toString()),
       borderColor: resolveColorFromString(data?['borderColor']),
