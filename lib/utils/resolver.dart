@@ -8,17 +8,37 @@ bool parseMap(Map<dynamic, dynamic>? data) {
   return data?.isNotEmpty ?? false;
 }
 
+// Map<String, GSStyle?> mergeStyledMaps({
+//   required Map<String, GSStyle?>? styleMap,
+//   required Map<String, GSStyle?>? overrideStyleMap,
+//   required List<String> keys,
+// }) {
+//   Map<String, GSStyle?> mergedStyleMap = {};
+//   for (var element in keys) {
+//     mergedStyleMap[element] = styleMap?[element] != null
+//         ? styleMap![element]?.merge(overrideStyleMap?[element])
+//         : overrideStyleMap?[element];
+//   }
+//   return mergedStyleMap;
+// }
+
 Map<String, GSStyle?> mergeStyledMaps({
   required Map<String, GSStyle?>? styleMap,
   required Map<String, GSStyle?>? overrideStyleMap,
   required List<String> keys,
 }) {
   Map<String, GSStyle?> mergedStyleMap = {};
-  for (var element in keys) {
-    mergedStyleMap[element] = styleMap?[element] != null
-        ? styleMap![element]?.merge(overrideStyleMap?[element])
-        : overrideStyleMap?[element];
-  }
+  styleMap?.forEach((key, value) {
+    mergedStyleMap[key] = value;
+  });
+  overrideStyleMap?.forEach((key, value) {
+    if (mergedStyleMap.containsKey(key) && value != null) {
+      mergedStyleMap[key] = mergedStyleMap[key]?.merge(value) ?? value;
+    } else {
+      mergedStyleMap[key] = value;
+    }
+  });
+
   return mergedStyleMap;
 }
 
