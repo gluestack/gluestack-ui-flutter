@@ -732,7 +732,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                       ? resolvePaddingFromString(
                           data?['py'].toString(), 'vertical')
                       : null,
-                      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
+      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
@@ -1119,5 +1119,85 @@ class GSStyle extends BaseStyle<GSStyle> {
               : null
           : null,
     );
+  }
+
+  GSStyle? actionMap(GSActions? gsActions) {
+    if (gsActions == null) {
+      return null;
+    }
+    switch (gsActions) {
+      case GSActions.primary:
+        return variants?.action?.primary;
+      case GSActions.secondary:
+        return variants?.action?.secondary;
+      case GSActions.positive:
+        return variants?.action?.positive;
+      case GSActions.negative:
+        return variants?.action?.negative;
+      case GSActions.error:
+        return variants?.action?.error;
+      case GSActions.warning:
+        return variants?.action?.warning;
+      case GSActions.success:
+        return variants?.action?.success;
+      case GSActions.info:
+        return variants?.action?.info;
+      case GSActions.muted:
+        return variants?.action?.muted;
+      default:
+        return null;
+    }
+  }
+
+  GSStyle? variantMap(GSVariants? gsVariants) {
+    if (gsVariants == null) {
+      return null;
+    }
+    switch (gsVariants) {
+      case GSVariants.solid:
+        return variants?.variant?.solid;
+      case GSVariants.outline:
+        return variants?.variant?.outline;
+      case GSVariants.link:
+        return variants?.variant?.link?.merge(variants?.action?.defaultStyle);
+      case GSVariants.underlined:
+        return variants?.variant?.underlined;
+      case GSVariants.rounded:
+        return variants?.variant?.rounded;
+      default:
+        return null;
+    }
+  }
+
+  GSStyle? sizeMap(GSSizes? gsSizes) {
+    if (gsSizes == null) {
+      return null;
+    }
+    switch (gsSizes) {
+      case GSSizes.$2xs:
+        return variants?.size?.$2xs;
+      case GSSizes.$xs:
+        return variants?.size?.$xs;
+      case GSSizes.$sm:
+        return variants?.size?.$sm;
+      case GSSizes.$md:
+        return variants?.size?.$md;
+      case GSSizes.$lg:
+        return variants?.size?.$lg;
+      case GSSizes.$xl:
+        return variants?.size?.$xl;
+      case GSSizes.$2xl:
+        return variants?.size?.$2xl;
+      case GSSizes.$3xl:
+        return variants?.size?.$3xl;
+      case GSSizes.$4xl:
+        return variants?.size?.$4xl;
+      case GSSizes.$5xl:
+        return variants?.size?.$5xl;
+      case GSSizes.$6xl:
+        return variants?.size?.$6xl;
+      case GSSizes.$full:
+        return variants?.size?.$full;
+    }
   }
 }
