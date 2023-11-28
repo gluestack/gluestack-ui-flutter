@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_flutter_pro/refactor/style2/gs_style2.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/token/font_weight.dart';
 import 'package:gluestack_flutter_pro/token/index.dart';
@@ -252,3 +253,18 @@ GSOrientations? resolveOrientationsFromString(String? orientation) {
 
   return orientation != null ? orientationMap[orientation] : null;
 }
+
+
+/////////////
+GSFlexDirections? resolveFlexDirectionFromString(String? flexDirection) {
+  if (flexDirection == null) {
+    return null;
+  }
+  const flexDirectionMap = {
+    'row': GSFlexDirections.row,
+    'column': GSFlexDirections.column,
+  };
+  return flexDirectionMap[flexDirection] ?? GSFlexDirections.row;
+}
+
+

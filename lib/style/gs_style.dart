@@ -805,4 +805,10 @@ class GSStyle extends BaseStyle<GSStyle> {
         return variants?.size?.$full;
     }
   }
+  
+  @override
+  merge2(GSStyle? overrideStyle) {
+    // TODO: implement merge2
+    throw UnimplementedError();
+  }
 }

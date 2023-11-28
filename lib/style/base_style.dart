@@ -34,6 +34,7 @@ abstract class BaseStyle<T> {
     this.ios,
   });
   T merge(T? overrideStyle);
+  merge2(T? overrideStyle);
   T copy();
   LinkedHashMap<String, T?> get contextStyles => LinkedHashMap.from({
         'web': web,

@@ -10,6 +10,7 @@ import 'package:gluestack_flutter_pro/example/input_example.dart';
 import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
 import 'package:gluestack_flutter_pro/example/text_example.dart';
 import 'package:gluestack_flutter_pro/example/vstack_example.dart';
+import 'package:gluestack_flutter_pro/refactor/widgets/button/gs_button2.dart';
 
 import 'package:gluestack_flutter_pro/theme_provider.dart';
 
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
                 children: [
                   const Text("Scroll more for all the components",
                       style: TextStyle(fontSize: 22)),
+                   GSButton2(),   
                   GestureDetector(
                     onTap: () {
                       navigatorKey.currentState!.push(MaterialPageRoute(
