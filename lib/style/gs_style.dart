@@ -808,8 +808,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       textTransform: resolveTextTransformFromString(data?['textTransform']),
       fontWeight: resolveFontWeightFromString(data?['fontWeight']),
 
-      maxWidth:
-          data?['maxWidth'] != null ? double.tryParse(data?['maxWidth']) : null,
+      maxWidth: data?['maxWidth'] != null
+          ? double.tryParse(data?['maxWidth']?.toString() ?? "")
+          : null,
       padding: data?['p'] != null
           ? resolvePaddingFromString(data?['p'].toString(), 'all')
           : data?['px'] != null && data?['py'] != null
@@ -822,6 +823,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                       ? resolvePaddingFromString(
                           data?['py'].toString(), 'vertical')
                       : null,
+                      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),

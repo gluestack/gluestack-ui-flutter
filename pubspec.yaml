@@ -42,6 +42,8 @@ dependencies:
   reflectable: ^4.0.5
   # gs_generators:
   #   path: ../gs_generators
+  flutter_highlight: ^0.7.0
+  flutter_syntax_view: ^4.0.0
 
 dev_dependencies:
   flutter_test:

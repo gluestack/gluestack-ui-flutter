@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
+import 'package:gluestack_flutter_pro/utils/base_layout.dart';
 
 import 'package:gluestack_flutter_pro/widgets/gs_link/gs_link.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_link/gs_link_text.dart';
@@ -12,18 +13,23 @@ class LinkExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSLink(
+            style: GSStyle(),
+            url: 'https://gluestack.io/',
+            text: const GSLinkText(text: 'gluestack'),
+          ),
+  ''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GSLink(
-                style: GSStyle(),
-                url: 'https://gluestack.io/',
-                text: const GSLinkText(text: 'gluestack')),
-          ],
+        child: BaseLayout(
+          code: code,
+          component: GSLink(
+            style: GSStyle(),
+            url: 'https://gluestack.io/',
+            text: const GSLinkText(text: 'gluestack'),
+          ),
         ),
       ),
     );

@@ -54,11 +54,23 @@ class _TextAreaExampleState extends State<TextAreaExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSTextArea(
+            size: GSSizes.\$md,
+            hintText: "Enter text here",
+            isDisabled: false,
+            isInvalid: false,
+            readOnly: false,
+            style: GSStyle(
+              width: 300,
+            ),
+          )
+  ''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: BaseLayout(
+          code: code,
           component: GSTextArea(
             size: selectedSizeOption,
             isDisabled: isDisabled,

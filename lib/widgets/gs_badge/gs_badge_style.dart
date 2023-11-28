@@ -1,6 +1,7 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/gs_style_config.dart';
 import 'package:gluestack_flutter_pro/theme/config/badge/badge.dart';
+import 'package:gluestack_flutter_pro/token/radii_token.dart';
 import 'package:gluestack_flutter_pro/utils/resolver.dart';
 
 // GSStyleConfig for the Badge component | needed for descendantStyle
@@ -238,5 +239,19 @@ class GSBadgeStyle {
               badgeStyle.variants?.variant?.outline?.descendantStyles,
           keys: gsBadgeConfig.descendantStyle),
     },
+  };
+
+
+
+  static Map<GSBorderRadius, double> radius = {
+    GSBorderRadius.$none: $GSRadii.none,
+    GSBorderRadius.$xs: $GSRadii.$xs,
+    GSBorderRadius.$sm: $GSRadii.$sm,
+    GSBorderRadius.$md: $GSRadii.$md,
+    GSBorderRadius.$lg: $GSRadii.$lg,
+    GSBorderRadius.$xl: $GSRadii.$xl,
+    GSBorderRadius.$2xl:$GSRadii.$2xl,
+    GSBorderRadius.$3xl:$GSRadii.$3xl,
+    GSBorderRadius.$full:$GSRadii.full,
   };
 }
