@@ -1,0 +1,7 @@
+# targets:
+#   $default:
+#     builders:
+#       gs_generators|styleGeneratorBuilder:
+#         enabled: true
+#         generate_for:
+#           - lib/*

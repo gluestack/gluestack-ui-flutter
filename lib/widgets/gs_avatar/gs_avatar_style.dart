@@ -1,6 +1,7 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/gs_style_config.dart';
 import 'package:gluestack_flutter_pro/theme/config/avatar/avatar.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_avatar/avatar_style_2.dart';
 
 GSStyleConfig gsAvatarConfig = GSStyleConfig(
   componentName: 'Avatar',
@@ -8,8 +9,8 @@ GSStyleConfig gsAvatarConfig = GSStyleConfig(
   ancestorStyle: ['_avatar'],
 );
 
-GSStyle avatarStyle = GSStyle.fromMap(
-    data: avatarData, descendantStyle: gsAvatarConfig.descendantStyle);
+// GSStyle avatarStyle = GSStyle.fromMap(
+//     data: avatarData, descendantStyle: gsAvatarConfig.descendantStyle);
 
 class GSAvatarStyle {
   static Map<GSSizes, GSStyle> size = {

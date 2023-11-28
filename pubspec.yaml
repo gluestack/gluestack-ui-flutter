@@ -38,6 +38,9 @@ dependencies:
   url_launcher: ^6.2.1
   fluttertoast: ^8.2.4
   flutter_markdown: ^0.6.18+2
+  dart_style: ^2.3.4 
+  # gs_generators:
+  #   path: ../gs_generators
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +52,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

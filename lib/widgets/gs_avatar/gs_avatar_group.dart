@@ -3,6 +3,7 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_group_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_avatar/avatar_style_2.dart';
 
 class GSAvatarGroup extends StatelessWidget {
   final List<GSAvatar> children;

@@ -3,7 +3,7 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_badge_style.dart';
-
+import 'package:gluestack_flutter_pro/widgets/gs_avatar/avatar_style_2.dart';
 
 class GSAvatarBadge extends StatelessWidget {
   final GSStyle? style;

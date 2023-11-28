@@ -79,6 +79,20 @@ class GSProps {
           data?['orientation'],
         ));
   }
+
+  @override
+  String toString() {
+    return '''GSProps(
+        action: $action,
+        variant: $variant,
+        size: $size,
+        space: $space,
+        style: $style,
+        orientation: $orientation,
+        color: $color
+      )
+    ''';
+  }
 }
 
 class GSOrientation {
@@ -90,6 +104,13 @@ class GSOrientation {
       vertical: GSStyle.fromMap(data: data?['vertical'], fromVariant: true),
       horizontal: GSStyle.fromMap(data: data?['horizontal'], fromVariant: true),
     );
+  }
+  @override
+  String toString() {
+    return '''GSOrientation( 
+      vertical: $vertical, 
+      horizontal: $horizontal,
+    )''';
   }
 }
 
@@ -151,6 +172,18 @@ class GSVariant {
               fromVariant: true)
           : null,
     );
+  }
+
+  @override
+  String toString() {
+    return '''GSVariant(
+      underlined: $underlined,
+      outline: $outline,
+      rounded: $rounded,
+      solid: $solid,
+      link: $link,
+      accent: $accent,
+      )''';
   }
 }
 
@@ -278,6 +311,24 @@ class GSSize {
       $full: $full?.merge(overrideStyle?.$full) ?? overrideStyle?.$full,
     );
   }
+
+  @override
+  String toString() {
+    return '''GSSize(
+        ${'\$xs'}: ${$xs.toString()},
+        ${'\$sm'}: ${$sm.toString()},
+        ${'\$md'}: ${$md.toString()},
+        ${'\$lg'}: ${$lg.toString()},
+        ${'\$xl'}: ${$xl.toString()},
+        ${'\$2xl'}: ${$2xl.toString()},
+        ${'\$2xs'}: ${$2xs.toString()},
+        ${'\$3xl'}: ${$3xl.toString()},
+        ${'\$4xl'}: ${$4xl.toString()},
+        ${'\$5xl'}: ${$5xl.toString()},
+        ${'\$6xl'}: ${$6xl.toString()},
+        ${'\$full'}: ${$full.toString()},
+        )''';
+  }
 }
 
 class GSAction {
@@ -355,6 +406,24 @@ class GSAction {
           fromVariant: true),
     );
   }
+
+  @override
+  String toString() {
+    return '''GSAction(
+        primary: ${primary.toString()},
+        secondary: ${secondary.toString()},
+        positive: ${positive.toString()},
+        negative: ${negative.toString()},
+        defaultStyle: ${defaultStyle.toString()},
+        error: ${error.toString()},
+        warning: ${warning.toString()},
+        success: ${success.toString()},
+        info: ${info.toString()},
+        muted: ${muted.toString()},
+        attention: ${attention.toString()},
+      )
+    ''';
+  }
 }
 
 class GSSpace {
@@ -413,6 +482,21 @@ class GSSpace {
           : null,
     );
   }
+  @override
+  String toString() {
+    return '''GSSpace(
+        \$none: ${$none.toString()},
+        \$xs: ${$xs.toString()},
+        \$sm: ${$sm.toString()},
+        \$md: ${$md.toString()},
+        \$lg: ${$lg.toString()},
+        \$xl: ${$xl.toString()},
+        \$2xl: ${$2xl.toString()},
+        \$3xl: ${$3xl.toString()},
+        \$4xl: ${$4xl.toString()},
+      )
+    ''';
+  }
 }
 
 class Variants {
@@ -458,13 +542,20 @@ class Variants {
             fromVariant: true),
         orientation: GSOrientation.fromMap(data: data?['orientation']));
   }
+  @override
+  String toString() {
+    return '''Variants(
+        variant: ${variant.toString()},
+        size: ${size.toString()},
+        action: ${action.toString()},
+        space: ${space.toString()},
+        sub: ${sub.toString()},
+        highlight: ${highlight.toString()},
+        orientation: ${orientation.toString()},
+      )
+    ''';
+  }
 }
-
-/*
-
-after adding decdent style check need for textStyle
-
-*/
 
 class GSStyle extends BaseStyle<GSStyle> {
   double? borderWidth;
@@ -569,6 +660,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.scale,
     this.outlineColor,
     this.cursors,
+    this.iconSize,
   });
 
   @override
@@ -590,6 +682,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderLeftWidth: overrideStyle?.borderLeftWidth ?? borderLeftWidth,
       fontWeight: overrideStyle?.fontWeight ?? fontWeight,
       icon: overrideStyle?.icon ?? icon,
+      iconSize: overrideStyle?.iconSize ?? iconSize,
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
       gap: overrideStyle?.gap ?? gap,
@@ -1115,5 +1208,111 @@ class GSStyle extends BaseStyle<GSStyle> {
               : null
           : null,
     );
+  }
+  @override
+String toString() {
+  return '''GSStyle(
+      ${_formatProperty('borderWidth', borderWidth)}
+      ${_formatProperty('borderColor', borderColor)}
+      ${_formatProperty('borderRadius', borderRadius)}
+      ${_formatProperty('padding', padding)}
+      ${_formatProperty('margin', margin)}
+      ${_formatProperty('opacity', opacity)}
+      ${_formatProperty('color', color)}
+      ${_formatProperty('bg', bg)}
+      ${_formatProperty('gap', gap)}
+      ${_formatProperty('borderBottomColor', borderBottomColor)}
+      ${_formatProperty('height', height)}
+      ${_formatProperty('width', width)}
+      ${_formatProperty('outlineWidth', outlineWidth)}
+      ${_formatProperty('outlineStyle', outlineStyle)}
+      ${_formatProperty('borderBottomWidth', borderBottomWidth)}
+      ${_formatProperty('borderLeftWidth', borderLeftWidth)}
+      ${_formatTextStyle('textStyle', textStyle)}
+      ${_formatProperty('checked', checked)}
+      ${_formatProperty('variants', variants)}
+      ${_formatProperty('props', props)}
+      ${_formatDescendantStyles('descendantStyles', descendantStyles)}
+      ${_formatProperty('flexDirection', flexDirection)}
+      ${_formatProperty('alignItems', alignItems)}
+      ${_formatProperty('justifyContent', justifyContent)}
+      ${_formatProperty('maxWidth', maxWidth)}
+      ${_formatProperty('alignment', alignment)}
+      ${_formatProperty('progressValueColor', progressValueColor)}
+      ${_formatProperty('badge', badge)}
+      ${_formatProperty('highlightColor', highlightColor)}
+      ${_formatProperty('splashColor', splashColor)}
+      ${_formatProperty('textTransform', textTransform)}
+      ${_formatProperty('iconSize', iconSize)}
+      ${_formatProperty('trackColorTrue', trackColorTrue)}
+      ${_formatProperty('trackColorFalse', trackColorFalse)}
+      ${_formatProperty('thumbColor', thumbColor)}
+      ${_formatProperty('activeThumbColor', activeThumbColor)}
+      ${_formatProperty('iosBackgroundColor', iosBackgroundColor)}
+      ${_formatProperty('scale', scale)}
+      ${_formatProperty('outlineColor', outlineColor)}
+      ${_formatProperty('cursors', cursors)}
+      ${_formatProperty('onHover', onHover)}
+      ${_formatProperty('onFocus', onFocus)}
+      ${_formatProperty('onActive', onActive)}
+      ${_formatProperty('onDisabled', onDisabled)}
+      ${_formatProperty('input', input)}
+      ${_formatProperty('icon', icon)}
+      ${_formatProperty('dark', dark)}
+      ${_formatProperty('xs', xs)}
+      ${_formatProperty('sm', sm)}
+      ${_formatProperty('md', md)}
+      ${_formatProperty('lg', lg)}
+      ${_formatProperty('onInvaild', onInvaild)}
+      ${_formatProperty('web', web)}
+      ${_formatProperty('ios', ios)}
+      ${_formatProperty('android', android)}
+    )
+  ''';
+}
+}
+
+String _formatProperty(String name, dynamic value) {
+  return value != null ? '$name: $value,' : '';
+}
+
+String _formatTextStyle(String name, TextStyle? value) {
+  if (value != null) {
+    return '''
+      $name: TextStyle(
+        color: ${value.color},
+        fontSize: ${value.fontSize},
+        fontWeight: ${value.fontWeight},
+        fontStyle: ${value.fontStyle},
+        letterSpacing: ${value.letterSpacing},
+        wordSpacing: ${value.wordSpacing},
+        height: ${value.height},
+        backgroundColor: ${value.backgroundColor},
+        decoration: ${value.decoration},
+        decorationColor: ${value.decorationColor},
+        decorationStyle: ${value.decorationStyle},
+        decorationThickness: ${value.decorationThickness},
+        textBaseline: ${value.textBaseline},
+        fontFamily: ${value.fontFamily},
+        fontFamilyFallback: ${value.fontFamilyFallback},
+        locale: ${value.locale},
+        foreground: ${value.foreground},
+      ),
+    ''';
+    //removing:| inherit: ${value.inherit}, |cuz it's always true, cuz TS always needs to inherit only
+  } else {
+    return '';
+  }
+}
+
+String _formatDescendantStyles(String name, Map<String, GSStyle?>? value) {
+  if (value != null && value.isNotEmpty) {
+    return '''
+      $name: {
+        ${value.entries.map((entry) => '\'${entry.key}\': ${entry.value != null ? entry.value!.toString() : 'null'}').join(',\n      ')}
+      },
+    ''';
+  } else {
+    return '';
   }
 }

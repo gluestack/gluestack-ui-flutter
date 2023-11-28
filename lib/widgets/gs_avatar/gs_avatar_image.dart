@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_avatar/avatar_style_2.dart';
 
 class GSAvatarImage extends StatelessWidget {
   final String imageUrl;

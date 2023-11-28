@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_avatar/avatar_style_2.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_badge.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_fallBack_text.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_style.dart';
