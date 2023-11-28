@@ -24,16 +24,16 @@ class ButtonExample extends StatelessWidget {
             children: [
               GSButton(
                 size: currentButtonSize,
-                // style: GSStyle(
-                //   onActive: GSStyle(bg: $GSColors.purple900),
-                //     onFocus: GSStyle(bg: $GSColors.green900),
-                //     onHover: GSStyle(bg: $GSColors.red900)),
+                style: GSStyle(
+                  onActive: GSStyle(bg: $GSColors.purple900),
+                    onFocus: GSStyle(bg: $GSColors.green900),
+                    onHover: GSStyle(bg: $GSColors.red900)),
                 action: GSActions.primary,
                 variant: GSVariants.solid,
                 child: const GSButtonText(text: 'button1'),
                 onPressed: () {},
               ),
-             const GSButton2(),  
+       
               // SizedBox(
               //   height: sizedBoxHeight,
               // ),

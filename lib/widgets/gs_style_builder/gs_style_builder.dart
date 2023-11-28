@@ -40,7 +40,7 @@ class _GSStyleBuilderState extends State<GSStyleBuilder> {
   }
 
   _handleTapDown() {
-    if (!isActive && !widget.shouldIgnorePointer) {
+    if (!isActive && !(widget.shouldIgnorePointer)) {
       setState(() {
         isActive = true;
       });
@@ -48,7 +48,7 @@ class _GSStyleBuilderState extends State<GSStyleBuilder> {
   }
 
   _handleTapUp() {
-    if (isActive && !widget.shouldIgnorePointer) {
+    if (isActive && !(widget.shouldIgnorePointer)) {
       Future.delayed(const Duration(milliseconds: 100), () {
         if (mounted) {
           setState(() {
@@ -61,6 +61,7 @@ class _GSStyleBuilderState extends State<GSStyleBuilder> {
 
   @override
   Widget build(BuildContext context) {
+
     return IgnorePointer(
       ignoring: widget.shouldIgnorePointer,
       child: GestureDetector(
@@ -80,14 +81,14 @@ class _GSStyleBuilderState extends State<GSStyleBuilder> {
                     ? SystemMouseCursors.forbidden
                     : SystemMouseCursors.click,
             onFocusChange: (value) {
-              if (isFocused != value && !widget.shouldIgnorePointer) {
+              if (isFocused != value && !(widget.shouldIgnorePointer)) {
                 setState(() {
                   isFocused = value;
                 });
               }
             },
             onShowHoverHighlight: (value) {
-              if (isHovered != value && !widget.shouldIgnorePointer) {
+              if (isHovered != value && !(widget.shouldIgnorePointer)) {
                 setState(() {
                   isHovered = value;
                 });

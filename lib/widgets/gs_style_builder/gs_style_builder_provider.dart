@@ -26,23 +26,23 @@ class GSStyleBuilderProvider extends InheritedWidget {
   }
 
   static GSStyleBuilderProvider? of(BuildContext context,
-          {bool listen = false}) =>
+          {bool listen = true}) =>
       listen
           ? context.dependOnInheritedWidgetOfExactType<GSStyleBuilderProvider>()
           : context.getInheritedWidgetOfExactType<GSStyleBuilderProvider>();
 
-  static bool hoverStatus(BuildContext context, {bool listen = false}) =>
+  static bool hoverStatus(BuildContext context, {bool listen = true}) =>
       GSStyleBuilderProvider.of(context, listen: listen)?.isHovered ?? false;
 
-  static bool activeStatus(BuildContext context, {bool listen = false}) =>
+  static bool activeStatus(BuildContext context, {bool listen = true}) =>
       GSStyleBuilderProvider.of(context, listen: listen)?.isActive ?? false;
 
-  static bool focusedStatus(BuildContext context, {bool listen = false}) =>
+  static bool focusedStatus(BuildContext context, {bool listen = true}) =>
       GSStyleBuilderProvider.of(context, listen: listen)?.isFocused ?? false;
 
-  static bool disabledStatus(BuildContext context, {bool listen = false}) =>
+  static bool disabledStatus(BuildContext context, {bool listen = true}) =>
       GSStyleBuilderProvider.of(context, listen: listen)?.isDisabled ?? false;
 
-  static bool inVaildStatus(BuildContext context, {bool listen = false}) =>
+  static bool inVaildStatus(BuildContext context, {bool listen = true}) =>
       GSStyleBuilderProvider.of(context, listen: listen)?.isInvaild ?? false;
 }

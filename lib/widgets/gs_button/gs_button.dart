@@ -6,7 +6,7 @@ import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_style_builder/gs_style_builder.dart';
 
 class GSButton extends StatelessWidget {
   final GSActions? action;
@@ -52,16 +52,7 @@ class GSButton extends StatelessWidget {
     final disabled = isDisabled ?? value?.isDisabled ?? false;
     final isAttached = value?.isAttached ?? false;
 
-    // GSStyle styler2 = resolveStyles(context,
-    //     variantStyle:
-    //         GSButtonStyle.gsButtonCombination[buttonAction]![buttonVariant],
-    //     size: GSButtonStyle.size[buttonSize]!,
-    //     inlineStyle: style,
-    //     descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
-    //         ?[variant],
-    //     descendantStyleKeys: gsButtonConfig.descendantStyle)!;
-
-    return GSFocusableActionDetector(
+    return GSStyleBuilder(
       child: Builder(builder: (context) {
         GSStyle styler = resolveStyles2(
             context: context,
@@ -72,7 +63,6 @@ class GSButton extends StatelessWidget {
               buttonStyle.sizeMap(buttonSize),
             ],
             inlineStyle: style);
-     
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(
@@ -96,25 +86,7 @@ class GSButton extends StatelessWidget {
                     elevation: MaterialStateProperty.all<double?>(0),
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
                         styler.padding),
-                     backgroundColor: MaterialStateProperty.all(styler.bg),   
-                    // backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    //   (Set<MaterialState> states) {
-                    //     if (states.contains(MaterialState.pressed)) {
-                    //       return styler.onActive?.bg ?? styler.bg;
-                    //     } else if (states.contains(MaterialState.hovered)) {
-                    //       return styler.onHover?.bg ?? styler.bg;
-                    //     } else if (states.contains(MaterialState.focused)) {
-                    //       return styler.onFocus?.bg ?? styler.bg;
-                    //     } else if (states.contains(MaterialState.disabled) ||
-                    //         disabled) {
-                    //       return styler.onDisabled?.bg ?? styler.bg;
-                    //     } else if (states.contains(MaterialState.error)) {
-                    //       return styler.onInvaild?.bg ?? styler.bg;
-                    //     }
-
-                    //     return styler.bg!;
-                    //   },
-                    // ),
+                    backgroundColor: MaterialStateProperty.all(styler.bg),
                     shape: MaterialStateProperty.resolveWith<
                         RoundedRectangleBorder?>((Set<MaterialState> states) {
                       double resolveBorderRadius(MaterialState state) {

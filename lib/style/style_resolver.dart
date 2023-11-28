@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_focusableActionDetector/gs_focusable_action_detector_proider.dart';
+import 'package:gluestack_flutter_pro/widgets/gs_style_builder/gs_style_builder_provider.dart';
 import 'package:provider/provider.dart';
 
 bool isBaseScreen(BuildContext context) {
@@ -136,11 +136,13 @@ GSStyle resolveStyles2(
     {required BuildContext context,
     List<GSStyle?> styles = const [],
     GSStyle? inlineStyle}) {
-  print("i am being called &&&&");
+
+      
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
-  final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
-  final isFocused = GSFocusableActionDetectorProvider.isFocused(context);
-  final isActive = GSFocusableActionDetectorProvider.isActive(context);
+  final isHovered = GSStyleBuilderProvider.hoverStatus(context);
+  final isFocused =GSStyleBuilderProvider.focusedStatus(context, listen: false);
+  final isActive = GSStyleBuilderProvider.activeStatus(context, listen: false);
+
   GSStyle? currentGSStyle = GSStyle();
   for (var style in styles) {
     currentGSStyle = currentGSStyle?.merge(style);
