@@ -594,12 +594,19 @@ class GSStyle extends BaseStyle<GSStyle> {
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
       gap: overrideStyle?.gap ?? gap,
-      descendantStyles: descendantStyleKeys.isEmpty
-          ? overrideStyle?.descendantStyles ?? descendantStyles
-          : mergeStyledMaps(
-              styleMap: descendantStyles,
-              overrideStyleMap: overrideStyle?.descendantStyles,
-              keys: descendantStyleKeys),
+
+      // check if its working with all components,if yes then remove passing keys
+      descendantStyles: mergeStyledMaps(
+        styleMap: descendantStyles,
+        overrideStyleMap: overrideStyle?.descendantStyles,
+        keys: descendantStyleKeys,
+      ),
+      // descendantStyles: descendantStyleKeys.isEmpty
+      //     ? overrideStyle?.descendantStyles ?? descendantStyles
+      //     : mergeStyledMaps(
+      //         styleMap: descendantStyles,
+      //         overrideStyleMap: overrideStyle?.descendantStyles,
+      //         keys: descendantStyleKeys),
       onFocus: onFocus != null
           ? onFocus?.merge(overrideStyle?.onFocus)
           : overrideStyle?.onFocus,
@@ -694,7 +701,6 @@ class GSStyle extends BaseStyle<GSStyle> {
     List<String> descendantStyle = const [],
     bool fromVariant = false,
   }) {
-    // print(data?['_content']);
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
       flexDirection: resolveFlexDirectionFromString(data?['flexDirection']),
@@ -775,6 +781,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
       ),
       onHover: GSStyle(
+        descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
         color: resolveColorFromString(data?[':hover']?['color']),
         textStyle: TextStyle(
           decoration: resolveTextDecorationFromString(

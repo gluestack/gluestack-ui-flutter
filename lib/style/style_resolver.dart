@@ -139,14 +139,14 @@ GSStyle resolveStyles2(
     bool isFrist = false}) {
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
   final isHovered = GSStyleBuilderProvider.hoverStatus(context);
-  final isFocused =
-      GSStyleBuilderProvider.focusedStatus(context, listen: false);
-  final isActive = GSStyleBuilderProvider.activeStatus(context, listen: false);
+  final isFocused =GSStyleBuilderProvider.focusedStatus(context);
+  final isActive = GSStyleBuilderProvider.activeStatus(context);
 
   GSStyle? currentGSStyle = GSStyle();
   for (var style in styles) {
     currentGSStyle = currentGSStyle?.merge(style);
   }
+
   // addded this so that all the default values will be unpacked like hover ,focus etc
   if (isFrist) {
     currentGSStyle?.contextStyles.forEach((key, value) {
