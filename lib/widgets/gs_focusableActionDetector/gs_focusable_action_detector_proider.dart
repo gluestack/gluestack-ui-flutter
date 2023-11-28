@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class GSFocusableActionDetectorProvider extends InheritedWidget {
   final bool hoverStatus;
   final bool focusStatus;
+  final bool activeStatus;
 
   const GSFocusableActionDetectorProvider(
       {super.key,
       required Widget child,
       required this.focusStatus,
+      required this.activeStatus,
       required this.hoverStatus})
       : super(child: child);
 
@@ -23,6 +25,13 @@ class GSFocusableActionDetectorProvider extends InheritedWidget {
             ?.hoverStatus ??
         false;
   }
+    static bool isActive(BuildContext context) {
+    return context
+            .dependOnInheritedWidgetOfExactType<
+                GSFocusableActionDetectorProvider>()
+            ?.activeStatus ??
+        false;
+  }
 
   static bool isFocused(BuildContext context) {
     return context
@@ -35,6 +44,6 @@ class GSFocusableActionDetectorProvider extends InheritedWidget {
   @override
   bool updateShouldNotify(GSFocusableActionDetectorProvider oldWidget) {
     return focusStatus != oldWidget.focusStatus ||
-        hoverStatus != oldWidget.hoverStatus;
+        hoverStatus != oldWidget.hoverStatus || activeStatus!=oldWidget.activeStatus;
   }
 }
