@@ -1,9 +1,21 @@
-import 'dart:collection';
 import 'dart:io';
 import 'dart:convert';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:gluestack_flutter_pro/utils/generator/styles_to_be_generated.dart';
 import 'package:dart_style/dart_style.dart';
+//Approach 1: (BuildRunner Fails with all classe, material, GS's,etc. - Without BuilRunner)
+// overriding .toString() methods of style classes to get code down
+// then removing all null values and formatting to get the final 
+//compile time style code, & using Stringbuffer to get max control over file write
+// F. Ref: without removing null and formatting, cuz GSStyle is nested
+// length was going over 9 Lakh + lines of code for only avatar component.
+
+/// Instruction: after running script, open link printed on console
+/// then copy the code down somewhere in the proj directory, cuz this 
+/// can't be done without build_runner! after copying it over, simply 
+/// call the instantiated style class like usual.
+
+//TODO: Make the GGStyle constructors n all const
 
 void main() async {
   print('...............Process Started............');

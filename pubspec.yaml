@@ -38,7 +38,8 @@ dependencies:
   url_launcher: ^6.2.1
   fluttertoast: ^8.2.4
   flutter_markdown: ^0.6.18+2
-  dart_style: ^2.3.4 
+  dart_style: ^2.3.2 
+  reflectable: ^4.0.5
   # gs_generators:
   #   path: ../gs_generators
 
