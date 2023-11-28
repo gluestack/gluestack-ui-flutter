@@ -51,11 +51,24 @@ class _AvatarExampleState extends State<AvatarExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSAvatar(
+            radius: GSBorderRadius.\$full,
+            size: GSSizes.\$md,
+            style: GSStyle(
+              bg: Colors.orange,
+              textStyle: const TextStyle(color: Colors.white),
+            ),
+            fallBackText: const GSAvatarFallBackText(
+              'Geeky Stack',
+            ),
+          )
+''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: BaseLayout(
+          code: code,
           component: GSAvatar(
             radius: selectedRadiusOption,
             size: selectedSizeOption,

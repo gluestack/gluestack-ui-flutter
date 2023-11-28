@@ -35,6 +35,23 @@ class _SwitchExampleState extends State<SwitchExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSSwitch(
+              size: GSSizes.\$md,
+              isDisabled: false,
+              style: GSStyle(
+                checked: GSStyle(
+                  thumbColor: Colors.grey,
+                  activeThumbColor: Colors.blue,
+                ),
+              ),
+              value: val1,
+              onToggle: (bool value) {
+                setState(() {
+                  val1 = value;
+                });
+              },
+            )
+''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
@@ -43,22 +60,23 @@ class _SwitchExampleState extends State<SwitchExample> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           BaseLayout(
+            code: code,
             component: GSSwitch(
-                size: selectedSizeOption,
-                isDisabled: isDisabled,
-                style: GSStyle(
-                  checked: GSStyle(
-                    thumbColor: Colors.grey,
-                    activeThumbColor: Colors.blue,
-                  ),
+              size: selectedSizeOption,
+              isDisabled: isDisabled,
+              style: GSStyle(
+                checked: GSStyle(
+                  thumbColor: Colors.grey,
+                  activeThumbColor: Colors.blue,
                 ),
-                value: val1,
-                onToggle: (bool value) {
-                  setState(() {
-                    val1 = value;
-                  });
-                  // print('value: $val1');
-                }),
+              ),
+              value: val1,
+              onToggle: (bool value) {
+                setState(() {
+                  val1 = value;
+                });
+              },
+            ),
             controls: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -67,11 +67,24 @@ class _InputExampleState extends State<InputExample> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    var code = '''GSInput(
+            size: GSSizes.\$md,
+            variant: GSVariants.outline,
+            hintText: "Enter text here",
+            isDisabled: false,
+            isInvalid: false,
+            readOnly: false,
+            style: GSStyle(
+              width: 300,
+            ),
+          )
+  ''';
     return Scaffold(
       backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
       body: Center(
         child: BaseLayout(
+          code: code,
           component: GSInput(
             size: selectedSizeOption,
             variant: selectedVariantOption,
