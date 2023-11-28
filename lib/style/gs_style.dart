@@ -569,6 +569,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.scale,
     this.outlineColor,
     this.cursors,
+    this.iconSize,
   });
 
   @override
@@ -622,6 +623,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
       outlineColor: overrideStyle?.outlineColor ?? outlineColor,
       flexDirection: overrideStyle?.flexDirection ?? flexDirection,
+      iconSize: overrideStyle?.iconSize ?? iconSize,
       textStyle: overrideStyle?.textStyle != null
           ? TextStyle(
               height: overrideStyle?.textStyle?.height ?? textStyle?.height,
@@ -730,6 +732,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                       ? resolvePaddingFromString(
                           data?['py'].toString(), 'vertical')
                       : null,
+                      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
