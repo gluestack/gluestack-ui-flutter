@@ -6,5 +6,7 @@ import 'package:gluestack_ui/src/theme/config/badge/badge_text.dart';
 final GSStyle badgeTextStyle = GSStyle.fromMap(data: badgeTextData);
 
 /// Needed configuration for descendantStyle, specifying the component name and ancestor style
-GSStyleConfig gsBadgeTextConfig =
-    GSStyleConfig(componentName: 'BadgeText', ancestorStyle: ['_text']);
+const GSStyleConfig gsBadgeTextConfig = GSStyleConfig(
+  componentName: 'BadgeText',
+  ancestorStyle: ['_text'],
+);

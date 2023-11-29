@@ -3,7 +3,7 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/checkbox/checkbox_icon.dart';
 import 'package:gluestack_ui/src/theme/config/icon/icon.dart';
 
-GSStyleConfig checkboxIconConfig =
+const GSStyleConfig checkboxIconConfig =
     GSStyleConfig(componentName: 'CheckboxIcon', ancestorStyle: ['_icon']);
 
 GSStyle checkboxIconStyle = GSStyle.fromMap(data: iconData)

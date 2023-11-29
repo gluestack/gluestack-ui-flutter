@@ -2,7 +2,7 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/avatar/avatar.dart';
 
-GSStyleConfig gsAvatarConfig = GSStyleConfig(
+const GSStyleConfig gsAvatarConfig = GSStyleConfig(
   componentName: 'Avatar',
   descendantStyle: ['_badge', '_text'],
   ancestorStyle: ['_avatar'],

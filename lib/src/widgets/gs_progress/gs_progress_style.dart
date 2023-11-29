@@ -2,7 +2,7 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/progress/progress.dart';
 
-GSStyleConfig gsProgressConfig = GSStyleConfig(
+const GSStyleConfig gsProgressConfig = GSStyleConfig(
   componentName: 'Progress',
   descendantStyle: ['_filledTrack'],
 );

@@ -3,8 +3,11 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/radio/radio_label.dart';
 import 'package:gluestack_ui/src/theme/config/text/text.dart';
 
-GSStyleConfig gsRadioTextConfig =
-    GSStyleConfig(componentName: 'RadioLabel', ancestorStyle: ['_text']);
+const GSStyleConfig gsRadioTextConfig = GSStyleConfig(
+  componentName: 'RadioLabel',
+  ancestorStyle: ['_text'],
+);
+
 final GSStyle radioLabelStyle = GSStyle.fromMap(data: textData)
     .merge(GSStyle.fromMap(data: radioLabelData));
 

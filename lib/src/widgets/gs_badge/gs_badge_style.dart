@@ -5,8 +5,10 @@ import 'package:gluestack_ui/src/token/radii_token.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 
 // GSStyleConfig for the Badge component | needed for descendantStyle
-GSStyleConfig gsBadgeConfig =
-    GSStyleConfig(componentName: 'Badge', descendantStyle: ['_text', '_icon']);
+const GSStyleConfig gsBadgeConfig = GSStyleConfig(
+  componentName: 'Badge',
+  descendantStyle: ['_text', '_icon'],
+);
 
 // GSStyle representing the base style for the Badge
 final GSStyle badgeStyle = GSStyle.fromMap(
@@ -241,8 +243,6 @@ class GSBadgeStyle {
     },
   };
 
-
-
   static Map<GSBorderRadius, double> radius = {
     GSBorderRadius.$none: $GSRadii.none,
     GSBorderRadius.$xs: $GSRadii.$xs,
@@ -250,8 +250,8 @@ class GSBadgeStyle {
     GSBorderRadius.$md: $GSRadii.$md,
     GSBorderRadius.$lg: $GSRadii.$lg,
     GSBorderRadius.$xl: $GSRadii.$xl,
-    GSBorderRadius.$2xl:$GSRadii.$2xl,
-    GSBorderRadius.$3xl:$GSRadii.$3xl,
-    GSBorderRadius.$full:$GSRadii.full,
+    GSBorderRadius.$2xl: $GSRadii.$2xl,
+    GSBorderRadius.$3xl: $GSRadii.$3xl,
+    GSBorderRadius.$full: $GSRadii.full,
   };
 }

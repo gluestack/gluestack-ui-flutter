@@ -5,23 +5,22 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:provider/provider.dart';
 
 bool isBaseScreen(BuildContext context) {
-  final screenWidth = MediaQuery.of(context).size.width;
-
+  final screenWidth = MediaQuery.sizeOf(context).width;
   return screenWidth < small;
 }
 
 bool isSmallScreen(BuildContext context) {
-  final screenWidth = MediaQuery.of(context).size.width;
+  final screenWidth = MediaQuery.sizeOf(context).width;
   return screenWidth >= small;
 }
 
 bool isMediumScreen(BuildContext context) {
-  final screenWidth = MediaQuery.of(context).size.width;
+  final screenWidth = MediaQuery.sizeOf(context).width;
   return screenWidth >= medium;
 }
 
 bool isLargeScreen(BuildContext context) {
-  final screenWidth = MediaQuery.of(context).size.width;
+  final screenWidth = MediaQuery.sizeOf(context).width;
   return screenWidth >= large;
 }
 

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 enum GSThemeMode { light, dark }
 
+///
+/// Theme provider. It is used to manage theme for Gluestack UI widgets.
+///
 class ThemeProvider with ChangeNotifier {
   GSThemeMode _currentTheme = GSThemeMode.light;
 

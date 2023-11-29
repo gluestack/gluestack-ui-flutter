@@ -2,7 +2,7 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/toast/toast.dart';
 
-GSStyleConfig gsToastConfig = GSStyleConfig(
+const GSStyleConfig gsToastConfig = GSStyleConfig(
   componentName: 'Toast',
   descendantStyle: ['_icon', '_title', '_description'],
 );

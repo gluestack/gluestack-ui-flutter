@@ -7,12 +7,13 @@ class BaseLayout extends StatelessWidget {
   final Widget component;
   final Widget? controls;
   final String? code;
-  const BaseLayout({super.key, required this.component, this.controls, this.code});
+  const BaseLayout(
+      {super.key, required this.component, this.controls, this.code});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: (MediaQuery.of(context).size.height * 0.8),
+      height: (MediaQuery.sizeOf(context).height * 0.8),
       margin: const EdgeInsets.symmetric(horizontal: $GSSpace.$16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),

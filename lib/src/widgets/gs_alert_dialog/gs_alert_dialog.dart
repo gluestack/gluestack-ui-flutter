@@ -105,7 +105,7 @@ class _GSAlertDialogState extends State<GSAlertDialog> {
       descendantStyleKeys: gsAlertDialogConfig.descendantStyle,
     )!;
     final alertWidth = styler.width ??
-        (MediaQuery.of(context).size.width *
+        (MediaQuery.sizeOf(context).width *
             (styler
                     .descendantStyles?[
                         gsAlertDialogContentConfig.ancestorStyle.first]

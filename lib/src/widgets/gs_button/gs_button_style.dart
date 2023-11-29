@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/button/button.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 
-GSStyleConfig gsButtonConfig = GSStyleConfig(
+const GSStyleConfig gsButtonConfig = GSStyleConfig(
     componentName: 'Button',
     descendantStyle: ['_text', '_spinner', '_icon'],
     ancestorStyle: ['_button']);

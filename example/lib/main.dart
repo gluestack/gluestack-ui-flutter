@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
+          theme: themeProvider.getThemeData(),
           home: Scaffold(
             backgroundColor: themeProvider.getThemeData().canvasColor,
             body: SingleChildScrollView(

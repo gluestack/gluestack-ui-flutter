@@ -1,5 +1,8 @@
 import 'dart:collection';
 
+///
+/// Base Style class for all Gluestack UI widgets.
+///
 abstract class BaseStyle<T> {
   T? dark;
   T? md;
@@ -16,6 +19,7 @@ abstract class BaseStyle<T> {
   T? web;
   T? android;
   T? ios;
+
   BaseStyle({
     this.dark,
     this.md,
@@ -33,8 +37,11 @@ abstract class BaseStyle<T> {
     this.android,
     this.ios,
   });
+
   T merge(T? overrideStyle);
+
   T copy();
+
   LinkedHashMap<String, T?> get contextStyles => LinkedHashMap.from({
         'web': web,
         'ios': ios,

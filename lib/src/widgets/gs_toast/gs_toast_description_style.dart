@@ -3,7 +3,7 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/text/text.dart';
 import 'package:gluestack_ui/src/theme/config/toast/toast_description.dart';
 
-GSStyleConfig gstoastDescriptionConfig = GSStyleConfig(
+const GSStyleConfig gstoastDescriptionConfig = GSStyleConfig(
   componentName: 'ToastDescription',
   ancestorStyle: ['_description'],
 );

@@ -1,4 +1,4 @@
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 
-GSStyleConfig gsButtonSpinnerConfig =
+const GSStyleConfig gsButtonSpinnerConfig =
     GSStyleConfig(componentName: 'ButtonSpinner', ancestorStyle: ['_spinner']);
