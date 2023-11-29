@@ -1,4 +1,4 @@
-Map<String, dynamic> alertDialogContentData = {
+const Map<String, dynamic> alertDialogContentData = {
   'bg': '\$backgroundLight50',
   'rounded': '\$lg',
   'overflow': 'hidden',

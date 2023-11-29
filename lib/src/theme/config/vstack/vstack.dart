@@ -1,4 +1,4 @@
-Map<String, dynamic> vStackData = {
+const Map<String, dynamic> vStackData = {
   'flexDirection': 'column',
   'variants': {
     'space': {

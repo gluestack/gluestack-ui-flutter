@@ -1,4 +1,4 @@
-Map<String, dynamic> centerData = {
+const Map<String, dynamic> centerData = {
   'alignItems': 'center',
   'justifyContent': 'center',
 };

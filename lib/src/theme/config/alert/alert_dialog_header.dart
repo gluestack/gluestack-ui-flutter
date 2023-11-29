@@ -1,4 +1,4 @@
-Map<String, dynamic> alertDialogHeaderData = {
+const Map<String, dynamic> alertDialogHeaderData = {
   'p': '\$4',
   'justifyContent': 'space-between',
   'alignItems': 'center',

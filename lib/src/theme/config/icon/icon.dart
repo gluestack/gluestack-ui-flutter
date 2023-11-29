@@ -1,4 +1,4 @@
-Map<String, dynamic> iconData = {
+const Map<String, dynamic> iconData = {
   'color': '\$backgroundLight800',
   'props': {
     'size': 'md',

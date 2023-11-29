@@ -1,4 +1,4 @@
-Map<String, dynamic> linkData = {
+const Map<String, dynamic> linkData = {
   '_web': {
     'outlineWidth': 0,
     ':disabled': {

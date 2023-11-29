@@ -1,4 +1,4 @@
- Map<String, dynamic> radioIconData = {
+const Map<String, dynamic> radioIconData = {
   'borderRadius': '\$full',
   ':checked': {
     'color': '\$primary600',

@@ -15,13 +15,15 @@ Map<String, GSStyle?> mergeStyledMaps({
 }) {
   Map<String, GSStyle?> mergedStyleMap = {};
   for (var element in keys) {
-    mergedStyleMap[element] =
-        styleMap?[element] != null ? styleMap![element]?.merge(overrideStyleMap?[element]) : overrideStyleMap?[element];
+    mergedStyleMap[element] = styleMap?[element] != null
+        ? styleMap![element]?.merge(overrideStyleMap?[element])
+        : overrideStyleMap?[element];
   }
   return mergedStyleMap;
 }
 
-Map<String, GSStyle>? resolvedescendantStylesFromMap(Map<String, dynamic>? data, List<String> descendantStyles) {
+Map<String, GSStyle>? resolvedescendantStylesFromMap(
+    Map<String, dynamic>? data, List<String> descendantStyles) {
   if (descendantStyles.isEmpty || data == null) {
     return null;
   }
@@ -117,7 +119,8 @@ double? resolveSpaceFromString(String? space) {
   return $GSSpace.spaceMap[space];
 }
 
-EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type, {String? paddingy}) {
+EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
+    {String? paddingy}) {
   if (padding == null) {
     return null;
   }
@@ -127,7 +130,8 @@ EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type, {Stri
   }
   if (type == 'symmetric') {
     return EdgeInsets.symmetric(
-        horizontal: resolveSpaceFromString(padding)!, vertical: resolveSpaceFromString(paddingy)!);
+        horizontal: resolveSpaceFromString(padding)!,
+        vertical: resolveSpaceFromString(paddingy)!);
   }
   if (type == 'horizontal') {
     return EdgeInsets.symmetric(horizontal: resolveSpaceFromString(padding)!);
@@ -154,10 +158,12 @@ double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
     return null;
   }
   if (lineHeight.contains('\$')) {
-    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]! / resolveFontSizeFromString(fontSize)!;
+    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]! /
+        resolveFontSizeFromString(fontSize)!;
   }
 
-  return $GSLineHeight.lineHeightMap[lineHeight]! / resolveFontSizeFromString(fontSize)!;
+  return $GSLineHeight.lineHeightMap[lineHeight]! /
+      resolveFontSizeFromString(fontSize)!;
 }
 
 double? resolveLetterSpacingFromString(String? letterSpacing) {
@@ -263,7 +269,9 @@ double resolveAlignment(GSAlignments? suppliedAlignment) {
     GSAlignments.flexStart: 1
   };
 
-  return suppliedAlignment != null ? alignOrJustifyItems[suppliedAlignment]! : 0;
+  return suppliedAlignment != null
+      ? alignOrJustifyItems[suppliedAlignment]!
+      : 0;
 }
 
 GSOrientations? resolveOrientationsFromString(String? orientation) {
@@ -355,7 +363,9 @@ GSTextTransform? resolveTextTransformFromString(String? gsTextTransform) {
     'lowercase': GSTextTransform.lowercase,
   };
 
-  return gsTextTransform != null ? textTransformationMap[gsTextTransform] : null;
+  return gsTextTransform != null
+      ? textTransformationMap[gsTextTransform]
+      : null;
 }
 
 GSCursors? resolveCursorFromString(String? cursor) {

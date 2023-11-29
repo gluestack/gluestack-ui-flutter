@@ -1,4 +1,4 @@
-Map<String, dynamic> radioLabelData = {
+const Map<String, dynamic> radioLabelData = {
   'color': '\$textLight600',
   ':checked': {
     'color': '\$textLight900',

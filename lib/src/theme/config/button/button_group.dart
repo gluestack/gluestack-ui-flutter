@@ -1,4 +1,4 @@
-Map<String, dynamic> buttonGroupData = {
+const Map<String, dynamic> buttonGroupData = {
   'variants': {
     'size': {
       'xs': {

@@ -1,4 +1,4 @@
-Map<String, dynamic> alertDialogCloseButtonData = {
+const Map<String, dynamic> alertDialogCloseButtonData = {
   'zIndex': 1,
   'rounded': '\$sm',
   'p': '\$2',

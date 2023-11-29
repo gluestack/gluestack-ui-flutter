@@ -1,4 +1,4 @@
-Map<String, dynamic> progressData = {
+const Map<String, dynamic> progressData = {
   'bg': '\$backgroundLight300',
   'borderRadius': '\$full',
   'w': '100%',

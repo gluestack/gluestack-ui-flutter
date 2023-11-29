@@ -1,4 +1,4 @@
-Map<String, dynamic> dividerData = {
+const Map<String, dynamic> dividerData = {
   'bg': '\$backgroundLight200',
   '_dark': {
     'bg': '\$backgroundLight800',

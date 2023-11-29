@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class $GSFontWeights {
   const $GSFontWeights._();
+
   static const FontWeight hairline = FontWeight.w100;
   static const FontWeight thin = FontWeight.w200;
   static const FontWeight light = FontWeight.w300;

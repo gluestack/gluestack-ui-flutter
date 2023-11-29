@@ -1,4 +1,4 @@
-Map<String, dynamic> textAreaData = {
+const Map<String, dynamic> textAreaData = {
   'w': '100%',
   'borderWidth': 1,
   'borderColor': '\$backgroundLight300',

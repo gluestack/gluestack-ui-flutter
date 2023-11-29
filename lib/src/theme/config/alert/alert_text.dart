@@ -1,3 +1,3 @@
-Map<String, dynamic> alertIconData = {
+const Map<String, dynamic> alertIconData = {
   'flex': 1,
 };

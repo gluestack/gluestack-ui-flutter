@@ -1,4 +1,4 @@
-Map<String, dynamic> checkBoxData = {
+const Map<String, dynamic> checkBoxData = {
   'flexDirection': 'row',
   'justifyContent': 'flex-start',
   'alignItems': 'center',

@@ -1,6 +1,6 @@
 class $GSLineHeight {
   const $GSLineHeight._();
-   
+
   static const double $2xs = 16.0;
   static const double $xs = 18.0;
   static const double $sm = 20.0;
@@ -14,8 +14,7 @@ class $GSLineHeight {
   static const double $6xl = 72.0;
   static const double $7xl = 90.0;
 
-
-    static const Map<String, double> lineHeightMap = {
+  static const Map<String, double> lineHeightMap = {
     '2xs': $GSLineHeight.$2xs,
     'xs': $GSLineHeight.$xs,
     'sm': $GSLineHeight.$sm,
@@ -28,6 +27,5 @@ class $GSLineHeight {
     '5xl': $GSLineHeight.$5xl,
     '6xl': $GSLineHeight.$6xl,
     '7xl': $GSLineHeight.$7xl,
-
   };
 }

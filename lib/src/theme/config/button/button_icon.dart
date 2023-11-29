@@ -1,4 +1,4 @@
-Map<String, dynamic> buttonIconData = {
+const Map<String, dynamic> buttonIconData = {
   'props': {
     'size': 'md',
   },

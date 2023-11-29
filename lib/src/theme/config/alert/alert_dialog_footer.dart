@@ -1,4 +1,4 @@
-Map<String, dynamic> alertDialogFooterData = {
+const Map<String, dynamic> alertDialogFooterData = {
   'p': '\$4',
   'flexDirection': 'row',
   'justifyContent': 'flex-end',

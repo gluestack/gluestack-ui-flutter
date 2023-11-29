@@ -1,4 +1,4 @@
-Map<String, dynamic> toastTitleData = {
+const Map<String, dynamic> toastTitleData = {
   'fontWeight': '\$medium',
   'props': {
     'size': 'md',

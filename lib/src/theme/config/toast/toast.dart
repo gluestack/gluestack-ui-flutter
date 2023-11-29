@@ -1,4 +1,4 @@
-Map<String, dynamic> toastData = {
+const Map<String, dynamic> toastData = {
   'px': '\$4',
   'py': '\$3',
   'borderRadius': '\$sm',

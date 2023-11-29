@@ -1,4 +1,4 @@
-const checkBoxIconData = {
+const Map<String, dynamic> checkBoxIconData = {
   ':checked': {
     'color': '\$backgroundLight0',
   },

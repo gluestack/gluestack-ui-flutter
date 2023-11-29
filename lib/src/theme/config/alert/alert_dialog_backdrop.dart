@@ -1,4 +1,4 @@
-Map<String, dynamic> alertDialogBackdropData = {
+const Map<String, dynamic> alertDialogBackdropData = {
   ':initial': {
     'opacity': 0,
   },

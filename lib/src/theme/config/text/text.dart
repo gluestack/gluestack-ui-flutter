@@ -1,4 +1,4 @@
-Map<String, dynamic> textData = {
+const Map<String, dynamic> textData = {
   'color': '\$textLight700',
   '_dark': {
     'color': '\$textDark200',

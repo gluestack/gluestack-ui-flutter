@@ -1,4 +1,4 @@
-Map<String, dynamic> alertDialogData = {
+const Map<String, dynamic> alertDialogData = {
   //TODO : what's with this width and height?
   // 'w': '\$full',
   // 'h': '\$full',

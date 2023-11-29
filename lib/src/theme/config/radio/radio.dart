@@ -1,4 +1,4 @@
- Map<String, dynamic> radioData = {
+const Map<String, dynamic> radioData = {
   'flexDirection': 'row',
   'justifyContent': 'flex-start',
   'alignItems': 'center',

@@ -1,4 +1,4 @@
-Map<String, dynamic> buttonTextData = {
+const Map<String, dynamic> buttonTextData = {
   'color': '\$textLight0',
   'userSelect': 'none',
 };

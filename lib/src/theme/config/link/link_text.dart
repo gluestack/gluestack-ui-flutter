@@ -1,4 +1,4 @@
-Map<String, dynamic> linkTextData = {
+const Map<String, dynamic> linkTextData = {
   'textDecorationLine': 'underline',
   'color': '\$info700',
   '_dark': {

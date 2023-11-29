@@ -1,4 +1,4 @@
-Map<String, dynamic> alertData = {
+const Map<String, dynamic> alertData = {
   'alignItems': 'center',
   'p': '\$3',
   'flexDirection': 'row',

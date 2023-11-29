@@ -1,4 +1,4 @@
-Map<String, dynamic> hstackData = {
+const Map<String, dynamic> hstackData = {
   'flexDirection': 'row',
   'variants': {
     'space': {

@@ -1,4 +1,4 @@
-Map<String, dynamic> buttonData = {
+const Map<String, dynamic> buttonData = {
   'borderRadius': '\$sm',
   'backgroundColor': '\$primary500',
   'flexDirection': 'row',

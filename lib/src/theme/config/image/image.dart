@@ -1,4 +1,4 @@
-Map<String, dynamic> imageData = {
+const Map<String, dynamic> imageData = {
   'maxWidth': '\$full',
   'variants': {
     'size': {

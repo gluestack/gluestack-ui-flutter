@@ -1,4 +1,4 @@
-Map<String, dynamic> radioIndicatorData = {
+const Map<String, dynamic> radioIndicatorData = {
   'justifyContent': 'center',
   'alignItems': 'center',
   'bg': 'transparent',

@@ -1,1 +1,1 @@
-Map<String, dynamic> buttonSpinnerDart = {};
+const Map<String, dynamic> buttonSpinnerDart = {};
