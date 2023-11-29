@@ -139,9 +139,9 @@ GSStyle resolveStyles2(
     bool isFrist = false}) {
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
   final isHovered = GSStyleBuilderProvider.hoverStatus(context);
-  final isFocused =GSStyleBuilderProvider.focusedStatus(context);
+  final isFocused = GSStyleBuilderProvider.focusedStatus(context);
   final isActive = GSStyleBuilderProvider.activeStatus(context);
-
+ 
   GSStyle? currentGSStyle = GSStyle();
   for (var style in styles) {
     currentGSStyle = currentGSStyle?.merge(style);
@@ -149,6 +149,7 @@ GSStyle resolveStyles2(
 
   // addded this so that all the default values will be unpacked like hover ,focus etc
   if (isFrist) {
+
     currentGSStyle?.contextStyles.forEach((key, value) {
       if (value != null) {
         if (key == 'dark' && theme == GSThemeMode.dark) {
@@ -192,11 +193,6 @@ GSStyle resolveStyles2(
         }
         if (key == 'android' &&
             defaultTargetPlatform == TargetPlatform.android) {
-          currentGSStyle = currentGSStyle?.merge(value);
-          GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-          currentGSStyle = currentGSStyle?.merge(nestedStyle);
-        }
-        if (key == 'onHover' && isHovered) {
           currentGSStyle = currentGSStyle?.merge(value);
           GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
@@ -272,11 +268,7 @@ GSStyle resolveStyles2(
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
-      if (key == 'onHover' && isHovered) {
-        currentGSStyle = currentGSStyle?.merge(value);
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle);
-      }
+     
       if (key == 'onFocus' && isFocused) {
         currentGSStyle = currentGSStyle?.merge(value);
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);

@@ -59,10 +59,14 @@ class GSButton extends StatelessWidget {
               buttonStyle.actionMap(buttonAction),
               buttonStyle.variantMap(buttonVariant),
               buttonStyle.sizeMap(buttonSize),
+              buttonStyle
+                  .compoundVariants?[action.toString() + variant.toString()]
             ],
             inlineStyle: style,
             isFrist: true);
-  
+
+        
+
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(
@@ -86,6 +90,7 @@ class GSButton extends StatelessWidget {
                       padding: styler.padding,
                       backgroundColor: styler.bg,
                       elevation: 0.0,
+                      shadowColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
                           borderRadius:
                               BorderRadius.circular(styler.borderRadius ?? 0.0),
@@ -109,6 +114,7 @@ class GSButton extends StatelessWidget {
     if (variant == GSVariants.link) {
       return BorderSide.none;
     }
+
     return styler.borderWidth != null
         ? BorderSide(color: styler.borderColor!, width: styler.borderWidth!)
         : BorderSide.none;

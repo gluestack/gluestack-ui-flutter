@@ -23,18 +23,18 @@ class GSButtonText extends StatelessWidget {
         context: context,
         styles: [
           buttonTextStyle,
+          buttonTextStyle.sizeMap(ancestorStyles?.props?.size),
           ancestorStyles,
         ],
         inlineStyle: style,
         isFrist: true);
 
     var defaultTextStyle = TextStyle(
-      color: styler.color,
-      fontWeight: styler.fontWeight,
-      fontSize: styler.textStyle?.fontSize,
-    );
-
-    print(ancestorStyles?.onHover?.textStyle);
+        color: styler.color,
+        fontWeight: styler.fontWeight,
+        fontSize: styler.fontSize,
+        decoration: styler.textDecoration,
+        height: styler.lineHeight);
 
     return Text(
       text,

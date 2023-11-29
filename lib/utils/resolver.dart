@@ -399,3 +399,17 @@ GSCursors? resolveCursorFromString(String? cursor) {
 
   return cursor != null ? cusorMap[cursor] : null;
 }
+
+Map<String, GSStyle>? resolveCompoundVariants(
+    {required List<Map<String, dynamic>>? compoundVariants}) {
+  if (compoundVariants == null || compoundVariants.isEmpty) {
+    return null;
+  }
+  final Map<String, GSStyle> resolvedCompoundVariants = {};
+  for (var element in compoundVariants) {
+    final keyName = resolveActionFromString(element['action']).toString() +
+        resolveVariantFromString(element['variant']).toString();
+    resolvedCompoundVariants[keyName] = GSStyle.fromMap(data: element['value']);
+  }
+  return resolvedCompoundVariants;
+}
