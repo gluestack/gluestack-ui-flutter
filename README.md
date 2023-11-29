@@ -23,12 +23,12 @@ TODO
 ## Installation
 
 ```bash
-$ flutter pub add gluestack_ui
+flutter pub add gluestack_ui
 ```
 
 ## Usage
 
-Here is how GSButton widget can be easily integrated into your Flutter app. Here's an example of how to use it:
+Here is how `GSButton` widget can be easily integrated into your flutter app. Here's an example of how to use it:
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
@@ -58,7 +58,7 @@ GSButton(
 
 ## Contributing
 
-We welcome contributions from the community. If you'd like to contribute to `gluestack_ui`, please read our [contributing guide](./CONTRIBUTING.md) instructions on how to submit a pull request.
+We welcome contributions from the community. If you'd like to contribute to `gluestack-ui-flutter`, please read our [contributing guide](./CONTRIBUTING.md) instructions on how to submit a pull request.
 
 ## License
 
