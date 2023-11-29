@@ -26,7 +26,7 @@ import 'package:gluestack_flutter_pro/style/gs_style.dart';
   for (Style style in stylesToBeGenerated) {
     //TODO: make it const
     generatorBuffer.writeln(
-        """GSStyle ${style.generatedStyleName} = ${GSStyle.fromMap(data: style.styleData, descendantStyle: style.descendantStyle ?? [])};""");
+        """GSStyle ${style.generatedStyleName} = ${GSStyle.fromMap(data: style.styleData, descendantStyle: style.descendantStyle ?? []).merge(GSStyle.fromMap(data: style.mergeStyleData))};""");
   }
 
   File file = File(filePath);

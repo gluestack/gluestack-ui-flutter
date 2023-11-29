@@ -19,10 +19,7 @@ List<Style> stylesToBeGenerated = [
       styleData: buttonData,
       descendantStyle: gsButtonConfig.descendantStyle),
    Style(
-      generatedStyleName: "buttonTextStyle", styleData: buttonTextData),
-   Style(
-      generatedStyleName: "textStyle",
-      styleData: textData),
+      generatedStyleName: "buttonTextStyle", styleData: buttonTextData, mergeStyleData: textData),
    Style(
       generatedStyleName: "buttonIconStyle", styleData: buttonIconData),
    Style(
@@ -32,11 +29,13 @@ List<Style> stylesToBeGenerated = [
 class Style {
   final String generatedStyleName;
   final Map<String, dynamic> styleData;
+  final Map<String, dynamic>? mergeStyleData;
   final List<String>? descendantStyle;
   // bool fromVariant;
   const Style({
     required this.generatedStyleName,
     required this.styleData,
+    this.mergeStyleData,
     this.descendantStyle = const [],
     // this.fromVariant = false,
   });
