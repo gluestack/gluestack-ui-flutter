@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/base_style.dart';
 import 'package:gluestack_flutter_pro/utils/resolver.dart';
+import 'package:gs_generators/src/annotation.dart';
+part 'gs_style.gs.g.dart';
 
 enum GSActions {
   primary,
@@ -49,6 +51,7 @@ enum GSFlexDirections { row, column }
 
 enum GSCursors { pointer, notAllowed }
 
+@ToString()
 class GSProps {
   GSActions? action;
   GSVariants? variant;
@@ -79,8 +82,12 @@ class GSProps {
           data?['orientation'],
         ));
   }
+
+  @override
+  String toString() => _$GSPropsToString(this);
 }
 
+@ToString()
 class GSOrientation {
   GSStyle? vertical;
   GSStyle? horizontal;
@@ -91,8 +98,11 @@ class GSOrientation {
       horizontal: GSStyle.fromMap(data: data?['horizontal'], fromVariant: true),
     );
   }
+  @override
+  String toString() => _$GSOrientationToString(this);
 }
 
+@ToString()
 class GSVariant {
   GSStyle? underlined;
   GSStyle? outline;
@@ -152,8 +162,11 @@ class GSVariant {
           : null,
     );
   }
+  @override
+  String toString() => _$GSVariantToString(this);
 }
 
+@ToString()
 class GSSize {
   GSStyle? $xs;
   GSStyle? $sm;
@@ -278,8 +291,12 @@ class GSSize {
       $full: $full?.merge(overrideStyle?.$full) ?? overrideStyle?.$full,
     );
   }
+
+  @override
+  String toString() => _$GSSizeToString(this);
 }
 
+@ToString()
 class GSAction {
   GSStyle? primary;
   GSStyle? secondary;
@@ -355,8 +372,11 @@ class GSAction {
           fromVariant: true),
     );
   }
+  @override
+  String toString() => _$GSActionToString(this);
 }
 
+@ToString()
 class GSSpace {
   GSStyle? $none;
   GSStyle? $xs;
@@ -413,8 +433,11 @@ class GSSpace {
           : null,
     );
   }
+  @override
+  String toString() => _$GSSpaceToString(this);
 }
 
+@ToString()
 class Variants {
   GSVariant? variant;
   GSSize? size;
@@ -458,6 +481,8 @@ class Variants {
             fromVariant: true),
         orientation: GSOrientation.fromMap(data: data?['orientation']));
   }
+  @override
+  String toString() => _$VariantsToString(this);
 }
 
 /*
@@ -465,7 +490,7 @@ class Variants {
 after adding decdent style check need for textStyle
 
 */
-
+@ToString()
 class GSStyle extends BaseStyle<GSStyle> {
   double? borderWidth;
   Color? borderColor;
@@ -732,7 +757,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                       ? resolvePaddingFromString(
                           data?['py'].toString(), 'vertical')
                       : null,
-                      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
+      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
@@ -1120,4 +1145,6 @@ class GSStyle extends BaseStyle<GSStyle> {
           : null,
     );
   }
+  @override
+  String toString() => _$GSStyleToString(this);
 }
