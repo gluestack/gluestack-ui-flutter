@@ -36,6 +36,8 @@ enum GSSizes {
   $full
 }
 
+enum GSOutlineStyle { solid }
+
 enum GSDirection { row, column }
 
 enum GSSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
@@ -479,8 +481,6 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? borderBottomColor;
   double? height;
   double? width;
-  double? outlineWidth;
-  String? outlineStyle;
   double? borderBottomWidth;
   double? borderLeftWidth;
   TextStyle? textStyle;
@@ -515,8 +515,12 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? activeThumbColor;
   Color? iosBackgroundColor;
   double? scale;
-  Color? outlineColor;
   GSCursors? cursors;
+
+  // web specific properties
+  double? outlineWidth;
+  Color? outlineColor;
+  GSOutlineStyle? outlineStyle;
 
   Map<String, GSStyle>? compoundVariants;
 
@@ -640,6 +644,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       checked: checked != null
           ? checked?.merge(overrideStyle?.checked)
           : overrideStyle?.checked,
+
       outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
       outlineColor: overrideStyle?.outlineColor ?? outlineColor,
@@ -690,7 +695,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       md: overrideStyle?.md ?? md,
       sm: overrideStyle?.sm ?? sm,
       xs: overrideStyle?.xs ?? xs,
-      web: overrideStyle?.web ?? web,
+      web: web != null ? web!.merge(overrideStyle?.web) : overrideStyle?.web,
       ios: overrideStyle?.ios ?? ios,
       android: overrideStyle?.android ?? android,
       alignItems: overrideStyle?.alignItems ?? alignItems,
@@ -761,12 +766,39 @@ class GSStyle extends BaseStyle<GSStyle> {
                       ? resolvePaddingFromString(
                           data?['py'].toString(), 'vertical')
                       : null,
+      outlineColor:
+          resolveColorFromString(data?['outlineColor']),
+      //used resolveSpaceFromString becasue for button value of $0.5 is comming which is not present borderWidth token
+      outlineWidth:
+          resolveSpaceFromString(data?['outlineWidth'].toString()),
+      //check the need of below property
+      outlineStyle: resolveOutlineStyleFromString(
+          outlineStyle: data?['outlineStyle']),
       onHover: data?[':hover'] == null
           ? null
           : GSStyle.fromMap(
               data: data?[':hover'],
               descendantStyle: descendantStyle,
             ),
+
+      onFocus: data?[':focus'] != null && data?[':focusVisible'] != null
+          ? GSStyle.fromMap(
+                  data: data?[':focus'], descendantStyle: descendantStyle)
+              .merge(GSStyle.fromMap(
+                  data: data?[':focusVisible'],
+                  descendantStyle: descendantStyle))
+          : data?[':focus'] == null && data?[':focusVisible'] == null
+              ? null
+              : data?[":focus"] == null
+                  ? GSStyle.fromMap(
+                      data: data?[':focusVisible'],
+                      descendantStyle: descendantStyle,
+                    )
+                  : GSStyle.fromMap(
+                      data: data?[':focus'],
+                      descendantStyle: descendantStyle,
+                    ),
+
       onActive: data?[':active'] == null
           ? null
           : GSStyle.fromMap(
@@ -781,10 +813,18 @@ class GSStyle extends BaseStyle<GSStyle> {
               fromSelef: true,
               descendantStyle: descendantStyle,
             ),
+
       dark: data?[':_dark'] == null
           ? null
           : GSStyle.fromMap(
               data: data?[':_dark'],
+              fromSelef: true,
+              descendantStyle: descendantStyle,
+            ),
+      web: data?['_web'] == null
+          ? null
+          : GSStyle.fromMap(
+              data: data?['_web'],
               fromSelef: true,
               descendantStyle: descendantStyle,
             ),

@@ -51,6 +51,7 @@ class GSButton extends StatelessWidget {
     final disabled = isDisabled ?? value?.isDisabled ?? false;
     final isAttached = value?.isAttached ?? false;
     return GSStyleBuilder(
+      isDisabled: disabled,
       child: Builder(builder: (context) {
         GSStyle styler = resolveStyles2(
             context: context,
@@ -64,7 +65,7 @@ class GSButton extends StatelessWidget {
             ],
             inlineStyle: style,
             isFrist: true);
-    
+        print(styler.outlineColor);
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(

@@ -413,3 +413,13 @@ Map<String, GSStyle>? resolveCompoundVariants(
   }
   return resolvedCompoundVariants;
 }
+
+GSOutlineStyle? resolveOutlineStyleFromString({required String? outlineStyle}) {
+  if (outlineStyle == null) {
+    return null;
+  }
+  Map<String, GSOutlineStyle> outlineStyleMap = {
+    'solid': GSOutlineStyle.solid,
+  };
+  return outlineStyleMap[outlineStyle];
+}
