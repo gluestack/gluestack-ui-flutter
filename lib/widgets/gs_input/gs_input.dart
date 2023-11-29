@@ -122,7 +122,7 @@ class GSInput extends StatefulWidget {
   const GSInput(
       {super.key,
       this.variant = GSVariants.outline,
-      this.size = GSSizes.md,
+      this.size = GSSizes.$md,
       this.isDisabled = false,
       this.isInvalid = false,
       this.readOnly = false,
@@ -458,6 +458,7 @@ class _GSInputState extends State<GSInput> {
               contentPadding: styler.padding,
               enabled: widget.visualFeedback,
               focusedBorder: borderStyle.copyWith(
+                  // handle focusedBorderColor comming null
                   borderSide: BorderSide(
                       color: focusedBorderColor!, width: focusedBorderWidth!)),
               border: borderStyle,

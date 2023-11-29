@@ -1,20 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/gs_style.dart';
+import 'package:gluestack_flutter_pro/example/KitchenSink/main_page.dart';
+import 'package:gluestack_flutter_pro/example/alert_example.dart';
+import 'package:gluestack_flutter_pro/example/avatar_example.dart';
+import 'package:gluestack_flutter_pro/example/badge_example.dart';
+import 'package:gluestack_flutter_pro/example/button_example.dart';
+import 'package:gluestack_flutter_pro/example/center_example.dart';
+import 'package:gluestack_flutter_pro/example/checkbox_example.dart';
+import 'package:gluestack_flutter_pro/example/divider_example.dart';
+import 'package:gluestack_flutter_pro/example/heading_example.dart';
+import 'package:gluestack_flutter_pro/example/hstack_example.dart';
+import 'package:gluestack_flutter_pro/example/icon_example.dart';
+import 'package:gluestack_flutter_pro/example/image_example.dart';
+import 'package:gluestack_flutter_pro/example/input_example.dart';
+import 'package:gluestack_flutter_pro/example/link_example.dart';
+import 'package:gluestack_flutter_pro/example/progress_example.dart';
+import 'package:gluestack_flutter_pro/example/pressable_example.dart';
+import 'package:gluestack_flutter_pro/example/radio_button_example.dart';
+import 'package:gluestack_flutter_pro/example/spinner_example.dart';
+import 'package:gluestack_flutter_pro/example/switch_example.dart';
+import 'package:gluestack_flutter_pro/example/text_area_example.dart';
+import 'package:gluestack_flutter_pro/example/text_example.dart';
+import 'package:gluestack_flutter_pro/example/toast_example.dart';
+import 'package:gluestack_flutter_pro/example/vstack_example.dart';
 import 'package:gluestack_flutter_pro/theme_provider.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio/gs_radio.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_radio_icon/gs_radio_icon.dart';
 
-import 'package:gluestack_flutter_pro/widgets/gs_radio_text/gs_radio_text.dart';
+// import 'package:gluestack_flutter_pro/widgets/gs_input/gs_input.dart';
+
 import 'package:provider/provider.dart';
-
-import 'token/index.dart';
 
 void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -22,6 +40,8 @@ void main() {
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
@@ -29,93 +49,363 @@ class MyApp extends StatelessWidget {
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // GSButton(
-                //   action: GSActions.negative,
-                //   variant: GSVariants.solid,
-                //   size: GSSizes.lg,
-                //   // isDisabled: true,
-                //   onPressed: () {},
-                //   style: GSStyle(
-                //     web: GSStyle(
-                //         // bg: $GSColors.amber600,
-                //         ),
-                //     ios: GSStyle(
-                //       bg: $GSColors.pink600,
-                //     ),
-                //     onHover: GSStyle(
-                //       bg: $GSColors.green400,
-                //     ),
-                //     // md: GSStyle(
-                //     //   bg: $GSColors.pink400,
-
-                //     //   onFocus: GSStyle(
-                //     //     bg: $GSColors.blueGray600,
-                //     //   ),
-                //     //   onActive: GSStyle(
-                //     //     bg: $GSColors.amber600,
-                //     //     borderColor: $GSColors.error500,
-                //     //     borderWidth: $GSBorderWidth.$4,
-                //     //   ),
-                //     //   onDisabled: GSStyle(bg: $GSColors.purple800),
-                //     // ),
-                //   ),
-                //   child: const GSButtonText(text: "Click Here"),
-                // ),
-                GSInput(
-                  size: GSSizes.xl,
-                  variant: GSVariants.outline,
-                  hintText: "Enter text here",
-                  // isDisabled: true,
-                  // isInvalid: true,
-                  style: GSStyle(
-                    width: 300,
-                    borderColor: $GSColors.pink500,
-                    onFocus: GSStyle(
-                      borderColor: $GSColors.purple800,
-                      borderWidth: $GSBorderWidth.$2,
-                      borderBottomWidth: $GSBorderWidth.$2,
-                    ),
-                    onHover: GSStyle(
-                      borderColor: $GSColors.green600,
-                      borderWidth: $GSBorderWidth.$4,
-                      borderBottomWidth: $GSBorderWidth.$4,
-                    ),
-                    xs: GSStyle(
-                      borderColor: $GSColors.purple400,
-                    ),
-                    dark: GSStyle(
-                      borderColor: $GSColors.warmGray900,
-                      borderWidth: $GSBorderWidth.$8,
+          backgroundColor: themeProvider.getThemeData().canvasColor,
+          body: SingleChildScrollView(
+            child: Container(
+              height: 1300,
+              alignment: Alignment.center,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Text("Scroll more for all the components",
+                      style: TextStyle(fontSize: 22)),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const LayoutExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'Ex: GS Layout 1',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
-                ),
-                // GSBox(
-                //   style: StyleData(
-                //     context,
-                //     color: $GSColors.primary500,
-                //     width: 200,
-                //     height: 200,
-                //     padding: const EdgeInsets.symmetric(
-                //       vertical: $GSSpace.$5,
-                //       horizontal: $GSSpace.$5,
-                //     ),
-                //     borderRadius: $GSRadii.$sm,
-                //   )
-                //       .onDark(color: $GSColors.purple800)
-                //       .sm(color: $GSColors.green500)
-                //       .smDark(color: $GSColors.amber400),
-                //   child: const Text(
-                //     "I am a container",
-                //     style: TextStyle(
-                //       color: $GSColors.white,
-                //     ),
-                //   ),
-                // ),
-              ],
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const SwitchExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Switch',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const LinkExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Link',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const AvatarExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Avatar',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const TextExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Text',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const CheckBoxExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS CheckBox',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const HeadingExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Heading',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const HStackExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS HStack',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const VStackExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS VStack',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const ButtonExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Button',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const ImageExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Image',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const InputExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Input',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const RadioButtonExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Radio Button',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const BadgeExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Badge',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const CenterExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Center',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const AlertExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Alert',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const DividerExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Divider',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const SpinnerExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Spinner',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const ProgressExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Progress',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const IconExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Icon',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const TextAreaExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Text Area',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const PressableExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Pressable',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      navigatorKey.currentState!.push(MaterialPageRoute(
+                        builder: (context) => const ToastExample(),
+                      ));
+                    },
+                    child: const Text(
+                      'GS Toast',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           floatingActionButton: FloatingActionButton(
@@ -129,78 +419,5 @@ class MyApp extends StatelessWidget {
         ),
       );
     });
-  }
-}
-
-class RadioExample extends StatefulWidget {
-  const RadioExample({super.key});
-
-  @override
-  State<RadioExample> createState() => _RadioExampleState();
-}
-
-enum Value { one, two, three, four }
-
-class _RadioExampleState extends State<RadioExample> {
-  Value groupValue = Value.one;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GSRadio<Value>(
-          style: GSStyle(
-            checked: GSStyle(
-                color: $GSColors.purple500,
-                onHover: GSStyle(
-                  color: $GSColors.pink300,
-                )),
-          ),
-          value: Value.one,
-          groupValue: groupValue,
-          onChanged: (p0) {
-            setState(() {
-              groupValue = p0!;
-            });
-          },
-          icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text1'),
-        ),
-        GSRadio<Value>(
-          isInvalid: true,
-          value: Value.two,
-          groupValue: groupValue,
-          onChanged: (p0) {
-            setState(() {
-              groupValue = p0!;
-            });
-          },
-          icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text2'),
-        ),
-        GSRadio<Value>(
-          isDisabled: true,
-          value: Value.three,
-          groupValue: groupValue,
-          onChanged: (p0) {
-            setState(() {
-              groupValue = p0!;
-            });
-          },
-          icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text3'),
-        ),
-        GSRadio<Value>(
-          value: Value.four,
-          groupValue: groupValue,
-          onChanged: (p0) {
-            setState(() {
-              groupValue = p0!;
-            });
-          },
-          icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text4'),
-        ),
-      ],
-    );
   }
 }

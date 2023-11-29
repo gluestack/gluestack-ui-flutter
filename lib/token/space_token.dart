@@ -31,29 +31,30 @@ class $GSSpace {
   static const double $72 = 288.0;
   static const double $80 = 320.0;
   static const double $96 = 384.0;
+  static const double $full = double.maxFinite;
 
   static const Map<String, double> spaceMap = {
     "px": $GSSpace.px,
     "0": $GSSpace.$0,
-    "0_5": $GSSpace.$0_5,
+    "0.5": $GSSpace.$0_5,
     "1": $GSSpace.$1,
-    "1_5": $GSSpace.$1_5,
+    "1.5": $GSSpace.$1_5,
     "2": $GSSpace.$2,
-    "2_5": $GSSpace.$2_5,
+    "2.5": $GSSpace.$2_5,
     "3": $GSSpace.$3,
-    "3_5": $GSSpace.$3_5,
+    "3.5": $GSSpace.$3_5,
     "4": $GSSpace.$4,
-    "4_5": $GSSpace.$4_5,
+    "4.5": $GSSpace.$4_5,
     "5": $GSSpace.$5,
     "6": $GSSpace.$6,
-    "7":  $GSSpace.$7,
-    "8":  $GSSpace.$8,
-    "9":  $GSSpace.$9,
-    "10":  $GSSpace.$10,
-    "11":  $GSSpace.$11,
+    "7": $GSSpace.$7,
+    "8": $GSSpace.$8,
+    "9": $GSSpace.$9,
+    "10": $GSSpace.$10,
+    "11": $GSSpace.$11,
     "12": $GSSpace.$12,
     "16": $GSSpace.$16,
-    "20":$GSSpace.$20,
+    "20": $GSSpace.$20,
     "24": $GSSpace.$24,
     "32": $GSSpace.$32,
     "40": $GSSpace.$40,
@@ -62,6 +63,7 @@ class $GSSpace {
     "64": $GSSpace.$64,
     "72": $GSSpace.$72,
     "80": $GSSpace.$80,
-    "96": $GSSpace.$96
+    "96": $GSSpace.$96,
+    "full": $GSSpace.$full,
   };
 }

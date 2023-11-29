@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
 
 class GSBox extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final GSStyle? style;
   final Clip clipBehavior;
   final AlignmentGeometry? transformAlignment;
@@ -16,7 +16,7 @@ class GSBox extends StatelessWidget {
   final BoxShape shape;
   const GSBox({
     super.key,
-    required this.child,
+    this.child,
     this.style,
     this.clipBehavior = Clip.none,
     this.transformAlignment,
@@ -32,6 +32,7 @@ class GSBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     return Container(
       clipBehavior: clipBehavior,
       transform: transform,

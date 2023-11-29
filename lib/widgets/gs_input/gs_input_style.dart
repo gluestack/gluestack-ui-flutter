@@ -1,5 +1,5 @@
 import 'package:gluestack_flutter_pro/style/gs_style.dart';
-import 'package:gluestack_flutter_pro/theme/config/input.dart';
+import 'package:gluestack_flutter_pro/theme/config/input/input.dart';
 
 GSStyle inputStyle = GSStyle.fromMap(data: inputData);
 GSStyle baseStyle = GSStyle(
@@ -30,9 +30,9 @@ class GSInputStyle {
   };
 
   static Map<GSSizes, GSStyle> size = {
-    GSSizes.sm: compoundVariants.variants!.size!.sm!,
-    GSSizes.md: compoundVariants.variants!.size!.md!,
-    GSSizes.lg: compoundVariants.variants!.size!.lg!,
-    GSSizes.xl: compoundVariants.variants!.size!.xl!,
+    GSSizes.$sm: compoundVariants.variants!.size!.$sm!,
+    GSSizes.$md: compoundVariants.variants!.size!.$md!,
+    GSSizes.$lg: compoundVariants.variants!.size!.$lg!,
+    GSSizes.$xl: compoundVariants.variants!.size!.$xl!,
   };
 }

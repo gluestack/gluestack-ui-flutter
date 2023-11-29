@@ -35,64 +35,95 @@ GSStyle? resolveStyles(
   GSStyle? variantStyle,
   GSStyle? size,
   GSStyle? inlineStyle,
+  Map<String, GSStyle?>? descendantStyles,
+  List<String> descendantStyleKeys = const [],
 }) {
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
-  GSStyle? temp =
-      variantStyle != null ? variantStyle.merge(inlineStyle) : inlineStyle;
+  GSStyle? temp = variantStyle != null
+      ? variantStyle.merge(inlineStyle,
+          descendantStyleKeys: descendantStyleKeys)
+      : inlineStyle;
 
-  GSStyle? currentGSStyle = size != null ? size.merge(temp) : temp;
+  temp = GSStyle(descendantStyles: descendantStyles)
+      .merge(temp, descendantStyleKeys: descendantStyleKeys);
+
+  GSStyle? currentGSStyle = size != null
+      ? size.merge(temp, descendantStyleKeys: descendantStyleKeys)
+      : temp;
+
   if (inlineStyle == null) {
     if (theme == GSThemeMode.dark) {
-      return currentGSStyle?.merge(variantStyle?.dark);
+      return currentGSStyle.merge(variantStyle?.dark,
+          descendantStyleKeys: descendantStyleKeys);
     }
   }
   inlineStyle?.contextStyles.forEach((key, value) {
-    // print("RESOLVER VALUE --->   $value");
     if (value != null) {
       if (key == 'dark' && theme == GSThemeMode.dark) {
-        currentGSStyle = currentGSStyle?.merge(value);
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
+        currentGSStyle = currentGSStyle?.merge(value,
+            descendantStyleKeys: descendantStyleKeys);
 
-        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+        GSStyle? nestedStyle = resolveStyles(context,
+            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+
+        currentGSStyle = currentGSStyle?.merge(nestedStyle,
+            descendantStyleKeys: descendantStyleKeys);
       }
       if (key == 'md' && isMediumScreen(context)) {
-        currentGSStyle = currentGSStyle?.merge(value);
+        currentGSStyle = currentGSStyle?.merge(value,
+            descendantStyleKeys: descendantStyleKeys);
 
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+        GSStyle? nestedStyle = resolveStyles(context,
+            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle,
+            descendantStyleKeys: descendantStyleKeys);
       }
       if (key == 'lg' && isLargeScreen(context)) {
-        currentGSStyle = currentGSStyle?.merge(value);
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+        currentGSStyle = currentGSStyle?.merge(value,
+            descendantStyleKeys: descendantStyleKeys);
+        GSStyle? nestedStyle = resolveStyles(context,
+            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle,
+            descendantStyleKeys: descendantStyleKeys);
       }
       if (key == 'sm' && isSmallScreen(context)) {
-        currentGSStyle = currentGSStyle?.merge(value);
-        // print("IN HERE sm AFTER   ${currentGSStyle!.color}");
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+        currentGSStyle = currentGSStyle?.merge(value,
+            descendantStyleKeys: descendantStyleKeys);
+
+        GSStyle? nestedStyle = resolveStyles(context,
+            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle,
+            descendantStyleKeys: descendantStyleKeys);
       }
       if (key == 'xs' && isBaseScreen(context)) {
-        // print("IN HERE xs");
-        currentGSStyle = currentGSStyle?.merge(value);
-        GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+        currentGSStyle = currentGSStyle?.merge(value,
+            descendantStyleKeys: descendantStyleKeys);
+        GSStyle? nestedStyle = resolveStyles(context,
+            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle,
+            descendantStyleKeys: descendantStyleKeys);
       }
 
       if (key == 'web' && kIsWeb) {
-        currentGSStyle = currentGSStyle?.merge(value);
+        currentGSStyle = currentGSStyle?.merge(value,
+            descendantStyleKeys: descendantStyleKeys);
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle,
+            descendantStyleKeys: descendantStyleKeys);
       }
       if (key == 'ios' && defaultTargetPlatform == TargetPlatform.iOS) {
-        currentGSStyle = currentGSStyle?.merge(value);
+        currentGSStyle = currentGSStyle?.merge(value,
+            descendantStyleKeys: descendantStyleKeys);
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle,
+            descendantStyleKeys: descendantStyleKeys);
       }
       if (key == 'android' && defaultTargetPlatform == TargetPlatform.android) {
-        currentGSStyle = currentGSStyle?.merge(value);
+        currentGSStyle = currentGSStyle?.merge(value,
+            descendantStyleKeys: descendantStyleKeys);
         GSStyle? nestedStyle = resolveStyles(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle,
+            descendantStyleKeys: descendantStyleKeys);
       }
     }
   });
