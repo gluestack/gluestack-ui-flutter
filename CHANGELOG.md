@@ -1,3 +1,3 @@
-## 0.0.1
+## 0.0.1-alpha.1
 
-- Initial release.
+- Initial alpha release.

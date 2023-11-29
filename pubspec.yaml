@@ -1,9 +1,12 @@
 name: gluestack_ui
-description: "A new Flutter plugin project."
-version: 0.0.1
+description: "Universal Themed & Unstyled Widgets for Flutter"
+
 homepage: https://github.com/gluestack/gluestack-flutter
 repository: https://github.com/gluestack/gluestack-flutter
 issue_tracker: https://github.com/gluestack/gluestack-flutter/issues
+documentation: https://github.com/gluestack/gluestack-flutter
+
+version: 0.0.1-alpha.1
 
 environment:
   sdk: ">=3.2.1 <4.0.0"
@@ -24,9 +27,12 @@ dev_dependencies:
 
 flutter:
 
-# TODO: Add relevent screenshot to show in pub.dev listing.
+# TODO: Add relevent icon or screenshot to show in pub.dev listing.
 screenshots:
 
 # Add upto 5 topics to get indexed better on pub.dev
 topics:
   - ui
+  - widgets
+  - design-system
+  - ui-library
