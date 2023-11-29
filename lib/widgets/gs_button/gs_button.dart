@@ -64,9 +64,7 @@ class GSButton extends StatelessWidget {
             ],
             inlineStyle: style,
             isFrist: true);
-
-        
-
+    
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(

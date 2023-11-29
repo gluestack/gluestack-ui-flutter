@@ -672,6 +672,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         variant: overrideStyle?.variants?.variant ?? variants?.variant,
       ),
       props: GSProps(
+        color: overrideStyle?.props?.color ?? props?.color,
         action: overrideStyle?.props?.action ?? props?.action,
         size: overrideStyle?.props?.size ?? props?.size,
         space: overrideStyle?.props?.space ?? props?.space,
