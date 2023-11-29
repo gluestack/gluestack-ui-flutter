@@ -105,6 +105,7 @@ class _ButtonExampleState extends State<ButtonExample> {
             isFocusVisible: isFocusVisible,
             onPressed: () {},
             child: const Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 GSButtonText(text: "Add"),
                 GSButtonIcon(icon: Icons.add)
