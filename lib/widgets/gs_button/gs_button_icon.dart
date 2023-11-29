@@ -4,7 +4,6 @@ import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_icon_style.dart';
 
-
 class GSButtonIcon extends StatelessWidget {
   final IconData icon;
   final GSSizes? iconSize;
@@ -31,7 +30,7 @@ class GSButtonIcon extends StatelessWidget {
         ],
         isFrist: true,
         inlineStyle: style);
-  
+    print(styler.height);
     return Icon(
       icon,
       size: styler.height,

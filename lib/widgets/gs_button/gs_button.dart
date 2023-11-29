@@ -56,7 +56,6 @@ class GSButton extends StatelessWidget {
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
-   
         GSStyle styler = resolveStyles2(
             context: context,
             styles: [
@@ -96,13 +95,10 @@ class GSButton extends StatelessWidget {
                       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                           borderRadius:
                               BorderRadius.circular(styler.borderRadius ?? 0.0),
-                          side: _resolveBorderSide(variant!, styler)))),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      child,
-                    ],
-                  ),
+                          side: _resolveBorderSide(
+                              variant!, styler, isAttached)))),
+               
+                  child: child,
                 ),
               ),
             ),
@@ -112,7 +108,11 @@ class GSButton extends StatelessWidget {
     );
   }
 
-  BorderSide _resolveBorderSide(GSVariants variant, GSStyle styler) {
+  BorderSide _resolveBorderSide(
+      GSVariants variant, GSStyle styler, bool isAttached) {
+    if (isAttached) {
+      return BorderSide.none;
+    }
     if (variant == GSVariants.link) {
       return styler.outlineWidth != null
           ? BorderSide(color: styler.outlineColor!, width: styler.outlineWidth!)
