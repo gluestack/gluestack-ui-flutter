@@ -4,7 +4,7 @@ import 'package:gluestack_flutter_pro/style/style_resolver.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group_provider.dart';
 import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_group_style.dart';
-
+import 'package:gluestack_flutter_pro/widgets/gs_button/button_styles_generated.dart';
 class GSButtonGroup extends StatelessWidget {
   final List<GSButton>? buttons;
   final GSDirection? direction;

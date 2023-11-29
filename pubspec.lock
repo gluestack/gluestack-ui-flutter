@@ -283,7 +283,7 @@ packages:
   gs_generators:
     dependency: "direct main"
     description:
-      path: "../gs_generators"
+      path: gs_generators
       relative: true
     source: path
     version: "0.0.1"

@@ -1,0 +1,9 @@
+builders: 
+  styleGeneratorBuilder:
+    target: ":gs_generators"
+    import: 'package:gs_generators/gs_generators.dart'
+    builder_factories: ['styleGeneratorBuilder']
+    build_extensions: { ".dart": [".g.dart"] }
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]

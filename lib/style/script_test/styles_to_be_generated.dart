@@ -3,24 +3,30 @@ import 'package:gluestack_flutter_pro/theme/config/avatar/avatar_badge.dart';
 import 'package:gluestack_flutter_pro/theme/config/avatar/avatar_fallback_text.dart';
 import 'package:gluestack_flutter_pro/theme/config/avatar/avatar_group.dart';
 import 'package:gluestack_flutter_pro/theme/config/avatar/avatar_image.dart';
-import 'package:gluestack_flutter_pro/widgets/gs_avatar/gs_avatar_style.dart';
+import 'package:gluestack_flutter_pro/theme/config/button/button.dart';
+import 'package:gluestack_flutter_pro/theme/config/button/button_group.dart';
+import 'package:gluestack_flutter_pro/theme/config/button/button_icon.dart';
+import 'package:gluestack_flutter_pro/theme/config/text/text.dart';
+import 'package:gluestack_flutter_pro/theme/config/button/button_text.dart';
+
+import 'package:gluestack_flutter_pro/widgets/gs_button/gs_button_style.dart';
 
 /// Add style data here and click run in [script.dart]'s [main] func
 List<Style> stylesToBeGenerated = [
   //Avatar
   Style(
-      generatedStyleName: "avatarStyle",
-      styleData: avatarData,
-      descendantStyle: gsAvatarConfig.descendantStyle),
-  const Style(
-      generatedStyleName: "avatarBadgeStyle", styleData: avatarBadgeData),
-  const Style(
-      generatedStyleName: "avatarFallBackStyle",
-      styleData: avatarFallBackTextData),
-  const Style(
-      generatedStyleName: "avatarGroupStyle", styleData: avatarGroupData),
-  const Style(
-      generatedStyleName: "avatarImageStyle", styleData: avatarImageData),
+      generatedStyleName: "buttonStyle",
+      styleData: buttonData,
+      descendantStyle: gsButtonConfig.descendantStyle),
+   Style(
+      generatedStyleName: "buttonTextStyle", styleData: buttonTextData),
+   Style(
+      generatedStyleName: "textStyle",
+      styleData: textData),
+   Style(
+      generatedStyleName: "buttonIconStyle", styleData: buttonIconData),
+   Style(
+      generatedStyleName: "buttonGroupStyle", styleData: buttonGroupData),
 ];
 
 class Style {

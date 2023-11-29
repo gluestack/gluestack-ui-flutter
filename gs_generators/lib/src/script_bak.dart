@@ -1,9 +1,8 @@
 import 'dart:io';
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:gluestack_flutter_pro/style/gs_style.dart';
 import 'package:dart_style/dart_style.dart';
 import 'package:gluestack_flutter_pro/style/script_test/styles_to_be_generated.dart';
+import 'package:gluestack_flutter_pro/style/gs_style.dart';
 //Approach 2: run script to get toStirng method, rest all same as appr 1 from instructions perspective
 
 //TODO: Make the GGStyle constructors n all const
@@ -76,39 +75,5 @@ String cleanifyFormatter(String content) {
     modified = result;
   }
 
-  return formatEdgeInsets(modified);
-}
-
-
-String formatEdgeInsets(String content) {
-  final lines = LineSplitter.split(content);
-
-  final modifiedLines = lines.map((line) {
-    if (line.contains('EdgeInsets')) {
-      // Modify the line if it contains EdgeInsets
-      final formattedEdgeInsets = parseAndFormatEdgeInsets(line);
-      return formattedEdgeInsets ?? line;
-    }
-
-    return line;
-  });
-
-  return modifiedLines.join('\n');
-}
-
-String? parseAndFormatEdgeInsets(String line) {
-  final regex = RegExp(r'EdgeInsets\(\s*([\d\.]+)\s*,\s*([\d\.]+)\s*,\s*([\d\.]+)\s*,\s*([\d\.]+)\s*\)');
-
-  final match = regex.firstMatch(line);
-
-  if (match != null) {
-    final double left = double.parse(match.group(1)!);
-    final double top = double.parse(match.group(2)!);
-    final double right = double.parse(match.group(3)!);
-    final double bottom = double.parse(match.group(4)!);
-
-    return 'padding: EdgeInsets.fromLTRB($left, $top, $right, $bottom),';
-  }
-
-  return null; // Return null if no formatting is applied
+  return modified;
 }
