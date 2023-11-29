@@ -140,6 +140,7 @@ GSStyle resolveStyles2(
   final theme = Provider.of<ThemeProvider>(context).currentTheme;
   final isHovered = GSStyleBuilderProvider.hoverStatus(context);
   final isFocused = GSStyleBuilderProvider.focusedStatus(context);
+ 
   final isActive = GSStyleBuilderProvider.activeStatus(context);
   final isDisabled = GSStyleBuilderProvider.disabledStatus(context);
   GSStyle? currentGSStyle = GSStyle();

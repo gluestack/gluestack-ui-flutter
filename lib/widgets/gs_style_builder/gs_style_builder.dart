@@ -60,8 +60,30 @@ class _GSStyleBuilderState extends State<GSStyleBuilder> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didUpdateWidget(covariant GSStyleBuilder oldWidget) {
+    if (oldWidget.isFocused != widget.isFocused) {
+      setState(() {
+        isFocused = widget.isFocused;
+      });
+    }
 
+    if (oldWidget.isActive != widget.isActive) {
+      setState(() {
+        isActive = widget.isActive;
+      });
+    }
+
+    if (oldWidget.isHovered != widget.isHovered) {
+      setState(() {
+        isHovered = widget.isHovered;
+      });
+    }
+
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return IgnorePointer(
       ignoring: widget.shouldIgnorePointer,
       child: GestureDetector(
