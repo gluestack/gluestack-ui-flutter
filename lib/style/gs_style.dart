@@ -607,7 +607,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       gap: overrideStyle?.gap ?? gap,
       fontSize: overrideStyle?.fontSize ?? fontSize,
       textDecoration: overrideStyle?.textDecoration ?? textDecoration,
-      lineHeight: overrideStyle?.lineHeight??lineHeight,
+      lineHeight: overrideStyle?.lineHeight ?? lineHeight,
       compoundVariants: overrideStyle?.compoundVariants ?? compoundVariants,
       // check if its working with all components,if yes then remove passing keys
       descendantStyles: mergeStyledMaps(
@@ -736,8 +736,15 @@ class GSStyle extends BaseStyle<GSStyle> {
       height: resolveSpaceFromString(
         data?['h'] ?? data?['height'],
       ),
+      //check if the way % is calculated is correct
+      width: data?['w'] != null
+          ? data!['w']?.contains('%')
+              ? double.tryParse(data['w']?.replaceAll('%', ''))! / 100
+              : resolveSpaceFromString(data['w'] ?? data['width'])
+          : resolveSpaceFromString(data?['w'] ?? data?['width']),
       //check if this logic of calculating line heigth is correct
-      lineHeight:resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
+      lineHeight:
+          resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
       textDecoration:
           resolveTextDecorationFromString(data?['textDecorationLine']),
       fontSize: resolveFontSizeFromString(data?['fontSize']),
