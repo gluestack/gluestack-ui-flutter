@@ -9,15 +9,14 @@ class GSCheckBoxGroupProvider extends InheritedWidget {
   final bool isReadOnly;
   const GSCheckBoxGroupProvider(
       {super.key,
-      required Widget child,
+      required super.child,
       required this.values,
       required this.onChanged,
       required this.isDisabled,
       required this.isInvalid,
       required this.isReadOnly,
    
-      required this.updateValues})
-      : super(child: child);
+      required this.updateValues});
   @override
   bool updateShouldNotify(GSCheckBoxGroupProvider oldWidget) {
     return isDisabled!=oldWidget.isDisabled|| isInvalid!=oldWidget.isInvalid|| isReadOnly!=oldWidget.isReadOnly;

@@ -19,9 +19,9 @@ class GSRadioProvider<T> extends InheritedWidget {
     required this.onChanged,
     required this.isDisabled,
     required this.isInvalid,
-    required Widget child,
+    required super.child,
     this.style,
-  }) : super(child: child);
+  });
 
   @override
   bool updateShouldNotify(GSRadioProvider oldWidget) {

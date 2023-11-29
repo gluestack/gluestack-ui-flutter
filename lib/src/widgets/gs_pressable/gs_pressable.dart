@@ -1,6 +1,3 @@
-/// GSPressable is a customizable pressable widget for Gluestack - Flutter.
-/// It allows for easy customization of various press-related interactions and styles.
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
@@ -8,6 +5,7 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_pressable/gs_pressable_style.dart';
 
 /// The GSPressable class represents a pressable widget that can respond to various press-related gestures.
+/// It allows for easy customization of various press-related interactions and styles.
 class GSPressable extends StatefulWidget {
   /// The style to be applied to the GSPressable.
   final GSStyle? style;

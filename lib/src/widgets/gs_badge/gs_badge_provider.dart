@@ -12,8 +12,8 @@ class GSBadgeProvider extends InheritedWidget {
     super.key,
     required this.fontSize,
     required this.iconSize,
-    required Widget child,
-  }) : super(child: child);
+    required super.child,
+  });
 
   /// Overrides the method to determine whether an update notification is needed.
   @override

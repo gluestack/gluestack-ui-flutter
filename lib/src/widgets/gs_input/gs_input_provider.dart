@@ -9,8 +9,8 @@ class GSInputProvider extends InheritedWidget {
     super.key,
     required this.variant,
     required this.size,
-    required Widget child,
-  }) : super(child: child);
+    required super.child,
+  });
 
   @override
   bool updateShouldNotify(GSInputProvider oldWidget) {

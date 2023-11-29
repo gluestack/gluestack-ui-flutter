@@ -66,7 +66,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
                     style: GSStyle(
                         dark: GSStyle(
                             textStyle:
-                                TextStyle(color: $GSColors.textDark300))),
+                                const TextStyle(color: $GSColors.textDark300))),
                     // size: GSSizes.$xs,
                     text: showMore ? 'Show more' : 'Show less'),
                 GSIcon(

@@ -11,8 +11,8 @@ class GSButtonGroupProvider extends InheritedWidget {
     required this.isDisabled,
     required this.size,
     required this.isAttached,
-    required Widget child,
-  }) : super(child: child);
+    required super.child,
+  });
 
   @override
   bool updateShouldNotify(GSButtonGroupProvider oldWidget) {

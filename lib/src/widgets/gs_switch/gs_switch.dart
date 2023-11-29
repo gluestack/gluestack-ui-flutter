@@ -35,7 +35,7 @@ class GSSwitch extends StatefulWidget {
   final ValueChanged<bool>? onFocusChange;
   final bool autofocus;
 
-  GSSwitch({
+  const GSSwitch({
     super.key,
     this.style,
     required this.value,

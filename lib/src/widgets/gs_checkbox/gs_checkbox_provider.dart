@@ -8,13 +8,12 @@ class GSCheckBoxProvider extends InheritedWidget {
   final void Function(bool?)? onChanged;
   const GSCheckBoxProvider(
       {super.key,
-      required Widget child,
+      required super.child,
       required this.value,
       required this.isChecked,
       required this.isDisabled,
       required this.isInvalid,
-      required this.onChanged})
-      : super(child: child);
+      required this.onChanged});
   @override
   bool updateShouldNotify(GSCheckBoxProvider oldWidget) {
     return isChecked != oldWidget.isChecked ||

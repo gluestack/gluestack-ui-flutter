@@ -7,11 +7,10 @@ class GSFocusableActionDetectorProvider extends InheritedWidget {
 
   const GSFocusableActionDetectorProvider(
       {super.key,
-      required Widget child,
+      required super.child,
       required this.focusStatus,
       required this.activeStatus,
-      required this.hoverStatus})
-      : super(child: child);
+      required this.hoverStatus});
 
   static GSFocusableActionDetectorProvider? of<T>(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<
