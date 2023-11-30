@@ -3,7 +3,6 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 import 'package:gluestack_ui_example/utils/drop_down.dart';
 import 'package:gluestack_ui_example/utils/toggle.dart';
-import 'package:provider/provider.dart';
 
 class SwitchExample extends StatefulWidget {
   const SwitchExample({super.key});
@@ -32,7 +31,6 @@ class _SwitchExampleState extends State<SwitchExample> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     var code = '''GSSwitch(
               size: GSSizes.\$md,
               isDisabled: false,
@@ -51,50 +49,42 @@ class _SwitchExampleState extends State<SwitchExample> {
             )
 ''';
     return Scaffold(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          BaseLayout(
-            code: code,
-            component: GSSwitch(
-              size: selectedSizeOption,
-              isDisabled: isDisabled,
-              style: GSStyle(
-                checked: GSStyle(
-                  thumbColor: Colors.grey,
-                  activeThumbColor: Colors.blue,
-                ),
-              ),
-              value: val1,
-              onToggle: (bool value) {
-                setState(() {
-                  val1 = value;
-                });
-              },
-            ),
-            controls: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                CustomDropDown(
-                  title: "size",
-                  dropdownOptions: dropdownSizeOptions,
-                  selectedOption: selectedSizeOption,
-                  onChanged: updateSizeSelectedOption,
-                ),
-                const SizedBox(height: 100),
-                CustomToggle(
-                  title: "isDisabled",
-                  value: isDisabled,
-                  onToggle: updateIsDisabled,
-                ),
-              ],
+      body: BaseLayout(
+        code: code,
+        component: GSSwitch(
+          size: selectedSizeOption,
+          isDisabled: isDisabled,
+          style: GSStyle(
+            checked: GSStyle(
+              thumbColor: Colors.grey,
+              activeThumbColor: Colors.blue,
             ),
           ),
-        ],
+          value: val1,
+          onToggle: (bool value) {
+            setState(() {
+              val1 = value;
+            });
+          },
+        ),
+        controls: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isDisabled",
+              value: isDisabled,
+              onToggle: updateIsDisabled,
+            ),
+          ],
+        ),
       ),
     );
   }

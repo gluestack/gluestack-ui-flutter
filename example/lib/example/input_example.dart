@@ -3,7 +3,6 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 import 'package:gluestack_ui_example/utils/drop_down.dart';
 import 'package:gluestack_ui_example/utils/toggle.dart';
-import 'package:provider/provider.dart';
 
 class InputExample extends StatefulWidget {
   const InputExample({super.key});
@@ -64,7 +63,6 @@ class _InputExampleState extends State<InputExample> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     var code = '''GSInput(
             size: GSSizes.\$md,
             variant: GSVariants.outline,
@@ -78,55 +76,56 @@ class _InputExampleState extends State<InputExample> {
           )
   ''';
     return Scaffold(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
-      body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSInput(
-            size: selectedSizeOption,
-            variant: selectedVariantOption,
-            hintText: "Enter text here",
-            isDisabled: isDisabled,
-            isInvalid: isInvalid,
-            readOnly: isReadOnly,
-            style: GSStyle(
-              width: 300,
+      body: BaseLayout(
+        code: code,
+        component: GSInput(
+          size: selectedSizeOption,
+          variant: selectedVariantOption,
+          hintText: "Enter text here",
+          isDisabled: isDisabled,
+          isInvalid: isInvalid,
+          readOnly: isReadOnly,
+          style: GSStyle(
+            width: 300,
+          ),
+        ),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
             ),
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              CustomDropDown(
-                title: "variant",
-                dropdownOptions: dropdownVariantOptions,
-                selectedOption: selectedVariantOption,
-                onChanged: updateVariantSelectedOption,
-              ),
-              CustomToggle(
-                title: "isDisabled",
-                value: isDisabled,
-                onToggle: updateIsDisabled,
-              ),
-              CustomToggle(
-                title: "isInvalid",
-                value: isInvalid,
-                onToggle: updateIsInvalid,
-              ),
-              CustomToggle(
-                title: "isReadOnly",
-                value: isReadOnly,
-                onToggle: updateIsReadOnly,
-              )
-            ],
-          ),
+            const SizedBox(height: 20),
+            CustomDropDown(
+              title: "variant",
+              dropdownOptions: dropdownVariantOptions,
+              selectedOption: selectedVariantOption,
+              onChanged: updateVariantSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isDisabled",
+              value: isDisabled,
+              onToggle: updateIsDisabled,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isInvalid",
+              value: isInvalid,
+              onToggle: updateIsInvalid,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isReadOnly",
+              value: isReadOnly,
+              onToggle: updateIsReadOnly,
+            )
+          ],
         ),
       ),
     );
