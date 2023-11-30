@@ -33,7 +33,6 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     return AlertDialog(
       title: GSHStack(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
