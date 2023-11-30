@@ -20,6 +20,11 @@ export const parameters = {
       order: [
         'Overview',
         ['Introduction'],
+        'Components',
+        'Forms',
+        ['Button'],
+        ['Checkbox'],
+        'Layout'
       ],
     },
   },
