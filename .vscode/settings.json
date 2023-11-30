@@ -1,0 +1,5 @@
+{
+  // Force 80 line length as 120 lowers the pub score.
+  "dart.lineLength": 80,
+  "editor.formatOnSave": true
+}
