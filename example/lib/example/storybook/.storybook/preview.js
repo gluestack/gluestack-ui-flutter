@@ -21,8 +21,8 @@ export const parameters = {
         'Overview',
         ['Introduction'],
         'components',
-        'forms',
-        ['button'],
+        ['forms', ['button']],
+       
       ],
     },
   },
