@@ -14,7 +14,6 @@ class LayoutExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
       return Scaffold(
-        backgroundColor: themeProvider.getThemeData().canvasColor,
         body: SafeArea(
           child: GSVStack(
             crossAxisAlignment: CrossAxisAlignment.stretch,

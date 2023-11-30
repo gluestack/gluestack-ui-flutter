@@ -35,7 +35,6 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return AlertDialog(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
       title: GSHStack(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

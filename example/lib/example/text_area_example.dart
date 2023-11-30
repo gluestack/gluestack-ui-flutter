@@ -3,7 +3,6 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 import 'package:gluestack_ui_example/utils/drop_down.dart';
 import 'package:gluestack_ui_example/utils/toggle.dart';
-import 'package:provider/provider.dart';
 
 class TextAreaExample extends StatefulWidget {
   const TextAreaExample({super.key});
@@ -51,7 +50,6 @@ class _TextAreaExampleState extends State<TextAreaExample> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     var code = '''GSTextArea(
             size: GSSizes.\$md,
             hintText: "Enter text here",
@@ -64,48 +62,48 @@ class _TextAreaExampleState extends State<TextAreaExample> {
           )
   ''';
     return Scaffold(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
-      body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSTextArea(
-            size: selectedSizeOption,
-            isDisabled: isDisabled,
-            readOnly: isReadOnly,
-            isInvalid: isInvalid,
-            hintText: "Enter text here",
-            style: GSStyle(
-              width: 300,
+      body: BaseLayout(
+        code: code,
+        component: GSTextArea(
+          size: selectedSizeOption,
+          isDisabled: isDisabled,
+          readOnly: isReadOnly,
+          isInvalid: isInvalid,
+          hintText: "Enter text here",
+          style: GSStyle(
+            width: 300,
+          ),
+        ),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
             ),
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              CustomToggle(
-                title: "isDisabled",
-                value: isDisabled,
-                onToggle: updateIsDisabled,
-              ),
-              CustomToggle(
-                title: "isInvalid",
-                value: isInvalid,
-                onToggle: updateIsInvalid,
-              ),
-              CustomToggle(
-                title: "isReadOnly",
-                value: isReadOnly,
-                onToggle: updateIsReadOnly,
-              )
-            ],
-          ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isDisabled",
+              value: isDisabled,
+              onToggle: updateIsDisabled,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isInvalid",
+              value: isInvalid,
+              onToggle: updateIsInvalid,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isReadOnly",
+              value: isReadOnly,
+              onToggle: updateIsReadOnly,
+            )
+          ],
         ),
       ),
     );

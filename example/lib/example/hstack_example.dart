@@ -3,7 +3,6 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 import 'package:gluestack_ui_example/utils/drop_down.dart';
 import 'package:gluestack_ui_example/utils/toggle.dart';
-import 'package:provider/provider.dart';
 
 class HStackExample extends StatefulWidget {
   const HStackExample({super.key});
@@ -40,7 +39,6 @@ class _HStackExampleState extends State<HStackExample> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     var code = '''GSHStack(
           mainAxisAlignment: MainAxisAlignment.center,
           isReversed: false,
@@ -62,10 +60,8 @@ class _HStackExampleState extends State<HStackExample> {
         )
   ''';
     return Scaffold(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
       appBar: AppBar(),
-      body: Center(
-          child: BaseLayout(
+      body: BaseLayout(
         code: code,
         component: GSHStack(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -96,6 +92,7 @@ class _HStackExampleState extends State<HStackExample> {
               selectedOption: selectedSpaceOption,
               onChanged: updateSpaceSelectedOption,
             ),
+            const SizedBox(height: 20),
             CustomToggle(
               title: "isReversed",
               value: isReversed,
@@ -103,7 +100,7 @@ class _HStackExampleState extends State<HStackExample> {
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 }

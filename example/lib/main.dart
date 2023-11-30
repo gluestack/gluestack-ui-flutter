@@ -25,6 +25,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    const elementSpacing = SizedBox(height: 20);
+
     return Consumer<ThemeProvider>(
       builder: (context, themeProvider, child) {
         return MaterialApp(
@@ -32,18 +34,14 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           theme: themeProvider.getThemeData(),
           home: Scaffold(
-            backgroundColor: themeProvider.getThemeData().canvasColor,
+            appBar: AppBar(title: const Text('Gluestack UI examples')),
             body: SingleChildScrollView(
-              child: Container(
-                height: 1300,
-                alignment: Alignment.center,
+              child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      "Scroll more for all the components",
-                      style: TextStyle(fontSize: 22),
-                    ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -61,6 +59,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -78,6 +77,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -95,6 +95,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -112,6 +113,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -129,6 +131,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -146,6 +149,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -163,6 +167,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -180,6 +185,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -197,6 +203,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(MaterialPageRoute(
@@ -212,6 +219,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -229,6 +237,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -246,6 +255,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -263,6 +273,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -280,6 +291,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -297,6 +309,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -314,6 +327,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -331,6 +345,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -348,6 +363,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -365,6 +381,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -382,6 +399,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -399,6 +417,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -416,6 +435,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                     GestureDetector(
                       onTap: () {
                         navigatorKey.currentState!.push(
@@ -433,6 +453,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ),
+                    elementSpacing,
                   ],
                 ),
               ),
