@@ -1,5 +1,5 @@
-export 'gs_alert_dialog.dart';
-export 'gs_alert_dialog_header.dart';
-export 'gs_alert_dialog_footer.dart';
-export 'gs_alert_dialog_content.dart';
-export 'gs_alert_dialog_body.dart';
+export 'alert_dialog.dart';
+export 'alert_dialog_header.dart';
+export 'alert_dialog_footer.dart';
+export 'alert_dialog_content.dart';
+export 'alert_dialog_body.dart';

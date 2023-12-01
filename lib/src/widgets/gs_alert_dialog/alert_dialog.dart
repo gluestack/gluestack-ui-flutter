@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_content.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_content_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_content.dart';
+import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_content_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 
-class GSAlertDialog extends StatefulWidget {
-  final GSAlertDialogContent content;
+class AlertDialog extends StatefulWidget {
+  final AlertDialogContent content;
   final GSSizes? size;
   final GSStyle? style;
   final AlignmentGeometry? alignment;
@@ -21,7 +21,7 @@ class GSAlertDialog extends StatefulWidget {
   final Curve? insetAnimationCurve;
   final Duration? insetAnimationDuration;
 
-  const GSAlertDialog({
+  const AlertDialog({
     super.key,
     required this.content,
     this.style,
@@ -48,7 +48,7 @@ class GSAlertDialog extends StatefulWidget {
         );
   static void show(
     BuildContext context, {
-    GSAlertDialogContent? content,
+    AlertDialogContent? content,
     bool? showBackdrop = true,
     GSStyle? style,
     final AlignmentGeometry? alignment,
@@ -69,8 +69,8 @@ class GSAlertDialog extends StatefulWidget {
           !showBackdrop! ? Colors.transparent : Colors.black.withOpacity(0.5),
       context: context,
       builder: (BuildContext context) {
-        return GSAlertDialog(
-          content: content ?? const GSAlertDialogContent(),
+        return AlertDialog(
+          content: content ?? const AlertDialogContent(),
           style: style,
           alignment: alignment,
           backgroundColor: backgroundColor,
@@ -89,13 +89,12 @@ class GSAlertDialog extends StatefulWidget {
   }
 
   @override
-  State<GSAlertDialog> createState() => _GSAlertDialogState();
+  State<AlertDialog> createState() => _AlertDialogState();
 }
 
-class _GSAlertDialogState extends State<GSAlertDialog> {
+class _AlertDialogState extends State<AlertDialog> {
   @override
   Widget build(BuildContext context) {
-    print(alertDialogStyle.variants!.size!.$full!.descendantStyles);
     final alertSize = widget.size ?? alertDialogStyle.props?.size;
     GSStyle styler = resolveStyles(
       context,

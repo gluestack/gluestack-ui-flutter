@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_footer_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_footer_style.dart';
 
-class GSAlertDialogFooter extends StatelessWidget {
+class AlertDialogFooter extends StatelessWidget {
   final Widget? child;
   final GSStyle? style;
-  const GSAlertDialogFooter({super.key, this.child, this.style});
+  const AlertDialogFooter({super.key, this.child, this.style});
 
   @override
   Widget build(BuildContext context) {

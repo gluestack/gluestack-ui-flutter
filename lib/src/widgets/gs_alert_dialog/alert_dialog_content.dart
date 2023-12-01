@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_body.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_content_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_footer.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_header.dart';
+import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_body.dart';
+import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_content_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_footer.dart';
+import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_header.dart';
 
-class GSAlertDialogContent extends StatelessWidget {
-  final GSAlertDialogHeader? header;
-  final GSAlertDialogBody? body;
-  final GSAlertDialogFooter? footer;
+class AlertDialogContent extends StatelessWidget {
+  final AlertDialogHeader? header;
+  final AlertDialogBody? body;
+  final AlertDialogFooter? footer;
   final GSStyle? style;
-  const GSAlertDialogContent(
+  const AlertDialogContent(
       {super.key, this.header, this.body, this.footer, this.style});
 
   @override

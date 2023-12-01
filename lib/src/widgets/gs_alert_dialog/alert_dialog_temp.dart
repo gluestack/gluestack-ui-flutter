@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_content.dart';
+import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_content.dart';
 
 // This file will be discared later
 @Deprecated("This widget will be discared later")
-class GSAlertDialogTemp extends StatefulWidget {
-  final GSAlertDialogContent gsAlertDialogContent;
+class AlertDialogTemp extends StatefulWidget {
+  final AlertDialogContent gsAlertDialogContent;
   final GSStyle? style;
   final Widget? title;
   final List<Widget>? actions;
@@ -32,7 +32,7 @@ class GSAlertDialogTemp extends StatefulWidget {
   final Color? surfaceTintColor;
   final EdgeInsetsGeometry? titlePadding;
   final TextStyle? titleTextStyle;
-  const GSAlertDialogTemp(
+  const AlertDialogTemp(
       {super.key,
       required this.gsAlertDialogContent,
       this.style,
@@ -63,7 +63,7 @@ class GSAlertDialogTemp extends StatefulWidget {
       this.actions});
   static void show(
     BuildContext context, {
-    GSAlertDialogContent? gsAlertDialogContent,
+    AlertDialogContent? gsAlertDialogContent,
     bool? showBackdrop = true,
     GSStyle? style,
     Widget? title,
@@ -96,8 +96,8 @@ class GSAlertDialogTemp extends StatefulWidget {
       barrierColor: !showBackdrop! ? Colors.transparent : Colors.black.withOpacity(0.5),
       context: context,
       builder: (BuildContext context) {
-        return GSAlertDialogTemp(
-          gsAlertDialogContent: gsAlertDialogContent ?? const GSAlertDialogContent(),
+        return AlertDialogTemp(
+          gsAlertDialogContent: gsAlertDialogContent ?? const AlertDialogContent(),
           style: style,
           actionsAlignment: actionsAlignment,
           actions: actions,
@@ -130,10 +130,10 @@ class GSAlertDialogTemp extends StatefulWidget {
   }
 
   @override
-  State<GSAlertDialogTemp> createState() => _GSAlertDialogState();
+  State<AlertDialogTemp> createState() => _AlertDialogState();
 }
 
-class _GSAlertDialogState extends State<GSAlertDialogTemp> {
+class _AlertDialogState extends State<AlertDialogTemp> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
