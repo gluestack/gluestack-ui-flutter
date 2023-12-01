@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_indicator_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_provider.dart';
+import 'package:gluestack_ui/src/widgets/checkbox/checkbox_indicator_style.dart';
+import 'package:gluestack_ui/src/widgets/checkbox/checkbox_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector_provider.dart';
 
-class GSCheckBoxIndicator extends StatelessWidget {
+class CheckBoxIndicator extends StatelessWidget {
   final Widget child;
   final GSStyle? style;
-  const GSCheckBoxIndicator({super.key, required this.child, this.style});
+  const CheckBoxIndicator({super.key, required this.child, this.style});
   //use styleResolver to resolve Color state in future
   Color? _resolvebgColor(
     GSStyle? styler, {
@@ -84,7 +84,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
     final styler = resolveStyles(context,
         variantStyle: checkBoxIndicatorStyle, inlineStyle: style);
 
-    final value = GSCheckBoxProvider.of(context);
+    final value = CheckBoxProvider.of(context);
     final isChecked = value?.isChecked ?? false;
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final isActive = GSFocusableActionDetectorProvider.isActive(context);

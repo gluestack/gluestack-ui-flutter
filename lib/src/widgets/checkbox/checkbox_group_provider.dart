@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class GSCheckBoxGroupProvider extends InheritedWidget {
+class CheckBoxGroupProvider extends InheritedWidget {
   final List<String> values;
   final void Function(List<String>?)? onChanged;
   final void Function(String value,{bool shouldUpdate}) updateValues;
   final bool isDisabled;
   final bool isInvalid;
   final bool isReadOnly;
-  const GSCheckBoxGroupProvider(
+  const CheckBoxGroupProvider(
       {super.key,
       required super.child,
       required this.values,
@@ -18,13 +18,13 @@ class GSCheckBoxGroupProvider extends InheritedWidget {
    
       required this.updateValues});
   @override
-  bool updateShouldNotify(GSCheckBoxGroupProvider oldWidget) {
+  bool updateShouldNotify(CheckBoxGroupProvider oldWidget) {
     return isDisabled!=oldWidget.isDisabled|| isInvalid!=oldWidget.isInvalid|| isReadOnly!=oldWidget.isReadOnly;
   }
 
-  static GSCheckBoxGroupProvider? of(BuildContext context) {
+  static CheckBoxGroupProvider? of(BuildContext context) {
     return context
-        .dependOnInheritedWidgetOfExactType<GSCheckBoxGroupProvider>();
+        .dependOnInheritedWidgetOfExactType<CheckBoxGroupProvider>();
   }
 
 

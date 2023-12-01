@@ -54,10 +54,10 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSCheckBox(
-          icon: GSCheckBoxIndicator(
+        component: CheckBox(
+          icon: CheckBoxIndicator(
             style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
-            child: const GSCheckBoxIcon(),
+            child: const CheckBoxIcon(),
           ),
           value: "value 1",
           onChanged: (value) {},

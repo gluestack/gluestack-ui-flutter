@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_label_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_provider.dart';
+import 'package:gluestack_ui/src/widgets/checkbox/checkbox_label_style.dart';
+import 'package:gluestack_ui/src/widgets/checkbox/checkbox_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector_provider.dart';
 
 class GSCheckBoxLabel extends StatelessWidget {
@@ -20,7 +20,7 @@ class GSCheckBoxLabel extends StatelessWidget {
         variantStyle: checkBoxLabelStyle,
         size: GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size],
         inlineStyle: style);
-    final value = GSCheckBoxProvider.of(context);
+    final value = CheckBoxProvider.of(context);
     final isChecked = value?.isChecked ?? false;
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final isDisabled = value?.isDisabled ?? true;

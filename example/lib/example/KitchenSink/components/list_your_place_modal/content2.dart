@@ -24,7 +24,7 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const GSText(text: "Ammenities", bold: true, size: GSSizes.$sm),
-        GSCheckBoxGroup(
+        CheckBoxGroup(
             values: [
               _ammenitiesData[0].value,
               _ammenitiesData[2].value,
@@ -33,13 +33,13 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
               space: GSSpaces.$md,
               children: [
                 for (int i = 0; i < (_ammenitiesData.length); i++)
-                  GSCheckBox(
+                  CheckBox(
                     size: GSSizes.$sm,
                     onChanged: (value) {},
-                    icon: GSCheckBoxIndicator(
+                    icon: CheckBoxIndicator(
                         style: GSStyle(
                             margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                        child: const GSCheckBoxIcon()),
+                        child: const CheckBoxIcon()),
                     value: _ammenitiesData[i].value,
                     label: GSCheckBoxLabel(text: _ammenitiesData[i].label),
                   ),

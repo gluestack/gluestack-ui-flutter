@@ -19,7 +19,7 @@ class KSTypesOfPlaces extends StatelessWidget {
           text: "Type of place",
           size: GSSizes.$sm,
         ),
-        GSCheckBoxGroup(
+        CheckBoxGroup(
             values: [
               _typeOfPlacesData[0].value,
             ],
@@ -27,13 +27,13 @@ class KSTypesOfPlaces extends StatelessWidget {
               space: GSSpaces.$lg,
               children: [
                 for (int i = 0; i < _typeOfPlacesData.length; i++)
-                  GSCheckBox(
+                  CheckBox(
                     size: GSSizes.$sm,
                     onChanged: (value) {},
-                    icon: GSCheckBoxIndicator(
+                    icon: CheckBoxIndicator(
                         style: GSStyle(
                             margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                        child: const GSCheckBoxIcon()),
+                        child: const CheckBoxIcon()),
                     value: _typeOfPlacesData[i].value,
                     label: GSCheckBoxLabel(text: _typeOfPlacesData[i].label),
                   ),

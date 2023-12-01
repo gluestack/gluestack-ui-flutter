@@ -30,7 +30,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
           text: "Ammenities",
           size: GSSizes.$sm,
         ),
-        GSCheckBoxGroup(
+        CheckBoxGroup(
             values: [
               _ammenitiesData[0].value,
               _ammenitiesData[2].value,
@@ -42,13 +42,13 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
                 for (int i = 0;
                     i < (showMore ? 5 : _ammenitiesData.length);
                     i++)
-                  GSCheckBox(
+                  CheckBox(
                     size: GSSizes.$sm,
                     onChanged: (value) {},
-                    icon: GSCheckBoxIndicator(
+                    icon: CheckBoxIndicator(
                         style: GSStyle(
                             margin: const EdgeInsets.only(right: $GSSpace.$3)),
-                        child: const GSCheckBoxIcon()),
+                        child: const CheckBoxIcon()),
                     value: _ammenitiesData[i].value,
                     label: GSCheckBoxLabel(text: _ammenitiesData[i].label),
                   ),

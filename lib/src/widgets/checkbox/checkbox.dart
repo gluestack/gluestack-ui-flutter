@@ -3,12 +3,12 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_group_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_style.dart';
+import 'package:gluestack_ui/src/widgets/checkbox/checkbox_group_provider.dart';
+import 'package:gluestack_ui/src/widgets/checkbox/checkbox_provider.dart';
+import 'package:gluestack_ui/src/widgets/checkbox/checkbox_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
 
-class GSCheckBox extends StatefulWidget {
+class CheckBox extends StatefulWidget {
   final String value;
   final Widget icon;
   final Widget? label;
@@ -22,7 +22,7 @@ class GSCheckBox extends StatefulWidget {
   final bool isHovered;
   final GSStyle? style;
   final void Function(bool? value)? onChanged;
-  const GSCheckBox({
+  const CheckBox({
     super.key,
     required this.icon,
     required this.value,
@@ -45,12 +45,12 @@ class GSCheckBox extends StatefulWidget {
             "only support sizes of lg,md,sm");
 
   @override
-  State<GSCheckBox> createState() => _GSCheckBoxState();
+  State<CheckBox> createState() => _CheckBoxState();
 }
 
-class _GSCheckBoxState extends State<GSCheckBox> {
+class _CheckBoxState extends State<CheckBox> {
   late bool isChecked;
-  late GSCheckBoxGroupProvider? groupValue;
+  late CheckBoxGroupProvider? groupValue;
   @override
   void initState() {
     isChecked = widget.defaultIsChecked;
@@ -60,7 +60,7 @@ class _GSCheckBoxState extends State<GSCheckBox> {
 
   @override
   void didChangeDependencies() {
-    groupValue = GSCheckBoxGroupProvider.of(context);
+    groupValue = CheckBoxGroupProvider.of(context);
     if (widget.defaultIsChecked ||
         (widget.isChecked != null && widget.isChecked!)) {
       groupValue?.updateValues(widget.value, shouldUpdate: false);
@@ -89,7 +89,7 @@ class _GSCheckBoxState extends State<GSCheckBox> {
         isFocused: widget.isFocusVisible,
         isHovered: widget.isHovered,
         mouseCursor: isCheckBoxDisabled ? SystemMouseCursors.forbidden : null,
-        child: GSCheckBoxProvider(
+        child: CheckBoxProvider(
           isInvalid: isCheckBoxInvaild,
           isDisabled: isCheckBoxDisabled,
           isChecked: widget.isChecked ?? isChecked,

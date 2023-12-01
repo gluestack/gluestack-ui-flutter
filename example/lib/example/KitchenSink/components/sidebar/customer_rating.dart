@@ -34,18 +34,18 @@ class KSCustomerRating extends StatelessWidget {
           text: "Customer Ratings",
           size: GSSizes.$sm,
         ),
-        GSCheckBoxGroup(
+        CheckBoxGroup(
             child: GSVStack(
           space: GSSpaces.$lg,
           children: [
             for (int i = 0; i < _customerRatingData.length; i++)
-              GSCheckBox(
+              CheckBox(
                 size: GSSizes.$sm,
                 onChanged: (value) {},
-                icon: GSCheckBoxIndicator(
+                icon: CheckBoxIndicator(
                     style: GSStyle(
                         margin: const EdgeInsets.only(right: $GSSpace.$2)),
-                    child: const GSCheckBoxIcon()),
+                    child: const CheckBoxIcon()),
                 value: _customerRatingData[i].value,
                 label: GSHStack(
                   space: GSSpaces.$xs,

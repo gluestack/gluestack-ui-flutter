@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_group_provider.dart';
+import 'package:gluestack_ui/src/widgets/checkbox/checkbox_group_provider.dart';
 
-class GSCheckBoxGroup extends StatefulWidget {
+class CheckBoxGroup extends StatefulWidget {
   final List<String> values;
   final Widget child;
   final bool isDisabled;
@@ -9,7 +9,7 @@ class GSCheckBoxGroup extends StatefulWidget {
   final bool isReadOnly;
   final void Function(List<String>? values)? onChanged;
 
-  const GSCheckBoxGroup(
+  const CheckBoxGroup(
       {super.key,
       required this.child,
       this.onChanged,
@@ -19,10 +19,10 @@ class GSCheckBoxGroup extends StatefulWidget {
       this.isReadOnly = false});
 
   @override
-  State<GSCheckBoxGroup> createState() => _GSCheckBoxGroupState();
+  State<CheckBoxGroup> createState() => _GSCheckBoxGroupState();
 }
 
-class _GSCheckBoxGroupState extends State<GSCheckBoxGroup> {
+class _GSCheckBoxGroupState extends State<CheckBoxGroup> {
   late List<String> _values;
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _GSCheckBoxGroupState extends State<GSCheckBoxGroup> {
 
   @override
   Widget build(BuildContext context) {
-    return GSCheckBoxGroupProvider(
+    return CheckBoxGroupProvider(
         values: _values,
         onChanged: widget.onChanged,
         isDisabled: widget.isDisabled,
