@@ -34,7 +34,9 @@ class _IconExampleState extends State<IconExample> {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Icon"),
+      ),
       body: Center(
         child: BaseLayout(
           code: code,

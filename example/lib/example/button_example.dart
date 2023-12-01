@@ -86,7 +86,9 @@ class _ButtonExampleState extends State<ButtonExample> {
               )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Button"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSButton(
@@ -95,6 +97,11 @@ class _ButtonExampleState extends State<ButtonExample> {
           size: selectedSizeOption,
           isDisabled: isDisabled,
           isFocusVisible: isFocusVisible,
+          style: GSStyle(
+            dark: GSStyle(
+              bg: $GSColors.red400,
+            ),
+          ),
           onPressed: () {},
           child: const Row(
             children: [

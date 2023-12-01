@@ -13,7 +13,9 @@ class HeadingExample extends StatelessWidget {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Heading"),
+      ),
       body: Center(
         child: BaseLayout(
           code: code,

@@ -17,7 +17,9 @@ class SpinnerExample extends StatelessWidget {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Spinner"),
+      ),
       body: Center(
         child: BaseLayout(
           code: code,

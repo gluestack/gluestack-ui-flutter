@@ -60,7 +60,9 @@ class _HStackExampleState extends State<HStackExample> {
         )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("HStack"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSHStack(

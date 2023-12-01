@@ -49,7 +49,9 @@ class _SwitchExampleState extends State<SwitchExample> {
             )
 ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Switch"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSSwitch(

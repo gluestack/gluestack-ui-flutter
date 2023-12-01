@@ -63,7 +63,9 @@ class _VStackExampleState extends State<VStackExample> {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("VStack"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSVStack(
