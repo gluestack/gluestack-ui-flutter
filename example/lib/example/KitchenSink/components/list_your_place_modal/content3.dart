@@ -41,10 +41,10 @@ class _ListYourPlaceModalContent3State
         ),
         SizedBox(
           width: double.infinity,
-          child: GSButton(
+          child: Button(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.negative,
-            child: const GSButtonText(text: 'Post Now'),
+            child: const ButtonText(text: 'Post Now'),
             onPressed: () {
               Navigator.of(context).pop();
               _showToast(
@@ -56,11 +56,11 @@ class _ListYourPlaceModalContent3State
             ? const Center(child: GSSpinner())
             : SizedBox(
                 width: double.infinity,
-                child: GSButton(
+                child: Button(
                   style: GSStyle(borderRadius: $GSRadii.$md),
                   action: GSActions.secondary,
                   variant: GSVariants.outline,
-                  child: const GSButtonText(text: 'Save for Later'),
+                  child: const ButtonText(text: 'Save for Later'),
                   onPressed: () {
                     setState(() {
                       shouldShowSpinner = true;

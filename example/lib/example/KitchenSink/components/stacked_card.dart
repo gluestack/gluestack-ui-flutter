@@ -44,7 +44,7 @@ class KSStackedCard extends StatelessWidget {
                     Positioned.fill(
                       child: Align(
                         alignment: Alignment.center,
-                        child: GSButton(
+                        child: Button(
                           action: GSActions.secondary,
                           variant: GSVariants.outline,
                           style: GSStyle(

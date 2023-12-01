@@ -41,9 +41,9 @@ class AlertExample extends StatelessWidget {
       body: BaseLayout(
         code: code,
         component: Center(
-          child: GSButton(
+          child: Button(
             size: GSSizes.$lg,
-            child: const GSButtonText(text: "Click Me"),
+            child: const ButtonText(text: "Click Me"),
             onPressed: () {
               AlertDialog.show(
                 context,
@@ -60,10 +60,10 @@ class AlertExample extends StatelessWidget {
                         "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
                   ),
                   footer: AlertDialogFooter(
-                    child: GSButtonGroup(
+                    child: ButtonGroup(
                       buttons: [
-                        GSButton(child: const Text("hey"), onPressed: () {}),
-                        GSButton(child: const Text("click"), onPressed: () {}),
+                        Button(child: const Text("hey"), onPressed: () {}),
+                        Button(child: const Text("click"), onPressed: () {}),
                       ],
                     ),
                   ),

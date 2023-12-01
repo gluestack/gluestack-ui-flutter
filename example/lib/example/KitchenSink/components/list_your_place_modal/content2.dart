@@ -47,10 +47,10 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
             )),
         SizedBox(
           width: double.infinity,
-          child: GSButton(
+          child: Button(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.negative,
-            child: const GSButtonText(text: 'Next'),
+            child: const ButtonText(text: 'Next'),
             onPressed: () {
               nextFunction.call();
             },
@@ -58,11 +58,11 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
         ),
         SizedBox(
           width: double.infinity,
-          child: GSButton(
+          child: Button(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.secondary,
             variant: GSVariants.outline,
-            child: const GSButtonText(text: 'Back'),
+            child: const ButtonText(text: 'Back'),
             onPressed: () {
               backFunction.call();
             },

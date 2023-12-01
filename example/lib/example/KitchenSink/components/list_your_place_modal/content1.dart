@@ -31,26 +31,26 @@ class _ListYourPlaceModalContent1State
             GSHStack(
               space: GSSpaces.$md,
               children: [
-                GSButton(
+                Button(
                   size: GSSizes.$xs,
                   action:
                       isSellSelected ? GSActions.primary : GSActions.secondary,
                   variant: GSVariants.outline,
                   style: GSStyle(borderRadius: $GSRadii.full),
-                  child: const GSButtonText(text: "Sell"),
+                  child: const ButtonText(text: "Sell"),
                   onPressed: () {
                     setState(() {
                       isSellSelected = true;
                     });
                   },
                 ),
-                GSButton(
+                Button(
                   size: GSSizes.$xs,
                   action:
                       !isSellSelected ? GSActions.primary : GSActions.secondary,
                   variant: GSVariants.outline,
                   style: GSStyle(borderRadius: $GSRadii.full),
-                  child: const GSButtonText(text: "Rent/Lease"),
+                  child: const ButtonText(text: "Rent/Lease"),
                   onPressed: () {
                     setState(() {
                       isSellSelected = false;
@@ -105,28 +105,28 @@ class _ListYourPlaceModalContent1State
         GSHStack(
           space: GSSpaces.$md,
           children: [
-            GSButton(
+            Button(
               size: GSSizes.$xs,
               action: selectedPropertyType[0]
                   ? GSActions.primary
                   : GSActions.secondary,
               variant: GSVariants.outline,
               style: GSStyle(borderRadius: $GSRadii.full),
-              child: const GSButtonText(text: 'flat/apartment'),
+              child: const ButtonText(text: 'flat/apartment'),
               onPressed: () {
                 setState(() {
                   selectedPropertyType[0] = !selectedPropertyType[0];
                 });
               },
             ),
-            GSButton(
+            Button(
               size: GSSizes.$xs,
               action: selectedPropertyType[1]
                   ? GSActions.primary
                   : GSActions.secondary,
               variant: GSVariants.outline,
               style: GSStyle(borderRadius: $GSRadii.full),
-              child: const GSButtonText(text: 'independent house/villa'),
+              child: const ButtonText(text: 'independent house/villa'),
               onPressed: () {
                 setState(() {
                   selectedPropertyType[1] = !selectedPropertyType[1];
@@ -138,7 +138,7 @@ class _ListYourPlaceModalContent1State
         GSHStack(
           space: GSSpaces.$md,
           children: [
-            GSButton(
+            Button(
               size: GSSizes.$xs,
               action: selectedPropertyType[2]
                   ? GSActions.primary
@@ -146,21 +146,21 @@ class _ListYourPlaceModalContent1State
               variant: GSVariants.outline,
               style: GSStyle(borderRadius: $GSRadii.full),
               child:
-                  const GSButtonText(text: 'independent floor/building floor'),
+                  const ButtonText(text: 'independent floor/building floor'),
               onPressed: () {
                 setState(() {
                   selectedPropertyType[2] = !selectedPropertyType[2];
                 });
               },
             ),
-            GSButton(
+            Button(
               size: GSSizes.$xs,
               action: selectedPropertyType[3]
                   ? GSActions.primary
                   : GSActions.secondary,
               variant: GSVariants.outline,
               style: GSStyle(borderRadius: $GSRadii.full),
-              child: const GSButtonText(text: 'Plot/Land'),
+              child: const ButtonText(text: 'Plot/Land'),
               onPressed: () {
                 setState(() {
                   selectedPropertyType[3] = !selectedPropertyType[3];
@@ -171,10 +171,10 @@ class _ListYourPlaceModalContent1State
         ),
         SizedBox(
           width: double.infinity,
-          child: GSButton(
+          child: Button(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.negative,
-            child: const GSButtonText(text: 'Next'),
+            child: const ButtonText(text: 'Next'),
             onPressed: () {
               widget.nextFunction.call();
             },

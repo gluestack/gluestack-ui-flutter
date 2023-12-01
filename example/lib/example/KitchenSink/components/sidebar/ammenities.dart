@@ -36,6 +36,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
               _ammenitiesData[2].value,
             ],
             child: GSVStack(
+              crossAxisAlignment: CrossAxisAlignment.start,
               space: GSSpaces.$lg,
               children: [
                 for (int i = 0;

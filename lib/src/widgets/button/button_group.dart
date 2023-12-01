@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_style.dart';
+import 'package:gluestack_ui/src/widgets/button/button.dart';
+import 'package:gluestack_ui/src/widgets/button/button_group_provider.dart';
+import 'package:gluestack_ui/src/widgets/button/button_group_style.dart';
 
-class GSButtonGroup extends StatelessWidget {
-  final List<GSButton>? buttons;
+class ButtonGroup extends StatelessWidget {
+  final List<Button>? buttons;
   final GSDirection? direction;
   final GSSizes? size;
   final GSSpaces? space;
@@ -15,7 +15,7 @@ class GSButtonGroup extends StatelessWidget {
   final bool? isAttached;
   final GSStyle? style;
 
-  const GSButtonGroup({
+  const ButtonGroup({
     super.key,
     this.buttons = const [],
     this.direction = GSDirection.row,
@@ -58,7 +58,7 @@ class GSButtonGroup extends StatelessWidget {
       }
     }
 
-    return GSButtonGroupProvider(
+    return ButtonGroupProvider(
       isDisabled: isDisabled!,
       size: buttonGroupSize!,
       isAttached: isAttached!,

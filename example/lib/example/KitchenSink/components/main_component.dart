@@ -58,7 +58,7 @@ class KSMainComponent extends StatelessWidget {
             const GSHeading(size: GSSizes.$xl, text: 'New this week'),
             Padding(
               padding: const EdgeInsets.only(top: 9),
-              child: GSButton(
+              child: Button(
                 variant: GSVariants.outline,
                 action: GSActions.secondary,
                 child: GSHStack(
@@ -71,7 +71,7 @@ class KSMainComponent extends StatelessWidget {
                             color: $GSColors.textLight800,
                             dark: GSStyle(color: $GSColors.textDark300)),
                       ),
-                      GSButtonText(
+                      ButtonText(
                         text: 'List your place',
                         style: GSStyle(
                           textStyle: const TextStyle(
@@ -122,11 +122,11 @@ class KSMainComponent extends StatelessWidget {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: GSButtonGroup(
+          child: ButtonGroup(
               // isAttached: true,
               buttons: [
                 for (String title in titles) ...[
-                  GSButton(
+                  Button(
                       action: GSActions.secondary,
                       variant: GSVariants
                           .link, //Error: link variant should show underline in text
@@ -135,7 +135,7 @@ class KSMainComponent extends StatelessWidget {
                       onPressed: () {
                         print("$title pressed!");
                       },
-                      child: GSButtonText(
+                      child: ButtonText(
                         text: title,
                         style: GSStyle(
                           textStyle: const TextStyle(

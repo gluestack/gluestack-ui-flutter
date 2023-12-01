@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 
-class GSButtonGroupProvider extends InheritedWidget {
+class ButtonGroupProvider extends InheritedWidget {
   final bool isDisabled;
   final GSSizes size;
   final bool isAttached;
 
-  const GSButtonGroupProvider({
+  const ButtonGroupProvider({
     super.key,
     required this.isDisabled,
     required this.size,
@@ -15,13 +15,13 @@ class GSButtonGroupProvider extends InheritedWidget {
   });
 
   @override
-  bool updateShouldNotify(GSButtonGroupProvider oldWidget) {
+  bool updateShouldNotify(ButtonGroupProvider oldWidget) {
     return isDisabled != oldWidget.isDisabled ||
         size != oldWidget.size ||
         isAttached != oldWidget.isAttached;
   }
 
-  static GSButtonGroupProvider? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<GSButtonGroupProvider>();
+  static ButtonGroupProvider? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ButtonGroupProvider>();
   }
 }

@@ -3,11 +3,11 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
+import 'package:gluestack_ui/src/widgets/button/button_group_provider.dart';
+import 'package:gluestack_ui/src/widgets/button/button_provider.dart';
+import 'package:gluestack_ui/src/widgets/button/button_style.dart';
 
-class GSButton extends StatelessWidget {
+class Button extends StatelessWidget {
   final GSActions? action;
   final GSVariants? variant;
   final GSSizes? size;
@@ -23,7 +23,7 @@ class GSButton extends StatelessWidget {
   final bool autoFocus;
   final Clip clipBehavior;
   final MaterialStatesController? statesController;
-  const GSButton({
+  const Button({
     super.key,
     required this.child,
     required this.onPressed,
@@ -44,7 +44,7 @@ class GSButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final value = GSButtonGroupProvider.of(context);
+    final value = ButtonGroupProvider.of(context);
     final buttonAction = action ?? buttonStyle.props?.action;
     final buttonVariant = variant ?? buttonStyle.props?.variant;
     final buttonSize = size ?? value?.size ?? buttonStyle.props?.size;
@@ -62,7 +62,7 @@ class GSButton extends StatelessWidget {
     print(styler.borderWidth);
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
-      child: GSButtonProvider(
+      child: ButtonProvider(
         action: buttonAction!,
         variant: buttonVariant!,
         size: buttonSize!,

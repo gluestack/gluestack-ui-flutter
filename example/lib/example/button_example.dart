@@ -89,7 +89,7 @@ class _ButtonExampleState extends State<ButtonExample> {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSButton(
+        component: Button(
           action: selectedActionOption,
           variant: selectedVariantOption,
           size: selectedSizeOption,
@@ -98,7 +98,7 @@ class _ButtonExampleState extends State<ButtonExample> {
           onPressed: () {},
           child: const Row(
             children: [
-              GSButtonText(text: "Add"),
+              ButtonText(text: "Add"),
               GSButtonIcon(icon: Icons.add)
             ],
           ),
