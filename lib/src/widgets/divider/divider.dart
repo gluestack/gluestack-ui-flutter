@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_divider/gs_divider_style.dart';
+import 'package:gluestack_ui/src/widgets/divider/divider_style.dart';
 
-class GSDivider extends StatelessWidget {
+class Divider extends StatelessWidget {
   final GSStyle? style;
   final GSOrientations? orientation;
-  const GSDivider({super.key, this.style, this.orientation});
+  const Divider({super.key, this.style, this.orientation});
 
   @override
   Widget build(BuildContext context) {

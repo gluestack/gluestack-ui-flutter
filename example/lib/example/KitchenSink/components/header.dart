@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Divider;
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 class KSHeader extends StatelessWidget {
@@ -110,7 +110,7 @@ class KSHeader extends StatelessWidget {
               ]),
         ),
         const SizedBox(height: 15),
-        GSDivider(
+        Divider(
           orientation: GSOrientations.horizontal,
           style: GSStyle(color: $GSColors.textDark300, height: 1),
         )

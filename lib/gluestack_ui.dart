@@ -10,7 +10,7 @@ export 'src/widgets/box/public.dart';
 export 'src/widgets/button/public.dart';
 export 'src/widgets/center/public.dart';
 export 'src/widgets/checkbox/public.dart';
-export 'src/widgets/gs_divider/public.dart';
+export 'src/widgets/divider/public.dart';
 export 'src/widgets/gs_focusableActionDetector/public.dart';
 export 'src/widgets/gs_heading/public.dart';
 export 'src/widgets/gs_hstack/public.dart';

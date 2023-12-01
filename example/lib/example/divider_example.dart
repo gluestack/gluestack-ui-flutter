@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide Center;
+import 'package:flutter/material.dart' hide Center,Divider;
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 class DividerExample extends StatelessWidget {
@@ -11,22 +11,22 @@ class DividerExample extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            GSDivider(
+            Divider(
               orientation: GSOrientations.vertical,
               style: GSStyle(bg: Colors.black, height: 30),
             ),
-            GSDivider(
+            Divider(
               style: GSStyle(
                 bg: Colors.blue,
               ),
             ),
-            GSDivider(
+            Divider(
               orientation: GSOrientations.vertical,
               style: GSStyle(
                 bg: Colors.red,
               ),
             ),
-            GSDivider(
+            Divider(
               style: GSStyle(
                 bg: Colors.orange,
               ),
@@ -35,12 +35,12 @@ class DividerExample extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 2),
               child: Text('GS Divider'),
             ),
-            GSDivider(
+            Divider(
               style: GSStyle(
                 bg: Colors.purple,
               ),
             ),
-            GSDivider(
+            Divider(
               orientation: GSOrientations.vertical,
               style: GSStyle(
                 bg: Colors.yellow,

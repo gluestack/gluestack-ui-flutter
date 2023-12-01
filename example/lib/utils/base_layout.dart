@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide Center;
 import 'package:flutter_syntax_view/flutter_syntax_view.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui/gluestack_ui.dart' hide Divider;
 
 class BaseLayout extends StatelessWidget {
   final Widget component;
