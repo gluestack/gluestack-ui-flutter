@@ -21,7 +21,7 @@ class _ListYourPlaceModalContent3State
       space: GSSpaces.$md,
       children: [
         const GSText(text: "Title", bold: true, size: GSSizes.$sm),
-        const GSInput(
+        const Input(
           hintText: "Enter property name",
         ),
         const GSText(text: "Description", bold: true, size: GSSizes.$sm),
@@ -36,7 +36,7 @@ class _ListYourPlaceModalContent3State
           ),
         ),
         const GSText(text: "Contact me", bold: true, size: GSSizes.$sm),
-        const GSInput(
+        const Input(
           hintText: "Phone number",
         ),
         SizedBox(

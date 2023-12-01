@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_input/gs_input_style.dart';
+import 'package:gluestack_ui/src/widgets/input/input_style.dart';
 
-class GSInput extends StatefulWidget {
+class Input extends StatefulWidget {
   final GSVariants? variant;
   final GSSizes? size;
   final GSStyle? style;
@@ -119,7 +119,7 @@ class GSInput extends StatefulWidget {
   final TextStyle? suffixStyle;
   final String? suffixText;
   final bool visualFeedback;
-  const GSInput(
+  const Input(
       {super.key,
       this.variant = GSVariants.outline,
       this.size = GSSizes.$md,
@@ -230,10 +230,10 @@ class GSInput extends StatefulWidget {
       this.style});
 
   @override
-  State<GSInput> createState() => _GSInputState();
+  State<Input> createState() => _InputState();
 }
 
-class _GSInputState extends State<GSInput> {
+class _InputState extends State<Input> {
   bool _isHovered = false;
 
   @override

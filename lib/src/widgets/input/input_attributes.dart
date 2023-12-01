@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/provider/theme_provider.dart';
 import 'package:gluestack_ui/src/token/public.dart';
 
-import 'package:gluestack_ui/src/widgets/gs_input/gs_input_token.dart';
+import 'package:gluestack_ui/src/widgets/input/input_token.dart';
 
 class GSInputAttributes {
   static Map<GSInputVariant, Map<GSThemeMode, GSInputCombinationStyle>> gsInputCombination = {

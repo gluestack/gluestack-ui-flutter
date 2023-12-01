@@ -79,7 +79,7 @@ class _InputExampleState extends State<InputExample> {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSInput(
+        component: Input(
           size: selectedSizeOption,
           variant: selectedVariantOption,
           hintText: "Enter text here",
