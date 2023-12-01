@@ -19,9 +19,8 @@ dependencies:
 
   flutter_syntax_view: ^4.0.0
   provider: ^6.1.1
-  widgetbook_annotation: ^3.1.0
-  widgetbook: ^3.4.1
   storybook_flutter: ^0.14.0
+  go_router: ^12.1.1
 
   gluestack_ui:
     # When depending on this package from a real application you should use:
@@ -47,8 +46,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
-  widgetbook_generator: ^3.3.0
-  build_runner:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
