@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gluestack_ui/src/provider/theme_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:provider/provider.dart';
 
 bool isBaseScreen(BuildContext context) {
   final screenWidth = MediaQuery.sizeOf(context).width;
@@ -37,7 +35,8 @@ GSStyle? resolveStyles(
   Map<String, GSStyle?>? descendantStyles,
   List<String> descendantStyleKeys = const [],
 }) {
-  final theme = Provider.of<ThemeProvider>(context).currentTheme;
+  final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+
   GSStyle? temp = variantStyle != null
       ? variantStyle.merge(inlineStyle,
           descendantStyleKeys: descendantStyleKeys)
@@ -51,14 +50,14 @@ GSStyle? resolveStyles(
       : temp;
 
   if (inlineStyle == null) {
-    if (theme == GSThemeMode.dark) {
+    if (isDarkTheme) {
       return currentGSStyle.merge(variantStyle?.dark,
           descendantStyleKeys: descendantStyleKeys);
     }
   }
   inlineStyle?.contextStyles.forEach((key, value) {
     if (value != null) {
-      if (key == 'dark' && theme == GSThemeMode.dark) {
+      if (key == 'dark' && isDarkTheme) {
         currentGSStyle = currentGSStyle?.merge(value,
             descendantStyleKeys: descendantStyleKeys);
 

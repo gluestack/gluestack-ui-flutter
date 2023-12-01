@@ -76,7 +76,9 @@ class _InputExampleState extends State<InputExample> {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Input"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSInput(

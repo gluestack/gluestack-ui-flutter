@@ -17,7 +17,9 @@ class TextExample extends StatelessWidget {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Text"),
+      ),
       body: Center(
         child: BaseLayout(
           code: code,

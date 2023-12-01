@@ -67,7 +67,9 @@ class _ToastExampleState extends State<ToastExample> {
           ),
 ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Toast"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSButton(

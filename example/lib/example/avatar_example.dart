@@ -59,7 +59,9 @@ class _AvatarExampleState extends State<AvatarExample> {
           )
 ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Avatar"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSAvatar(

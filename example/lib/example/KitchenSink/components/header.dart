@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 class KSHeader extends StatelessWidget {
-  final Function themeCallback;
-  final ThemeProvider themeProvider;
-  const KSHeader(
-      {super.key, required this.themeCallback, required this.themeProvider});
+  final VoidCallback themeCallback;
+
+  const KSHeader({super.key, required this.themeCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +69,7 @@ class KSHeader extends StatelessWidget {
                           child: GSIcon(
                             size: GSSizes.$xl,
                             icon:
-                                themeProvider.currentTheme == GSThemeMode.light
+                                Theme.of(context).brightness == Brightness.light
                                     ? Icons.nightlight_rounded
                                     : Icons.light_mode,
                             style: GSStyle(
