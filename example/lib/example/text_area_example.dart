@@ -65,7 +65,7 @@ class _TextAreaExampleState extends State<TextAreaExample> {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSTextArea(
+        component: TextArea(
           size: selectedSizeOption,
           isDisabled: isDisabled,
           readOnly: isReadOnly,

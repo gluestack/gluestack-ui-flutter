@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide Center;
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fluttertoast/fluttertoast.dart' hide Toast;
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 class ListYourPlaceModalContent3 extends StatefulWidget {
@@ -27,7 +27,7 @@ class _ListYourPlaceModalContent3State
         const GSText(text: "Description", bold: true, size: GSSizes.$sm),
         SizedBox(
           width: double.infinity,
-          child: GSTextArea(
+          child: TextArea(
             size: GSSizes.$xl,
             hintText: "Provide description",
             style: GSStyle(
@@ -90,7 +90,7 @@ class _ListYourPlaceModalContent3State
     return showToast(
       context,
       gravity: ToastGravity.TOP,
-      child: GSToast(
+      child: Toast(
         variant: GSVariants.solid,
         action: GSActions.success,
         child: GSHStack(
@@ -102,13 +102,13 @@ class _ListYourPlaceModalContent3State
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (showCongratulations)
-                  GSToastTitle(
+                  ToastTitle(
                     style: GSStyle(
                         textStyle:
                             const TextStyle(fontWeight: FontWeight.w700)),
                     title: "Congratulations!",
                   ),
-                GSToastTitle(
+                ToastTitle(
                   title: title,
                 ),
               ],

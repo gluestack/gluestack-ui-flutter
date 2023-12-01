@@ -6,10 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
-import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
+import 'package:gluestack_ui/src/widgets/text_area/text_area_style.dart';
 
 // TODO : Work on descendant styles (_input)
-class GSTextArea extends StatefulWidget {
+class TextArea extends StatefulWidget {
   final GSSizes? size;
   final GSStyle? style;
   final bool? isDisabled;
@@ -120,7 +120,7 @@ class GSTextArea extends StatefulWidget {
   final TextStyle? suffixStyle;
   final String? suffixText;
   final bool visualFeedback;
-  const GSTextArea(
+  const TextArea(
       {super.key,
       this.size = GSSizes.$md,
       this.isDisabled = false,
@@ -239,10 +239,10 @@ class GSTextArea extends StatefulWidget {
         );
 
   @override
-  State<GSTextArea> createState() => _GSTextAreaState();
+  State<TextArea> createState() => _TextAreaState();
 }
 
-class _GSTextAreaState extends State<GSTextArea> {
+class _TextAreaState extends State<TextArea> {
   bool _isHovered = false;
 
   @override
