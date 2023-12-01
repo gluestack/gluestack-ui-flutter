@@ -51,7 +51,7 @@ class KSMainComponent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //r1
-        GSHStack(
+        HStack(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -61,7 +61,7 @@ class KSMainComponent extends StatelessWidget {
               child: Button(
                 variant: GSVariants.outline,
                 action: GSActions.secondary,
-                child: GSHStack(
+                child: HStack(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GSButtonIcon(
@@ -101,7 +101,7 @@ class KSMainComponent extends StatelessWidget {
         //r2
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: GSHStack(
+          child: HStack(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               for (int i = 1; i < 10; i++)
@@ -154,7 +154,7 @@ class KSMainComponent extends StatelessWidget {
               ]),
         ),
 
-        GSHStack(
+        HStack(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           space: GSSpaces.$md,

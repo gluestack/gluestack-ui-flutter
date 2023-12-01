@@ -31,7 +31,7 @@ class LayoutExample extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 21),
                   ),
-                  child: const GSHStack(
+                  child: const HStack(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

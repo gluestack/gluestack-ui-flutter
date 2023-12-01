@@ -63,7 +63,7 @@ class _HStackExampleState extends State<HStackExample> {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSHStack(
+        component: HStack(
           mainAxisAlignment: MainAxisAlignment.center,
           isReversed: isReversed,
           space: selectedSpaceOption,

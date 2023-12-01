@@ -22,7 +22,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
           size: GSSizes.$sm,
         ),
 
-        GSHStack(
+        HStack(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -67,7 +67,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
         ),
 
         //switch 2---------------------------
-        GSHStack(
+        HStack(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

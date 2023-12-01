@@ -34,7 +34,7 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: GSHStack(
+      title: HStack(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Heading(size: GSSizes.$sm, text: "List your place"),

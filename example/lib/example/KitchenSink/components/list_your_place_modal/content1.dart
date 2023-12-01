@@ -28,7 +28,7 @@ class _ListYourPlaceModalContent1State
           children: [
             const GSText(
                 bold: true, size: GSSizes.$sm, text: "I want to ....."),
-            GSHStack(
+            HStack(
               space: GSSpaces.$md,
               children: [
                 Button(
@@ -65,7 +65,7 @@ class _ListYourPlaceModalContent1State
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GSText(bold: true, size: GSSizes.$sm, text: "Property is..."),
-            GSHStack(
+            HStack(
               space: GSSpaces.$md,
               children: [
                 GSRadio<String>(
@@ -102,7 +102,7 @@ class _ListYourPlaceModalContent1State
             ),
           ],
         ),
-        GSHStack(
+        HStack(
           space: GSSpaces.$md,
           children: [
             Button(
@@ -135,7 +135,7 @@ class _ListYourPlaceModalContent1State
             ),
           ],
         ),
-        GSHStack(
+        HStack(
           space: GSSpaces.$md,
           children: [
             Button(

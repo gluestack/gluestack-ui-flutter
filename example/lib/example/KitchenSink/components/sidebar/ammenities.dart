@@ -60,7 +60,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
                 showMore = !showMore;
               });
             },
-            child: GSHStack(
+            child: HStack(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GSText(

@@ -93,12 +93,12 @@ class _ListYourPlaceModalContent3State
       child: Toast(
         variant: GSVariants.solid,
         action: GSActions.success,
-        child: GSHStack(
+        child: HStack(
           space: GSSpaces.$xs,
           mainAxisSize: MainAxisSize.min,
           children: [
             const GSIcon(icon: Icons.check_circle_outline_outlined),
-            GSHStack(
+            HStack(
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (showCongratulations)

@@ -80,7 +80,7 @@ class KSStackedCard extends StatelessWidget {
                               icon: Icons.favorite_border)))
                 ],
               ),
-              GSHStack(
+              HStack(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GSText(
@@ -94,7 +94,7 @@ class KSStackedCard extends StatelessWidget {
                             color: $GSColors.textDark200,
                           ))),
                       text: stackedCardModel.title),
-                  GSHStack(
+                  HStack(
                     children: [
                       const GSIcon(icon: Icons.star),
                       GSText(
@@ -122,7 +122,7 @@ class KSStackedCard extends StatelessWidget {
                         color: $GSColors.textDark500,
                       ))),
                   text: stackedCardModel.location),
-              GSHStack(
+              HStack(
                 children: [
                   GSText(
                     size: GSSizes.$sm,

@@ -13,7 +13,7 @@ class KSBanner extends StatelessWidget {
         dark: GSStyle(color: Colors.red), //Error: Does not work
         // dark: GSStyle(color: $GSColors.backgroundDark800), //TODO: replace when the above works!
       ),
-      child: GSHStack(
+      child: HStack(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GSText(

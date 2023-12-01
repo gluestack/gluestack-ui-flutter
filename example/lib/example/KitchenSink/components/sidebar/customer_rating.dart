@@ -47,7 +47,7 @@ class KSCustomerRating extends StatelessWidget {
                         margin: const EdgeInsets.only(right: $GSSpace.$2)),
                     child: const CheckBoxIcon()),
                 value: _customerRatingData[i].value,
-                label: GSHStack(
+                label: HStack(
                   space: GSSpaces.$xs,
                   children: [
                     GSIcon(

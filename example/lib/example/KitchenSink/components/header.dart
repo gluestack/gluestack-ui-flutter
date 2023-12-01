@@ -14,10 +14,10 @@ class KSHeader extends StatelessWidget {
         const SizedBox(height: 15),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: GSHStack(
+          child: HStack(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GSHStack(
+                HStack(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     GSIcon(
@@ -54,7 +54,7 @@ class KSHeader extends StatelessWidget {
                       padding: EdgeInsets.all(16),
                       child: GSText(text: '⚠ WIP')),
                 ),
-                GSHStack(
+                HStack(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
