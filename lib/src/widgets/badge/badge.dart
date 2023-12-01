@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_icon.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_text.dart';
+import 'package:gluestack_ui/src/widgets/badge/badge_icon.dart';
+import 'package:gluestack_ui/src/widgets/badge/badge_provider.dart';
+import 'package:gluestack_ui/src/widgets/badge/badge_style.dart';
+import 'package:gluestack_ui/src/widgets/badge/badge_text.dart';
 
 /// `GSBadge` is a Flutter widget used to display badges with various styles.
-class GSBadge extends StatelessWidget {
+class Badge extends StatelessWidget {
   /// The type of action for the badge (e.g., error, warning, success, info, muted).
   final GSActions? action;
 
@@ -28,13 +28,13 @@ class GSBadge extends StatelessWidget {
   final Widget? child;
 
   /// The optional icon data to be displayed in the badge.
-  final GSBadgeIcon? icon;
+  final BadgeIcon? icon;
 
   /// The text content to be displayed within the badge.
-  final GSBadgeText text;
+  final BadgeText text;
 
   /// `GSBadge` is a Flutter widget used to display badges with various styles. Constructor for the `GSBadge` widget:
-  const GSBadge({
+  const Badge({
     super.key,
     this.action,
     this.variant,
@@ -90,7 +90,7 @@ class GSBadge extends StatelessWidget {
     // Return the GSBadge with GSAncestor to handle the decedentStyles
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
-      child: GSBadgeProvider(
+      child: BadgeProvider(
         fontSize: styler.textStyle?.fontSize,
         iconSize: styler.iconSize,
         child: Container(

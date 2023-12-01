@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Badge;
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 import 'package:gluestack_ui_example/utils/drop_down.dart';
@@ -85,15 +85,15 @@ class _BadgeExampleState extends State<BadgeExample> {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSBadge(
+        component: Badge(
           size: selectedSizeOption,
           action: selectedActionOption,
           variant: selectedVariantOption,
           borderRadius: selectedRadiusOption,
-          icon: const GSBadgeIcon(
+          icon: const BadgeIcon(
             iconData: Icons.info_outline,
           ),
-          text: const GSBadgeText(
+          text: const BadgeText(
             'information',
           ),
         ),

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_icon_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_provider.dart';
+import 'package:gluestack_ui/src/widgets/badge/badge_icon_style.dart';
+import 'package:gluestack_ui/src/widgets/badge/badge_provider.dart';
 
 /// This widget represents an icon which is optional with GSBadge widget. It's used to display icons along with text in GSBadge widget.
-class GSBadgeIcon extends StatelessWidget {
+class BadgeIcon extends StatelessWidget {
   // The icon data to display in the widget.
   final IconData iconData;
 
@@ -30,7 +30,7 @@ class GSBadgeIcon extends StatelessWidget {
   final TextDirection? textDirection;
 
   /// This widget represents an icon which is optional with GSBadge widget. It's used to display icons along with text in GSBadge widget. Following is the constructor for the same:
-  const GSBadgeIcon(
+  const BadgeIcon(
       {super.key,
       required this.iconData,
       this.iconSize,
@@ -46,7 +46,7 @@ class GSBadgeIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Access the badge provider from the context to get relavant Badge props
-    final gsBadgeProvider = GSBadgeProvider.of(context);
+    final gsBadgeProvider = BadgeProvider.of(context);
 
     // Access ancestor provider to retrieve ancestor icon styles.
     final ancestorIconStyles = GSAncestorProvider.of(context)

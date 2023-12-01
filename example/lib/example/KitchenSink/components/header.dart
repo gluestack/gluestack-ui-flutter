@@ -85,10 +85,10 @@ class KSHeader extends StatelessWidget {
                         },
                       ),
                     ),
-                    GSAvatar(
+                    Avatar(
                       size: GSSizes.$sm,
                       style: GSStyle(bg: $GSColors.backgroundLight600),
-                      avatarBadge: GSAvatarBadge(
+                      avatarBadge: AvatarBadge(
                         style: GSStyle(
                           bg: $GSColors
                               .primary500, // TODO: change primary colors so that it reflects here
@@ -101,7 +101,7 @@ class KSHeader extends StatelessWidget {
                         path:
                             "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
                       ),
-                      fallBackText: const GSAvatarFallBackText(
+                      fallBackText: const AvatarFallBackText(
                         'Henry Stan',
                       ),
                     )

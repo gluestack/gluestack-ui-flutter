@@ -5,7 +5,7 @@ export 'src/token/public.dart';
 export 'src/widgets/alert_dialog/public.dart';
 export 'src/widgets/gs_ancestor/public.dart';
 export 'src/widgets/avatar/public.dart';
-export 'src/widgets/gs_badge/public.dart';
+export 'src/widgets/badge/public.dart';
 export 'src/widgets/gs_box/public.dart';
 export 'src/widgets/gs_button/public.dart';
 export 'src/widgets/gs_center/public.dart';
