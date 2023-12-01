@@ -18,5 +18,21 @@ import { Meta } from "@storybook/addon-docs";
   src="http://localhost:55530/"
   title="Example"
   width="800"
-  height="600"
+  height="350"
 ></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSBadge(
+  action: GSActions.success,
+  variant:  GSVariants.solid,
+  size: GSSizes.\$md,
+  icon: const GSBadgeIcon(
+    iconData: Icons.info_outline,
+  ),
+  text: const GSBadgeText(
+    'information',
+  ),
+)
+```
