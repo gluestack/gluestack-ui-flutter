@@ -26,7 +26,7 @@ class LayoutExample extends StatelessWidget {
                 },
               ),
               Expanded(
-                child: GSBox(
+                child: Box(
                   style: GSStyle(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 21),

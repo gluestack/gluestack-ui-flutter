@@ -12,7 +12,7 @@ class KSStackedCard extends StatelessWidget {
       child: Builder(builder: (context) {
         final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
 
-        return GSBox(
+        return Box(
           style: GSStyle(width: 400),
           child: GSVStack(
             space: GSSpaces.$xs,
@@ -33,7 +33,7 @@ class KSStackedCard extends StatelessWidget {
                   if (isHovered)
                     Opacity(
                       opacity: .3,
-                      child: GSBox(
+                      child: Box(
                         style: GSStyle(
                             height: $GSSpace.$72,
                             width: double.infinity,

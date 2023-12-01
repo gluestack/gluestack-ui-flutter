@@ -71,15 +71,15 @@ class _VStackExampleState extends State<VStackExample> {
           isReversed: isReversed,
           space: selectedSpaceOption,
           children: [
-            GSBox(
+            Box(
               style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
               child: const Text('1'),
             ),
-            GSBox(
+            Box(
               style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
               child: const Text('2'),
             ),
-            GSBox(
+            Box(
               style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
               child: const Text('3'),
             ),

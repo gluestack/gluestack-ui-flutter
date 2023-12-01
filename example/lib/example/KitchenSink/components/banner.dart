@@ -6,7 +6,7 @@ class KSBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GSBox(
+    return Box(
       style: GSStyle(
         color: $GSColors.backgroundLight900,
         height: $GSSpace.$16,

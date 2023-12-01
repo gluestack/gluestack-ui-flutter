@@ -48,7 +48,7 @@ class KSHeader extends StatelessWidget {
                     ),
                   ],
                 ),
-                GSBox(
+                Box(
                   style: GSStyle(color: $GSColors.pink400.withOpacity(0.5)),
                   child: const Padding(
                       padding: EdgeInsets.all(16),

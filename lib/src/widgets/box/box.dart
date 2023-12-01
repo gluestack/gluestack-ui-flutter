@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 
-class GSBox extends StatelessWidget {
+class Box extends StatelessWidget {
   final Widget? child;
   final GSStyle? style;
   final Clip clipBehavior;
@@ -14,7 +14,7 @@ class GSBox extends StatelessWidget {
   final List<BoxShadow>? boxShadow;
   final DecorationImage? image;
   final BoxShape shape;
-  const GSBox({
+  const Box({
     super.key,
     this.child,
     this.style,
