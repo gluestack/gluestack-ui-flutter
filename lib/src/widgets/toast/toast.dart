@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_style.dart';
+import 'package:gluestack_ui/src/widgets/toast/toast_style.dart';
 
-class GSToast extends StatelessWidget {
+class Toast extends StatelessWidget {
   final Widget? child;
   final GSActions? action;
   final GSVariants? variant;
   final GSStyle? style;
-  const GSToast({
+  const Toast({
     super.key,
     this.child,
     this.action,

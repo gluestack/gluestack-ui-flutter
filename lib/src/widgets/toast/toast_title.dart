@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_title_style.dart';
+import 'package:gluestack_ui/src/widgets/toast/toast_title_style.dart';
 
-class GSToastTitle extends StatelessWidget {
+class ToastTitle extends StatelessWidget {
   final String title;
   final GSStyle? style;
-  const GSToastTitle({super.key, required this.title, this.style});
+  const ToastTitle({super.key, required this.title, this.style});
 
   @override
   Widget build(BuildContext context) {

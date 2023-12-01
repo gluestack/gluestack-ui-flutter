@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_description_style.dart';
+import 'package:gluestack_ui/src/widgets/toast/toast_description_style.dart';
 
-class GSToastDescription extends StatelessWidget {
+class ToastDescription extends StatelessWidget {
   final String description;
   final GSStyle? style;
-  const GSToastDescription({super.key, required this.description, this.style});
+  const ToastDescription({super.key, required this.description, this.style});
 
   @override
   Widget build(BuildContext context) {

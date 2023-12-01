@@ -76,17 +76,17 @@ class _ToastExampleState extends State<ToastExample> {
           onPressed: () {
             showToast(
               context,
-              child: GSToast(
+              child: Toast(
                 variant: selectedVariantOption,
                 action: selectedActionOption,
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GSToastTitle(
+                    ToastTitle(
                       title: "Hey",
                     ),
-                    GSToastDescription(
+                    ToastDescription(
                       description: "Desc Desc Desc Desc Desc Desc ",
                     ),
                   ],

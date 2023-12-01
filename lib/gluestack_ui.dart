@@ -25,5 +25,5 @@ export 'src/widgets/gs_spinner/public.dart';
 export 'src/widgets/gs_switch/public.dart';
 export 'src/widgets/gs_text/public.dart';
 export 'src/widgets/gs_text_area/public.dart';
-export 'src/widgets/gs_toast/public.dart';
+export 'src/widgets/toast/public.dart';
 export 'src/widgets/vstack/public.dart';
