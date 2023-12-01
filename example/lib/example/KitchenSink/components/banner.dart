@@ -27,7 +27,7 @@ class KSBanner extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 10),
-          GSLink(
+          Link(
               url: 'https://ui.gluestack.io/',
               style: GSStyle(
                 textStyle: const TextStyle(color: $GSColors.red600),

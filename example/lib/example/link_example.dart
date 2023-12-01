@@ -18,7 +18,7 @@ class LinkExample extends StatelessWidget {
       body: Center(
         child: BaseLayout(
           code: code,
-          component: GSLink(
+          component: Link(
             style: GSStyle(),
             url: 'https://gluestack.io/',
             text: const GSLinkText(text: 'gluestack'),
