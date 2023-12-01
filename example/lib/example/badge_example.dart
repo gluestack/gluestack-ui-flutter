@@ -82,7 +82,9 @@ class _BadgeExampleState extends State<BadgeExample> {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Badge"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSBadge(

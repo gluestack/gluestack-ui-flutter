@@ -62,7 +62,9 @@ class _TextAreaExampleState extends State<TextAreaExample> {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Text Area"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSTextArea(

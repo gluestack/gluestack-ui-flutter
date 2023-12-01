@@ -55,7 +55,9 @@ class _ImageExampleState extends State<ImageExample> {
               imageType: GSImageType.network)
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Image"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSImage(

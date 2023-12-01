@@ -58,7 +58,9 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Radio Button"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSRadio<Value>(

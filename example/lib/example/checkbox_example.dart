@@ -51,7 +51,9 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Checkbox"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSCheckBox(

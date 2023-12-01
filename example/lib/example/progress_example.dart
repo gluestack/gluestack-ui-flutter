@@ -35,7 +35,9 @@ class _ProgressExampleState extends State<ProgressExample> {
           )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Progress"),
+      ),
       body: Center(
         child: BaseLayout(
           code: code,

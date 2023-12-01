@@ -1,4 +1,3 @@
-export 'src/provider/theme_provider.dart';
 export 'src/style/gs_style.dart';
 export 'src/token/public.dart';
 

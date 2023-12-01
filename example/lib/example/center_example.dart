@@ -19,7 +19,9 @@ class CenterExample extends StatelessWidget {
         )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Center"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSCenter(

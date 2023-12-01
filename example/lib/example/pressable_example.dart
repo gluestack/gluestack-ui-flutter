@@ -39,7 +39,9 @@ class PressableExample extends StatelessWidget {
             )
   ''';
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Pressable"),
+      ),
       body: BaseLayout(
         code: code,
         component: GSPressable(

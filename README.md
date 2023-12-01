@@ -8,7 +8,7 @@ _Package is in development. APIs may change in the future._
 
 You can try the example app demo on this link: https://gluestack-flutter.web.app/
 
-We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documantation is in progress. You can find detailed documentation for each component, including a list of props and examples, in https://gluestack.io/ui/docs website.
+We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. You can find the detailed documentation for each component, including a list of props and examples, in https://gluestack.io/ui/docs website.
 
 ## Features
 
@@ -70,6 +70,8 @@ GSButton(
   child: const GSButtonText(text: "Click Here"),
 )
 ```
+
+All Gluestack widgets support dark theme. Package detects the current theme from Flutter's inbuilt `Theme.of(context).brightness`. Hence, you can manage the theme mode from MaterialApp itself using the state management of your choice.
 
 ## Contributing
 

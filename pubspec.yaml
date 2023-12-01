@@ -17,7 +17,6 @@ dependencies:
     sdk: flutter
 
   fluttertoast: ^8.2.4
-  provider: ^6.1.1
   url_launcher: ^6.2.1
 
 dev_dependencies:
