@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
+
+import 'package:flutter/material.dart' hide AlertDialog;
+import 'package:gluestack_ui/gluestack_ui.dart' ;
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 
 class AlertExample extends StatelessWidget {
@@ -44,21 +45,21 @@ class AlertExample extends StatelessWidget {
             size: GSSizes.$lg,
             child: const GSButtonText(text: "Click Me"),
             onPressed: () {
-              GSAlertDialog.show(
+              AlertDialog.show(
                 context,
                 size: GSSizes.$full,
-                content: GSAlertDialogContent(
-                  header: GSAlertDialogHeader(
+                content: AlertDialogContent(
+                  header: AlertDialogHeader(
                     style: GSStyle(
                       bg: Colors.pink,
                     ),
                     child: const Text("Header"),
                   ),
-                  body: const GSAlertDialogBody(
+                  body: const AlertDialogBody(
                     child: Text(
                         "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
                   ),
-                  footer: GSAlertDialogFooter(
+                  footer: AlertDialogFooter(
                     child: GSButtonGroup(
                       buttons: [
                         GSButton(child: const Text("hey"), onPressed: () {}),
