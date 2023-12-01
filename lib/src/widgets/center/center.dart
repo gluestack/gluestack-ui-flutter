@@ -3,11 +3,11 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 
-class GSCenter extends StatelessWidget {
+class Center extends StatelessWidget {
   final GSStyle? style;
   final Widget child;
 
-  const GSCenter({super.key, required this.child, this.style});
+  const Center({super.key, required this.child, this.style});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
 
-import 'package:flutter/material.dart' hide AlertDialog;
+import 'package:flutter/material.dart' hide AlertDialog,Center;
 import 'package:gluestack_ui/gluestack_ui.dart' ;
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 

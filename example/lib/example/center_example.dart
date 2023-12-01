@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Center;
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 
@@ -22,7 +22,7 @@ class CenterExample extends StatelessWidget {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSCenter(
+        component: Center(
           style: GSStyle(
             alignItems: GSAlignments.end,
             justifyContent: GSAlignments.start,
@@ -30,7 +30,7 @@ class CenterExample extends StatelessWidget {
             bg: Colors.pink,
             md: GSStyle(bg: Colors.yellow),
           ),
-          child: const GSCenter(child: Text('Testing Center Widget')),
+          child: const Center(child: Text('Testing Center Widget')),
         ),
       ),
     );

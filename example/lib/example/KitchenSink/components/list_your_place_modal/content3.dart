@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Center;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 

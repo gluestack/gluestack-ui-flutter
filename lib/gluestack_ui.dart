@@ -8,7 +8,7 @@ export 'src/widgets/avatar/public.dart';
 export 'src/widgets/badge/public.dart';
 export 'src/widgets/box/public.dart';
 export 'src/widgets/button/public.dart';
-export 'src/widgets/gs_center/public.dart';
+export 'src/widgets/center/public.dart';
 export 'src/widgets/gs_checkbox/public.dart';
 export 'src/widgets/gs_divider/public.dart';
 export 'src/widgets/gs_focusableActionDetector/public.dart';
