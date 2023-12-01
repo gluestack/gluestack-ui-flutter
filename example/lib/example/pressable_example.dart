@@ -42,7 +42,7 @@ class PressableExample extends StatelessWidget {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSPressable(
+        component: Pressable(
           hitSlop: 10,
           style: GSStyle(
             bg: Colors.yellow,

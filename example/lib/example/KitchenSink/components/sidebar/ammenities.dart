@@ -54,7 +54,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
                   ),
               ],
             )),
-        GSPressable(
+        Pressable(
             onPress: () {
               setState(() {
                 showMore = !showMore;

@@ -18,7 +18,7 @@ export 'src/widgets/gs_icon/public.dart';
 export 'src/widgets/gs_image/public.dart';
 export 'src/widgets/input/public.dart';
 export 'src/widgets/link/public.dart';
-export 'src/widgets/gs_pressable/public.dart';
+export 'src/widgets/pressable/public.dart';
 export 'src/widgets/progress/public.dart';
 export 'src/widgets/gs_radio/public.dart';
 export 'src/widgets/spinner/public.dart';

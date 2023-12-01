@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_pressable/gs_pressable_style.dart';
+import 'package:gluestack_ui/src/widgets/pressable/pressable_style.dart';
 
 /// The GSPressable class represents a pressable widget that can respond to various press-related gestures.
 /// It allows for easy customization of various press-related interactions and styles.
-class GSPressable extends StatefulWidget {
+class Pressable extends StatefulWidget {
   /// The style to be applied to the GSPressable.
   final GSStyle? style;
 
@@ -95,7 +95,7 @@ class GSPressable extends StatefulWidget {
   final MaterialStatesController? statesController;
 
   /// Creates a new instance of GSPressable.
-  const GSPressable({
+  const Pressable({
     super.key,
     this.enableFeedback = true,
     this.excludeFromSemantics = false,
@@ -127,10 +127,10 @@ class GSPressable extends StatefulWidget {
   });
 
   @override
-  State<GSPressable> createState() => _GSPressableState();
+  State<Pressable> createState() => _PressableState();
 }
 
-class _GSPressableState extends State<GSPressable> {
+class _PressableState extends State<Pressable> {
   final FocusNode _focusNode = FocusNode();
   bool showFocusBorder = false;
 

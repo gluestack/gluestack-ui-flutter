@@ -38,7 +38,7 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Heading(size: GSSizes.$sm, text: "List your place"),
-          GSPressable(
+          Pressable(
               onPress: () {
                 Navigator.of(context).pop();
               },

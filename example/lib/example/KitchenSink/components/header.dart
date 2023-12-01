@@ -59,7 +59,7 @@ class KSHeader extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
-                      child: GSPressable(
+                      child: Pressable(
                         hitSlop: 2,
                         style: GSStyle(
                             splashColor: Colors.transparent,

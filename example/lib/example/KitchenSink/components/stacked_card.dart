@@ -70,7 +70,7 @@ class KSStackedCard extends StatelessWidget {
                   Positioned(
                       right: $GSSpace.$4,
                       top: $GSSpace.$4,
-                      child: GSPressable(
+                      child: Pressable(
                           onPress: () {},
                           child: GSIcon(
                               style: GSStyle(
