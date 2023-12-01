@@ -2,10 +2,10 @@ name: gluestack_ui_example
 description: "Demonstrates how to use the gluestack_ui plugin."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 environment:
-  sdk: '>=3.2.1 <4.0.0'
+  sdk: ">=3.2.1 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -16,9 +16,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
+
   flutter_syntax_view: ^4.0.0
   provider: ^6.1.1
+  widgetbook_annotation: ^3.1.0
+  widgetbook: ^3.4.1
+  storybook_flutter: ^0.14.0
 
   gluestack_ui:
     # When depending on this package from a real application you should use:
@@ -44,13 +47,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  widgetbook_generator: ^3.3.0
+  build_runner:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

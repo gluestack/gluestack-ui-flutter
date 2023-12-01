@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/input_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
 import 'package:provider/provider.dart';
 
 import 'example/public.dart';
@@ -43,6 +46,57 @@ class _MyAppState extends State<MyApp> {
                     const Text(
                       "Scroll more for all the components",
                       style: TextStyle(fontSize: 22),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        navigatorKey.currentState!.push(
+                          MaterialPageRoute(
+                            builder: (context) => const ButtonPreview(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Preview Button',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        navigatorKey.currentState!.push(
+                          MaterialPageRoute(
+                            builder: (context) => const InputPreview(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Preview Input',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        navigatorKey.currentState!.push(
+                          MaterialPageRoute(
+                            builder: (context) => const BadgePreview(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Preview Badge',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {

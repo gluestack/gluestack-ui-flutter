@@ -20,8 +20,11 @@ export const parameters = {
       order: [
         'Overview',
         ['Introduction'],
-        'components',
-        ['forms', ['button']],
+        'Getting Started',
+        ['Installation'],
+        'Components',
+        ['Forms', ['Button', 'Input'], 'Data Display', ['Badge']], 
+       
        
       ],
     },
