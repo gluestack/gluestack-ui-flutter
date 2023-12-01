@@ -53,7 +53,7 @@ class _ListYourPlaceModalContent3State
           ),
         ),
         shouldShowSpinner
-            ? const Center(child: GSSpinner())
+            ? const Center(child: Spinner())
             : SizedBox(
                 width: double.infinity,
                 child: Button(

@@ -21,7 +21,7 @@ export 'src/widgets/gs_link/public.dart';
 export 'src/widgets/gs_pressable/public.dart';
 export 'src/widgets/gs_progress/public.dart';
 export 'src/widgets/gs_radio/public.dart';
-export 'src/widgets/gs_spinner/public.dart';
+export 'src/widgets/spinner/public.dart';
 export 'src/widgets/gs_switch/public.dart';
 export 'src/widgets/gs_text/public.dart';
 export 'src/widgets/text_area/public.dart';

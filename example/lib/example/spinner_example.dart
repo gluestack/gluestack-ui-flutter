@@ -21,7 +21,7 @@ class SpinnerExample extends StatelessWidget {
       body: Center(
         child: BaseLayout(
           code: code,
-          component: GSSpinner(
+          component: Spinner(
             strokeWidth: 6,
             style: GSStyle(
                 color: $GSColors.rose500,

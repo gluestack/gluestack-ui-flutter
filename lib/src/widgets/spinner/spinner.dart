@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_spinner/gs_spinner_style.dart';
+import 'package:gluestack_ui/src/widgets/spinner/spinner_style.dart';
 
-class GSSpinner extends StatelessWidget {
+class Spinner extends StatelessWidget {
   final GSSpinnerSize? size;
   final GSStyle? style;
   final double? value;
@@ -14,7 +14,7 @@ class GSSpinner extends StatelessWidget {
   final double? strokeAlign;
   final double? strokeWidth;
 
-  const GSSpinner({
+  const Spinner({
     super.key,
     this.style,
     this.size,
