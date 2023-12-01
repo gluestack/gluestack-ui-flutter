@@ -37,7 +37,7 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
       title: GSHStack(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const GSHeading(size: GSSizes.$sm, text: "List your place"),
+          const Heading(size: GSSizes.$sm, text: "List your place"),
           GSPressable(
               onPress: () {
                 Navigator.of(context).pop();

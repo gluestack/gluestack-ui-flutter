@@ -15,7 +15,7 @@ class KSTypesOfPlaces extends StatelessWidget {
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const GSHeading(
+        const Heading(
           text: "Type of place",
           size: GSSizes.$sm,
         ),

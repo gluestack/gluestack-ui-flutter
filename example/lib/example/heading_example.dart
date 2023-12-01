@@ -17,7 +17,7 @@ class HeadingExample extends StatelessWidget {
       body: Center(
         child: BaseLayout(
           code: code,
-          component: GSHeading(
+          component: Heading(
             text: 'I am a Heading',
             style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
           ),

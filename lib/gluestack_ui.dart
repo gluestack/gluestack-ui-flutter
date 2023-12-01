@@ -12,7 +12,7 @@ export 'src/widgets/center/public.dart';
 export 'src/widgets/checkbox/public.dart';
 export 'src/widgets/divider/public.dart';
 export 'src/widgets/gs_focusableActionDetector/public.dart';
-export 'src/widgets/gs_heading/public.dart';
+export 'src/widgets/heading/public.dart';
 export 'src/widgets/gs_hstack/public.dart';
 export 'src/widgets/gs_icon/public.dart';
 export 'src/widgets/gs_image/public.dart';

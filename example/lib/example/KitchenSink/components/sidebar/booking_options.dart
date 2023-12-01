@@ -17,7 +17,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const GSHeading(
+        const Heading(
           text: "Booking Option",
           size: GSSizes.$sm,
         ),

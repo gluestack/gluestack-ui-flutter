@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_heading/gs_heading_style.dart';
+import 'package:gluestack_ui/src/widgets/heading/heading_style.dart';
 
-class GSHeading extends StatelessWidget {
+class Heading extends StatelessWidget {
   final String text;
   final GSSizes? size;
   final GSStyle? style;
@@ -26,7 +26,7 @@ class GSHeading extends StatelessWidget {
   final TextHeightBehavior? textHeightBehavior;
   final double? textScaleFactor;
   final TextWidthBasis? textWidthBasis;
-  const GSHeading(
+  const Heading(
       {super.key,
       required this.text,
       this.size,

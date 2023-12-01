@@ -26,7 +26,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const GSHeading(
+        const Heading(
           text: "Ammenities",
           size: GSSizes.$sm,
         ),

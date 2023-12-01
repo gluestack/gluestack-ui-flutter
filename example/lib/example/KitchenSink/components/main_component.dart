@@ -55,7 +55,7 @@ class KSMainComponent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const GSHeading(size: GSSizes.$xl, text: 'New this week'),
+            const Heading(size: GSSizes.$xl, text: 'New this week'),
             Padding(
               padding: const EdgeInsets.only(top: 9),
               child: Button(

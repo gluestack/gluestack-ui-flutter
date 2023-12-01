@@ -43,7 +43,7 @@ class _KSSortByState extends State<KSSortBy> {
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const GSHeading(
+        const Heading(
           size: GSSizes.$sm,
           text: 'Sort by',
         ),

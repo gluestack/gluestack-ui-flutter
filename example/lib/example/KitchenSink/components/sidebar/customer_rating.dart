@@ -30,7 +30,7 @@ class KSCustomerRating extends StatelessWidget {
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const GSHeading(
+        const Heading(
           text: "Customer Ratings",
           size: GSSizes.$sm,
         ),
