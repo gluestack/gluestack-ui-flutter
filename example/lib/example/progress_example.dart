@@ -39,7 +39,7 @@ class _ProgressExampleState extends State<ProgressExample> {
       body: Center(
         child: BaseLayout(
           code: code,
-          component: GSProgress(
+          component: Progress(
             value: 0.4,
             size: selectedSizeOption,
           ),

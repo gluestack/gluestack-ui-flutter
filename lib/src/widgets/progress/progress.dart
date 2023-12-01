@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_style.dart';
+import 'package:gluestack_ui/src/widgets/progress/progress_style.dart';
 
-class GSProgress extends StatelessWidget {
+class Progress extends StatelessWidget {
   final GSStyle? style;
   final GSSizes? size;
   final double? value;
   final String? semanticsLabel;
   final String? semanticsValue;
-  const GSProgress(
+  const Progress(
       {super.key,
       this.style,
       this.size,
