@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_content.dart';
+import 'package:gluestack_ui/src/widgets/alert_dialog/alert_dialog_content.dart';
 
 // This file will be discared later
 @Deprecated("This widget will be discared later")

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_group_style.dart';
+import 'package:gluestack_ui/src/widgets/avatar/avatar.dart';
+import 'package:gluestack_ui/src/widgets/avatar/avatar_group_style.dart';
 
-class GSAvatarGroup extends StatelessWidget {
-  final List<GSAvatar> children;
+class AvatarGroup extends StatelessWidget {
+  final List<Avatar> children;
   final GSStyle? style;
   final bool? reversed;
   final GSDirection? direction;
 
-  const GSAvatarGroup({
+  const AvatarGroup({
     super.key,
-    this.children = const <GSAvatar>[],
+    this.children = const <Avatar>[],
     this.style,
     this.reversed = false,
     this.direction = GSDirection.row,

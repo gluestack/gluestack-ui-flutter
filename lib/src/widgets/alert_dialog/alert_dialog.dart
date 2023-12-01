@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_content.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_content_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_alert_dialog/alert_dialog_style.dart';
+import 'package:gluestack_ui/src/widgets/alert_dialog/alert_dialog_content.dart';
+import 'package:gluestack_ui/src/widgets/alert_dialog/alert_dialog_content_style.dart';
+import 'package:gluestack_ui/src/widgets/alert_dialog/alert_dialog_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 
 class AlertDialog extends StatefulWidget {

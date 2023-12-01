@@ -62,14 +62,14 @@ class _AvatarExampleState extends State<AvatarExample> {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSAvatar(
+        component: Avatar(
           radius: selectedRadiusOption,
           size: selectedSizeOption,
           style: GSStyle(
             bg: Colors.orange,
             textStyle: const TextStyle(color: Colors.white),
           ),
-          fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+          fallBackText: const AvatarFallBackText('Geeky Stack'),
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

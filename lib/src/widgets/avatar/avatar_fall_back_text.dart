@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_fallBack_text_style.dart';
+import 'package:gluestack_ui/src/widgets/avatar/avatar_fallBack_text_style.dart';
 
 /// GSAvatarFallBackText is a Flutter widget that displays a text within a GSBadge widget.
-class GSAvatarFallBackText extends StatelessWidget {
+class AvatarFallBackText extends StatelessWidget {
   // The text to be displayed inside the GS Avatar.
   final String text;
   // Style for the  GS Avatar text. Can be customized using GSStyle.
@@ -30,7 +30,7 @@ class GSAvatarFallBackText extends StatelessWidget {
   final TextWidthBasis? textWidthBasis;
 
   /// Constructor for GSAvatarFallBackText widget:
-  const GSAvatarFallBackText(
+  const AvatarFallBackText(
       //takes string as input just like inbuilt Text widget from flutter
       this.text,
       {super.key,

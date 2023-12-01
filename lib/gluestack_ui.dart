@@ -2,9 +2,9 @@ export 'src/provider/theme_provider.dart';
 export 'src/style/gs_style.dart';
 export 'src/token/public.dart';
 
-export 'src/widgets/gs_alert_dialog/public.dart';
+export 'src/widgets/alert_dialog/public.dart';
 export 'src/widgets/gs_ancestor/public.dart';
-export 'src/widgets/gs_avatar/public.dart';
+export 'src/widgets/avatar/public.dart';
 export 'src/widgets/gs_badge/public.dart';
 export 'src/widgets/gs_box/public.dart';
 export 'src/widgets/gs_button/public.dart';

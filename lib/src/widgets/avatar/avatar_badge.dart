@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_badge_style.dart';
+import 'package:gluestack_ui/src/widgets/avatar/avatar_badge_style.dart';
 
 
-class GSAvatarBadge extends StatelessWidget {
+class AvatarBadge extends StatelessWidget {
   final GSStyle? style;
   final double? left;
   final double? right;
   final double? top;
   final double? bottom;
-  const GSAvatarBadge(
+  const AvatarBadge(
       {super.key, this.style, this.left, this.right, this.top, this.bottom});
 
   @override

@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_badge.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_fall_back_text.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_style.dart';
+import 'package:gluestack_ui/src/widgets/avatar/avatar_badge.dart';
+import 'package:gluestack_ui/src/widgets/avatar/avatar_fall_back_text.dart';
+import 'package:gluestack_ui/src/widgets/avatar/avatar_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_image/gs_image.dart';
 
-class GSAvatar extends StatelessWidget {
+class Avatar extends StatelessWidget {
   final GSSizes? size;
   final GSStyle? style;
   final GSBorderRadius? radius;
-  final GSAvatarFallBackText? fallBackText;
+  final AvatarFallBackText? fallBackText;
   final ImageProvider? backgroundImage;
 
   ///This takes precedence over [avatarImage]!
@@ -20,9 +20,9 @@ class GSAvatar extends StatelessWidget {
   final ImageErrorListener? onBackgroundImageError;
   final ImageErrorListener? onForegroundImageError;
   final GSImage? avatarImage;
-  final GSAvatarBadge? avatarBadge;
+  final AvatarBadge? avatarBadge;
 
-  const GSAvatar({
+  const Avatar({
     super.key,
     this.style,
     this.fallBackText,
