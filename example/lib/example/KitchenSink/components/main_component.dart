@@ -46,7 +46,7 @@ class KSMainComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

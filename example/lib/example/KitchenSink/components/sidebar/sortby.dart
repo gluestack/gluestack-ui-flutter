@@ -39,7 +39,7 @@ class _KSSortByState extends State<KSSortBy> {
   KSSortOptions currentSelectedOption = KSSortOptions.topRating;
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

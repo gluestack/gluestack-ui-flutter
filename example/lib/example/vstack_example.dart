@@ -66,7 +66,7 @@ class _VStackExampleState extends State<VStackExample> {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: GSVStack(
+        component: VStack(
           mainAxisAlignment: MainAxisAlignment.center,
           isReversed: isReversed,
           space: selectedSpaceOption,

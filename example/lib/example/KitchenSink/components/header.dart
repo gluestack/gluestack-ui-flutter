@@ -9,7 +9,7 @@ class KSHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       children: [
         const SizedBox(height: 15),
         Padding(

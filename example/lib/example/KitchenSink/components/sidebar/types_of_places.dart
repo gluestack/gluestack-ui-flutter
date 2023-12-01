@@ -11,7 +11,7 @@ class KSTypesOfPlaces extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,7 +23,7 @@ class KSTypesOfPlaces extends StatelessWidget {
             values: [
               _typeOfPlacesData[0].value,
             ],
-            child: GSVStack(
+            child: VStack(
               space: GSSpaces.$lg,
               children: [
                 for (int i = 0; i < _typeOfPlacesData.length; i++)

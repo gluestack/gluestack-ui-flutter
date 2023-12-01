@@ -22,7 +22,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
   ];
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -35,7 +35,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
               _ammenitiesData[0].value,
               _ammenitiesData[2].value,
             ],
-            child: GSVStack(
+            child: VStack(
               crossAxisAlignment: CrossAxisAlignment.start,
               space: GSSpaces.$lg,
               children: [

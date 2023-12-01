@@ -18,7 +18,7 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       mainAxisSize: MainAxisSize.min,
       space: GSSpaces.$md,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +29,7 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
               _ammenitiesData[0].value,
               _ammenitiesData[2].value,
             ],
-            child: GSVStack(
+            child: VStack(
               space: GSSpaces.$md,
               children: [
                 for (int i = 0; i < (_ammenitiesData.length); i++)

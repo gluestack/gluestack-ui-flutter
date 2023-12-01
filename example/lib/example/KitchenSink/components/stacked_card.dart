@@ -14,7 +14,7 @@ class KSStackedCard extends StatelessWidget {
 
         return Box(
           style: GSStyle(width: 400),
-          child: GSVStack(
+          child: VStack(
             space: GSSpaces.$xs,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_vstack/gs_vstack_style.dart';
+import 'package:gluestack_ui/src/widgets/vstack/vstack_style.dart';
 
-class GSVStack extends StatelessWidget {
+class VStack extends StatelessWidget {
   final List<Widget> children;
   final GSSpaces? space;
   final MainAxisAlignment mainAxisAlignment;
@@ -12,7 +12,7 @@ class GSVStack extends StatelessWidget {
   final TextDirection? textDirection;
   final bool isReversed;
   final VerticalDirection verticalDirection;
-  const GSVStack({
+  const VStack({
     super.key,
     this.space = GSSpaces.$none,
     this.mainAxisAlignment = MainAxisAlignment.start,

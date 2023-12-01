@@ -15,7 +15,7 @@ class LayoutExample extends StatelessWidget {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
       return Scaffold(
         body: SafeArea(
-          child: GSVStack(
+          child: VStack(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const KSBanner(),

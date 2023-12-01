@@ -15,7 +15,7 @@ class _ListYourPlaceModalContent3State
   bool shouldShowSpinner = false;
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       space: GSSpaces.$md,

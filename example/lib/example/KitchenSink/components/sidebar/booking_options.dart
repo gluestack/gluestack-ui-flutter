@@ -13,7 +13,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
   bool switchVal2 = false;
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -27,7 +27,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: GSVStack(
+              child: VStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GSText(
@@ -72,7 +72,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: GSVStack(
+              child: VStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GSText(

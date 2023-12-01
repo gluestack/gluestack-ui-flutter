@@ -26,7 +26,7 @@ class KSCustomerRating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -35,7 +35,7 @@ class KSCustomerRating extends StatelessWidget {
           size: GSSizes.$sm,
         ),
         CheckBoxGroup(
-            child: GSVStack(
+            child: VStack(
           space: GSSpaces.$lg,
           children: [
             for (int i = 0; i < _customerRatingData.length; i++)

@@ -16,12 +16,12 @@ class _ListYourPlaceModalContent1State
   List<bool> selectedPropertyType = List.generate(4, (index) => false);
   @override
   Widget build(BuildContext context) {
-    return GSVStack(
+    return VStack(
       space: GSSpaces.$lg,
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GSVStack(
+        VStack(
           space: GSSpaces.$xs,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +61,7 @@ class _ListYourPlaceModalContent1State
             ),
           ],
         ),
-        GSVStack(
+        VStack(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GSText(bold: true, size: GSSizes.$sm, text: "Property is..."),
