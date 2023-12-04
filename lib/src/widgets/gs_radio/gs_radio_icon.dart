@@ -38,7 +38,7 @@ class GSRadioIcon<T> extends StatelessWidget {
         ?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
     final radioSize =
         GSRadioIconStyle.size[size ?? ancestorStyles?.props?.size];
-  
+
     GSStyle styler = resolveStyles(
       variantStyle: radioIconStyle.merge(radioIndicatorStyle),
       context,
@@ -66,7 +66,7 @@ class GSRadioIcon<T> extends StatelessWidget {
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             fillColor: MaterialStateColor.resolveWith((states) {
               return value.isInvalid
-                  ? styler.onInvaild!.borderColor!
+                  ? styler.onInvalid!.borderColor!
                   : isHovered
                       ? isChecked
                           ? styler.checked!.onHover!.color!

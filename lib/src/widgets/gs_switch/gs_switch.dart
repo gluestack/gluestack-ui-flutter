@@ -165,12 +165,12 @@ cursor: kIsWeb && widget.isDisabled
                       if (widget.isInvalid &&
                           states.contains(MaterialState.selected) &&
                           states.contains(MaterialState.hovered)) {
-                        return styler.onHover?.onInvaild?.trackColorTrue ??
+                        return styler.onHover?.onInvalid?.trackColorTrue ??
                             styler.trackColorTrue;
                       } else if (widget.isInvalid &&
                           !states.contains(MaterialState.selected) &&
                           states.contains(MaterialState.hovered)) {
-                        return styler.onHover?.onInvaild?.trackColorFalse ??
+                        return styler.onHover?.onInvalid?.trackColorFalse ??
                             styler.trackColorFalse;
                       } else if (states.contains(MaterialState.hovered) &&
                           states.contains(MaterialState.selected)) {
@@ -237,10 +237,10 @@ cursor: kIsWeb && widget.isDisabled
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
-                            styler.onInvaild?.borderRadius ?? 0),
+                            styler.onInvalid?.borderRadius ?? 0),
                         border: Border.all(
-                          color: styler.onInvaild?.borderColor ?? Colors.black,
-                          width: styler.onInvaild?.borderWidth ?? 1,
+                          color: styler.onInvalid?.borderColor ?? Colors.black,
+                          width: styler.onInvalid?.borderWidth ?? 1,
                         ),
                       ),
                     ),

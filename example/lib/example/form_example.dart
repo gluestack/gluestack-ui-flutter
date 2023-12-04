@@ -49,9 +49,6 @@ class _FormExampleState extends State<FormExample> {
             // isDisabled: true,
             size: GSSizes.$md,
             hintText: "Enter text here",
-            style: GSStyle(
-              width: 300,
-            ),
           ),
           //CHECKBOX------------------------
           GSCheckBox(

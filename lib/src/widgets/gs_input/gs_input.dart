@@ -274,9 +274,9 @@ class _GSInputState extends State<GSInput> {
     Color? resolveBorderColor() {
       if (isInvalid!) {
         if (widget.variant == GSVariants.underlined) {
-          return styler.onInvaild?.borderBottomColor;
+          return styler.onInvalid?.borderBottomColor;
         }
-        return styler.onInvaild?.borderColor ?? styler.borderColor;
+        return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
       if (_isHovered) {
         return styler.onHover?.borderColor ?? styler.borderColor;
@@ -291,7 +291,7 @@ class _GSInputState extends State<GSInput> {
     double? resolveBorderWidth() {
       if (widget.variant == GSVariants.underlined) {
         if (isInvalid!) {
-          return styler.onInvaild?.borderBottomWidth ??
+          return styler.onInvalid?.borderBottomWidth ??
               styler.borderBottomWidth;
         }
         if (_isHovered) {
@@ -304,7 +304,7 @@ class _GSInputState extends State<GSInput> {
         return styler.borderBottomWidth;
       }
       if (isInvalid!) {
-        return styler.onInvaild?.borderWidth ?? styler.borderWidth;
+        return styler.onInvalid?.borderWidth ?? styler.borderWidth;
       }
       if (_isHovered) {
         return styler.onHover?.borderWidth ?? styler.borderWidth;
@@ -319,9 +319,9 @@ class _GSInputState extends State<GSInput> {
     Color? resolveFocusBorderColor() {
       if (isInvalid!) {
         if (widget.variant == GSVariants.underlined) {
-          return styler.onInvaild?.borderBottomColor;
+          return styler.onInvalid?.borderBottomColor;
         }
-        return styler.onInvaild?.borderColor ?? styler.borderColor;
+        return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
 
       return styler.onFocus?.borderColor;

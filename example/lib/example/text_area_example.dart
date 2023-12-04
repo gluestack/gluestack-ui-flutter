@@ -74,8 +74,8 @@ class _TextAreaExampleState extends State<TextAreaExample> {
           isInvalid: isInvalid,
           hintText: "Enter text here",
           style: GSStyle(
-            width: 300,
-          ),
+              // width: 300,
+              ),
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

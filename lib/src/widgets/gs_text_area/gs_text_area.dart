@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/theme/config/text_area/text_area.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
@@ -260,7 +261,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
     isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
     isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
-
+   
     GSStyle styler = resolveStyles(
       context,
       variantStyle: textAreaStyle,
@@ -271,7 +272,7 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     Color? resolveBorderColor() {
       if (isInvalid!) {
-        return styler.onInvaild?.borderColor ?? styler.borderColor;
+        return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
       if (_isHovered) {
         return styler.onHover?.borderColor ?? styler.borderColor;
@@ -285,7 +286,7 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     double? resolveBorderWidth() {
       if (isInvalid!) {
-        return styler.onInvaild?.borderWidth ?? styler.borderWidth;
+        return styler.onInvalid?.borderWidth ?? styler.borderWidth;
       }
       if (_isHovered) {
         return styler.onHover?.borderWidth ?? styler.borderWidth;
@@ -299,7 +300,7 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     Color? resolveFocusBorderColor() {
       if (isInvalid!) {
-        return styler.onInvaild?.borderColor ?? styler.borderColor;
+        return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
 
       return styler.onFocus?.borderColor;
@@ -318,7 +319,7 @@ class _GSTextAreaState extends State<GSTextArea> {
         borderRadius: BorderRadius.circular(styler.borderRadius!));
     final hintStyle =
         widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
-
+    print('h: ${styler.height}');
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
         if (isDisabled!) {
@@ -332,7 +333,7 @@ class _GSTextAreaState extends State<GSTextArea> {
         }
       },
       child: Opacity(
-        opacity: isDisabled! ? styler.onDisabled!.opacity! : 1,
+        opacity: isDisabled ? styler.onDisabled!.opacity! : 1,
         child: SizedBox(
           width: styler.width,
           height: styler.height,
