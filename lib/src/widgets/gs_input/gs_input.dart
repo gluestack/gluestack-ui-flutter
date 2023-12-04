@@ -60,7 +60,6 @@ class GSInput extends StatefulWidget {
   final void Function()? onTap;
   final void Function(String, Map<String, dynamic>)? onAppPrivateCommand;
   final void Function(String)? onChanged;
-  final void Function(String)? onSubmitted;
   final void Function(PointerDownEvent)? onTapOutside;
   final Widget? Function(BuildContext,
       {required int currentLength,
@@ -170,7 +169,6 @@ class GSInput extends StatefulWidget {
     this.onAppPrivateCommand,
     this.onChanged,
     this.onEditingComplete,
-    this.onSubmitted,
     this.onTap,
     this.onTapOutside,
     this.restorationId,

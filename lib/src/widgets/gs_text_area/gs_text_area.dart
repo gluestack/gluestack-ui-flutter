@@ -62,7 +62,6 @@ class GSTextArea extends StatefulWidget {
   final void Function()? onTap;
   final void Function(String, Map<String, dynamic>)? onAppPrivateCommand;
   final void Function(String)? onChanged;
-  final void Function(String)? onSubmitted;
   final void Function(PointerDownEvent)? onTapOutside;
   final Widget? Function(BuildContext,
       {required int currentLength,
@@ -123,6 +122,12 @@ class GSTextArea extends StatefulWidget {
   final TextStyle? suffixStyle;
   final String? suffixText;
   final bool visualFeedback;
+    final String? initialValue;
+  //form prop
+  final FormFieldValidator? validator;
+  final FormFieldSetter? onSaved;
+  final AutovalidateMode? autovalidateMode;
+  final ValueChanged<String>? onFieldSubmitted;
   const GSTextArea(
       {super.key,
       this.size = GSSizes.$md,
@@ -165,7 +170,6 @@ class GSTextArea extends StatefulWidget {
       this.onAppPrivateCommand,
       this.onChanged,
       this.onEditingComplete,
-      this.onSubmitted,
       this.onTap,
       this.onTapOutside,
       this.restorationId,
@@ -230,7 +234,7 @@ class GSTextArea extends StatefulWidget {
       this.suffixStyle,
       this.suffixText,
       this.visualFeedback = true,
-      this.style})
+      this.style, this.validator, this.onSaved, this.autovalidateMode, this.onFieldSubmitted, this.initialValue})
       : assert(
           size == null ||
               size == GSSizes.$xl ||
@@ -255,8 +259,8 @@ class _GSTextAreaState extends State<GSTextArea> {
     bool? isDisabled = widget.isDisabled;
     bool? isReadOnly = widget.isReadOnly;
     bool? isInvalid = widget.isInvalid;
-    //Technically not needed right? If needed convert return to accomodate TextFormField for non empty content validation - Krishna
-    // final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
+
+    final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
 
     isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
     isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
@@ -319,7 +323,7 @@ class _GSTextAreaState extends State<GSTextArea> {
         borderRadius: BorderRadius.circular(styler.borderRadius!));
     final hintStyle =
         widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
-    print('h: ${styler.height}');
+
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
         if (isDisabled!) {
@@ -337,7 +341,20 @@ class _GSTextAreaState extends State<GSTextArea> {
         child: SizedBox(
           width: styler.width,
           height: styler.height,
-          child: TextField(
+          child: TextFormField(
+             validator: (value) {
+              if (isRequired && value != null && value.isEmpty) {
+                return widget.errorText != null && widget.errorText!.isNotEmpty
+                    ? widget.errorText
+                    : 'This field cannot be empty!';
+              }
+
+              return widget.validator != null ? widget.validator!(value) : null;
+            },
+            onSaved: widget.onSaved,
+            autovalidateMode: widget.autovalidateMode,
+            initialValue: widget.initialValue,
+            onFieldSubmitted: widget.onFieldSubmitted,
             autocorrect: widget.autocorrect,
             autofillHints: widget.autofillHints,
             autofocus: widget.autofocus,
@@ -378,7 +395,6 @@ class _GSTextAreaState extends State<GSTextArea> {
             onAppPrivateCommand: widget.onAppPrivateCommand,
             onChanged: widget.onChanged,
             onEditingComplete: widget.onEditingComplete,
-            onSubmitted: widget.onSubmitted,
             onTap: widget.onTap,
             onTapOutside: widget.onTapOutside,
             restorationId: widget.restorationId,
