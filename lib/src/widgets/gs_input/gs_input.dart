@@ -361,7 +361,7 @@ class _GSInputState extends State<GSInput> {
         }
       },
       child: Opacity(
-        opacity: isDisabled! ? styler.opacity! : 1,
+        opacity: isDisabled ? styler.opacity! : 1,
         child: SizedBox(
           width: styler.width,
           height: styler.height,

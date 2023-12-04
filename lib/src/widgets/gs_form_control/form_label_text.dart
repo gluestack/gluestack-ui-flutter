@@ -6,12 +6,13 @@ import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 class GSFormLabelText extends StatelessWidget {
   final String text;
   final GSStyle? style;
-  const GSFormLabelText(this.text, {super.key, this.style});
+  final bool? isRequired;
+  const GSFormLabelText(this.text, {super.key, this.style, this.isRequired});
 
   @override
   Widget build(BuildContext context) {
-    final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
-    return isRequired
+    final isLabelRequired = isRequired ?? GSFormProvider.of(context)?.isRequired ?? false;
+    return isLabelRequired
         ? Row(
             mainAxisSize: MainAxisSize.min,
             children: [
