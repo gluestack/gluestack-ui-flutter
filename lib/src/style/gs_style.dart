@@ -901,6 +901,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
       ),
       onDisabled: GSStyle(
+         
         opacity: data?[':disabled']?['opacity'],
         web: GSStyle(
           cursors:
@@ -1024,6 +1025,7 @@ class GSStyle extends BaseStyle<GSStyle> {
           ),
         ),
         onDisabled: GSStyle(
+          borderColor: resolveColorFromString(data?['_dark']?[':disabled']?['borderColor']),
           trackColorTrue: resolveColorFromString(
               data?['_dark']?[':disabled']?['trackColor']?['true']),
           trackColorFalse: resolveColorFromString(

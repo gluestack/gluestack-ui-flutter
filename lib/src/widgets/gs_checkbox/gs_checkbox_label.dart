@@ -31,14 +31,17 @@ class GSCheckBoxLabel extends StatelessWidget {
                 isChecked: isChecked,
                 isDisabled: isDisabled,
                 isHovered: isDisabled ? false : isHovered) ??
-            styler.textStyle?.color);
+            styler.color);
 
-    return Text(
-      text,
-      style: currentTextStyle,
+
+    return Opacity(
+      opacity: isDisabled?styler?.onDisabled?.opacity??0.0:1,
+      child: Text(
+        text,
+        style: currentTextStyle,
+      ),
     );
   }
-
 
 //resolve this with styleResolver in future
   Color? _resolveColor(GSStyle? styler,
