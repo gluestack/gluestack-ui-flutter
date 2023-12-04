@@ -3,6 +3,7 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
+import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_style.dart';
 
@@ -30,8 +31,8 @@ class GSRadio<T> extends StatelessWidget {
   final Widget? label;
   final T value;
   final T groupValue;
-  final bool isDisabled;
-  final bool isInvalid;
+  final bool? isDisabled;
+  final bool? isInvalid;
   final GSStyle? style;
   final void Function(T? value)? onChanged;
 
@@ -42,10 +43,11 @@ class GSRadio<T> extends StatelessWidget {
       required this.value,
       required this.onChanged,
       this.style,
-      this.isDisabled = false,
-      this.isInvalid = false,
+      this.isDisabled,
+      this.isInvalid,
       this.label,
-      this.size}): assert(
+      this.size})
+      : assert(
             size == GSSizes.$lg ||
                 size == GSSizes.$md ||
                 size == GSSizes.$sm ||
@@ -55,18 +57,30 @@ class GSRadio<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final radioSize = size ?? radioStyle.props!.size!;
-   
+    final formProps = GSFormProvider.of(context);
+    bool? isRadioDisabled = isDisabled;
+    bool? isRadioReadOnly = formProps?.isReadOnly ?? false;
+    bool? isRadioInvalid = isInvalid;
+    // final isRadioRequired = GSFormProvider.of(context)?.isRequired ?? false;
+
+    isRadioDisabled == null
+        ? isRadioDisabled = formProps?.isDisabled ?? false
+        : null;
+    isRadioInvalid == null
+        ? isRadioInvalid = formProps?.isInvalid ?? false
+        : null;
+
     return GSAncestor(
       decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize]!,
       child: GSFocusableActionDetector(
         child: InkWell(
           focusColor: Colors.transparent,
           hoverColor: Colors.transparent,
-          mouseCursor: isDisabled
+          mouseCursor: isRadioDisabled
               ? SystemMouseCursors.forbidden
               : SystemMouseCursors.click,
           onTap: () {
-            if (!isDisabled && value != groupValue) {
+            if (!isRadioDisabled! && value != groupValue && !isRadioReadOnly) {
               onChanged!.call(value);
             }
           },
@@ -76,8 +90,8 @@ class GSRadio<T> extends StatelessWidget {
               onChanged: null,
               size: radioSize,
               style: style,
-              isInvalid: isInvalid,
-              isDisabled: isDisabled,
+              isInvalid: isRadioInvalid,
+              isDisabled: isRadioDisabled,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [icon, if (label != null) label!],

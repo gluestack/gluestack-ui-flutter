@@ -27,11 +27,11 @@ class ThemeProvider with ChangeNotifier {
   ThemeData getThemeData() {
     switch (_currentTheme) {
       case GSThemeMode.light:
-        return ThemeData.light();
+        return ThemeData.light(useMaterial3: false);
       case GSThemeMode.dark:
-        return ThemeData.dark();
+        return ThemeData.dark(useMaterial3: false);
       default:
-        return ThemeData.light();
+        return ThemeData.light(useMaterial3: false);
     }
   }
 }

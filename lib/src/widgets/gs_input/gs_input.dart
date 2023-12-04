@@ -3,8 +3,10 @@ import 'dart:ui' as ui;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_input/gs_input_style.dart';
 
 class GSInput extends StatefulWidget {
@@ -13,7 +15,7 @@ class GSInput extends StatefulWidget {
   final GSStyle? style;
   final bool? isDisabled;
   final bool? isInvalid;
-  final bool? readOnly;
+  final bool? isReadOnly;
   final bool autocorrect;
   final Iterable<String>? autofillHints;
   final bool autofocus;
@@ -119,115 +121,127 @@ class GSInput extends StatefulWidget {
   final TextStyle? suffixStyle;
   final String? suffixText;
   final bool visualFeedback;
-  const GSInput(
-      {super.key,
-      this.variant = GSVariants.outline,
-      this.size = GSSizes.$md,
-      this.isDisabled = false,
-      this.isInvalid = false,
-      this.readOnly = false,
-      this.autocorrect = true,
-      this.buildCounter,
-      this.autofocus = false,
-      this.isCollapsed = false,
-      this.autofillHints,
-      this.canRequestFocus = true,
-      this.clipBehavior = Clip.hardEdge,
-      this.enableIMEPersonalizedLearning = true,
-      this.enableSuggestions = true,
-      this.expands = false,
-      this.scribbleEnabled = true,
-      this.cursorWidth = 2.0,
-      this.dragStartBehavior = DragStartBehavior.start,
-      this.obscuringCharacter = '•',
-      this.controller,
-      this.maxLength,
-      this.contextMenuBuilder,
-      this.contentInsertionConfiguration,
-      this.cursorHeight,
-      this.cursorColor,
-      this.cursorOpacityAnimates,
-      this.cursorRadius,
-      this.enableInteractiveSelection,
-      this.keyboardAppearance,
-      this.focusNode,
-      this.inputFormatters,
-      this.keyboardType,
-      this.maxLengthEnforcement,
-      this.magnifierConfiguration,
-      this.maxLines = 1,
-      this.minLines,
-      this.mouseCursor,
-      this.obscureText = false,
-      this.onAppPrivateCommand,
-      this.onChanged,
-      this.onEditingComplete,
-      this.onSubmitted,
-      this.onTap,
-      this.onTapOutside,
-      this.restorationId,
-      this.scrollController,
-      this.scrollPhysics,
-      this.selectionWidthStyle = ui.BoxWidthStyle.tight,
-      this.scrollPadding = const EdgeInsets.all(20.0),
-      this.selectionHeightStyle = ui.BoxHeightStyle.tight,
-      this.textCapitalization = TextCapitalization.none,
-      this.textAlign = TextAlign.start,
-      this.selectionControls,
-      this.showCursor,
-      this.smartDashesType,
-      this.smartQuotesType,
-      this.spellCheckConfiguration,
-      this.strutStyle,
-      this.textAlignVertical,
-      this.textDirection,
-      this.textInputAction,
-      this.undoController,
-      this.alignLabelWithHint,
-      this.constraints,
-      this.counter,
-      this.counterStyle,
-      this.counterText,
-      this.disabledBorder,
-      this.error,
-      this.errorBorder,
-      this.errorMaxLines,
-      this.errorStyle,
-      this.errorText,
-      this.floatingLabelAlignment,
-      this.floatingLabelBehavior,
-      this.floatingLabelStyle,
-      this.focusColor,
-      this.focusedErrorBorder,
-      this.helperMaxLines,
-      this.helperStyle,
-      this.helperText,
-      this.hintMaxLines,
-      this.hintStyle,
-      this.hintText,
-      this.hintTextDirection,
-      this.isDense,
-      this.label,
-      this.labelStyle,
-      this.labelText,
-      this.semanticCounterText,
-      this.iconColor,
-      this.hoverColor,
-      this.icon,
-      this.prefix,
-      this.prefixIcon,
-      this.prefixIconColor,
-      this.prefixIconConstraints,
-      this.prefixStyle,
-      this.prefixText,
-      this.suffix,
-      this.suffixIcon,
-      this.suffixIconColor,
-      this.suffixIconConstraints,
-      this.suffixStyle,
-      this.suffixText,
-      this.visualFeedback = true,
-      this.style});
+  final String? initialValue;
+  //form prop
+  final FormFieldValidator? validator;
+  final FormFieldSetter? onSaved;
+  final AutovalidateMode? autovalidateMode;
+  final ValueChanged<String>? onFieldSubmitted;
+  const GSInput({
+    super.key,
+    this.variant = GSVariants.outline,
+    this.size = GSSizes.$md,
+    this.isDisabled,
+    this.isInvalid,
+    this.isReadOnly,
+    this.autocorrect = true,
+    this.buildCounter,
+    this.autofocus = false,
+    this.isCollapsed = false,
+    this.autofillHints,
+    this.canRequestFocus = true,
+    this.clipBehavior = Clip.hardEdge,
+    this.enableIMEPersonalizedLearning = true,
+    this.enableSuggestions = true,
+    this.expands = false,
+    this.scribbleEnabled = true,
+    this.cursorWidth = 2.0,
+    this.dragStartBehavior = DragStartBehavior.start,
+    this.obscuringCharacter = '•',
+    this.controller,
+    this.maxLength,
+    this.contextMenuBuilder,
+    this.contentInsertionConfiguration,
+    this.cursorHeight,
+    this.cursorColor,
+    this.cursorOpacityAnimates,
+    this.cursorRadius,
+    this.enableInteractiveSelection,
+    this.keyboardAppearance,
+    this.focusNode,
+    this.inputFormatters,
+    this.keyboardType,
+    this.maxLengthEnforcement,
+    this.magnifierConfiguration,
+    this.maxLines = 1,
+    this.minLines,
+    this.mouseCursor,
+    this.obscureText = false,
+    this.onAppPrivateCommand,
+    this.onChanged,
+    this.onEditingComplete,
+    this.onSubmitted,
+    this.onTap,
+    this.onTapOutside,
+    this.restorationId,
+    this.scrollController,
+    this.scrollPhysics,
+    this.selectionWidthStyle = ui.BoxWidthStyle.tight,
+    this.scrollPadding = const EdgeInsets.all(20.0),
+    this.selectionHeightStyle = ui.BoxHeightStyle.tight,
+    this.textCapitalization = TextCapitalization.none,
+    this.textAlign = TextAlign.start,
+    this.selectionControls,
+    this.showCursor,
+    this.smartDashesType,
+    this.smartQuotesType,
+    this.spellCheckConfiguration,
+    this.strutStyle,
+    this.textAlignVertical,
+    this.textDirection,
+    this.textInputAction,
+    this.undoController,
+    this.alignLabelWithHint,
+    this.constraints,
+    this.counter,
+    this.counterStyle,
+    this.counterText,
+    this.disabledBorder,
+    this.error,
+    this.errorBorder,
+    this.errorMaxLines,
+    this.errorStyle,
+    this.errorText,
+    this.floatingLabelAlignment,
+    this.floatingLabelBehavior,
+    this.floatingLabelStyle,
+    this.focusColor,
+    this.focusedErrorBorder,
+    this.helperMaxLines,
+    this.helperStyle,
+    this.helperText,
+    this.hintMaxLines,
+    this.hintStyle,
+    this.hintText,
+    this.hintTextDirection,
+    this.isDense,
+    this.label,
+    this.labelStyle,
+    this.labelText,
+    this.semanticCounterText,
+    this.iconColor,
+    this.hoverColor,
+    this.icon,
+    this.prefix,
+    this.prefixIcon,
+    this.prefixIconColor,
+    this.prefixIconConstraints,
+    this.prefixStyle,
+    this.prefixText,
+    this.suffix,
+    this.suffixIcon,
+    this.suffixIconColor,
+    this.suffixIconConstraints,
+    this.suffixStyle,
+    this.suffixText,
+    this.visualFeedback = true,
+    this.style,
+    this.validator,
+    this.onSaved,
+    this.autovalidateMode = AutovalidateMode.disabled,
+    this.initialValue,
+    this.onFieldSubmitted,
+  });
 
   @override
   State<GSInput> createState() => _GSInputState();
@@ -240,6 +254,16 @@ class _GSInputState extends State<GSInput> {
   Widget build(BuildContext context) {
     final inputVariant = widget.variant ?? inputStyle.props?.variant;
     final inputSize = widget.size ?? inputStyle.props?.size;
+    final formProps = GSFormProvider.of(context);
+    bool? isDisabled = widget.isDisabled;
+    bool? isReadOnly = widget.isReadOnly;
+    bool? isInvalid = widget.isInvalid;
+    final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
+
+    isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
+    isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
+    isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
+
     GSStyle styler = resolveStyles(
       context,
       variantStyle: GSInputStyle.gsInputCombination[inputVariant],
@@ -248,7 +272,7 @@ class _GSInputState extends State<GSInput> {
     )!;
 
     Color? resolveBorderColor() {
-      if (widget.isInvalid!) {
+      if (isInvalid!) {
         if (widget.variant == GSVariants.underlined) {
           return styler.onInvaild?.borderBottomColor;
         }
@@ -257,7 +281,7 @@ class _GSInputState extends State<GSInput> {
       if (_isHovered) {
         return styler.onHover?.borderColor ?? styler.borderColor;
       }
-      if (widget.isDisabled!) {
+      if (isDisabled!) {
         return styler.onDisabled?.borderColor ?? styler.borderColor;
       }
 
@@ -266,26 +290,26 @@ class _GSInputState extends State<GSInput> {
 
     double? resolveBorderWidth() {
       if (widget.variant == GSVariants.underlined) {
-        if (widget.isInvalid!) {
+        if (isInvalid!) {
           return styler.onInvaild?.borderBottomWidth ??
               styler.borderBottomWidth;
         }
         if (_isHovered) {
           return styler.onHover?.borderBottomWidth ?? styler.borderBottomWidth;
         }
-        if (widget.isDisabled!) {
+        if (isDisabled!) {
           return styler.onDisabled?.borderBottomWidth ??
               styler.borderBottomWidth;
         }
         return styler.borderBottomWidth;
       }
-      if (widget.isInvalid!) {
+      if (isInvalid!) {
         return styler.onInvaild?.borderWidth ?? styler.borderWidth;
       }
       if (_isHovered) {
         return styler.onHover?.borderWidth ?? styler.borderWidth;
       }
-      if (widget.isDisabled!) {
+      if (isDisabled!) {
         return styler.onDisabled?.borderWidth ?? styler.borderWidth;
       }
 
@@ -293,7 +317,7 @@ class _GSInputState extends State<GSInput> {
     }
 
     Color? resolveFocusBorderColor() {
-      if (widget.isInvalid!) {
+      if (isInvalid!) {
         if (widget.variant == GSVariants.underlined) {
           return styler.onInvaild?.borderBottomColor;
         }
@@ -323,9 +347,10 @@ class _GSInputState extends State<GSInput> {
         : UnderlineInputBorder(
             borderSide: BorderSide(color: borderColor!, width: borderWidth!),
           );
+
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
-        if (widget.isDisabled!) {
+        if (isDisabled!) {
           _isHovered = false;
         } else {
           if (value != _isHovered) {
@@ -336,11 +361,15 @@ class _GSInputState extends State<GSInput> {
         }
       },
       child: Opacity(
-        opacity: widget.isDisabled! ? styler.opacity! : 1,
+        opacity: isDisabled! ? styler.opacity! : 1,
         child: SizedBox(
           width: styler.width,
           height: styler.height,
-          child: TextField(
+          child: TextFormField(
+            onSaved: widget.onSaved,
+            autovalidateMode: widget.autovalidateMode,
+            initialValue: widget.initialValue,
+            onFieldSubmitted: widget.onFieldSubmitted,
             autocorrect: widget.autocorrect,
             autofillHints: widget.autofillHints,
             autofocus: widget.autofocus,
@@ -356,8 +385,8 @@ class _GSInputState extends State<GSInput> {
             cursorRadius: widget.cursorRadius,
             cursorWidth: widget.cursorWidth,
             dragStartBehavior: widget.dragStartBehavior,
-            enabled: !widget.isDisabled!,
-            readOnly: widget.readOnly!,
+            enabled: !isDisabled,
+            readOnly: isReadOnly!,
             enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
             enableInteractiveSelection: widget.enableInteractiveSelection,
             enableSuggestions: widget.enableSuggestions,
@@ -371,7 +400,7 @@ class _GSInputState extends State<GSInput> {
             maxLengthEnforcement: widget.maxLengthEnforcement,
             maxLines: widget.maxLines,
             minLines: widget.minLines,
-            mouseCursor: widget.isDisabled!
+            mouseCursor: isDisabled
                 ? SystemMouseCursors.forbidden
                 : _isHovered
                     ? SystemMouseCursors.text
@@ -381,7 +410,15 @@ class _GSInputState extends State<GSInput> {
             onAppPrivateCommand: widget.onAppPrivateCommand,
             onChanged: widget.onChanged,
             onEditingComplete: widget.onEditingComplete,
-            onSubmitted: widget.onSubmitted,
+            validator: (value) {
+              if (isRequired && value != null && value.isEmpty) {
+                return widget.errorText != null && widget.errorText!.isNotEmpty
+                    ? widget.errorText
+                    : 'This field cannot be empty!';
+              }
+
+              return widget.validator != null ? widget.validator!(value) : null;
+            },
             onTap: widget.onTap,
             onTapOutside: widget.onTapOutside,
             restorationId: widget.restorationId,

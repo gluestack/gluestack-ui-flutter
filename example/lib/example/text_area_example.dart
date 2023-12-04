@@ -72,7 +72,7 @@ class _TextAreaExampleState extends State<TextAreaExample> {
           component: GSTextArea(
             size: selectedSizeOption,
             isDisabled: isDisabled,
-            readOnly: isReadOnly,
+            isReadOnly: isReadOnly,
             isInvalid: isInvalid,
             hintText: "Enter text here",
             style: GSStyle(

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_syntax_view/flutter_syntax_view.dart';
@@ -23,7 +25,7 @@ class BaseLayout extends StatelessWidget {
         children: [
           Expanded(
             child: Flex(
-              direction: kIsWeb ? Axis.horizontal : Axis.vertical,
+              direction: kIsWeb || Platform.isMacOS ? Axis.horizontal : Axis.vertical,
               children: [
                 Expanded(
                   child: Center(child: component),

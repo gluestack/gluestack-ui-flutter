@@ -3,8 +3,10 @@ import 'dart:ui' as ui;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
 
@@ -14,7 +16,7 @@ class GSTextArea extends StatefulWidget {
   final GSStyle? style;
   final bool? isDisabled;
   final bool? isInvalid;
-  final bool? readOnly;
+  final bool? isReadOnly;
   final bool autocorrect;
   final Iterable<String>? autofillHints;
   final bool autofocus;
@@ -123,9 +125,9 @@ class GSTextArea extends StatefulWidget {
   const GSTextArea(
       {super.key,
       this.size = GSSizes.$md,
-      this.isDisabled = false,
-      this.isInvalid = false,
-      this.readOnly = false,
+      this.isDisabled,
+      this.isInvalid,
+      this.isReadOnly,
       this.autocorrect = true,
       this.buildCounter,
       this.autofocus = false,
@@ -248,6 +250,17 @@ class _GSTextAreaState extends State<GSTextArea> {
   @override
   Widget build(BuildContext context) {
     final inputSize = widget.size ?? textAreaStyle.props?.size;
+    final formProps = GSFormProvider.of(context);
+    bool? isDisabled = widget.isDisabled;
+    bool? isReadOnly = widget.isReadOnly;
+    bool? isInvalid = widget.isInvalid;
+    //Technically not needed right? If needed convert return to accomodate TextFormField for non empty content validation - Krishna
+    // final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
+
+    isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
+    isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
+    isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
+
     GSStyle styler = resolveStyles(
       context,
       variantStyle: textAreaStyle,
@@ -257,13 +270,13 @@ class _GSTextAreaState extends State<GSTextArea> {
     )!;
 
     Color? resolveBorderColor() {
-      if (widget.isInvalid!) {
+      if (isInvalid!) {
         return styler.onInvaild?.borderColor ?? styler.borderColor;
       }
       if (_isHovered) {
         return styler.onHover?.borderColor ?? styler.borderColor;
       }
-      if (widget.isDisabled!) {
+      if (isDisabled!) {
         return styler.onDisabled?.borderColor ?? styler.borderColor;
       }
 
@@ -271,13 +284,13 @@ class _GSTextAreaState extends State<GSTextArea> {
     }
 
     double? resolveBorderWidth() {
-      if (widget.isInvalid!) {
+      if (isInvalid!) {
         return styler.onInvaild?.borderWidth ?? styler.borderWidth;
       }
       if (_isHovered) {
         return styler.onHover?.borderWidth ?? styler.borderWidth;
       }
-      if (widget.isDisabled!) {
+      if (isDisabled!) {
         return styler.onDisabled?.borderWidth ?? styler.borderWidth;
       }
 
@@ -285,7 +298,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     }
 
     Color? resolveFocusBorderColor() {
-      if (widget.isInvalid!) {
+      if (isInvalid!) {
         return styler.onInvaild?.borderColor ?? styler.borderColor;
       }
 
@@ -308,7 +321,7 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
-        if (widget.isDisabled!) {
+        if (isDisabled!) {
           _isHovered = false;
         } else {
           if (value != _isHovered) {
@@ -319,7 +332,7 @@ class _GSTextAreaState extends State<GSTextArea> {
         }
       },
       child: Opacity(
-        opacity: widget.isDisabled! ? styler.onDisabled!.opacity! : 1,
+        opacity: isDisabled! ? styler.onDisabled!.opacity! : 1,
         child: SizedBox(
           width: styler.width,
           height: styler.height,
@@ -339,8 +352,8 @@ class _GSTextAreaState extends State<GSTextArea> {
             cursorRadius: widget.cursorRadius,
             cursorWidth: widget.cursorWidth,
             dragStartBehavior: widget.dragStartBehavior,
-            enabled: !widget.isDisabled!,
-            readOnly: widget.readOnly!,
+            enabled: !isDisabled,
+            readOnly: isReadOnly,
             enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
             enableInteractiveSelection: widget.enableInteractiveSelection,
             enableSuggestions: widget.enableSuggestions,
@@ -354,7 +367,7 @@ class _GSTextAreaState extends State<GSTextArea> {
             maxLengthEnforcement: widget.maxLengthEnforcement,
             maxLines: widget.maxLines,
             minLines: widget.minLines,
-            mouseCursor: widget.isDisabled!
+            mouseCursor: isDisabled
                 ? SystemMouseCursors.forbidden
                 : _isHovered
                     ? SystemMouseCursors.text

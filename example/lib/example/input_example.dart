@@ -89,7 +89,7 @@ class _InputExampleState extends State<InputExample> {
             hintText: "Enter text here",
             isDisabled: isDisabled,
             isInvalid: isInvalid,
-            readOnly: isReadOnly,
+            isReadOnly: isReadOnly,
             style: GSStyle(
               width: 300,
             ),
