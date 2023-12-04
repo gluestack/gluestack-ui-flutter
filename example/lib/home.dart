@@ -66,6 +66,19 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+                GestureDetector(
+                onTap: () {
+                  router.go("/switchPreview");
+                },
+                child: const Text(
+                  'Preview Switch',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
