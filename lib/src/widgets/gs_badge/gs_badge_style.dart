@@ -1,7 +1,7 @@
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/badge/badge.dart';
-import 'package:gluestack_ui/src/token/radii_token.dart';
+import 'package:gluestack_ui/src/token/public.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 
 // GSStyleConfig for the Badge component | needed for descendantStyle

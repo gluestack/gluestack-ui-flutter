@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 import 'package:gluestack_ui_example/utils/drop_down.dart';
-import 'package:provider/provider.dart';
 
 class ProgressExample extends StatefulWidget {
   const ProgressExample({super.key});
@@ -30,15 +29,15 @@ class _ProgressExampleState extends State<ProgressExample> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     var code = '''GSProgress(
             value: 0.4,
             size: selectedSizeOption,
           )
   ''';
     return Scaffold(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Progress"),
+      ),
       body: Center(
         child: BaseLayout(
           code: code,

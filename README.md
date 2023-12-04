@@ -2,9 +2,13 @@
 
 **gluestack-ui-flutter** is a universal UI library that provides optionally styled and accessible widgets. These widgets are designed for easy integration into applications developed with Flutter.
 
+_Package is in development. APIs may change in the future._
+
 ## Documentation
 
-TODO
+You can try the example app demo on this link: https://gluestack-flutter.web.app/
+
+We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. You can find the detailed documentation for each component, including a list of props and examples, in https://gluestack.io/ui/docs website.
 
 ## Features
 
@@ -22,8 +26,19 @@ TODO
 
 ## Installation
 
-```bash
-flutter pub add gluestack_ui
+Add the package to your dependencies:
+
+```yaml
+dependencies:
+  gluestack_ui: 0.0.1-alpha.2
+```
+
+OR
+
+```yaml
+dependencies:
+  gluestack_ui:
+    git: https://github.com/gluestack/gluestack-ui-flutter.git
 ```
 
 ## Usage
@@ -55,6 +70,8 @@ GSButton(
   child: const GSButtonText(text: "Click Here"),
 )
 ```
+
+All Gluestack widgets support dark theme. Package detects the current theme from Flutter's inbuilt `Theme.of(context).brightness`. Hence, you can manage the theme mode from MaterialApp itself using the state management of your choice.
 
 ## Contributing
 

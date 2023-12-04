@@ -4,8 +4,6 @@ import 'package:gluestack_ui_example/example/KitchenSink/components/list_your_pl
 import 'package:gluestack_ui_example/example/KitchenSink/components/list_your_place_modal/content2.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/components/list_your_place_modal/content3.dart';
 
-import 'package:provider/provider.dart';
-
 class ListYourPlaceModal extends StatefulWidget {
   const ListYourPlaceModal({super.key});
 
@@ -33,9 +31,7 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     return AlertDialog(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
       title: GSHStack(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
