@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_ui_example/example/form_example.dart';
 import 'example/public.dart';
 
 void main() {
@@ -74,23 +73,24 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
                 elementSpacing,
-                 GestureDetector(
-                      onTap: () {
-                        navigatorKey.currentState!.push(
-                          MaterialPageRoute(
-                            builder: (context) => const FormExample(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'GS Form',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
-                        ),
+                GestureDetector(
+                  onTap: () {
+                    navigatorKey.currentState!.push(
+                      MaterialPageRoute(
+                        builder: (context) => const FormExample(),
                       ),
+                    );
+                  },
+                  child: const Text(
+                    'GS Form',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
                     ),
+                  ),
+                ),
+                elementSpacing,
                 GestureDetector(
                   onTap: () {
                     navigatorKey.currentState!.push(

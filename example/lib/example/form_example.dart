@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-
-enum Value { one, two, three, four }
+import 'package:gluestack_ui_example/example/radio_button_example.dart';
 
 class FormExample extends StatefulWidget {
   const FormExample({super.key});
