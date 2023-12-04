@@ -74,7 +74,9 @@ class _GSCheckBoxState extends State<GSCheckBox> {
 
   @override
   Widget build(BuildContext context) {
-    final checkBoxSize = widget.size ?? checkboxStyle.props?.size;
+    final formProps = GSFormProvider.of(context);
+    final checkBoxSize =
+        widget.size ?? formProps?.size ?? checkboxStyle.props?.size;
     final styler = resolveStyles(context,
         variantStyle: checkboxStyle,
         size: GsCheckBoxStyle.size[checkBoxSize],
@@ -83,7 +85,7 @@ class _GSCheckBoxState extends State<GSCheckBox> {
     bool? isCheckBoxDisabled = widget.isDisabled ?? groupValue?.isDisabled;
     bool? isCheckBoxInvaild = widget.isInvalid ?? groupValue?.isInvalid;
     bool? isCheckBoxReadOnly = widget.isReadOnly ?? groupValue?.isReadOnly;
-    final formProps = GSFormProvider.of(context);
+
     // final isRequired = GSFormProvider.of(context)?.isRequired ?? false; //TODO: is this to be done?
 
     isCheckBoxDisabled == null

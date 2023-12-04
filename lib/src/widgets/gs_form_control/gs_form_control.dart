@@ -29,7 +29,8 @@ class GSFormControl extends StatefulWidget {
   final bool? isReadOnly;
   final bool? isRequired;
 
-  const GSFormControl({super.key, 
+  const GSFormControl({
+    super.key,
     required this.child,
     this.onPopInvoked,
     this.onChanged,
@@ -40,7 +41,8 @@ class GSFormControl extends StatefulWidget {
     this.isDisabled = false,
     this.isInvalid = false,
     this.isReadOnly = false,
-    this.isRequired = false, required this.formKey,
+    this.isRequired = false,
+    required this.formKey,
   });
 
   @override
@@ -48,9 +50,9 @@ class GSFormControl extends StatefulWidget {
 }
 
 class _GSFormControlState extends State<GSFormControl> {
-
   bool validateForm() {
-    if (widget.formKey.currentState != null && widget.formKey.currentState!.validate()) {
+    if (widget.formKey.currentState != null &&
+        widget.formKey.currentState!.validate()) {
       return true;
     } else {
       return false;
@@ -68,7 +70,7 @@ class _GSFormControlState extends State<GSFormControl> {
         inlineStyle: widget.style,
         // descendantStyles: GSFormControlStyle.fromControlDescendantStyles[widget.size],
         descendantStyleKeys: gsFromControlConfig.descendantStyle)!;
-
+    print('sirerer: ${widget.size}');
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSFormProvider(
@@ -76,6 +78,7 @@ class _GSFormControlState extends State<GSFormControl> {
         isInvalid: widget.isInvalid,
         isReadOnly: widget.isReadOnly,
         isRequired: widget.isRequired,
+        size: widget.size,
         child: Form(
           key: widget.formKey,
           canPop: widget.canPop,

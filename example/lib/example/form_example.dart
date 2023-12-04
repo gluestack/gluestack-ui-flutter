@@ -58,6 +58,7 @@ class _FormExampleState extends State<FormExample> {
   Widget build(BuildContext context) {
     var code = r"""GSFormControl(
           formKey: _formKey,
+          size: selectedSizeOption,
           isRequired: isRequired,
           isInvalid: isInvalid,
           isReadOnly: isReadOnly,
@@ -89,12 +90,10 @@ class _FormExampleState extends State<FormExample> {
                     return null;
                   },
                 ),
-                sp2,
                 //TEXTAREA---------------------
                 const GSFormLabelText('Bio'),
                 sp,
                 const GSTextArea(
-                  size: GSSizes.$md,
                   hintText: "Enter a bio describing yourself here....",
                 ),
                 const GSFormHelperText(
@@ -192,9 +191,16 @@ class _FormExampleState extends State<FormExample> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState != null &&
-                          _formKey.currentState!.validate()) {
+                          _formKey.currentState!.validate() &&
+                          !isDisabled) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Submitting data...')),
+                          const SnackBar(
+                            content: Text(
+                              'Submitting data...',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            backgroundColor: Colors.green,
+                          ),
                         );
                       }
                     }),
@@ -210,6 +216,7 @@ class _FormExampleState extends State<FormExample> {
         code: code,
         component: GSFormControl(
           formKey: _formKey,
+          size: selectedSizeOption,
           isRequired: isRequired,
           isInvalid: isInvalid,
           isReadOnly: isReadOnly,
@@ -225,7 +232,7 @@ class _FormExampleState extends State<FormExample> {
                 GSInput(
                   initialValue: "GlueStacky",
                   hintText: 'Enter your username here... | Ex. John Doe',
-                  style: GSStyle(height: 70),
+                  // style: GSStyle(height: 70),
                 ),
                 sp2,
                 const GSFormLabelText('Password'),
@@ -245,7 +252,6 @@ class _FormExampleState extends State<FormExample> {
                 const GSFormLabelText('Bio'),
                 sp,
                 const GSTextArea(
-                  size: GSSizes.$md,
                   hintText: "Enter a bio describing yourself here....",
                 ),
                 const GSFormHelperText(

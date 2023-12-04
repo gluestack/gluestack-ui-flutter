@@ -6,6 +6,7 @@ class GSFormProvider extends InheritedWidget {
   final bool? isDisabled;
   final bool? isReadOnly;
   final bool? isRequired;
+  final GSSizes? size;
 
   const GSFormProvider({
     super.key,
@@ -13,6 +14,7 @@ class GSFormProvider extends InheritedWidget {
     this.isDisabled = false,
     this.isReadOnly = false,
     this.isRequired = false,
+    this.size,
     required super.child,
   });
 
@@ -21,7 +23,8 @@ class GSFormProvider extends InheritedWidget {
     return isInvalid != oldWidget.isInvalid ||
         isDisabled != oldWidget.isDisabled ||
         isRequired != oldWidget.isRequired ||
-        isReadOnly != oldWidget.isReadOnly;
+        isReadOnly != oldWidget.isReadOnly ||
+        size != oldWidget.size;
   }
 
   static GSFormProvider? of(BuildContext context) {

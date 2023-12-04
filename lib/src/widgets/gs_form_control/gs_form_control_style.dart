@@ -18,14 +18,4 @@ class GSFormControlStyle {
     GSSizes.$md: formControlStyle.variants!.size!.$md!,
     GSSizes.$lg: formControlStyle.variants!.size!.$lg!,
   };
-
-  // static Map<GSSizes, Map<String, GSStyle?>> formControlDescendantStyles = {
-  //   GSSizes.$sm: mergeStyledMaps(
-  //       styleMap: mergeStyledMaps(
-  //           styleMap: formControlStyle.descendantStyles,
-  //           overrideStyleMap:
-  //               formControlStyle.variants?.size?.$sm?.descendantStyles,
-  //           keys: gsFromControlConfig.descendantStyle),
-  //       keys: gsFromControlConfig.descendantStyle),
-  // };
 }

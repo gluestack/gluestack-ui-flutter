@@ -122,7 +122,7 @@ class GSTextArea extends StatefulWidget {
   final TextStyle? suffixStyle;
   final String? suffixText;
   final bool visualFeedback;
-    final String? initialValue;
+  final String? initialValue;
   //form prop
   final FormFieldValidator? validator;
   final FormFieldSetter? onSaved;
@@ -130,7 +130,7 @@ class GSTextArea extends StatefulWidget {
   final ValueChanged<String>? onFieldSubmitted;
   const GSTextArea(
       {super.key,
-      this.size = GSSizes.$md,
+      this.size,
       this.isDisabled,
       this.isInvalid,
       this.isReadOnly,
@@ -234,7 +234,12 @@ class GSTextArea extends StatefulWidget {
       this.suffixStyle,
       this.suffixText,
       this.visualFeedback = true,
-      this.style, this.validator, this.onSaved, this.autovalidateMode, this.onFieldSubmitted, this.initialValue})
+      this.style,
+      this.validator,
+      this.onSaved,
+      this.autovalidateMode,
+      this.onFieldSubmitted,
+      this.initialValue})
       : assert(
           size == null ||
               size == GSSizes.$xl ||
@@ -254,8 +259,9 @@ class _GSTextAreaState extends State<GSTextArea> {
 
   @override
   Widget build(BuildContext context) {
-    final inputSize = widget.size ?? textAreaStyle.props?.size;
     final formProps = GSFormProvider.of(context);
+    final inputSize =
+        widget.size ?? formProps?.size ?? textAreaStyle.props?.size;
     bool? isDisabled = widget.isDisabled;
     bool? isReadOnly = widget.isReadOnly;
     bool? isInvalid = widget.isInvalid;
@@ -265,7 +271,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
     isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
     isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
-   
+
     GSStyle styler = resolveStyles(
       context,
       variantStyle: textAreaStyle,
@@ -342,7 +348,7 @@ class _GSTextAreaState extends State<GSTextArea> {
           width: styler.width,
           height: styler.height,
           child: TextFormField(
-             validator: (value) {
+            validator: (value) {
               if (isRequired && value != null && value.isEmpty) {
                 return widget.errorText != null && widget.errorText!.isNotEmpty
                     ? widget.errorText

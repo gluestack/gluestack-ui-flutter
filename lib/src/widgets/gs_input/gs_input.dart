@@ -129,7 +129,7 @@ class GSInput extends StatefulWidget {
   const GSInput({
     super.key,
     this.variant = GSVariants.outline,
-    this.size = GSSizes.$md,
+    this.size,
     this.isDisabled,
     this.isInvalid,
     this.isReadOnly,
@@ -251,8 +251,9 @@ class _GSInputState extends State<GSInput> {
   @override
   Widget build(BuildContext context) {
     final inputVariant = widget.variant ?? inputStyle.props?.variant;
-    final inputSize = widget.size ?? inputStyle.props?.size;
     final formProps = GSFormProvider.of(context);
+    final inputSize =
+        widget.size ?? formProps?.size ?? inputStyle.props?.size ?? GSSizes.$md;
     bool? isDisabled = widget.isDisabled;
     bool? isReadOnly = widget.isReadOnly;
     bool? isInvalid = widget.isInvalid;
@@ -435,7 +436,7 @@ class _GSInputState extends State<GSInput> {
             style: widget.style?.textStyle ??
                 TextStyle(
                     fontSize:
-                        GSInputStyle.size[widget.size]!.textStyle!.fontSize),
+                        GSInputStyle.size[inputSize]!.textStyle!.fontSize),
             textAlign: widget.textAlign,
             textAlignVertical: widget.textAlignVertical,
             textCapitalization: widget.textCapitalization,
