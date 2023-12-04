@@ -79,6 +79,12 @@ class _FormExampleState extends State<FormExample> {
             label: const GSRadioText<Value>(text: 'text4'),
             style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
           ),
+          GSFormLabelText(
+            'HiHiHiHi',
+          ),
+          GSFormHelperText('HiHiHiHi'),
+          GSText(text: 'HiHiHiHi'),
+          GSFormErrorText('HiHiHiHi'),
         ]),
       ),
     );

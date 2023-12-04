@@ -80,20 +80,22 @@ class _GSCheckBoxState extends State<GSCheckBox> {
         size: GsCheckBoxStyle.size[checkBoxSize],
         descendantStyleKeys: checkBoxConfig.descendantStyle,
         inlineStyle: widget.style);
-    bool? isCheckBoxDisabled =
-        widget.isDisabled ?? groupValue?.isDisabled;
-    bool? isCheckBoxInvaild =
-        widget.isInvalid ?? groupValue?.isInvalid ;
-    bool? isCheckBoxReadOnly =
-        widget.isReadOnly ?? groupValue?.isReadOnly ;
+    bool? isCheckBoxDisabled = widget.isDisabled ?? groupValue?.isDisabled;
+    bool? isCheckBoxInvaild = widget.isInvalid ?? groupValue?.isInvalid;
+    bool? isCheckBoxReadOnly = widget.isReadOnly ?? groupValue?.isReadOnly;
     final formProps = GSFormProvider.of(context);
     // final isRequired = GSFormProvider.of(context)?.isRequired ?? false; //TODO: is this to be done?
 
+    isCheckBoxDisabled == null
+        ? isCheckBoxDisabled = formProps?.isDisabled ?? false
+        : null;
+    isCheckBoxReadOnly == null
+        ? isCheckBoxReadOnly = formProps?.isReadOnly ?? false
+        : null;
+    isCheckBoxInvaild == null
+        ? isCheckBoxInvaild = formProps?.isInvalid ?? false
+        : null;
 
-      isCheckBoxDisabled == null ? isCheckBoxDisabled = formProps?.isDisabled??false : null;
-      isCheckBoxReadOnly == null ? isCheckBoxReadOnly = formProps?.isReadOnly ?? false: null;
-      isCheckBoxInvaild == null ? isCheckBoxInvaild = formProps?.isInvalid ??false : null;
-    
     return GSAncestor(
       decedentStyles: styler?.descendantStyles,
       child: GSFocusableActionDetector(
@@ -130,14 +132,17 @@ class _GSCheckBoxState extends State<GSCheckBox> {
                       widget.onChanged!(isChecked);
                     }
                   : null,
-              child: resolveFlexWidget(
-                  flexDirection: styler?.flexDirection,
-                  mainAxisAlignment: styler?.justifyContent,
-                  crossAxisAlignment: styler?.alignItems,
-                  children: [
-                    widget.icon,
-                    if (widget.label != null) widget.label!
-                  ])),
+              child: Opacity(
+                opacity: isCheckBoxDisabled ? 0.5 : 1,
+                child: resolveFlexWidget(
+                    flexDirection: styler?.flexDirection,
+                    mainAxisAlignment: styler?.justifyContent,
+                    crossAxisAlignment: styler?.alignItems,
+                    children: [
+                      widget.icon,
+                      if (widget.label != null) widget.label!
+                    ]),
+              )),
         ),
       ),
     );

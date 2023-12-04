@@ -1,4 +1,4 @@
-const Map<String, dynamic> formControlHelper = {
+const Map<String, dynamic> formControlHelperData = {
   "flexDirection": "row",
   "justifyContent": "flex-start",
   "alignItems": "center",
