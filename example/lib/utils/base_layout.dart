@@ -13,7 +13,7 @@ class BaseLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final isLandscape =
         MediaQuery.orientationOf(context) == Orientation.landscape;
-
+    ScrollController _scrollController = ScrollController();
     final componentWrapper = Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30.0),
@@ -51,8 +51,11 @@ class BaseLayout extends StatelessWidget {
           if (isLandscape)
             Expanded(
               child: Scrollbar(
+                controller: _scrollController,
                 thumbVisibility: true,
-                child: SingleChildScrollView(child: controlsWrapper),
+                child: SingleChildScrollView(
+                  controller: _scrollController,
+                  child: controlsWrapper),
               ),
             )
           else
