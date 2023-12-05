@@ -22,11 +22,11 @@ class GSCheckBoxIndicator extends StatelessWidget {
     if (isActive && isChecked) {
       return styler?.onActive?.checked?.bg;
     } else if (isHovered && isChecked && isDisabled && isInvalid) {
-      return styler?.onHover?.checked?.onDisabled?.onInvaild?.bg;
+      return styler?.onHover?.checked?.onDisabled?.onInvalid?.bg;
     } else if (isHovered && isChecked && isDisabled) {
       return styler?.onHover?.checked?.onDisabled?.bg;
     } else if (isHovered && isDisabled && isInvalid) {
-      return styler?.onHover?.onDisabled?.onInvaild?.bg;
+      return styler?.onHover?.onDisabled?.onInvalid?.bg;
     } else if (isHovered && isDisabled) {
       return styler?.onHover?.onDisabled?.bg;
     } else if (isHovered && isChecked) {
@@ -36,7 +36,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
     } else if (isChecked) {
       return styler?.checked?.bg;
     } else if (isInvalid) {
-      return styler?.onInvaild?.bg;
+      return styler?.onInvalid?.bg;
     } else if (isDisabled) {
       return styler?.onDisabled?.bg;
     }
@@ -52,15 +52,15 @@ class GSCheckBoxIndicator extends StatelessWidget {
       isInvalid = false,
       isActive = false}) {
     if (isInvalid) {
-      return styler?.onInvaild?.borderColor;
+      return styler?.onInvalid?.borderColor;
     } else if (isActive && isChecked) {
       return styler?.onActive?.checked?.borderColor;
     } else if (isHovered && isChecked && isDisabled && isInvalid) {
-      return styler?.onHover?.checked?.onDisabled?.onInvaild?.borderColor;
+      return styler?.onHover?.checked?.onDisabled?.onInvalid?.borderColor;
     } else if (isHovered && isChecked && isDisabled) {
       return styler?.onHover?.checked?.onDisabled?.borderColor;
     } else if (isHovered && isDisabled && isInvalid) {
-      return styler?.onHover?.onDisabled?.onInvaild?.borderColor;
+      return styler?.onHover?.onDisabled?.onInvalid?.borderColor;
     } else if (isHovered && isDisabled) {
       return styler?.onHover?.onDisabled?.borderColor;
     } else if (isHovered && isChecked) {

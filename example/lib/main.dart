@@ -78,6 +78,24 @@ class _MyAppState extends State<MyApp> {
                   onTap: () {
                     navigatorKey.currentState!.push(
                       MaterialPageRoute(
+                        builder: (context) => const FormExample(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'GS Form',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+                elementSpacing,
+                GestureDetector(
+                  onTap: () {
+                    navigatorKey.currentState!.push(
+                      MaterialPageRoute(
                         builder: (context) => const FabExample(),
                       ),
                     );
