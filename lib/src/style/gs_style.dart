@@ -22,6 +22,15 @@ enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 enum GSVariants { solid, outline, link, underlined, rounded, accent }
 
+enum GSPlacements {
+  topLeft,
+  topCenter,
+  topRight,
+  bottomLeft,
+  bottomCenter,
+  bottomRight
+}
+
 enum GSSizes {
   $2xs,
   $xs,
@@ -49,12 +58,42 @@ enum GSFlexDirections { row, column }
 
 enum GSCursors { pointer, notAllowed }
 
+class GSPlacement {
+  GSStyle? topRight;
+  GSStyle? topLeft;
+  GSStyle? bottomRight;
+  GSStyle? bottomLeft;
+  GSStyle? topCenter;
+  GSStyle? bottomCenter;
+  GSPlacement(
+      {this.bottomCenter,
+      this.bottomLeft,
+      this.bottomRight,
+      this.topCenter,
+      this.topLeft,
+      this.topRight});
+  factory GSPlacement.fromMap({required Map<String, dynamic>? data}) {
+    return GSPlacement(
+      bottomCenter:
+          GSStyle.fromMap(data: data?['bottom center'], fromVariant: true),
+      bottomLeft:
+          GSStyle.fromMap(data: data?['bottom left'], fromVariant: true),
+      bottomRight:
+          GSStyle.fromMap(data: data?['bottom right'], fromVariant: true),
+      topCenter: GSStyle.fromMap(data: data?['top center'], fromVariant: true),
+      topLeft: GSStyle.fromMap(data: data?['top left'], fromVariant: true),
+      topRight: GSStyle.fromMap(data: data?['top right'], fromVariant: true),
+    );
+  }
+}
+
 class GSProps {
   GSActions? action;
   GSVariants? variant;
   GSSizes? size;
   GSSpaces? space;
   GSStyle? style;
+  GSPlacements? placement;
   GSOrientations? orientation;
   Color? color;
 
@@ -65,6 +104,7 @@ class GSProps {
     this.space,
     this.style,
     this.orientation,
+    this.placement,
     this.color,
   });
   factory GSProps.fromMap({required Map<String, dynamic>? data}) {
@@ -75,6 +115,7 @@ class GSProps {
         space: resolveSpacesFromString(data?['space']),
         style: GSStyle.fromMap(data: data, fromVariant: true),
         color: resolveColorFromString(data?['color']),
+        placement: resolvePlacementFromString(data?['placement']),
         orientation: resolveOrientationsFromString(
           data?['orientation'],
         ));
@@ -424,6 +465,7 @@ class Variants {
   GSStyle? highlight;
   GSStyle? sub;
   GSOrientation? orientation;
+  GSPlacement? placements;
   Variants({
     this.variant,
     this.size,
@@ -431,6 +473,7 @@ class Variants {
     this.space,
     this.sub,
     this.highlight,
+    this.placements,
     this.orientation,
   });
 
@@ -456,6 +499,7 @@ class Variants {
             data: data?['highlight']?['true'],
             descendantStyle: descendantStyle,
             fromVariant: true),
+        placements: GSPlacement.fromMap(data: data?['placement']),
         orientation: GSOrientation.fromMap(data: data?['orientation']));
   }
 }
@@ -495,6 +539,11 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? maxWidth;
   AlignmentGeometry? alignment;
 
+  double? top;
+  double? bottom;
+  double? right;
+  double? left;
+
   Color? progressValueColor;
   //for splash n highlight for pressable
   Color? highlightColor;
@@ -512,65 +561,70 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? scale;
   Color? outlineColor;
   GSCursors? cursors;
+  GSPlacement? placement;
 
-  GSStyle({
-    this.borderWidth,
-    this.borderColor,
-    this.borderRadius,
-    this.padding,
-    this.opacity,
-    this.color,
-    this.bg,
-    this.borderBottomColor,
-    this.height,
-    this.margin,
-    this.fontWeight,
-    this.width,
-    this.gap,
-    this.outlineWidth,
-    this.outlineStyle,
-    this.flexDirection,
-    this.borderBottomWidth,
-    this.borderLeftWidth,
-    this.textStyle,
-    this.checked,
-    super.onHover,
-    super.onFocus,
-    super.onActive,
-    super.onDisabled,
-    super.input,
-    super.icon,
-    super.dark,
-    super.xs,
-    super.sm,
-    super.md,
-    super.lg,
-    super.onInvaild,
-    super.web,
-    super.ios,
-    super.android,
-    this.variants,
-    this.props,
-    this.descendantStyles,
-    this.alignItems,
-    this.justifyContent,
-    this.alignment,
-    this.maxWidth,
-    this.progressValueColor,
-    this.badge,
-    this.highlightColor,
-    this.splashColor,
-    this.textTransform,
-    this.trackColorTrue,
-    this.trackColorFalse,
-    this.thumbColor,
-    this.activeThumbColor,
-    this.iosBackgroundColor,
-    this.scale,
-    this.outlineColor,
-    this.cursors,
-    this.iconSize,
-  });
+  GSStyle(
+      {this.borderWidth,
+      this.borderColor,
+      this.borderRadius,
+      this.padding,
+      this.opacity,
+      this.color,
+      this.bg,
+      this.borderBottomColor,
+      this.height,
+      this.margin,
+      this.fontWeight,
+      this.placement,
+      this.width,
+      this.gap,
+      this.outlineWidth,
+      this.outlineStyle,
+      this.flexDirection,
+      this.borderBottomWidth,
+      this.borderLeftWidth,
+      this.textStyle,
+      this.checked,
+      super.onHover,
+      super.onFocus,
+      super.onActive,
+      super.onDisabled,
+      super.input,
+      super.icon,
+      super.dark,
+      super.xs,
+      super.sm,
+      super.md,
+      super.lg,
+      super.onInvaild,
+      super.web,
+      super.ios,
+      super.android,
+      this.variants,
+      this.props,
+      this.descendantStyles,
+      this.alignItems,
+      this.justifyContent,
+      this.alignment,
+      this.maxWidth,
+      this.progressValueColor,
+      this.badge,
+      this.highlightColor,
+      this.splashColor,
+      this.textTransform,
+      this.trackColorTrue,
+      this.trackColorFalse,
+      this.thumbColor,
+      this.activeThumbColor,
+      this.iosBackgroundColor,
+      this.scale,
+      this.outlineColor,
+      this.cursors,
+      this.iconSize,
+      this.bottom,
+      this.left,
+      this.right,
+      this.top});
 
   @override
   copy() {
@@ -594,6 +648,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
       gap: overrideStyle?.gap ?? gap,
+      placement: overrideStyle?.placement ?? placement,
       descendantStyles: descendantStyleKeys.isEmpty
           ? overrideStyle?.descendantStyles ?? descendantStyles
           : mergeStyledMaps(
@@ -637,6 +692,10 @@ class GSStyle extends BaseStyle<GSStyle> {
               fontSize:
                   overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
           : textStyle,
+      right: overrideStyle?.right ?? right,
+      left: overrideStyle?.left ?? left,
+      bottom: overrideStyle?.bottom ?? bottom,
+      top: overrideStyle?.top ?? top,
       // variants: overrideStyle?.variants ?? variants,
       variants: Variants(
         action: overrideStyle?.variants?.action ?? variants?.action,
@@ -732,6 +791,11 @@ class GSStyle extends BaseStyle<GSStyle> {
                       ? resolvePaddingFromString(
                           data?['py'].toString(), 'vertical')
                       : null,
+      bottom: resolveSpaceFromString(data?['bottom']),
+      left: resolveSpaceFromString(data?['left']),
+      right: resolveSpaceFromString(data?['right']),
+      top: resolveSpaceFromString(data?['top']),
+
       iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
@@ -758,7 +822,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderRadius: data?['borderRadius'] != null
           ? double.tryParse(data!['borderRadius'].toString()) ??
               resolveRadiusFromString(data['borderRadius'].toString())
-          : null,
+          : data?['rounded'] != null
+              ? resolveRadiusFromString(data?['rounded'])
+              : null,
       borderBottomWidth: data?['borderBottomWidth'] != null
           ? resolveBorderWidthFromString(data?['borderBottomWidth'].toString())
           : null,
@@ -897,7 +963,6 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
       ),
       onDisabled: GSStyle(
-         
         opacity: data?[':disabled']?['opacity'],
         web: GSStyle(
           cursors:
@@ -1021,7 +1086,8 @@ class GSStyle extends BaseStyle<GSStyle> {
           ),
         ),
         onDisabled: GSStyle(
-          borderColor: resolveColorFromString(data?['_dark']?[':disabled']?['borderColor']),
+          borderColor: resolveColorFromString(
+              data?['_dark']?[':disabled']?['borderColor']),
           trackColorTrue: resolveColorFromString(
               data?['_dark']?[':disabled']?['trackColor']?['true']),
           trackColorFalse: resolveColorFromString(
