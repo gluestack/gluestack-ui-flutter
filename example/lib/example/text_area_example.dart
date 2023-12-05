@@ -56,9 +56,6 @@ class _TextAreaExampleState extends State<TextAreaExample> {
             isDisabled: false,
             isInvalid: false,
             readOnly: false,
-            style: GSStyle(
-              width: 300,
-            ),
           )
   ''';
     return Scaffold(
@@ -73,9 +70,6 @@ class _TextAreaExampleState extends State<TextAreaExample> {
           isReadOnly: isReadOnly,
           isInvalid: isInvalid,
           hintText: "Enter text here",
-          style: GSStyle(
-              // width: 300,
-              ),
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

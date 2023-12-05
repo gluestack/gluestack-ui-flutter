@@ -57,6 +57,7 @@ double? resolveRadiusFromString(String? radius) {
   if (radius == '999') {
     return $GSRadii.full;
   }
+
   if (radius == 'full' || radius == 'none') {
     return $GSRadii.radiiMap[radius]!;
   } else {
@@ -375,4 +376,17 @@ GSCursors? resolveCursorFromString(String? cursor) {
   };
 
   return cursor != null ? cusorMap[cursor] : null;
+}
+
+GSPlacements? resolvePlacementFromString(String? placement) {
+  const placementMap = {
+    'bottom center': GSPlacements.bottomCenter,
+    'top center': GSPlacements.topCenter,
+    'bottom left': GSPlacements.bottomLeft,
+    'bottom right': GSPlacements.bottomRight,
+    'top left': GSPlacements.topLeft,
+    'top right': GSPlacements.topRight,
+  };
+
+  return placement != null ? placementMap[placement] : null;
 }
