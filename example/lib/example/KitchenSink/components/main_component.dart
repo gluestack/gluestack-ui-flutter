@@ -3,6 +3,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/components/list_your_place_modal/modal.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/components/stacked_card.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/models/stacked_card.dart';
+import 'package:gluestack_ui_example/example/KitchenSink/responsive_base_widgets/resp_row_column.dart';
 
 List<String> titles = [
   "Tropical",
@@ -51,7 +52,8 @@ class KSMainComponent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //r1
-        GSHStack(
+        ResponsiveRowColumn(
+          sw: 410,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -154,16 +156,14 @@ class KSMainComponent extends StatelessWidget {
               ]),
         ),
 
-        GSHStack(
+        ResponsiveRowColumn(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          space: GSSpaces.$md,
           children: [
             for (int i = 0; i < stackedCardData.length; i++)
-              Expanded(
-                  child: KSStackedCard(
+              KSStackedCard(
                 stackedCardModel: stackedCardData[i],
-              )),
+              ),
           ],
         )
       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui_example/example/KitchenSink/components/bottom_bar_tiles.dart';
 
 import 'components/banner.dart';
 import 'components/header.dart';
@@ -13,46 +14,138 @@ class LayoutExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    bool isSmallScreen = width < 650;
     return Scaffold(
+      bottomNavigationBar: isSmallScreen
+          ? const BottomAppBar(
+              child: Padding(
+              padding: EdgeInsets.only(top: 4),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  BottomBarTile(
+                    icon: Icons.home_outlined,
+                    title: 'Home',
+                  ),
+                  BottomBarTile(
+                    icon: Icons.filter_list_outlined,
+                    title: 'Filter',
+                  ),
+                  BottomBarTile(
+                    icon: Icons.add,
+                    title: 'Listing',
+                  ),
+                  BottomBarTile(
+                    icon: Icons.chat_bubble_outline_rounded,
+                    title: 'Inbox',
+                  ),
+                  BottomBarTile(
+                    icon: Icons.person_outline_rounded,
+                    title: 'Profile',
+                  ),
+                ],
+              ),
+            ))
+          : null,
+      floatingActionButton: isSmallScreen
+          ? Theme(
+              data: ThemeData(useMaterial3: false),
+              child: FloatingActionButton(
+                onPressed: toggleTheme,
+                backgroundColor: Colors.pink,
+                child: Transform.rotate(
+                    angle: -7,
+                    child: const Icon(
+                      Icons.nightlight_rounded,
+                      color: Colors.white,
+                    )),
+              ),
+            )
+          : null,
       body: SafeArea(
-        child: GSVStack(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const KSBanner(),
-            KSHeader(
-              themeCallback: toggleTheme,
-            ),
-            Expanded(
-              child: GSBox(
-                style: GSStyle(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 21),
-                ),
-                child: const GSHStack(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 30),
-                        child: SingleChildScrollView(
-                          child: KSSideBar(),
+        child: isSmallScreen
+            ?
+            //small layout
+            GSVStack(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const KSBanner(),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: GSInput(
+                      suffixIcon: const Padding(
+                        padding: EdgeInsets.all(5.5),
+                        child: ClipOval(
+                          child: ColoredBox(
+                            color: Colors.pink,
+                            child: Icon(
+                              Icons.search,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
+                      variant: GSVariants.outline,
+                      style: GSStyle(
+                          borderRadius: 99,
+                          onFocus: GSStyle(
+                              borderColor: Colors.pink, borderWidth: 2)),
+                      hintText: 'Anywhere • Any week • Add guests',
+                      hintStyle: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 14,
+                          color: Colors.grey.shade600),
                     ),
-                    Flexible(
-                      flex: 3,
-                      child: SingleChildScrollView(
-                        child: KSMainComponent(),
+                  ),
+                  const Expanded(
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: KSMainComponent(),
+                    ),
+                  ),
+                ],
+              )
+            :
+            //Big Layout
+            GSVStack(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const KSBanner(),
+                  KSHeader(
+                    themeCallback: toggleTheme,
+                  ),
+                  Expanded(
+                    child: GSBox(
+                      style: GSStyle(
+                        padding:
+                            const EdgeInsets.only(top: 30, left: 21, right: 21),
+                      ),
+                      child: const GSHStack(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 200,
+                            child: Padding(
+                              padding: EdgeInsets.only(right: 30),
+                              child: SingleChildScrollView(
+                                child: KSSideBar(),
+                              ),
+                            ),
+                          ),
+                          Flexible(
+                            child: SingleChildScrollView(
+                              child: KSMainComponent(),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
