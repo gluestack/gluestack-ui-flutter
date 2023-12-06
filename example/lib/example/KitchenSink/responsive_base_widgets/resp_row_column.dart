@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui/src/style/style_resolver.dart';
 
 class ResponsiveRowColumn extends StatelessWidget {
   final List<Widget> children;
@@ -11,7 +13,7 @@ class ResponsiveRowColumn extends StatelessWidget {
   final Clip clipBehavior;
   final Axis? direction;
   final EdgeInsets? seperatorPadding;
-  final double? sw;
+  // final double? sw;
 
   const ResponsiveRowColumn({
     super.key,
@@ -25,13 +27,12 @@ class ResponsiveRowColumn extends StatelessWidget {
     this.clipBehavior = Clip.none,
     this.direction,
     this.seperatorPadding,
-    this.sw = 850,
+    // this.sw,
   });
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    bool isSmallScreen = width < sw!;
+    bool isSmallScreen =   !isMediumScreen(context); 
     return Flex(
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment:
@@ -45,13 +46,18 @@ class ResponsiveRowColumn extends StatelessWidget {
       children: children.map((e) {
         return !isSmallScreen
             ? Expanded(
-                child: Padding(
-                    padding:
-                        seperatorPadding ?? EdgeInsets.symmetric(horizontal: 4),
+                child: GSBox(
+                    style: GSStyle(
+                      padding: seperatorPadding ??
+                          const EdgeInsets.symmetric(horizontal: 4),
+                    ),
                     child: e),
               )
-            : Padding(
-                padding: seperatorPadding ?? EdgeInsets.symmetric(vertical: 4),
+            : GSBox(
+                style: GSStyle(
+                  padding:
+                      seperatorPadding ?? const EdgeInsets.symmetric(vertical: 4),
+                ),
                 child: e);
       }).toList(),
     );

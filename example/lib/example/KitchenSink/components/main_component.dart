@@ -53,7 +53,6 @@ class KSMainComponent extends StatelessWidget {
       children: [
         //r1
         ResponsiveRowColumn(
-          sw: 410,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

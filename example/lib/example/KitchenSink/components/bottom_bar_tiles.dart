@@ -16,7 +16,7 @@ class BottomBarTile extends StatelessWidget {
             onTap!;
           }
         },
-        child: Column(
+        child: GSVStack(
           children: [
             Icon(
               icon,

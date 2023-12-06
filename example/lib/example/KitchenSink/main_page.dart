@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/components/bottom_bar_tiles.dart';
-
 import 'components/banner.dart';
 import 'components/header.dart';
 import 'components/main_component.dart';
 import 'components/sidebar/sidebar.dart';
+import 'package:gluestack_ui/src/style/style_resolver.dart';
 
 class LayoutExample extends StatelessWidget {
   final VoidCallback toggleTheme;
@@ -14,8 +14,7 @@ class LayoutExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    bool isSmallScreen = width < 650;
+    bool isSmallScreen = !isMediumScreen(context); //sw>=600
     return Scaffold(
       bottomNavigationBar: isSmallScreen
           ? const BottomAppBar(
