@@ -14,7 +14,7 @@ abstract class BaseStyle<T> {
   T? onDisabled;
   T? input;
   T? icon;
-  T? onInvaild;
+  T? onInvalid;
   T? onActive;
   T? web;
   T? android;
@@ -31,7 +31,7 @@ abstract class BaseStyle<T> {
     this.onDisabled,
     this.icon,
     this.input,
-    this.onInvaild,
+    this.onInvalid,
     this.onActive,
     this.web,
     this.android,
@@ -54,7 +54,7 @@ abstract class BaseStyle<T> {
         'onActive': onActive,
         'onHover': onHover,
         'onDisabled': onDisabled,
-        'onInvalid': onInvaild,
+        'onInvalid': onInvalid,
         'dark': dark,
       });
 }

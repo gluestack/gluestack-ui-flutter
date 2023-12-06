@@ -26,3 +26,6 @@ export 'src/widgets/gs_text/public.dart';
 export 'src/widgets/gs_text_area/public.dart';
 export 'src/widgets/gs_toast/public.dart';
 export 'src/widgets/gs_vstack/public.dart';
+export 'src/widgets/gs_fab/public.dart';
+export 'src/widgets/gs_form_control/public.dart';
+

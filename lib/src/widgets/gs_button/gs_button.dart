@@ -59,7 +59,6 @@ class GSButton extends StatelessWidget {
         descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
             ?[variant],
         descendantStyleKeys: gsButtonConfig.descendantStyle)!;
-    print(styler.borderWidth);
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSButtonProvider(
@@ -96,7 +95,7 @@ class GSButton extends StatelessWidget {
                         disabled) {
                       return styler.onDisabled?.bg ?? styler.bg;
                     } else if (states.contains(MaterialState.error)) {
-                      return styler.onInvaild?.bg ?? styler.bg;
+                      return styler.onInvalid?.bg ?? styler.bg;
                     }
 
                     return styler.bg!;
@@ -120,7 +119,7 @@ class GSButton extends StatelessWidget {
                         return styler.onDisabled?.borderRadius ??
                             styler.borderRadius!;
                       case MaterialState.error:
-                        return styler.onInvaild?.borderRadius ??
+                        return styler.onInvalid?.borderRadius ??
                             styler.borderRadius!;
                       default:
                         return styler.borderRadius!;
@@ -159,9 +158,9 @@ class GSButton extends StatelessWidget {
                               width: styler.onDisabled?.borderWidth ?? 1.0);
                         case MaterialState.error:
                           return BorderSide(
-                              color: styler.onInvaild?.borderColor ??
+                              color: styler.onInvalid?.borderColor ??
                                   styler.borderColor!,
-                              width: styler.onInvaild?.borderWidth ?? 1.0);
+                              width: styler.onInvalid?.borderWidth ?? 1.0);
                         default:
                           return BorderSide(
                               color: styler.borderColor!,
