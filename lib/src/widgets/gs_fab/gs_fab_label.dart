@@ -20,7 +20,7 @@ class GSFabLabel extends StatelessWidget {
     
     var defaultTextStyle = TextStyle(
         color: ancestorStyles?.color,
-        fontWeight: ancestorStyles?.fontWeight,
+        fontWeight: ancestorStyles?.textStyle?.fontWeight,
         fontSize: ancestorStyles?.textStyle?.fontSize);
 
     final mergedStyle =

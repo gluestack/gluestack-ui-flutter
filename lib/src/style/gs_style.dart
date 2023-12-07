@@ -518,7 +518,6 @@ class GSStyle extends BaseStyle<GSStyle> {
   EdgeInsetsGeometry? margin;
   double? opacity;
   Color? color;
-  FontWeight? fontWeight;
   Color? bg;
   double? gap;
   Color? borderBottomColor;
@@ -574,7 +573,6 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.borderBottomColor,
       this.height,
       this.margin,
-      this.fontWeight,
       this.placement,
       this.width,
       this.gap,
@@ -643,7 +641,6 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
       borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
       borderLeftWidth: overrideStyle?.borderLeftWidth ?? borderLeftWidth,
-      fontWeight: overrideStyle?.fontWeight ?? fontWeight,
       icon: overrideStyle?.icon ?? icon,
       input: overrideStyle?.input ?? input,
       padding: overrideStyle?.padding ?? padding,
@@ -778,8 +775,6 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
       ),
       textTransform: resolveTextTransformFromString(data?['textTransform']),
-      fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-
       maxWidth: data?['maxWidth'] != null
           ? double.tryParse(data?['maxWidth']?.toString() ?? "")
           : null,
