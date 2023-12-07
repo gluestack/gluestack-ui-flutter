@@ -15,7 +15,7 @@ class LayoutExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isSmallScreen = isScreenSmallerThan(786, context);
+    bool isSmallScreen = isScreenSmallerThan(576, context);
     return Scaffold(
       bottomNavigationBar: isSmallScreen
           ? const BottomAppBar(
@@ -66,7 +66,6 @@ class LayoutExample extends StatelessWidget {
           : null,
       body: SafeArea(
         child: RespLayoutManager(
-          md: 786,
           smLayout: GSBox(
             style: GSStyle(
                 // color: Colors.black,
@@ -114,7 +113,7 @@ class LayoutExample extends StatelessWidget {
               ],
             ),
           ),
-          lgLayout: GSVStack(
+          mdLayout: GSVStack(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const KSBanner(),
