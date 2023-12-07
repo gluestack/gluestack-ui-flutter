@@ -57,47 +57,48 @@ class RespLayoutManager extends StatelessWidget {
             xxlLayout;
       } else if (maxWidth <= sm!) {
         layoutWidget = smLayout ??
-            xsLayout ??
-            // going big again
             mdLayout ??
             lgLayout ??
             xlLayout ??
-            xxlLayout;
+            xxlLayout ??
+            xsLayout;
       } else if (maxWidth <= md!) {
         layoutWidget = mdLayout ??
-            smLayout ??
-            xsLayout ??
-            // going big again
             lgLayout ??
             xlLayout ??
-            xxlLayout;
+            xxlLayout ??
+            smLayout ??
+            xsLayout;
       } else if (maxWidth <= lg!) {
         layoutWidget = lgLayout ??
-            smLayout ??
-            xsLayout ??
-            // going big again
-            mdLayout ??
             xlLayout ??
-            xxlLayout;
+            xxlLayout ??
+            mdLayout ??
+            smLayout ??
+            xsLayout;
       } else if (maxWidth <= xl!) {
         layoutWidget = xlLayout ??
+            xxlLayout ??
             mdLayout ??
             lgLayout ??
             smLayout ??
-            xsLayout ??
-            // going big again
-            xxlLayout;
-      } else if (maxWidth >= xxl!) {
+            xsLayout;
+      } else if (maxWidth <= xxl!) {
         layoutWidget = xxlLayout ??
             xlLayout ??
             mdLayout ??
             lgLayout ??
             smLayout ??
             xsLayout;
-      }else{
-        layoutWidget = defaultWidget;
+      } else {
+        layoutWidget = xxlLayout ??
+            xlLayout ??
+            mdLayout ??
+            lgLayout ??
+            smLayout ??
+            xsLayout ??
+            defaultWidget;
       }
-
       return layoutWidget ?? defaultWidget;
     });
   }
