@@ -40,7 +40,32 @@ class GSButton extends StatelessWidget {
     this.autoFocus = false,
     this.clipBehavior = Clip.none,
     this.statesController,
-  });
+  })  : assert(
+          size == null ||
+              size == GSSizes.$xs ||
+              size == GSSizes.$sm ||
+              size == GSSizes.$md ||
+              size == GSSizes.$lg,
+          'GS Button can only have the sizes: \$lg, \$md \$sm and \$xs\n'
+          'To resolve this error, ensure only the above mentioned GSSizes is specified!',
+        ),
+        assert(
+          variant == null ||
+              variant == GSVariants.outline ||
+              variant == GSVariants.solid||
+              variant == GSVariants.link,
+          'GS Button can only have the vairants: solid, outline and link\n'
+          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
+        ),
+        assert(
+          action == null ||
+              action == GSActions.primary ||
+              action == GSActions.secondary||
+              action == GSActions.positive||
+              action == GSActions.negative,
+          'GS Button can only have the vairants: solid, outline and link\n'
+          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
+        );
 
   @override
   Widget build(BuildContext context) {
