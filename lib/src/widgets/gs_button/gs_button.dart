@@ -63,8 +63,8 @@ class GSButton extends StatelessWidget {
               action == GSActions.secondary||
               action == GSActions.positive||
               action == GSActions.negative,
-          'GS Button can only have the vairants: solid, outline and link\n'
-          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
+          'GS Button can only have the actions: primary, secondary, positive and negative\n'
+          'To resolve this error, ensure only the above mentioned GSActions is specified.',
         );
 
   @override
