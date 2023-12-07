@@ -12,7 +12,6 @@ class RespLayoutManager extends StatelessWidget {
   final Widget? fallBackWidget;
 
   final double? xs;
-
   final double? sm;
   final double? md;
   final double? lg;
