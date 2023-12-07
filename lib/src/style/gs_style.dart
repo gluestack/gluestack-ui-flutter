@@ -494,7 +494,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   GSAlignments? justifyContent;
   double? maxWidth;
   AlignmentGeometry? alignment;
-
+  bool visibility;
   Color? progressValueColor;
   //for splash n highlight for pressable
   Color? highlightColor;
@@ -521,6 +521,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.opacity,
     this.color,
     this.bg,
+    this.visibility=true,
     this.borderBottomColor,
     this.height,
     this.margin,
@@ -619,6 +620,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       checked: checked != null
           ? checked?.merge(overrideStyle?.checked)
           : overrideStyle?.checked,
+          visibility: overrideStyle?.visibility??visibility,
       outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
       outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
       outlineColor: overrideStyle?.outlineColor ?? outlineColor,
