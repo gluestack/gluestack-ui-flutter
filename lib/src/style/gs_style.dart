@@ -795,10 +795,10 @@ class GSStyle extends BaseStyle<GSStyle> {
                       ? resolvePaddingFromString(
                           data?['py'].toString(), 'vertical')
                       : null,
-      bottom: resolveSpaceFromString(data?['bottom']),
-      left: resolveSpaceFromString(data?['left']),
-      right: resolveSpaceFromString(data?['right']),
-      top: resolveSpaceFromString(data?['top']),
+      bottom: resolveSpaceFromString(data?['bottom'].toString()),
+      left: resolveSpaceFromString(data?['left'].toString()),
+      right: resolveSpaceFromString(data?['right'].toString()),
+      top: resolveSpaceFromString(data?['top'].toString()),
 
       iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),

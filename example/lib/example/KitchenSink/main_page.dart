@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/components/bottom_bar_tiles.dart';
+import 'package:gluestack_ui_example/example/KitchenSink/responsive_base_widgets/resp_layout_manager.dart';
 import 'components/banner.dart';
 import 'components/header.dart';
 import 'components/main_component.dart';
@@ -14,7 +15,7 @@ class LayoutExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isSmallScreen = !isMediumScreen(context); //sw>=600
+    bool isSmallScreen = isScreenSmallerThan(786, context);
     return Scaffold(
       bottomNavigationBar: isSmallScreen
           ? const BottomAppBar(
@@ -64,87 +65,93 @@ class LayoutExample extends StatelessWidget {
             )
           : null,
       body: SafeArea(
-        child: isSmallScreen
-            ?
-            //small layout
-            GSVStack(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const KSBanner(),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: GSInput(
-                      suffixIcon: const Padding(
-                        padding: EdgeInsets.all(5.5),
-                        child: ClipOval(
-                          child: ColoredBox(
-                            color: Colors.pink,
-                            child: Icon(
-                              Icons.search,
-                              color: Colors.white,
-                            ),
+        child: RespLayoutManager(
+          md: 786,
+          smLayout: GSBox(
+            style: GSStyle(
+                // color: Colors.black,
+                // md: GSStyle(color: Colors.green),
+                // lg: GSStyle(color: Colors.pink),
+                // xs: GSStyle(color: Colors.amber),
+                ),
+            child: GSVStack(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const KSBanner(),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: GSInput(
+                    suffixIcon: const Padding(
+                      padding: EdgeInsets.all(5.5),
+                      child: ClipOval(
+                        child: ColoredBox(
+                          color: Colors.pink,
+                          child: Icon(
+                            Icons.search,
+                            color: Colors.white,
                           ),
                         ),
                       ),
-                      variant: GSVariants.outline,
-                      style: GSStyle(
-                          borderRadius: 99,
-                          onFocus: GSStyle(
-                              borderColor: Colors.pink, borderWidth: 2)),
-                      hintText: 'Anywhere • Any week • Add guests',
-                      hintStyle: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 14,
-                          color: Colors.grey.shade600),
                     ),
+                    variant: GSVariants.outline,
+                    style: GSStyle(
+                        borderRadius: 99,
+                        onFocus:
+                            GSStyle(borderColor: Colors.pink, borderWidth: 2)),
+                    hintText: 'Anywhere • Any week • Add guests',
+                    hintStyle: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 14,
+                        color: Colors.grey.shade600),
                   ),
-                  const Expanded(
-                    child: SingleChildScrollView(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: KSMainComponent(),
-                    ),
+                ),
+                const Expanded(
+                  child: SingleChildScrollView(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: KSMainComponent(),
                   ),
-                ],
-              )
-            :
-            //Big Layout
-            GSVStack(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const KSBanner(),
-                  KSHeader(
-                    themeCallback: toggleTheme,
-                  ),
-                  Expanded(
-                    child: GSBox(
-                      style: GSStyle(
-                        padding:
-                            const EdgeInsets.only(top: 30, left: 21, right: 21),
-                      ),
-                      child: const GSHStack(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 200,
-                            child: Padding(
-                              padding: EdgeInsets.only(right: 30),
-                              child: SingleChildScrollView(
-                                child: KSSideBar(),
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: SingleChildScrollView(
-                              child: KSMainComponent(),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                ),
+              ],
+            ),
+          ),
+          lgLayout: GSVStack(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const KSBanner(),
+              KSHeader(
+                themeCallback: toggleTheme,
               ),
+              Expanded(
+                child: GSBox(
+                  style: GSStyle(
+                    padding:
+                        const EdgeInsets.only(top: 30, left: 21, right: 21),
+                  ),
+                  child: const GSHStack(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 200,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 30),
+                          child: SingleChildScrollView(
+                            child: KSSideBar(),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        child: SingleChildScrollView(
+                          child: KSMainComponent(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

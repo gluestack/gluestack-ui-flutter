@@ -3,6 +3,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
 class ResponsiveRowColumn extends StatelessWidget {
+  final double? constraintWidth;
   final List<Widget> children;
   final MainAxisAlignment mainAxisAlignment;
   final MainAxisSize mainAxisSize;
@@ -27,12 +28,14 @@ class ResponsiveRowColumn extends StatelessWidget {
     this.clipBehavior = Clip.none,
     this.direction,
     this.seperatorPadding,
+    this.constraintWidth = 768,
     // this.sw,
   });
 
   @override
   Widget build(BuildContext context) {
-    bool isSmallScreen =   !isMediumScreen(context); 
+    bool isSmallScreen = isScreenSmallerThan(constraintWidth!, context);
+
     return Flex(
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment:
@@ -55,8 +58,8 @@ class ResponsiveRowColumn extends StatelessWidget {
               )
             : GSBox(
                 style: GSStyle(
-                  padding:
-                      seperatorPadding ?? const EdgeInsets.symmetric(vertical: 4),
+                  padding: seperatorPadding ??
+                      const EdgeInsets.symmetric(vertical: 4),
                 ),
                 child: e);
       }).toList(),
