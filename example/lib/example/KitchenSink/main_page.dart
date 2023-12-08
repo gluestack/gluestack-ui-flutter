@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/components/bottom_bar_tiles.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/responsive_base_widgets/resp_layout_manager.dart';
+import 'package:gluestack_ui_example/example/KitchenSink/responsive_base_widgets/resp_value_gettter.dart';
 import 'components/banner.dart';
 import 'components/header.dart';
 import 'components/main_component.dart';
@@ -78,7 +79,12 @@ class LayoutExample extends StatelessWidget {
               children: [
                 const KSBanner(),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(getRespValue(
+                        buildContext: context,
+                        xsValue: 6,
+                        smValue: 16,
+                      ) ??
+                      0),
                   child: GSInput(
                     suffixIcon: const Padding(
                       padding: EdgeInsets.all(5.5),
