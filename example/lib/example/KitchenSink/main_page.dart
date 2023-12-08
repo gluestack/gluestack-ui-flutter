@@ -58,8 +58,10 @@ class LayoutExample extends StatelessWidget {
                 backgroundColor: Colors.pink,
                 child: Transform.rotate(
                     angle: -7,
-                    child: const Icon(
-                      Icons.nightlight_rounded,
+                    child: Icon(
+                      Theme.of(context).brightness == Brightness.light
+                          ? Icons.nightlight_rounded
+                          : Icons.light_mode,
                       color: Colors.white,
                     )),
               ),

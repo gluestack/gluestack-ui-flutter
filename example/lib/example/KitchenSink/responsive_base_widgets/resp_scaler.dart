@@ -7,7 +7,7 @@ class RespScaler extends StatelessWidget {
   const RespScaler({
     super.key,
     required this.child,
-    this.ogDesignWidth = 375,
+    this.ogDesignWidth = 375, //generic figma width
   });
 
   @override
