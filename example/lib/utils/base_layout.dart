@@ -14,7 +14,6 @@ class BaseLayout extends StatefulWidget {
 }
 
 class _BaseLayoutState extends State<BaseLayout> {
-  final _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     final isLandscape =
