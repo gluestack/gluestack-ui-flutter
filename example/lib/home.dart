@@ -80,6 +80,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
