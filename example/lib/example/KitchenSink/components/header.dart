@@ -39,7 +39,6 @@ class KSHeader extends StatelessWidget {
                     GSText(
                       text: "Homestay",
                       style: GSStyle(
-                          fontWeight: FontWeight.bold, //Error: Does not Work
                           textStyle: const TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Color(0xffE11D48),

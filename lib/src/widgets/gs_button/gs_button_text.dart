@@ -24,7 +24,7 @@ class GSButtonText extends StatelessWidget {
 
     var defaultTextStyle = TextStyle(
       color: ancestorTextStyles?.color,
-      fontWeight: ancestorTextStyles?.fontWeight,
+      fontWeight: ancestorTextStyles?.textStyle?.fontWeight,
       fontSize: fontSize,
     );
     final styler = resolveStyles(context, inlineStyle: style);
