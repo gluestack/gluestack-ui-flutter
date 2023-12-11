@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
-
 // breakpoint ref: https://getbootstrap.com/docs/5.0/layout/breakpoints/
-const Map<String, double> breakPoints = {
-  "xs": 450,
-  "sm": 576,
-  "md": 768,
-  "lg": 992,
-  "xl": 1200,
-  "xxl": 1400
-};
 
 class RespLayoutManager extends StatelessWidget {
   final Widget? xsLayout;

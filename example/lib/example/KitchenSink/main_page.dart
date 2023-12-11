@@ -19,10 +19,12 @@ class LayoutExample extends StatelessWidget {
     bool isSmallScreen = isScreenSmallerThan(576, context);
     return Scaffold(
       bottomNavigationBar: isSmallScreen
-          ? const BottomAppBar(
-              child: Padding(
-              padding: EdgeInsets.only(top: 4),
-              child: Row(
+          ? BottomAppBar(
+              child: GSBox(
+              style: GSStyle(
+                padding: const EdgeInsets.only(top: 4),
+              ),
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -70,30 +72,28 @@ class LayoutExample extends StatelessWidget {
       body: SafeArea(
         child: RespLayoutManager(
           smLayout: GSBox(
-            style: GSStyle(
-                // color: Colors.black,
-                // md: GSStyle(color: Colors.green),
-                // lg: GSStyle(color: Colors.pink),
-                // xs: GSStyle(color: Colors.amber),
-                ),
             child: GSVStack(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const KSBanner(),
-                Padding(
-                  padding: EdgeInsets.all(getRespValue(
-                        buildContext: context,
-                        xsValue: 6,
-                        smValue: 16,
-                      ) ??
-                      0),
+                GSBox(
+                  style: GSStyle(
+                    padding: EdgeInsets.all(getRespValue(
+                          buildContext: context,
+                          xsValue: 6,
+                          smValue: 16,
+                        ) ??
+                        0),
+                  ),
                   child: GSInput(
-                    suffixIcon: const Padding(
-                      padding: EdgeInsets.all(5.5),
+                    suffixIcon: GSBox(
+                      style: GSStyle(
+                        padding: const EdgeInsets.all(5.5),
+                      ),
                       child: ClipOval(
-                        child: ColoredBox(
-                          color: Colors.pink,
-                          child: Icon(
+                        child: GSBox(
+                          style: GSStyle(color: $GSColors.red500),
+                          child: const Icon(
                             Icons.search,
                             color: Colors.white,
                           ),
@@ -134,20 +134,22 @@ class LayoutExample extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(top: 30, left: 21, right: 21),
                   ),
-                  child: const GSHStack(
+                  child: GSHStack(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
                         width: 200,
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 30),
-                          child: SingleChildScrollView(
+                        child: GSBox(
+                          style: GSStyle(
+                            padding: const EdgeInsets.only(right: 30),
+                          ),
+                          child: const SingleChildScrollView(
                             child: KSSideBar(),
                           ),
                         ),
                       ),
-                      Flexible(
+                      const Expanded(
                         child: SingleChildScrollView(
                           child: KSMainComponent(),
                         ),

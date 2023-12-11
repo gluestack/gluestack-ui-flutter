@@ -3,7 +3,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/components/list_your_place_modal/modal.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/components/stacked_card.dart';
 import 'package:gluestack_ui_example/example/KitchenSink/models/stacked_card.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/responsive_base_widgets/resp_row_column.dart';
+import 'package:gluestack_ui_example/example/KitchenSink/components/ks_resp_row_col_custom.dart';
 
 List<String> titles = [
   "Tropical",
@@ -52,13 +52,15 @@ class KSMainComponent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //r1
-        ResponsiveRowColumn(
+        KSRespRowCol(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const GSHeading(size: GSSizes.$xl, text: 'New this week'),
-            Padding(
-              padding: const EdgeInsets.only(top: 9),
+            GSBox(
+              style: GSStyle(
+                padding: const EdgeInsets.only(top: 9),
+              ),
               child: GSButton(
                 variant: GSVariants.outline,
                 action: GSActions.secondary,
@@ -106,9 +108,11 @@ class KSMainComponent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               for (int i = 1; i < 10; i++)
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 6, vertical: 16),
+                GSBox(
+                  style: GSStyle(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 6, vertical: 16),
+                  ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: GSImage(
@@ -124,15 +128,12 @@ class KSMainComponent extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: GSButtonGroup(
-              // isAttached: true,
               buttons: [
                 for (String title in titles) ...[
                   GSButton(
                       action: GSActions.secondary,
                       variant: GSVariants
-                          .link, //Error: link variant should show underline in text
-                      //Error: Should throw assertion for wrong vals like accent n stuff
-
+                          .link, 
                       onPressed: () {
                         print("$title pressed!");
                       },
@@ -155,7 +156,7 @@ class KSMainComponent extends StatelessWidget {
               ]),
         ),
 
-        ResponsiveRowColumn(
+        KSRespRowCol(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

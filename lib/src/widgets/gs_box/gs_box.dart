@@ -33,7 +33,7 @@ class GSBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   GSStyle styler = resolveStyles(
+    GSStyle styler = resolveStyles(
       context,
       variantStyle: GSStyle(),
       inlineStyle: style,
@@ -49,12 +49,10 @@ class GSBox extends StatelessWidget {
         // alignment: style != null
         //     ? style!.alignment ?? Alignment.center
         //     : Alignment.center,
-        padding: style != null
-            ? style!.padding ??
-                const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
-            : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-        height: style != null ? style!.height : null,
-        width: style != null ? style!.width : null,
+        padding: styler.padding,
+        margin: styler.margin,
+        height: styler.height,
+        width: styler.width,
         constraints: BoxConstraints(
           minWidth: style != null ? style!.width ?? 0 : 0,
           minHeight: style != null ? style!.height ?? 0 : 0,
@@ -65,8 +63,8 @@ class GSBox extends StatelessWidget {
         //     : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
         decoration: BoxDecoration(
           color: styler.color,
-          borderRadius:
-              BorderRadius.circular(style != null ? style!.borderRadius ?? 0 : 0),
+          borderRadius: BorderRadius.circular(
+              style != null ? style!.borderRadius ?? 0 : 0),
           border: Border.all(
               color: style != null
                   ? style!.borderColor ?? Colors.transparent
@@ -76,7 +74,7 @@ class GSBox extends StatelessWidget {
           backgroundBlendMode: backgroundBlendMode,
           boxShadow: boxShadow,
           image: image,
-          shape: shape,
+          // shape: shape, //will cause error, as borderraidus is defined
         ),
         child: child,
       ),

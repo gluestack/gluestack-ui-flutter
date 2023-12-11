@@ -10,7 +10,7 @@ class KSBanner extends StatelessWidget {
       style: GSStyle(
         color: $GSColors.backgroundLight900,
         height: $GSSpace.$16,
-        dark: GSStyle(color: Colors.red), //Error: Does not work
+        dark: GSStyle(color:  $GSColors.red500), //Error: Does not work
         // dark: GSStyle(color: $GSColors.backgroundDark800), //TODO: replace when the above works!
       ),
       child: FittedBox(
