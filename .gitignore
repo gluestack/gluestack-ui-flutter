@@ -27,7 +27,7 @@ migrate_working_dir/
 **/doc/api/
 .dart_tool/
 build/
-android/local.properties
 .flutter-plugins
 .flutter-plugins-dependencies
+android/local.properties
  
