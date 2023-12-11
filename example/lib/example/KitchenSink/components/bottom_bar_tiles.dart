@@ -26,7 +26,6 @@ class BottomBarTile extends StatelessWidget {
             GSText(
               text: title,
               style: GSStyle(
-                fontWeight: FontWeight.w100,
                 textStyle: TextStyle(
                     fontWeight: FontWeight.w400,
                     color: Colors.grey.shade700,
