@@ -562,6 +562,8 @@ class GSStyle extends BaseStyle<GSStyle> {
   GSCursors? cursors;
   GSPlacement? placement;
 
+  bool? isVisible;
+
   GSStyle(
       {this.borderWidth,
       this.borderColor,
@@ -622,7 +624,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.bottom,
       this.left,
       this.right,
-      this.top});
+      this.top,
+      this.isVisible,
+      });
 
   @override
   copy() {
@@ -742,6 +746,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       activeThumbColor: overrideStyle?.activeThumbColor ?? activeThumbColor,
       scale: overrideStyle?.scale ?? scale,
       cursors: overrideStyle?.cursors ?? cursors,
+      isVisible: overrideStyle?.isVisible ?? isVisible,
     );
   }
 
