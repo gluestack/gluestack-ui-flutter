@@ -4,6 +4,7 @@ import 'package:gluestack_ui_example/main.dart';
 import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/input_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/switch_preview.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -31,6 +32,12 @@ final GoRouter router = GoRouter(
           path: "badgePreview",
           builder: (BuildContext context, GoRouterState state) {
             return const BadgePreview();
+          },
+        ),
+        GoRoute(
+          path: "switchPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SwitchPreview();
           },
         ),
       ],
