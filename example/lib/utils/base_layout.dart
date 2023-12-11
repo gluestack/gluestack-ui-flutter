@@ -1,9 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_syntax_view/flutter_syntax_view.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
-class BaseLayout extends StatelessWidget {
+class BaseLayout extends StatefulWidget {
   final Widget component;
   final Widget? controls;
   final String? code;
@@ -11,9 +10,75 @@ class BaseLayout extends StatelessWidget {
       {super.key, required this.component, this.controls, this.code});
 
   @override
+  State<BaseLayout> createState() => _BaseLayoutState();
+}
+
+class _BaseLayoutState extends State<BaseLayout> {
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: (MediaQuery.sizeOf(context).height * 0.8),
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
+    ScrollController _scrollController = ScrollController();
+    final componentWrapper = Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 30.0),
+        child: widget.component,
+      ),
+    );
+
+    final controlsWrapper = Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 30.0),
+        child: widget.controls ?? const SizedBox.shrink(),
+      ),
+    );
+
+    final topLayout = Flex(
+      direction: isLandscape ? Axis.horizontal : Axis.vertical,
+      children: [
+        if (isLandscape)
+          Expanded(child: SingleChildScrollView(child: componentWrapper))
+        else
+          SingleChildScrollView(child: componentWrapper),
+        if (widget.controls != null)
+          isLandscape
+              ? const VerticalDivider(
+                  color: Colors.grey,
+                  thickness: 1,
+                  width: 1,
+                )
+              : const Divider(
+                  color: Colors.grey,
+                  thickness: 1,
+                  height: 1,
+                ),
+        if (widget.controls != null) ...[
+          if (isLandscape)
+            Expanded(
+              child: Scrollbar(
+                controller: _scrollController,
+                thumbVisibility: true,
+                child: SingleChildScrollView(
+                  controller: _scrollController,
+                  child: controlsWrapper),
+              ),
+            )
+          else
+            controlsWrapper
+        ]
+      ],
+    );
+
+    final codeBlock = SyntaxView(
+      code: widget.code ?? "",
+      syntax: Syntax.DART,
+      syntaxTheme: SyntaxTheme.vscodeDark(),
+      fontSize: 16.0,
+      expanded: isLandscape,
+      withZoom: false,
+    );
+
+    final finalLayout = Container(
       margin: const EdgeInsets.symmetric(horizontal: $GSSpace.$16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
@@ -21,59 +86,29 @@ class BaseLayout extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Expanded(
-            child: Flex(
-              direction: kIsWeb ? Axis.horizontal : Axis.vertical,
-              children: [
-                Expanded(
-                  child: Center(child: component),
-                ),
-                if (controls != null)
-                  kIsWeb
-                      ? const VerticalDivider(
-                          color: Colors.grey,
-                          thickness: 1,
-                        )
-                      : const Divider(
-                          color: Colors.grey,
-                          thickness: 1,
-                        ),
-                if (controls != null)
-                  Expanded(
-                    child: Center(child: controls),
-                  ),
-              ],
-            ),
-          ),
+          if (isLandscape) Expanded(child: topLayout) else topLayout,
+          const SizedBox(height: 2),
           const Divider(
             color: Colors.grey,
             thickness: 1,
+            height: 1,
           ),
-          Expanded(
-            child: SyntaxView(
-              code: code ?? "",
-              syntax: Syntax.DART,
-              syntaxTheme: SyntaxTheme.vscodeDark(),
-              fontSize: 16.0,
-              expanded: true,
-            ),
-          ),
+          const SizedBox(height: 2),
+          if (isLandscape) Expanded(child: codeBlock) else codeBlock,
         ],
       ),
     );
+
+    if (!isLandscape) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: SingleChildScrollView(child: finalLayout),
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: finalLayout,
+    );
   }
 }
-
- // HighlightView(
-            //   code ?? "",
-            //   language: 'dart',
-            //   theme: vsTheme,
-            //   padding: const EdgeInsets.all(12),
-            //   textStyle: const TextStyle(
-            //     fontFamily: 'My awesome monospace font',
-            //     fontSize: 16,
-            //   ),
-            // ),
-
-
-  

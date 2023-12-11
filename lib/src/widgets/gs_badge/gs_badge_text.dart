@@ -28,7 +28,7 @@ class GSBadgeText extends StatelessWidget {
     var defaultTextStyle = TextStyle(
         fontSize: ancestorTextStyles?.textStyle?.fontSize,
         color: ancestorTextStyles?.color,
-        fontWeight: ancestorTextStyles?.fontWeight);
+        fontWeight: ancestorTextStyles?.textStyle?.fontWeight);
 
     // Merge default text style with the provided style.
     final mergedStyle = defaultTextStyle.merge(style?.textStyle);

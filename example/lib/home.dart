@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui_example/example/fab_example.dart';
 import 'package:gluestack_ui_example/main.dart';
-import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/input_preview.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
-import 'package:provider/provider.dart';
 
 import 'example/public.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    const elementSpacing = SizedBox(height: 20);
     return Scaffold(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
+      appBar: AppBar(title: const Text('Gluestack UI examples')),
       body: SingleChildScrollView(
-        child: Container(
-          height: 1300,
-          alignment: Alignment.center,
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                "Scroll more for all the components",
-                style: TextStyle(fontSize: 22),
-              ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   router.go("/buttonPreview");
@@ -40,6 +38,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   router.go("/inputPreview");
@@ -53,6 +52,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   router.go("/badgePreview");
@@ -66,11 +66,14 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
                     MaterialPageRoute(
-                      builder: (context) => const LayoutExample(),
+                      builder: (context) => LayoutExample(toggleTheme: () {
+                        myAppStateKey.currentState?.toggleThemeMode();
+                      }),
                     ),
                   );
                 },
@@ -83,6 +86,43 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  navigatorKey.currentState!.push(
+                    MaterialPageRoute(
+                      builder: (context) => const FormExample(),
+                    ),
+                  );
+                },
+                child: const Text(
+                  'GS Form',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  navigatorKey.currentState!.push(
+                    MaterialPageRoute(
+                      builder: (context) => const FabExample(),
+                    ),
+                  );
+                },
+                child: const Text(
+                  'GS Fab',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -100,6 +140,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -117,6 +158,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -134,6 +176,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -151,6 +194,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -168,6 +212,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -185,6 +230,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -202,6 +248,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -219,6 +266,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(MaterialPageRoute(
@@ -234,6 +282,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -251,6 +300,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -268,6 +318,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -285,6 +336,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -302,6 +354,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -319,6 +372,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -336,6 +390,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -353,6 +408,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -370,6 +426,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -387,6 +444,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -404,6 +462,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -421,6 +480,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -438,6 +498,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
               GestureDetector(
                 onTap: () {
                   navigatorKey.currentState!.push(
@@ -455,17 +516,20 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+              elementSpacing,
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          themeProvider.toggleTheme();
+          myAppStateKey.currentState?.toggleThemeMode();
         },
-        child: Icon(themeProvider.currentTheme == GSThemeMode.light
-            ? Icons.light_mode
-            : Icons.dark_mode),
+        child: Icon(
+          Theme.of(context).brightness == Brightness.dark
+              ? Icons.light_mode
+              : Icons.dark_mode,
+        ),
       ),
     );
   }

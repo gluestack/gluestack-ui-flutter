@@ -38,7 +38,7 @@ class InputPreview extends StatelessWidget {
                 context.knobs.boolean(label: "isDisabled", initial: false),
             isInvalid:
                 context.knobs.boolean(label: "isInvalid", initial: false),
-            readOnly:
+            isReadOnly:
                 context.knobs.boolean(label: "isReadOnly", initial: false),
             hintText: "Enter text here",
             style: GSStyle(

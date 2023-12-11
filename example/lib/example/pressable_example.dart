@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:provider/provider.dart';
 
 class PressableExample extends StatelessWidget {
   const PressableExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     var code = '''GSPressable(
               hitSlop: 10,
               style: GSStyle(
@@ -41,40 +39,39 @@ class PressableExample extends StatelessWidget {
             )
   ''';
     return Scaffold(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
-      appBar: AppBar(),
-      body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSPressable(
-            hitSlop: 10,
+      appBar: AppBar(
+        title: const Text("Pressable"),
+      ),
+      body: BaseLayout(
+        code: code,
+        component: GSPressable(
+          hitSlop: 10,
+          style: GSStyle(
+            bg: Colors.yellow,
+            highlightColor: Colors.blue,
+            splashColor: Colors.red,
+            onHover: GSStyle(color: Colors.green),
+            onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
+          ),
+          onPress: () {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Button Pressed!'),
+              duration: Duration(milliseconds: 300),
+            ));
+          },
+          onLongPress: () {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Long Pressed Triggered!'),
+              duration: Duration(milliseconds: 300),
+            ));
+          },
+          child: GSText(
+            text: 'Press Me',
+            underline: true,
             style: GSStyle(
-              bg: Colors.yellow,
-              highlightColor: Colors.blue,
-              splashColor: Colors.red,
-              onHover: GSStyle(color: Colors.green),
-              onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
-            ),
-            onPress: () {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content: Text('Button Pressed!'),
-                duration: Duration(milliseconds: 300),
-              ));
-            },
-            onLongPress: () {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content: Text('Long Pressed Triggered!'),
-                duration: Duration(milliseconds: 300),
-              ));
-            },
-            child: GSText(
-              text: 'Press Me',
-              underline: true,
-              style: GSStyle(
-                  color: Colors.blue,
-                  textStyle:
-                      const TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
-            ),
+                color: Colors.blue,
+                textStyle:
+                    const TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
           ),
         ),
       ),

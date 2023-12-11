@@ -6,7 +6,7 @@ repository: https://github.com/gluestack/gluestack-flutter
 issue_tracker: https://github.com/gluestack/gluestack-flutter/issues
 documentation: https://github.com/gluestack/gluestack-flutter
 
-version: 0.0.1-alpha.1
+version: 0.0.1-alpha.2
 
 environment:
   sdk: ">=3.2.1 <4.0.0"
@@ -17,7 +17,6 @@ dependencies:
     sdk: flutter
 
   fluttertoast: ^8.2.4
-  provider: ^6.1.1
   url_launcher: ^6.2.1
 
 dev_dependencies:

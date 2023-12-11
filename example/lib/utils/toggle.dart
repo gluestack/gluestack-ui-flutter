@@ -33,14 +33,16 @@ class _CustomToggleState extends State<CustomToggle> {
           widget.title,
           style: const TextStyle(color: $GSColors.backgroundDark500),
         ),
+        const SizedBox(height: 10),
         GSSwitch(
-            value: widget.value,
-            onToggle: (value) {
-              setState(() {
-                selectedValue = value;
-              });
-              widget.onToggle(value);
-            }),
+          value: widget.value,
+          onToggle: (value) {
+            setState(() {
+              selectedValue = value;
+            });
+            widget.onToggle(value);
+          },
+        ),
       ],
     );
   }

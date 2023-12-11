@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:provider/provider.dart';
 
 class DividerExample extends StatelessWidget {
   const DividerExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      backgroundColor: themeProvider.getThemeData().canvasColor,
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Divider"),
+      ),
       body: Center(
         child: Column(
           children: [
