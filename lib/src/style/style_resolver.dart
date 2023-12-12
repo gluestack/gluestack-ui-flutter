@@ -22,6 +22,16 @@ bool isLargeScreen(BuildContext context) {
   return screenWidth >= large;
 }
 
+bool isScreenSmallerThan(double size,BuildContext context){
+  final screenWidth = MediaQuery.sizeOf(context).width;
+  return screenWidth <= size;
+}
+
+bool isScreenLargerThan(double size,BuildContext context){
+  final screenWidth = MediaQuery.sizeOf(context).width;
+  return screenWidth >= size;
+}
+
 const base = 0;
 const small = 360;
 const medium = 600;

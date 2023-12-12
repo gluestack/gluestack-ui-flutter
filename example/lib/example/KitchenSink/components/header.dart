@@ -11,8 +11,8 @@ class KSHeader extends StatelessWidget {
     return GSVStack(
       children: [
         const SizedBox(height: 15),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
+        GSBox(
+      style: GSStyle(    padding: const EdgeInsets.symmetric(horizontal: 32),),
           child: GSHStack(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -55,8 +55,8 @@ class KSHeader extends StatelessWidget {
                 GSHStack(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+                    GSBox(
+                   style: GSStyle(   padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),),
                       child: GSPressable(
                         hitSlop: 2,
                         style: GSStyle(
