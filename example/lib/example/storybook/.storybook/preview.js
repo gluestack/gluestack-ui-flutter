@@ -24,6 +24,8 @@ export const parameters = {
         ["Installation"],
         "Components",
         [
+          "Typography",
+          ["Heading", "Text"],
           "Layout",
           ["HStack", "VStack"],
           "Feedback",

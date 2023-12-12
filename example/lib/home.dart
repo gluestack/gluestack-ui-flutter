@@ -195,6 +195,34 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/textPreview");
+                },
+                child: const Text(
+                  'Preview Text',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/headingPreview");
+                },
+                child: const Text(
+                  'Preview Heading',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   navigatorKey.currentState!.push(
                     MaterialPageRoute(
                       builder: (context) => LayoutExample(toggleTheme: () {
