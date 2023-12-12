@@ -23,7 +23,7 @@ export const parameters = {
         'Getting Started',
         ['Installation'],
         'Components',
-        ['Forms', ['Button', 'Input','Switch'], 'Data Display', ['Badge']], 
+        ['Forms', ['Button', 'Input','Switch'], 'Data Display', ['Badge'], 'Media And Icons', ['Avatar', 'Icon', 'Image']], 
        
        
       ],
