@@ -29,10 +29,10 @@ class GSInputCombinationStyle {
 
 class GSInputToken {
   static Map<GSInputPadding, EdgeInsetsGeometry?> inputPadding = {
-    GSInputPadding.sm: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
-    GSInputPadding.md: const EdgeInsets.symmetric(horizontal: $GSSpace.$3_5),
-    GSInputPadding.lg: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
-    GSInputPadding.xl: const EdgeInsets.symmetric(horizontal: $GSSpace.$5),
+    GSInputPadding.sm: EdgeInsets.symmetric(horizontal: $GSSpace.$3),
+    GSInputPadding.md: EdgeInsets.symmetric(horizontal: $GSSpace.$3_5),
+    GSInputPadding.lg: EdgeInsets.symmetric(horizontal: $GSSpace.$4),
+    GSInputPadding.xl: EdgeInsets.symmetric(horizontal: $GSSpace.$5),
   };
 
   static Map<GSInputSize, double> inputSize = {

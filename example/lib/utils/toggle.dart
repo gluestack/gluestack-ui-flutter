@@ -31,7 +31,7 @@ class _CustomToggleState extends State<CustomToggle> {
       children: [
         Text(
           widget.title,
-          style: const TextStyle(color: $GSColors.backgroundDark500),
+          style:  TextStyle(color: $GSColors.backgroundDark500),
         ),
         const SizedBox(height: 10),
         GSSwitch(

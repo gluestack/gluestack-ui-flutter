@@ -71,7 +71,7 @@ class _ListYourPlaceModalContent1State
                 GSRadio<String>(
                   size: GSSizes.$lg,
                   style: GSStyle(
-                      margin: const EdgeInsets.only(
+                      margin:  EdgeInsets.only(
                           right: $GSSpace.$3, left: $GSSpace.$1)),
                   icon: const GSRadioIcon<String>(),
                   groupValue: '1',
@@ -86,7 +86,7 @@ class _ListYourPlaceModalContent1State
                 GSRadio<String>(
                   size: GSSizes.$lg,
                   style: GSStyle(
-                      margin: const EdgeInsets.only(
+                      margin:  EdgeInsets.only(
                           right: $GSSpace.$3, left: $GSSpace.$1)),
                   icon: const GSRadioIcon<String>(),
                   groupValue: '1',

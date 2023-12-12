@@ -32,7 +32,7 @@ class KSTypesOfPlaces extends StatelessWidget {
                     onChanged: (value) {},
                     icon: GSCheckBoxIndicator(
                         style: GSStyle(
-                            margin: const EdgeInsets.only(right: $GSSpace.$3)),
+                            margin:  EdgeInsets.only(right: $GSSpace.$3)),
                         child: const GSCheckBoxIcon()),
                     value: _typeOfPlacesData[i].value,
                     label: GSCheckBoxLabel(text: _typeOfPlacesData[i].label),

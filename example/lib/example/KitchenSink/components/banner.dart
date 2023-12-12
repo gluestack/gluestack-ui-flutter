@@ -23,28 +23,28 @@ class KSBanner extends StatelessWidget {
               size: GSSizes.$sm,
               style: GSStyle(
                 dark: GSStyle(
-                  textStyle: const TextStyle(color: $GSColors.textLight0),
+                  textStyle:  TextStyle(color: $GSColors.textLight0),
                 ),
-                textStyle: const TextStyle(color: $GSColors.textLight0),
+                textStyle:  TextStyle(color: $GSColors.textLight0),
               ),
             ),
             const SizedBox(width: 10),
             GSLink(
                 url: 'https://ui.gluestack.io/',
                 style: GSStyle(
-                  textStyle: const TextStyle(color: $GSColors.red600),
+                  textStyle:  TextStyle(color: $GSColors.red600),
                 ), //Error: should not descendant style work here?
                 text: GSLinkText(
                   text: "Learn More",
                   style: GSStyle(
-                      textStyle: const TextStyle(
+                      textStyle:  TextStyle(
                         color: $GSColors.textLight0,
                         decoration: TextDecoration.underline,
                         decorationColor: $GSColors.textLight0,
                       ),
                       dark: GSStyle(
                         textStyle:
-                            const TextStyle(color: $GSColors.textDark200),
+                             TextStyle(color: $GSColors.textDark200),
                       )),
                 ))
           ],
