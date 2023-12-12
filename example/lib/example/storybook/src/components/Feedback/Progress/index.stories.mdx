@@ -1,0 +1,31 @@
+---
+title: Progress | gluestack-ui | Installation, Usage, and API
+
+description: The Progress component is designed to display the progress of a task that involves multiple steps and takes some time to complete. It helps users stay informed about the current status of a lengthy process.
+
+pageTitle: Progress
+
+pageDescription: The Progress component is designed to display the progress of a task that involves multiple steps and takes some time to complete. It helps users stay informed about the current status of a lengthy process.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Feedback/Progress" />
+
+<iframe
+  src="http://localhost:62324/#/avatarPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSProgress(
+  value: 0.4,
+  size: GSSizes.$md,
+)
+```

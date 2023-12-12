@@ -1,0 +1,42 @@
+---
+title: Radio | gluestack-ui | Installation, Usage, and API
+
+description: The Radio component presents users with predefined choices and enables them to select only one option. It is commonly used for providing a single-choice selection in forms or surveys.
+
+pageTitle: Radio
+
+pageDescription: The Radio component presents users with predefined choices and enables them to select only one option. It is commonly used for providing a single-choice selection in forms or surveys.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Forms/Radio" />
+
+<iframe
+  src="http://localhost:49579/#/switchPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSRadio<Value>(
+  size: GSSizes.$md,
+  isDisabled: false,
+  isInvalid: false,
+  value: Value.four,
+  groupValue: groupValue,
+  onChanged: (p0) {
+    setState(() {
+      groupValue = p0!;
+    });
+  },
+  icon: const GSRadioIcon<Value>(),
+  label: const GSRadioText<Value>(text: 'text4'),
+  style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.\$2)),
+)
+```

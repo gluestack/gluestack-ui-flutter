@@ -31,7 +31,7 @@ class _ProgressExampleState extends State<ProgressExample> {
   Widget build(BuildContext context) {
     var code = '''GSProgress(
             value: 0.4,
-            size: selectedSizeOption,
+            size: GSSizes.\$md,
           )
   ''';
     return Scaffold(
