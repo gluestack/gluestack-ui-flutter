@@ -47,6 +47,8 @@ export const parameters = {
           ["AlertDialog"],
           "Media And Icons",
           ["Avatar", "Icon", "Image"],
+          "Others",
+          ["Fab"],
         ],
       ],
     },

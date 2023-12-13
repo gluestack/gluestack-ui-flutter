@@ -9,6 +9,7 @@ import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/center_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/checkbox_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/divider_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/fab_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/heading_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/hstack_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/icon_preview.dart';
@@ -171,6 +172,12 @@ final GoRouter router = GoRouter(
           path: "alertDialogPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const AlertDialogPreview();
+          },
+        ),
+        GoRoute(
+          path: "fabPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const FabPreview();
           },
         ),
       ],
