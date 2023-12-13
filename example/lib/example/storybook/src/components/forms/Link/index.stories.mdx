@@ -1,0 +1,32 @@
+---
+title: Link | gluestack-ui | Installation, Usage, and API
+
+description: With links, users can navigate seamlessly throughout a website. This component has a hyperlinked appearance for a user-friendly experience.
+
+pageTitle: Link
+
+pageDescription: With links, users can navigate seamlessly throughout a website. This component has a hyperlinked appearance for a user-friendly experience.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Forms/Link" />
+
+<iframe
+  src="http://localhost:53075/#/inputPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSLink(
+  style: GSStyle(),
+  url: 'https://gluestack.io/',
+  text: const GSLinkText(text: 'gluestack'),
+)
+```

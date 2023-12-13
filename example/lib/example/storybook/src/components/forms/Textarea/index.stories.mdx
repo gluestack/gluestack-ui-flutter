@@ -1,0 +1,41 @@
+---
+title: Textarea | gluestack-ui | Installation, Usage, and API
+
+description: The Textarea component is designed to accommodate larger amounts of text input. It allows multi-line input and can be easily customized to fit the user's needs.
+
+pageTitle: Textarea
+
+pageDescription: The Textarea component is designed to accommodate larger amounts of text input. It allows multi-line input and can be easily customized to fit the user's needs.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Forms/Textarea" />
+
+<iframe
+  src="http://localhost:53075/#/inputPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSTextArea(
+  size: GSSizes.values[context.knobs
+      .options(label: 'Size', initial: 3, options: sizeOptions)],
+  isDisabled:
+      context.knobs.boolean(label: "isDisabled", initial: false),
+  isInvalid:
+      context.knobs.boolean(label: "isInvalid", initial: false),
+  isReadOnly:
+      context.knobs.boolean(label: "isReadOnly", initial: false),
+  hintText: "Enter text here",
+  style: GSStyle(
+    width: 300,
+  ),
+)
+```
