@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui_example/example/fab_example.dart';
+import 'package:gluestack_ui_example/example/flex_example.dart';
 import 'package:gluestack_ui_example/main.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
 
@@ -523,6 +524,24 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text(
                   'GS Toast',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  navigatorKey.currentState!.push(
+                    MaterialPageRoute(
+                      builder: (context) => const FlexExample(),
+                    ),
+                  );
+                },
+                child: const Text(
+                  'GS Flex',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.blue,

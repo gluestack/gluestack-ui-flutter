@@ -29,4 +29,5 @@ export 'src/widgets/gs_vstack/public.dart';
 export 'src/widgets/gs_fab/public.dart';
 export 'src/widgets/gs_form_control/public.dart';
 export 'src/provider/gluestack_provider.dart';
+export 'src/widgets/gs_flex/gs_flex.dart';
 
