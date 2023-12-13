@@ -43,6 +43,8 @@ export const parameters = {
             "Switch",
             "Textarea",
           ],
+          "Overlay",
+          ["AlertDialog"],
           "Media And Icons",
           ["Avatar", "Icon", "Image"],
         ],

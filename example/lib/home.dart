@@ -335,6 +335,20 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/alertDialogPreview");
+                },
+                child: const Text(
+                  'Preview Alert Dialog',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   navigatorKey.currentState!.push(
                     MaterialPageRoute(
                       builder: (context) => LayoutExample(toggleTheme: () {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui_example/home.dart';
 import 'package:gluestack_ui_example/main.dart';
+import 'package:gluestack_ui_example/preview_widgets/alert_dialog_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/avatar_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/box_preview.dart';
@@ -164,6 +165,12 @@ final GoRouter router = GoRouter(
           path: "textareaPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const TextareaPreview();
+          },
+        ),
+        GoRoute(
+          path: "alertDialogPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const AlertDialogPreview();
           },
         ),
       ],
