@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/gluestack_provider.dart';
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
 var spaceInstance = getIt<$GSSpace>();
 class $GSSpace {
