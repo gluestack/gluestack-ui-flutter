@@ -1,104 +1,107 @@
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var spaceInstance = getIt<$GSSpace>();
-class $GSSpace {
-  final double pxog;
-  final double $0og;
-  final double $0_5og;
-  final double $1og;
-  final double $1_5og;
-  final double $2og;
-  final double $2_5og;
-  final double $3og;
-  final double $3_5og;
-  final double $4og;
-  final double $4_5og;
-  final double $5og;
-  final double $6og;
-  final double $7og;
-  final double $8og;
-  final double $9og;
-  final double $10og;
-  final double $11og;
-  final double $12og;
-  final double $16og;
-  final double $20og;
-  final double $24og;
-  final double $32og;
-  final double $40og;
-  final double $48og;
-  final double $56og;
-  final double $64og;
-  final double $72og;
-  final double $80og;
-  final double $96og;
-  final double fullog;
+var spaceInstance = getIt<GSSpaceToken>();
 
-  const $GSSpace({
-    this.pxog = 1.0,
-    this.$0og = 0.0,
-    this.$0_5og = 2.0,
-    this.$1og = 4.0,
-    this.$1_5og = 6.0,
-    this.$2og = 8.0,
-    this.$2_5og = 10.0,
-    this.$3og = 12.0,
-    this.$3_5og = 14.0,
-    this.$4og = 16.0,
-    this.$4_5og = 18.0,
-    this.$5og = 20.0,
-    this.$6og = 24.0,
-    this.$7og = 28.0,
-    this.$8og = 32.0,
-    this.$9og = 36.0,
-    this.$10og = 40.0,
-    this.$11og = 44.0,
-    this.$12og = 48.0,
-    this.$16og = 64.0,
-    this.$20og = 80.0,
-    this.$24og = 96.0,
-    this.$32og = 128.0,
-    this.$40og = 160.0,
-    this.$48og = 192.0,
-    this.$56og = 224.0,
-    this.$64og = 256.0,
-    this.$72og = 288.0,
-    this.$80og = 320.0,
-    this.$96og = 384.0,
-    this.fullog = double.maxFinite,
+class GSSpaceToken {
+  final double px;
+  final double $0;
+  final double $0_5;
+  final double $1;
+  final double $1_5;
+  final double $2;
+  final double $2_5;
+  final double $3;
+  final double $3_5;
+  final double $4;
+  final double $4_5;
+  final double $5;
+  final double $6;
+  final double $7;
+  final double $8;
+  final double $9;
+  final double $10;
+  final double $11;
+  final double $12;
+  final double $16;
+  final double $20;
+  final double $24;
+  final double $32;
+  final double $40;
+  final double $48;
+  final double $56;
+  final double $64;
+  final double $72;
+  final double $80;
+  final double $96;
+  final double full;
+
+  const GSSpaceToken({
+    this.px = 1.0,
+    this.$0 = 0.0,
+    this.$0_5 = 2.0,
+    this.$1 = 4.0,
+    this.$1_5 = 6.0,
+    this.$2 = 8.0,
+    this.$2_5 = 10.0,
+    this.$3 = 12.0,
+    this.$3_5 = 14.0,
+    this.$4 = 16.0,
+    this.$4_5 = 18.0,
+    this.$5 = 20.0,
+    this.$6 = 24.0,
+    this.$7 = 28.0,
+    this.$8 = 32.0,
+    this.$9 = 36.0,
+    this.$10 = 40.0,
+    this.$11 = 44.0,
+    this.$12 = 48.0,
+    this.$16 = 64.0,
+    this.$20 = 80.0,
+    this.$24 = 96.0,
+    this.$32 = 128.0,
+    this.$40 = 160.0,
+    this.$48 = 192.0,
+    this.$56 = 224.0,
+    this.$64 = 256.0,
+    this.$72 = 288.0,
+    this.$80 = 320.0,
+    this.$96 = 384.0,
+    this.full = double.maxFinite,
   });
+}
 
-  static get px => spaceInstance.pxog;
-  static get $0 => spaceInstance.$0og;
-  static get $0_5 => spaceInstance.$0_5og;
-  static get $1 => spaceInstance.$1og;
-  static get $1_5 => spaceInstance.$1_5og;
-  static get $2 => spaceInstance.$2og;
-  static get $2_5 => spaceInstance.$2_5og;
-  static get $3 => spaceInstance.$3og;
-  static get $3_5 => spaceInstance.$3_5og;
-  static get $4 => spaceInstance.$4og;
-  static get $4_5 => spaceInstance.$4_5og;
-  static get $5 => spaceInstance.$5og;
-  static get $6 => spaceInstance.$6og;
-  static get $7 => spaceInstance.$7og;
-  static get $8 => spaceInstance.$8og;
-  static get $9 => spaceInstance.$9og;
-  static get $10 => spaceInstance.$10og;
-  static get $11 => spaceInstance.$11og;
-  static get $12 => spaceInstance.$12og;
-  static get $16 => spaceInstance.$16og;
-  static get $20 => spaceInstance.$20og;
-  static get $24 => spaceInstance.$24og;
-  static get $32 => spaceInstance.$32og;
-  static get $40 => spaceInstance.$40og;
-  static get $48 => spaceInstance.$48og;
-  static get $56 => spaceInstance.$56og;
-  static get $64 => spaceInstance.$64og;
-  static get $72 => spaceInstance.$72og;
-  static get $80 => spaceInstance.$80og;
-  static get $96 => spaceInstance.$96og;
-  static get full => spaceInstance.fullog;
+class $GSSpace {
+  static get px => spaceInstance.px;
+  static get $0 => spaceInstance.$0;
+  static get $0_5 => spaceInstance.$0_5;
+  static get $1 => spaceInstance.$1;
+  static get $1_5 => spaceInstance.$1_5;
+  static get $2 => spaceInstance.$2;
+  static get $2_5 => spaceInstance.$2_5;
+  static get $3 => spaceInstance.$3;
+  static get $3_5 => spaceInstance.$3_5;
+  static get $4 => spaceInstance.$4;
+  static get $4_5 => spaceInstance.$4_5;
+  static get $5 => spaceInstance.$5;
+  static get $6 => spaceInstance.$6;
+  static get $7 => spaceInstance.$7;
+  static get $8 => spaceInstance.$8;
+  static get $9 => spaceInstance.$9;
+  static get $10 => spaceInstance.$10;
+  static get $11 => spaceInstance.$11;
+  static get $12 => spaceInstance.$12;
+  static get $16 => spaceInstance.$16;
+  static get $20 => spaceInstance.$20;
+  static get $24 => spaceInstance.$24;
+  static get $32 => spaceInstance.$32;
+  static get $40 => spaceInstance.$40;
+  static get $48 => spaceInstance.$48;
+  static get $56 => spaceInstance.$56;
+  static get $64 => spaceInstance.$64;
+  static get $72 => spaceInstance.$72;
+  static get $80 => spaceInstance.$80;
+  static get $96 => spaceInstance.$96;
+  static get full => spaceInstance.full;
 
   static Map<String, double> spaceMap = {
     "px": px,

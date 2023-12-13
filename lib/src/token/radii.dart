@@ -1,38 +1,41 @@
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var radiiInstance = getIt<$GSRadii>();
-class $GSRadii {
-  final double noneog;
-  final double $xsog;
-  final double $smog;
-  final double $mdog;
-  final double $lgog;
-  final double $xlog;
-  final double $2xlog;
-  final double $3xlog;
-  final double fullog;
+var radiiInstance = getIt<GSRadiiToken>();
 
-  const $GSRadii({
-    this.noneog = 0.0,
-    this.$xsog = 2.0,
-    this.$smog = 4.0,
-    this.$mdog = 6.0,
-    this.$lgog = 8.0,
-    this.$xlog = 12.0,
-    this.$2xlog = 16.0,
-    this.$3xlog = 24.0,
-    this.fullog = 9999.0,
+class GSRadiiToken {
+  final double none;
+  final double $xs;
+  final double $sm;
+  final double $md;
+  final double $lg;
+  final double $xl;
+  final double $2xl;
+  final double $3xl;
+  final double full;
+
+  const GSRadiiToken({
+    this.none = 0.0,
+    this.$xs = 2.0,
+    this.$sm = 4.0,
+    this.$md = 6.0,
+    this.$lg = 8.0,
+    this.$xl = 12.0,
+    this.$2xl = 16.0,
+    this.$3xl = 24.0,
+    this.full = 9999.0,
   });
+}
 
-  static get none => radiiInstance.noneog;
-  static get $xs => radiiInstance.$xsog;
-  static get $sm => radiiInstance.$smog;
-  static get $md => radiiInstance.$mdog;
-  static get $lg => radiiInstance.$lgog;
-  static get $xl => radiiInstance.$xlog;
-  static get $2xl => radiiInstance.$2xlog;
-  static get $3xl => radiiInstance.$3xlog;
-  static get full => radiiInstance.fullog;
+class $GSRadii {
+  static get none => radiiInstance.none;
+  static get $xs => radiiInstance.$xs;
+  static get $sm => radiiInstance.$sm;
+  static get $md => radiiInstance.$md;
+  static get $lg => radiiInstance.$lg;
+  static get $xl => radiiInstance.$xl;
+  static get $2xl => radiiInstance.$2xl;
+  static get $3xl => radiiInstance.$3xl;
+  static get full => radiiInstance.full;
 
   static Map<String, double> radiiMap = {
     "none": none,

@@ -1,39 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
-var fontWeightsInstance = getIt<$GSFontWeights>();
+
+var fontWeightsInstance = getIt<GSFontWeightsToken>();
+
+class GSFontWeightsToken {
+  final FontWeight hairline;
+  final FontWeight thin;
+  final FontWeight light;
+  final FontWeight normal;
+  final FontWeight medium;
+  final FontWeight semibold;
+  final FontWeight bold;
+  final FontWeight extrabold;
+  final FontWeight black;
+
+  const GSFontWeightsToken({
+    this.hairline = FontWeight.w100,
+    this.thin = FontWeight.w200,
+    this.light = FontWeight.w300,
+    this.normal = FontWeight.w400,
+    this.medium = FontWeight.w500,
+    this.semibold = FontWeight.w600,
+    this.bold = FontWeight.w700,
+    this.extrabold = FontWeight.w800,
+    this.black = FontWeight.w900,
+  });
+}
 
 class $GSFontWeights {
-  final FontWeight hairlineog;
-  final FontWeight thinog;
-  final FontWeight lightog;
-  final FontWeight normalog;
-  final FontWeight mediumog;
-  final FontWeight semiboldog;
-  final FontWeight boldog;
-  final FontWeight extraboldog;
-  final FontWeight blackog;
-
-  const $GSFontWeights({
-    this.hairlineog = FontWeight.w100,
-    this.thinog = FontWeight.w200,
-    this.lightog = FontWeight.w300,
-    this.normalog = FontWeight.w400,
-    this.mediumog = FontWeight.w500,
-    this.semiboldog = FontWeight.w600,
-    this.boldog = FontWeight.w700,
-    this.extraboldog = FontWeight.w800,
-    this.blackog = FontWeight.w900,
-  });
-
-  static get hairline => fontWeightsInstance.hairlineog;
-  static get thin => fontWeightsInstance.thinog;
-  static get light => fontWeightsInstance.lightog;
-  static get normal => fontWeightsInstance.normalog;
-  static get medium => fontWeightsInstance.mediumog;
-  static get semibold => fontWeightsInstance.semiboldog;
-  static get bold => fontWeightsInstance.boldog;
-  static get extrabold => fontWeightsInstance.extraboldog;
-  static get black => fontWeightsInstance.blackog;
+  static get hairline => fontWeightsInstance.hairline;
+  static get thin => fontWeightsInstance.thin;
+  static get light => fontWeightsInstance.light;
+  static get normal => fontWeightsInstance.normal;
+  static get medium => fontWeightsInstance.medium;
+  static get semibold => fontWeightsInstance.semibold;
+  static get bold => fontWeightsInstance.bold;
+  static get extrabold => fontWeightsInstance.extrabold;
+  static get black => fontWeightsInstance.black;
 
   static Map<String, FontWeight> fontWeightMap = {
     "hairline": hairline,

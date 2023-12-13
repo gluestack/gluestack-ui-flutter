@@ -19,32 +19,32 @@ class GluestackProvider extends StatelessWidget {
 }
 
 class GluestackTokenConfig {
-  final $GSBorderWidth gsBorderWidth;
-  final $GSColors gsColors;
-  final $GSFontSize gsFontSize;
-  final $GSFontWeights gsFontWeights;
-  final $GSLetterSpacing gsLetterSpacing;
-  final $GSLineHeight gsLineHeight;
-  final $GSRadii gsRadii;
-  final $GSSpace gsSpace;
+  final GSBorderWidthToken gsBorderWidthToken;
+  final GSFontSizeToken gsFontSizeToken;
+  final GSFontWeightsToken gsFontWeightsToken;
+  final GSLetterSpacingToken gsLetterSpacingToken;
+  final GSLineHeightToken gsLineHeightToken;
+  final GSRadiiToken gsRadiiToken;
+  final GSSpaceToken gsSpaceToken;
+  final GSColorsToken gsColorsToken;
 
   GluestackTokenConfig({
-    this.gsBorderWidth = const $GSBorderWidth(),
-    this.gsColors = const $GSColors(),
-    this.gsFontSize = const $GSFontSize(),
-    this.gsFontWeights = const $GSFontWeights(),
-    this.gsLetterSpacing = const $GSLetterSpacing(),
-    this.gsLineHeight = const $GSLineHeight(),
-    this.gsRadii = const $GSRadii(),
-    this.gsSpace = const $GSSpace(),
+    this.gsBorderWidthToken = const GSBorderWidthToken(),
+    this.gsFontSizeToken = const GSFontSizeToken(),
+    this.gsFontWeightsToken = const GSFontWeightsToken(),
+    this.gsLetterSpacingToken = const GSLetterSpacingToken(),
+    this.gsLineHeightToken = const GSLineHeightToken(),
+    this.gsRadiiToken = const GSRadiiToken(),
+    this.gsSpaceToken = const GSSpaceToken(),
+    this.gsColorsToken = const GSColorsToken(),
   }) {
-    getIt.registerSingleton<$GSBorderWidth>(gsBorderWidth);
-    getIt.registerSingleton<$GSColors>(gsColors);
-    getIt.registerSingleton<$GSFontSize>(gsFontSize);
-    getIt.registerSingleton<$GSFontWeights>(gsFontWeights);
-    getIt.registerSingleton<$GSLetterSpacing>(gsLetterSpacing);
-    getIt.registerSingleton<$GSLineHeight>(gsLineHeight);
-    getIt.registerSingleton<$GSRadii>(gsRadii);
-    getIt.registerSingleton<$GSSpace>(gsSpace);
+    getIt.registerSingleton<GSBorderWidthToken>(gsBorderWidthToken);
+    getIt.registerSingleton<GSFontSizeToken>(gsFontSizeToken);
+    getIt.registerSingleton<GSFontWeightsToken>(gsFontWeightsToken);
+    getIt.registerSingleton<GSLetterSpacingToken>(gsLetterSpacingToken);
+    getIt.registerSingleton<GSLineHeightToken>(gsLineHeightToken);
+    getIt.registerSingleton<GSRadiiToken>(gsRadiiToken);
+    getIt.registerSingleton<GSSpaceToken>(gsSpaceToken);
+    getIt.registerSingleton<GSColorsToken>(gsColorsToken);
   }
 }

@@ -1,26 +1,29 @@
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var bwInstance = getIt<$GSBorderWidth>();
-class $GSBorderWidth {
-  final double $0og;
-  final double $1og;
-  final double $2og;
-  final double $4og;
-  final double $8og;
+var bwtInstance = getIt<GSBorderWidthToken>();
 
-  const $GSBorderWidth({
-    this.$0og = 0.0,
-    this.$1og = 1.0,
-    this.$2og = 2.0,
-    this.$4og = 4.0,
-    this.$8og = 8.0,
+class GSBorderWidthToken {
+  final double $0;
+  final double $1;
+  final double $2;
+  final double $4;
+  final double $8;
+
+  const GSBorderWidthToken({
+    this.$0 = 0.0,
+    this.$1 = 1.0,
+    this.$2 = 2.0,
+    this.$4 = 4.0,
+    this.$8 = 8.0,
   });
+}
 
-  static get $0 => bwInstance.$0og;
-  static get $1 => bwInstance.$1og;
-  static get $2 => bwInstance.$2og;
-  static get $4 => bwInstance.$4og;
-  static get $8 => bwInstance.$8og;
+class $GSBorderWidth {
+  static get $0 => bwtInstance.$0;
+  static get $1 => bwtInstance.$1;
+  static get $2 => bwtInstance.$2;
+  static get $4 => bwtInstance.$4;
+  static get $8 => bwtInstance.$8;
 
   static Map<String, double> borderWidthMap = {
     "0": $0,

@@ -36,9 +36,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GluestackProvider(
       gluestackTokenConfig: GluestackTokenConfig(
-        gsBorderWidth: const $GSBorderWidth($1og: 36),
-        gsSpace: const $GSSpace($5og:6969)
-      ),
+          gsBorderWidthToken: const GSBorderWidthToken($1: 69),
+          gsSpaceToken: const GSSpaceToken($5: 420)),
       child: MaterialApp.router(
         routerConfig: router,
         debugShowCheckedModeBanner: false,
