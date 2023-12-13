@@ -44,6 +44,7 @@ class FlexExample extends StatelessWidget {
       body: BaseLayout(
         code: code,
         component: GSFlex(
+          
           style: GSStyle(
             direction: Axis.vertical,
             md: GSStyle(direction: Axis.horizontal),

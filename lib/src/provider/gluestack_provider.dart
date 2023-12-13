@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/token/font_weight.dart';
 import 'package:gluestack_ui/src/token/line_height.dart';
+import 'package:gluestack_ui/src/token/screen_breakpoint.dart';
 
 final getIt = GetIt.instance;
 
@@ -29,6 +30,7 @@ class GluestackTokenConfig {
   final GSRadiiToken gsRadiiToken;
   final GSSpaceToken gsSpaceToken;
   final GSColorsToken gsColorsToken;
+  final GSScreenBreakpointToken gsScreenBreakpointToken;
 
   GluestackTokenConfig({
     this.gsBorderWidthToken = const GSBorderWidthToken(),
@@ -39,6 +41,7 @@ class GluestackTokenConfig {
     this.gsRadiiToken = const GSRadiiToken(),
     this.gsSpaceToken = const GSSpaceToken(),
     this.gsColorsToken = const GSColorsToken(),
+    this.gsScreenBreakpointToken = const GSScreenBreakpointToken(),
   }) {
     if (!getIt.isRegistered<GSBorderWidthToken>()) {
       getIt.registerSingleton<GSBorderWidthToken>(gsBorderWidthToken);
@@ -63,6 +66,9 @@ class GluestackTokenConfig {
     }
     if (!getIt.isRegistered<GSColorsToken>()) {
       getIt.registerSingleton<GSColorsToken>(gsColorsToken);
+    }
+    if (!getIt.isRegistered<GSScreenBreakpointToken>()) {
+      getIt.registerSingleton<GSScreenBreakpointToken>(gsScreenBreakpointToken);
     }
   }
 }
