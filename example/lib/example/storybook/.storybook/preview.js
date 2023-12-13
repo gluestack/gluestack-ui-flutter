@@ -29,7 +29,7 @@ export const parameters = {
           "Layout",
           ["Box", "Center", "Divider", "HStack", "VStack"],
           "Feedback",
-          ["Progress"],
+          ["Progress", "Spinner", "Toast"],
           "Data Display",
           ["Badge"],
           "Forms",

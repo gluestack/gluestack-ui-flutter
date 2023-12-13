@@ -15,8 +15,10 @@ import 'package:gluestack_ui_example/preview_widgets/image_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/input_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/radio_button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/spinner_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/switch_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/text_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/toast_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/vstack_preview.dart';
 import 'package:go_router/go_router.dart';
 
@@ -129,6 +131,18 @@ final GoRouter router = GoRouter(
           path: "boxPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const BoxPreview();
+          },
+        ),
+        GoRoute(
+          path: "spinnerPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SpinnerPreview();
+          },
+        ),
+        GoRoute(
+          path: "toastPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ToastPreview();
           },
         ),
       ],
