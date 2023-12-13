@@ -27,7 +27,7 @@ export const parameters = {
           "Typography",
           ["Heading", "Text"],
           "Layout",
-          ["HStack", "VStack"],
+          ["Box", "Center", "Divider", "HStack", "VStack"],
           "Feedback",
           ["Progress"],
           "Data Display",

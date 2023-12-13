@@ -3,8 +3,11 @@ import 'package:gluestack_ui_example/home.dart';
 import 'package:gluestack_ui_example/main.dart';
 import 'package:gluestack_ui_example/preview_widgets/avatar_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/box_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/center_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/checkbox_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/divider_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/heading_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/hstack_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/icon_preview.dart';
@@ -108,6 +111,24 @@ final GoRouter router = GoRouter(
           path: "headingPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const HeadingPreview();
+          },
+        ),
+        GoRoute(
+          path: "dividerPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const DividerPreview();
+          },
+        ),
+        GoRoute(
+          path: "centerPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const CenterPreview();
+          },
+        ),
+        GoRoute(
+          path: "boxPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const BoxPreview();
           },
         ),
       ],
