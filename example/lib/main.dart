@@ -35,9 +35,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GluestackProvider(
-      gluestackTokenConfig: GluestackTokenConfig(
-          gsBorderWidthToken: const GSBorderWidthToken($1: 69),
-          gsSpaceToken: const GSSpaceToken($5: 420)),
+       gluestackTokenConfig: GluestackTokenConfig(
+        gsColorsToken: const GSColorsToken(
+          primary600: Colors.pink,
+          primary700: Colors.pink,
+        ),
+      ),
       child: MaterialApp.router(
         routerConfig: router,
         debugShowCheckedModeBanner: false,

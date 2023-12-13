@@ -8,9 +8,11 @@ final getIt = GetIt.instance;
 
 class GluestackProvider extends StatelessWidget {
   final Widget child;
-  final GluestackTokenConfig gluestackTokenConfig;
-  const GluestackProvider(
-      {super.key, required this.child, required this.gluestackTokenConfig});
+  GluestackTokenConfig? gluestackTokenConfig;
+  GluestackProvider(
+      {super.key, required this.child, this.gluestackTokenConfig}) {
+    gluestackTokenConfig ??= GluestackTokenConfig();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +40,29 @@ class GluestackTokenConfig {
     this.gsSpaceToken = const GSSpaceToken(),
     this.gsColorsToken = const GSColorsToken(),
   }) {
-    getIt.registerSingleton<GSBorderWidthToken>(gsBorderWidthToken);
-    getIt.registerSingleton<GSFontSizeToken>(gsFontSizeToken);
-    getIt.registerSingleton<GSFontWeightsToken>(gsFontWeightsToken);
-    getIt.registerSingleton<GSLetterSpacingToken>(gsLetterSpacingToken);
-    getIt.registerSingleton<GSLineHeightToken>(gsLineHeightToken);
-    getIt.registerSingleton<GSRadiiToken>(gsRadiiToken);
-    getIt.registerSingleton<GSSpaceToken>(gsSpaceToken);
-    getIt.registerSingleton<GSColorsToken>(gsColorsToken);
+    if (!getIt.isRegistered<GSBorderWidthToken>()) {
+      getIt.registerSingleton<GSBorderWidthToken>(gsBorderWidthToken);
+    }
+    if (!getIt.isRegistered<GSFontSizeToken>()) {
+      getIt.registerSingleton<GSFontSizeToken>(gsFontSizeToken);
+    }
+    if (!getIt.isRegistered<GSFontWeightsToken>()) {
+      getIt.registerSingleton<GSFontWeightsToken>(gsFontWeightsToken);
+    }
+    if (!getIt.isRegistered<GSLetterSpacingToken>()) {
+      getIt.registerSingleton<GSLetterSpacingToken>(gsLetterSpacingToken);
+    }
+    if (!getIt.isRegistered<GSLineHeightToken>()) {
+      getIt.registerSingleton<GSLineHeightToken>(gsLineHeightToken);
+    }
+    if (!getIt.isRegistered<GSRadiiToken>()) {
+      getIt.registerSingleton<GSRadiiToken>(gsRadiiToken);
+    }
+    if (!getIt.isRegistered<GSSpaceToken>()) {
+      getIt.registerSingleton<GSSpaceToken>(gsSpaceToken);
+    }
+    if (!getIt.isRegistered<GSColorsToken>()) {
+      getIt.registerSingleton<GSColorsToken>(gsColorsToken);
+    }
   }
 }
