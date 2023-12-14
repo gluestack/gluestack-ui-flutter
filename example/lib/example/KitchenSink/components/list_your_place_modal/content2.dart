@@ -45,8 +45,8 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
                   ),
               ],
             )),
-        SizedBox(
-          width: double.infinity,
+        GSBox(
+          style: GSStyle(  width: double.infinity),
           child: GSButton(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.negative,
@@ -56,8 +56,8 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
             },
           ),
         ),
-        SizedBox(
-          width: double.infinity,
+        GSBox(
+          style: GSStyle(  width: double.infinity),
           child: GSButton(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.secondary,

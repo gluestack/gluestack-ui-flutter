@@ -138,8 +138,10 @@ class LayoutExample extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        width: 200,
+                      GSBox(
+                        style: GSStyle(
+                          width: 200,
+                        ),
                         child: GSBox(
                           style: GSStyle(
                             padding: const EdgeInsets.only(right: 30),

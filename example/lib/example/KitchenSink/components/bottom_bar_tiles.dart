@@ -22,7 +22,7 @@ class BottomBarTile extends StatelessWidget {
               icon,
               color: Colors.pink
             ),
-            const SizedBox(height: 2),
+            GSBox(style: GSStyle(height: 2)),
             GSText(
               text: title,
               style: GSStyle(
