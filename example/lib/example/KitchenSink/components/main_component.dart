@@ -77,12 +77,12 @@ class KSMainComponent extends StatelessWidget {
                       GSButtonText(
                         text: 'List your place',
                         style: GSStyle(
-                          textStyle: const TextStyle(
+                          textStyle:  TextStyle(
                             fontSize: $GSFontSize.$md,
                             color: $GSColors.textLight800,
                           ),
                           dark: GSStyle(
-                            textStyle: const TextStyle(
+                            textStyle:  TextStyle(
                               fontSize: $GSFontSize.$md,
                               color: $GSColors.textDark300,
                             ),
@@ -140,11 +140,11 @@ class KSMainComponent extends StatelessWidget {
                       child: GSButtonText(
                         text: title,
                         style: GSStyle(
-                          textStyle: const TextStyle(
+                          textStyle:  TextStyle(
                               fontWeight: FontWeight.w400,
                               color: $GSColors.textLight900),
                           dark: GSStyle(
-                            textStyle: const TextStyle(
+                            textStyle:  TextStyle(
                               fontWeight: FontWeight.w400,
                               color:
                                   $GSColors.textDark50, //Error: Does not work

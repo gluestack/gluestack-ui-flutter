@@ -12,48 +12,48 @@ class GSInputAttributes {
         focusborderColor: $GSColors.primary700,
         borderColor: $GSColors.backgroundLight300,
         textColor: $GSColors.white,
-        px: const EdgeInsets.symmetric(horizontal: $GSSpace.$0),
+        px:  EdgeInsets.symmetric(horizontal: $GSSpace.$0),
       ),
       ThemeMode.dark: GSInputCombinationStyle(
         border: null,
         borderColor: $GSColors.borderDark400,
         textColor: $GSColors.white,
         focusborderColor: $GSColors.primary400,
-        px: const EdgeInsets.symmetric(horizontal: $GSSpace.$0),
+        px:  EdgeInsets.symmetric(horizontal: $GSSpace.$0),
       )
     },
     GSInputVariant.outline: {
       ThemeMode.light: GSInputCombinationStyle(
-        border: const OutlineInputBorder(),
+        border:  const OutlineInputBorder(),
         borderColor: $GSColors.backgroundLight300,
         focusborderColor: $GSColors.primary700,
         textColor: $GSColors.white,
-        px: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
+        px:  EdgeInsets.symmetric(horizontal: $GSSpace.$3),
       ),
       ThemeMode.dark: GSInputCombinationStyle(
-        border: const OutlineInputBorder(),
+        border:  const OutlineInputBorder(),
         borderColor: $GSColors.borderDark400,
         focusborderColor: $GSColors.primary400,
-        px: const EdgeInsets.symmetric(horizontal: $GSSpace.$3),
+        px:  EdgeInsets.symmetric(horizontal: $GSSpace.$3),
         textColor: $GSColors.white,
       )
     },
     GSInputVariant.rounded: {
       ThemeMode.light: GSInputCombinationStyle(
-        border: const OutlineInputBorder(
+        border:  OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular($GSRadii.full))),
         borderColor: $GSColors.backgroundLight300,
         focusborderColor: $GSColors.primary700,
-        px: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
+        px:  EdgeInsets.symmetric(horizontal: $GSSpace.$4),
         textColor: $GSColors.white,
       ),
       ThemeMode.dark: GSInputCombinationStyle(
-        border: const OutlineInputBorder(
+        border:  OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular($GSRadii.full))),
         borderColor: $GSColors.borderDark400,
         focusborderColor: $GSColors.primary400,
         textColor: $GSColors.white,
-        px: const EdgeInsets.symmetric(horizontal: $GSSpace.$4),
+        px:  EdgeInsets.symmetric(horizontal: $GSSpace.$4),
       )
     },
   };

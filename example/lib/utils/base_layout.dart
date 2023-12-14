@@ -79,7 +79,7 @@ class _BaseLayoutState extends State<BaseLayout> {
     );
 
     final finalLayout = Container(
-      margin: const EdgeInsets.symmetric(horizontal: $GSSpace.$16),
+      margin:  EdgeInsets.symmetric(horizontal: $GSSpace.$16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10),

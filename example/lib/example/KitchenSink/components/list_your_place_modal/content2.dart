@@ -38,7 +38,7 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
                     onChanged: (value) {},
                     icon: GSCheckBoxIndicator(
                         style: GSStyle(
-                            margin: const EdgeInsets.only(right: $GSSpace.$3)),
+                            margin:  EdgeInsets.only(right: $GSSpace.$3)),
                         child: const GSCheckBoxIcon()),
                     value: _ammenitiesData[i].value,
                     label: GSCheckBoxLabel(text: _ammenitiesData[i].label),

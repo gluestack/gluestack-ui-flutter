@@ -563,6 +563,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   GSPlacement? placement;
 
   bool? isVisible;
+ Axis? direction;
 
   GSStyle(
       {this.borderWidth,
@@ -626,6 +627,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       this.right,
       this.top,
       this.isVisible,
+      this.direction,
       });
 
   @override
@@ -747,6 +749,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       scale: overrideStyle?.scale ?? scale,
       cursors: overrideStyle?.cursors ?? cursors,
       isVisible: overrideStyle?.isVisible ?? isVisible,
+      direction: overrideStyle?.direction??direction,
     );
   }
 

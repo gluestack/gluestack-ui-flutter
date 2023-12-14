@@ -9,6 +9,7 @@ abstract class BaseStyle<T> {
   T? lg;
   T? sm;
   T? xs;
+  T? xxl;
   T? onHover;
   T? onFocus;
   T? onDisabled;
@@ -26,6 +27,7 @@ abstract class BaseStyle<T> {
     this.sm,
     this.lg,
     this.xs,
+    this.xxl,
     this.onHover,
     this.onFocus,
     this.onDisabled,
@@ -50,6 +52,7 @@ abstract class BaseStyle<T> {
         'sm': sm,
         'md': md,
         'lg': lg,
+        'xxl': xxl,
         'onFocus': onFocus,
         'onActive': onActive,
         'onHover': onHover,
