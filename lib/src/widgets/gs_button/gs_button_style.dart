@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/button/button.dart';
@@ -9,8 +10,12 @@ const GSStyleConfig gsButtonConfig = GSStyleConfig(
     descendantStyle: ['_text', '_spinner', '_icon'],
     ancestorStyle: ['_button']);
 
+Map<String, dynamic>? buttonCustomStyleData = getIt.isRegistered<GluestackCustomStyleData>()
+    ? getIt<GluestackCustomStyleData>().buttonData
+    : null;
+
 GSStyle buttonStyle = GSStyle.fromMap(
-    data: buttonData, descendantStyle: gsButtonConfig.descendantStyle);
+    data: buttonCustomStyleData ?? buttonData, descendantStyle: gsButtonConfig.descendantStyle);
 
 GSStyle baseStyle = GSStyle(
   borderRadius: buttonStyle.borderRadius,

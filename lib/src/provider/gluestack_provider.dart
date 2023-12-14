@@ -10,15 +10,32 @@ final getIt = GetIt.instance;
 class GluestackProvider extends StatelessWidget {
   final Widget child;
   GluestackTokenConfig? gluestackTokenConfig;
+  final GluestackCustomStyleData? gluestackCustomStyleData;
   GluestackProvider(
-      {super.key, required this.child, this.gluestackTokenConfig}) {
+      {super.key,
+      required this.child,
+      this.gluestackTokenConfig,
+      this.gluestackCustomStyleData}) {
     gluestackTokenConfig ??= GluestackTokenConfig();
+
+    if (gluestackCustomStyleData != null) {
+      if (!getIt.isRegistered<GluestackCustomStyleData>()) {
+        getIt.registerSingleton<GluestackCustomStyleData>(
+            gluestackCustomStyleData!);
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return child;
   }
+}
+
+class GluestackCustomStyleData {
+  final Map<String, dynamic>? buttonData;
+  // final String? buttonData;
+  GluestackCustomStyleData({this.buttonData});
 }
 
 class GluestackTokenConfig {
