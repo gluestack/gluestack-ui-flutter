@@ -43,7 +43,16 @@ dependencies:
 
 ## Usage
 
-Here is how `GSButton` widget can be easily integrated into your flutter app. Here's an example of how to use it:
+Wrap the `MaterialApp` with `GluestackProvider`.
+
+```dart
+GluestackProvider(
+  child: MaterialApp.router(
+    ....
+)
+```
+
+Here's an example of how to use `GSButton` widget into your flutter app:
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
@@ -72,6 +81,29 @@ GSButton(
 ```
 
 All Gluestack widgets support dark theme. Package detects the current theme from Flutter's inbuilt `Theme.of(context).brightness`. Hence, you can manage the theme mode from MaterialApp itself using the state management of your choice.
+
+## Custom tokens
+
+You can customize the default tokens to provide your own design values.
+
+```dart
+GluestackProvider(
+  gluestackTokenConfig: GluestackTokenConfig(
+    gsColorsToken: const GSColorsToken(
+      primary600: Colors.pink,
+      primary700: Colors.pink,
+    ),
+    gsFontSizeToken: const GSFontSizeToken(
+      $sm: 12,
+      $md: 14,
+    ),
+    // More token configurations....
+  ),
+  child: MaterialApp.router(
+    ....
+  ),
+)
+```
 
 ## Contributing
 
