@@ -46,7 +46,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
                     onChanged: (value) {},
                     icon: GSCheckBoxIndicator(
                         style: GSStyle(
-                            margin: const EdgeInsets.only(right: $GSSpace.$3)),
+                            margin:  EdgeInsets.only(right: $GSSpace.$3)),
                         child: const GSCheckBoxIcon()),
                     value: _ammenitiesData[i].value,
                     label: GSCheckBoxLabel(text: _ammenitiesData[i].label),
@@ -66,7 +66,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
                     style: GSStyle(
                         dark: GSStyle(
                             textStyle:
-                                const TextStyle(color: $GSColors.textDark300))),
+                                 TextStyle(color: $GSColors.textDark300))),
                     // size: GSSizes.$xs,
                     text: showMore ? 'Show more' : 'Show less'),
                 GSIcon(

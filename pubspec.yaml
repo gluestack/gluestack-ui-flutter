@@ -18,6 +18,7 @@ dependencies:
 
   fluttertoast: ^8.2.4
   url_launcher: ^6.2.1
+  get_it: ^7.6.4
 
 dev_dependencies:
   flutter_test:

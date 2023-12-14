@@ -23,7 +23,8 @@ class GSSpinner extends StatelessWidget {
     this.semanticsValue,
     this.strokeCap,
     this.strokeAlign = 0,
-    this.strokeWidth = $GSBorderWidth.$4,
+    this.strokeWidth = 4.0,
+    // this.strokeWidth = $GSBorderWidth.$4,
   });
 
   @override

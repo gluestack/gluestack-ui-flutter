@@ -71,7 +71,7 @@ class PressableExample extends StatelessWidget {
             style: GSStyle(
                 color: Colors.blue,
                 textStyle:
-                    const TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
+                     TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
           ),
         ),
       ),

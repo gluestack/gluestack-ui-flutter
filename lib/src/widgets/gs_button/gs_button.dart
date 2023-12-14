@@ -155,7 +155,7 @@ class GSButton extends StatelessWidget {
                   BorderSide resolveBorderSide(MaterialState state) {
                     if (isAttached) return BorderSide.none;
                     if (isFocusVisible!) {
-                      return const BorderSide(
+                      return BorderSide(
                           color: $GSColors.primary500, width: 2.0);
                     } else if (variant == GSVariants.link) {
                       return BorderSide.none;

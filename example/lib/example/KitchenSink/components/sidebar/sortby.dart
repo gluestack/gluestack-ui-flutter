@@ -50,7 +50,7 @@ class _KSSortByState extends State<KSSortBy> {
         for (int i = 0; i < _sortByData.length; i++)
           GSRadio<KSSortOptions>(
             style: GSStyle(
-                margin: const EdgeInsets.only(
+                margin:  EdgeInsets.only(
                     right: $GSSpace.$3, left: $GSSpace.$1)),
             icon: const GSRadioIcon<KSSortOptions>(
               size: GSSizes.$sm,

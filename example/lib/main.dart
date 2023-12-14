@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
 
 // ignore: library_private_types_in_public_api
@@ -33,19 +34,27 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
-      themeMode: _selectedThemeMode,
-      theme: ThemeData(
-        colorSchemeSeed: Colors.deepPurple,
-        useMaterial3: true,
-        brightness: Brightness.light,
+    return GluestackProvider(
+       gluestackTokenConfig: GluestackTokenConfig(
+        gsColorsToken: const GSColorsToken(
+          primary600: Colors.pink,
+          primary700: Colors.pink,
+        ),
       ),
-      darkTheme: ThemeData(
-        colorSchemeSeed: Colors.deepPurple,
-        useMaterial3: true,
-        brightness: Brightness.dark,
+      child: MaterialApp.router(
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        themeMode: _selectedThemeMode,
+        theme: ThemeData(
+          colorSchemeSeed: Colors.deepPurple,
+          useMaterial3: true,
+          brightness: Brightness.light,
+        ),
+        darkTheme: ThemeData(
+          colorSchemeSeed: Colors.deepPurple,
+          useMaterial3: true,
+          brightness: Brightness.dark,
+        ),
       ),
     );
   }
