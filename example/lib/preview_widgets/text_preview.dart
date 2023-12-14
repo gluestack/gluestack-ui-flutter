@@ -17,7 +17,7 @@ class TextPreview extends StatelessWidget {
             bold: true,
             underline: true,
             style: GSStyle(
-              textStyle: const TextStyle(letterSpacing: $GSLetterSpacing.$lg),
+              textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
             ),
           ),
         ),

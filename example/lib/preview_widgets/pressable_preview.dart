@@ -38,8 +38,7 @@ class PressablePreview extends StatelessWidget {
               underline: true,
               style: GSStyle(
                   color: Colors.blue,
-                  textStyle:
-                      const TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
+                  textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
             ),
           ),
         ),

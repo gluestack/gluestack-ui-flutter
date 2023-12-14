@@ -29,7 +29,7 @@ class CheckboxPreview extends StatelessWidget {
             isDisabled:
                 context.knobs.boolean(label: "isDisabled", initial: false),
             icon: GSCheckBoxIndicator(
-              style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
+              style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
               child: const GSCheckBoxIcon(),
             ),
             value: "value 1",

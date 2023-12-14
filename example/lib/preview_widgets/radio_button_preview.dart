@@ -43,7 +43,7 @@ class _RadioButtonPreviewState extends State<RadioButtonPreview> {
             },
             icon: const GSRadioIcon<Value>(),
             label: const GSRadioText<Value>(text: 'text'),
-            style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
           ),
         ),
       ],

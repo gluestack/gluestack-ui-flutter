@@ -16,7 +16,7 @@ class BoxPreview extends StatelessWidget {
               'If you are looking for a flexible component to help with low-level layout needs, the Box component might be just what you need.',
           builder: (context) => GSBox(
             style: GSStyle(
-              padding: const EdgeInsets.all($GSSpace.$5),
+              padding: EdgeInsets.all($GSSpace.$5),
               bg: $GSColors.primary500,
             ),
             child: const Text('This is the Box'),
