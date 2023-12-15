@@ -1,0 +1,41 @@
+---
+title: gluestack-ui Button Component | Installation, Usage, and API
+
+description: A button component is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
+
+pageTitle: Button
+
+pageDescription: A button component is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
+
+showHeader: true
+---
+
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+
+<Meta title="Components/Forms/Button" />
+
+<iframe
+  src="http://localhost:53075/#/buttonPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSButton(
+  action: GSActions.primary,
+  variant: GSVariants.solid,
+  size: GSSize.$md,
+  isDisabled: false,
+  isFocusVisible: false,
+  onPressed: () {},
+  child: const Row(
+    children: [
+      GSButtonText(text: "Add"),
+      GSButtonIcon(icon: Icons.add)
+    ],
+  ),
+)
+```

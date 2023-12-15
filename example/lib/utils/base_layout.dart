@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_syntax_view/flutter_syntax_view.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
-class BaseLayout extends StatelessWidget {
+class BaseLayout extends StatefulWidget {
   final Widget component;
   final Widget? controls;
   final String? code;
@@ -10,21 +10,26 @@ class BaseLayout extends StatelessWidget {
       {super.key, required this.component, this.controls, this.code});
 
   @override
+  State<BaseLayout> createState() => _BaseLayoutState();
+}
+
+class _BaseLayoutState extends State<BaseLayout> {
+  @override
   Widget build(BuildContext context) {
     final isLandscape =
         MediaQuery.orientationOf(context) == Orientation.landscape;
-
+    ScrollController _scrollController = ScrollController();
     final componentWrapper = Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30.0),
-        child: component,
+        child: widget.component,
       ),
     );
 
     final controlsWrapper = Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30.0),
-        child: controls ?? const SizedBox.shrink(),
+        child: widget.controls ?? const SizedBox.shrink(),
       ),
     );
 
@@ -32,10 +37,10 @@ class BaseLayout extends StatelessWidget {
       direction: isLandscape ? Axis.horizontal : Axis.vertical,
       children: [
         if (isLandscape)
-          Expanded(child: componentWrapper)
+          Expanded(child: SingleChildScrollView(child: componentWrapper))
         else
-          componentWrapper,
-        if (controls != null)
+          SingleChildScrollView(child: componentWrapper),
+        if (widget.controls != null)
           isLandscape
               ? const VerticalDivider(
                   color: Colors.grey,
@@ -47,12 +52,15 @@ class BaseLayout extends StatelessWidget {
                   thickness: 1,
                   height: 1,
                 ),
-        if (controls != null) ...[
+        if (widget.controls != null) ...[
           if (isLandscape)
             Expanded(
               child: Scrollbar(
+                controller: _scrollController,
                 thumbVisibility: true,
-                child: SingleChildScrollView(child: controlsWrapper),
+                child: SingleChildScrollView(
+                  controller: _scrollController,
+                  child: controlsWrapper),
               ),
             )
           else
@@ -62,7 +70,7 @@ class BaseLayout extends StatelessWidget {
     );
 
     final codeBlock = SyntaxView(
-      code: code ?? "",
+      code: widget.code ?? "",
       syntax: Syntax.DART,
       syntaxTheme: SyntaxTheme.vscodeDark(),
       fontSize: 16.0,
@@ -71,7 +79,7 @@ class BaseLayout extends StatelessWidget {
     );
 
     final finalLayout = Container(
-      margin: const EdgeInsets.symmetric(horizontal: $GSSpace.$16),
+      margin:  EdgeInsets.symmetric(horizontal: $GSSpace.$16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10),

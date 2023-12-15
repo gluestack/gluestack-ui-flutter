@@ -40,7 +40,32 @@ class GSButton extends StatelessWidget {
     this.autoFocus = false,
     this.clipBehavior = Clip.none,
     this.statesController,
-  });
+  })  : assert(
+          size == null ||
+              size == GSSizes.$xs ||
+              size == GSSizes.$sm ||
+              size == GSSizes.$md ||
+              size == GSSizes.$lg,
+          'GS Button can only have the sizes: \$lg, \$md \$sm and \$xs\n'
+          'To resolve this error, ensure only the above mentioned GSSizes is specified!',
+        ),
+        assert(
+          variant == null ||
+              variant == GSVariants.outline ||
+              variant == GSVariants.solid||
+              variant == GSVariants.link,
+          'GS Button can only have the vairants: solid, outline and link\n'
+          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
+        ),
+        assert(
+          action == null ||
+              action == GSActions.primary ||
+              action == GSActions.secondary||
+              action == GSActions.positive||
+              action == GSActions.negative,
+          'GS Button can only have the actions: primary, secondary, positive and negative\n'
+          'To resolve this error, ensure only the above mentioned GSActions is specified.',
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +84,6 @@ class GSButton extends StatelessWidget {
         descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
             ?[variant],
         descendantStyleKeys: gsButtonConfig.descendantStyle)!;
-    print(styler.borderWidth);
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSButtonProvider(
@@ -96,7 +120,7 @@ class GSButton extends StatelessWidget {
                         disabled) {
                       return styler.onDisabled?.bg ?? styler.bg;
                     } else if (states.contains(MaterialState.error)) {
-                      return styler.onInvaild?.bg ?? styler.bg;
+                      return styler.onInvalid?.bg ?? styler.bg;
                     }
 
                     return styler.bg!;
@@ -120,7 +144,7 @@ class GSButton extends StatelessWidget {
                         return styler.onDisabled?.borderRadius ??
                             styler.borderRadius!;
                       case MaterialState.error:
-                        return styler.onInvaild?.borderRadius ??
+                        return styler.onInvalid?.borderRadius ??
                             styler.borderRadius!;
                       default:
                         return styler.borderRadius!;
@@ -131,7 +155,7 @@ class GSButton extends StatelessWidget {
                   BorderSide resolveBorderSide(MaterialState state) {
                     if (isAttached) return BorderSide.none;
                     if (isFocusVisible!) {
-                      return const BorderSide(
+                      return BorderSide(
                           color: $GSColors.primary500, width: 2.0);
                     } else if (variant == GSVariants.link) {
                       return BorderSide.none;
@@ -159,9 +183,9 @@ class GSButton extends StatelessWidget {
                               width: styler.onDisabled?.borderWidth ?? 1.0);
                         case MaterialState.error:
                           return BorderSide(
-                              color: styler.onInvaild?.borderColor ??
+                              color: styler.onInvalid?.borderColor ??
                                   styler.borderColor!,
-                              width: styler.onInvaild?.borderWidth ?? 1.0);
+                              width: styler.onInvalid?.borderWidth ?? 1.0);
                         default:
                           return BorderSide(
                               color: styler.borderColor!,

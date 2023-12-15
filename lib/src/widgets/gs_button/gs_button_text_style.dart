@@ -11,7 +11,7 @@ GSStyle buttonTextStyle = GSStyle.fromMap(data: textData)
 
 GSStyle baseStyle = GSStyle(
   color: buttonTextStyle.color,
-  fontWeight: buttonTextStyle.fontWeight,
+  textStyle: buttonTextStyle.textStyle,
   dark: buttonTextStyle.dark,
 );
 

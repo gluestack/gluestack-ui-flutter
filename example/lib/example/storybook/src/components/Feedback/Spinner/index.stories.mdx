@@ -1,0 +1,35 @@
+---
+title: Spinner | gluestack-ui | Installation, Usage, and API
+
+description: Spinners are designed to give visual cues to users that an action is being processed or that a change or result is expected. They are useful for improving the user experience by reducing frustration and uncertainty.
+
+pageTitle: Spinner
+
+pageDescription: Spinners are designed to give visual cues to users that an action is being processed or that a change or result is expected. They are useful for improving the user experience by reducing frustration and uncertainty.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Feedback/Spinner" />
+
+<iframe
+  src="https://www.myntra.com/"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSSpinner(
+  strokeWidth: 4,
+  style: GSStyle(
+    bg: $GSColors.blueGray300,
+    width: 30,
+    height: 30,
+  ),
+),
+```

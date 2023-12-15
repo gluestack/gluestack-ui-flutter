@@ -18,6 +18,8 @@ dependencies:
     sdk: flutter
 
   flutter_syntax_view: ^4.0.0
+  storybook_flutter: ^0.14.0
+  go_router: ^12.1.1
 
   gluestack_ui:
     # When depending on this package from a real application you should use:
@@ -55,8 +57,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/
+  # assets:
+  #   - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

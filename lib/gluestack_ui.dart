@@ -26,3 +26,12 @@ export 'src/widgets/gs_text/public.dart';
 export 'src/widgets/gs_text_area/public.dart';
 export 'src/widgets/gs_toast/public.dart';
 export 'src/widgets/gs_vstack/public.dart';
+export 'src/widgets/gs_fab/public.dart';
+export 'src/widgets/gs_form_control/public.dart';
+export 'src/provider/gluestack_provider.dart';
+export 'src/widgets/gs_flex/gs_flex.dart';
+export 'src/widgets/gs_responsives/resp_layout_manager.dart';
+export 'src/widgets/gs_responsives/resp_row_column.dart';
+export 'src/widgets/gs_responsives/resp_scaler.dart';
+export 'src/widgets/gs_responsives/resp_value_gettter.dart';
+

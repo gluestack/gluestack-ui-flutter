@@ -1,31 +1,42 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/token/screen_breakpoint.dart';
 
 bool isBaseScreen(BuildContext context) {
   final screenWidth = MediaQuery.sizeOf(context).width;
-  return screenWidth < small;
+  return screenWidth < $GSScreenBreakpoint.small;
 }
 
 bool isSmallScreen(BuildContext context) {
   final screenWidth = MediaQuery.sizeOf(context).width;
-  return screenWidth >= small;
+  return screenWidth >= $GSScreenBreakpoint.small;
 }
 
 bool isMediumScreen(BuildContext context) {
   final screenWidth = MediaQuery.sizeOf(context).width;
-  return screenWidth >= medium;
+  return screenWidth >= $GSScreenBreakpoint.medium;
 }
 
 bool isLargeScreen(BuildContext context) {
   final screenWidth = MediaQuery.sizeOf(context).width;
-  return screenWidth >= large;
+  return screenWidth >= $GSScreenBreakpoint.large;
 }
 
-const base = 0;
-const small = 360;
-const medium = 600;
-const large = 960;
+bool isExtraLargeScreen(BuildContext context) {
+  final screenWidth = MediaQuery.sizeOf(context).width;
+  return screenWidth >= $GSScreenBreakpoint.extraLarge;
+}
+
+bool isScreenSmallerThan(double size, BuildContext context) {
+  final screenWidth = MediaQuery.sizeOf(context).width;
+  return screenWidth <= size;
+}
+
+bool isScreenLargerThan(double size, BuildContext context) {
+  final screenWidth = MediaQuery.sizeOf(context).width;
+  return screenWidth >= size;
+}
 
 GSStyle? resolveStyles(
   BuildContext context, {
@@ -94,6 +105,14 @@ GSStyle? resolveStyles(
             descendantStyleKeys: descendantStyleKeys);
       }
       if (key == 'xs' && isBaseScreen(context)) {
+        currentGSStyle = currentGSStyle?.merge(value,
+            descendantStyleKeys: descendantStyleKeys);
+        GSStyle? nestedStyle = resolveStyles(context,
+            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+        currentGSStyle = currentGSStyle?.merge(nestedStyle,
+            descendantStyleKeys: descendantStyleKeys);
+      }
+      if (key == 'xxl' && isExtraLargeScreen(context)) {
         currentGSStyle = currentGSStyle?.merge(value,
             descendantStyleKeys: descendantStyleKeys);
         GSStyle? nestedStyle = resolveStyles(context,

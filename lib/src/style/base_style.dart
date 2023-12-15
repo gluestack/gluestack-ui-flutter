@@ -9,12 +9,13 @@ abstract class BaseStyle<T> {
   T? lg;
   T? sm;
   T? xs;
+  T? xxl;
   T? onHover;
   T? onFocus;
   T? onDisabled;
   T? input;
   T? icon;
-  T? onInvaild;
+  T? onInvalid;
   T? onActive;
   T? web;
   T? android;
@@ -26,12 +27,13 @@ abstract class BaseStyle<T> {
     this.sm,
     this.lg,
     this.xs,
+    this.xxl,
     this.onHover,
     this.onFocus,
     this.onDisabled,
     this.icon,
     this.input,
-    this.onInvaild,
+    this.onInvalid,
     this.onActive,
     this.web,
     this.android,
@@ -50,11 +52,12 @@ abstract class BaseStyle<T> {
         'sm': sm,
         'md': md,
         'lg': lg,
+        'xxl': xxl,
         'onFocus': onFocus,
         'onActive': onActive,
         'onHover': onHover,
         'onDisabled': onDisabled,
-        'onInvalid': onInvaild,
+        'onInvalid': onInvalid,
         'dark': dark,
       });
 }

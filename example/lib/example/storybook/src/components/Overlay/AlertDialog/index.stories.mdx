@@ -1,0 +1,57 @@
+---
+title: AlertDialog | gluestack-ui | Installation, Usage, and API
+
+description: AlertDialog effectively interrupts a user's flow and prompts them to take a specific action. It's commonly used for mandatory confirmations or call-to-actions.
+
+pageTitle: AlertDialog
+
+pageDescription: AlertDialog effectively interrupts a user's flow and prompts them to take a specific action. It's commonly used for mandatory confirmations or call-to-actions.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Overlay/AlertDialog" />
+
+<iframe
+  src="http://localhost:53075/#/headingPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSButton(
+  size: GSSizes.$lg,
+  child: const GSButtonText(text: "Click Me"),
+  onPressed: () {
+    GSAlertDialog.show(
+      context,
+      size: GSSizes.$md,
+      content: GSAlertDialogContent(
+        header: GSAlertDialogHeader(
+          style: GSStyle(
+            bg: Colors.pink,
+          ),
+          child: const Text("Header"),
+        ),
+        body: const GSAlertDialogBody(
+          child: Text(
+              "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
+        ),
+        footer: GSAlertDialogFooter(
+          child: GSButtonGroup(
+            buttons: [
+              GSButton(child: const Text("hey"), onPressed: () {}),
+              GSButton(child: const Text("click"), onPressed: () {}),
+            ],
+          ),
+        ),
+      ),
+    );
+  },
+),
+```

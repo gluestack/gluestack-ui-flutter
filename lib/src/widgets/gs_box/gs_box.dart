@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/style_resolver.dart';
 
 class GSBox extends StatelessWidget {
   final Widget? child;
@@ -32,47 +33,51 @@ class GSBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
-    return Container(
-      clipBehavior: clipBehavior,
-      transform: transform,
-      transformAlignment: transformAlignment,
-      foregroundDecoration: foregroundDecoration,
-      // alignment: style != null
-      //     ? style!.alignment ?? Alignment.center
-      //     : Alignment.center,
-      padding: style != null
-          ? style!.padding ??
-              const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
-          : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-      height: style != null ? style!.height : null,
-      width: style != null ? style!.width : null,
-      constraints: BoxConstraints(
-        minWidth: style != null ? style!.width ?? 0 : 0,
-        minHeight: style != null ? style!.height ?? 0 : 0,
+    GSStyle styler = resolveStyles(
+      context,
+      variantStyle: GSStyle(),
+      inlineStyle: style,
+    )!;
+
+    return Visibility(
+      visible: styler.isVisible ?? true,
+      child: Container(
+        clipBehavior: clipBehavior,
+        transform: transform,
+        transformAlignment: transformAlignment,
+        foregroundDecoration: foregroundDecoration,
+        // alignment: style != null
+        //     ? style!.alignment ?? Alignment.center
+        //     : Alignment.center,
+        padding: styler.padding,
+        margin: styler.margin,
+        height: styler.height,
+        width: styler.width,
+        constraints: BoxConstraints(
+          minWidth: style != null ? style!.width ?? 0 : 0,
+          minHeight: style != null ? style!.height ?? 0 : 0,
+        ),
+        // margin: style != null
+        //     ? style!.margin ??
+        //         const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
+        //     : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+        decoration: BoxDecoration(
+          color: styler.bg,
+          borderRadius: BorderRadius.circular(
+              style != null ? style!.borderRadius ?? 0 : 0),
+          border: Border.all(
+              color: style != null
+                  ? style!.borderColor ?? Colors.transparent
+                  : Colors.transparent,
+              width: style != null ? style!.borderWidth ?? 0 : 0),
+          gradient: gradient,
+          backgroundBlendMode: backgroundBlendMode,
+          boxShadow: boxShadow,
+          image: image,
+          // shape: shape, //will cause error, as borderraidus is defined
+        ),
+        child: child,
       ),
-      // margin: style != null
-      //     ? style!.margin ??
-      //         const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
-      //     : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-      decoration: BoxDecoration(
-        color: style != null
-            ? style!.color ?? Colors.transparent
-            : Colors.transparent,
-        borderRadius:
-            BorderRadius.circular(style != null ? style!.borderRadius ?? 0 : 0),
-        border: Border.all(
-            color: style != null
-                ? style!.borderColor ?? Colors.transparent
-                : Colors.transparent,
-            width: style != null ? style!.borderWidth ?? 0 : 0),
-        gradient: gradient,
-        backgroundBlendMode: backgroundBlendMode,
-        boxShadow: boxShadow,
-        image: image,
-        shape: shape,
-      ),
-      child: child,
     );
   }
 }

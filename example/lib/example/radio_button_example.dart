@@ -76,7 +76,7 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
           },
           icon: const GSRadioIcon<Value>(),
           label: const GSRadioText<Value>(text: 'text4'),
-          style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
+          style: GSStyle(margin:  EdgeInsets.only(right: $GSSpace.$2)),
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

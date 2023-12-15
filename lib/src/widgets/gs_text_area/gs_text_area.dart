@@ -3,8 +3,11 @@ import 'dart:ui' as ui;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/theme/config/text_area/text_area.dart';
+import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
 
@@ -14,7 +17,7 @@ class GSTextArea extends StatefulWidget {
   final GSStyle? style;
   final bool? isDisabled;
   final bool? isInvalid;
-  final bool? readOnly;
+  final bool? isReadOnly;
   final bool autocorrect;
   final Iterable<String>? autofillHints;
   final bool autofocus;
@@ -59,7 +62,6 @@ class GSTextArea extends StatefulWidget {
   final void Function()? onTap;
   final void Function(String, Map<String, dynamic>)? onAppPrivateCommand;
   final void Function(String)? onChanged;
-  final void Function(String)? onSubmitted;
   final void Function(PointerDownEvent)? onTapOutside;
   final Widget? Function(BuildContext,
       {required int currentLength,
@@ -120,12 +122,18 @@ class GSTextArea extends StatefulWidget {
   final TextStyle? suffixStyle;
   final String? suffixText;
   final bool visualFeedback;
+  final String? initialValue;
+  //form prop
+  final FormFieldValidator? validator;
+  final FormFieldSetter? onSaved;
+  final AutovalidateMode? autovalidateMode;
+  final ValueChanged<String>? onFieldSubmitted;
   const GSTextArea(
       {super.key,
-      this.size = GSSizes.$md,
-      this.isDisabled = false,
-      this.isInvalid = false,
-      this.readOnly = false,
+      this.size,
+      this.isDisabled,
+      this.isInvalid,
+      this.isReadOnly,
       this.autocorrect = true,
       this.buildCounter,
       this.autofocus = false,
@@ -162,7 +170,6 @@ class GSTextArea extends StatefulWidget {
       this.onAppPrivateCommand,
       this.onChanged,
       this.onEditingComplete,
-      this.onSubmitted,
       this.onTap,
       this.onTapOutside,
       this.restorationId,
@@ -227,7 +234,12 @@ class GSTextArea extends StatefulWidget {
       this.suffixStyle,
       this.suffixText,
       this.visualFeedback = true,
-      this.style})
+      this.style,
+      this.validator,
+      this.onSaved,
+      this.autovalidateMode,
+      this.onFieldSubmitted,
+      this.initialValue})
       : assert(
           size == null ||
               size == GSSizes.$xl ||
@@ -247,7 +259,19 @@ class _GSTextAreaState extends State<GSTextArea> {
 
   @override
   Widget build(BuildContext context) {
-    final inputSize = widget.size ?? textAreaStyle.props?.size;
+    final formProps = GSFormProvider.of(context);
+    final inputSize =
+        widget.size ?? formProps?.size ?? textAreaStyle.props?.size;
+    bool? isDisabled = widget.isDisabled;
+    bool? isReadOnly = widget.isReadOnly;
+    bool? isInvalid = widget.isInvalid;
+
+    final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
+
+    isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
+    isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
+    isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
+
     GSStyle styler = resolveStyles(
       context,
       variantStyle: textAreaStyle,
@@ -257,13 +281,13 @@ class _GSTextAreaState extends State<GSTextArea> {
     )!;
 
     Color? resolveBorderColor() {
-      if (widget.isInvalid!) {
-        return styler.onInvaild?.borderColor ?? styler.borderColor;
+      if (isInvalid!) {
+        return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
       if (_isHovered) {
         return styler.onHover?.borderColor ?? styler.borderColor;
       }
-      if (widget.isDisabled!) {
+      if (isDisabled!) {
         return styler.onDisabled?.borderColor ?? styler.borderColor;
       }
 
@@ -271,13 +295,13 @@ class _GSTextAreaState extends State<GSTextArea> {
     }
 
     double? resolveBorderWidth() {
-      if (widget.isInvalid!) {
-        return styler.onInvaild?.borderWidth ?? styler.borderWidth;
+      if (isInvalid!) {
+        return styler.onInvalid?.borderWidth ?? styler.borderWidth;
       }
       if (_isHovered) {
         return styler.onHover?.borderWidth ?? styler.borderWidth;
       }
-      if (widget.isDisabled!) {
+      if (isDisabled!) {
         return styler.onDisabled?.borderWidth ?? styler.borderWidth;
       }
 
@@ -285,8 +309,8 @@ class _GSTextAreaState extends State<GSTextArea> {
     }
 
     Color? resolveFocusBorderColor() {
-      if (widget.isInvalid!) {
-        return styler.onInvaild?.borderColor ?? styler.borderColor;
+      if (isInvalid!) {
+        return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
 
       return styler.onFocus?.borderColor;
@@ -308,7 +332,7 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
-        if (widget.isDisabled!) {
+        if (isDisabled!) {
           _isHovered = false;
         } else {
           if (value != _isHovered) {
@@ -319,11 +343,24 @@ class _GSTextAreaState extends State<GSTextArea> {
         }
       },
       child: Opacity(
-        opacity: widget.isDisabled! ? styler.onDisabled!.opacity! : 1,
+        opacity: isDisabled ? styler.onDisabled!.opacity! : 1,
         child: SizedBox(
           width: styler.width,
           height: styler.height,
-          child: TextField(
+          child: TextFormField(
+            validator: (value) {
+              if (isRequired && value != null && value.isEmpty) {
+                return widget.errorText != null && widget.errorText!.isNotEmpty
+                    ? widget.errorText
+                    : 'This field cannot be empty!';
+              }
+
+              return widget.validator != null ? widget.validator!(value) : null;
+            },
+            onSaved: widget.onSaved,
+            autovalidateMode: widget.autovalidateMode,
+            initialValue: widget.initialValue,
+            onFieldSubmitted: widget.onFieldSubmitted,
             autocorrect: widget.autocorrect,
             autofillHints: widget.autofillHints,
             autofocus: widget.autofocus,
@@ -339,8 +376,8 @@ class _GSTextAreaState extends State<GSTextArea> {
             cursorRadius: widget.cursorRadius,
             cursorWidth: widget.cursorWidth,
             dragStartBehavior: widget.dragStartBehavior,
-            enabled: !widget.isDisabled!,
-            readOnly: widget.readOnly!,
+            enabled: !isDisabled,
+            readOnly: isReadOnly,
             enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
             enableInteractiveSelection: widget.enableInteractiveSelection,
             enableSuggestions: widget.enableSuggestions,
@@ -354,7 +391,7 @@ class _GSTextAreaState extends State<GSTextArea> {
             maxLengthEnforcement: widget.maxLengthEnforcement,
             maxLines: widget.maxLines,
             minLines: widget.minLines,
-            mouseCursor: widget.isDisabled!
+            mouseCursor: isDisabled
                 ? SystemMouseCursors.forbidden
                 : _isHovered
                     ? SystemMouseCursors.text
@@ -364,7 +401,6 @@ class _GSTextAreaState extends State<GSTextArea> {
             onAppPrivateCommand: widget.onAppPrivateCommand,
             onChanged: widget.onChanged,
             onEditingComplete: widget.onEditingComplete,
-            onSubmitted: widget.onSubmitted,
             onTap: widget.onTap,
             onTapOutside: widget.onTapOutside,
             restorationId: widget.restorationId,
