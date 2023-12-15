@@ -134,7 +134,7 @@ class KitchenSink extends StatelessWidget {
           data: ThemeData(useMaterial3: false),
           child: FloatingActionButton(
             onPressed: toggleTheme,
-            backgroundColor: Colors.pink,
+            backgroundColor: const Color(0xffE11D48),
             child: Transform.rotate(
                 angle: -7,
                 child: Icon(
@@ -171,7 +171,9 @@ class KitchenSink extends StatelessWidget {
                         ),
                         child: ClipOval(
                           child: GSBox(
-                            style: GSStyle(color: $GSColors.red500),
+                            style: GSStyle(
+                              color: const Color(0xffE11D48),
+                            ),
                             child: const Icon(
                               Icons.search,
                               color: Colors.white,
@@ -183,7 +185,8 @@ class KitchenSink extends StatelessWidget {
                       style: GSStyle(
                           borderRadius: 99,
                           onFocus: GSStyle(
-                              borderColor: Colors.pink, borderWidth: 2)),
+                              borderColor: const Color(0xffE11D48),
+                              borderWidth: 2)),
                       hintText: 'Anywhere • Any week • Add guests',
                       hintStyle: TextStyle(
                           fontWeight: FontWeight.w300,
