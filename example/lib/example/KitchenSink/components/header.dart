@@ -10,7 +10,7 @@ class KSHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return GSVStack(
       children: [
-        const SizedBox(height: 15),
+        GSBox(style: GSStyle(height: 15)),
         GSBox(
       style: GSStyle(    padding: const EdgeInsets.symmetric(horizontal: 32),),
           child: GSHStack(
@@ -107,7 +107,7 @@ class KSHeader extends StatelessWidget {
                 ),
               ]),
         ),
-        const SizedBox(height: 15),
+        GSBox(style: GSStyle(height: 15)),
         GSDivider(
           orientation: GSOrientations.horizontal,
           style: GSStyle(color: $GSColors.textDark300, height: 1),

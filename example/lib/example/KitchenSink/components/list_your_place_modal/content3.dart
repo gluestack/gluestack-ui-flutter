@@ -25,8 +25,8 @@ class _ListYourPlaceModalContent3State
           hintText: "Enter property name",
         ),
         const GSText(text: "Description", bold: true, size: GSSizes.$sm),
-        SizedBox(
-          width: double.infinity,
+        GSBox(
+          style: GSStyle(width: double.infinity),
           child: GSTextArea(
             size: GSSizes.$xl,
             hintText: "Provide description",
@@ -39,8 +39,8 @@ class _ListYourPlaceModalContent3State
         const GSInput(
           hintText: "Phone number",
         ),
-        SizedBox(
-          width: double.infinity,
+        GSBox(
+          style: GSStyle(width: double.infinity),
           child: GSButton(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.negative,
@@ -54,8 +54,8 @@ class _ListYourPlaceModalContent3State
         ),
         shouldShowSpinner
             ? const Center(child: GSSpinner())
-            : SizedBox(
-                width: double.infinity,
+            : GSBox(
+                style: GSStyle(width: double.infinity),
                 child: GSButton(
                   style: GSStyle(borderRadius: $GSRadii.$md),
                   action: GSActions.secondary,

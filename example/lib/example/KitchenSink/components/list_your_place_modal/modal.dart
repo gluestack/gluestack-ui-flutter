@@ -44,21 +44,21 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
         ],
       ),
       content: _currentModalContent == 0
-          ? SizedBox(
-              width: 500,
+          ? GSBox(
+              style: GSStyle(width: 500),
               child: ListYourPlaceModalContent1(
                   nextFunction: _moveToNextModalContent))
           : _currentModalContent == 1
-              ? SizedBox(
-                  width: 500,
+              ? GSBox(
+                  style: GSStyle(width: 500),
                   child: ListYourPlaceModalContent2(
                     nextFunction: _moveToNextModalContent,
                     backFunction: _moveBackToPreviousModalContent,
                   ),
                 )
-              : const SizedBox(
-                  width: 500,
-                  child: ListYourPlaceModalContent3(),
+              : GSBox(
+                  style: GSStyle(width: 500),
+                  child: const ListYourPlaceModalContent3(),
                 ),
     );
   }
