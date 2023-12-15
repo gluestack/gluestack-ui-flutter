@@ -1,10 +1,10 @@
-import { addParameters } from '@storybook/client-api';
-import { DocsContainer } from '@storybook/addon-docs/blocks';
-import { config } from '@gluestack-ui/config';
-import { Center, GluestackUIProvider } from '@gluestack-ui/themed';
-import { useState } from 'react';
+import { addParameters } from "@storybook/client-api";
+import { DocsContainer } from "@storybook/addon-docs/blocks";
+import { config } from "@gluestack-ui/config";
+import { Center, GluestackUIProvider } from "@gluestack-ui/themed";
+import { useState } from "react";
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -16,29 +16,53 @@ export const parameters = {
   },
   options: {
     storySort: {
-      method: '',
+      method: "",
       order: [
-        'Overview',
-        ['Introduction'],
-        'Getting Started',
-        ['Installation'],
-        'Components',
-        ['Forms', ['Button', 'Input','Switch'], 'Data Display', ['Badge']], 
-       
-       
+        "Overview",
+        ["Introduction"],
+        "Getting Started",
+        ["Installation"],
+        "Components",
+        [
+          "Typography",
+          ["Heading", "Text"],
+          "Layout",
+          ["Box", "Center", "Divider", "HStack", "VStack"],
+          "Feedback",
+          ["Progress", "Spinner", "Toast"],
+          "Data Display",
+          ["Badge"],
+          "Forms",
+          [
+            "Button",
+            "Checkbox",
+            "Input",
+            "Link",
+            "Pressable",
+            "Radio",
+            "Switch",
+            "Textarea",
+          ],
+          "Overlay",
+          ["AlertDialog"],
+          "Media And Icons",
+          ["Avatar", "Icon", "Image"],
+          "Others",
+          ["Fab"],
+        ],
       ],
     },
   },
 };
 
-import { useDarkMode } from '../src/hooks/useDarkMode';
-import { Platform } from 'react-native';
+import { useDarkMode } from "../src/hooks/useDarkMode";
+import { Platform } from "react-native";
 
 export const decorators = [
   (Story) => {
     let value = false;
 
-    if (Platform.OS === 'web') {
+    if (Platform.OS === "web") {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       value = useDarkMode();
     }
@@ -46,10 +70,10 @@ export const decorators = [
 
     function getColorMode() {
       //@ts-ignore
-      if (Platform.OS === 'web') {
-        return value ? 'dark' : 'light';
+      if (Platform.OS === "web") {
+        return value ? "dark" : "light";
       } else {
-        return isDark ? 'dark' : 'light';
+        return isDark ? "dark" : "light";
       }
     }
     return (
@@ -71,7 +95,7 @@ addParameters({
     container: ({ children, context }) => {
       let value = false;
 
-      if (Platform.OS === 'web') {
+      if (Platform.OS === "web") {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         value = useDarkMode();
       }
@@ -79,10 +103,10 @@ addParameters({
 
       function getColorMode() {
         //@ts-ignore
-        if (Platform.OS === 'web') {
-          return value ? 'dark' : 'light';
+        if (Platform.OS === "web") {
+          return value ? "dark" : "light";
         } else {
-          return isDark ? 'dark' : 'light';
+          return isDark ? "dark" : "light";
         }
       }
 

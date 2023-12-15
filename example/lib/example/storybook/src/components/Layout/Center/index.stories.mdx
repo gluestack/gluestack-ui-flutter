@@ -1,0 +1,35 @@
+---
+title: Center | gluestack-ui | Installation, Usage, and API
+
+description: When you need to center-align content, the Center component comes in handy. It is a layout component that can be used with other components to create complex layouts and positioning.
+
+pageTitle: Center
+
+pageDescription: When you need to center-align content, the Center component comes in handy. It is a layout component that can be used with other components to create complex layouts and positioning.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Layout/Center" />
+
+<iframe
+  src="http://localhost:53075/#/hstackPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSCenter(
+  style: GSStyle(
+    height: 150,
+    width: 300,
+    bg: $GSColors.primary500,
+  ),
+  child: const GSCenter(child: Text('This is the Center')),
+)
+```

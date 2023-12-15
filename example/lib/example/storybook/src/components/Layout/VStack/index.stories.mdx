@@ -1,0 +1,49 @@
+---
+title: VStack | gluestack-ui | Installation, Usage, and API
+
+description: VStack organizes items vertically in a layout. Alternatively, you can use Column as an alias for VStack to achieve the same layout.
+
+pageTitle: VStack
+
+pageDescription: VStack organizes items vertically in a layout. Alternatively, you can use Column as an alias for VStack to achieve the same layout.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Layout/VStack" />
+
+<iframe
+  src="http://localhost:53075/#/vstackPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  mainAxisAlignment: MainAxisAlignment.center,
+  isReversed: false,
+  space: GSSpaces.$none,
+  children: [
+    GSBox(
+      style:
+          GSStyle(height: 100, width: 100, color: $GSColors.blue300),
+      child: const Text('1'),
+    ),
+    GSBox(
+      style:
+          GSStyle(height: 100, width: 100, color: $GSColors.blue400),
+      child: const Text('2'),
+    ),
+    GSBox(
+      style:
+          GSStyle(height: 100, width: 100, color: $GSColors.blue500),
+      child: const Text('3'),
+    ),
+  ],
+)
+```

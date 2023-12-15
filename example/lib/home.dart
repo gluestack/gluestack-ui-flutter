@@ -84,6 +84,286 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/avatarPreview");
+                },
+                child: const Text(
+                  'Preview Avatar',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/checkboxPreview");
+                },
+                child: const Text(
+                  'Preview Checkbox',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/hstackPreview");
+                },
+                child: const Text(
+                  'Preview HStack',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/vstackPreview");
+                },
+                child: const Text(
+                  'Preview VStack',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/imagePreview");
+                },
+                child: const Text(
+                  'Preview Image',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/radioButtonPreview");
+                },
+                child: const Text(
+                  'Preview Radio Button',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/progressPreview");
+                },
+                child: const Text(
+                  'Preview Progress',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/iconPreview");
+                },
+                child: const Text(
+                  'Preview Icon',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/textPreview");
+                },
+                child: const Text(
+                  'Preview Text',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/headingPreview");
+                },
+                child: const Text(
+                  'Preview Heading',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/dividerPreview");
+                },
+                child: const Text(
+                  'Preview Divider',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/centerPreview");
+                },
+                child: const Text(
+                  'Preview Center',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/boxPreview");
+                },
+                child: const Text(
+                  'Preview Box',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/spinnerPreview");
+                },
+                child: const Text(
+                  'Preview Spinner',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/toastPreview");
+                },
+                child: const Text(
+                  'Preview Toast',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/linkPreview");
+                },
+                child: const Text(
+                  'Preview Link',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/pressablePreview");
+                },
+                child: const Text(
+                  'Preview Pressable',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/textareaPreview");
+                },
+                child: const Text(
+                  'Preview Text Area',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/alertDialogPreview");
+                },
+                child: const Text(
+                  'Preview Alert Dialog',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/fabPreview");
+                },
+                child: const Text(
+                  'Preview Fab',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   navigatorKey.currentState!.push(
                     MaterialPageRoute(
                       builder: (context) => const FormExample(),

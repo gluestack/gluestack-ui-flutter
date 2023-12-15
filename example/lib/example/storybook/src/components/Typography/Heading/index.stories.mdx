@@ -1,0 +1,31 @@
+---
+title: Heading | gluestack-ui | Installation, Usage, and API
+
+description: Heading component gives you the ability to create headings for your page with different sizes and semantics from h1 to h6.
+
+pageTitle: Heading
+
+pageDescription: Heading component gives you the ability to create headings for your page with different sizes and semantics from h1 to h6.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="Components/Typography/Heading" />
+
+<iframe
+  src="http://localhost:53075/#/headingPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSHeading(
+  text: 'I am a Heading',
+  style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
+)
+```

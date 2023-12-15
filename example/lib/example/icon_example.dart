@@ -30,7 +30,7 @@ class _IconExampleState extends State<IconExample> {
   Widget build(BuildContext context) {
     var code = '''GSIcon(
             icon: Icons.calendar_month,
-            size: selectedSizeOption,
+            size: GSSizes.\$md,
           )
   ''';
     return Scaffold(

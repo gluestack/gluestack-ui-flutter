@@ -69,7 +69,7 @@ class _FabExampleState extends State<FabExample> {
                     height: 360,
                     width: 320,
                     borderRadius: $GSRadii.$md,
-                    color: $GSColors.backgroundLight50,
+                    bg: $GSColors.backgroundLight50,
                     dark: GSStyle(color: $GSColors.backgroundDark900)),
               ),
               GSFab(
