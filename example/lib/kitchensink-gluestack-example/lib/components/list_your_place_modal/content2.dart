@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/models/ammenities.dart';
+import 'package:kitchensink_gluestack/models/ammenities.dart';
 
 class ListYourPlaceModalContent2 extends StatelessWidget {
   final Function nextFunction;
@@ -30,6 +30,7 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
               _ammenitiesData[2].value,
             ],
             child: GSVStack(
+              crossAxisAlignment: CrossAxisAlignment.start,
               space: GSSpaces.$md,
               children: [
                 for (int i = 0; i < (_ammenitiesData.length); i++)
@@ -38,15 +39,15 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
                     onChanged: (value) {},
                     icon: GSCheckBoxIndicator(
                         style: GSStyle(
-                            margin:  EdgeInsets.only(right: $GSSpace.$3)),
+                            margin: EdgeInsets.only(right: $GSSpace.$2)),
                         child: const GSCheckBoxIcon()),
                     value: _ammenitiesData[i].value,
                     label: GSCheckBoxLabel(text: _ammenitiesData[i].label),
                   ),
               ],
             )),
-        SizedBox(
-          width: double.infinity,
+        GSBox(
+          style: GSStyle(width: double.infinity),
           child: GSButton(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.negative,
@@ -56,8 +57,8 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
             },
           ),
         ),
-        SizedBox(
-          width: double.infinity,
+        GSBox(
+          style: GSStyle(width: double.infinity),
           child: GSButton(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.secondary,

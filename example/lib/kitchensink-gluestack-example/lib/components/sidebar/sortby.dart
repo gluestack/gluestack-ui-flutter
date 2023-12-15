@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/models/ks_sort_by.dart';
+import 'package:kitchensink_gluestack/models/ks_sort_by.dart';
 
 enum KSSortOptions {
   topRating,

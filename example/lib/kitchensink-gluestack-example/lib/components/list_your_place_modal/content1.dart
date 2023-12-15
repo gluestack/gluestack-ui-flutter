@@ -27,7 +27,7 @@ class _ListYourPlaceModalContent1State
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GSText(
-                bold: true, size: GSSizes.$sm, text: "I want to ....."),
+                bold: true, size: GSSizes.$sm, text: "I want to..."),
             GSHStack(
               space: GSSpaces.$md,
               children: [
@@ -71,8 +71,9 @@ class _ListYourPlaceModalContent1State
                 GSRadio<String>(
                   size: GSSizes.$lg,
                   style: GSStyle(
-                      margin:  EdgeInsets.only(
-                          right: $GSSpace.$3, left: $GSSpace.$1)),
+                      margin: EdgeInsets.only(
+                    right: $GSSpace.$3,
+                  )),
                   icon: const GSRadioIcon<String>(),
                   groupValue: '1',
                   value: '1',
@@ -86,7 +87,7 @@ class _ListYourPlaceModalContent1State
                 GSRadio<String>(
                   size: GSSizes.$lg,
                   style: GSStyle(
-                      margin:  EdgeInsets.only(
+                      margin: EdgeInsets.only(
                           right: $GSSpace.$3, left: $GSSpace.$1)),
                   icon: const GSRadioIcon<String>(),
                   groupValue: '1',
@@ -169,8 +170,8 @@ class _ListYourPlaceModalContent1State
             ),
           ],
         ),
-        SizedBox(
-          width: double.infinity,
+        GSBox(
+          style: GSStyle(width: double.maxFinite),
           child: GSButton(
             style: GSStyle(borderRadius: $GSRadii.$md),
             action: GSActions.negative,

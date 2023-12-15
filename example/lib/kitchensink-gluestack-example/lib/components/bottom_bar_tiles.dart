@@ -18,18 +18,16 @@ class BottomBarTile extends StatelessWidget {
         },
         child: GSVStack(
           children: [
-            Icon(
-              icon,
-              color: Colors.pink
+            GSIcon(
+              icon: icon,
+              size: GSSizes.$2xl,
             ),
-            const SizedBox(height: 2),
+            GSBox(style: GSStyle(height: 2)),
             GSText(
               text: title,
               style: GSStyle(
-                textStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade700,
-                    fontSize: 12),
+                textStyle:
+                    const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
               ),
             ),
           ],

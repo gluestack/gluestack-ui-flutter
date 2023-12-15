@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // breakpoint ref: https://getbootstrap.com/docs/5.0/layout/breakpoints/
 
-class RespLayoutManager extends StatelessWidget {
+class GSRespLayoutManager extends StatelessWidget {
   final Widget? xsLayout;
   final Widget? smLayout;
   final Widget? mdLayout;
@@ -17,7 +17,7 @@ class RespLayoutManager extends StatelessWidget {
   final double? xl;
   final double? xxl;
 
-  const RespLayoutManager({
+  const GSRespLayoutManager({
     super.key,
     this.xsLayout,
     this.smLayout,

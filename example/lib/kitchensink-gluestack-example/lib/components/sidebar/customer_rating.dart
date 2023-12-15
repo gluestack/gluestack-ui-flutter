@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/models/customer_rating.dart';
+import 'package:kitchensink_gluestack/models/customer_rating.dart';
 
 class KSCustomerRating extends StatelessWidget {
   KSCustomerRating({super.key});
@@ -36,6 +36,7 @@ class KSCustomerRating extends StatelessWidget {
         ),
         GSCheckBoxGroup(
             child: GSVStack(
+          crossAxisAlignment: CrossAxisAlignment.start,
           space: GSSpaces.$lg,
           children: [
             for (int i = 0; i < _customerRatingData.length; i++)
@@ -44,18 +45,24 @@ class KSCustomerRating extends StatelessWidget {
                 onChanged: (value) {},
                 icon: GSCheckBoxIndicator(
                     style: GSStyle(
-                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
+                        margin: EdgeInsets.only(
+                            right: $GSSpace.$2, top: $GSSpace.$1_5)),
                     child: const GSCheckBoxIcon()),
                 value: _customerRatingData[i].value,
                 label: GSHStack(
                   space: GSSpaces.$xs,
                   children: [
-                    GSIcon(
+                    GSBox(
                       style: GSStyle(
-                          width: 12,
-                          color: $GSColors.black,
-                          dark: GSStyle(color: $GSColors.white)),
-                      icon: Icons.star,
+                        padding: EdgeInsets.only(top: $GSSpace.$1),
+                      ),
+                      child: GSIcon(
+                        style: GSStyle(
+                            width: 12,
+                            color: $GSColors.black,
+                            dark: GSStyle(color: $GSColors.white)),
+                        icon: Icons.star,
+                      ),
                     ),
                     GSCheckBoxLabel(text: _customerRatingData[i].label)
                   ],

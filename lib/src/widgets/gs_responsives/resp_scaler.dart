@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class RespScaler extends StatelessWidget {
+class GSRespScaler extends StatelessWidget {
   final Widget child;
   final double ogDesignWidth;
 
-  const RespScaler({
+  const GSRespScaler({
     super.key,
     required this.child,
     this.ogDesignWidth = 375, //generic figma width
