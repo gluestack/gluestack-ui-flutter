@@ -12,7 +12,9 @@ class KSHeader extends StatelessWidget {
       children: [
         GSBox(style: GSStyle(height: 15)),
         GSBox(
-      style: GSStyle(    padding: const EdgeInsets.symmetric(horizontal: 32),),
+          style: GSStyle(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+          ),
           child: GSHStack(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -29,6 +31,7 @@ class KSHeader extends StatelessWidget {
                           width:
                               30, //Comment: overrideing default size cuz I needed it to be big
                           icon: GSStyle(
+                            //entire thing does not work, remove this n expose prop to base??
                             height:
                                 122, //Error: Does not Work, instead of taking size from style, it should take from icon style ? idk...
                             width: 122, //Error: Does not Work
@@ -56,7 +59,9 @@ class KSHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     GSBox(
-                   style: GSStyle(   padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),),
+                      style: GSStyle(
+                        padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+                      ),
                       child: GSPressable(
                         hitSlop: 2,
                         style: GSStyle(
@@ -86,14 +91,7 @@ class KSHeader extends StatelessWidget {
                     GSAvatar(
                       size: GSSizes.$sm,
                       style: GSStyle(bg: $GSColors.backgroundLight600),
-                      avatarBadge: GSAvatarBadge(
-                        style: GSStyle(
-                          bg: $GSColors
-                              .primary500, // TODO: change primary colors so that it reflects here
-                          dark:
-                              GSStyle(borderColor: $GSColors.backgroundDark900),
-                        ),
-                      ),
+                      avatarBadge: const GSAvatarBadge(),
                       avatarImage: const GSImage(
                         imageType: GSImageType.network,
                         path:

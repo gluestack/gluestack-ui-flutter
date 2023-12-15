@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/models/stacked_card.dart';
+import 'package:kitchensink_gluestack/models/stacked_card.dart';
 
 class KSStackedCard extends StatelessWidget {
   final StackedCardModel stackedCardModel;
-   const KSStackedCard({super.key, required this.stackedCardModel});
+  const KSStackedCard({super.key, required this.stackedCardModel});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class KSStackedCard extends StatelessWidget {
                           child: Row(
                             children: [
                               GSText(text: stackedCardModel.buttonText),
-                               const GSButtonIcon(icon: Icons.arrow_forward_ios)
+                              const GSButtonIcon(icon: Icons.arrow_forward_ios)
                             ],
                           ),
                           onPressed: () {},
@@ -85,25 +85,25 @@ class KSStackedCard extends StatelessWidget {
                 children: [
                   GSText(
                       style: GSStyle(
-                          textStyle:  TextStyle(
+                          textStyle: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: $GSColors.textLight900,
                           ),
                           dark: GSStyle(
-                              textStyle:  TextStyle(
+                              textStyle: TextStyle(
                             color: $GSColors.textDark200,
                           ))),
                       text: stackedCardModel.title),
                   GSHStack(
                     children: [
-                       const GSIcon(icon: Icons.star),
+                      const GSIcon(icon: Icons.star),
                       GSText(
                           style: GSStyle(
-                              textStyle:  TextStyle(
+                              textStyle: TextStyle(
                                 color: $GSColors.textLight900,
                               ),
                               dark: GSStyle(
-                                  textStyle:  TextStyle(
+                                  textStyle: TextStyle(
                                 color: $GSColors.textDark200,
                               ))),
                           text: stackedCardModel.rating.toString())
@@ -113,14 +113,6 @@ class KSStackedCard extends StatelessWidget {
               ),
               GSText(
                   size: GSSizes.$sm,
-                  style: GSStyle(
-                      textStyle:  TextStyle(
-                        color: $GSColors.textLight500,
-                      ),
-                      dark: GSStyle(
-                          textStyle:  TextStyle(
-                        color: $GSColors.textDark500,
-                      ))),
                   text: stackedCardModel.location),
               GSHStack(
                 children: [
@@ -128,26 +120,26 @@ class KSStackedCard extends StatelessWidget {
                     size: GSSizes.$sm,
                     text: stackedCardModel.price,
                     style: GSStyle(
-                        textStyle:  TextStyle(
+                        textStyle: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: $GSColors.textLight900,
                         ),
                         dark: GSStyle(
-                            textStyle:  TextStyle(
+                            textStyle: TextStyle(
                           color: $GSColors.textDark200,
                         ))),
                   ),
                   GSText(
                       size: GSSizes.$sm,
                       style: GSStyle(
-                          textStyle:  TextStyle(
+                          textStyle: TextStyle(
                             color: $GSColors.textLight900,
                           ),
                           dark: GSStyle(
-                              textStyle:  TextStyle(
+                              textStyle: TextStyle(
                             color: $GSColors.textDark200,
                           ))),
-                      text: 'night')
+                      text: ' night')
                 ],
               ),
             ],

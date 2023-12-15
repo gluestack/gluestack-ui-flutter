@@ -86,26 +86,6 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   navigatorKey.currentState!.push(
                     MaterialPageRoute(
-                      builder: (context) => LayoutExample(toggleTheme: () {
-                        myAppStateKey.currentState?.toggleThemeMode();
-                      }),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'Ex: GS Layout 1',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
                       builder: (context) => const FormExample(),
                     ),
                   );

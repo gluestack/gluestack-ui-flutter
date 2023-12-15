@@ -106,7 +106,7 @@ class _ListYourPlaceModalContent3State
                     style: GSStyle(
                         textStyle:
                             const TextStyle(fontWeight: FontWeight.w700)),
-                    title: "Congratulations!",
+                    title: "Congratulations! ",
                   ),
                 GSToastTitle(
                   title: title,

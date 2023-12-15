@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 class KSBookingOptions extends StatefulWidget {
-   const KSBookingOptions({super.key});
+  const KSBookingOptions({super.key});
 
   @override
   State<KSBookingOptions> createState() => _KSBookingOptionsState();
@@ -17,7 +17,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
       space: GSSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         const GSHeading(
+        const GSHeading(
           text: "Booking Option",
           size: GSSizes.$sm,
         ),
@@ -34,20 +34,16 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
                     text: "Self check-in",
                     size: GSSizes.$sm,
                     style: GSStyle(
-                        textStyle:
-                             TextStyle(color: $GSColors.textLight900),
+                        textStyle: TextStyle(color: $GSColors.textLight900),
                         dark: GSStyle(
-                          textStyle:  TextStyle(
+                          textStyle: TextStyle(
                               color: $GSColors
                                   .textDark100), //Error: No default value to fall back on??
                         )),
                   ),
-                  GSText(
+                  const GSText(
                     text: "Access a place without needing the Host",
                     size: GSSizes.$xs,
-                    style: GSStyle(
-                      textStyle:  TextStyle(color: $GSColors.textLight500),
-                    ),
                     softWrap: true,
                     maxLines: 3,
                   ),
@@ -79,20 +75,16 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
                     text: "Meals included",
                     size: GSSizes.$sm,
                     style: GSStyle(
-                        textStyle:
-                             TextStyle(color: $GSColors.textLight900),
+                        textStyle: TextStyle(color: $GSColors.textLight900),
                         dark: GSStyle(
-                          textStyle:  TextStyle(
+                          textStyle: TextStyle(
                               color: $GSColors
                                   .textDark100), //Error: No default value to fall back on??
                         )),
                   ),
-                  GSText(
+                  const GSText(
                     text: "Have a prefered meal for your comfy stay",
                     size: GSSizes.$xs,
-                    style: GSStyle(
-                      textStyle:  TextStyle(color: $GSColors.textLight500),
-                    ),
                     softWrap: true,
                     maxLines: 3,
                   ),
