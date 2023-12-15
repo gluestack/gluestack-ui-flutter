@@ -71,8 +71,8 @@ class GSText extends StatelessWidget {
           highlight ? styler.bg : styler.textStyle?.backgroundColor,
       overflow:
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
+      color: styler.textStyle?.color ?? gstextStyle.textStyle?.color,
     );
-
 
     return Text(
       text,
