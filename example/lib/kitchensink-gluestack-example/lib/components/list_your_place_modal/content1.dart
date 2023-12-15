@@ -27,7 +27,7 @@ class _ListYourPlaceModalContent1State
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const GSText(
-                bold: true, size: GSSizes.$sm, text: "I want to ....."),
+                bold: true, size: GSSizes.$sm, text: "I want to..."),
             GSHStack(
               space: GSSpaces.$md,
               children: [
@@ -72,7 +72,8 @@ class _ListYourPlaceModalContent1State
                   size: GSSizes.$lg,
                   style: GSStyle(
                       margin: EdgeInsets.only(
-                          right: $GSSpace.$3, left: $GSSpace.$1)),
+                    right: $GSSpace.$3,
+                  )),
                   icon: const GSRadioIcon<String>(),
                   groupValue: '1',
                   value: '1',

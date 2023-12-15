@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/components/list_your_place_modal/modal.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/components/stacked_card.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/models/stacked_card.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/components/ks_resp_row_col_custom.dart';
+import 'package:kitchensink_gluestack/components/ks_resp_row_col_custom.dart';
+import 'package:kitchensink_gluestack/components/list_your_place_modal/modal.dart';
+import 'package:kitchensink_gluestack/components/stacked_card.dart';
+import 'package:kitchensink_gluestack/models/stacked_card.dart';
 
 List<String> titles = [
   "Tropical",
@@ -64,30 +64,15 @@ class KSMainComponent extends StatelessWidget {
               child: GSButton(
                 variant: GSVariants.outline,
                 action: GSActions.secondary,
-                child: GSHStack(
+                child: const GSHStack(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       GSButtonIcon(
                         icon: Icons.list,
                         iconSize: GSSizes.$xl,
-                        style: GSStyle(
-                            color: $GSColors.textLight800,
-                            dark: GSStyle(color: $GSColors.textDark300)),
                       ),
                       GSButtonText(
                         text: 'List your place',
-                        style: GSStyle(
-                          textStyle:  TextStyle(
-                            fontSize: $GSFontSize.$md,
-                            color: $GSColors.textLight800,
-                          ),
-                          dark: GSStyle(
-                            textStyle:  TextStyle(
-                              fontSize: $GSFontSize.$md,
-                              color: $GSColors.textDark300,
-                            ),
-                          ),
-                        ),
                       ),
                     ]),
                 onPressed: () {
@@ -127,33 +112,32 @@ class KSMainComponent extends StatelessWidget {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: GSButtonGroup(
-              buttons: [
-                for (String title in titles) ...[
-                  GSButton(
-                      action: GSActions.secondary,
-                      variant: GSVariants
-                          .link, 
-                      onPressed: () {
-                        print("$title pressed!");
-                      },
-                      child: GSButtonText(
-                        text: title,
-                        style: GSStyle(
-                          textStyle:  TextStyle(
-                              fontWeight: FontWeight.w400,
-                              color: $GSColors.textLight900),
-                          dark: GSStyle(
-                            textStyle:  TextStyle(
-                              fontWeight: FontWeight.w400,
-                              color:
-                                  $GSColors.textDark50, //Error: Does not work
-                            ),
-                          ),
+          child: GSButtonGroup(buttons: [
+            for (String title in titles) ...[
+              GSButton(
+                  action: GSActions.secondary,
+                  variant: GSVariants.link,
+                  onPressed: () {
+                    print("$title pressed!");
+                  },
+                  child: GSButtonText(
+                    text: title,
+                    style: GSStyle(
+                      textStyle: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: $GSColors.textLight900,
+                      ),
+                      dark: GSStyle(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: $GSColors
+                              .textDark50, //Error: Auto dark mode does not work, have to force declare like
                         ),
-                      ))
-                ]
-              ]),
+                      ),
+                    ),
+                  ))
+            ]
+          ]),
         ),
 
         KSRespRowCol(

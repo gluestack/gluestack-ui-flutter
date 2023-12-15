@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
-class RespRowColumn extends StatelessWidget {
+class GSRespRowColumn extends StatelessWidget {
   final double? constraintWidth;
   final List<Widget> children;
   final MainAxisAlignment mainAxisAlignment;
@@ -15,7 +15,7 @@ class RespRowColumn extends StatelessWidget {
   final Axis? direction;
   final EdgeInsets? seperatorPadding;
 
-  const RespRowColumn({
+  const GSRespRowColumn({
     super.key,
     required this.children,
     this.mainAxisAlignment = MainAxisAlignment.start,

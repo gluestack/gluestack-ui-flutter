@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/components/list_your_place_modal/content1.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/components/list_your_place_modal/content2.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/components/list_your_place_modal/content3.dart';
+import 'package:kitchensink_gluestack/components/list_your_place_modal/content1.dart';
+import 'package:kitchensink_gluestack/components/list_your_place_modal/content2.dart';
+import 'package:kitchensink_gluestack/components/list_your_place_modal/content3.dart';
 
 class ListYourPlaceModal extends StatefulWidget {
   const ListYourPlaceModal({super.key});

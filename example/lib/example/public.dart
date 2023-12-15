@@ -1,4 +1,3 @@
-export 'KitchenSink/main_page.dart';
 export 'alert_example.dart';
 export 'avatar_example.dart';
 export 'badge_example.dart';

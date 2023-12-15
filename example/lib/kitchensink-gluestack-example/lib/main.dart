@@ -1,57 +1,132 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/components/bottom_bar_tiles.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/responsive_base_widgets/resp_layout_manager.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/responsive_base_widgets/resp_value_gettter.dart';
+import 'package:kitchensink_gluestack/components/bottom_bar_tiles.dart';
 import 'components/banner.dart';
 import 'components/header.dart';
 import 'components/main_component.dart';
 import 'components/sidebar/sidebar.dart';
-import 'package:gluestack_ui/src/style/style_resolver.dart';
 
-class LayoutExample extends StatelessWidget {
-  final VoidCallback toggleTheme;
+void main() {
+  runApp(const MainApp());
+}
 
-  const LayoutExample({super.key, required this.toggleTheme});
+class MainApp extends StatefulWidget {
+  const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  // Currently selected theme mode
+  ThemeMode _selectedThemeMode = ThemeMode.light;
+
+  void toggleThemeMode() {
+    setState(() {
+      _selectedThemeMode = switch (_selectedThemeMode) {
+        ThemeMode.light => ThemeMode.dark,
+        ThemeMode.dark || ThemeMode.system => ThemeMode.light,
+      };
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    // bool isSmallScreen = isScreenSmallerThan(576, context);
+    return GluestackProvider(
+      gluestackTokenConfig: GluestackTokenConfig(
+        gsColorsToken: const GSColorsToken(
+          textLight700: Color(0xFF8C8C8C),
+          info700: Colors.white,
+          info600: Colors.white,
+          info400: Colors.white,
+          primary600: Color(0xffE11D48),
+          primary300: Color(0xffE11D48),
+          primary400: Color(0xffE11D48),
+          primary700: Color(0xffE11D48),
+          success500: Color(0xffE11D48),
+          backgroundLight800: Color(0xffE11D48),
+          backgroundDark400: Color(0xffE11D48),
+        ),
+      ),
+      child: MaterialApp(
+        themeMode: _selectedThemeMode,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorSchemeSeed: Colors.white,
+          useMaterial3: false,
+          brightness: Brightness.light,
+        ),
+        darkTheme: ThemeData(
+          colorSchemeSeed: Colors.black,
+          useMaterial3: false,
+          brightness: Brightness.dark,
+        ),
+        home: KitchenSink(toggleTheme: toggleThemeMode),
+      ),
+    );
+  }
+}
+
+class KitchenSink extends StatelessWidget {
+  final VoidCallback toggleTheme;
+
+  const KitchenSink({super.key, required this.toggleTheme});
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: GSBox(
-        style: GSStyle(md: GSStyle(isVisible: false)),
+        style: GSStyle(
+          md: GSStyle(isVisible: false),
+          height: 85,
+        ),
         child: BottomAppBar(
-            child: GSBox(
-          style: GSStyle(
-            padding: const EdgeInsets.only(top: 4),
+          child: GSBox(
+            style: GSStyle(
+              padding: EdgeInsets.only(
+                  left: getRespValue(
+                        buildContext: context,
+                        xsValue: 12,
+                        smValue: 24,
+                      ) ??
+                      4,
+                  right: getRespValue(
+                        buildContext: context,
+                        xsValue: 12,
+                        smValue: 24,
+                      ) ??
+                      4,
+                  top: 21,
+                  bottom: 18),
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                BottomBarTile(
+                  icon: Icons.home_outlined,
+                  title: 'Home',
+                ),
+                BottomBarTile(
+                  icon: Icons.filter_list_outlined,
+                  title: 'Filter',
+                ),
+                BottomBarTile(
+                  icon: Icons.add,
+                  title: 'Listing',
+                ),
+                BottomBarTile(
+                  icon: Icons.chat_bubble_outline_rounded,
+                  title: 'Inbox',
+                ),
+                BottomBarTile(
+                  icon: Icons.person_outline_rounded,
+                  title: 'Profile',
+                ),
+              ],
+            ),
           ),
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              BottomBarTile(
-                icon: Icons.home_outlined,
-                title: 'Home',
-              ),
-              BottomBarTile(
-                icon: Icons.filter_list_outlined,
-                title: 'Filter',
-              ),
-              BottomBarTile(
-                icon: Icons.add,
-                title: 'Listing',
-              ),
-              BottomBarTile(
-                icon: Icons.chat_bubble_outline_rounded,
-                title: 'Inbox',
-              ),
-              BottomBarTile(
-                icon: Icons.person_outline_rounded,
-                title: 'Profile',
-              ),
-            ],
-          ),
-        )),
+        ),
       ),
       floatingActionButton: GSBox(
         style: GSStyle(md: GSStyle(isVisible: false)),
@@ -75,7 +150,7 @@ class LayoutExample extends StatelessWidget {
         child: Stack(
           children: [
             GSBox(
-              style: GSStyle(isVisible: true, md: GSStyle(isVisible: false)),
+              style: GSStyle(md: GSStyle(isVisible: false)),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -125,6 +200,7 @@ class LayoutExample extends StatelessWidget {
                 ],
               ),
             ),
+            // big screen widget
             GSBox(
               style: GSStyle(isVisible: false, md: GSStyle(isVisible: true)),
               child: GSVStack(

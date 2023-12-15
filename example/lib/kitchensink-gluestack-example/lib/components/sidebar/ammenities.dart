@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/example/KitchenSink/models/ammenities.dart';
+import 'package:kitchensink_gluestack/models/ammenities.dart';
 
 class KSAmmenities extends StatefulWidget {
   const KSAmmenities({super.key});
@@ -37,6 +37,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
             ],
             child: GSVStack(
               space: GSSpaces.$lg,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 for (int i = 0;
                     i < (showMore ? 5 : _ammenitiesData.length);
@@ -46,7 +47,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
                     onChanged: (value) {},
                     icon: GSCheckBoxIndicator(
                         style: GSStyle(
-                            margin:  EdgeInsets.only(right: $GSSpace.$3)),
+                            margin: EdgeInsets.only(right: $GSSpace.$3)),
                         child: const GSCheckBoxIcon()),
                     value: _ammenitiesData[i].value,
                     label: GSCheckBoxLabel(text: _ammenitiesData[i].label),
@@ -64,9 +65,10 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
               children: [
                 GSText(
                     style: GSStyle(
-                        dark: GSStyle(
-                            textStyle:
-                                 TextStyle(color: $GSColors.textDark300))),
+                      dark: GSStyle(
+                        textStyle: TextStyle(color: $GSColors.textDark300),
+                      ),
+                    ),
                     // size: GSSizes.$xs,
                     text: showMore ? 'Show more' : 'Show less'),
                 GSIcon(
