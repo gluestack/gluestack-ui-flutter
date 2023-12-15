@@ -64,14 +64,26 @@ class KSMainComponent extends StatelessWidget {
               child: GSButton(
                 variant: GSVariants.outline,
                 action: GSActions.secondary,
-                child: const GSHStack(
+                child: GSHStack(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      GSButtonIcon(
-                        icon: Icons.list,
-                        iconSize: GSSizes.$xl,
+                      GSBox(
+                        style:
+                            GSStyle(padding: const EdgeInsets.only(right: 5)),
+                        child: GSButtonIcon(
+                          icon: Icons.list,
+                          iconSize: GSSizes.$2xl,
+                          style: GSStyle(
+                            dark: GSStyle(color: $GSColors.textLight200),
+                          ),
+                        ),
                       ),
                       GSButtonText(
+                        style: GSStyle(
+                          dark: GSStyle(
+                              textStyle:
+                                  TextStyle(color: $GSColors.textLight200)),
+                        ),
                         text: 'List your place',
                       ),
                     ]),
