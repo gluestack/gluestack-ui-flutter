@@ -40,6 +40,8 @@ class _MainAppState extends State<MainApp> {
           info600: Colors.white,
           info400: Colors.white,
           primary600: Color(0xffE11D48),
+          primary300: Color(0xffE11D48),
+          primary400: Color(0xffE11D48),
           primary700: Color(0xffE11D48),
           success500: Color(0xffE11D48),
           backgroundLight800: Color(0xffE11D48),
