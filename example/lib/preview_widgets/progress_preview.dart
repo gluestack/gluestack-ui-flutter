@@ -17,20 +17,21 @@ class ProgressPreview extends StatelessWidget {
       Option<int>(value: 6, label: GSSizes.$2xl.name),
     ];
 
-    return Storybook(
-      initialStory: 'Progress',
-      stories: [
-        Story(
-          name: 'Progress',
-          description:
-              'The Progress component is designed to display the progress of a task that involves multiple steps and takes some time to complete.',
-          builder: (context) => GSProgress(
-            size: GSSizes.values[context.knobs
-                .options(label: 'Size', initial: 3, options: sizeOptions)],
-            value: 0.4,
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Progress',
+        stories: [
+          Story(
+            name: 'Progress',
+            builder: (context) => GSProgress(
+              size: GSSizes.values[context.knobs
+                  .options(label: 'Size', initial: 3, options: sizeOptions)],
+              value: 0.4,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

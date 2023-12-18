@@ -40,28 +40,29 @@ class BadgePreview extends StatelessWidget {
       Option<int>(value: 8, label: GSBorderRadius.$full.name),
     ];
 
-    return Storybook(
-      initialStory: 'Badge',
-      stories: [
-        Story(
-          name: 'Badge',
-          description:
-              'The badge component lets you quickly and easily add status indicators to your interface for improved usability.',
-          builder: (context) => GSBadge(
-            action: GSActions.values[context.knobs
-                .options(label: 'Action', initial: 6, options: actionOptions)],
-            variant: GSVariants.values[context.knobs.options(
-                label: 'Variant', initial: 0, options: variantOptions)],
-            size: GSSizes.values[context.knobs
-                .options(label: 'Size', initial: 3, options: sizeOptions)],
-            borderRadius: GSBorderRadius.values[context.knobs.options(
-                label: 'Border Radius',
-                initial: 0,
-                options: borderRadiusOptions)],
-            text: const GSBadgeText("New Feature"),
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Badge',
+        stories: [
+          Story(
+            name: 'Badge',
+            builder: (context) => GSBadge(
+              action: GSActions.values[context.knobs.options(
+                  label: 'Action', initial: 6, options: actionOptions)],
+              variant: GSVariants.values[context.knobs.options(
+                  label: 'Variant', initial: 0, options: variantOptions)],
+              size: GSSizes.values[context.knobs
+                  .options(label: 'Size', initial: 3, options: sizeOptions)],
+              borderRadius: GSBorderRadius.values[context.knobs.options(
+                  label: 'Border Radius',
+                  initial: 0,
+                  options: borderRadiusOptions)],
+              text: const GSBadgeText("New Feature"),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

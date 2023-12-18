@@ -21,33 +21,34 @@ class _RadioButtonPreviewState extends State<RadioButtonPreview> {
       Option<int>(value: 4, label: GSSizes.$lg.name),
     ];
 
-    return Storybook(
-      initialStory: 'RadioButton',
-      stories: [
-        Story(
-          name: 'RadioButton',
-          description:
-              'The Radio component presents users with predefined choices and enables them to select only one option.',
-          builder: (context) => GSRadio<Value>(
-            size: GSSizes.values[context.knobs
-                .options(label: 'Size', initial: 3, options: sizeOptions)],
-            isInvalid:
-                context.knobs.boolean(label: "isInvalid", initial: false),
-            isDisabled:
-                context.knobs.boolean(label: "isDisabled", initial: false),
-            value: Value.four,
-            groupValue: groupValue,
-            onChanged: (p0) {
-              setState(() {
-                groupValue = p0!;
-              });
-            },
-            icon: const GSRadioIcon<Value>(),
-            label: const GSRadioText<Value>(text: 'text'),
-            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'RadioButton',
+        stories: [
+          Story(
+            name: 'RadioButton',
+            builder: (context) => GSRadio<Value>(
+              size: GSSizes.values[context.knobs
+                  .options(label: 'Size', initial: 3, options: sizeOptions)],
+              isInvalid:
+                  context.knobs.boolean(label: "isInvalid", initial: false),
+              isDisabled:
+                  context.knobs.boolean(label: "isDisabled", initial: false),
+              value: Value.four,
+              groupValue: groupValue,
+              onChanged: (p0) {
+                setState(() {
+                  groupValue = p0!;
+                });
+              },
+              icon: const GSRadioIcon<Value>(),
+              label: const GSRadioText<Value>(text: 'text'),
+              style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
