@@ -57,7 +57,7 @@ class GSRadio<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formProps = GSFormProvider.of(context);
-    final radioSize = size ?? formProps?.size ??radioStyle.props!.size!;
+    final radioSize = size ?? formProps?.size ?? radioStyle.props!.size!;
     bool? isRadioDisabled = isDisabled;
     bool? isRadioReadOnly = formProps?.isReadOnly ?? false;
     bool? isRadioInvalid = isInvalid;
@@ -81,8 +81,10 @@ class GSRadio<T> extends StatelessWidget {
               : SystemMouseCursors.click,
           onTap: () {
             if (!isRadioDisabled! && value != groupValue && !isRadioReadOnly) {
+              print("Print radio val    $groupValue");
               onChanged!.call(value);
             }
+            print("Print radio val after   $groupValue");
           },
           child: GSRadioProvider<T>(
               value: value,

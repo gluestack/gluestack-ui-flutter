@@ -11,6 +11,7 @@ class RadioButtonPreview extends StatefulWidget {
 }
 
 class _RadioButtonPreviewState extends State<RadioButtonPreview> {
+  Value groupValue = Value.one;
   @override
   Widget build(BuildContext context) {
     //Need to add value according to GSSizes enum order.
@@ -19,7 +20,7 @@ class _RadioButtonPreviewState extends State<RadioButtonPreview> {
       Option<int>(value: 3, label: GSSizes.$md.name),
       Option<int>(value: 4, label: GSSizes.$lg.name),
     ];
-    Value groupValue = Value.one;
+
     return Storybook(
       initialStory: 'RadioButton',
       stories: [
