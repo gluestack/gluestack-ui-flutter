@@ -8,17 +8,37 @@ bool parseMap(Map<dynamic, dynamic>? data) {
   return data?.isNotEmpty ?? false;
 }
 
+// Map<String, GSStyle?> mergeStyledMaps({
+//   required Map<String, GSStyle?>? styleMap,
+//   required Map<String, GSStyle?>? overrideStyleMap,
+//   required List<String> keys,
+// }) {
+//   Map<String, GSStyle?> mergedStyleMap = {};
+//   for (var element in keys) {
+//     mergedStyleMap[element] = styleMap?[element] != null
+//         ? styleMap![element]?.merge(overrideStyleMap?[element])
+//         : overrideStyleMap?[element];
+//   }
+//   return mergedStyleMap;
+// }
+
 Map<String, GSStyle?> mergeStyledMaps({
   required Map<String, GSStyle?>? styleMap,
   required Map<String, GSStyle?>? overrideStyleMap,
   required List<String> keys,
 }) {
   Map<String, GSStyle?> mergedStyleMap = {};
-  for (var element in keys) {
-    mergedStyleMap[element] = styleMap?[element] != null
-        ? styleMap![element]?.merge(overrideStyleMap?[element])
-        : overrideStyleMap?[element];
-  }
+  styleMap?.forEach((key, value) {
+    mergedStyleMap[key] = value;
+  });
+  overrideStyleMap?.forEach((key, value) {
+    if (mergedStyleMap.containsKey(key) && value != null) {
+      mergedStyleMap[key] = mergedStyleMap[key]?.merge(value) ?? value;
+    } else {
+      mergedStyleMap[key] = value;
+    }
+  });
+
   return mergedStyleMap;
 }
 
@@ -389,4 +409,29 @@ GSPlacements? resolvePlacementFromString(String? placement) {
   };
 
   return placement != null ? placementMap[placement] : null;
+}
+
+
+Map<String, GSStyle>? resolveCompoundVariants(
+    {required List<Map<String, dynamic>>? compoundVariants}) {
+  if (compoundVariants == null || compoundVariants.isEmpty) {
+    return null;
+  }
+  final Map<String, GSStyle> resolvedCompoundVariants = {};
+  for (var element in compoundVariants) {
+    final keyName = resolveActionFromString(element['action']).toString() +
+        resolveVariantFromString(element['variant']).toString();
+    resolvedCompoundVariants[keyName] = GSStyle.fromMap(data: element['value']);
+  }
+  return resolvedCompoundVariants;
+}
+
+GSOutlineStyle? resolveOutlineStyleFromString({required String? outlineStyle}) {
+  if (outlineStyle == null) {
+    return null;
+  }
+  Map<String, GSOutlineStyle> outlineStyleMap = {
+    'solid': GSOutlineStyle.solid,
+  };
+  return outlineStyleMap[outlineStyle];
 }
