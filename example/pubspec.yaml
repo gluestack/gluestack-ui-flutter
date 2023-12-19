@@ -18,7 +18,12 @@ dependencies:
     sdk: flutter
 
   flutter_syntax_view: ^4.0.0
-  storybook_flutter: ^0.14.0
+  # storybook_flutter: ^0.14.0
+  storybook_flutter:
+    git:
+      url: https://github.com/DevanshiGarg08/storybook_flutter.git
+      ref: master
+      path: packages/storybook_flutter
   go_router: ^12.1.1
 
   gluestack_ui:
