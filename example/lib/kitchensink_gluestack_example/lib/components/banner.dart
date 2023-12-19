@@ -8,9 +8,9 @@ class KSBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return GSBox(
       style: GSStyle(
-        color: $GSColors.backgroundLight900,
+        bg: $GSColors.backgroundLight900,
         height: $GSSpace.$16,
-        dark: GSStyle(color: $GSColors.backgroundDark800),
+        dark: GSStyle(bg: $GSColors.backgroundDark800),
       ),
       child: FittedBox(
         fit: BoxFit.scaleDown,
