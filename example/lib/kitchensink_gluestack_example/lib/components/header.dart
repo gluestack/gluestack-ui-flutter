@@ -50,7 +50,7 @@ class KSHeader extends StatelessWidget {
                   ],
                 ),
                 GSBox(
-                  style: GSStyle(color: $GSColors.pink400.withOpacity(0.5)),
+                  style: GSStyle(bg: $GSColors.pink400.withOpacity(0.5)),
                   child: const Padding(
                       padding: EdgeInsets.all(16),
                       child: GSText(text: '⚠ WIP')),
