@@ -721,7 +721,7 @@ class GSColorsToken {
     this.textDark0 = const Color(0xFFFCFCFC),
     this.textDark50 = const Color(0xFFF5F5F5),
     this.textDark100 = const Color(0xFFE5E5E5),
-    this.textDark200 = const Color(0xFFDBDBDB),
+    this.textDark200 = Colors.yellow,
     this.textDark300 = const Color(0xFFD4D4D4),
     this.textDark400 = const Color(0xFFA3A3A3),
     this.textDark500 = const Color(0xFF8C8C8C),

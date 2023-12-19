@@ -36,16 +36,18 @@ class _ProgressExampleState extends State<ProgressExample> {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Progress"),
+        title: const GSText(
+          text: "Progress",
+        ),
       ),
-      body: Center(
+      body: GSCenter(
         child: BaseLayout(
           code: code,
           component: GSProgress(
             value: 0.4,
             size: selectedSizeOption,
           ),
-          controls: Column(
+          controls: GSVStack(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

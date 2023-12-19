@@ -56,7 +56,9 @@ class _ImageExampleState extends State<ImageExample> {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Image"),
+        title: const GSText(
+          text: "Image",
+        ),
       ),
       body: BaseLayout(
         code: code,
@@ -66,7 +68,7 @@ class _ImageExampleState extends State<ImageExample> {
             path:
                 'https://plus.unsplash.com/premium_photo-1697211174198-18da849f87c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTI2NTM4Mg&ixlib=rb-4.0.3&q=80&w=1080',
             imageType: GSImageType.network),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

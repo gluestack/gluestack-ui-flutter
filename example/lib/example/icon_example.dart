@@ -35,16 +35,18 @@ class _IconExampleState extends State<IconExample> {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Icon"),
+        title: const GSText(
+          text: "Icon",
+        ),
       ),
-      body: Center(
+      body: GSCenter(
         child: BaseLayout(
           code: code,
           component: GSIcon(
             icon: Icons.calendar_month,
             size: selectedSizeOption,
           ),
-          controls: Column(
+          controls: GSVStack(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

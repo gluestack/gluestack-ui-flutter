@@ -11,10 +11,11 @@ class GSFormLabelText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isLabelRequired = isRequired ?? GSFormProvider.of(context)?.isRequired ?? false;
-     final size = GSFormProvider.of(context)?.size;
+    final isLabelRequired =
+        isRequired ?? GSFormProvider.of(context)?.isRequired ?? false;
+    final size = GSFormProvider.of(context)?.size;
     return isLabelRequired
-        ? Row(
+        ? GSHStack(
             mainAxisSize: MainAxisSize.min,
             children: [
               GSText(
@@ -27,7 +28,7 @@ class GSFormLabelText extends StatelessWidget {
               GSText(
                 text: '*',
                 size: size,
-                style: GSStyle(textStyle: TextStyle(color: Colors.red)),
+                style: GSStyle(textStyle: const TextStyle(color: Colors.red)),
               )
             ],
           )

@@ -37,11 +37,13 @@ class AlertExample extends StatelessWidget {
 ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Alert"),
+        title: const GSText(
+          text: "Alert",
+        ),
       ),
       body: BaseLayout(
         code: code,
-        component: Center(
+        component: GSCenter(
           child: GSButton(
             size: GSSizes.$lg,
             child: const GSButtonText(text: "Click Me"),
@@ -52,19 +54,33 @@ class AlertExample extends StatelessWidget {
                 content: GSAlertDialogContent(
                   header: GSAlertDialogHeader(
                     style: GSStyle(
-                      bg: Colors.pink,
+                      bg: $GSColors.blue400,
                     ),
-                    child: const Text("Header"),
+                    child: const GSText(
+                      text: "Header",
+                    ),
                   ),
                   body: const GSAlertDialogBody(
-                    child: Text(
-                        "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
+                    child: GSText(
+                      text:
+                          "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone.",
+                    ),
                   ),
                   footer: GSAlertDialogFooter(
                     child: GSButtonGroup(
                       buttons: [
-                        GSButton(child: const Text("hey"), onPressed: () {}),
-                        GSButton(child: const Text("click"), onPressed: () {}),
+                        GSButton(
+                          child: const GSText(
+                            text: "hey",
+                          ),
+                          onPressed: () {},
+                        ),
+                        GSButton(
+                          child: const GSText(
+                            text: "click",
+                          ),
+                          onPressed: () {},
+                        ),
                       ],
                     ),
                   ),

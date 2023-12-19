@@ -18,17 +18,21 @@ class _BaseLayoutState extends State<BaseLayout> {
   Widget build(BuildContext context) {
     final isLandscape =
         MediaQuery.orientationOf(context) == Orientation.landscape;
-    ScrollController _scrollController = ScrollController();
-    final componentWrapper = Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30.0),
+    ScrollController scrollController = ScrollController();
+    final componentWrapper = GSCenter(
+      child: GSBox(
+        style: GSStyle(
+          padding: const EdgeInsets.symmetric(vertical: 30.0),
+        ),
         child: widget.component,
       ),
     );
 
-    final controlsWrapper = Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30.0),
+    final controlsWrapper = GSCenter(
+      child: GSBox(
+        style: GSStyle(
+          padding: const EdgeInsets.symmetric(vertical: 30.0),
+        ),
         child: widget.controls ?? const SizedBox.shrink(),
       ),
     );
@@ -42,25 +46,24 @@ class _BaseLayoutState extends State<BaseLayout> {
           SingleChildScrollView(child: componentWrapper),
         if (widget.controls != null)
           isLandscape
-              ? const VerticalDivider(
-                  color: Colors.grey,
-                  thickness: 1,
-                  width: 1,
+              ? GSDivider(
+                  orientation: GSOrientations.vertical,
+                  style: GSStyle(
+                      // color: Colors.grey,
+                      // width: 1,
+                      ),
                 )
-              : const Divider(
-                  color: Colors.grey,
-                  thickness: 1,
-                  height: 1,
+              : const GSDivider(
+                  orientation: GSOrientations.horizontal,
                 ),
         if (widget.controls != null) ...[
           if (isLandscape)
             Expanded(
               child: Scrollbar(
-                controller: _scrollController,
+                controller: scrollController,
                 thumbVisibility: true,
                 child: SingleChildScrollView(
-                  controller: _scrollController,
-                  child: controlsWrapper),
+                    controller: scrollController, child: controlsWrapper),
               ),
             )
           else
@@ -78,20 +81,21 @@ class _BaseLayoutState extends State<BaseLayout> {
       withZoom: false,
     );
 
-    final finalLayout = Container(
-      margin:  EdgeInsets.symmetric(horizontal: $GSSpace.$16),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(10),
+    final finalLayout = GSBox(
+      style: GSStyle(
+        margin: EdgeInsets.symmetric(horizontal: $GSSpace.$16),
+        borderColor: Colors.grey,
+        borderRadius: 10,
       ),
-      child: Column(
+      child: GSVStack(
         children: [
           if (isLandscape) Expanded(child: topLayout) else topLayout,
           const SizedBox(height: 2),
-          const Divider(
-            color: Colors.grey,
-            thickness: 1,
-            height: 1,
+          GSDivider(
+            style: GSStyle(
+                // color: Colors.grey,
+                // width: 1,
+                ),
           ),
           const SizedBox(height: 2),
           if (isLandscape) Expanded(child: codeBlock) else codeBlock,
@@ -100,14 +104,18 @@ class _BaseLayoutState extends State<BaseLayout> {
     );
 
     if (!isLandscape) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
+      return GSBox(
+        style: GSStyle(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+        ),
         child: SingleChildScrollView(child: finalLayout),
       );
     }
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
+    return GSBox(
+      style: GSStyle(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+      ),
       child: finalLayout,
     );
   }

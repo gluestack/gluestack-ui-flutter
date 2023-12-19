@@ -19,7 +19,9 @@ class BoxPreview extends StatelessWidget {
               padding: EdgeInsets.all($GSSpace.$5),
               bg: $GSColors.primary500,
             ),
-            child: const Text('This is the Box'),
+            child: const GSText(
+              text: 'This is the Box',
+            ),
           ),
         ),
       ],

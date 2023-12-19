@@ -46,9 +46,11 @@ class ButtonPreview extends StatelessWidget {
                 context.knobs.boolean(label: "isDisabled", initial: false),
             isFocusVisible:
                 context.knobs.boolean(label: "isFocusVisible", initial: false),
-            child: const Row(
+            child: const GSHStack(
               children: [
-                GSButtonText(text: "Add"),
+                GSButtonText(
+                  text: "Add",
+                ),
                 GSButtonIcon(icon: Icons.add)
               ],
             ),

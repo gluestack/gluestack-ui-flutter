@@ -20,7 +20,9 @@ class CenterExample extends StatelessWidget {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Center"),
+        title: const GSText(
+          text: "Center",
+        ),
       ),
       body: BaseLayout(
         code: code,
@@ -30,9 +32,12 @@ class CenterExample extends StatelessWidget {
             justifyContent: GSAlignments.start,
             height: 150,
             bg: Colors.pink,
-            md: GSStyle(bg: Colors.yellow),
           ),
-          child: const GSCenter(child: Text('Testing Center Widget')),
+          child: const GSCenter(
+            child: GSText(
+              text: 'Testing Center Widget',
+            ),
+          ),
         ),
       ),
     );

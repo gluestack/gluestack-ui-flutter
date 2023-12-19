@@ -83,7 +83,9 @@ class _BadgeExampleState extends State<BadgeExample> {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Badge"),
+        title: const GSText(
+          text: "Badge",
+        ),
       ),
       body: BaseLayout(
         code: code,
@@ -99,7 +101,7 @@ class _BadgeExampleState extends State<BadgeExample> {
             'information',
           ),
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

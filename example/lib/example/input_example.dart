@@ -77,7 +77,9 @@ class _InputExampleState extends State<InputExample> {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Input"),
+        title: const GSText(
+          text: "Input",
+        ),
       ),
       body: BaseLayout(
         code: code,
@@ -92,7 +94,7 @@ class _InputExampleState extends State<InputExample> {
             width: 300,
           ),
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

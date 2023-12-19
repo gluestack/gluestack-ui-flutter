@@ -18,18 +18,17 @@ class TextExample extends StatelessWidget {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Text"),
+        title: const GSText(
+          text: "Text",
+        ),
       ),
-      body: Center(
+      body: GSCenter(
         child: BaseLayout(
           code: code,
-          component: GSText(
+          component: const GSText(
             text: 'test 1',
             bold: true,
             underline: true,
-            style: GSStyle(
-              textStyle:  TextStyle(letterSpacing: $GSLetterSpacing.$lg),
-            ),
           ),
         ),
       ),

@@ -60,7 +60,9 @@ class _TextAreaExampleState extends State<TextAreaExample> {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Text Area"),
+        title: const GSText(
+          text: "Text Area",
+        ),
       ),
       body: BaseLayout(
         code: code,
@@ -71,7 +73,7 @@ class _TextAreaExampleState extends State<TextAreaExample> {
           isInvalid: isInvalid,
           hintText: "Enter text here",
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

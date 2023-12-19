@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gluestack_ui_example/example/fab_example.dart';
-import 'package:gluestack_ui_example/example/flex_example.dart';
-import 'package:gluestack_ui_example/main.dart';
-import 'package:gluestack_ui_example/routes/router.dart';
-
-import 'example/public.dart';
+import '../gs_exports.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,796 +12,267 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     const elementSpacing = SizedBox(height: 20);
     return Scaffold(
-      appBar: AppBar(title: const Text('Gluestack UI examples')),
+      appBar: AppBar(
+        title: GSText(
+          text: GSStringConstants.kGSTitle,
+          style: GSStyle(textStyle: const TextStyle(fontSize: 25)),
+        ),
+      ),
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
+        child: GSCenter(
+          child: GSVStack(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.min,
             children: [
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/buttonPreview");
-                },
-                child: const Text(
-                  'Preview Button',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewButton,
+                onPress: () => router.push("/${GSRoutes.buttonPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/inputPreview");
-                },
-                child: const Text(
-                  'Preview Input',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewInput,
+                onPress: () => router.push("/${GSRoutes.inputPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/badgePreview");
-                },
-                child: const Text(
-                  'Preview Badge',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewBadge,
+                onPress: () => router.push("/${GSRoutes.badgePreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/switchPreview");
-                },
-                child: const Text(
-                  'Preview Switch',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewSwitch,
+                onPress: () => router.push("/${GSRoutes.switchPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/avatarPreview");
-                },
-                child: const Text(
-                  'Preview Avatar',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewAvatar,
+                onPress: () => router.push("/${GSRoutes.avatarPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/checkboxPreview");
-                },
-                child: const Text(
-                  'Preview Checkbox',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewCheckbox,
+                onPress: () => router.push("/${GSRoutes.checkboxPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/hstackPreview");
-                },
-                child: const Text(
-                  'Preview HStack',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewHStack,
+                onPress: () => router.push("/${GSRoutes.hstackPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/vstackPreview");
-                },
-                child: const Text(
-                  'Preview VStack',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewVStack,
+                onPress: () => router.push("/${GSRoutes.vstackPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/imagePreview");
-                },
-                child: const Text(
-                  'Preview Image',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewImage,
+                onPress: () => router.push("/${GSRoutes.imagePreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/radioButtonPreview");
-                },
-                child: const Text(
-                  'Preview Radio Button',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewRadioButton,
+                onPress: () =>
+                    router.push("/${GSRoutes.radioButtonPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/progressPreview");
-                },
-                child: const Text(
-                  'Preview Progress',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewProgress,
+                onPress: () => router.push("/${GSRoutes.progressPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/iconPreview");
-                },
-                child: const Text(
-                  'Preview Icon',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewIcon,
+                onPress: () => router.push("/${GSRoutes.iconPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/textPreview");
-                },
-                child: const Text(
-                  'Preview Text',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewText,
+                onPress: () => router.push("/${GSRoutes.textPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/headingPreview");
-                },
-                child: const Text(
-                  'Preview Heading',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewHeading,
+                onPress: () => router.push("/${GSRoutes.headingPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/dividerPreview");
-                },
-                child: const Text(
-                  'Preview Divider',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewDivider,
+                onPress: () => router.push("/${GSRoutes.dividerPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/centerPreview");
-                },
-                child: const Text(
-                  'Preview Center',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewCenter,
+                onPress: () => router.push("/${GSRoutes.centerPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/boxPreview");
-                },
-                child: const Text(
-                  'Preview Box',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewBox,
+                onPress: () => router.push("/${GSRoutes.boxPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/spinnerPreview");
-                },
-                child: const Text(
-                  'Preview Spinner',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewSpinner,
+                onPress: () => router.push("/${GSRoutes.spinnerPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/toastPreview");
-                },
-                child: const Text(
-                  'Preview Toast',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewToast,
+                onPress: () => router.push("/${GSRoutes.toastPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/linkPreview");
-                },
-                child: const Text(
-                  'Preview Link',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewLink,
+                onPress: () => router.push("/${GSRoutes.linkPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/pressablePreview");
-                },
-                child: const Text(
-                  'Preview Pressable',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewPressable,
+                onPress: () =>
+                    router.push("/${GSRoutes.pressablePreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/textareaPreview");
-                },
-                child: const Text(
-                  'Preview Text Area',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewTextArea,
+                onPress: () => router.push("/${GSRoutes.textareaPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/alertDialogPreview");
-                },
-                child: const Text(
-                  'Preview Alert Dialog',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewAlertDialog,
+                onPress: () =>
+                    router.push("/${GSRoutes.alertDialogPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/fabPreview");
-                },
-                child: const Text(
-                  'Preview Fab',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kPreviewFab,
+                onPress: () => router.push("/${GSRoutes.fabPreview.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const FormExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Form',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSForm,
+                onPress: () => router.push("/${GSRoutes.formExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const FabExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Fab',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSFab,
+                onPress: () => router.push("/${GSRoutes.fabExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const SwitchExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Switch',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSSwitch,
+                onPress: () => router.push("/${GSRoutes.switchExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const LinkExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Link',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSLink,
+                onPress: () => router.push("/${GSRoutes.linkExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const AvatarExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Avatar',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSAvatar,
+                onPress: () => router.push("/${GSRoutes.avatarExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const TextExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Text',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSText,
+                onPress: () => router.push("/${GSRoutes.textExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const CheckBoxExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS CheckBox',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSCheckBox,
+                onPress: () => router.push("/${GSRoutes.checkboxExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const HeadingExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Heading',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSHeading,
+                onPress: () => router.push("/${GSRoutes.headingExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const HStackExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS HStack',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSHStack,
+                onPress: () => router.push("/${GSRoutes.hstackExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const VStackExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS VStack',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSVStack,
+                onPress: () => router.push("/${GSRoutes.vstackExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(MaterialPageRoute(
-                    builder: (context) => const ButtonExample(),
-                  ));
-                },
-                child: const Text(
-                  'GS Button',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSButton,
+                onPress: () => router.push("/${GSRoutes.buttonExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const ImageExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Image',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSImage,
+                onPress: () => router.push("/${GSRoutes.imageExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const InputExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Input',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSInput,
+                onPress: () => router.push("/${GSRoutes.inputExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const RadioButtonExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Radio Button',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSRadioButton,
+                onPress: () =>
+                    router.push("/${GSRoutes.radiobuttonExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const BadgeExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Badge',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSBadge,
+                onPress: () => router.push("/${GSRoutes.badgeExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const CenterExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Center',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSCenter,
+                onPress: () => router.push("/${GSRoutes.centerExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const AlertExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Alert',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSAlert,
+                onPress: () => router.push("/${GSRoutes.alertExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const DividerExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Divider',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSDivider,
+                onPress: () => router.push("/${GSRoutes.dividerExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const SpinnerExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Spinner',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSSpinner,
+                onPress: () => router.push("/${GSRoutes.spinnerExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const ProgressExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Progress',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSProgress,
+                onPress: () => router.push("/${GSRoutes.progressExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const IconExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Icon',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSIcon,
+                onPress: () => router.push("/${GSRoutes.iconExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const TextAreaExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Text Area',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSTextArea,
+                onPress: () => router.push("/${GSRoutes.textareaExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const PressableExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Pressable',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSPressable,
+                onPress: () =>
+                    router.push("/${GSRoutes.pressableExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const ToastExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Toast',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSToast,
+                onPress: () => router.push("/${GSRoutes.toastExample.name}"),
               ),
               elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const FlexExample(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  'GS Flex',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
+              CustomGSPressableButton(
+                buttonText: GSStringConstants.kGSFlex,
+                onPress: () => router.push("/${GSRoutes.flexExample.name}"),
               ),
               elementSpacing,
             ],
@@ -823,6 +288,32 @@ class _HomePageState extends State<HomePage> {
               ? Icons.light_mode
               : Icons.dark_mode,
         ),
+      ),
+    );
+  }
+}
+
+class CustomGSPressableButton extends StatelessWidget {
+  final void Function()? onPress;
+  final String buttonText;
+  const CustomGSPressableButton({
+    super.key,
+    this.onPress,
+    required this.buttonText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GSPressable(
+      onPress: onPress,
+      child: GSText(
+        underline: true,
+        style: GSStyle(
+            textStyle: TextStyle(
+          fontSize: 20,
+          color: $GSColors.blue400,
+        )),
+        text: buttonText,
       ),
     );
   }

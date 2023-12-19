@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/utils/base_layout.dart';
 import 'package:gluestack_ui_example/utils/drop_down.dart';
 import 'package:gluestack_ui_example/utils/toggle.dart';
+
+import '../gs_exports.dart';
 
 class ButtonExample extends StatefulWidget {
   const ButtonExample({super.key});
@@ -77,7 +77,7 @@ class _ButtonExampleState extends State<ButtonExample> {
                 isDisabled: false,
                 isFocusVisible: false,
                 onPressed: () {},
-                child: const Row(
+                child: const GSHStack(
                   children: [
                     GSButtonText(text: "Add"),
                     GSButtonIcon(icon: Icons.add)
@@ -87,7 +87,9 @@ class _ButtonExampleState extends State<ButtonExample> {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Button"),
+        title: const GSText(
+          text: "Button",
+        ),
       ),
       body: BaseLayout(
         code: code,
@@ -103,14 +105,14 @@ class _ButtonExampleState extends State<ButtonExample> {
             ),
           ),
           onPressed: () {},
-          child: const Row(
+          child: const GSHStack(
             children: [
               GSButtonText(text: "Add"),
               GSButtonIcon(icon: Icons.add)
             ],
           ),
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -44,10 +44,6 @@ class AvatarPreview extends StatelessWidget {
                 label: 'Border Radius',
                 initial: 8,
                 options: borderRadiusOptions)],
-            style: GSStyle(
-              bg: Colors.orange,
-              textStyle: const TextStyle(color: Colors.white),
-            ),
             fallBackText: const GSAvatarFallBackText('Geeky Stack'),
           ),
         ),

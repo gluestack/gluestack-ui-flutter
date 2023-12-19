@@ -22,21 +22,30 @@ class AlertDialogPreview extends StatelessWidget {
                 context,
                 size: GSSizes.$md,
                 content: GSAlertDialogContent(
-                  header: GSAlertDialogHeader(
-                    style: GSStyle(
-                      bg: Colors.pink,
+                  header: const GSAlertDialogHeader(
+                    child: GSText(
+                      text: "Header",
                     ),
-                    child: const Text("Header"),
                   ),
                   body: const GSAlertDialogBody(
-                    child: Text(
-                        "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
+                    child: GSText(
+                      text:
+                          " Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone.",
+                    ),
                   ),
                   footer: GSAlertDialogFooter(
                     child: GSButtonGroup(
                       buttons: [
-                        GSButton(child: const Text("hey"), onPressed: () {}),
-                        GSButton(child: const Text("click"), onPressed: () {}),
+                        GSButton(
+                            child: const GSText(
+                              text: "hey",
+                            ),
+                            onPressed: () {}),
+                        GSButton(
+                            child: const GSText(
+                              text: 'click',
+                            ),
+                            onPressed: () {}),
                       ],
                     ),
                   ),

@@ -40,38 +40,37 @@ class PressableExample extends StatelessWidget {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Pressable"),
+        title: const GSText(
+          text: "Pressable",
+        ),
       ),
       body: BaseLayout(
         code: code,
         component: GSPressable(
           hitSlop: 10,
           style: GSStyle(
-            bg: Colors.yellow,
-            highlightColor: Colors.blue,
-            splashColor: Colors.red,
-            onHover: GSStyle(color: Colors.green),
-            onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
+            bg: $GSColors.blue400,
+            highlightColor: $GSColors.blue500,
+            onHover: GSStyle(color: $GSColors.blue500),
           ),
           onPress: () {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Button Pressed!'),
+              content: GSText(
+                text: 'Button Pressed!',
+              ),
               duration: Duration(milliseconds: 300),
             ));
           },
           onLongPress: () {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Long Pressed Triggered!'),
+              content: GSText(
+                text: 'Long Pressed Triggered!',
+              ),
               duration: Duration(milliseconds: 300),
             ));
           },
-          child: GSText(
+          child: const GSText(
             text: 'Press Me',
-            underline: true,
-            style: GSStyle(
-                color: Colors.blue,
-                textStyle:
-                     TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
           ),
         ),
       ),

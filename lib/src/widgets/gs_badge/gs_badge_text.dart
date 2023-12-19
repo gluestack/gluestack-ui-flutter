@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_text_style.dart';
@@ -21,8 +22,8 @@ class GSBadgeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Access the ancestor provider to retrieve ancestor text styles.
-    final GSStyle? ancestorTextStyles =
-        GSAncestorProvider.of(context)?.decedentStyles?[gsBadgeTextConfig.ancestorStyle.first];
+    final GSStyle? ancestorTextStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsBadgeTextConfig.ancestorStyle.first];
 
     // Define default text style based on badge provider and ancestor text styles.
     var defaultTextStyle = TextStyle(
@@ -34,9 +35,9 @@ class GSBadgeText extends StatelessWidget {
     final mergedStyle = defaultTextStyle.merge(style?.textStyle);
 
     // Create a Text widget with the specified text and merged style.
-    return Text(
-      text,
-      style: mergedStyle,
+    return GSText(
+      style: GSStyle(textStyle: mergedStyle),
+      text: text,
     );
   }
 }

@@ -59,18 +59,20 @@ class _FabExampleState extends State<FabExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: BaseLayout(
-        component: Center(
+        component: GSCenter(
           child: Stack(
             children: [
               GSBox(
                 style: GSStyle(
-                    height: 360,
-                    width: 320,
-                    borderRadius: $GSRadii.$md,
-                    bg: $GSColors.backgroundLight50,
-                    dark: GSStyle(color: $GSColors.backgroundDark900)),
+                  height: 360,
+                  width: 320,
+                  borderRadius: $GSRadii.$md,
+                  bg: $GSColors.backgroundLight50,
+                  dark: GSStyle(
+                    bg: $GSColors.backgroundDark900,
+                  ),
+                ),
               ),
               GSFab(
                 size: selectedSizeOption,
@@ -85,7 +87,7 @@ class _FabExampleState extends State<FabExample> {
             ],
           ),
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

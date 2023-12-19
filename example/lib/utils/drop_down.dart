@@ -28,12 +28,11 @@ class _CustomDropDownState extends State<CustomDropDown> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return GSVStack(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.title,
-          style:  TextStyle(color: $GSColors.backgroundDark500),
+        GSText(
+          text: widget.title,
         ),
         DropdownButton<dynamic>(
           value: selectedOption,
@@ -49,18 +48,21 @@ class _CustomDropDownState extends State<CustomDropDown> {
               .map<DropdownMenuItem<dynamic>>((dynamic value) {
             return DropdownMenuItem<dynamic>(
               value: value,
-              child: Text(
-                enumValueFromString(value.toString()),
-                style: TextStyle(
+              child: GSText(
+                style: GSStyle(
+                  textStyle: TextStyle(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black),
+                        ? $GSColors.white
+                        : $GSColors.black,
+                  ),
+                ),
+                text: enumValueFromString(value.toString()),
               ),
             );
           }).toList(),
           dropdownColor: Theme.of(context).brightness == Brightness.dark
-              ? Colors.black
-              : Colors.white,
+              ? $GSColors.black
+              : $GSColors.white,
         ),
       ],
     );

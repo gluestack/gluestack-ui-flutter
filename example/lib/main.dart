@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/routes/router.dart';
-
 // ignore: library_private_types_in_public_api
+import 'gs_exports.dart';
+
 GlobalKey<_MyAppState> myAppStateKey = GlobalKey<_MyAppState>();
 void main() {
   runApp(MyApp(
@@ -35,6 +33,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GluestackProvider(
+      gluestackTokenConfig: GluestackTokenConfig(
+        gsColorsToken: const GSColorsToken(
+          backgroundDark700: Colors.white,
+
+          textDark200: Colors.blueGrey,
+
+          //  textLight700: $GSColors.blue100, // ==> Causes error
+        ),
+      ),
       child: MaterialApp.router(
         routerConfig: router,
         debugShowCheckedModeBanner: false,

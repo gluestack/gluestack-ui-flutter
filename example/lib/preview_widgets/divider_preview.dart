@@ -14,20 +14,28 @@ class DividerPreview extends StatelessWidget {
           name: 'Divider',
           description:
               'Use it to visually separate different sections of a list or group for a more structured and easy-to-read interface.',
-          builder: (context) => Row(
+          builder: (context) => GSHStack(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text("Easy"),
+              GSBox(
+                style: GSStyle(
+                  padding: const EdgeInsets.all(8.0),
+                ),
+                child: const GSText(
+                  text: "Easy",
+                ),
               ),
               GSDivider(
                 orientation: GSOrientations.vertical,
                 style: GSStyle(height: 30),
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text("Difficult"),
+              GSBox(
+                style: GSStyle(
+                  padding: const EdgeInsets.all(8.0),
+                ),
+                child: const GSText(
+                  text: "Difficult",
+                ),
               ),
             ],
           ),

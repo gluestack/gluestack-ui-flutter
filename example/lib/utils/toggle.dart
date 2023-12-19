@@ -26,12 +26,11 @@ class _CustomToggleState extends State<CustomToggle> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return GSVStack(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.title,
-          style:  TextStyle(color: $GSColors.backgroundDark500),
+        GSText(
+          text: widget.title,
         ),
         const SizedBox(height: 10),
         GSSwitch(

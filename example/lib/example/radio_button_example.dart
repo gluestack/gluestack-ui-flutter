@@ -59,7 +59,9 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Radio Button"),
+        title: const GSText(
+          text: "Radio Button",
+        ),
       ),
       body: BaseLayout(
         code: code,
@@ -76,9 +78,9 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
           },
           icon: const GSRadioIcon<Value>(),
           label: const GSRadioText<Value>(text: 'text4'),
-          style: GSStyle(margin:  EdgeInsets.only(right: $GSSpace.$2)),
+          style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

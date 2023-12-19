@@ -39,12 +39,13 @@ class FlexExample extends StatelessWidget {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Flex"),
+        title: const GSText(
+          text: "Flex",
+        ),
       ),
       body: BaseLayout(
         code: code,
         component: GSFlex(
-          
           style: GSStyle(
             direction: Axis.vertical,
             md: GSStyle(direction: Axis.horizontal),

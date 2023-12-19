@@ -19,7 +19,6 @@ class PressablePreview extends StatelessWidget {
             style: GSStyle(
               bg: Colors.blue,
               onHover: GSStyle(color: Colors.lightBlue),
-              onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
             ),
             onPress: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -33,12 +32,9 @@ class PressablePreview extends StatelessWidget {
                 duration: Duration(milliseconds: 300),
               ));
             },
-            child: GSText(
+            child: const GSText(
               text: 'Press Me',
               underline: true,
-              style: GSStyle(
-                  color: Colors.blue,
-                  textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
             ),
           ),
         ),

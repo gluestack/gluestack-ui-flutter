@@ -6,7 +6,7 @@ import 'package:gluestack_ui_example/utils/drop_down.dart';
 import 'package:gluestack_ui_example/utils/toggle.dart';
 
 class FormExample extends StatefulWidget {
-   const FormExample({super.key});
+  const FormExample({super.key});
 
   @override
   State<FormExample> createState() => _FormExampleState();
@@ -66,7 +66,7 @@ class _FormExampleState extends State<FormExample> {
           // autovalidateMode: AutovalidateMode.always,
           child: Padding(
             padding:  EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
+            child: GSVStack(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                  GSFormLabelText('Username'),
@@ -210,7 +210,9 @@ class _FormExampleState extends State<FormExample> {
         ),""";
     return Scaffold(
       appBar: AppBar(
-        title:  const Text("Form Control"),
+        title: const GSText(
+          text: "Form Control",
+        ),
       ),
       body: BaseLayout(
         code: code,
@@ -222,12 +224,14 @@ class _FormExampleState extends State<FormExample> {
           isReadOnly: isReadOnly,
           isDisabled: isDisabled,
           // autovalidateMode: AutovalidateMode.always,
-          child: Padding(
-            padding:  const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
+          child: GSBox(
+            style: GSStyle(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            ),
+            child: GSVStack(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                 const GSFormLabelText('Username'),
+                const GSFormLabelText('Username'),
                 sp,
                 const GSInput(
                   initialValue: "GlueStacky",
@@ -235,7 +239,7 @@ class _FormExampleState extends State<FormExample> {
                   // style: GSStyle(height: 70),
                 ),
                 sp2,
-                 const GSFormLabelText('Password'),
+                const GSFormLabelText('Password'),
                 sp,
                 GSInput(
                   style: GSStyle(height: 80),
@@ -249,67 +253,63 @@ class _FormExampleState extends State<FormExample> {
                   },
                 ),
                 //TEXTAREA---------------------
-                 const GSFormLabelText('Bio'),
+                const GSFormLabelText('Bio'),
                 sp,
-                 const GSTextArea(
+                const GSTextArea(
                   hintText: "Enter a bio describing yourself here....",
                 ),
-                 const GSFormHelperText(
+                const GSFormHelperText(
                     'Ex. Hey guys, I am ___ and I love doing ___'),
 
                 sp2,
                 //CHECKBOX------------------------
-                 const GSFormLabelText(
+                const GSFormLabelText(
                   'Choose your hobbies',
                   isRequired: false,
                 ),
                 sp,
                 GSCheckBox(
                   icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                    child:  const GSCheckBoxIcon(),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    child: const GSCheckBoxIcon(),
                   ),
                   value: "Singing",
                   onChanged: (value) {},
-                  label:  const GSCheckBoxLabel(text: "Singing"),
+                  label: const GSCheckBoxLabel(text: "Singing"),
                 ),
                 sp,
                 GSCheckBox(
                   icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                    child:  const GSCheckBoxIcon(),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    child: const GSCheckBoxIcon(),
                   ),
                   value: "Dancing",
                   onChanged: (value) {},
-                  label:  const GSCheckBoxLabel(text: "Dancing"),
+                  label: const GSCheckBoxLabel(text: "Dancing"),
                 ),
                 sp,
                 GSCheckBox(
                   icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                    child:  const GSCheckBoxIcon(),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    child: const GSCheckBoxIcon(),
                   ),
                   value: "Sports",
                   onChanged: (value) {},
-                  label:  const GSCheckBoxLabel(text: "Sports"),
+                  label: const GSCheckBoxLabel(text: "Sports"),
                 ),
                 sp,
                 GSCheckBox(
                   icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                    child:  const GSCheckBoxIcon(),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    child: const GSCheckBoxIcon(),
                   ),
                   value: "Driving",
                   onChanged: (value) {},
-                  label:  const GSCheckBoxLabel(text: "Driving"),
+                  label: const GSCheckBoxLabel(text: "Driving"),
                 ),
                 sp2,
                 //RADIO---------------------------
-                 const GSFormLabelText('Choose a group', isRequired: false),
+                const GSFormLabelText('Choose a group', isRequired: false),
                 sp,
                 GSRadio<Value>(
                   value: Value.one,
@@ -319,10 +319,9 @@ class _FormExampleState extends State<FormExample> {
                       groupValue = p0!;
                     });
                   },
-                  icon:  const GSRadioIcon<Value>(),
-                  label:  const GSRadioText<Value>(text: 'Capitalist'),
-                  style: GSStyle(
-                      margin:  EdgeInsets.only(right: $GSSpace.$2)),
+                  icon: const GSRadioIcon<Value>(),
+                  label: const GSRadioText<Value>(text: 'Capitalist'),
+                  style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                 ),
                 sp,
                 GSRadio<Value>(
@@ -333,31 +332,28 @@ class _FormExampleState extends State<FormExample> {
                       groupValue = p0!;
                     });
                   },
-                  icon:  const GSRadioIcon<Value>(),
-                  label:  const GSRadioText<Value>(text: 'Communist'),
-                  style: GSStyle(
-                      margin:  EdgeInsets.only(right: $GSSpace.$2)),
+                  icon: const GSRadioIcon<Value>(),
+                  label: const GSRadioText<Value>(text: 'Communist'),
+                  style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                 ),
                 sp2,
                 sp2,
                 GSButton(
                     action: GSActions.positive,
                     variant: GSVariants.outline,
-                    child:  const Text(
-                      'Submit',
-                      style: TextStyle(color: Colors.green),
+                    child: const GSText(
+                      text: 'Submit',
                     ),
                     onPressed: () {
                       if (_formKey.currentState != null &&
                           _formKey.currentState!.validate() &&
                           !isDisabled) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                           const SnackBar(
-                            content: Text(
-                              'Submitting data...',
-                              style: TextStyle(color: Colors.white),
+                          SnackBar(
+                            content: const GSText(
+                              text: 'Submitting data...',
                             ),
-                            backgroundColor: Colors.green,
+                            backgroundColor: $GSColors.green400,
                           ),
                         );
                       }
@@ -366,7 +362,7 @@ class _FormExampleState extends State<FormExample> {
             ),
           ),
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -376,25 +372,25 @@ class _FormExampleState extends State<FormExample> {
               selectedOption: selectedSizeOption,
               onChanged: updateSizeSelectedOption,
             ),
-             const SizedBox(height: 20),
+            const SizedBox(height: 20),
             CustomToggle(
               title: "isDisabled",
               value: isDisabled,
               onToggle: updateIsDisabled,
             ),
-             const SizedBox(height: 20),
+            const SizedBox(height: 20),
             CustomToggle(
               title: "isInvalid",
               value: isInvalid,
               onToggle: updateIsInvalid,
             ),
-             const SizedBox(height: 20),
+            const SizedBox(height: 20),
             CustomToggle(
               title: "isReadOnly",
               value: isReadOnly,
               onToggle: updateIsReadOnly,
             ),
-             const SizedBox(height: 20),
+            const SizedBox(height: 20),
             CustomToggle(
               title: "isRequired",
               value: isRequired,

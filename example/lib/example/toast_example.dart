@@ -49,7 +49,7 @@ class _ToastExampleState extends State<ToastExample> {
                 child: GSToast(
                   variant: GSVariants.solid,
                   action: GSActions.attention,
-                  child: const Column(
+                  child: const GSVStack(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -68,7 +68,9 @@ class _ToastExampleState extends State<ToastExample> {
 ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Toast"),
+        title: const GSText(
+          text: "Toast",
+        ),
       ),
       body: BaseLayout(
         code: code,
@@ -81,7 +83,7 @@ class _ToastExampleState extends State<ToastExample> {
               child: GSToast(
                 variant: selectedVariantOption,
                 action: selectedActionOption,
-                child: const Column(
+                child: const GSVStack(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -97,7 +99,7 @@ class _ToastExampleState extends State<ToastExample> {
             );
           },
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

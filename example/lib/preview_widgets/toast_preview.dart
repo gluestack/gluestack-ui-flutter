@@ -40,7 +40,7 @@ class ToastPreview extends StatelessWidget {
                       label: 'Action', initial: 9, options: actionOptions)],
                   variant: GSVariants.values[context.knobs.options(
                       label: 'Variant', initial: 0, options: variantOptions)],
-                  child: const Column(
+                  child: const GSVStack(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

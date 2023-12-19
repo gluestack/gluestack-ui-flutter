@@ -99,7 +99,7 @@ class KitchenSink extends StatelessWidget {
                   top: 21,
                   bottom: 18),
             ),
-            child: const Row(
+            child: const GSHStack(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

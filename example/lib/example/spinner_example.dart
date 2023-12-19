@@ -18,18 +18,16 @@ class SpinnerExample extends StatelessWidget {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Spinner"),
+        title: const GSText(
+          text: "Spinner",
+        ),
       ),
-      body: Center(
+      body: GSCenter(
         child: BaseLayout(
           code: code,
           component: GSSpinner(
             strokeWidth: 6,
-            style: GSStyle(
-                color: $GSColors.rose500,
-                bg: $GSColors.blueGray300,
-                width: 40,
-                height: 40),
+            style: GSStyle(width: 40, height: 40),
           ),
         ),
       ),

@@ -20,7 +20,10 @@ class CenterPreview extends StatelessWidget {
               width: 300,
               bg: $GSColors.primary500,
             ),
-            child: const GSCenter(child: Text('This is the Center')),
+            child: const GSCenter(
+                child: GSText(
+              text: 'This is the Center',
+            )),
           ),
         ),
       ],

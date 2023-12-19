@@ -1,31 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:gluestack_ui_example/home.dart';
-import 'package:gluestack_ui_example/main.dart';
-import 'package:gluestack_ui_example/preview_widgets/alert_dialog_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/avatar_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/box_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/center_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/checkbox_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/divider_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/fab_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/heading_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/hstack_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/icon_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/image_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/input_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/link_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/pressable_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/progress_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/radio_button_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/spinner_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/switch_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/text_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/textarea_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/toast_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/vstack_preview.dart';
-import 'package:go_router/go_router.dart';
+import '../gs_exports.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
@@ -178,6 +151,156 @@ final GoRouter router = GoRouter(
           path: "fabPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const FabPreview();
+          },
+        ),
+        GoRoute(
+          path: "formExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const FormExample();
+          },
+        ),
+        GoRoute(
+          path: "fabExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const FabExample();
+          },
+        ),
+        GoRoute(
+          path: "linkExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const LinkExample();
+          },
+        ),
+        GoRoute(
+          path: "switchExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SwitchExample();
+          },
+        ),
+        GoRoute(
+          path: "avatarExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const AvatarExample();
+          },
+        ),
+        GoRoute(
+          path: "textExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const TextExample();
+          },
+        ),
+        GoRoute(
+          path: "checkboxExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const CheckBoxExample();
+          },
+        ),
+        GoRoute(
+          path: "headingExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const HeadingExample();
+          },
+        ),
+        GoRoute(
+          path: "hstackExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const HStackExample();
+          },
+        ),
+        GoRoute(
+          path: "vstackExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const VStackExample();
+          },
+        ),
+        GoRoute(
+          path: "buttonExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ButtonExample();
+          },
+        ),
+        GoRoute(
+          path: "imageExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ImageExample();
+          },
+        ),
+        GoRoute(
+          path: "inputExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const InputExample();
+          },
+        ),
+        GoRoute(
+          path: "radiobuttonExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const RadioButtonExample();
+          },
+        ),
+        GoRoute(
+          path: "badgeExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const BadgeExample();
+          },
+        ),
+        GoRoute(
+          path: "centerExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const CenterExample();
+          },
+        ),
+        GoRoute(
+          path: "alertExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const AlertExample();
+          },
+        ),
+        GoRoute(
+          path: "dividerExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const DividerExample();
+          },
+        ),
+        GoRoute(
+          path: "spinnerExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SpinnerExample();
+          },
+        ),
+        GoRoute(
+          path: "progressExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ProgressExample();
+          },
+        ),
+        GoRoute(
+          path: "iconExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const IconExample();
+          },
+        ),
+        GoRoute(
+          path: "textareaExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const TextAreaExample();
+          },
+        ),
+        GoRoute(
+          path: "pressableExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const PressableExample();
+          },
+        ),
+        GoRoute(
+          path: "toastExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ToastExample();
+          },
+        ),
+        GoRoute(
+          path: "flexExample",
+          builder: (BuildContext context, GoRouterState state) {
+            return const FlexExample();
           },
         ),
       ],

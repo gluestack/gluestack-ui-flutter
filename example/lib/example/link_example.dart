@@ -15,9 +15,11 @@ class LinkExample extends StatelessWidget {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Link"),
+        title: const GSText(
+          text: "Link",
+        ),
       ),
-      body: Center(
+      body: GSCenter(
         child: BaseLayout(
           code: code,
           component: GSLink(

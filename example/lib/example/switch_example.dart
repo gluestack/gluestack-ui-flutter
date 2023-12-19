@@ -50,19 +50,15 @@ class _SwitchExampleState extends State<SwitchExample> {
 ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Switch"),
+        title: const GSText(
+          text: "Switch",
+        ),
       ),
       body: BaseLayout(
         code: code,
         component: GSSwitch(
           size: selectedSizeOption,
           isDisabled: isDisabled,
-          style: GSStyle(
-            checked: GSStyle(
-              thumbColor: Colors.grey,
-              activeThumbColor: Colors.blue,
-            ),
-          ),
           value: val1,
           onToggle: (bool value) {
             setState(() {
@@ -70,7 +66,7 @@ class _SwitchExampleState extends State<SwitchExample> {
             });
           },
         ),
-        controls: Column(
+        controls: GSVStack(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomDropDown(

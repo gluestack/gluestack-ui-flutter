@@ -14,10 +14,9 @@ class LinkPreview extends StatelessWidget {
           name: 'Link',
           description:
               'With links, users can navigate seamlessly throughout a website. This component has a hyperlinked appearance for a user-friendly experience.',
-          builder: (context) => GSLink(
-            style: GSStyle(),
+          builder: (context) => const GSLink(
             url: 'https://gluestack.io/',
-            text: const GSLinkText(text: 'gluestack'),
+            text: GSLinkText(text: 'gluestack'),
           ),
         ),
       ],

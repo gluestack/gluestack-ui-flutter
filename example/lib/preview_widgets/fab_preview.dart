@@ -39,7 +39,9 @@ class FabPreview extends StatelessWidget {
                       width: 320,
                       borderRadius: $GSRadii.$md,
                       bg: $GSColors.backgroundLight50,
-                      dark: GSStyle(color: $GSColors.backgroundDark900)),
+                      dark: GSStyle(
+                        color: $GSColors.backgroundDark900,
+                      )),
                 ),
                 GSFab(
                   size: GSSizes.values[context.knobs.options(

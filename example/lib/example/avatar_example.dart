@@ -60,20 +60,18 @@ class _AvatarExampleState extends State<AvatarExample> {
 ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Avatar"),
+        title: const GSText(
+          text: "Avatar",
+        ),
       ),
       body: BaseLayout(
         code: code,
         component: GSAvatar(
           radius: selectedRadiusOption,
           size: selectedSizeOption,
-          style: GSStyle(
-            bg: Colors.orange,
-            textStyle: const TextStyle(color: Colors.white),
-          ),
           fallBackText: const GSAvatarFallBackText('Geeky Stack'),
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -52,13 +52,15 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
   ''';
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Checkbox"),
+        title: const GSText(
+          text: "Checkbox",
+        ),
       ),
       body: BaseLayout(
         code: code,
         component: GSCheckBox(
           icon: GSCheckBoxIndicator(
-            style: GSStyle(margin:  EdgeInsets.only(right: $GSSpace.$2)),
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
             child: const GSCheckBoxIcon(),
           ),
           value: "value 1",
@@ -68,7 +70,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
           isDisabled: isDisabled,
           isInvalid: isInvalid,
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
