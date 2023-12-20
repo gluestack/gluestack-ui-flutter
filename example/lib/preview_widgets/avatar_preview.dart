@@ -29,25 +29,26 @@ class AvatarPreview extends StatelessWidget {
       Option<int>(value: 7, label: GSBorderRadius.$3xl.name),
       Option<int>(value: 8, label: GSBorderRadius.$full.name),
     ];
-
-    return Storybook(
-      initialStory: 'Avatar',
-      stories: [
-        Story(
-          name: 'Avatar',
-          description:
-              'The Avatar component is a versatile UI element representing a user with profile pictures, initials, or a fallback icon.',
-          builder: (context) => GSAvatar(
-            size: GSSizes.values[context.knobs
-                .options(label: 'Size', initial: 3, options: sizeOptions)],
-            radius: GSBorderRadius.values[context.knobs.options(
-                label: 'Border Radius',
-                initial: 8,
-                options: borderRadiusOptions)],
-            fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Avatar',
+        stories: [
+          Story(
+            name: 'Avatar',
+            builder: (context) => GSAvatar(
+              size: GSSizes.values[context.knobs
+                  .options(label: 'Size', initial: 3, options: sizeOptions)],
+              radius: GSBorderRadius.values[context.knobs.options(
+                  label: 'Border Radius',
+                  initial: 8,
+                  options: borderRadiusOptions)],
+     
+              fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -19,20 +19,20 @@ class VStackPreview extends StatelessWidget {
       Option<int>(value: 7, label: GSSpaces.$3xl.name),
       Option<int>(value: 8, label: GSSpaces.$4xl.name),
     ];
-
-    return Storybook(
-      initialStory: 'VStack',
-      stories: [
-        Story(
-          name: 'VStack',
-          description: 'VStack organizes items vertically in a layout.',
-          builder: (context) => GSVStack(
-            mainAxisAlignment: MainAxisAlignment.center,
-            space: GSSpaces.values[context.knobs
-                .options(label: 'Space', initial: 0, options: spaceOption)],
-            isReversed:
-                context.knobs.boolean(label: "isReversed", initial: false),
-            children: [
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'VStack',
+        stories: [
+          Story(
+            name: 'VStack',
+            builder: (context) => GSVStack(
+              mainAxisAlignment: MainAxisAlignment.center,
+              space: GSSpaces.values[context.knobs
+                  .options(label: 'Space', initial: 0, options: spaceOption)],
+              isReversed:
+                  context.knobs.boolean(label: "isReversed", initial: false),
+               children: [
               GSBox(
                 style: GSStyle(height: 100, width: 100, bg: $GSColors.blue300),
                 child: const GSText(
@@ -52,9 +52,10 @@ class VStackPreview extends StatelessWidget {
                 ),
               ),
             ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

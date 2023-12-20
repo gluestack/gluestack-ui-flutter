@@ -7,26 +7,27 @@ class CenterPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Storybook(
-      initialStory: 'Center',
-      stories: [
-        Story(
-          name: 'Center',
-          description:
-              'The Center component comes in handy when you need to center-align content.',
-          builder: (context) => GSCenter(
-            style: GSStyle(
-              height: 150,
-              width: 300,
-              bg: $GSColors.primary500,
-            ),
-            child: const GSCenter(
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Center',
+        stories: [
+          Story(
+            name: 'Center',
+            builder: (context) => GSCenter(
+              style: GSStyle(
+                height: 150,
+                width: 300,
+                bg: $GSColors.primary500,
+              ),
+              child: const GSCenter(
                 child: GSText(
               text: 'This is the Center',
             )),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -7,9 +7,11 @@ class AlertDialogPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Storybook(
-      initialStory: 'Alert Dialog',
-      stories: [
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Alert Dialog',
+        stories: [
         Story(
           name: 'Alert Dialog',
           description:
@@ -47,14 +49,15 @@ class AlertDialogPreview extends StatelessWidget {
                             ),
                             onPressed: () {}),
                       ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

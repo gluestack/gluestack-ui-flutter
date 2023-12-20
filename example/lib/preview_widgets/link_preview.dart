@@ -7,19 +7,21 @@ class LinkPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Storybook(
-      initialStory: 'Link',
-      stories: [
-        Story(
-          name: 'Link',
-          description:
-              'With links, users can navigate seamlessly throughout a website. This component has a hyperlinked appearance for a user-friendly experience.',
-          builder: (context) => const GSLink(
-            url: 'https://gluestack.io/',
-            text: GSLinkText(text: 'gluestack'),
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Link',
+        stories: [
+          Story(
+            name: 'Link',
+            builder: (context) => GSLink(
+              style: GSStyle(),
+              url: 'https://gluestack.io/',
+              text: const GSLinkText(text: 'gluestack'),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

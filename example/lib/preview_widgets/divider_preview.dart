@@ -7,16 +7,16 @@ class DividerPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Storybook(
-      initialStory: 'Divider',
-      stories: [
-        Story(
-          name: 'Divider',
-          description:
-              'Use it to visually separate different sections of a list or group for a more structured and easy-to-read interface.',
-          builder: (context) => GSHStack(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Divider',
+        stories: [
+          Story(
+            name: 'Divider',
+            builder: (context) => GSHStack(
+              mainAxisAlignment: MainAxisAlignment.center,
+               children: [
               GSBox(
                 style: GSStyle(
                   padding: const EdgeInsets.all(8.0),
@@ -38,9 +38,10 @@ class DividerPreview extends StatelessWidget {
                 ),
               ),
             ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

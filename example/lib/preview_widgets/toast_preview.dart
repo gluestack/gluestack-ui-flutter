@@ -22,42 +22,43 @@ class ToastPreview extends StatelessWidget {
       Option<int>(value: 1, label: GSVariants.outline.name),
     ];
 
-    return Storybook(
-      initialStory: 'Toast',
-      stories: [
-        Story(
-          name: 'Toast',
-          description:
-              'Toast is a component that can display alerts, notifications, or messages on top of an overlay layer. It is commonly used to inform users of important information or actions.',
-          builder: (context) => GSButton(
-            size: GSSizes.$lg,
-            child: const GSButtonText(text: "Click Me"),
-            onPressed: () {
-              showToast(
-                context,
-                child: GSToast(
-                  action: GSActions.values[context.knobs.options(
-                      label: 'Action', initial: 9, options: actionOptions)],
-                  variant: GSVariants.values[context.knobs.options(
-                      label: 'Variant', initial: 0, options: variantOptions)],
-                  child: const GSVStack(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GSToastTitle(
-                        title: "Hey",
-                      ),
-                      GSToastDescription(
-                        description: "Desc Desc Desc Desc Desc Desc ",
-                      ),
-                    ],
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Toast',
+        stories: [
+          Story(
+            name: 'Toast',
+            builder: (context) => GSButton(
+              size: GSSizes.$lg,
+              child: const GSButtonText(text: "Click Me"),
+              onPressed: () {
+                showToast(
+                  context,
+                  child: GSToast(
+                    action: GSActions.values[context.knobs.options(
+                        label: 'Action', initial: 9, options: actionOptions)],
+                    variant: GSVariants.values[context.knobs.options(
+                        label: 'Variant', initial: 0, options: variantOptions)],
+                    child: const GSVStack(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GSToastTitle(
+                          title: "Hey",
+                        ),
+                        GSToastDescription(
+                          description: "Desc Desc Desc Desc Desc Desc ",
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
