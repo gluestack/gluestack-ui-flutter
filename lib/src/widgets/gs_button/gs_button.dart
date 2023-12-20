@@ -102,7 +102,7 @@ class GSButton extends StatelessWidget {
                   .compoundVariants?[action.toString() + variant.toString()]
             ],
             inlineStyle: style,
-            isFrist: true);
+            isFirst: true);
 
         return GSAncestor(
           decedentStyles: styler.descendantStyles,

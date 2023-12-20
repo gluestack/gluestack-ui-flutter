@@ -155,7 +155,7 @@ GSStyle resolveStyles2(
     {required BuildContext context,
     List<GSStyle?> styles = const [],
     GSStyle? inlineStyle,
-    bool isFrist = false}) {
+    bool isFirst = false}) {
   final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
   final isHovered = GSStyleBuilderProvider.hoverStatus(context);
   final isFocused = GSStyleBuilderProvider.focusedStatus(context);
@@ -168,7 +168,7 @@ GSStyle resolveStyles2(
   }
 
   // addded this so that all the default values will be unpacked like hover ,focus etc
-  if (isFrist) {
+  if (isFirst) {
     currentGSStyle?.contextStyles.forEach((key, value) {
       if (value != null) {
         if (key == 'dark' && isDarkTheme) {
