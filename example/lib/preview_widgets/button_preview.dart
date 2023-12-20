@@ -28,34 +28,34 @@ class ButtonPreview extends StatelessWidget {
       Option<int>(value: 4, label: GSSizes.$lg.name),
     ];
 
-    return Storybook(
-      initialStory: 'Button',
-      stories: [
-        Story(
-          name: 'Button',
-          description:
-              'A graphical user interface element that enables users to act by clicking or tapping',
-          builder: (context) => GSButton(
-            action: GSActions.values[context.knobs
-                .options(label: 'Action', initial: 0, options: actionOptions)],
-            variant: GSVariants.values[context.knobs.options(
-                label: 'Variant', initial: 0, options: variantOptions)],
-            size: GSSizes.values[context.knobs
-                .options(label: 'Size', initial: 3, options: sizeOptions)],
-            isDisabled:
-                context.knobs.boolean(label: "isDisabled", initial: false),
-            isFocusVisible:
-                context.knobs.boolean(label: "isFocusVisible", initial: false),
-            child: const Row(
-              children: [
-                GSButtonText(text: "Add"),
-                GSButtonIcon(icon: Icons.add)
-              ],
+    return materialWrapper(
+        context,
+        Storybook(
+          initialStory: 'Button',
+          stories: [
+            Story(
+              name: 'Button',
+              builder: (context) => GSButton(
+                action: GSActions.values[context.knobs.options(
+                    label: 'Action', initial: 0, options: actionOptions)],
+                variant: GSVariants.values[context.knobs.options(
+                    label: 'Variant', initial: 0, options: variantOptions)],
+                size: GSSizes.values[context.knobs
+                    .options(label: 'Size', initial: 3, options: sizeOptions)],
+                isDisabled:
+                    context.knobs.boolean(label: "isDisabled", initial: false),
+                isFocusVisible: context.knobs
+                    .boolean(label: "isFocusVisible", initial: false),
+                child: const Row(
+                  children: [
+                    GSButtonText(text: "Add"),
+                    GSButtonIcon(icon: Icons.add)
+                  ],
+                ),
+                onPressed: () {},
+              ),
             ),
-            onPressed: () {},
-          ),
-        ),
-      ],
-    );
+          ],
+        ));
   }
 }

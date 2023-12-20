@@ -7,17 +7,20 @@ class HeadingPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Storybook(
-      initialStory: 'Heading',
-      stories: [
-        Story(
-          name: 'Heading',
-          builder: (context) => GSHeading(
-            text: 'I am a Heading',
-            style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Heading',
+        stories: [
+          Story(
+            name: 'Heading',
+            builder: (context) => GSHeading(
+              text: 'I am a Heading',
+              style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
