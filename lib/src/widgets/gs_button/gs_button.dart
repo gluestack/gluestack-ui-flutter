@@ -78,15 +78,6 @@ class GSButton extends StatelessWidget {
     final focused = isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;
 
-    // GSStyle styler = resolveStyles(context,
-    //     variantStyle:
-    //         GSButtonStyle.gsButtonCombination[buttonAction]![buttonVariant],
-    //     size: GSButtonStyle.size[buttonSize]!,
-    //     inlineStyle: style,
-    //     descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
-    //         ?[variant],
-    //     descendantStyleKeys: gsButtonConfig.descendantStyle)!;
-
     return GSStyleBuilder(
       isDisabled: disabled,
       isFocused: focused,
