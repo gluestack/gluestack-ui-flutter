@@ -15,30 +15,30 @@ class TextareaPreview extends StatelessWidget {
       Option<int>(value: 5, label: GSSizes.$xl.name),
     ];
 
-    return Storybook(
-      initialStory: 'Textarea',
-      stories: [
-        Story(
-          name: 'Textarea',
-          // Add description from gluestack website.
-          description:
-              'The Textarea component is designed to accommodate larger amounts of text input. It allows multi-line input and can be easily customized to fit the users needs.',
-          builder: (context) => GSTextArea(
-            size: GSSizes.values[context.knobs
-                .options(label: 'Size', initial: 3, options: sizeOptions)],
-            isDisabled:
-                context.knobs.boolean(label: "isDisabled", initial: false),
-            isInvalid:
-                context.knobs.boolean(label: "isInvalid", initial: false),
-            isReadOnly:
-                context.knobs.boolean(label: "isReadOnly", initial: false),
-            hintText: "Enter text here",
-            style: GSStyle(
-              width: 300,
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Textarea',
+        stories: [
+          Story(
+            name: 'Textarea',
+            builder: (context) => GSTextArea(
+              size: GSSizes.values[context.knobs
+                  .options(label: 'Size', initial: 3, options: sizeOptions)],
+              isDisabled:
+                  context.knobs.boolean(label: "isDisabled", initial: false),
+              isInvalid:
+                  context.knobs.boolean(label: "isInvalid", initial: false),
+              isReadOnly:
+                  context.knobs.boolean(label: "isReadOnly", initial: false),
+              hintText: "Enter text here",
+              style: GSStyle(
+                width: 300,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

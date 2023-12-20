@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:kitchensink_gluestack/components/bottom_bar_tiles.dart';
+
 import 'components/banner.dart';
 import 'components/header.dart';
 import 'components/main_component.dart';

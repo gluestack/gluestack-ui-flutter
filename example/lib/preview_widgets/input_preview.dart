@@ -21,32 +21,32 @@ class InputPreview extends StatelessWidget {
       Option<int>(value: 5, label: GSSizes.$xl.name),
     ];
 
-    return Storybook(
-      initialStory: 'Input',
-      stories: [
-        Story(
-          name: 'Input',
-          // Add description from gluestack website.
-          description:
-              'The Input component is your go-to tool for gathering user input in a sleek and user-friendly text field',
-          builder: (context) => GSInput(
-            variant: GSVariants.values[context.knobs.options(
-                label: 'Variant', initial: 1, options: variantOptions)],
-            size: GSSizes.values[context.knobs
-                .options(label: 'Size', initial: 3, options: sizeOptions)],
-            isDisabled:
-                context.knobs.boolean(label: "isDisabled", initial: false),
-            isInvalid:
-                context.knobs.boolean(label: "isInvalid", initial: false),
-            isReadOnly:
-                context.knobs.boolean(label: "isReadOnly", initial: false),
-            hintText: "Enter text here",
-            style: GSStyle(
-              width: 300,
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Input',
+        stories: [
+          Story(
+            name: 'Input',
+            builder: (context) => GSInput(
+              variant: GSVariants.values[context.knobs.options(
+                  label: 'Variant', initial: 1, options: variantOptions)],
+              size: GSSizes.values[context.knobs
+                  .options(label: 'Size', initial: 3, options: sizeOptions)],
+              isDisabled:
+                  context.knobs.boolean(label: "isDisabled", initial: false),
+              isInvalid:
+                  context.knobs.boolean(label: "isInvalid", initial: false),
+              isReadOnly:
+                  context.knobs.boolean(label: "isReadOnly", initial: false),
+              hintText: "Enter text here",
+              style: GSStyle(
+                width: 300,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
