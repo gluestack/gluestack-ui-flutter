@@ -833,7 +833,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg']),
       borderWidth: data?['borderWidth'] != null
-          ? double.tryParse(data!['borderWidth']!.toString())
+          ? double.tryParse(data!['borderWidth']!.toString()) ?? resolveBorderWidthFromString(data['borderWidth'])
           : null,
       gap: resolveSpaceFromString(
           data?['gap'] ?? data?['_avatar']?['ml'].toString()),
