@@ -7,21 +7,24 @@ class TextPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Storybook(
-      initialStory: 'Text',
-      stories: [
-        Story(
-          name: 'Text',
-          builder: (context) => GSText(
-            text: 'test 1',
-            bold: true,
-            underline: true,
-            style: GSStyle(
-              textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Text',
+        stories: [
+          Story(
+            name: 'Text',
+            builder: (context) => GSText(
+              text: 'test 1',
+              bold: true,
+              underline: true,
+              style: GSStyle(
+                textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

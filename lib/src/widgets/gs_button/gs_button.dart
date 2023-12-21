@@ -78,20 +78,11 @@ class GSButton extends StatelessWidget {
     final focused = isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;
 
-    // GSStyle styler = resolveStyles(context,
-    //     variantStyle:
-    //         GSButtonStyle.gsButtonCombination[buttonAction]![buttonVariant],
-    //     size: GSButtonStyle.size[buttonSize]!,
-    //     inlineStyle: style,
-    //     descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
-    //         ?[variant],
-    //     descendantStyleKeys: gsButtonConfig.descendantStyle)!;
-    
     return GSStyleBuilder(
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
-          GSStyle styler = resolveStyles2(
+        GSStyle styler = resolveStyles2(
             context: context,
             styles: [
               buttonStyle,
@@ -102,7 +93,7 @@ class GSButton extends StatelessWidget {
                   .compoundVariants?[action.toString() + variant.toString()]
             ],
             inlineStyle: style,
-            isFrist: true);
+            isFirst: true);
 
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
@@ -127,104 +118,15 @@ class GSButton extends StatelessWidget {
                     elevation: MaterialStateProperty.all<double?>(0),
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
                         styler.padding),
-                    backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return styler.onActive?.bg ?? styler.bg;
-                        } else if (states.contains(MaterialState.hovered)) {
-                          // TODO: Discuss about onHover in dark mode
-                          return styler.onHover?.bg ?? styler.bg;
-                        } else if (states.contains(MaterialState.focused)) {
-                          return styler.onFocus?.bg ?? styler.bg;
-                        } else if (states.contains(MaterialState.disabled) ||
-                            disabled) {
-                          return styler.onDisabled?.bg ?? styler.bg;
-                        } else if (states.contains(MaterialState.error)) {
-                          return styler.onInvalid?.bg ?? styler.bg;
-                        }
-
-                        return styler.bg!;
-                      },
+                    backgroundColor: MaterialStatePropertyAll(styler.bg),
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(styler.borderRadius ?? 0.0),
+                        // side: resolveBorderSide(currentState),
+                        side: _resolveBorderSide(variant!, styler, isAttached),
+                      ),
                     ),
-                    shape: MaterialStateProperty.resolveWith<
-                        RoundedRectangleBorder?>((Set<MaterialState> states) {
-                      double resolveBorderRadius(MaterialState state) {
-                        switch (state) {
-                          case MaterialState.pressed:
-                            return styler.onActive?.borderRadius ??
-                                styler.borderRadius!;
-                          case MaterialState.hovered:
-                            return styler.onHover?.borderRadius ??
-                                styler.borderRadius!;
-                          case MaterialState.focused:
-                            return styler.onFocus?.borderRadius ??
-                                styler.borderRadius!;
-                          case MaterialState.disabled:
-                            return styler.onDisabled?.borderRadius ??
-                                styler.borderRadius!;
-                          case MaterialState.error:
-                            return styler.onInvalid?.borderRadius ??
-                                styler.borderRadius!;
-                          default:
-                            return styler.borderRadius!;
-                        }
-                      }
-
-                      // Common borderSide resolution.
-                      BorderSide resolveBorderSide(MaterialState state) {
-                        if (isAttached) return BorderSide.none;
-                        if (isFocusVisible!) {
-                          return BorderSide(
-                              color: $GSColors.primary500, width: 2.0);
-                        } else if (variant == GSVariants.link) {
-                          return BorderSide.none;
-                        } else {
-                          switch (state) {
-                            case MaterialState.pressed:
-                              return BorderSide(
-                                  color: styler.onActive?.borderColor ??
-                                      styler.borderColor!,
-                                  width: styler.onActive?.borderWidth ?? 1.0);
-                            case MaterialState.hovered:
-                              return BorderSide(
-                                  color: styler.onHover?.borderColor ??
-                                      styler.borderColor!,
-                                  width: styler.onHover?.borderWidth ?? 1.0);
-                            case MaterialState.focused:
-                              return BorderSide(
-                                  color: styler.onFocus?.borderColor ??
-                                      styler.borderColor!,
-                                  width: styler.onFocus?.borderWidth ?? 1.0);
-                            case MaterialState.disabled:
-                              return BorderSide(
-                                  color: styler.onDisabled?.borderColor ??
-                                      styler.borderColor!,
-                                  width: styler.onDisabled?.borderWidth ?? 1.0);
-                            case MaterialState.error:
-                              return BorderSide(
-                                  color: styler.onInvalid?.borderColor ??
-                                      styler.borderColor!,
-                                  width: styler.onInvalid?.borderWidth ?? 1.0);
-                            default:
-                              return BorderSide(
-                                  color: styler.borderColor!,
-                                  width: styler.borderWidth ?? 1.0);
-                          }
-                        }
-                      }
-
-                      // Identify the current state to apply styles for.
-                      MaterialState currentState = MaterialState.values
-                          .firstWhere(states.contains,
-                              orElse: () => MaterialState.values.last);
-                      return RoundedRectangleBorder(
-                        borderRadius: isAttached
-                            ? BorderRadius.zero
-                            : BorderRadius.circular(
-                                resolveBorderRadius(currentState)),
-                        side: resolveBorderSide(currentState),
-                      );
-                    }),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -239,5 +141,24 @@ class GSButton extends StatelessWidget {
         );
       }),
     );
+  }
+
+  BorderSide _resolveBorderSide(
+      GSVariants variant, GSStyle styler, bool isAttached) {
+    if (isAttached) {
+      return BorderSide.none;
+    }
+    if (variant == GSVariants.link) {
+      return BorderSide.none;
+    }
+    if (isFocusVisible!) {
+      return BorderSide(color: $GSColors.primary500, width: 2.0);
+    }
+    return styler.borderWidth != null || styler.outlineWidth != null
+        ? BorderSide(
+            color:
+                styler.borderColor ?? styler.outlineColor ?? Colors.transparent,
+            width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
+        : BorderSide.none;
   }
 }

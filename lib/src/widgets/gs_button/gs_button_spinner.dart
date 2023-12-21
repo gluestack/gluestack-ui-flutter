@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/token/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_icon_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_spinner_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
-
-import '../gs_ancestor/gs_ancestor_provider.dart';
 
 class GSButtonSpinner extends StatelessWidget {
   final GSStyle? style;
@@ -39,7 +34,8 @@ class GSButtonSpinner extends StatelessWidget {
           ancestorStyles,
         ],
         inlineStyle: style,
-        isFrist: true);
+        isFirst: true,
+        );
 
     return SizedBox(
       width: styler.width,

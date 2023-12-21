@@ -549,7 +549,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? splashColor;
   GSStyle? badge;
   GSTextTransform? textTransform;
-  double? iconSize;
+  GSSizes? iconSize;
 
   //switch props
   Color? trackColorTrue;
@@ -815,7 +815,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       right: resolveSpaceFromString(data?['right'].toString()),
       top: resolveSpaceFromString(data?['top'].toString()),
 
-      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
+      iconSize: resolveSizesFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
@@ -833,7 +833,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg']),
       borderWidth: data?['borderWidth'] != null
-          ? double.tryParse(data!['borderWidth']!.toString())
+          ? double.tryParse(data!['borderWidth']!.toString()) ?? resolveBorderWidthFromString(data['borderWidth'])
           : null,
       gap: resolveSpaceFromString(
           data?['gap'] ?? data?['_avatar']?['ml'].toString()),

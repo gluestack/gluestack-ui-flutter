@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_text_style.dart';
 
 class GSButtonText extends StatelessWidget {
@@ -17,23 +16,29 @@ class GSButtonText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ancestorTextStyles = GSAncestorProvider.of(context)
+    final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsTextConfig.ancestorStyle.first];
-    final value = GSButtonProvider.of(context);
-    final fontSize = GSButtonTextStyle.size[value!.size]?.textStyle?.fontSize;
 
-    var defaultTextStyle = TextStyle(
-      color: ancestorTextStyles?.color,
-      fontWeight: ancestorTextStyles?.textStyle?.fontWeight,
-      fontSize: fontSize,
-    );
-    final styler = resolveStyles(context, inlineStyle: style);
+    final styler = resolveStyles2(
+        context: context,
+        styles: [
+          buttonTextStyle,
+          buttonTextStyle.sizeMap(ancestorStyles?.props?.size),
+          ancestorStyles,
+        ],
+        inlineStyle: style,
+        );
 
-    final mergedStyle = defaultTextStyle.merge(styler?.textStyle);
+    final textStyle = TextStyle(
+        color: styler.color,
+        fontWeight: styler.textStyle?.fontWeight,
+        fontSize: styler.textStyle?.fontSize,
+        decoration: styler.textStyle?.decoration,
+        height: styler.textStyle?.height);
 
     return Text(
       text,
-      style: mergedStyle,
+      style: textStyle,
     );
   }
 }

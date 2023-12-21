@@ -72,21 +72,23 @@ class GSBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // // Access the badge provider to retrieve badge style information.
-    // final value = GSBadgeProvider.of(context);
     final badgeAction = action ?? badgeStyle.props?.action;
     final badgeVariant = variant ?? badgeStyle.props?.variant;
     final badgeSize = size ?? badgeStyle.props?.size;
 
     // Resolve the style for the badge.
-    GSStyle styler = resolveStyles(context,
-        variantStyle: GSBadgeStyle.gsBadgeCombination[badgeAction]
-            ?[badgeVariant],
-        size: GSBadgeStyle.size[badgeSize],
-        inlineStyle: style,
-        descendantStyles: GSBadgeStyle.badgeDescendantStyles[action]?[variant],
-        descendantStyleKeys: gsBadgeConfig.descendantStyle)!;
-
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [
+        badgeStyle,
+        badgeStyle.actionMap(badgeAction),
+        badgeStyle.variantMap(badgeVariant),
+        badgeStyle.sizeMap(badgeSize),
+        badgeStyle.compoundVariants?[action.toString() + variant.toString()]
+      ],
+      inlineStyle: style,
+      isFirst: true,
+    );
     // Return the GSBadge with GSAncestor to handle the decedentStyles
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
@@ -102,9 +104,9 @@ class GSBadge extends StatelessWidget {
                 style: badgeVariant == GSVariants.outline
                     ? BorderStyle.solid
                     : BorderStyle.none,
-                color: style == null
-                    ? styler.borderColor!
-                    : style!.borderColor ?? styler.borderColor!),
+                color: styler.borderColor ??
+                    styler.outlineColor ??
+                    Colors.transparent),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
           child: Row(

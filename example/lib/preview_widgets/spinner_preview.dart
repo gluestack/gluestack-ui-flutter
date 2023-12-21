@@ -7,23 +7,24 @@ class SpinnerPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Storybook(
-      initialStory: 'Spinner',
-      stories: [
-        Story(
-          name: 'Spinner',
-          description:
-              'Spinners are designed to give visual cues to users that an action is being processed or that a change or result is expected. They are useful for improving the user experience by reducing frustration and uncertainty..',
-          builder: (context) => GSSpinner(
-            strokeWidth: 4,
-            style: GSStyle(
-              bg: $GSColors.blueGray300,
-              width: 30,
-              height: 30,
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Spinner',
+        stories: [
+          Story(
+            name: 'Spinner',
+            builder: (context) => GSSpinner(
+              strokeWidth: 4,
+              style: GSStyle(
+                bg: $GSColors.blueGray300,
+                width: 30,
+                height: 30,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

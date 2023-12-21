@@ -14,30 +14,31 @@ class CheckboxPreview extends StatelessWidget {
       Option<int>(value: 4, label: GSSizes.$lg.name),
     ];
 
-    return Storybook(
-      initialStory: 'Checkbox',
-      stories: [
-        Story(
-          name: 'Checkbox',
-          description:
-              'Checkbox component offers a user-friendly way for users to select multiple options from a list.',
-          builder: (context) => GSCheckBox(
-            size: GSSizes.values[context.knobs
-                .options(label: 'Size', initial: 3, options: sizeOptions)],
-            isInvalid:
-                context.knobs.boolean(label: "isInvalid", initial: false),
-            isDisabled:
-                context.knobs.boolean(label: "isDisabled", initial: false),
-            icon: GSCheckBoxIndicator(
-              style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-              child: const GSCheckBoxIcon(),
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Checkbox',
+        stories: [
+          Story(
+            name: 'Checkbox',
+            builder: (context) => GSCheckBox(
+              size: GSSizes.values[context.knobs
+                  .options(label: 'Size', initial: 3, options: sizeOptions)],
+              isInvalid:
+                  context.knobs.boolean(label: "isInvalid", initial: false),
+              isDisabled:
+                  context.knobs.boolean(label: "isDisabled", initial: false),
+              icon: GSCheckBoxIndicator(
+                style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                child: const GSCheckBoxIcon(),
+              ),
+              value: "value 1",
+              onChanged: (value) {},
+              label: const GSCheckBoxLabel(text: "value1"),
             ),
-            value: "value 1",
-            onChanged: (value) {},
-            label: const GSCheckBoxLabel(text: "value1"),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

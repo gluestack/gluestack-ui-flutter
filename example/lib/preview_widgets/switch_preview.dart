@@ -20,21 +20,22 @@ class _SwitchPreviewState extends State<SwitchPreview> {
       Option<int>(value: 4, label: GSSizes.$lg.name),
     ];
 
-    return Storybook(initialStory: 'Switch', stories: [
-      Story(
-          name: 'Switch',
-          description:
-              'The Switch component offers a stylish alternative to the Checkbox, allowing users to enable or disable an option with a sleek sliding motion. This component is perfect for adding a touch of elegance and interactivity to your user interface.',
-          builder: (context) => GSSwitch(
-              size: GSSizes.values[context.knobs
-                  .options(label: 'Size', initial: 3, options: sizeOptions)],
-              value: isSelected,
-              isDisabled: context.knobs.boolean(label: 'isDisabled'),
-              onToggle: (value) {
-                setState(() {
-                  isSelected = value;
-                });
-              }))
-    ]);
+    return materialWrapper(
+      context,
+      Storybook(initialStory: 'Switch', stories: [
+        Story(
+            name: 'Switch',
+            builder: (context) => GSSwitch(
+                size: GSSizes.values[context.knobs
+                    .options(label: 'Size', initial: 3, options: sizeOptions)],
+                value: isSelected,
+                isDisabled: context.knobs.boolean(label: 'isDisabled'),
+                onToggle: (value) {
+                  setState(() {
+                    isSelected = value;
+                  });
+                }))
+      ]),
+    );
   }
 }

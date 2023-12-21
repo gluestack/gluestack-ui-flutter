@@ -19,16 +19,19 @@ class GSButtonIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ancestorIconStyles = GSAncestorProvider.of(context)
+    final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsButtonIconStyle.ancestorStyle.first];
     final value = GSButtonProvider.of(context);
-
     final size = GSButtonIconStyle.size[iconSize ?? value?.size];
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: GSStyle(color: ancestorIconStyles?.color),
-      inlineStyle: style,
-    )!;
+    
+    final styler = resolveStyles2(
+        context: context,
+        styles: [
+          buttonIconStyle,
+          buttonIconStyle.sizeMap(ancestorStyles?.props?.size),
+          ancestorStyles,
+        ],
+        inlineStyle: style);
 
     return Icon(
       icon,

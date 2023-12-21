@@ -16,20 +16,21 @@ class IconPreview extends StatelessWidget {
       Option<int>(value: 5, label: GSSizes.$xl.name),
     ];
 
-    return Storybook(
-      initialStory: 'Icon',
-      stories: [
-        Story(
-          name: 'Icon',
-          description:
-              'Icons are often used to enhance the usability and accessibility of digital products by providing users with clear and intuitive visual cues. It serves as an intuitive and easily recognizable way to communicate with users.',
-          builder: (context) => GSIcon(
-            size: GSSizes.values[context.knobs
-                .options(label: 'Size', initial: 3, options: sizeOptions)],
-            icon: Icons.calendar_month,
+    return materialWrapper(
+      context,
+      Storybook(
+        initialStory: 'Icon',
+        stories: [
+          Story(
+            name: 'Icon',
+            builder: (context) => GSIcon(
+              size: GSSizes.values[context.knobs
+                  .options(label: 'Size', initial: 3, options: sizeOptions)],
+              icon: Icons.calendar_month,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
