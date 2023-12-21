@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_group_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 class GSCheckBox extends StatefulWidget {
@@ -77,13 +72,14 @@ class _GSCheckBoxState extends State<GSCheckBox> {
     final formProps = GSFormProvider.of(context);
     final checkBoxSize =
         widget.size ?? formProps?.size ?? checkboxStyle.props?.size;
-    final styler = resolveStyles(context,
-        variantStyle: checkboxStyle,
-        size: GsCheckBoxStyle.size[checkBoxSize],
-        descendantStyleKeys: checkBoxConfig.descendantStyle,
-        inlineStyle: widget.style);
+    final styler = resolveStyles2(
+      context: context,
+      styles: [checkboxStyle, checkboxStyle.sizeMap(checkBoxSize)],
+      inlineStyle: widget.style,
+      isFirst: true,
+    );
     bool? isCheckBoxDisabled = widget.isDisabled ?? groupValue?.isDisabled;
-    bool? isCheckBoxInvaild = widget.isInvalid ?? groupValue?.isInvalid;
+    bool? isCheckBoxInvalid = widget.isInvalid ?? groupValue?.isInvalid;
     bool? isCheckBoxReadOnly = widget.isReadOnly ?? groupValue?.isReadOnly;
 
     // final isRequired = GSFormProvider.of(context)?.isRequired ?? false; //TODO: is this to be done?
@@ -94,18 +90,18 @@ class _GSCheckBoxState extends State<GSCheckBox> {
     isCheckBoxReadOnly == null
         ? isCheckBoxReadOnly = formProps?.isReadOnly ?? false
         : null;
-    isCheckBoxInvaild == null
-        ? isCheckBoxInvaild = formProps?.isInvalid ?? false
+    isCheckBoxInvalid == null
+        ? isCheckBoxInvalid = formProps?.isInvalid ?? false
         : null;
 
     return GSAncestor(
-      decedentStyles: styler?.descendantStyles,
+      decedentStyles: styler.descendantStyles,
       child: GSFocusableActionDetector(
         isFocused: widget.isFocusVisible,
         isHovered: widget.isHovered,
         mouseCursor: isCheckBoxDisabled ? SystemMouseCursors.forbidden : null,
         child: GSCheckBoxProvider(
-          isInvalid: isCheckBoxInvaild,
+          isInvalid: isCheckBoxInvalid,
           isDisabled: isCheckBoxDisabled,
           isChecked: widget.isChecked ?? isChecked,
           value: widget.value,
@@ -137,9 +133,9 @@ class _GSCheckBoxState extends State<GSCheckBox> {
               child: Opacity(
                 opacity: isCheckBoxDisabled ? 0.5 : 1,
                 child: resolveFlexWidget(
-                    flexDirection: styler?.flexDirection,
-                    mainAxisAlignment: styler?.justifyContent,
-                    crossAxisAlignment: styler?.alignItems,
+                    flexDirection: styler.flexDirection,
+                    mainAxisAlignment: styler.justifyContent,
+                    crossAxisAlignment: styler.alignItems,
                     children: [
                       widget.icon,
                       if (widget.label != null) widget.label!
