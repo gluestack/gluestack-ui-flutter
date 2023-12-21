@@ -1016,20 +1016,19 @@ class GSStyle extends BaseStyle<GSStyle> {
       dark: GSStyle(
         web: GSStyle(
           onFocus: GSStyle(
-              outlineColor: resolveColorFromString(
-                  data?['_web']?[':focus']?['_dark']?['outlineColor']),
-              outlineWidth:
-                  data?['_web']?[':focus']?['_dark']?['outlineWidth'] != null
-                      ? double.tryParse(
-                          data!['_web']![':focus']!['_dark']!['outlineWidth']
-                              .toString())
-                      : null,
-              // outlineStyle: data?['_web']?[':focus']?['_dark']
-              //     ?['outlineStyle'],
-                    outlineStyle: resolveOutlineStyleFromString(
-          outlineStyle: data?['outlineStyle']),
-                  )
-                  ,
+            outlineColor: resolveColorFromString(
+                data?['_web']?[':focus']?['_dark']?['outlineColor']),
+            outlineWidth:
+                data?['_web']?[':focus']?['_dark']?['outlineWidth'] != null
+                    ? double.tryParse(
+                        data!['_web']![':focus']!['_dark']!['outlineWidth']
+                            .toString())
+                    : null,
+            // outlineStyle: data?['_web']?[':focus']?['_dark']
+            //     ?['outlineStyle'],
+            outlineStyle: resolveOutlineStyleFromString(
+                outlineStyle: data?['outlineStyle']),
+          ),
         ),
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(
