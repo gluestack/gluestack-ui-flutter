@@ -95,15 +95,13 @@ class GSAlertDialog extends StatefulWidget {
 class _GSAlertDialogState extends State<GSAlertDialog> {
   @override
   Widget build(BuildContext context) {
-    print(alertDialogStyle.variants!.size!.$full!.descendantStyles);
     final alertSize = widget.size ?? alertDialogStyle.props?.size;
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: alertDialogStyle,
-      size: GSAlertDialogStyle.size[alertSize],
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [alertDialogStyle, alertDialogStyle.sizeMap(alertSize)],
       inlineStyle: widget.style,
-      descendantStyleKeys: gsAlertDialogConfig.descendantStyle,
-    )!;
+      isFirst: true,
+    );
     final alertWidth = styler.width ??
         (MediaQuery.sizeOf(context).width *
             (styler

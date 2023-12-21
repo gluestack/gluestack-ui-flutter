@@ -10,13 +10,3 @@ const GSStyleConfig gsAlertDialogConfig = GSStyleConfig(
 GSStyle alertDialogStyle = GSStyle.fromMap(
     data: alertDialogData,
     descendantStyle: gsAlertDialogConfig.descendantStyle);
-
-class GSAlertDialogStyle {
-  static Map<GSSizes, GSStyle> size = {
-    GSSizes.$xs: alertDialogStyle.variants!.size!.$xs!,
-    GSSizes.$sm: alertDialogStyle.variants!.size!.$sm!,
-    GSSizes.$md: alertDialogStyle.variants!.size!.$md!,
-    GSSizes.$lg: alertDialogStyle.variants!.size!.$lg!,
-    GSSizes.$full: alertDialogStyle.variants!.size!.$full!,
-  };
-}
