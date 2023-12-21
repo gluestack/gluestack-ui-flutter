@@ -1,7 +1,6 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/theme/config/form_control/form_control.dart';
-import 'package:gluestack_ui/src/utils/resolver.dart';
 
 const GSStyleConfig gsFromControlConfig = GSStyleConfig(
   componentName: 'FormControl',
