@@ -16,15 +16,13 @@ class GSFabLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[fabLabelConfig.ancestorStyle.first];
-   
-    
+            
     var defaultTextStyle = TextStyle(
         color: ancestorStyles?.color,
         fontWeight: ancestorStyles?.textStyle?.fontWeight,
         fontSize: ancestorStyles?.textStyle?.fontSize);
 
-    final mergedStyle =
-        defaultTextStyle.merge(style != null ? style!.textStyle : null);
+    final mergedStyle = defaultTextStyle.merge(style?.textStyle);
 
     return Text(
       text,

@@ -28,11 +28,11 @@ class GSFlex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-      GSStyle styler = resolveStyles(
-      context,
+    GSStyle styler = resolveStyles2(
+      context: context,
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
 
     return Flex(
       direction: styler.direction ?? Axis.vertical,

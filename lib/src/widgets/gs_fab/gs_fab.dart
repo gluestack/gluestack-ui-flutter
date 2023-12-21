@@ -36,11 +36,15 @@ class GSFab extends StatelessWidget {
   Widget build(BuildContext context) {
     final fabSize = size ?? fabStyle.props!.size!;
     final fabPlacement = placement ?? fabStyle.props?.placement!;
-    final styler = resolveStyles(context,
-        variantStyle: GSFabStyle.placementVariants[fabPlacement],
-        size: GSFabStyle.size[fabSize],
-        descendantStyleKeys: fabConfig.descendantStyle,
-        inlineStyle: style)!;
+    final styler = resolveStyles2(
+      context: context,
+      styles: [
+        GSFabStyle.placementVariants[fabPlacement],
+        GSFabStyle.size[fabSize]
+      ],
+      inlineStyle: style,
+      isFirst: true,
+    );
 
     final bool isCentered = placement == GSPlacements.bottomCenter ||
         placement == GSPlacements.topCenter;
