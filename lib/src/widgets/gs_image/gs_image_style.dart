@@ -10,6 +10,7 @@ class GSImageStyle {
     GSSizes.$md: imageStyle.variants!.size!.$md!,
     GSSizes.$lg: imageStyle.variants!.size!.$lg!,
     GSSizes.$xl: imageStyle.variants!.size!.$xl!,
+    GSSizes.$xs: imageStyle.variants!.size!.$xs!,
     GSSizes.$2xl: imageStyle.variants!.size!.$2xl!,
     GSSizes.$2xs: imageStyle.variants!.size!.$2xs!
   };

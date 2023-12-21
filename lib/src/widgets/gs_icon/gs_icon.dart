@@ -30,12 +30,12 @@ class GSIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconSize = size ?? iconStyle.props?.size;
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: iconStyle,
-      size: GSIconStyle.size[iconSize],
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [iconStyle, GSIconStyle.size[iconSize]],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
     return Icon(
       icon,
       size: styler.width ?? styler.height,
