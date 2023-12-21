@@ -265,6 +265,15 @@ GSAlignments? resolveAlignmentFromString(String? itemAlignment) {
   return itemAlignment != null ? itemAlignmentMap[itemAlignment] : null;
 }
 
+MainAxisAlignment resolveAlignmentFromNum(num? alignmentNum) {
+  final alignments = {
+    -1: MainAxisAlignment.start,
+    0: MainAxisAlignment.center,
+    1: MainAxisAlignment.end,
+  };
+  return alignments[alignmentNum] ?? MainAxisAlignment.end;
+}
+
 GSSpaces? resolveSpacesFromString(String? space) {
   const spaceMap = {
     'xs': GSSpaces.$xs,
