@@ -44,13 +44,11 @@ class GSAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     final avatarSize = size ?? avatarStyle.props?.size;
 
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: avatarStyle,
-      size: GSAvatarStyle.size[avatarSize],
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [avatarStyle, avatarStyle.sizeMap(avatarSize)],
       inlineStyle: style,
-      descendantStyleKeys: gsAvatarConfig.descendantStyle,
-    )!;
+    );
 
     return GSAncestor(
       decedentStyles: styler.descendantStyles,

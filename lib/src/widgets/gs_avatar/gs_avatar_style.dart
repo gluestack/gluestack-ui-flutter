@@ -12,15 +12,6 @@ GSStyle avatarStyle = GSStyle.fromMap(
     data: avatarData, descendantStyle: gsAvatarConfig.descendantStyle);
 
 class GSAvatarStyle {
-  static Map<GSSizes, GSStyle> size = {
-    GSSizes.$xs: avatarStyle.variants!.size!.$xs!,
-    GSSizes.$sm: avatarStyle.variants!.size!.$sm!,
-    GSSizes.$md: avatarStyle.variants!.size!.$md!,
-    GSSizes.$lg: avatarStyle.variants!.size!.$lg!,
-    GSSizes.$xl: avatarStyle.variants!.size!.$xl!,
-    GSSizes.$2xl: avatarStyle.variants!.size!.$2xl!,
-  };
-
   static Map<GSBorderRadius, double> borderRadius = {
     GSBorderRadius.$none: 0,
     GSBorderRadius.$xs: 2,

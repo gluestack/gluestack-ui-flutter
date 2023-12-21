@@ -4,7 +4,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_badge_style.dart';
 
-
 class GSAvatarBadge extends StatelessWidget {
   final GSStyle? style;
   final double? left;
@@ -19,11 +18,12 @@ class GSAvatarBadge extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsAvatarBadgeStyle.ancestorStyle.first];
 
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: avatarBadgeStyle,
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [avatarBadgeStyle],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
 
     return Container(
       height: style?.height ?? ancestorStyles?.height ?? styler.height,
