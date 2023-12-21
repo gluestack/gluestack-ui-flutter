@@ -10,12 +10,12 @@ class GSAlertDialogBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: alertDialogBodyStyle,
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [alertDialogBodyStyle],
       inlineStyle: style,
-    )!;
-
+      isFirst: true,
+    );
     return Container(
       color: styler.bg,
       padding: styler.padding,
