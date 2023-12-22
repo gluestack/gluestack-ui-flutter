@@ -12,21 +12,22 @@ class GSLink extends StatelessWidget {
   final Widget text;
   final bool isExternal;
   final bool isHovered;
-  const GSLink(
-      {super.key,
-      required this.url,
-      required this.text,
-      this.style,
-      this.isExternal = false,
-      this.isHovered=false,
-      });
+  const GSLink({
+    super.key,
+    required this.url,
+    required this.text,
+    this.style,
+    this.isExternal = false,
+    this.isHovered = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final styler = resolveStyles(context,
-        descendantStyles: linkStyle.descendantStyles,
-        descendantStyleKeys: gsLinkConfig.descendantStyle,
-        inlineStyle: style)!;
+    final styler = resolveStyles2(
+      context: context,
+      inlineStyle: style,
+      isFirst: true,
+    );
 
     return GSAncestor(
       decedentStyles: styler.descendantStyles,

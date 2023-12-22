@@ -81,10 +81,8 @@ class GSRadio<T> extends StatelessWidget {
               : SystemMouseCursors.click,
           onTap: () {
             if (!isRadioDisabled! && value != groupValue && !isRadioReadOnly) {
-              print("Print radio val    $groupValue");
               onChanged!.call(value);
             }
-            print("Print radio val after   $groupValue");
           },
           child: GSRadioProvider<T>(
               value: value,

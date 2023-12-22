@@ -18,17 +18,18 @@ class GSLinkText extends StatelessWidget {
     final ancestorTextStyles =
         GSAncestorProvider.of(context)?.decedentStyles?['_text'];
 
-    final styler = resolveStyles(context,
-        variantStyle: linkTextStyle.merge(ancestorTextStyles),
-        inlineStyle: style)!;
-
-
+    final styler = resolveStyles2(
+      context: context,
+      styles: [linkTextStyle.merge(ancestorTextStyles)],
+      inlineStyle: style,
+      isFirst: true,
+    );
 
     final color = isActive
         ? styler.onActive?.color
         : isHovered
             ? styler.onHover?.color
-            : styler.textStyle?.color??  styler.color;
+            : styler.textStyle?.color ?? styler.color;
     final TextDecoration? decoration = isActive
         ? styler.onActive?.textStyle?.decoration
         : isHovered

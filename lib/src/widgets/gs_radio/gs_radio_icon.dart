@@ -39,11 +39,12 @@ class GSRadioIcon<T> extends StatelessWidget {
     final radioSize =
         GSRadioIconStyle.size[size ?? ancestorStyles?.props?.size];
 
-    GSStyle styler = resolveStyles(
-      variantStyle: radioIconStyle.merge(radioIndicatorStyle),
-      context,
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [radioIconStyle.merge(radioIndicatorStyle)],
       inlineStyle: value.style,
-    )!;
+      isFirst: true,
+    );
 
     return Opacity(
       opacity: value.isDisabled ? styler.onDisabled!.opacity! : 1,
