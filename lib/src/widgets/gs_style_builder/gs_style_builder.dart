@@ -8,7 +8,7 @@ class GSStyleBuilder extends StatefulWidget {
   final bool isActive;
   final bool isFocused;
   final bool isDisabled;
-  final bool isInvaild;
+  final bool isInvalid;
 
   final MouseCursor? mouseCursor;
   const GSStyleBuilder({
@@ -19,7 +19,7 @@ class GSStyleBuilder extends StatefulWidget {
     this.isDisabled = false,
     this.isFocused = false,
     this.isHovered = false,
-    this.isInvaild = false,
+    this.isInvalid = false,
     this.shouldIgnorePointer = false,
   });
 
@@ -122,7 +122,7 @@ class _GSStyleBuilderState extends State<GSStyleBuilder> {
                 isFocused: isFocused,
                 isHovered: isHovered,
                 isDisabled: widget.isDisabled,
-                isInvaild: widget.isInvaild,
+                isInvaild: widget.isInvalid,
                 child: widget.child)),
       ),
     );
