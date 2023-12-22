@@ -250,28 +250,28 @@ class _GSInputState extends State<GSInput> {
 
   @override
   Widget build(BuildContext context) {
-    final inputVariant = widget.variant ?? inputStyle.props?.variant;
     final formProps = GSFormProvider.of(context);
+    final inputVariant = widget.variant ?? inputStyle.props?.variant;
     final inputSize =
         widget.size ?? formProps?.size ?? inputStyle.props?.size ?? GSSizes.$md;
-    bool? isDisabled = widget.isDisabled;
-    bool? isReadOnly = widget.isReadOnly;
-    bool? isInvalid = widget.isInvalid;
-    final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
+    final bool isDisabled = widget.isDisabled ?? formProps?.isDisabled ?? false;
+    final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
+    final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
+    final bool isRequired = formProps?.isRequired ?? false;
 
-    isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
-    isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
-    isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
-
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: GSInputStyle.gsInputCombination[inputVariant],
-      size: GSInputStyle.size[inputSize]!,
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [
+        inputStyle,
+        inputStyle.variantMap(inputVariant),
+        inputStyle.sizeMap(inputSize)
+      ],
       inlineStyle: widget.style,
-    )!;
+      isFirst: true,
+    );
 
     Color? resolveBorderColor() {
-      if (isInvalid!) {
+      if (isInvalid) {
         if (widget.variant == GSVariants.underlined) {
           return styler.onInvalid?.borderBottomColor;
         }
@@ -280,7 +280,7 @@ class _GSInputState extends State<GSInput> {
       if (_isHovered) {
         return styler.onHover?.borderColor ?? styler.borderColor;
       }
-      if (isDisabled!) {
+      if (isDisabled) {
         return styler.onDisabled?.borderColor ?? styler.borderColor;
       }
 
@@ -289,26 +289,26 @@ class _GSInputState extends State<GSInput> {
 
     double? resolveBorderWidth() {
       if (widget.variant == GSVariants.underlined) {
-        if (isInvalid!) {
+        if (isInvalid) {
           return styler.onInvalid?.borderBottomWidth ??
               styler.borderBottomWidth;
         }
         if (_isHovered) {
           return styler.onHover?.borderBottomWidth ?? styler.borderBottomWidth;
         }
-        if (isDisabled!) {
+        if (isDisabled) {
           return styler.onDisabled?.borderBottomWidth ??
               styler.borderBottomWidth;
         }
         return styler.borderBottomWidth;
       }
-      if (isInvalid!) {
+      if (isInvalid) {
         return styler.onInvalid?.borderWidth ?? styler.borderWidth;
       }
       if (_isHovered) {
         return styler.onHover?.borderWidth ?? styler.borderWidth;
       }
-      if (isDisabled!) {
+      if (isDisabled) {
         return styler.onDisabled?.borderWidth ?? styler.borderWidth;
       }
 
@@ -316,7 +316,7 @@ class _GSInputState extends State<GSInput> {
     }
 
     Color? resolveFocusBorderColor() {
-      if (isInvalid!) {
+      if (isInvalid) {
         if (widget.variant == GSVariants.underlined) {
           return styler.onInvalid?.borderBottomColor;
         }
@@ -348,19 +348,14 @@ class _GSInputState extends State<GSInput> {
           );
 
     return FocusableActionDetector(
-      onShowHoverHighlight: (value) {
-        if (isDisabled!) {
-          _isHovered = false;
-        } else {
-          if (value != _isHovered) {
-            setState(() {
-              _isHovered = value;
-            });
-          }
+        onShowHoverHighlight: (value) {
+        final shouldUpdateHover = !isDisabled && value;
+        if (_isHovered != shouldUpdateHover) {
+          setState(() => _isHovered = shouldUpdateHover);
         }
       },
       child: Opacity(
-        opacity: isDisabled ? styler.opacity! : 1,
+        opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.5 : 1,
         child: SizedBox(
           width: styler.width,
           height: styler.height,
@@ -385,7 +380,7 @@ class _GSInputState extends State<GSInput> {
             cursorWidth: widget.cursorWidth,
             dragStartBehavior: widget.dragStartBehavior,
             enabled: !isDisabled,
-            readOnly: isReadOnly!,
+            readOnly: isReadOnly,
             enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
             enableInteractiveSelection: widget.enableInteractiveSelection,
             enableSuggestions: widget.enableSuggestions,
@@ -433,10 +428,7 @@ class _GSInputState extends State<GSInput> {
             smartQuotesType: widget.smartQuotesType,
             spellCheckConfiguration: widget.spellCheckConfiguration,
             strutStyle: widget.strutStyle,
-            style: widget.style?.textStyle ??
-                TextStyle(
-                    fontSize:
-                        GSInputStyle.size[inputSize]!.textStyle!.fontSize),
+            style: styler.textStyle,
             textAlign: widget.textAlign,
             textAlignVertical: widget.textAlignVertical,
             textCapitalization: widget.textCapitalization,

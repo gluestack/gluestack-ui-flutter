@@ -70,12 +70,14 @@ class GSImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final imageSize = size ?? imageStyle.props!.size;
 
-    final GSStyle styler = resolveStyles2(
-      context: context,
-      styles: [GSImageStyle.size[imageSize]],
-      inlineStyle: style,
-      isFirst: true,
-    );
+    GSStyle styler = resolveStyles2(
+        context: context,
+        styles: [
+          imageStyle,
+          imageStyle.sizeMap(imageSize),
+        ],
+        inlineStyle: style,
+        isFirst: true);
 
     return borderRadius == GSBorderRadius.$none
         ? _resolveImageType(imageType, styler)

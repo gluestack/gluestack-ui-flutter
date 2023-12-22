@@ -833,7 +833,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg']),
       borderWidth: data?['borderWidth'] != null
-          ? double.tryParse(data!['borderWidth']!.toString()) ?? resolveBorderWidthFromString(data['borderWidth'])
+          ? double.tryParse(data!['borderWidth']!.toString()) ??
+              resolveBorderWidthFromString(data['borderWidth'])
           : null,
       gap: resolveSpaceFromString(
           data?['gap'] ?? data?['_avatar']?['ml'].toString()),
@@ -1294,6 +1295,35 @@ class GSStyle extends BaseStyle<GSStyle> {
         return variants?.size?.$6xl;
       case GSSizes.$full:
         return variants?.size?.$full;
+      default:
+        return null;
+    }
+  }
+
+  GSStyle? spaceMap(GSSpaces? gsSpaces) {
+    if (gsSpaces == null) return null;
+
+    switch (gsSpaces) {
+      case GSSpaces.$none:
+        return variants?.space?.$none;
+      case GSSpaces.$xs:
+        return variants?.space?.$xs;
+      case GSSpaces.$sm:
+        return variants?.space?.$sm;
+      case GSSpaces.$md:
+        return variants?.space?.$md;
+      case GSSpaces.$lg:
+        return variants?.space?.$lg;
+      case GSSpaces.$xl:
+        return variants?.space?.$xl;
+      case GSSpaces.$2xl:
+        return variants?.space?.$2xl;
+      case GSSpaces.$3xl:
+        return variants?.space?.$3xl;
+      case GSSpaces.$4xl:
+        return variants?.space?.$4xl;
+      default:
+        return null;
     }
   }
 }

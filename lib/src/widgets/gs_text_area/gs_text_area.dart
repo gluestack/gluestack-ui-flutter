@@ -260,34 +260,31 @@ class _GSTextAreaState extends State<GSTextArea> {
   @override
   Widget build(BuildContext context) {
     final formProps = GSFormProvider.of(context);
+    final bool isDisabled = widget.isDisabled ?? formProps?.isDisabled ?? false;
+    final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
+    final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
+    final bool isRequired = formProps?.isRequired ?? false;
     final inputSize =
         widget.size ?? formProps?.size ?? textAreaStyle.props?.size;
-    bool? isDisabled = widget.isDisabled;
-    bool? isReadOnly = widget.isReadOnly;
-    bool? isInvalid = widget.isInvalid;
 
-    final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
-
-    isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
-    isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
-    isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
-
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: textAreaStyle,
-      size: GSTextAreaStyle.size[inputSize]!,
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [
+        textAreaStyle,
+        textAreaStyle.sizeMap(inputSize),
+      ],
       inlineStyle: widget.style,
-      descendantStyleKeys: gsTextAreaConfig.descendantStyle,
-    )!;
+      isFirst: true,
+    );
 
     Color? resolveBorderColor() {
-      if (isInvalid!) {
+      if (isInvalid) {
         return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
       if (_isHovered) {
         return styler.onHover?.borderColor ?? styler.borderColor;
       }
-      if (isDisabled!) {
+      if (isDisabled) {
         return styler.onDisabled?.borderColor ?? styler.borderColor;
       }
 
@@ -295,13 +292,13 @@ class _GSTextAreaState extends State<GSTextArea> {
     }
 
     double? resolveBorderWidth() {
-      if (isInvalid!) {
+      if (isInvalid) {
         return styler.onInvalid?.borderWidth ?? styler.borderWidth;
       }
       if (_isHovered) {
         return styler.onHover?.borderWidth ?? styler.borderWidth;
       }
-      if (isDisabled!) {
+      if (isDisabled) {
         return styler.onDisabled?.borderWidth ?? styler.borderWidth;
       }
 
@@ -309,7 +306,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     }
 
     Color? resolveFocusBorderColor() {
-      if (isInvalid!) {
+      if (isInvalid) {
         return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
 
@@ -332,14 +329,9 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
-        if (isDisabled!) {
-          _isHovered = false;
-        } else {
-          if (value != _isHovered) {
-            setState(() {
-              _isHovered = value;
-            });
-          }
+        final shouldUpdateHover = !isDisabled && value;
+        if (_isHovered != shouldUpdateHover) {
+          setState(() => _isHovered = shouldUpdateHover);
         }
       },
       child: Opacity(

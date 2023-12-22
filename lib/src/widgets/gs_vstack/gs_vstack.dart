@@ -47,7 +47,7 @@ class GSVStack extends StatelessWidget {
           SizedBox(
               height: space == GSSpaces.$none
                   ? null
-                  : GSVStackStyle.space[space]?.gap),
+                  : vstackStyle.spaceMap(space)?.gap),
         );
       }
     }
