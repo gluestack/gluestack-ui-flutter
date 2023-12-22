@@ -278,13 +278,13 @@ class _GSTextAreaState extends State<GSTextArea> {
     );
 
     Color? resolveBorderColor() {
-      if (isInvalid!) {
+      if (isInvalid) {
         return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
       if (_isHovered) {
         return styler.onHover?.borderColor ?? styler.borderColor;
       }
-      if (isDisabled!) {
+      if (isDisabled) {
         return styler.onDisabled?.borderColor ?? styler.borderColor;
       }
 
@@ -292,13 +292,13 @@ class _GSTextAreaState extends State<GSTextArea> {
     }
 
     double? resolveBorderWidth() {
-      if (isInvalid!) {
+      if (isInvalid) {
         return styler.onInvalid?.borderWidth ?? styler.borderWidth;
       }
       if (_isHovered) {
         return styler.onHover?.borderWidth ?? styler.borderWidth;
       }
-      if (isDisabled!) {
+      if (isDisabled) {
         return styler.onDisabled?.borderWidth ?? styler.borderWidth;
       }
 
@@ -306,7 +306,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     }
 
     Color? resolveFocusBorderColor() {
-      if (isInvalid!) {
+      if (isInvalid) {
         return styler.onInvalid?.borderColor ?? styler.borderColor;
       }
 

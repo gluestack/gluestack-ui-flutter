@@ -53,12 +53,17 @@ class GSText extends StatelessWidget {
   Widget build(BuildContext context) {
     final textSize = size ?? gstextStyle.props?.size;
 
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: highlight ? gstextStyle.variants?.highlight : null,
-      size: GSTextStyles.size[textSize],
+
+    GSStyle styler = resolveStyles2(
+      context: context,
+      styles: [
+        gstextStyle,
+        highlight ? gstextStyle.variants?.highlight : null,
+        gstextStyle.sizeMap(textSize),
+      ],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
 
     final currentTextStyle = styler.textStyle?.copyWith(
       fontWeight: bold ? FontWeight.bold : styler.textStyle?.fontWeight,
