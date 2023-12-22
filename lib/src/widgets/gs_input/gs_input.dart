@@ -348,9 +348,12 @@ class _GSInputState extends State<GSInput> {
           );
 
     return FocusableActionDetector(
-      onShowHoverHighlight: (value) => setState(() {
-        _isHovered = !isDisabled && value;
-      }),
+        onShowHoverHighlight: (value) {
+        final shouldUpdateHover = !isDisabled && value;
+        if (_isHovered != shouldUpdateHover) {
+          setState(() => _isHovered = shouldUpdateHover);
+        }
+      },
       child: Opacity(
         opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.5 : 1,
         child: SizedBox(

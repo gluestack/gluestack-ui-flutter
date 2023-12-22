@@ -9,12 +9,3 @@ const GSStyleConfig gsTextAreaConfig = GSStyleConfig(
 
 GSStyle textAreaStyle = GSStyle.fromMap(
     data: textAreaData, descendantStyle: gsTextAreaConfig.descendantStyle);
-
-class GSTextAreaStyle {
-  static Map<GSSizes, GSStyle> size = {
-    GSSizes.$sm: textAreaStyle.variants!.size!.$sm!,
-    GSSizes.$md: textAreaStyle.variants!.size!.$md!,
-    GSSizes.$lg: textAreaStyle.variants!.size!.$lg!,
-    GSSizes.$xl: textAreaStyle.variants!.size!.$xl!,
-  };
-}
