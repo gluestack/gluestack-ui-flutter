@@ -1,23 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui/src/theme/config/button/button.dart';
+import 'package:gluestack_ui/src/theme/config/button/button_text.dart';
 import 'package:gluestack_ui/src/token/font_weight.dart';
 import 'package:gluestack_ui/src/token/line_height.dart';
 import 'package:gluestack_ui/src/token/screen_breakpoint.dart';
 
 final getIt = GetIt.instance;
+late Map<String, dynamic> buttonGsConfig;
+late Map<String, dynamic> buttonTextGsConfig;
 
 class GluestackProvider extends StatelessWidget {
   final Widget child;
   GluestackTokenConfig? gluestackTokenConfig;
+  GSComponentConfig? gsComponentConfig;
   GluestackProvider(
-      {super.key, required this.child, this.gluestackTokenConfig}) {
+      {super.key,
+      required this.child,
+      this.gluestackTokenConfig,
+      this.gsComponentConfig}) {
     gluestackTokenConfig ??= GluestackTokenConfig();
   }
 
   @override
   Widget build(BuildContext context) {
     return child;
+  }
+}
+
+class GSComponentConfig {
+  final Map<String, dynamic>? button;
+  final Map<String, dynamic>? buttonText;
+  GSComponentConfig({this.button, this.buttonText}) {
+    buttonGsConfig = helper(buttonData, button);
+    buttonTextGsConfig = helper(buttonTextData, buttonText);
+  }
+
+  Map<String, dynamic> helper(
+      Map<String, dynamic> base, Map<String, dynamic>? custom) {
+    return custom ?? base;
   }
 }
 
