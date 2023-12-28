@@ -52,7 +52,7 @@ class GSButton extends StatelessWidget {
         assert(
           variant == null ||
               variant == GSVariants.outline ||
-              variant == GSVariants.solid||
+              variant == GSVariants.solid ||
               variant == GSVariants.link,
           'GS Button can only have the vairants: solid, outline and link\n'
           'To resolve this error, ensure only the above mentioned GSVariants is specified.',
@@ -60,8 +60,8 @@ class GSButton extends StatelessWidget {
         assert(
           action == null ||
               action == GSActions.primary ||
-              action == GSActions.secondary||
-              action == GSActions.positive||
+              action == GSActions.secondary ||
+              action == GSActions.positive ||
               action == GSActions.negative,
           'GS Button can only have the actions: primary, secondary, positive and negative\n'
           'To resolve this error, ensure only the above mentioned GSActions is specified.',
@@ -79,7 +79,7 @@ class GSButton extends StatelessWidget {
     GSStyle styler = resolveStyles(context,
         variantStyle:
             GSButtonStyle.gsButtonCombination[buttonAction]![buttonVariant],
-        size: GSButtonStyle.size[buttonSize]!,
+        size: GSButtonStyle.size[buttonSize],
         inlineStyle: style,
         descendantStyles: GSButtonStyle.buttonDescendantStyles[action]
             ?[variant],
@@ -133,21 +133,26 @@ class GSButton extends StatelessWidget {
                     switch (state) {
                       case MaterialState.pressed:
                         return styler.onActive?.borderRadius ??
-                            styler.borderRadius!;
+                            styler.borderRadius ??
+                            0;
                       case MaterialState.hovered:
                         return styler.onHover?.borderRadius ??
-                            styler.borderRadius!;
+                            styler.borderRadius ??
+                            0;
                       case MaterialState.focused:
                         return styler.onFocus?.borderRadius ??
-                            styler.borderRadius!;
+                            styler.borderRadius ??
+                            0;
                       case MaterialState.disabled:
                         return styler.onDisabled?.borderRadius ??
-                            styler.borderRadius!;
+                            styler.borderRadius ??
+                            0;
                       case MaterialState.error:
                         return styler.onInvalid?.borderRadius ??
-                            styler.borderRadius!;
+                            styler.borderRadius ??
+                            0;
                       default:
-                        return styler.borderRadius!;
+                        return styler.borderRadius ?? 0;
                     }
                   }
 

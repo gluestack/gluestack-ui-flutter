@@ -1,6 +1,6 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/alert/alert_dialog.dart';
 
 const GSStyleConfig gsAlertDialogConfig = GSStyleConfig(
   componentName: 'AlertDialog',
@@ -8,7 +8,7 @@ const GSStyleConfig gsAlertDialogConfig = GSStyleConfig(
 );
 
 GSStyle alertDialogStyle = GSStyle.fromMap(
-    data: alertDialogData,
+    data: getIt<GluestackCustomConfig>().alertDialog,
     descendantStyle: gsAlertDialogConfig.descendantStyle);
 
 class GSAlertDialogStyle {

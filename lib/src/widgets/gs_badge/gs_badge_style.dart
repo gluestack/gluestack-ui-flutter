@@ -1,6 +1,6 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/badge/badge.dart';
 import 'package:gluestack_ui/src/token/public.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 
@@ -12,7 +12,8 @@ const GSStyleConfig gsBadgeConfig = GSStyleConfig(
 
 // GSStyle representing the base style for the Badge
 final GSStyle badgeStyle = GSStyle.fromMap(
-    data: badgeData, descendantStyle: gsBadgeConfig.descendantStyle);
+    data: getIt<GluestackCustomConfig>().badge,
+    descendantStyle: gsBadgeConfig.descendantStyle);
 
 // Base style for the Badge
 GSStyle baseStyle = GSStyle(
@@ -132,10 +133,10 @@ class GSBadgeStyle {
   };
 
   // Map of badge sizes
-  static Map<GSSizes, GSStyle> size = {
-    GSSizes.$sm: compoundVariants.variants!.size!.$sm!,
-    GSSizes.$md: compoundVariants.variants!.size!.$md!,
-    GSSizes.$lg: compoundVariants.variants!.size!.$lg!,
+  static Map<GSSizes, GSStyle?> size = {
+    GSSizes.$sm: compoundVariants.variants?.size?.$sm,
+    GSSizes.$md: compoundVariants.variants?.size?.$md,
+    GSSizes.$lg: compoundVariants.variants?.size?.$lg,
   };
 
   // Map of descendant styles for different actions and variants

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui_example/custom_config.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
 
 // ignore: library_private_types_in_public_api
@@ -35,6 +36,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GluestackProvider(
+      gluestackCustomConfig: GluestackCustomConfig(
+        button: customButton,
+        buttonText: customButtonText,
+      ),
       child: MaterialApp.router(
         routerConfig: router,
         debugShowCheckedModeBanner: false,

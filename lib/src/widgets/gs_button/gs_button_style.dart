@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/button/button.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 
 const GSStyleConfig gsButtonConfig = GSStyleConfig(
@@ -10,7 +10,7 @@ const GSStyleConfig gsButtonConfig = GSStyleConfig(
     ancestorStyle: ['_button']);
 
 GSStyle buttonStyle = GSStyle.fromMap(
-    data: buttonData, descendantStyle: gsButtonConfig.descendantStyle);
+    data: getIt<GluestackCustomConfig>().button, descendantStyle: gsButtonConfig.descendantStyle);
 
 GSStyle baseStyle = GSStyle(
   borderRadius: buttonStyle.borderRadius,
@@ -139,11 +139,11 @@ class GSButtonStyle {
     },
   };
 
-  static Map<GSSizes, GSStyle> size = {
-    GSSizes.$xs: buttonStyle.variants!.size!.$xs!,
-    GSSizes.$sm: buttonStyle.variants!.size!.$sm!,
-    GSSizes.$md: buttonStyle.variants!.size!.$md!,
-    GSSizes.$lg: buttonStyle.variants!.size!.$lg!,
+  static Map<GSSizes, GSStyle?> size = {
+    GSSizes.$xs: buttonStyle.variants?.size?.$xs,
+    GSSizes.$sm: buttonStyle.variants?.size?.$sm,
+    GSSizes.$md: buttonStyle.variants?.size?.$md,
+    GSSizes.$lg: buttonStyle.variants?.size?.$lg,
   };
 
   static Map<GSActions, Map<GSVariants, Map<String, GSStyle?>>>

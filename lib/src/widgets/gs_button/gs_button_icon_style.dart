@@ -1,7 +1,6 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-
-import 'package:gluestack_ui/src/theme/config/button/button_icon.dart';
 import 'package:gluestack_ui/src/token/public.dart';
 
 const GSStyleConfig gsButtonIconStyle = GSStyleConfig(
@@ -9,7 +8,7 @@ const GSStyleConfig gsButtonIconStyle = GSStyleConfig(
   ancestorStyle: ['_icon'],
 );
 
-GSStyle buttonIconStyle = GSStyle.fromMap(data: buttonIconData);
+GSStyle buttonIconStyle = GSStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonIcon);
 GSStyle baseStyle = GSStyle(
   color: buttonIconStyle.color,
   dark: buttonIconStyle.dark,
