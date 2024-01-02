@@ -7,7 +7,7 @@ class FlexExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSFlex(
+    var code = ''' GSFlex(
           style: GSStyle(
             direction: Axis.vertical,
             md: GSStyle(direction: Axis.horizontal),
@@ -17,21 +17,21 @@ class FlexExample extends StatelessWidget {
               style: GSStyle(
                 height: 150,
                 width: 150,
-                color: Colors.red,
+                bg: Colors.red,
               ),
             ),
             GSBox(
               style: GSStyle(
                 height: 150,
                 width: 150,
-                color: Colors.green,
+                bg: Colors.green,
               ),
             ),
             GSBox(
               style: GSStyle(
                 height: 150,
                 width: 150,
-                color: Colors.blue,
+                bg: Colors.blue,
               ),
             ),
           ],
@@ -44,7 +44,6 @@ class FlexExample extends StatelessWidget {
       body: BaseLayout(
         code: code,
         component: GSFlex(
-          
           style: GSStyle(
             direction: Axis.vertical,
             md: GSStyle(direction: Axis.horizontal),
@@ -54,21 +53,21 @@ class FlexExample extends StatelessWidget {
               style: GSStyle(
                 height: 150,
                 width: 150,
-                color: Colors.red,
+                bg: Colors.red,
               ),
             ),
             GSBox(
               style: GSStyle(
                 height: 150,
                 width: 150,
-                color: Colors.green,
+                bg: Colors.green,
               ),
             ),
             GSBox(
               style: GSStyle(
                 height: 150,
                 width: 150,
-                color: Colors.blue,
+                bg: Colors.blue,
               ),
             ),
           ],
