@@ -20,8 +20,10 @@ class GSRadioText<T> extends StatelessWidget {
 
     final bool isChecked = value!.value == value.groupValue;
 
-    final fontSize = GSRadioTextStyle
-        .size[ancestorTextStyles?.props?.size]?.textStyle?.fontSize;
+    final fontSize = radioLabelStyle
+        .sizeMap(ancestorTextStyles?.props?.size)
+        ?.textStyle
+        ?.fontSize;
 
     GSStyle styler = resolveStyles2(
       context: context,

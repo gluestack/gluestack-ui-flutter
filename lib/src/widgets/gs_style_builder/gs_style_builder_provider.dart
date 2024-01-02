@@ -8,13 +8,12 @@ class GSStyleBuilderProvider extends InheritedWidget {
   final bool isInvaild;
   const GSStyleBuilderProvider(
       {super.key,
-      required Widget child,
+      required super.child,
       required this.isActive,
       required this.isDisabled,
       required this.isFocused,
       required this.isInvaild,
-      required this.isHovered})
-      : super(child: child);
+      required this.isHovered});
 
   @override
   bool updateShouldNotify(GSStyleBuilderProvider oldWidget) {

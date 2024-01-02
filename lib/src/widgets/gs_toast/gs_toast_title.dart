@@ -12,8 +12,8 @@ class GSToastTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gstoastTitleConfig.ancestorStyle.first];
-    final fontSize = GSToastTitleStyle
-        .size[toastTitleStyle.props?.size]?.textStyle?.fontSize;
+    final fontSize = toastTitleStyle
+        .sizeMap(toastTitleStyle.props?.size)?.textStyle?.fontSize;
     final color = toastTitleStyle.color;
     final fontWeight = toastTitleStyle.textStyle?.fontWeight;
 

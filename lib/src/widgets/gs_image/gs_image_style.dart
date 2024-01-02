@@ -1,8 +1,8 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/theme/config/image/image.dart';
 import 'package:gluestack_ui/src/token/public.dart';
 
-final imageStyle = GSStyle.fromMap(data: imageData);
+final imageStyle = GSStyle.fromMap(data: getIt<GluestackCustomConfig>().image);
 
 class GSImageStyle {
   static Map<GSBorderRadius, double> radius = {

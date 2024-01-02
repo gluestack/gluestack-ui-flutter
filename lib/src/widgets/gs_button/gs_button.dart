@@ -102,7 +102,7 @@ class GSButton extends StatelessWidget {
             variant: buttonVariant!,
             size: buttonSize!,
             child: Opacity(
-              opacity: disabled ? styler.opacity! : 1,
+              opacity: disabled ? styler.opacity ?? 0.5 : 1,
               child: SizedBox(
                 height: styler.height,
                 child: ElevatedButton(
@@ -124,7 +124,7 @@ class GSButton extends StatelessWidget {
                         borderRadius:
                             BorderRadius.circular(styler.borderRadius ?? 0.0),
                         // side: resolveBorderSide(currentState),
-                        side: _resolveBorderSide(buttonVariant!, styler, isAttached),
+                        side: _resolveBorderSide(buttonVariant, styler, isAttached),
                       ),
                     ),
                   ),

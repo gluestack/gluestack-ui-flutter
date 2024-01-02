@@ -1,6 +1,6 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/link/link.dart';
 
 const GSStyleConfig gsLinkConfig = GSStyleConfig(
   componentName: 'Link',
@@ -8,4 +8,5 @@ const GSStyleConfig gsLinkConfig = GSStyleConfig(
 );
 
 GSStyle linkStyle = GSStyle.fromMap(
-    data: linkData, descendantStyle: gsLinkConfig.descendantStyle);
+    data: getIt<GluestackCustomConfig>().link,
+    descendantStyle: gsLinkConfig.descendantStyle);

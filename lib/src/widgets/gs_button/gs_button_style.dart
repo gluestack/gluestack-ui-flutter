@@ -1,6 +1,6 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/button/button.dart';
 
 const GSStyleConfig gsButtonConfig = GSStyleConfig(
     componentName: 'Button',
@@ -8,4 +8,4 @@ const GSStyleConfig gsButtonConfig = GSStyleConfig(
     ancestorStyle: ['_button']);
 
 GSStyle buttonStyle = GSStyle.fromMap(
-    data: buttonData, descendantStyle: gsButtonConfig.descendantStyle);
+    data: getIt<GluestackCustomConfig>().button, descendantStyle: gsButtonConfig.descendantStyle);

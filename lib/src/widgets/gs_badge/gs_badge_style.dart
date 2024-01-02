@@ -1,6 +1,6 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/badge/badge.dart';
 import 'package:gluestack_ui/src/token/public.dart';
 
 // GSStyleConfig for the Badge component | needed for descendantStyle
@@ -11,7 +11,8 @@ const GSStyleConfig gsBadgeConfig = GSStyleConfig(
 
 // GSStyle representing the base style for the Badge
 final GSStyle badgeStyle = GSStyle.fromMap(
-    data: badgeData, descendantStyle: gsBadgeConfig.descendantStyle);
+    data: getIt<GluestackCustomConfig>().badge,
+    descendantStyle: gsBadgeConfig.descendantStyle);
 
 // // GSBadgeStyle class to define badge styles
 class GSBadgeStyle {

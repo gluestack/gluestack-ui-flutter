@@ -1,6 +1,6 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/avatar/avatar.dart';
 
 const GSStyleConfig gsAvatarConfig = GSStyleConfig(
   componentName: 'Avatar',
@@ -9,7 +9,8 @@ const GSStyleConfig gsAvatarConfig = GSStyleConfig(
 );
 
 GSStyle avatarStyle = GSStyle.fromMap(
-    data: avatarData, descendantStyle: gsAvatarConfig.descendantStyle);
+    data: getIt<GluestackCustomConfig>().avatar,
+    descendantStyle: gsAvatarConfig.descendantStyle);
 
 class GSAvatarStyle {
   static Map<GSBorderRadius, double> borderRadius = {

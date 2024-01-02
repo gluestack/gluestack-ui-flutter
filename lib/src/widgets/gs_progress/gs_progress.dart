@@ -23,7 +23,7 @@ class GSProgress extends StatelessWidget {
     final progressSize = size ?? progressStyle.props?.size;
     GSStyle styler = resolveStyles2(
       context: context,
-      styles: [progressStyle, GSProgressStyle.size[progressSize]],
+      styles: [progressStyle, progressStyle.sizeMap(progressSize)],
       inlineStyle: style,
       isFirst: true,
     );

@@ -67,7 +67,7 @@ class _GSFormControlState extends State<GSFormControl> {
   Widget build(BuildContext context) {
     GSStyle styler = resolveStyles2(
       context: context,
-      styles: [GSFormControlStyle.size[widget.size]],
+      styles: [formControlStyle.sizeMap(widget.size)],
       inlineStyle: widget.style,
       isFirst: true,
     );

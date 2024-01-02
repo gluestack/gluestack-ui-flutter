@@ -40,7 +40,7 @@ class GSFab extends StatelessWidget {
       context: context,
       styles: [
         GSFabStyle.placementVariants[fabPlacement],
-        GSFabStyle.size[fabSize]
+        fabStyle.sizeMap(fabSize)
       ],
       inlineStyle: style,
       isFirst: true,

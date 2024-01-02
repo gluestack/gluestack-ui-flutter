@@ -1,13 +1,14 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/toast/toast.dart';
 
 const GSStyleConfig gsToastConfig = GSStyleConfig(
   componentName: 'Toast',
   descendantStyle: ['_icon', '_title', '_description'],
 );
 GSStyle toastStyle = GSStyle.fromMap(
-    data: toastData, descendantStyle: gsToastConfig.descendantStyle);
+    data: getIt<GluestackCustomConfig>().toast,
+    descendantStyle: gsToastConfig.descendantStyle);
 
 GSStyle compoundVariants = GSStyle(
   variants: Variants(
