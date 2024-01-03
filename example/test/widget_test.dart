@@ -86,7 +86,7 @@ void main() {
           child: const GSText(
             text: 'GSButton',
           ),
-          onPressed: (){},
+          onPressed: () {},
           onLongPress: () {
             longPressed = true;
           },
@@ -100,69 +100,32 @@ void main() {
     expect(longPressed, true);
   });
 
-//Test: Test long press
-  testWidgets('Test long press', (WidgetTester tester) async {
-    bool longPressed = false;
+//Test: Test Color Prop
+  testWidgets('Test Color Prop', (WidgetTester tester) async {
 
-    // Build the widget
     await tester.pumpWidget(
       testFrame(
         GSButton(
+          style: GSStyle(bg: Colors.red),
+          onPressed: () {},
           child: const GSText(
             text: 'GSButton',
           ),
-          onPressed: (){},
-          onLongPress: () {
-            longPressed = true;
-          },
         ),
       ),
     );
 
-    await tester.longPress(find.text('GSButton'));
     await tester.pump();
-
-    expect(longPressed, true);
+    expect(
+      tester
+          .widget<GSButton>(
+            find.widgetWithText(GSButton, 'GSButton'),
+          )
+          .style
+          ?.bg,
+      Colors.red,
+    );
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   testWidgets('Verify Platform version', (WidgetTester tester) async {
     // Build our app and trigger a frame.
