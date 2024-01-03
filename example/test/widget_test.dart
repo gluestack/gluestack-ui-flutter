@@ -102,7 +102,6 @@ void main() {
 
 //Test: Test Color Prop
   testWidgets('Test Color Prop', (WidgetTester tester) async {
-
     await tester.pumpWidget(
       testFrame(
         GSButton(
@@ -127,6 +126,84 @@ void main() {
     );
   });
 
+//Test: Test Variant + Size + Actions Test
+  testWidgets('Test Button Variant + Size + Actions',
+      (WidgetTester tester) async {
+    const List<GSVariants?> variants = [
+      null,
+      GSVariants.solid,
+      GSVariants.outline,
+      GSVariants.link
+    ];
+
+    const List<GSActions?> actions = [
+      null,
+      GSActions.primary,
+      GSActions.secondary,
+      GSActions.positive,
+      GSActions.negative,
+    ];
+
+    const List<GSSizes?> sizes = [
+      null,
+      GSSizes.$xs,
+      GSSizes.$sm,
+      GSSizes.$md,
+      GSSizes.$lg,
+    ];
+
+    for (int i = 0; i < variants.length; i++) {
+      for (int j = 0; j < actions.length; j++) {
+        for (int k = 0; k < sizes.length; k++) {
+          await tester.pumpWidget(
+            testFrame(
+              GSButton(
+                variant: variants[i],
+                action: actions[j],
+                size: sizes[k],
+                onPressed: () {},
+                child: const GSText(
+                  text: 'GSButton',
+                ),
+              ),
+            ),
+          );
+
+          await tester.pump();
+          //GSVaraiant
+          expect(
+            tester
+                .widget<GSButton>(
+                  find.widgetWithText(GSButton, 'GSButton'),
+                )
+                .variant,
+            variants[i],
+          );
+          //GSAction
+          expect(
+            tester
+                .widget<GSButton>(
+                  find.widgetWithText(GSButton, 'GSButton'),
+                )
+                .action,
+            actions[j],
+          );
+
+          //GSSizes
+          expect(
+            tester
+                .widget<GSButton>(
+                  find.widgetWithText(GSButton, 'GSButton'),
+                )
+                .size,
+            sizes[k],
+          );
+        }
+      }
+    }
+  });
+
+// -----------------------------------------------------
   testWidgets('Verify Platform version', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
