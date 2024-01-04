@@ -4,8 +4,9 @@ Map<String, dynamic> customButtonText = {
 };
 
 Map<String, dynamic> customButton = {
+  'bg': '\$error300',
   '_dark': {
-    'bg': '\$primary400',
+    'bg': '\$primary800',
     'borderColor': '\$primary700',
     ':hover': {
       'bg': '\$error300',
