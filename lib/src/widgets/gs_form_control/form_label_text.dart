@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/theme/config/form_control/form_control_label_text.dart';
+import 'package:gluestack_ui/src/widgets/gs_form_control/form_label_text_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 class GSFormLabelText extends StatelessWidget {
@@ -11,8 +11,9 @@ class GSFormLabelText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isLabelRequired = isRequired ?? GSFormProvider.of(context)?.isRequired ?? false;
-     final size = GSFormProvider.of(context)?.size;
+    final isLabelRequired =
+        isRequired ?? GSFormProvider.of(context)?.isRequired ?? false;
+    final size = GSFormProvider.of(context)?.size;
     return isLabelRequired
         ? Row(
             mainAxisSize: MainAxisSize.min,
@@ -20,20 +21,19 @@ class GSFormLabelText extends StatelessWidget {
               GSText(
                 text: text,
                 size: size,
-                style: GSStyle.fromMap(data: formControlLabelTextData)
-                    .merge(style),
+                style: formLabelTextStyle.merge(style),
               ),
               const SizedBox(width: 2),
               GSText(
                 text: '*',
                 size: size,
-                style: GSStyle(textStyle: TextStyle(color: Colors.red)),
+                style: GSStyle(textStyle: const TextStyle(color: Colors.red)),
               )
             ],
           )
         : GSText(
             text: text,
-            style: GSStyle.fromMap(data: formControlLabelTextData).merge(style),
+            style: formLabelTextStyle.merge(style),
           );
   }
 }

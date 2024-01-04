@@ -46,6 +46,8 @@ enum GSSizes {
   $full
 }
 
+enum GSOutlineStyle { solid }
+
 enum GSDirection { row, column }
 
 enum GSSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
@@ -523,8 +525,6 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? borderBottomColor;
   double? height;
   double? width;
-  double? outlineWidth;
-  String? outlineStyle;
   double? borderBottomWidth;
   double? borderLeftWidth;
   TextStyle? textStyle;
@@ -549,7 +549,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? splashColor;
   GSStyle? badge;
   GSTextTransform? textTransform;
-  double? iconSize;
+  GSSizes? iconSize;
 
   //switch props
   Color? trackColorTrue;
@@ -558,77 +558,81 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? activeThumbColor;
   Color? iosBackgroundColor;
   double? scale;
-  Color? outlineColor;
   GSCursors? cursors;
   GSPlacement? placement;
 
   bool? isVisible;
- Axis? direction;
+  Axis? direction;
+  double? outlineWidth;
+  Color? outlineColor;
+  GSOutlineStyle? outlineStyle;
+  Map<String, GSStyle>? compoundVariants;
 
-  GSStyle(
-      {this.borderWidth,
-      this.borderColor,
-      this.borderRadius,
-      this.padding,
-      this.opacity,
-      this.color,
-      this.bg,
-      this.borderBottomColor,
-      this.height,
-      this.margin,
-      this.placement,
-      this.width,
-      this.gap,
-      this.outlineWidth,
-      this.outlineStyle,
-      this.flexDirection,
-      this.borderBottomWidth,
-      this.borderLeftWidth,
-      this.textStyle,
-      this.checked,
-      super.onHover,
-      super.onFocus,
-      super.onActive,
-      super.onDisabled,
-      super.input,
-      super.icon,
-      super.dark,
-      super.xs,
-      super.sm,
-      super.md,
-      super.lg,
-      super.onInvalid,
-      super.web,
-      super.ios,
-      super.android,
-      this.variants,
-      this.props,
-      this.descendantStyles,
-      this.alignItems,
-      this.justifyContent,
-      this.alignment,
-      this.maxWidth,
-      this.progressValueColor,
-      this.badge,
-      this.highlightColor,
-      this.splashColor,
-      this.textTransform,
-      this.trackColorTrue,
-      this.trackColorFalse,
-      this.thumbColor,
-      this.activeThumbColor,
-      this.iosBackgroundColor,
-      this.scale,
-      this.outlineColor,
-      this.cursors,
-      this.iconSize,
-      this.bottom,
-      this.left,
-      this.right,
-      this.top,
-      this.isVisible,
-      this.direction,
-      });
+  GSStyle({
+    this.borderWidth,
+    this.borderColor,
+    this.borderRadius,
+    this.padding,
+    this.opacity,
+    this.color,
+    this.bg,
+    this.borderBottomColor,
+    this.height,
+    this.margin,
+    this.placement,
+    this.width,
+    this.gap,
+    this.outlineWidth,
+    this.outlineStyle,
+    this.flexDirection,
+    this.borderBottomWidth,
+    this.borderLeftWidth,
+    this.textStyle,
+    this.checked,
+    super.onHover,
+    super.onFocus,
+    super.onActive,
+    super.onDisabled,
+    super.input,
+    super.icon,
+    super.dark,
+    super.xs,
+    super.sm,
+    super.md,
+    super.lg,
+    super.onInvalid,
+    super.web,
+    super.ios,
+    super.android,
+    this.variants,
+    this.props,
+    this.descendantStyles,
+    this.alignItems,
+    this.justifyContent,
+    this.alignment,
+    this.maxWidth,
+    this.progressValueColor,
+    this.badge,
+    this.highlightColor,
+    this.splashColor,
+    this.textTransform,
+    this.trackColorTrue,
+    this.trackColorFalse,
+    this.thumbColor,
+    this.activeThumbColor,
+    this.iosBackgroundColor,
+    this.scale,
+    this.outlineColor,
+    this.cursors,
+    this.iconSize,
+    this.bottom,
+    this.left,
+    this.right,
+    this.top,
+    this.isVisible,
+    this.direction,
+    this.compoundVariants,
+  });
 
   @override
   copy() {
@@ -652,12 +656,18 @@ class GSStyle extends BaseStyle<GSStyle> {
       padding: overrideStyle?.padding ?? padding,
       gap: overrideStyle?.gap ?? gap,
       placement: overrideStyle?.placement ?? placement,
-      descendantStyles: descendantStyleKeys.isEmpty
-          ? overrideStyle?.descendantStyles ?? descendantStyles
-          : mergeStyledMaps(
-              styleMap: descendantStyles,
-              overrideStyleMap: overrideStyle?.descendantStyles,
-              keys: descendantStyleKeys),
+      compoundVariants: overrideStyle?.compoundVariants ?? compoundVariants,
+      // descendantStyles: descendantStyleKeys.isEmpty
+      //     ? overrideStyle?.descendantStyles ?? descendantStyles
+      //     : mergeStyledMaps(
+      //         styleMap: descendantStyles,
+      //         overrideStyleMap: overrideStyle?.descendantStyles,
+      //         keys: descendantStyleKeys),
+      descendantStyles: mergeStyledMaps(
+        styleMap: descendantStyles,
+        overrideStyleMap: overrideStyle?.descendantStyles,
+        keys: descendantStyleKeys,
+      ),
       onFocus: onFocus != null
           ? onFocus?.merge(overrideStyle?.onFocus)
           : overrideStyle?.onFocus,
@@ -749,7 +759,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       scale: overrideStyle?.scale ?? scale,
       cursors: overrideStyle?.cursors ?? cursors,
       isVisible: overrideStyle?.isVisible ?? isVisible,
-      direction: overrideStyle?.direction??direction,
+      direction: overrideStyle?.direction ?? direction,
     );
   }
 
@@ -761,6 +771,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     // print(data?['_content']);
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
+      compoundVariants:
+          resolveCompoundVariants(compoundVariants: data?['compoundVariants']),
       flexDirection: resolveFlexDirectionFromString(data?['flexDirection']),
       height: data?['h'] is int
           ? double.parse('${data?['h']}.0')
@@ -803,7 +815,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       right: resolveSpaceFromString(data?['right'].toString()),
       top: resolveSpaceFromString(data?['top'].toString()),
 
-      iconSize: resolveFontSizeFromString(data?['_icon']?['props']?['size']),
+      iconSize: resolveSizesFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
@@ -821,7 +833,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg']),
       borderWidth: data?['borderWidth'] != null
-          ? double.tryParse(data!['borderWidth']!.toString())
+          ? double.tryParse(data!['borderWidth']!.toString()) ??
+              resolveBorderWidthFromString(data['borderWidth'])
           : null,
       gap: resolveSpaceFromString(
           data?['gap'] ?? data?['_avatar']?['ml'].toString()),
@@ -941,7 +954,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       onInvalid: GSStyle(
         bg: resolveColorFromString(data?[':invalid']?['bg']),
-        borderColor: resolveColorFromString(data?['variants']?['variant']?['default']?[':invalid']?['borderColor'] ?? data?[':invalid']?['borderColor']),
+        borderColor: resolveColorFromString(data?['variants']?['variant']
+                ?['default']?[':invalid']?['borderColor'] ??
+            data?[':invalid']?['borderColor']),
         borderBottomColor:
             resolveColorFromString(data?[':invalid']?['borderBottomColor']),
         borderRadius: data?[':invalid']?['borderRadius'] != null
@@ -1002,16 +1017,19 @@ class GSStyle extends BaseStyle<GSStyle> {
       dark: GSStyle(
         web: GSStyle(
           onFocus: GSStyle(
-              outlineColor: resolveColorFromString(
-                  data?['_web']?[':focus']?['_dark']?['outlineColor']),
-              outlineWidth:
-                  data?['_web']?[':focus']?['_dark']?['outlineWidth'] != null
-                      ? double.tryParse(
-                          data!['_web']![':focus']!['_dark']!['outlineWidth']
-                              .toString())
-                      : null,
-              outlineStyle: data?['_web']?[':focus']?['_dark']
-                  ?['outlineStyle']),
+            outlineColor: resolveColorFromString(
+                data?['_web']?[':focus']?['_dark']?['outlineColor']),
+            outlineWidth:
+                data?['_web']?[':focus']?['_dark']?['outlineWidth'] != null
+                    ? double.tryParse(
+                        data!['_web']![':focus']!['_dark']!['outlineWidth']
+                            .toString())
+                    : null,
+            // outlineStyle: data?['_web']?[':focus']?['_dark']
+            //     ?['outlineStyle'],
+            outlineStyle: resolveOutlineStyleFromString(
+                outlineStyle: data?['outlineStyle']),
+          ),
         ),
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(
@@ -1194,5 +1212,118 @@ class GSStyle extends BaseStyle<GSStyle> {
               : null
           : null,
     );
+  }
+
+  GSStyle? actionMap(GSActions? gsActions) {
+    if (gsActions == null) {
+      return null;
+    }
+    switch (gsActions) {
+      case GSActions.primary:
+        return variants?.action?.primary;
+      case GSActions.secondary:
+        return variants?.action?.secondary;
+      case GSActions.positive:
+        return variants?.action?.positive;
+      case GSActions.negative:
+        return variants?.action?.negative;
+      case GSActions.error:
+        return variants?.action?.error;
+      case GSActions.warning:
+        return variants?.action?.warning;
+      case GSActions.success:
+        return variants?.action?.success;
+      case GSActions.info:
+        return variants?.action?.info;
+      case GSActions.muted:
+        return variants?.action?.muted;
+      case GSActions.attention:
+        return variants?.action?.attention;
+      default:
+        return null;
+    }
+  }
+
+  GSStyle? variantMap(GSVariants? gsVariants) {
+    if (gsVariants == null) {
+      return null;
+    }
+    switch (gsVariants) {
+      case GSVariants.solid:
+        return variants?.variant?.solid;
+      case GSVariants.outline:
+        return variants?.variant?.outline;
+      case GSVariants.link:
+        return variants?.variant?.link;
+      case GSVariants.underlined:
+        return variants?.variant?.underlined;
+      case GSVariants.rounded:
+        return variants?.variant?.rounded;
+      case GSVariants.accent:
+        return variants?.variant?.accent;
+      default:
+        return null;
+    }
+  }
+
+  GSStyle? sizeMap(GSSizes? gsSizes) {
+    if (gsSizes == null) {
+      return null;
+    }
+    switch (gsSizes) {
+      case GSSizes.$2xs:
+        return variants?.size?.$2xs;
+      case GSSizes.$xs:
+        return variants?.size?.$xs;
+      case GSSizes.$sm:
+        return variants?.size?.$sm;
+      case GSSizes.$md:
+        return variants?.size?.$md;
+      case GSSizes.$lg:
+        return variants?.size?.$lg;
+      case GSSizes.$xl:
+        return variants?.size?.$xl;
+      case GSSizes.$2xl:
+        return variants?.size?.$2xl;
+      case GSSizes.$3xl:
+        return variants?.size?.$3xl;
+      case GSSizes.$4xl:
+        return variants?.size?.$4xl;
+      case GSSizes.$5xl:
+        return variants?.size?.$5xl;
+      case GSSizes.$6xl:
+        return variants?.size?.$6xl;
+      case GSSizes.$full:
+        return variants?.size?.$full;
+      default:
+        return null;
+    }
+  }
+
+  GSStyle? spaceMap(GSSpaces? gsSpaces) {
+    if (gsSpaces == null) return null;
+
+    switch (gsSpaces) {
+      case GSSpaces.$none:
+        return variants?.space?.$none;
+      case GSSpaces.$xs:
+        return variants?.space?.$xs;
+      case GSSpaces.$sm:
+        return variants?.space?.$sm;
+      case GSSpaces.$md:
+        return variants?.space?.$md;
+      case GSSpaces.$lg:
+        return variants?.space?.$lg;
+      case GSSpaces.$xl:
+        return variants?.space?.$xl;
+      case GSSpaces.$2xl:
+        return variants?.space?.$2xl;
+      case GSSpaces.$3xl:
+        return variants?.space?.$3xl;
+      case GSSpaces.$4xl:
+        return variants?.space?.$4xl;
+      default:
+        return null;
+    }
   }
 }

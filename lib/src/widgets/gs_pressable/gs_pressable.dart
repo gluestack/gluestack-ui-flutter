@@ -163,10 +163,11 @@ class _GSPressableState extends State<GSPressable> {
   Widget build(BuildContext context) {
     // Resolve styles using the provided context and optional style variants.
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: pressableStyle,
+      context: context,
+      styles: [pressableStyle],
       inlineStyle: widget.style,
-    )!;
+      isFirst: true,
+    );
 
     // Build the InkWell widget with specified callbacks and styles.
     return InkWell(

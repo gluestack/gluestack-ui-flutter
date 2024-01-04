@@ -58,11 +58,14 @@ class GSHeading extends StatelessWidget {
     final subLineHeight = headingStyle.variants?.sub?.textStyle?.height;
 
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: highlight ? headingStyle.variants?.highlight : null,
-      size: GSTextStyles.size[textSize],
+      context: context,
+      styles: [
+        highlight ? headingStyle.variants?.highlight : null,
+        headingStyle.sizeMap(textSize),
+      ],
       inlineStyle: headingStyle.merge(style),
-    )!;
+      isFirst: true,
+    );
 
     final currentTextStyle = styler.textStyle?.copyWith(
       color: styler.color,
@@ -79,7 +82,7 @@ class GSHeading extends StatelessWidget {
       overflow:
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
     );
-   
+
     return Text(
       text,
       style: currentTextStyle,

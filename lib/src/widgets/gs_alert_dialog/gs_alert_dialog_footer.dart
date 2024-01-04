@@ -11,31 +11,27 @@ class GSAlertDialogFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
-      context,
-      variantStyle: alertDialogFooterStyle,
-      inlineStyle: style,
-    )!;
-    final x = resolveAlignment(styler.justifyContent);
-    final alignment = x == 1
-        ? MainAxisAlignment.end
-        : x == -1
-            ? MainAxisAlignment.start
-            : x == 0
-                ? MainAxisAlignment.center
-                : MainAxisAlignment.end;
-
-    return Container(
-      color: styler.bg,
-      padding: styler.padding,
-      height: styler.height,
-      width: styler.width,
-      child: Row(
-        mainAxisAlignment: alignment,
-        children: [
-          child ?? const SizedBox(),
-        ],
-      ),
-    );
+    return Builder(builder: (context) {
+      GSStyle styler = resolveStyles(
+        context: context,
+        styles: [alertDialogFooterStyle],
+        inlineStyle: style,
+        isFirst: true,
+      );
+      final x = resolveAlignment(styler.justifyContent);
+      final alignment = resolveAlignmentFromNum(x);
+      return Container(
+        color: styler.bg,
+        padding: styler.padding,
+        height: styler.height,
+        width: styler.width,
+        child: Row(
+          mainAxisAlignment: alignment,
+          children: [
+            child ?? const SizedBox(),
+          ],
+        ),
+      );
+    });
   }
 }

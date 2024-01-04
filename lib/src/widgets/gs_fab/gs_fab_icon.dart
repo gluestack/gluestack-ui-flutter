@@ -3,7 +3,6 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_icon_style.dart';
 
-
 class GSFabIcon extends StatelessWidget {
   final IconData icon;
   final GSStyle? style;
@@ -21,12 +20,12 @@ class GSFabIcon extends StatelessWidget {
     final size = GSFabIconStyle.size[ancestorStyles?.props?.size];
 
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: fabIconStyle.merge(ancestorStyles),
-      size: size,
+      context: context,
+      styles: [fabIconStyle.merge(ancestorStyles), size],
       inlineStyle: style,
-    )!;
-    
+      isFirst: true,
+    );
+
     return Icon(
       icon,
       color: styler.color,

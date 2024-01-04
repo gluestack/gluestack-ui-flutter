@@ -13,10 +13,11 @@ class GSCenter extends StatelessWidget {
   Widget build(BuildContext context) {
     // Resolve the style GS center widget.
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: GSStyle(),
+      context: context,
+      styles: [GSStyle()],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
 
     final x = resolveAlignment(styler.alignItems),
         y = resolveAlignment(styler.justifyContent);

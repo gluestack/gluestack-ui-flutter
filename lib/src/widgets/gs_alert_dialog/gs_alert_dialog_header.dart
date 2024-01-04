@@ -12,10 +12,11 @@ class GSAlertDialogHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: alertDialogHeaderStyle,
+      context: context,
+      styles: [alertDialogHeaderStyle],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
     final y = resolveAlignment(styler.alignItems),
         x = resolveAlignment(styler.justifyContent);
     return Container(

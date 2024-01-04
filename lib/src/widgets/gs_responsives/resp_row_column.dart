@@ -13,7 +13,7 @@ class GSRespRowColumn extends StatelessWidget {
   final TextBaseline? textBaseline;
   final Clip clipBehavior;
   final Axis? direction;
-  final EdgeInsets? seperatorPadding;
+  final EdgeInsets? separatorPadding;
 
   const GSRespRowColumn({
     super.key,
@@ -26,7 +26,7 @@ class GSRespRowColumn extends StatelessWidget {
     this.textBaseline,
     this.clipBehavior = Clip.none,
     this.direction,
-    this.seperatorPadding,
+    this.separatorPadding,
     this.constraintWidth = 768,
   });
 
@@ -48,14 +48,14 @@ class GSRespRowColumn extends StatelessWidget {
         if (!isSmallScreen) {
           return GSBox(
               style: GSStyle(
-                padding: seperatorPadding ??
+                padding: separatorPadding ??
                     const EdgeInsets.symmetric(horizontal: 4),
               ),
               child: e);
         } else {
           return GSBox(
                 style: GSStyle(
-                  padding: seperatorPadding ??
+                  padding: separatorPadding ??
                       const EdgeInsets.symmetric(vertical: 4),
                 ),
                 child: e);

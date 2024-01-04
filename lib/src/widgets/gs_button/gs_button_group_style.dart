@@ -1,9 +1,11 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/theme/config/button/button_group.dart';
 
-GSStyle buttonGroupStyle = GSStyle.fromMap(data: buttonGroupData);
+GSStyle buttonGroupStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonGroup);
 
 class GSButtonGroupStyle {
+  //This code is not used anywhere? TODO: Fix or remove this dead code
   static Map<GSSizes, GSStyle> size = {
     GSSizes.$xs: buttonGroupStyle.variants!.size!.$xs!,
     GSSizes.$sm: buttonGroupStyle.variants!.size!.$sm!,

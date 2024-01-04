@@ -48,7 +48,7 @@ class GSHStack extends StatelessWidget {
           SizedBox(
               width: space == GSSpaces.$none
                   ? null
-                  : GSHStackStyle.space[space]?.gap),
+                  : hstackStyle.spaceMap(space)?.gap),
         );
       }
     }

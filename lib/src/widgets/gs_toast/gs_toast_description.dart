@@ -12,8 +12,8 @@ class GSToastDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gstoastDescriptionConfig.ancestorStyle.first];
-    final fontSize = GSToastDescriptionStyle
-        .size[toastDescriptionStyle.props?.size]?.textStyle?.fontSize;
+    final fontSize = toastDescriptionStyle
+        .sizeMap(toastDescriptionStyle.props?.size)?.textStyle?.fontSize;
 
     final color = toastDescriptionStyle.color;
 
