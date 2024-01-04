@@ -21,7 +21,7 @@ class GSProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final progressSize = size ?? progressStyle.props?.size;
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [progressStyle, progressStyle.sizeMap(progressSize)],
       inlineStyle: style,

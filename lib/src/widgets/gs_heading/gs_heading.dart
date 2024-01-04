@@ -57,7 +57,7 @@ class GSHeading extends StatelessWidget {
     final subFontSize = headingStyle.variants?.sub?.textStyle?.fontSize;
     final subLineHeight = headingStyle.variants?.sub?.textStyle?.height;
 
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [
         highlight ? headingStyle.variants?.highlight : null,

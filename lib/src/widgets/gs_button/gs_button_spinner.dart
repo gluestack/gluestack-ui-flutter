@@ -27,15 +27,15 @@ class GSButtonSpinner extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsButtonSpinnerConfig.ancestorStyle.first];
 
-    final styler = resolveStyles2(
-        context: context,
-        styles: [
-          buttonIconStyle,
-          ancestorStyles,
-        ],
-        inlineStyle: style,
-        isFirst: true,
-        );
+    final styler = resolveStyles(
+      context: context,
+      styles: [
+        buttonIconStyle,
+        ancestorStyles,
+      ],
+      inlineStyle: style,
+      isFirst: true,
+    );
 
     return SizedBox(
       width: styler.width,

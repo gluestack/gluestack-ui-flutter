@@ -72,7 +72,7 @@ class _GSCheckBoxState extends State<GSCheckBox> {
     final formProps = GSFormProvider.of(context);
     final checkBoxSize =
         widget.size ?? formProps?.size ?? checkboxStyle.props?.size;
-    final styler = resolveStyles2(
+    final styler = resolveStyles(
       context: context,
       styles: [checkboxStyle, checkboxStyle.sizeMap(checkBoxSize)],
       inlineStyle: widget.style,

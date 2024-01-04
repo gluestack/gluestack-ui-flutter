@@ -22,7 +22,7 @@ class GSLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final styler = resolveStyles2(
+    final styler = resolveStyles(
       context: context,
       inlineStyle: style,
       isFirst: true,

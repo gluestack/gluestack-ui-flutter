@@ -266,7 +266,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     final inputSize =
         widget.size ?? formProps?.size ?? textAreaStyle.props?.size;
 
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [
         textAreaStyle,

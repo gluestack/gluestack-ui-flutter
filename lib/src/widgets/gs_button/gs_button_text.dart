@@ -19,15 +19,15 @@ class GSButtonText extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsTextConfig.ancestorStyle.first];
 
-    final styler = resolveStyles2(
-        context: context,
-        styles: [
-          buttonTextStyle,
-          buttonTextStyle.sizeMap(ancestorStyles?.props?.size),
-          ancestorStyles,
-        ],
-        inlineStyle: style,
-        );
+    final styler = resolveStyles(
+      context: context,
+      styles: [
+        buttonTextStyle,
+        buttonTextStyle.sizeMap(ancestorStyles?.props?.size),
+        ancestorStyles,
+      ],
+      inlineStyle: style,
+    );
 
     final textStyle = TextStyle(
         color: styler.color,

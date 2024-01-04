@@ -16,7 +16,7 @@ class GSCheckBoxLabel extends StatelessWidget {
     final ancestorCheckBoxStyle = GSAncestorProvider.of(context)
         ?.decedentStyles?[checkBoxLabelConfig.ancestorStyle.first];
 
-    final styler = resolveStyles2(
+    final styler = resolveStyles(
       context: context,
       styles: [
         checkBoxLabelStyle,

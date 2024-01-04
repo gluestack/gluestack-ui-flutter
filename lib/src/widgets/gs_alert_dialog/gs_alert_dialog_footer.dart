@@ -12,7 +12,7 @@ class GSAlertDialogFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
-      GSStyle styler = resolveStyles2(
+      GSStyle styler = resolveStyles(
         context: context,
         styles: [alertDialogFooterStyle],
         inlineStyle: style,

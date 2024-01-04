@@ -53,8 +53,7 @@ class GSText extends StatelessWidget {
   Widget build(BuildContext context) {
     final textSize = size ?? gstextStyle.props?.size;
 
-
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [
         gstextStyle,

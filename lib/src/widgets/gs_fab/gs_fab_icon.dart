@@ -19,7 +19,7 @@ class GSFabIcon extends StatelessWidget {
 
     final size = GSFabIconStyle.size[ancestorStyles?.props?.size];
 
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [fabIconStyle.merge(ancestorStyles), size],
       inlineStyle: style,

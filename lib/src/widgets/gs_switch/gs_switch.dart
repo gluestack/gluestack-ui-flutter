@@ -108,7 +108,7 @@ class _GSSwitchState extends State<GSSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [switchStyle, switchStyle.sizeMap(widget.size)],
       inlineStyle: widget.style,

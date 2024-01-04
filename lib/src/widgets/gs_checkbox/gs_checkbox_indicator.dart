@@ -81,7 +81,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
     final ancestorCheckBoxStyle = GSAncestorProvider.of(context)
         ?.decedentStyles?[checkBoxIndicatorConfig.descendantStyle.first];
 
-    final styler = resolveStyles2(
+    final styler = resolveStyles(
       context: context,
       styles: [checkBoxIndicatorStyle],
       inlineStyle: style,

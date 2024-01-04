@@ -18,7 +18,7 @@ class GSAvatarBadge extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsAvatarBadgeStyle.ancestorStyle.first];
 
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [avatarBadgeStyle],
       inlineStyle: style,

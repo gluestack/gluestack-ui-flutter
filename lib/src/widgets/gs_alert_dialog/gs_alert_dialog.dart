@@ -96,7 +96,7 @@ class _GSAlertDialogState extends State<GSAlertDialog> {
   @override
   Widget build(BuildContext context) {
     final alertSize = widget.size ?? alertDialogStyle.props?.size;
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [alertDialogStyle, alertDialogStyle.sizeMap(alertSize)],
       inlineStyle: widget.style,

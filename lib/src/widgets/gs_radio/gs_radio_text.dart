@@ -25,7 +25,7 @@ class GSRadioText<T> extends StatelessWidget {
         ?.textStyle
         ?.fontSize;
 
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [radioLabelStyle],
       inlineStyle: value.style,

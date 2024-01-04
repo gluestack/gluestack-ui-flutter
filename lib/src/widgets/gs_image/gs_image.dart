@@ -70,7 +70,7 @@ class GSImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final imageSize = size ?? imageStyle.props!.size;
 
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
         context: context,
         styles: [
           imageStyle,

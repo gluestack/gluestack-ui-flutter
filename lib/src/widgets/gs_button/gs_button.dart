@@ -82,7 +82,7 @@ class GSButton extends StatelessWidget {
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
-        GSStyle styler = resolveStyles2(
+        GSStyle styler = resolveStyles(
             context: context,
             styles: [
               buttonStyle,
@@ -124,7 +124,8 @@ class GSButton extends StatelessWidget {
                         borderRadius:
                             BorderRadius.circular(styler.borderRadius ?? 0.0),
                         // side: resolveBorderSide(currentState),
-                        side: _resolveBorderSide(buttonVariant, styler, isAttached),
+                        side: _resolveBorderSide(
+                            buttonVariant, styler, isAttached),
                       ),
                     ),
                   ),

@@ -77,7 +77,7 @@ class GSBadge extends StatelessWidget {
     final badgeSize = size ?? badgeStyle.props?.size;
 
     // Resolve the style for the badge.
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [
         badgeStyle,

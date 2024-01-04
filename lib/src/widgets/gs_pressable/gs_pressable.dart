@@ -162,7 +162,7 @@ class _GSPressableState extends State<GSPressable> {
   @override
   Widget build(BuildContext context) {
     // Resolve styles using the provided context and optional style variants.
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [pressableStyle],
       inlineStyle: widget.style,

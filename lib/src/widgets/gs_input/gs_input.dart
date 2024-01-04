@@ -259,7 +259,7 @@ class _GSInputState extends State<GSInput> {
     final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
     final bool isRequired = formProps?.isRequired ?? false;
 
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [
         inputStyle,
@@ -348,7 +348,7 @@ class _GSInputState extends State<GSInput> {
           );
 
     return FocusableActionDetector(
-        onShowHoverHighlight: (value) {
+      onShowHoverHighlight: (value) {
         final shouldUpdateHover = !isDisabled && value;
         if (_isHovered != shouldUpdateHover) {
           setState(() => _isHovered = shouldUpdateHover);

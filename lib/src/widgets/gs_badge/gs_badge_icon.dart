@@ -52,7 +52,7 @@ class GSBadgeIcon extends StatelessWidget {
     final size = GSButtonIconStyle
         .size[iconSize ?? GSBadgeProvider.of(context)?.iconSize];
     // Resolve styles for the icon using the context and provided styles.
-    final styler = resolveStyles2(
+    final styler = resolveStyles(
       context: context,
       styles: [
         badgeIconStyle,

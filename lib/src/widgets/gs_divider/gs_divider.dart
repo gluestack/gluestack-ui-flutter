@@ -11,7 +11,7 @@ class GSDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dividerOrientation = orientation ?? dividerStyle.props?.orientation!;
-    GSStyle styler = resolveStyles2(
+    GSStyle styler = resolveStyles(
       context: context,
       styles: [
         dividerOrientation == GSOrientations.horizontal
@@ -21,7 +21,7 @@ class GSDivider extends StatelessWidget {
       inlineStyle: style,
       isFirst: true,
     );
-    
+
     bool isDividerInsideColumn(BuildContext context) {
       Column? column = context.findAncestorWidgetOfExactType<Column>();
 

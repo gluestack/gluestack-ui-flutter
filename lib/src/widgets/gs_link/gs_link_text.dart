@@ -18,7 +18,7 @@ class GSLinkText extends StatelessWidget {
     final ancestorTextStyles =
         GSAncestorProvider.of(context)?.decedentStyles?['_text'];
 
-    final styler = resolveStyles2(
+    final styler = resolveStyles(
       context: context,
       styles: [linkTextStyle.merge(ancestorTextStyles)],
       inlineStyle: style,
