@@ -37,8 +37,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GluestackProvider(
       gluestackCustomConfig: GluestackCustomConfig(
-        button: customButton,
-        buttonText: customButtonText,
+        button: customButton2,
+        // buttonText: customButtonText,
       ),
       child: MaterialApp.router(
         routerConfig: router,
