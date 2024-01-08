@@ -394,3 +394,33 @@ The Examples section provides visual representations of the different variants o
 #### Button with Loading State
 
 A loading button is a type of button widget that provides visual feedback to the user during an action that takes some time to complete. It typically displays an animated loading icon or spinner indicating the action is in progress.
+
+<AppProvider>
+  <CodePreview
+    showComponentRenderer={true}
+    showArgsController={false}
+    metaData={{
+      code: `
+        GSButton(
+  action: GSActions.primary,
+  variant: GSVariants.solid,
+  size: GSSize.$md,
+  isDisabled: false,
+  isFocusVisible: false,
+  onPressed: () {},
+  child: const GSHStack(
+    children: [
+      GSButtonText(text: "Add"),
+      GSButtonIcon(icon: Icons.add)
+    ],
+  ),
+)
+      `,
+      transformCode: (code) => {
+        return transformedCode(code);
+      },
+      scope: { GSButton, GSButtonText },
+      argsType: {},
+    }}
+  />
+</AppProvider>
