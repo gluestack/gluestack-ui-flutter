@@ -1,16 +1,16 @@
 ---
 title: gluestack-ui Button Component | Installation, Usage, and API
 
-description: A button component is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
+description: A button widget is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
 
-pageTitle: Button
+pageTitle: GSButton
 
-pageDescription: A button component is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
+pageDescription: A button widget is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
 
 showHeader: true
 ---
 
-import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 <Meta title="Components/Forms/Button" />
 
@@ -31,7 +31,7 @@ GSButton(
   isDisabled: false,
   isFocusVisible: false,
   onPressed: () {},
-  child: const Row(
+  child: const GSHStack(
     children: [
       GSButtonText(text: "Add"),
       GSButtonIcon(icon: Icons.add)
