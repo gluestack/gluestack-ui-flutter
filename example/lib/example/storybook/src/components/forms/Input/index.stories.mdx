@@ -1,18 +1,29 @@
 ---
-title: Input | gluestack-ui | Installation, Usage, and API
+title: GSInput | gluestack-ui | Installation, Usage, and API
 
-description: The Input component is your go-to tool for gathering user input in a sleek and user-friendly text field. Whether you're designing a simple login form or a complex search feature, this component has got you covered.
+description: The GSInput widget is your go-to tool for gathering user input in a sleek and user-friendly text field. Whether you're designing a simple login form or a complex search feature, this component has got you covered.
 
-pageTitle: Input
+pageTitle: GSInput
 
-pageDescription: The Input component is your go-to tool for gathering user input in a sleek and user-friendly text field. Whether you're designing a simple login form or a complex search feature, this component has got you covered.
+pageDescription: The GSInput widget is your go-to tool for gathering user input in a sleek and user-friendly text field. Whether you're designing a simple login form or a complex search feature, this component has got you covered.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  Text,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Forms/Input" />
+
+This is an illustration of a **Themed GSInput** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/inputPreview"
@@ -36,3 +47,170 @@ GSInput(
   ),
 )
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSInput
+
+It inherits all the properties of Flutter's [TextFormField](https://api.flutter.dev/flutter/material/TextFormField-class.html) widget.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Type</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isInvalid</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`When true, the input displays an error state.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isDisabled</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`When true, the input is disabled and cannot be edited.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isReadOnly</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`If true, the input value cannot be edited.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+### Features
+
+- Keyboard support for actions.
+- Support for hover, focus and active states.
+- Option to add your styles or use the default styles.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Parameters
+
+GSInput widget is created using TextFormField widget from flutter. It extends all the props supported by [Flutter TextFormField](https://api.flutter.dev/flutter/material/TextFormField-class.html) widget and additionally the properties mentioned below.
+
+#### GSInput
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Name</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Value</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>size</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>xl | lg | md | sm</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>md</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>variant</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>underlined | outline | rounded</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>outline</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these props may not be available.
+
+#### Input type password with FormControl
+
+The GSInput widget integrates with an icon and a button, providing users with a comprehensive login window inside a FormControl layout.
+
+### Input with Icons
+
+The GSInput with GSIcons is a variation of the GSInput widget that displays icons next to input field. It's commonly used in apps for a more visual representation of options and easier navigation.
