@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
+// import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:go_router/go_router.dart';
 
 ///
@@ -18,19 +18,33 @@ class NavButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GSButton(
-      style: GSStyle(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-      ),
-      variant: GSVariants.link,
-      size: GSSizes.$lg,
-      onPressed: () {
+    return GestureDetector(
+      onTap: () {
         context.go(routePath);
       },
-      child: GSButtonText(
-        text: title,
-        style: GSStyle(dark: GSStyle(color: Colors.blue)),
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 20,
+          color: Colors.blue,
+          decoration: TextDecoration.underline,
+        ),
       ),
     );
+
+    // return GSButton(
+    //   style: GSStyle(
+    //     padding: const EdgeInsets.symmetric(horizontal: 10),
+    //   ),
+    //   variant: GSVariants.link,
+    //   size: GSSizes.$lg,
+    //   onPressed: () {
+    //     context.go(routePath);
+    //   },
+    //   child: GSButtonText(
+    //     text: title,
+    //     style: GSStyle(dark: GSStyle(color: Colors.blue)),
+    //   ),
+    // );
   }
 }

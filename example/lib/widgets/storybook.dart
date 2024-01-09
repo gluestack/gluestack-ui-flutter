@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 class StorybookWidget extends ConsumerStatefulWidget {
@@ -15,13 +16,10 @@ class _StorybookWidgetState extends ConsumerState<StorybookWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Storybook')),
-      body: Center(
-        child: Storybook(
-          initialLayout: Layout.expanded,
-          wrapperBuilder: (BuildContext _, Widget? child) =>
-              Container(child: child),
-          stories: [],
-        ),
+      body: Storybook(
+        initialLayout: Layout.expanded,
+        initialStory: 'Alert Dialog',
+        stories: kStories.map((item) => item.story),
       ),
     );
   }
