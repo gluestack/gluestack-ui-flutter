@@ -1,18 +1,20 @@
 ---
-title: Spinner | gluestack-ui | Installation, Usage, and API
+title: GSSpinner | gluestack-ui | Installation, Usage, and API
 
-description: Spinners are designed to give visual cues to users that an action is being processed or that a change or result is expected. They are useful for improving the user experience by reducing frustration and uncertainty.
+description: GSSpinner are designed to give visual cues to users that an action is being processed or that a change or result is expected. They are useful for improving the user experience by reducing frustration and uncertainty.
 
-pageTitle: Spinner
+pageTitle: GSSpinner
 
-pageDescription: Spinners are designed to give visual cues to users that an action is being processed or that a change or result is expected. They are useful for improving the user experience by reducing frustration and uncertainty.
+pageDescription: GSSpinner are designed to give visual cues to users that an action is being processed or that a change or result is expected. They are useful for improving the user experience by reducing frustration and uncertainty.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/Feedback/Spinner" />
+
+This is an illustration of a **Themed GSSpinner** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/spinnerPreview"
@@ -33,3 +35,48 @@ GSSpinner(
   ),
 ),
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSSpinner
+
+Contains all Spinner related layout style properties and actions.
+It inherits all the properties and methods of Flutter's [CircularProgressIndicator](https://api.flutter.dev/flutter/material/CircularProgressIndicator-class.html) widget.
+
+### Accessibility
+
+We have outlined the various features that ensure the GSSpinner widget is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards.
+
+#### Keyboard
+
+- Tab: Moves focus to the next focusable widget.
+
+#### Screen Reader
+
+- VoiceOver: When the GSSpinner is focused, the screen reader will announce it's loading indicator.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### GSSpinner with Label
+
+A GSSpinner widget with a label provides informative text or a label alongside the spinner, offering descriptive context and improving user understanding and interaction with the spinner widget within a user interface.
+
+#### Color Scheme
+
+A GSSpinner widget with a color scheme enhances visual appeal by incorporating distinct colors, adding a touch of customization and style to the spinner widget within a user interface.

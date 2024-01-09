@@ -81,7 +81,7 @@ class _ToastExampleState extends State<ToastExample> {
               child: GSToast(
                 variant: selectedVariantOption,
                 action: selectedActionOption,
-                child: const Column(
+                child: const GSVStack(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -97,7 +97,7 @@ class _ToastExampleState extends State<ToastExample> {
             );
           },
         ),
-        controls: Column(
+        controls: GSVStack(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -25,7 +25,7 @@ import {
 <iframe
   src="https://gluestack-flutter.web.app/#/buttonPreview"
   title="Example"
-  width="800"
+  width="1000"
   height="400"
 ></iframe>
 
@@ -398,42 +398,63 @@ A loading button is a type of button widget that provides visual feedback to the
 <iframe
   src="https://gluestack-flutter.web.app/#/loadingButtonPreview"
   title="Example"
-  width="800"
-  height="200"
+  width="1000"
+  height="300"
 ></iframe>
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
-   child: GSHStack(
-     children: [
-       GSSpinner(
-         strokeWidth: 2,
-         style: GSStyle(
-           color: $GSColors.white,
-           bg: $GSColors.blueGray300,
-           width: 20,
-           height: 20,
-           ),
-           ),
-           const SizedBox(
-             width: 7,
-             ),
-             GSButtonText(
-               text: "Please wait",
-               style: GSStyle(),
-               ),
-        ],
-        )
-        onPressed: () {},
-        )
+  child: GSHStack(
+    children: [
+      GSSpinner(
+        strokeWidth: 2,
+        style: GSStyle(
+          color: $GSColors.white,
+          bg: $GSColors.blueGray300,
+          width: 20,
+          height: 20,
+        ),
+      ),
+      const SizedBox(
+        width: 7,
+      ),
+      GSButtonText(
+        text: "Please wait",
+      ),
+    ],
+  ),
+  onPressed: () {},
+)
+
 
 ```
 
 #### Icon Button
 
 A button with an icon integrates a visual symbol within the button widget, enhancing its appearance and providing a recognizable and intuitive representation of its associated action or functionality.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/iconButtonPreview"
+  title="Example"
+  width="1000"
+  height="300"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSButton(
+  style: GSStyle(width: 55, height: 55, borderRadius: 30),
+  child: const GSButtonIcon(
+    icon: Icons.calendar_view_week_outlined,
+  ),
+  onPressed: () {},
+)
+
+
+```
 
 #### Link Button
 
@@ -443,18 +464,233 @@ A button with a link combines the interactive behavior of a button widget with t
 
 A button group within a card widget incorporates multiple button widgets, providing a cohesive and organized interface for selecting various actions or options within the context of the card.
 
+<iframe
+  src="https://gluestack-flutter.web.app/#/buttonGroupPreview"
+  title="Example"
+  width="1000"
+  height="400"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+ GSBox(
+  style: GSStyle(
+    borderColor: $GSColors.warmGray500,
+    width: 600,
+    height: 200,
+    borderRadius: 8,
+    borderWidth: 1.2,
+  ),
+  child: GSHStack(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      GSBox(
+        style: GSStyle(width: 300),
+        child: const GSVStack(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GSHeading(
+              text: 'Was this page helpful?',
+            ),
+            GSText(
+              text:
+                  'We use this feedback to improve the quality of our documentation.',
+            ),
+          ],
+        ),
+      ),
+      GSHStack(
+        children: [
+          GSButton(
+            variant: GSVariants.outline,
+            action: GSActions.secondary,
+            child: GSButtonText(
+              text: "No",
+              style: GSStyle(),
+            ),
+            onPressed: () {},
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          GSButton(
+            variant: GSVariants.solid,
+            action: GSActions.positive,
+            child: GSButtonText(
+              text: "Yes",
+              style: GSStyle(),
+            ),
+            onPressed: () {},
+          ),
+        ],
+      )
+    ],
+  ),
+)
+
+
+```
+
 #### Button With Icon
 
 The icon widget incorporates a button widget, combining visual representation with interactive functionality for seamless user interaction.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/buttonWithIconsPreview"
+  title="Example"
+  width="1000"
+  height="400"
+></iframe>
+
+```dart
+
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSBox(
+  style: GSStyle(
+    width: 300,
+    height: 100,
+  ),
+  child: GSVStack(
+    children: [
+      GSButton(
+        child: GSHStack(
+          children: [
+            GSIcon(
+              icon: Icons.edit,
+              style: GSStyle(color: $GSColors.white),
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            GSButtonText(
+              text: "Left Icon",
+              style: GSStyle(),
+            ),
+          ],
+        ),
+        onPressed: () {},
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      GSButton(
+        child: GSHStack(
+          children: [
+            GSButtonText(
+              text: "Right Icon",
+              style: GSStyle(),
+            ),
+            const SizedBox(
+              width: 5,
+            ),
+            GSIcon(
+              icon: Icons.add,
+              style: GSStyle(color: $GSColors.white),
+            ),
+          ],
+        ),
+        onPressed: () {},
+      ),
+    ],
+  ),
+)
+
+
+```
 
 #### Button with Full Width
 
 The button with full width widget utilizes a button widget, expanding its width to occupy the entire available space, creating a visually prominent and easily accessible interface element.
 
+<iframe
+  src="https://gluestack-flutter.web.app/#/buttonWithFullWidthPreview"
+  title="Example"
+  width="1000"
+  height="500"
+></iframe>
+
+```dart
+
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSBox(
+  style: GSStyle(
+    borderColor: $GSColors.warmGray500,
+    width: 320,
+    height: 350,
+    borderRadius: 8,
+    borderWidth: 1.2,
+    padding: const EdgeInsets.symmetric(horizontal: 20),
+  ),
+  child: GSVStack(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const GSVStack(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GSHeading(
+            text: 'Set new password',
+          ),
+          GSText(
+            text:
+                'Almost done. Enter your new password and you are all set.',
+          ),
+        ],
+      ),
+      const GSInput(
+        size: GSSizes.$sm,
+        variant: GSVariants.outline,
+        cursorHeight: 12,
+        constraints: BoxConstraints(
+          maxWidth: 280,
+          maxHeight: 40,
+        ),
+        labelText: "New password",
+        labelStyle: TextStyle(fontSize: 12),
+        errorStyle: TextStyle(
+          fontSize: 7,
+        ),
+      ),
+      const GSInput(
+        size: GSSizes.$sm,
+        variant: GSVariants.outline,
+        cursorHeight: 12,
+        constraints: BoxConstraints(
+          maxWidth: 280,
+          maxHeight: 40,
+        ),
+        labelText: "Confirm new password",
+        labelStyle: TextStyle(fontSize: 12),
+        errorStyle: TextStyle(
+          fontSize: 7,
+        ),
+      ),
+      GSBox(
+        style: GSStyle(
+          width: double.maxFinite,
+        ),
+        child: GSButton(
+          variant: GSVariants.solid,
+          action: GSActions.primary,
+          size: GSSizes.$lg,
+          child: const GSButtonText(
+            text: "Submit",
+          ),
+          onPressed: () {},
+        ),
+      ),
+    ],
+  ),
+),
+
+
+```
+
 #### Custom Button
 
 The custom button widget leverages the functionality of a button widget while offering additional customization options to tailor its appearance and behavior according to specific design requirements.
-
-## Unstyled
-
-All the components in `gluestack-ui` are unstyled by default. To customize your UI using the extendedTheme, please refer to this [link](https://gluestack.io/ui/docs/theme-configuration/customizing-theme). The import names of components serve as keys to customize each component.

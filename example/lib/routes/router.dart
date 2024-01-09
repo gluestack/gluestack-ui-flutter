@@ -7,6 +7,7 @@ import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/box_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_group_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/button_with_full_width_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_with_icon_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/center_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/checkbox_preview.dart';
@@ -30,6 +31,7 @@ import 'package:gluestack_ui_example/preview_widgets/text_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/textarea_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/toast_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/vstack_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/vstack_reversed_preview.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -69,6 +71,12 @@ final GoRouter router = GoRouter(
           path: "buttonWithIconsPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const ButtonWithIconsPreview();
+          },
+        ),
+        GoRoute(
+          path: "buttonWithFullWidthPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ButtonWithFullWidthPreview();
           },
         ),
         GoRoute(
@@ -117,6 +125,12 @@ final GoRouter router = GoRouter(
           path: "vstackPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const VStackPreview();
+          },
+        ),
+        GoRoute(
+          path: "vstackReversedPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const VStackReversedPreview();
           },
         ),
         GoRoute(

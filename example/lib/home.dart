@@ -98,6 +98,20 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/buttonWithFullWidthPreview");
+                },
+                child: const Text(
+                  'Button With Full Width Preview',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   router.go("/inputPreview");
                 },
                 child: const Text(
@@ -200,6 +214,20 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text(
                   'Preview VStack',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/vstackReversedPreview");
+                },
+                child: const Text(
+                  'Preview Reversed VStack',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.blue,

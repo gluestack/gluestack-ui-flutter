@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-class HStackReversedPreview extends StatelessWidget {
-  const HStackReversedPreview({super.key});
+class VStackReversedPreview extends StatelessWidget {
+  const VStackReversedPreview({super.key});
 
   @override
   Widget build(BuildContext context) {
     return materialWrapper(
       context,
       Storybook(
-        initialStory: 'HStack',
+        initialStory: 'VStack',
         stories: [
           Story(
-            name: 'HStack',
-            builder: (context) => GSHStack(
+            name: 'VStack',
+            builder: (context) => GSVStack(
               space: GSSpaces.$md,
               mainAxisAlignment: MainAxisAlignment.center,
               isReversed: true,
