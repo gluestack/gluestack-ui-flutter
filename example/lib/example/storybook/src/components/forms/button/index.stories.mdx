@@ -62,7 +62,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 ### Widget Parameters
 
-This section provides a comprehensive reference list for the component props, detailing descriptions, properties, types, and default behavior for easy project integration.
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
 
 #### GSButton
 
@@ -395,32 +395,30 @@ The Examples section provides visual representations of the different variants o
 
 A loading button is a type of button widget that provides visual feedback to the user during an action that takes some time to complete. It typically displays an animated loading icon or spinner indicating the action is in progress.
 
-<AppProvider>
-  <CodePreview
-    showComponentRenderer={true}
-    showArgsController={false}
-    metaData={{
-      code: `
-        GSButton(
-  action: GSActions.primary,
-  variant: GSVariants.solid,
-  size: GSSize.$md,
-  isDisabled: false,
-  isFocusVisible: false,
-  onPressed: () {},
-  child: const GSHStack(
-    children: [
-      GSButtonText(text: "Add"),
-      GSButtonIcon(icon: Icons.add)
-    ],
-  ),
-)
-      `,
-      transformCode: (code) => {
-        return transformedCode(code);
-      },
-      scope: { GSButton, GSButtonText },
-      argsType: {},
-    }}
-  />
-</AppProvider>
+#### Icon Button
+
+A button with an icon integrates a visual symbol within the button widget, enhancing its appearance and providing a recognizable and intuitive representation of its associated action or functionality.
+
+#### Link Button
+
+A button with a link combines the interactive behavior of a button widget with the ability to navigate to a specified URL, providing a clickable element for users to access external resources or internal pages.
+
+#### Button Group in a Card
+
+A button group within a card widget incorporates multiple button widgets, providing a cohesive and organized interface for selecting various actions or options within the context of the card.
+
+#### Button With Icon
+
+The icon widget incorporates a button widget, combining visual representation with interactive functionality for seamless user interaction.
+
+#### Button with Full Width
+
+The button with full width widget utilizes a button widget, expanding its width to occupy the entire available space, creating a visually prominent and easily accessible interface element.
+
+#### Custom Button
+
+The custom button widget leverages the functionality of a button widget while offering additional customization options to tailor its appearance and behavior according to specific design requirements.
+
+## Unstyled
+
+All the components in `gluestack-ui` are unstyled by default. To customize your UI using the extendedTheme, please refer to this [link](https://gluestack.io/ui/docs/theme-configuration/customizing-theme). The import names of components serve as keys to customize each component.
