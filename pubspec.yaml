@@ -12,6 +12,10 @@ environment:
   sdk: ">=3.2.1 <4.0.0"
   flutter: ">=3.3.0"
 
+codeGen:
+  src: './jsons/'
+  out: './lib/Models/'
+  
 dependencies:
   flutter:
     sdk: flutter
@@ -19,6 +23,8 @@ dependencies:
   fluttertoast: ^8.2.4
   url_launcher: ^6.2.1
   get_it: ^7.6.4
+  path: any
+  yaml: any
 
 dev_dependencies:
   flutter_test:
