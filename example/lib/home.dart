@@ -42,6 +42,62 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/loadingButtonPreview");
+                },
+                child: const Text(
+                  'Loading Button Preview',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/iconButtonPreview");
+                },
+                child: const Text(
+                  'Icon Button Preview',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/buttonGroupPreview");
+                },
+                child: const Text(
+                  'Button Group Preview',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/buttonWithIconsPreview");
+                },
+                child: const Text(
+                  'Button With Icons Preview',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   router.go("/inputPreview");
                 },
                 child: const Text(
@@ -116,6 +172,20 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text(
                   'Preview HStack',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/hstackReversedPreview");
+                },
+                child: const Text(
+                  'Preview Reversed HStack',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.blue,

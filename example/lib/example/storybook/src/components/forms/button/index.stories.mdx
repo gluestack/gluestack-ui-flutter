@@ -395,6 +395,42 @@ The Examples section provides visual representations of the different variants o
 
 A loading button is a type of button widget that provides visual feedback to the user during an action that takes some time to complete. It typically displays an animated loading icon or spinner indicating the action is in progress.
 
+<iframe
+  src="https://gluestack-flutter.web.app/#/loadingButtonPreview"
+  title="Example"
+  width="800"
+  height="200"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSButton(
+   child: GSHStack(
+     children: [
+       GSSpinner(
+         strokeWidth: 2,
+         style: GSStyle(
+           color: $GSColors.white,
+           bg: $GSColors.blueGray300,
+           width: 20,
+           height: 20,
+           ),
+           ),
+           const SizedBox(
+             width: 7,
+             ),
+             GSButtonText(
+               text: "Please wait",
+               style: GSStyle(),
+               ),
+        ],
+        )
+        onPressed: () {},
+        )
+
+```
+
 #### Icon Button
 
 A button with an icon integrates a visual symbol within the button widget, enhancing its appearance and providing a recognizable and intuitive representation of its associated action or functionality.

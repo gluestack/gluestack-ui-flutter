@@ -5,10 +5,15 @@ import 'package:gluestack_ui_example/preview_widgets/alert_dialog_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/avatar_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/box_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/button_group_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/button_with_icon_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/center_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/checkbox_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/divider_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/hstack_reversed_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/icon_button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/loading_button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/fab_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/heading_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/hstack_preview.dart';
@@ -40,6 +45,30 @@ final GoRouter router = GoRouter(
           path: "buttonPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const ButtonPreview();
+          },
+        ),
+        GoRoute(
+          path: "loadingButtonPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const LoadingButtonPreview();
+          },
+        ),
+        GoRoute(
+          path: "iconButtonPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const IconButtonPreview();
+          },
+        ),
+        GoRoute(
+          path: "buttonGroupPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ButtonGroupPreview();
+          },
+        ),
+        GoRoute(
+          path: "buttonWithIconsPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ButtonWithIconsPreview();
           },
         ),
         GoRoute(
@@ -76,6 +105,12 @@ final GoRouter router = GoRouter(
           path: "hstackPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const HStackPreview();
+          },
+        ),
+        GoRoute(
+          path: "hstackReversedPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const HStackReversedPreview();
           },
         ),
         GoRoute(

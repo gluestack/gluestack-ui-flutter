@@ -1,18 +1,28 @@
 ---
-title: HStack | gluestack-ui | Installation, Usage, and API
+title: GSHStack | gluestack-ui | Installation, Usage, and API
 
-description: HStack arranges its child elements horizontally, making it a suitable layout component for creating a row of items. It is worth noting that Row is just an alternative name for HStack.
+description: GSHStack arranges its child widgets horizontally, making it a suitable layout widget for creating a row of items. It is worth noting that Row is just an alternative name for GSHStack.
 
-pageTitle: HStack
+pageTitle: GSHStack
 
-pageDescription: HStack arranges its child elements horizontally, making it a suitable layout component for creating a row of items. It is worth noting that Row is just an alternative name for HStack.
+pageDescription: GSHStack arranges its child widgets horizontally, making it a suitable layout widget for creating a row of items. It is worth noting that Row is just an alternative name for GSHStack.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Layout/HStack" />
+
+This is an illustration of a **Themed GSHStack** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/hstackPreview"
@@ -44,3 +54,106 @@ GSHStack(
   ],
 )
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSHStack
+
+It inherits all the properties of Flutter's [Row](https://api.flutter.dev/flutter/widgets/Row-class.html) widget.
+
+### Accessibility
+
+The accessibility of a GSHStack is primarily determined by the accessibility information of the widgets it contains. When you pass an accessible widget inside a GSHStack, its accessibility attributes, such as labels and hints, will be utilized by assistive technologies like screen readers.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Parameters
+
+GSHStack widget is created using Row widget from flutter. It extends all the properties supported by [Flutter Row](https://api.flutter.dev/flutter/widgets/Row-class.html) and additionally the parameters mentioned below.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Type</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>space</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`GSSpaces `}</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`It sets the space between children.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>reversed</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`boolean`}</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`When true, it places the HStack items in reverse direction.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these properties may not be available.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### GSHStack Reversed
+
+An GSHStack widget with the reversed parameter reverses the order of horizontally stacked elements, allowing for customized layouts and visual arrangements of content within a user interface.
+
+## Unstyled
+
+We provide in-depth information on how to customize and extend the widget's functionality to meet your needs. Below, we describe how to modify the widget to suit your requirements.

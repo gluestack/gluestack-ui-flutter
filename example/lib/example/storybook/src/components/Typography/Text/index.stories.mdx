@@ -20,15 +20,15 @@ import {
   InlineCode,
 } from '@gluestack/design-system';
 
-<Meta title="Components/Typography/Text" />;
+<Meta title="Components/Typography/Text" />
 
-This is an illustration of a **Themed GSText** component with default configuration.
+This is an illustration of a **Themed GSText** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/textPreview"
   title="Example"
   width="800"
-  height="400"
+  height="350"
 ></iframe>
 
 ```dart
@@ -68,9 +68,9 @@ It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutt
 
 The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
 
-### Props
+### Parameters
 
-GSText widget is created using Text widget from flutter. It extends all the properties supported by [Flutter Text](https://reactnative.dev/docs/text#props) and additionally the parameters mentioned below.
+GSText widget is created using GSText widget from flutter. It extends all the parameters supported by [Flutter Text](https://api.flutter.dev/flutter/widgets/Text-class.html)and additionally the properties mentioned below.
 
 #### GSText
 
@@ -202,7 +202,7 @@ GSText widget is created using Text widget from flutter. It extends all the prop
   </TableContainer>
 </AppProvider>
 
-> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these properties may not be available.
+> Note: These props are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these props may not be available.
 
 ### Examples
 
@@ -212,7 +212,7 @@ The Examples section provides visual representations of the different variants o
 
 GSText widget comes in different sizes, such as `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, and `6xl` allowing users to adjust the button size based on their design needs.
 
-The GSHeading widget also accepts some shorthands for basic quick styling.
+GSText widget also accepts some shorthands for basic quick styling.
 
 <AppProvider>
   <TableContainer>
@@ -220,7 +220,7 @@ The GSHeading widget also accepts some shorthands for basic quick styling.
       <Table.THead>
         <Table.TR>
           <Table.TH>
-            <Table.TText>Prop</Table.TText>
+            <Table.TText>Parameters</Table.TText>
           </Table.TH>
           <Table.TH>
             <Table.TText>Type</Table.TText>
