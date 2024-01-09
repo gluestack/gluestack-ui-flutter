@@ -6,19 +6,25 @@ class BaseLayout extends StatefulWidget {
   final Widget component;
   final Widget? controls;
   final String? code;
-  const BaseLayout(
-      {super.key, required this.component, this.controls, this.code});
+
+  const BaseLayout({
+    super.key,
+    required this.component,
+    this.controls,
+    this.code,
+  });
 
   @override
   State<BaseLayout> createState() => _BaseLayoutState();
 }
 
 class _BaseLayoutState extends State<BaseLayout> {
+  final ScrollController scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     final isLandscape =
         MediaQuery.orientationOf(context) == Orientation.landscape;
-    ScrollController _scrollController = ScrollController();
     final componentWrapper = Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30.0),
@@ -56,11 +62,12 @@ class _BaseLayoutState extends State<BaseLayout> {
           if (isLandscape)
             Expanded(
               child: Scrollbar(
-                controller: _scrollController,
+                controller: scrollController,
                 thumbVisibility: true,
                 child: SingleChildScrollView(
-                  controller: _scrollController,
-                  child: controlsWrapper),
+                  controller: scrollController,
+                  child: controlsWrapper,
+                ),
               ),
             )
           else
@@ -79,7 +86,7 @@ class _BaseLayoutState extends State<BaseLayout> {
     );
 
     final finalLayout = Container(
-      margin:  EdgeInsets.symmetric(horizontal: $GSSpace.$16),
+      margin: EdgeInsets.symmetric(horizontal: $GSSpace.$16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10),

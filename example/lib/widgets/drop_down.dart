@@ -33,7 +33,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
       children: [
         Text(
           widget.title,
-          style:  TextStyle(color: $GSColors.backgroundDark500),
+          style: TextStyle(color: $GSColors.backgroundDark500),
         ),
         DropdownButton<dynamic>(
           value: selectedOption,

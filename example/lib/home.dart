@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_ui_example/example/fab_example.dart';
-import 'package:gluestack_ui_example/example/flex_example.dart';
-import 'package:gluestack_ui_example/main.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
-
-import 'example/public.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,6 +22,20 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.min,
             children: [
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/storybook");
+                },
+                child: const Text(
+                  'Storybook',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
               elementSpacing,
               GestureDetector(
                 onTap: () {
@@ -364,11 +375,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const FormExample(),
-                    ),
-                  );
+                  router.go('/example-form');
                 },
                 child: const Text(
                   'GS Form',
@@ -382,11 +389,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const FabExample(),
-                    ),
-                  );
+                  router.go('/example-fab');
                 },
                 child: const Text(
                   'GS Fab',
@@ -400,11 +403,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const SwitchExample(),
-                    ),
-                  );
+                  router.go('/example-switch');
                 },
                 child: const Text(
                   'GS Switch',
@@ -418,11 +417,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const LinkExample(),
-                    ),
-                  );
+                  router.go('/example-link');
                 },
                 child: const Text(
                   'GS Link',
@@ -436,11 +431,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const AvatarExample(),
-                    ),
-                  );
+                  router.go('/example-avatar');
                 },
                 child: const Text(
                   'GS Avatar',
@@ -454,11 +445,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const TextExample(),
-                    ),
-                  );
+                  router.go('/example-text');
                 },
                 child: const Text(
                   'GS Text',
@@ -472,11 +459,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const CheckBoxExample(),
-                    ),
-                  );
+                  router.go('/example-checkbox');
                 },
                 child: const Text(
                   'GS CheckBox',
@@ -490,11 +473,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const HeadingExample(),
-                    ),
-                  );
+                  router.go('/example-heading');
                 },
                 child: const Text(
                   'GS Heading',
@@ -508,11 +487,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const HStackExample(),
-                    ),
-                  );
+                  router.go('/example-hstack');
                 },
                 child: const Text(
                   'GS HStack',
@@ -526,11 +501,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const VStackExample(),
-                    ),
-                  );
+                  router.go('/example-vstack');
                 },
                 child: const Text(
                   'GS VStack',
@@ -544,9 +515,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(MaterialPageRoute(
-                    builder: (context) => const ButtonExample(),
-                  ));
+                  router.go('/example-button');
                 },
                 child: const Text(
                   'GS Button',
@@ -560,11 +529,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const ImageExample(),
-                    ),
-                  );
+                  router.go('/example-image');
                 },
                 child: const Text(
                   'GS Image',
@@ -578,11 +543,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const InputExample(),
-                    ),
-                  );
+                  router.go('/example-input');
                 },
                 child: const Text(
                   'GS Input',
@@ -596,11 +557,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const RadioButtonExample(),
-                    ),
-                  );
+                  router.go('/example-radio_button');
                 },
                 child: const Text(
                   'GS Radio Button',
@@ -614,11 +571,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const BadgeExample(),
-                    ),
-                  );
+                  router.go('/example-badge');
                 },
                 child: const Text(
                   'GS Badge',
@@ -632,11 +585,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const CenterExample(),
-                    ),
-                  );
+                  router.go('/example-center');
                 },
                 child: const Text(
                   'GS Center',
@@ -650,11 +599,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const AlertExample(),
-                    ),
-                  );
+                  router.go('/example-alert');
                 },
                 child: const Text(
                   'GS Alert',
@@ -668,11 +613,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const DividerExample(),
-                    ),
-                  );
+                  router.go('/example-divider');
                 },
                 child: const Text(
                   'GS Divider',
@@ -686,11 +627,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const SpinnerExample(),
-                    ),
-                  );
+                  router.go('/example-spinner');
                 },
                 child: const Text(
                   'GS Spinner',
@@ -704,11 +641,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const ProgressExample(),
-                    ),
-                  );
+                  router.go('/example-progress');
                 },
                 child: const Text(
                   'GS Progress',
@@ -722,11 +655,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const IconExample(),
-                    ),
-                  );
+                  router.go('/example-icon');
                 },
                 child: const Text(
                   'GS Icon',
@@ -740,11 +669,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const TextAreaExample(),
-                    ),
-                  );
+                  router.go('/example-text_area');
                 },
                 child: const Text(
                   'GS Text Area',
@@ -758,11 +683,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const PressableExample(),
-                    ),
-                  );
+                  router.go('/example-pressable');
                 },
                 child: const Text(
                   'GS Pressable',
@@ -776,11 +697,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const ToastExample(),
-                    ),
-                  );
+                  router.go('/example-toast');
                 },
                 child: const Text(
                   'GS Toast',
@@ -794,11 +711,7 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
-                  navigatorKey.currentState!.push(
-                    MaterialPageRoute(
-                      builder: (context) => const FlexExample(),
-                    ),
-                  );
+                  router.go('/example-flex');
                 },
                 child: const Text(
                   'GS Flex',
@@ -814,15 +727,17 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          myAppStateKey.currentState?.toggleThemeMode();
+      floatingActionButton: Consumer(
+        builder: (context, ref, child) {
+          return FloatingActionButton(
+            onPressed: ref.read(toggleThemeProvider.notifier).toggleThemeMode,
+            child: Icon(
+              Theme.of(context).brightness == Brightness.dark
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+          );
         },
-        child: Icon(
-          Theme.of(context).brightness == Brightness.dark
-              ? Icons.light_mode
-              : Icons.dark_mode,
-        ),
       ),
     );
   }

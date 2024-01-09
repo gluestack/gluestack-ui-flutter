@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
 
 /// Example widget demonstrating the usage of GSBadge, GSBadgeIcon, and GSBadgeText.
 class BadgeExample extends StatefulWidget {

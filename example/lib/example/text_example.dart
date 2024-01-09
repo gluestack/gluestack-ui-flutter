@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
 
 class TextExample extends StatelessWidget {
   const TextExample({super.key});
@@ -28,7 +28,7 @@ class TextExample extends StatelessWidget {
             bold: true,
             underline: true,
             style: GSStyle(
-              textStyle:  TextStyle(letterSpacing: $GSLetterSpacing.$lg),
+              textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
             ),
           ),
         ),
