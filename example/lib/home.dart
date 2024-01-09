@@ -1,9 +1,11 @@
+// ignore_for_file: unnecessary_const
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 import 'package:gluestack_ui_example/widgets/nav_button.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
+// import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Gluestack UI examples')),
-      body: SafeArea(
+      body: const SafeArea(
         child: SingleChildScrollView(
           child: GSCenter(
             child: GSVStack(
@@ -131,10 +133,10 @@ class _HomePageState extends State<HomePage> {
 
                 // Preview screens are present to link Docs website to these storybook pages through iframe.
                 // No need to show these pages separately in example app.
-                ...kStories.map((item) => NavButton(
-                      title: 'Preview ${item.storyName}',
-                      routePath: '/${item.routePath}',
-                    )),
+                // ...kStories.map((item) => NavButton(
+                //       title: 'Preview ${item.storyName}',
+                //       routePath: '/${item.routePath}',
+                //     )),
 
                 const SizedBox(height: 10),
               ],
