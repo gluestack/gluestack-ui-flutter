@@ -1,0 +1,8 @@
+{
+  "name": "gluestack-ui-flutter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gluestack/gluestack-ui-flutter.git",
+  "author": "ashishg <ashishg@geekyants.com>",
+  "license": "MIT"
+}
