@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
-import 'package:gluestack_ui_example/routes/router.dart';
+import 'package:gluestack_ui_example/widgets/nav_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,717 +14,88 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    const elementSpacing = SizedBox(height: 20);
     return Scaffold(
       appBar: AppBar(title: const Text('Gluestack UI examples')),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/storybook");
-                },
-                child: const Text(
-                  'Storybook',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
+      body: const SafeArea(
+        child: SingleChildScrollView(
+          child: GSCenter(
+            child: GSVStack(
+              space: GSSpaces.$sm,
+              children: [
+                SizedBox(height: 10),
+                NavButton(title: "Storybook", routePath: "/storybook"),
+                NavButton(title: "GS Form", routePath: "/example-form"),
+                NavButton(title: "GS Fab", routePath: "/example-fab"),
+                NavButton(title: "GS Switch", routePath: "/example-switch"),
+                NavButton(title: "GS Link", routePath: "/example-link"),
+                NavButton(title: "GS Avatar", routePath: "/example-avatar"),
+                NavButton(title: "GS Text", routePath: "/example-text"),
+                NavButton(title: "GS CheckBox", routePath: "/example-checkbox"),
+                NavButton(title: "GS Heading", routePath: "/example-heading"),
+                NavButton(title: "GS HStack", routePath: "/example-hstack"),
+                NavButton(title: "GS VStack", routePath: "/example-vstack"),
+                NavButton(title: "GS Button", routePath: "/example-button"),
+                NavButton(title: "GS Image", routePath: "/example-image"),
+                NavButton(title: "GS Input", routePath: "/example-input"),
+                NavButton(
+                  title: "GS Radio Button",
+                  routePath: "/example-radio_button",
                 ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/buttonPreview");
-                },
-                child: const Text(
-                  'Preview Button',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
+                NavButton(title: "GS Badge", routePath: "/example-badge"),
+                NavButton(title: "GS Center", routePath: "/example-center"),
+                NavButton(title: "GS Alert", routePath: "/example-alert"),
+                NavButton(title: "GS Divider", routePath: "/example-divider"),
+                NavButton(title: "GS Spinner", routePath: "/example-spinner"),
+                NavButton(title: "GS Progress", routePath: "/example-progress"),
+                NavButton(title: "GS Icon", routePath: "/example-icon"),
+                NavButton(
+                  title: "GS Text Area",
+                  routePath: "/example-text_area",
                 ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/inputPreview");
-                },
-                child: const Text(
-                  'Preview Input',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
+                NavButton(
+                  title: "GS Pressable",
+                  routePath: "/example-pressable",
                 ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/badgePreview");
-                },
-                child: const Text(
-                  'Preview Badge',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/switchPreview");
-                },
-                child: const Text(
-                  'Preview Switch',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/avatarPreview");
-                },
-                child: const Text(
-                  'Preview Avatar',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/checkboxPreview");
-                },
-                child: const Text(
-                  'Preview Checkbox',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/hstackPreview");
-                },
-                child: const Text(
-                  'Preview HStack',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/vstackPreview");
-                },
-                child: const Text(
-                  'Preview VStack',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/imagePreview");
-                },
-                child: const Text(
-                  'Preview Image',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/radioButtonPreview");
-                },
-                child: const Text(
-                  'Preview Radio Button',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/progressPreview");
-                },
-                child: const Text(
-                  'Preview Progress',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/iconPreview");
-                },
-                child: const Text(
-                  'Preview Icon',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/textPreview");
-                },
-                child: const Text(
-                  'Preview Text',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/headingPreview");
-                },
-                child: const Text(
-                  'Preview Heading',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/dividerPreview");
-                },
-                child: const Text(
-                  'Preview Divider',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/centerPreview");
-                },
-                child: const Text(
-                  'Preview Center',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/boxPreview");
-                },
-                child: const Text(
-                  'Preview Box',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/spinnerPreview");
-                },
-                child: const Text(
-                  'Preview Spinner',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/toastPreview");
-                },
-                child: const Text(
-                  'Preview Toast',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/linkPreview");
-                },
-                child: const Text(
-                  'Preview Link',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/pressablePreview");
-                },
-                child: const Text(
-                  'Preview Pressable',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/textareaPreview");
-                },
-                child: const Text(
-                  'Preview Text Area',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/alertDialogPreview");
-                },
-                child: const Text(
-                  'Preview Alert Dialog',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go("/fabPreview");
-                },
-                child: const Text(
-                  'Preview Fab',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-form');
-                },
-                child: const Text(
-                  'GS Form',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-fab');
-                },
-                child: const Text(
-                  'GS Fab',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-switch');
-                },
-                child: const Text(
-                  'GS Switch',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-link');
-                },
-                child: const Text(
-                  'GS Link',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-avatar');
-                },
-                child: const Text(
-                  'GS Avatar',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-text');
-                },
-                child: const Text(
-                  'GS Text',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-checkbox');
-                },
-                child: const Text(
-                  'GS CheckBox',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-heading');
-                },
-                child: const Text(
-                  'GS Heading',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-hstack');
-                },
-                child: const Text(
-                  'GS HStack',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-vstack');
-                },
-                child: const Text(
-                  'GS VStack',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-button');
-                },
-                child: const Text(
-                  'GS Button',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-image');
-                },
-                child: const Text(
-                  'GS Image',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-input');
-                },
-                child: const Text(
-                  'GS Input',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-radio_button');
-                },
-                child: const Text(
-                  'GS Radio Button',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-badge');
-                },
-                child: const Text(
-                  'GS Badge',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-center');
-                },
-                child: const Text(
-                  'GS Center',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-alert');
-                },
-                child: const Text(
-                  'GS Alert',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-divider');
-                },
-                child: const Text(
-                  'GS Divider',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-spinner');
-                },
-                child: const Text(
-                  'GS Spinner',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-progress');
-                },
-                child: const Text(
-                  'GS Progress',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-icon');
-                },
-                child: const Text(
-                  'GS Icon',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-text_area');
-                },
-                child: const Text(
-                  'GS Text Area',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-pressable');
-                },
-                child: const Text(
-                  'GS Pressable',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-toast');
-                },
-                child: const Text(
-                  'GS Toast',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-              GestureDetector(
-                onTap: () {
-                  router.go('/example-flex');
-                },
-                child: const Text(
-                  'GS Flex',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-              ),
-              elementSpacing,
-            ],
+                NavButton(title: "GS Toast", routePath: "/example-toast"),
+                NavButton(title: "GS Flex", routePath: "/example-flex"),
+                SizedBox(height: 10),
+
+                // Previews are present to link Docs website to these storybook pages.
+                // No need to show these pages separately in example app.
+                // NavButton(title: "Preview Button", routePath: "/buttonPreview"),
+                // NavButton(title: "Preview Input", routePath: "/inputPreview"),
+                // NavButton(title: "Preview Badge", routePath: "/badgePreview"),
+                // NavButton(title: "Preview Switch", routePath: "/switchPreview"),
+                // NavButton(title: "Preview Avatar", routePath: "/avatarPreview"),
+                // NavButton(
+                //     title: "Preview Checkbox", routePath: "/checkboxPreview"),
+                // NavButton(title: "Preview HStack", routePath: "/hstackPreview"),
+                // NavButton(title: "Preview VStack", routePath: "/vstackPreview"),
+                // NavButton(title: "Preview Image", routePath: "/imagePreview"),
+                // NavButton(
+                //     title: "Preview Radio Button",
+                //     routePath: "/radioButtonPreview"),
+                // NavButton(
+                //     title: "Preview Progress", routePath: "/progressPreview"),
+                // NavButton(title: "Preview Icon", routePath: "/iconPreview"),
+                // NavButton(title: "Preview Text", routePath: "/textPreview"),
+                // NavButton(title: "Preview Heading", routePath: "/headingPreview"),
+                // NavButton(title: "Preview Divider", routePath: "/dividerPreview"),
+                // NavButton(title: "Preview Center", routePath: "/centerPreview"),
+                // NavButton(title: "Preview Box", routePath: "/boxPreview"),
+                // NavButton(title: "Preview Spinner", routePath: "/spinnerPreview"),
+                // NavButton(title: "Preview Toast", routePath: "/toastPreview"),
+                // NavButton(title: "Preview Link", routePath: "/linkPreview"),
+                // NavButton(
+                //     title: "Preview Pressable", routePath: "/pressablePreview"),
+                // NavButton(
+                //     title: "Preview Text Area", routePath: "/textareaPreview"),
+                // NavButton(
+                //     title: "Preview Alert Dialog",
+                //     routePath: "/alertDialogPreview"),
+                // NavButton(title: "Preview Fab", routePath: "/fabPreview"),
+              ],
+            ),
           ),
         ),
       ),
