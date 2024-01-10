@@ -56,158 +56,158 @@ class _FormExampleState extends State<FormExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = r"""GSFormControl(
-          formKey: _formKey,
-          size: selectedSizeOption,
-          isRequired: isRequired,
-          isInvalid: isInvalid,
-          isReadOnly: isReadOnly,
-          isDisabled: isDisabled,
-          // autovalidateMode: AutovalidateMode.always,
-          child: Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                 GSFormLabelText('Username'),
-                sp,
-                GSInput(
-                  initialValue: "GlueStacky",
-                  hintText: 'Enter your username here... | Ex. John Doe',
-                  style: GSStyle(height: 70),
-                ),
-                sp2,
-                 GSFormLabelText('Password'),
-                sp,
-                GSInput(
-                  style: GSStyle(height: 80),
-                  obscureText: true,
-                  hintText: 'Enter you password here...',
-                  validator: (input) {
-                    if (input != null && (input as String).length < 8) {
-                      return "Password must have atleast 8 characters!";
-                    }
-                    return null;
-                  },
-                ),
-                //TEXTAREA---------------------
-                 GSFormLabelText('Bio'),
-                sp,
-                 GSTextArea(
-                  hintText: "Enter a bio describing yourself here....",
-                ),
-                 GSFormHelperText(
-                    'Ex. Hey guys, I am ___ and I love doing ___'),
-
-                sp2,
-                //CHECKBOX------------------------
-                 GSFormLabelText(
-                  'Choose your hobbies',
-                  isRequired: false,
-                ),
-                sp,
-                GSCheckBox(
-                  icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                    child:  GSCheckBoxIcon(),
+    var code = r"""
+        GSFormControl(
+            formKey: _formKey,
+            size: selectedSizeOption,
+            isRequired: isRequired,
+            isInvalid: isInvalid,
+            isReadOnly: isReadOnly,
+            isDisabled: isDisabled,
+            child: Padding(
+              padding:  EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  GSFormLabelText('Username'),
+                  sp,
+                  GSInput(
+                    initialValue: "GlueStacky",
+                    hintText: 'Enter your username here... | Ex. John Doe',
+                    style: GSStyle(height: 70),
                   ),
-                  value: "Singing",
-                  onChanged: (value) {},
-                  label:  GSCheckBoxLabel(text: "Singing"),
-                ),
-                sp,
-                GSCheckBox(
-                  icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                    child:  GSCheckBoxIcon(),
-                  ),
-                  value: "Dancing",
-                  onChanged: (value) {},
-                  label:  GSCheckBoxLabel(text: "Dancing"),
-                ),
-                sp,
-                GSCheckBox(
-                  icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                    child:  GSCheckBoxIcon(),
-                  ),
-                  value: "Sports",
-                  onChanged: (value) {},
-                  label:  GSCheckBoxLabel(text: "Sports"),
-                ),
-                sp,
-                GSCheckBox(
-                  icon: GSCheckBoxIndicator(
-                    style: GSStyle(
-                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                    child:  GSCheckBoxIcon(),
-                  ),
-                  value: "Driving",
-                  onChanged: (value) {},
-                  label:  GSCheckBoxLabel(text: "Driving"),
-                ),
-                sp2,
-                //RADIO---------------------------
-                 GSFormLabelText('Choose a group', isRequired: false),
-                sp,
-                GSRadio<Value>(
-                  value: Value.one,
-                  groupValue: groupValue,
-                  onChanged: (p0) {
-                    setState(() {
-                      groupValue = p0!;
-                    });
-                  },
-                  icon:  GSRadioIcon<Value>(),
-                  label:  GSRadioText<Value>(text: 'Capitalist'),
-                  style: GSStyle(
-                      margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                ),
-                sp,
-                GSRadio<Value>(
-                  value: Value.four,
-                  groupValue: groupValue,
-                  onChanged: (p0) {
-                    setState(() {
-                      groupValue = p0!;
-                    });
-                  },
-                  icon:  GSRadioIcon<Value>(),
-                  label:  GSRadioText<Value>(text: 'Communist'),
-                  style: GSStyle(
-                      margin:  EdgeInsets.only(right: $GSSpace.$2)),
-                ),
-                sp2,
-                sp2,
-                GSButton(
-                    action: GSActions.positive,
-                    variant: GSVariants.outline,
-                    child:  Text(
-                      'Submit',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState != null &&
-                          _formKey.currentState!.validate() &&
-                          !isDisabled) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                           SnackBar(
-                            content: Text(
-                              'Submitting data...',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            backgroundColor: Colors.green,
-                          ),
-                        );
+                  sp2,
+                  GSFormLabelText('Password'),
+                  sp,
+                  GSInput(
+                    style: GSStyle(height: 80),
+                    obscureText: true,
+                    hintText: 'Enter you password here...',
+                    validator: (input) {
+                      if (input != null && (input as String).length < 8) {
+                        return "Password must have atleast 8 characters!";
                       }
-                    }),
-              ],
+                      return null;
+                    },
+                  ),
+
+                  GSFormLabelText('Bio'),
+                  sp,
+                  GSTextArea(
+                    hintText: "Enter a bio describing yourself here....",
+                  ),
+                  GSFormHelperText(
+                      'Ex. Hey guys, I am ___ and I love doing ___'),
+
+                  sp2,
+
+                  GSFormLabelText(
+                    'Choose your hobbies',
+                    isRequired: false,
+                  ),
+                  sp,
+                  GSCheckBox(
+                    icon: GSCheckBoxIndicator(
+                      style: GSStyle(
+                          margin:  EdgeInsets.only(right: $GSSpace.$2)),
+                      child:  GSCheckBoxIcon(),
+                    ),
+                    value: "Singing",
+                    onChanged: (value) {},
+                    label:  GSCheckBoxLabel(text: "Singing"),
+                  ),
+                  sp,
+                  GSCheckBox(
+                    icon: GSCheckBoxIndicator(
+                      style: GSStyle(
+                          margin:  EdgeInsets.only(right: $GSSpace.$2)),
+                      child:  GSCheckBoxIcon(),
+                    ),
+                    value: "Dancing",
+                    onChanged: (value) {},
+                    label:  GSCheckBoxLabel(text: "Dancing"),
+                  ),
+                  sp,
+                  GSCheckBox(
+                    icon: GSCheckBoxIndicator(
+                      style: GSStyle(
+                          margin:  EdgeInsets.only(right: $GSSpace.$2)),
+                      child:  GSCheckBoxIcon(),
+                    ),
+                    value: "Sports",
+                    onChanged: (value) {},
+                    label:  GSCheckBoxLabel(text: "Sports"),
+                  ),
+                  sp,
+                  GSCheckBox(
+                    icon: GSCheckBoxIndicator(
+                      style: GSStyle(
+                          margin:  EdgeInsets.only(right: $GSSpace.$2)),
+                      child:  GSCheckBoxIcon(),
+                    ),
+                    value: "Driving",
+                    onChanged: (value) {},
+                    label:  GSCheckBoxLabel(text: "Driving"),
+                  ),
+                  sp2,
+
+                  GSFormLabelText('Choose a group', isRequired: false),
+                  sp,
+                  GSRadio<Value>(
+                    value: Value.one,
+                    groupValue: groupValue,
+                    onChanged: (p0) {
+                      setState(() {
+                        groupValue = p0!;
+                      });
+                    },
+                    icon:  GSRadioIcon<Value>(),
+                    label:  GSRadioText<Value>(text: 'Capitalist'),
+                    style: GSStyle(
+                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
+                  ),
+                  sp,
+                  GSRadio<Value>(
+                    value: Value.four,
+                    groupValue: groupValue,
+                    onChanged: (p0) {
+                      setState(() {
+                        groupValue = p0!;
+                      });
+                    },
+                    icon:  GSRadioIcon<Value>(),
+                    label:  GSRadioText<Value>(text: 'Communist'),
+                    style: GSStyle(
+                        margin:  EdgeInsets.only(right: $GSSpace.$2)),
+                  ),
+                  sp2,
+                  sp2,
+                  GSButton(
+                      action: GSActions.positive,
+                      variant: GSVariants.outline,
+                      child:  Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.green),
+                      ),
+                      onPressed: () {
+                        if (_formKey.currentState != null &&
+                            _formKey.currentState!.validate() &&
+                            !isDisabled) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Submitting data...',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                        }
+                      }),
+                ],
+              ),
             ),
-          ),
-        ),""";
+         )""";
     return Scaffold(
       appBar: AppBar(
         title: const Text("Form Control"),

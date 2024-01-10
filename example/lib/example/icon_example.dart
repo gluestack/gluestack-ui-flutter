@@ -28,10 +28,11 @@ class _IconExampleState extends State<IconExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSIcon(
-            icon: Icons.calendar_month,
-            size: GSSizes.\$md,
-          )
+    var code = '''
+          GSIcon(
+              icon: Icons.calendar_month,
+              size: GSSizes.\$md,
+           )
   ''';
     return Scaffold(
       appBar: AppBar(

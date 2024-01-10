@@ -29,10 +29,11 @@ class _ProgressExampleState extends State<ProgressExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSProgress(
-            value: 0.4,
-            size: GSSizes.\$md,
-          )
+    var code = '''
+          GSProgress(
+              value: 0.4,
+              size: GSSizes.\$md,
+           )
   ''';
     return Scaffold(
       appBar: AppBar(

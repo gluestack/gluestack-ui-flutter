@@ -48,14 +48,14 @@ class _AvatarExampleState extends State<AvatarExample> {
   Widget build(BuildContext context) {
     var code = '''
         GSAvatar(
-          radius: selectedRadiusOption,
-          size: selectedSizeOption,
-          style: GSStyle(
-            bg: Colors.orange,
-            textStyle: const TextStyle(color: Colors.white),
-          ),
-          fallBackText: const GSAvatarFallBackText('Geeky Stack'),
-        ),
+            radius: selectedRadiusOption,
+            size: selectedSizeOption,
+            style: GSStyle(
+              bg: Colors.orange,
+              textStyle: const TextStyle(color: Colors.white),
+            ),
+            fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+         )
 ''';
     return Scaffold(
       appBar: AppBar(

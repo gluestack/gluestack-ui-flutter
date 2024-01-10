@@ -70,19 +70,20 @@ class _ButtonExampleState extends State<ButtonExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSButton(
-                action: GSActions.primary,
-                variant: GSVariants.solid,
-                size: GSSize.\$md,
-                isDisabled: false,
-                isFocusVisible: false,
-                onPressed: () {},
-                child: const Row(
-                  children: [
-                    GSButtonText(text: "Add"),
-                    GSButtonIcon(icon: Icons.add)
-                  ],
-                ),
+    var code = '''
+              GSButton(
+                    action: GSActions.primary,
+                    variant: GSVariants.solid,
+                    size: GSSize.\$md,
+                    isDisabled: false,
+                    isFocusVisible: false,
+                    onPressed: () {},
+                    child: const Row(
+                      children: [
+                        GSButtonText(text: "Add"),
+                        GSButtonIcon(icon: Icons.add)
+                      ],
+                    ),
               )
   ''';
     return Scaffold(

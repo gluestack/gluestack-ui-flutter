@@ -50,13 +50,14 @@ class _TextAreaExampleState extends State<TextAreaExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSTextArea(
-            size: GSSizes.\$md,
-            hintText: "Enter text here",
-            isDisabled: false,
-            isInvalid: false,
-            readOnly: false,
-          )
+    var code = '''
+          GSTextArea(
+                size: GSSizes.\$md,
+                hintText: "Enter text here",
+                isDisabled: false,
+                isInvalid: false,
+                readOnly: false,
+           )
   ''';
     return Scaffold(
       appBar: AppBar(

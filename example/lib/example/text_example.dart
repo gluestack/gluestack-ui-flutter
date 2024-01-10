@@ -7,14 +7,13 @@ class TextExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSText(
-            text: 'test 1',
-            bold: true,
-            underline: true,
-            style: GSStyle(
-              textStyle: const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg),
-            ),
-          )
+    var code = '''
+          GSText(
+              text: 'This is an example of a simple text.',
+              style: GSStyle(
+                textStyle: const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg),
+              ),
+           )
   ''';
     return Scaffold(
       appBar: AppBar(
@@ -24,9 +23,9 @@ class TextExample extends StatelessWidget {
         child: BaseLayout(
           code: code,
           component: GSText(
-            text: 'test 1',
-            bold: true,
-            underline: true,
+            text: 'This is an example of a simple text.',
+            // bold: true,
+            // underline: true,
             style: GSStyle(
               textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
             ),

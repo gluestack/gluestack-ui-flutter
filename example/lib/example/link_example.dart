@@ -7,11 +7,12 @@ class LinkExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSLink(
-            style: GSStyle(),
-            url: 'https://gluestack.io/',
-            text: const GSLinkText(text: 'gluestack'),
-          ),
+    var code = '''
+          GSLink(
+              style: GSStyle(),
+              url: 'https://gluestack.io/',
+              text: const GSLinkText(text: 'Go to Gluestack'),
+          )
   ''';
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +24,7 @@ class LinkExample extends StatelessWidget {
           component: GSLink(
             style: GSStyle(),
             url: 'https://gluestack.io/',
-            text: const GSLinkText(text: 'gluestack'),
+            text: const GSLinkText(text: 'Go to Gluestack'),
           ),
         ),
       ),

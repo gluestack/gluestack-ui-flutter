@@ -7,36 +7,37 @@ class PressableExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSPressable(
-              hitSlop: 10,
-              style: GSStyle(
-                bg: Colors.yellow,
-                highlightColor: Colors.blue,
-                splashColor: Colors.red,
-                onHover: GSStyle(color: Colors.green),
-                onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
-              ),
-              onPress: () {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text('Button Pressed!'),
-                  duration: Duration(milliseconds: 300),
-                ));
-              },
-              onLongPress: () {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text('Long Pressed Triggered!'),
-                  duration: Duration(milliseconds: 300),
-                ));
-              },
-              child: GSText(
-                text: 'Press Me',
-                underline: true,
+    var code = '''
+            GSPressable(
+                hitSlop: 10,
                 style: GSStyle(
-                    color: Colors.blue,
-                    textStyle:
-                        const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg)),
-              ),
-            )
+                  bg: Colors.yellow,
+                  highlightColor: Colors.blue,
+                  splashColor: Colors.red,
+                  onHover: GSStyle(color: Colors.green),
+                  onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
+                ),
+                onPress: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Button Pressed!'),
+                    duration: Duration(milliseconds: 300),
+                  ));
+                },
+                onLongPress: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Long Pressed Triggered!'),
+                    duration: Duration(milliseconds: 300),
+                  ));
+                },
+                child: GSText(
+                  text: 'Press Me',
+                  underline: true,
+                  style: GSStyle(
+                      color: Colors.blue,
+                      textStyle:
+                          const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg)),
+                ),
+             )
   ''';
     return Scaffold(
       appBar: AppBar(

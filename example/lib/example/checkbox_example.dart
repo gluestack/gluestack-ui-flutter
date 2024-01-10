@@ -37,17 +37,18 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSCheckBox(
-            icon: GSCheckBoxIndicator(
-              style: GSStyle(margin: const EdgeInsets.only(right: \$GSSpace.\$2)),
-              child: const GSCheckBoxIcon(),
-            ),
-            value: "value 1",
-            onChanged: (value) {},
-            label: const GSCheckBoxLabel(text: "value1"),
-            size: GSSizes.\$md,
-            isDisabled: false,
-            isInvalid: false,
+    var code = '''
+          GSCheckBox(
+              icon: GSCheckBoxIndicator(
+                  style: GSStyle(margin: const EdgeInsets.only(right: \$GSSpace.\$2)),
+                  child: const GSCheckBoxIcon(),
+              ),
+              value: "value 1",
+              onChanged: (value) {},
+              label: const GSCheckBoxLabel(text: "value1"),
+              size: GSSizes.\$md,
+              isDisabled: false,
+              isInvalid: false,
           )
   ''';
     return Scaffold(
