@@ -1034,7 +1034,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(
             fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-            color: resolveColorFromString(data?['_text']?['_dark']?['color'])),
+            color: resolveColorFromString(data?['_text']?['_dark']?['color']??data?['_dark']?['color'])),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
         bg: resolveColorFromString(data?['_dark']?['bg']),
         onActive: GSStyle(
