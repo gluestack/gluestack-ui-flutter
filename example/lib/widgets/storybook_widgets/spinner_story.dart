@@ -1,0 +1,26 @@
+import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui_example/widgets/storybook_widgets/base_story_widget.dart';
+import 'package:storybook_flutter/storybook_flutter.dart';
+
+final class SpinnerStory extends StoryWidget {
+  @override
+  Story createStoryWidget() {
+    return Story(
+      name: storyName,
+      builder: (context) => GSSpinner(
+        strokeWidth: 4,
+        style: GSStyle(
+          bg: $GSColors.blueGray300,
+          width: 30,
+          height: 30,
+        ),
+      ),
+    );
+  }
+
+  @override
+  String get routePath => "spinnerPreview";
+
+  @override
+  String get storyName => "Spinner";
+}
