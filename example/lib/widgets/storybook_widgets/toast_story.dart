@@ -44,10 +44,10 @@ final class ToastStory extends StoryWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     GSToastTitle(
-                      title: "Hey",
+                      title: "Toast Title",
                     ),
                     GSToastDescription(
-                      description: "Desc Desc Desc Desc Desc Desc ",
+                      description: "Here is the toast description!",
                     ),
                   ],
                 ),
