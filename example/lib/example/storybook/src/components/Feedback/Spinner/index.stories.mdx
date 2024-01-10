@@ -77,6 +77,99 @@ The Examples section provides visual representations of the different variants o
 
 A GSSpinner widget with a label provides informative text or a label alongside the spinner, offering descriptive context and improving user understanding and interaction with the spinner widget within a user interface.
 
+<iframe
+  src="https://gluestack-flutter.web.app/#/spinnerWithLabelPreview"
+  title="Example"
+  width="800"
+  height="300"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  children: [
+    GSSpinner(
+      strokeWidth: 2,
+      style: GSStyle(
+        bg: $GSColors.blueGray300,
+        width: 20,
+        height: 20,
+      ),
+    ),
+    const SizedBox(
+      width: 10,
+    ),
+    const GSText(text: "Please wait..."),
+  ],
+)
+
+```
+
 #### Color Scheme
 
 A GSSpinner widget with a color scheme enhances visual appeal by incorporating distinct colors, adding a touch of customization and style to the spinner widget within a user interface.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/spinnerWithColorsPreview"
+  title="Example"
+  width="800"
+  height="400"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  children: [
+    GSSpinner(
+      strokeWidth: 3,
+      style: GSStyle(
+        bg: $GSColors.blueGray700,
+        color: $GSColors.red400,
+        width: 30,
+        height: 30,
+      ),
+    ),
+    const SizedBox(
+      height: 10,
+    ),
+    GSSpinner(
+      strokeWidth: 3,
+      style: GSStyle(
+        bg: $GSColors.blueGray700,
+        color: $GSColors.orange400,
+        width: 30,
+        height: 30,
+      ),
+    ),
+    const SizedBox(
+      height: 10,
+    ),
+    GSSpinner(
+      strokeWidth: 3,
+      style: GSStyle(
+        bg: $GSColors.blueGray700,
+        color: $GSColors.green400,
+        width: 30,
+        height: 30,
+      ),
+    ),
+    const SizedBox(
+      height: 10,
+    ),
+    GSSpinner(
+      strokeWidth: 3,
+      style: GSStyle(
+        bg: $GSColors.blueGray700,
+        width: 30,
+        height: 30,
+      ),
+    ),
+  ],
+)
+
+
+```

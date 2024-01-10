@@ -154,3 +154,47 @@ The Examples section provides visual representations of the different variants o
 #### GSBadge with Avatar
 
 An example of the GSBadge widget being used with the GSAvatar widget to display badges alongside user avatars for enhanced visual representation or identification.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/badgeWithAvatarPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  mainAxisAlignment: MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    GSAvatar(
+      size: GSSizes.$md,
+      style: GSStyle(bg: $GSColors.backgroundLight600),
+      avatarImage: const GSImage(
+        imageType: GSImageType.network,
+        path: 'https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      ),
+      fallBackText: const GSAvatarFallBackText(
+        'Rax Martin',
+      ),
+    ),
+    const SizedBox(
+      width: 10,
+    ),
+    const GSHeading(text: "Ronald Richards"),
+    const SizedBox(
+      width: 10,
+    ),
+    const GSBadge(
+      action: GSActions.success,
+      text: GSBadgeText(
+        "Verified",
+      ),
+    ),
+  ],
+)
+
+```
