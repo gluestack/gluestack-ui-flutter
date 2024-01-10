@@ -14,7 +14,7 @@ class CenterExample extends StatelessWidget {
                 justifyContent: GSAlignments.start,
                 height: 150,
                 bg: Colors.pink,
-                md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.red)),
+                md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
               ),
               child: const GSCenter(child: Text('Testing Center Widget')),
          )
@@ -31,7 +31,7 @@ class CenterExample extends StatelessWidget {
             justifyContent: GSAlignments.start,
             height: 150,
             bg: Colors.pink,
-            md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.red)),
+            md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
           ),
           child: const GSCenter(child: Text('Testing Center Widget')),
         ),
