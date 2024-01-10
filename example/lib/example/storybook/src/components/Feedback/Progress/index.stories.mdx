@@ -201,10 +201,113 @@ The Examples section provides visual representations of the different variants o
 
 GSProgress widget with value
 
+<iframe
+  src="https://gluestack-flutter.web.app/#/progressValuePreview"
+  title="Example"
+  width="1000"
+  height="400"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSText(text: "Downloading 55%"),
+    SizedBox(
+      height: 5,
+    ),
+    GSProgress(
+      value: 0.55,
+    ),
+  ],
+)
+
+```
+
 #### Color
 
 You can add track color to progress bar as per our needs.
 
+<iframe
+  src="https://gluestack-flutter.web.app/#/progressColorsPreview"
+  title="Example"
+  width="1000"
+  height="400"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(progressValueColor: $GSColors.rose400),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(progressValueColor: $GSColors.blue500),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(progressValueColor: $GSColors.green500),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(progressValueColor: $GSColors.orange500),
+    ),
+  ],
+)
+
+
+```
+
 #### Custom
 
 You can customize the progress bar. Below is the example where we have change the theme of progress bar.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/progressCustomPreview"
+  title="Example"
+  width="1000"
+  height="400"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    const GSHeading(text: "Internal Storage"),
+    const SizedBox(
+      height: 5,
+    ),
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(
+        progressValueColor: $GSColors.green500,
+        bg: $GSColors.green50,
+      ),
+    ),
+    const SizedBox(
+      height: 5,
+    ),
+    const GSText(text: "14GB"),
+  ],
+),
+
+
+```

@@ -24,7 +24,10 @@ import 'package:gluestack_ui_example/preview_widgets/image_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/input_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/link_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/pressable_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/progress_colors_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/progress_custom_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/progress_value_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/radio_button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/spinner_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/switch_preview.dart';
@@ -150,6 +153,24 @@ final GoRouter router = GoRouter(
           path: "progressPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const ProgressPreview();
+          },
+        ),
+        GoRoute(
+          path: "progressValuePreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ProgressValuePreview();
+          },
+        ),
+        GoRoute(
+          path: "progressColorsPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ProgressColorsPreview();
+          },
+        ),
+        GoRoute(
+          path: "progressCustomPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ProgressCustomPreview();
           },
         ),
         GoRoute(
