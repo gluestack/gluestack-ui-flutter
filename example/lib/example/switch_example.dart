@@ -31,22 +31,23 @@ class _SwitchExampleState extends State<SwitchExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSSwitch(
-              size: GSSizes.\$md,
-              isDisabled: false,
-              style: GSStyle(
-                checked: GSStyle(
-                  thumbColor: Colors.grey,
-                  activeThumbColor: Colors.blue,
+    var code = '''
+            GSSwitch(
+                size: GSSizes.\$md,
+                isDisabled: false,
+                style: GSStyle(
+                  checked: GSStyle(
+                    thumbColor: Colors.grey,
+                    activeThumbColor: Colors.blue,
+                  ),
                 ),
-              ),
-              value: val1,
-              onToggle: (bool value) {
-                setState(() {
-                  val1 = value;
-                });
-              },
-            )
+                value: val1,
+                onToggle: (bool value) {
+                  setState(() {
+                    val1 = value;
+                  });
+                },
+             )
 ''';
     return Scaffold(
       appBar: AppBar(

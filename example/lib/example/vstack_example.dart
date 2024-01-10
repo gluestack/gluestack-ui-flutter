@@ -39,28 +39,29 @@ class _VStackExampleState extends State<VStackExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSVStack(
-            mainAxisAlignment: MainAxisAlignment.center,
-            isReversed: false,
-            space: GSSpaces.\$none,
-            children: [
-              GSBox(
-                style:
-                    GSStyle(height: 100, width: 100, color: \$GSColors.blue300),
-                child: const Text('1'),
-              ),
-              GSBox(
-                style:
-                    GSStyle(height: 100, width: 100, color: \$GSColors.blue400),
-                child: const Text('2'),
-              ),
-              GSBox(
-                style:
-                    GSStyle(height: 100, width: 100, color: \$GSColors.blue500),
-                child: const Text('3'),
-              ),
-            ],
-          )
+    var code = '''
+          GSVStack(
+              mainAxisAlignment: MainAxisAlignment.center,
+              isReversed: false,
+              space: GSSpaces.\$none,
+              children: [
+                GSBox(
+                  style:
+                      GSStyle(height: 100, width: 100, color: \$GSColors.blue300),
+                  child: const Text('1'),
+                ),
+                GSBox(
+                  style:
+                      GSStyle(height: 100, width: 100, color: \$GSColors.blue400),
+                  child: const Text('2'),
+                ),
+                GSBox(
+                  style:
+                      GSStyle(height: 100, width: 100, color: \$GSColors.blue500),
+                  child: const Text('3'),
+                ),
+              ],
+           )
   ''';
     return Scaffold(
       appBar: AppBar(

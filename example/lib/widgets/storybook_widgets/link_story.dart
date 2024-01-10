@@ -9,8 +9,8 @@ final class LinkStory extends StoryWidget {
       name: storyName,
       builder: (context) => GSLink(
         style: GSStyle(),
-        url: 'https://gluestack.io/',
-        text: const GSLinkText(text: 'gluestack'),
+        url: 'https://www.gluestack.io/',
+        text: const GSLinkText(text: 'Go to Gluestack'),
       ),
     );
   }

@@ -63,17 +63,18 @@ class _InputExampleState extends State<InputExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSInput(
-            size: GSSizes.\$md,
-            variant: GSVariants.outline,
-            hintText: "Enter text here",
-            isDisabled: false,
-            isInvalid: false,
-            readOnly: false,
-            style: GSStyle(
-              width: 300,
-            ),
-          )
+    var code = '''
+      GSInput(
+          size: GSSizes.\$md,
+          variant: GSVariants.outline,
+          hintText: "Enter text here",
+          isDisabled: false,
+          isInvalid: false,
+          readOnly: false,
+          style: GSStyle(
+                width: 300,
+          ),
+       )
   ''';
     return Scaffold(
       appBar: AppBar(

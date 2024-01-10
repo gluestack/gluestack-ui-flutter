@@ -69,17 +69,18 @@ class _BadgeExampleState extends State<BadgeExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSBadge(
-            action: GSActions.success,
-            variant:  GSVariants.solid,
-            size: GSSizes.\$md,
-            icon: const GSBadgeIcon(
-              iconData: Icons.info_outline,
-            ),
-            text: const GSBadgeText(
-              'information',
-            ),
-          )
+    var code = '''
+          GSBadge(
+              action: GSActions.success,
+              variant:  GSVariants.solid,
+              size: GSSizes.\$md,
+              icon: const GSBadgeIcon(
+                iconData: Icons.info_outline,
+              ),
+              text: const GSBadgeText(
+                'information',
+              ),
+           )
   ''';
     return Scaffold(
       appBar: AppBar(

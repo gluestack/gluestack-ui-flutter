@@ -9,7 +9,7 @@ final class HeadingStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSHeading(
-        text: 'I am a Heading',
+        text: 'This is an example for a Heading',
         style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
       ),
     );

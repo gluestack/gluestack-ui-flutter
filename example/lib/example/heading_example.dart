@@ -7,9 +7,10 @@ class HeadingExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSHeading(
-            text: 'I am a Heading',
-            style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
+    var code = '''
+        GSHeading(
+              text: 'This is an example for a Heading',
+              style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
           )
   ''';
     return Scaffold(
@@ -20,7 +21,7 @@ class HeadingExample extends StatelessWidget {
         child: BaseLayout(
           code: code,
           component: GSHeading(
-            text: 'I am a Heading',
+            text: 'This is an example for a Heading',
             style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
           ),
         ),

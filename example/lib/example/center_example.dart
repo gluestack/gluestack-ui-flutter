@@ -7,16 +7,17 @@ class CenterExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSCenter(
-          style: GSStyle(
-            alignItems: GSAlignments.end,
-            justifyContent: GSAlignments.start,
-            height: 150,
-            bg: Colors.pink,
-            md: GSStyle(bg: Colors.yellow),
-          ),
-          child: const GSCenter(child: Text('Testing Center Widget')),
-        )
+    var code = '''
+        GSCenter(
+              style: GSStyle(
+                alignItems: GSAlignments.end,
+                justifyContent: GSAlignments.start,
+                height: 150,
+                bg: Colors.pink,
+                md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.red)),
+              ),
+              child: const GSCenter(child: Text('Testing Center Widget')),
+         )
   ''';
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +31,7 @@ class CenterExample extends StatelessWidget {
             justifyContent: GSAlignments.start,
             height: 150,
             bg: Colors.pink,
-            md: GSStyle(bg: Colors.yellow),
+            md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.red)),
           ),
           child: const GSCenter(child: Text('Testing Center Widget')),
         ),

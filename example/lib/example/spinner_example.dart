@@ -7,13 +7,15 @@ class SpinnerExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSSpinner(
-            strokeWidth: 6,
-            style: GSStyle(
-                color: \$GSColors.rose500,
-                bg: \$GSColors.blueGray300,
-                width: 40,
-                height: 40),
+    var code = '''
+          GSSpinner(
+              strokeWidth: 6,
+              style: GSStyle(
+                  color: \$GSColors.rose500,
+                  bg: \$GSColors.blueGray300,
+                  width: 40,
+                  height: 40
+                  ),
           )
   ''';
     return Scaffold(

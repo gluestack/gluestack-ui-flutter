@@ -9,9 +9,9 @@ final class TextStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSText(
-        text: 'test 1',
-        bold: true,
-        underline: true,
+        text: 'This is an example of a simple text.',
+        // bold: true,
+        // underline: true,
         style: GSStyle(
           textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
         ),
