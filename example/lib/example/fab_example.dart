@@ -58,9 +58,22 @@ class _FabExampleState extends State<FabExample> {
 
   @override
   Widget build(BuildContext context) {
+    const code = """
+              GSFab(
+                size: selectedSizeOption,
+                placement: selectedPlacementOption,
+                onPressed: () {},
+                isDisabled: isDisabled,
+                isHovered: isHovered,
+                isPressed: isPressed,
+                icon: const GSFabIcon(icon: Icons.add),
+                label: const GSFabLabel(text: 'Quick Start'),
+              ),
+""";
     return Scaffold(
       appBar: AppBar(),
       body: BaseLayout(
+        code: code,
         component: Center(
           child: Stack(
             children: [
