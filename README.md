@@ -30,7 +30,7 @@ Add the package to your dependencies:
 
 ```yaml
 dependencies:
-  gluestack_ui: 0.0.1-alpha.3
+  gluestack_ui: 0.0.1-alpha.4
 ```
 
 OR
@@ -101,6 +101,43 @@ GluestackProvider(
   ),
   child: MaterialApp.router(
     ....
+  ),
+)
+```
+
+## Providing custom Gluestack Config
+
+In case you want to customise the default values provided by the package for individual widgets, you can specify your own configuration for the widgets.
+
+**NOTE:** Format of the configuration must be same as the own used by Gluestack internally. Please refer to the default [config file](https://github.com/gluestack/gluestack-ui-flutter/blob/main/lib/src/theme/config/button/button.dart) for GSButton.
+
+Below example provides custom configuration for `GSButton` widget.
+
+```dart
+// Example of button configuration.
+const Map<String, dynamic> customButtonConfig = {
+  ...
+  '_dark': {
+    'bg': '\$primary400',
+    'borderColor': '\$primary700',
+    ':hover': {
+      'bg': '\$error300',
+      'borderColor': '\$primary400',
+    }
+  }
+  ...
+};
+
+
+GluestackProvider(
+  gluestackCustomConfig: GluestackCustomConfig(
+    button: customButtonConfig,
+    buttonText: customButtonTextConfig,
+    ...
+  ),
+  gluestackTokenConfig: GluestackTokenConfig(...),
+  child: MaterialApp.router(
+    ...
   ),
 )
 ```
