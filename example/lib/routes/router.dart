@@ -4,6 +4,7 @@ import 'package:gluestack_ui_example/main.dart';
 import 'package:gluestack_ui_example/preview_widgets/alert_dialog_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/avatar_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/badge_with_avatar_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/box_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_group_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
@@ -23,13 +24,17 @@ import 'package:gluestack_ui_example/preview_widgets/icon_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/image_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/input_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/link_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/multiple_checkbox_horizontal_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/multiple_checkbox_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/pressable_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_colors_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_custom_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_value_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/radio_button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/spinner_colors_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/spinner_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/spinner_with_label_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/switch_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/text_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/textarea_preview.dart';
@@ -96,6 +101,12 @@ final GoRouter router = GoRouter(
           },
         ),
         GoRoute(
+          path: "badgeWithAvatarPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const BadgeWithAvatarPreview();
+          },
+        ),
+        GoRoute(
           path: "switchPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const SwitchPreview();
@@ -111,6 +122,18 @@ final GoRouter router = GoRouter(
           path: "checkboxPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const CheckboxPreview();
+          },
+        ),
+        GoRoute(
+          path: "multipleCheckboxPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const MultipleCheckboxPreview();
+          },
+        ),
+        GoRoute(
+          path: "multipleCheckboxHorizontalPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const MultipleCheckboxHorizontalPreview();
           },
         ),
         GoRoute(
@@ -219,6 +242,18 @@ final GoRouter router = GoRouter(
           path: "spinnerPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const SpinnerPreview();
+          },
+        ),
+        GoRoute(
+          path: "spinnerWithLabelPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SpinnerWithLabelPreview();
+          },
+        ),
+        GoRoute(
+          path: "spinnerWithColorsPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SpinnerWithColorsPreview();
           },
         ),
         GoRoute(

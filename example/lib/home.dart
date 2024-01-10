@@ -140,6 +140,20 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/badgeWithAvatarPreview");
+                },
+                child: const Text(
+                  'Preview Badge with Avatar',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   router.go("/switchPreview");
                 },
                 child: const Text(
@@ -172,6 +186,34 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text(
                   'Preview Checkbox',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/multipleCheckboxPreview");
+                },
+                child: const Text(
+                  'Preview Multiple Checkbox',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/multipleCheckboxHorizontalPreview");
+                },
+                child: const Text(
+                  'Preview Multiple Horizontal Checkbox',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.blue,
@@ -424,6 +466,34 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text(
                   'Preview Spinner',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/spinnerWithLabelPreview");
+                },
+                child: const Text(
+                  'Preview Spinner with label',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/spinnerWithColorsPreview");
+                },
+                child: const Text(
+                  'Preview Spinner with Colors',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.blue,
