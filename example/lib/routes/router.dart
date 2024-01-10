@@ -12,6 +12,7 @@ import 'package:gluestack_ui_example/preview_widgets/button_with_icon_preview.da
 import 'package:gluestack_ui_example/preview_widgets/center_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/checkbox_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/divider_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/divider_variants_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/hstack_reversed_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/icon_button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/loading_button_preview.dart';
@@ -173,6 +174,12 @@ final GoRouter router = GoRouter(
           path: "dividerPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const DividerPreview();
+          },
+        ),
+        GoRoute(
+          path: "dividerVariantsPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const DividerVariantsPreview();
           },
         ),
         GoRoute(

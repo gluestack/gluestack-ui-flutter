@@ -20,8 +20,8 @@ This is an illustration of a **Themed GSBox** widget with default configuration.
 <iframe
   src="https://gluestack-flutter.web.app/#/boxPreview"
   title="Example"
-  width="800"
-  height="350"
+  width="1000"
+  height="400"
 ></iframe>
 
 ```dart
@@ -29,11 +29,14 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSBox(
   style: GSStyle(
-    padding: const EdgeInsets.all($GSSpace.$5),
+    padding: EdgeInsets.all($GSSpace.$5),
     bg: $GSColors.primary500,
   ),
-  child: const Text('This is the Box'),
-)
+  child: const GSText(
+    text: 'This is the Box',
+  ),
+),
+
 ```
 
 <br />
@@ -57,7 +60,3 @@ It inherits all the properties of Flutter's [Container](https://api.flutter.dev/
 ## Themed
 
 The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
-
-### Examples
-
-The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.

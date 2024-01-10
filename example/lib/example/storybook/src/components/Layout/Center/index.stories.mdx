@@ -19,7 +19,7 @@ This is an illustration of a **Themed GSCenter** widget with default configurati
 <iframe
   src="https://gluestack-flutter.web.app/#/centerPreview"
   title="Example"
-  width="800"
+  width="1000"
   height="400"
 ></iframe>
 
@@ -32,8 +32,13 @@ GSCenter(
     width: 300,
     bg: $GSColors.primary500,
   ),
-  child: const GSCenter(child: Text('This is the Center')),
+  child: const GSCenter(
+    child: const GSText(
+      text: 'This is the Center',
+    ),
+  ),
 )
+
 ```
 
 <br />
