@@ -5,6 +5,5 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 const GSStyleConfig gsTextConfig =
     GSStyleConfig(componentName: 'ButtonText', ancestorStyle: ['_text']);
 
-GSStyle buttonTextStyle = GSStyle.fromMap(
-        data: getIt<GluestackCustomConfig>().text)
-    .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonText));
+GSStyle buttonTextStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonText);

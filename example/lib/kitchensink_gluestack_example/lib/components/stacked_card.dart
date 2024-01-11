@@ -59,7 +59,11 @@ class KSStackedCard extends StatelessWidget {
                               )),
                           child: Row(
                             children: [
-                              GSText(text: stackedCardModel.buttonText),
+                              GSText(
+                                text: stackedCardModel.buttonText,
+                                style: GSStyle(
+                                    textStyle: const TextStyle(color: Colors.white)),
+                              ),
                               const GSButtonIcon(icon: Icons.arrow_forward_ios)
                             ],
                           ),
@@ -111,9 +115,7 @@ class KSStackedCard extends StatelessWidget {
                   )
                 ],
               ),
-              GSText(
-                  size: GSSizes.$sm,
-                  text: stackedCardModel.location),
+              GSText(size: GSSizes.$sm, text: stackedCardModel.location),
               GSHStack(
                 children: [
                   GSText(

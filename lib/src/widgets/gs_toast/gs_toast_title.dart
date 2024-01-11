@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_title_style.dart';
+
+import '../gs_text/public.dart';
 
 class GSToastTitle extends StatelessWidget {
   final String title;
@@ -12,24 +15,19 @@ class GSToastTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gstoastTitleConfig.ancestorStyle.first];
-    final fontSize = toastTitleStyle
-        .sizeMap(toastTitleStyle.props?.size)?.textStyle?.fontSize;
-    final color = toastTitleStyle.color;
-    final fontWeight = toastTitleStyle.textStyle?.fontWeight;
 
-    var defaultTextStyle = ancestorTextStyles?.textStyle?.merge(
-      TextStyle(
-        color: color,
-        fontWeight: fontWeight,
-        fontSize: fontSize,
-      ),
+    GSStyle styler = resolveStyles(
+      context: context,
+      styles: [
+        toastTitleStyle,
+        ancestorTextStyles,
+      ],
+      inlineStyle: style,
     );
 
-    final mergedStyle =
-        defaultTextStyle?.merge(style != null ? style!.textStyle : null);
-    return Text(
-      title,
-      style: mergedStyle,
+    return GSText(
+      text: title,
+      style: styler,
     );
   }
 }
