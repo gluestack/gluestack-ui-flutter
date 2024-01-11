@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_description_style.dart';
@@ -13,7 +13,9 @@ class GSToastDescription extends StatelessWidget {
     final ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gstoastDescriptionConfig.ancestorStyle.first];
     final fontSize = toastDescriptionStyle
-        .sizeMap(toastDescriptionStyle.props?.size)?.textStyle?.fontSize;
+        .sizeMap(toastDescriptionStyle.props?.size)
+        ?.textStyle
+        ?.fontSize;
 
     final color = toastDescriptionStyle.color;
 

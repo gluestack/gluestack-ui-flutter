@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector_provider.dart';
 
 class GSFocusableActionDetector extends StatefulWidget {
@@ -13,7 +13,7 @@ class GSFocusableActionDetector extends StatefulWidget {
     this.mouseCursor,
     this.isHovered = false,
     this.isFocused = false,
-    this.isActive=false,
+    this.isActive = false,
   });
 
   @override
