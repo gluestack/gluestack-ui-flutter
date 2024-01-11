@@ -78,12 +78,7 @@ class KSMainComponent extends StatelessWidget {
                           ),
                         ),
                       ),
-                      GSButtonText(
-                        style: GSStyle(
-                          dark: GSStyle(
-                              textStyle:
-                                  TextStyle(color: $GSColors.textLight200)),
-                        ),
+                      const GSButtonText(
                         text: 'List your place',
                       ),
                     ]),
