@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Gluestack UI examples')),
-      body: const SafeArea(
+      body: SafeArea(
         child: SingleChildScrollView(
           child: GSCenter(
             child: GSVStack(
@@ -29,6 +29,17 @@ class _HomePageState extends State<HomePage> {
                 const NavButton(
                   title: "Storybook",
                   routePath: "/storybook",
+                ),
+                GSLink(
+                  url: 'https://kitchensink-23184.web.app/',
+                  text: GSLinkText(
+                    text: 'KitchenSink',
+                    style: GSStyle(
+                        textStyle: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue,
+                    )),
+                  ),
                 ),
                 const NavButton(
                   title: "GS Form",

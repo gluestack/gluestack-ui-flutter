@@ -4,6 +4,8 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_text_style.dart';
 
+import '../gs_text/public.dart';
+
 class GSButtonText extends StatelessWidget {
   final String text;
   final GSStyle? style;
@@ -29,16 +31,9 @@ class GSButtonText extends StatelessWidget {
       inlineStyle: style,
     );
 
-    final textStyle = TextStyle(
-        color: styler.color,
-        fontWeight: styler.textStyle?.fontWeight,
-        fontSize: styler.textStyle?.fontSize,
-        decoration: styler.textStyle?.decoration,
-        height: styler.textStyle?.height);
-
-    return Text(
-      text,
-      style: textStyle,
+    return GSText(
+      text: text,
+      style: styler,
     );
   }
 }
