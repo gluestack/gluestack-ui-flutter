@@ -98,6 +98,20 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/buttonWithLinkPreview");
+                },
+                child: const Text(
+                  'Button With Link Preview',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   router.go("/buttonWithFullWidthPreview");
                 },
                 child: const Text(
@@ -214,6 +228,76 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text(
                   'Preview Multiple Horizontal Checkbox',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/checkboxWithHelpTextPreview");
+                },
+                child: const Text(
+                  'Preview Checkbox With Help Text',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/formControlCheckboxPreview");
+                },
+                child: const Text(
+                  'Preview FormControl Checkbox',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/controlledCheckboxPreview");
+                },
+                child: const Text(
+                  'Preview Controlled Checkbox',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/uncontrolledCheckboxPreview");
+                },
+                child: const Text(
+                  'Preview Uncontrolled Checkbox',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/checkboxGroupPreview");
+                },
+                child: const Text(
+                  'Preview Group Checkbox',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.blue,

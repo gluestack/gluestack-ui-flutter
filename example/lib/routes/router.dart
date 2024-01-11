@@ -11,11 +11,15 @@ import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_with_full_width_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/button_with_icon_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/center_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/checkbox_group_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/checkbox_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/controlled_checkbox_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/divider_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/divider_variants_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/formcontrol_checkbox_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/hstack_reversed_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/icon_button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/link_button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/loading_button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/fab_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/heading_preview.dart';
@@ -39,9 +43,12 @@ import 'package:gluestack_ui_example/preview_widgets/switch_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/text_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/textarea_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/toast_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/uncontrolled_checkbox_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/vstack_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/vstack_reversed_preview.dart';
 import 'package:go_router/go_router.dart';
+
+import '../preview_widgets/checkbox_with_help_text_preview.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
@@ -80,6 +87,12 @@ final GoRouter router = GoRouter(
           path: "buttonWithIconsPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const ButtonWithIconsPreview();
+          },
+        ),
+        GoRoute(
+          path: "buttonWithLinkPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const LinkButtonPreview();
           },
         ),
         GoRoute(
@@ -134,6 +147,36 @@ final GoRouter router = GoRouter(
           path: "multipleCheckboxHorizontalPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const MultipleCheckboxHorizontalPreview();
+          },
+        ),
+        GoRoute(
+          path: "checkboxWithHelpTextPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const CheckboxWithHelpTextPreview();
+          },
+        ),
+        GoRoute(
+          path: "formControlCheckboxPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const FormControlCheckboxPreview();
+          },
+        ),
+        GoRoute(
+          path: "controlledCheckboxPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const ControlledCheckboxPreview();
+          },
+        ),
+        GoRoute(
+          path: "uncontrolledCheckboxPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const UncontrolledCheckboxPreview();
+          },
+        ),
+        GoRoute(
+          path: "checkboxGroupPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const CheckboxGroupPreview();
           },
         ),
         GoRoute(
