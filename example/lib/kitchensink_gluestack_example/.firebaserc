@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "kitchensink-gluestack-example"
-  }
+    "default": "kitchensink-23184",
+    "staging": "kitchensink-23184"
+  },
+  "targets": {},
+  "etags": {}
 }
