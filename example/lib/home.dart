@@ -140,6 +140,34 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/inputWithFormcontrolPreview");
+                },
+                child: const Text(
+                  'Preview Input With Formcontrol ',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/inputWithIconPreview");
+                },
+                child: const Text(
+                  'Preview Input With Icon ',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   router.go("/badgePreview");
                 },
                 child: const Text(
@@ -392,6 +420,48 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/multipleRadioButtonPreview");
+                },
+                child: const Text(
+                  'Preview Multiple Radio Button',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/multipleRadioButtonHorizontalPreview");
+                },
+                child: const Text(
+                  'Preview Multiple Horizontal Radio Button',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/radioButtonWithHelpTextPreview");
+                },
+                child: const Text(
+                  'Preview Radio Button with Help Text',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   router.go("/progressPreview");
                 },
                 child: const Text(
@@ -616,10 +686,52 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/linkWithTextPreview");
+                },
+                child: const Text(
+                  'Preview Link with Text',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/linkWithIconPreview");
+                },
+                child: const Text(
+                  'Preview Link with Icon',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   router.go("/pressablePreview");
                 },
                 child: const Text(
                   'Preview Pressable',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/pressableWithStatesPreview");
+                },
+                child: const Text(
+                  'Preview Pressable with States',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.blue,

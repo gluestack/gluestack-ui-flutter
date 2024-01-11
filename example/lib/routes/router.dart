@@ -19,7 +19,11 @@ import 'package:gluestack_ui_example/preview_widgets/divider_variants_preview.da
 import 'package:gluestack_ui_example/preview_widgets/formcontrol_checkbox_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/hstack_reversed_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/icon_button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/input_with_formcontrol_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/input_with_icon_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/link_button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/link_with_icon_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/link_with_text_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/loading_button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/fab_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/heading_preview.dart';
@@ -30,12 +34,16 @@ import 'package:gluestack_ui_example/preview_widgets/input_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/link_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/multiple_checkbox_horizontal_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/multiple_checkbox_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/multiple_radio_button_horizontal_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/multiple_radio_button_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/pressable_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/pressable_with_states_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_colors_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_custom_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_value_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/radio_button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/radio_button_with_help_text_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/spinner_colors_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/spinner_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/spinner_with_label_preview.dart';
@@ -105,6 +113,18 @@ final GoRouter router = GoRouter(
           path: "inputPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const InputPreview();
+          },
+        ),
+        GoRoute(
+          path: "inputWithFormcontrolPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const InputWithFormcontrolPreview();
+          },
+        ),
+        GoRoute(
+          path: "inputWithIconPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const InputWithIconPreview();
           },
         ),
         GoRoute(
@@ -216,6 +236,24 @@ final GoRouter router = GoRouter(
           },
         ),
         GoRoute(
+          path: "multipleRadioButtonPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const MultipleRadioButtonPreview();
+          },
+        ),
+        GoRoute(
+          path: "multipleRadioButtonHorizontalPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const MultipleRadioButtonHorizontalPreview();
+          },
+        ),
+        GoRoute(
+          path: "radioButtonWithHelpTextPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const RadioButtonWithHelpTextPreview();
+          },
+        ),
+        GoRoute(
           path: "progressPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const ProgressPreview();
@@ -312,9 +350,27 @@ final GoRouter router = GoRouter(
           },
         ),
         GoRoute(
+          path: "linkWithTextPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const LinkWithTextPreview();
+          },
+        ),
+        GoRoute(
+          path: "linkWithIconPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const LinkWithIconPreview();
+          },
+        ),
+        GoRoute(
           path: "pressablePreview",
           builder: (BuildContext context, GoRouterState state) {
             return const PressablePreview();
+          },
+        ),
+        GoRoute(
+          path: "pressableWithStatesPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const PressableWithStatesPreview();
           },
         ),
         GoRoute(

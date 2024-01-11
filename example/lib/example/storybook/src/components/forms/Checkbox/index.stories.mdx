@@ -443,6 +443,51 @@ GSCheckbox provide a mutually exclusive selection mechanism, allowing users to c
   height="350"
 ></iframe>
 
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Flutter",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Flutter"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React Native",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React Native"),
+    ),
+  ],
+),
+
+```
+
 #### Horizontal
 
 A horizontal layout incorporating a checkbox allows for intuitive and space-efficient selection of multiple options within a linear layout.
@@ -453,6 +498,51 @@ A horizontal layout incorporating a checkbox allows for intuitive and space-effi
   width="1000"
   height="350"
 ></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Flutter",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Flutter"),
+    ),
+    const SizedBox(
+      width: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React"),
+    ),
+    const SizedBox(
+      width: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React Native",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React Native"),
+    ),
+  ],
+)
+
+```
 
 #### With help text
 
@@ -465,6 +555,64 @@ A checkbox widget with help text provides informative guidance alongside selecta
   height="350"
 ></iframe>
 
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(
+          margin: EdgeInsets.only(
+            right: $GSSpace.$4,
+          ),
+        ),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Design",
+      onChanged: (value) {},
+      label: GSVStack(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GSCheckBoxLabel(text: "Design"),
+          GSText(
+            text: 'Subscribe to updates from the Design Feed',
+          ),
+        ],
+      ),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(
+          margin: EdgeInsets.only(
+            right: $GSSpace.$4,
+          ),
+        ),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Marketing",
+      onChanged: (value) {},
+      label: GSVStack(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GSCheckBoxLabel(text: "Marketing"),
+          GSText(
+            text: 'Subscribe to updates from the Marketing Feed',
+          ),
+        ],
+      ),
+    ),
+  ],
+)
+
+```
+
 #### Form Control
 
 A checkbox widget integrated with form control enhances the user experience by enabling easy selection and submission of options within a structured input context.
@@ -475,6 +623,60 @@ A checkbox widget integrated with form control enhances the user experience by e
   width="1000"
   height="350"
 ></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    const GSHeading(text: 'Sign up for newsletters'),
+    const SizedBox(
+      height: 10,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Flutter",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Flutter"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React Native",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React Native"),
+    ),
+    const SizedBox(
+      height: 10,
+    ),
+    const GSText(text: 'Subscribe to newsletters for updates'),
+  ],
+)
+
+
+```
 
 #### Controlled
 
@@ -487,6 +689,53 @@ A controlled widget architecture incorporates a checkbox widget, allowing for pr
   height="350"
 ></iframe>
 
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      isChecked: true,
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Flutter",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Flutter"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      isChecked: true,
+      value: "React Native",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React Native"),
+    ),
+  ],
+)
+
+```
+
 #### Uncontrolled
 
 An uncontrolled widget utilizes a checkbox widget, providing a simpler implementation where the checkbox state is managed internally, without explicit control from external sources.
@@ -498,6 +747,39 @@ An uncontrolled widget utilizes a checkbox widget, providing a simpler implement
   height="350"
 ></iframe>
 
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Appartments",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Appartments"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Residents",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Residents"),
+    ),
+  ],
+)
+
+
+```
+
 #### Checkbox group
 
 The checkbox group widget allows users to group checkbox and display them in a horizontal or vertical row for better visual representation and functionality.
@@ -508,3 +790,40 @@ The checkbox group widget allows users to group checkbox and display them in a h
   width="1000"
   height="350"
 ></iframe>
+```
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      isDisabled: true,
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Disabled",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Disabled"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Active",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Active"),
+    ),
+  ],
+)
+
+
+
+```
