@@ -125,7 +125,7 @@ final GoRouter router = GoRouter(
               const MultipleCheckboxHorizontalPreview(),
         ),
         GoRoute(
-          path: "checkbox-with-help-text-preview",
+          path: "checkbox-with-helptext-preview",
           builder: (context, state) => const CheckboxWithHelpTextPreview(),
         ),
         GoRoute(
@@ -190,7 +190,7 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const InputExample(),
         ),
         GoRoute(
-          path: "input-with-formcontrol-preview",
+          path: "input-with-form-control-preview",
           builder: (context, state) => const InputWithFormcontrolPreview(),
         ),
         GoRoute(
@@ -253,7 +253,7 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const RadioButtonWithHelpTextPreview(),
         ),
         GoRoute(
-          path: "radio-button-with-formcontrol-preview",
+          path: "radio-button-with-form-control-preview",
           builder: (context, state) =>
               const RadioButtonWithFormControlPreview(),
         ),
@@ -295,7 +295,7 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const TextAreaExample(),
         ),
         GoRoute(
-          path: "textarea-formcontrol-preview",
+          path: "textarea-form-control-preview",
           builder: (context, state) => const TextareaFormControlPreview(),
         ),
         GoRoute(
