@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/form_helper_text_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
@@ -10,7 +10,7 @@ class GSFormHelperText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final size = GSFormProvider.of(context)?.size;
+    final size = GSFormProvider.of(context)?.size;
     return GSText(
       text: text,
       size: size,

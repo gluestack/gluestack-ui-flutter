@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
@@ -54,11 +54,11 @@ class GSRespRowColumn extends StatelessWidget {
               child: e);
         } else {
           return GSBox(
-                style: GSStyle(
-                  padding: separatorPadding ??
-                      const EdgeInsets.symmetric(vertical: 4),
-                ),
-                child: e);
+              style: GSStyle(
+                padding:
+                    separatorPadding ?? const EdgeInsets.symmetric(vertical: 4),
+              ),
+              child: e);
         }
       }).toList(),
     );

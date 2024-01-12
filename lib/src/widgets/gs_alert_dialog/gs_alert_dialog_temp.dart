@@ -51,7 +51,8 @@ class GSAlertDialogTemp extends StatefulWidget {
       this.icon,
       this.iconColor,
       this.iconPadding,
-      this.insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+      this.insetPadding =
+          const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
       this.scrollable = false,
       this.semanticLabel,
       this.shadowColor,
@@ -83,7 +84,8 @@ class GSAlertDialogTemp extends StatefulWidget {
     Widget? icon,
     Color? iconColor,
     EdgeInsetsGeometry? iconPadding,
-    EdgeInsets? insetPadding = const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+    EdgeInsets? insetPadding =
+        const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
     bool? scrollable = false,
     String? semanticLabel,
     Color? shadowColor,
@@ -93,11 +95,13 @@ class GSAlertDialogTemp extends StatefulWidget {
     TextStyle? titleTextStyle,
   }) {
     showDialog(
-      barrierColor: !showBackdrop! ? Colors.transparent : Colors.black.withOpacity(0.5),
+      barrierColor:
+          !showBackdrop! ? Colors.transparent : Colors.black.withOpacity(0.5),
       context: context,
       builder: (BuildContext context) {
         return GSAlertDialogTemp(
-          gsAlertDialogContent: gsAlertDialogContent ?? const GSAlertDialogContent(),
+          gsAlertDialogContent:
+              gsAlertDialogContent ?? const GSAlertDialogContent(),
           style: style,
           actionsAlignment: actionsAlignment,
           actions: actions,
@@ -143,7 +147,9 @@ class _GSAlertDialogState extends State<GSAlertDialogTemp> {
       titlePadding: widget.titlePadding ?? widget.style?.padding,
       titleTextStyle: widget.titleTextStyle ?? widget.style?.textStyle,
       // TODO : Add default padding.
-      contentPadding: widget.contentPadding ?? widget.style?.padding ?? const EdgeInsets.all(0),
+      contentPadding: widget.contentPadding ??
+          widget.style?.padding ??
+          const EdgeInsets.all(0),
       contentTextStyle: widget.contentTextStyle ?? widget.style?.textStyle,
       actionsPadding: widget.actionsPadding ?? widget.style?.padding,
       backgroundColor: widget.backgroundColor ?? widget.style?.bg,

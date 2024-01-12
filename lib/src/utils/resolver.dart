@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/token/font_weight.dart';
 import 'package:gluestack_ui/src/token/line_height.dart';
@@ -59,10 +59,10 @@ Color? resolveColorFromString(String? color) {
     return null;
   }
   if (color.contains("transparent")) {
-    return Colors.transparent;
+    return const Color(0x00000000); //transparent
   }
   if (color.contains("white")) {
-    return Colors.white;
+    return const Color(0xFFFFFFFF); // white
   }
   return $GSColors.colorMap[color.substring(1)];
 }
@@ -419,7 +419,6 @@ GSPlacements? resolvePlacementFromString(String? placement) {
 
   return placement != null ? placementMap[placement] : null;
 }
-
 
 Map<String, GSStyle>? resolveCompoundVariants(
     {required List<Map<String, dynamic>>? compoundVariants}) {

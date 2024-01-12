@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
@@ -106,7 +106,8 @@ class GSBadge extends StatelessWidget {
                     : BorderStyle.none,
                 color: styler.borderColor ??
                     styler.outlineColor ??
-                    Colors.transparent),
+                    const Color(0x00000000) //transparent
+                ),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
           child: Row(
