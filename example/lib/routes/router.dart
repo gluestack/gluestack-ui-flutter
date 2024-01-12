@@ -68,9 +68,7 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "avatar-with-label-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const AvatarWithLabelPreview();
-          },
+          builder: (context, state) => const AvatarWithLabelPreview(),
         ),
         GoRoute(
           path: "example-badge",
@@ -78,9 +76,7 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "badge-with-avatar-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const BadgeWithAvatarPreview();
-          },
+          builder: (context, state) => const BadgeWithAvatarPreview(),
         ),
         GoRoute(
           path: "example-button",
@@ -92,33 +88,23 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "icon-button-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const IconButtonPreview();
-          },
+          builder: (context, state) => const IconButtonPreview(),
         ),
         GoRoute(
           path: "button-group-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ButtonGroupPreview();
-          },
+          builder: (context, state) => const ButtonGroupPreview(),
         ),
         GoRoute(
           path: "button-with-icons-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ButtonWithIconsPreview();
-          },
+          builder: (context, state) => const ButtonWithIconsPreview(),
         ),
         GoRoute(
           path: "button-with-link-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const LinkButtonPreview();
-          },
+          builder: (context, state) => const LinkButtonPreview(),
         ),
         GoRoute(
           path: "button-with-fullwidth-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ButtonWithFullWidthPreview();
-          },
+          builder: (context, state) => const ButtonWithFullWidthPreview(),
         ),
         GoRoute(
           path: "example-center",
@@ -131,45 +117,32 @@ final GoRouter router = GoRouter(
 
         GoRoute(
           path: "multiple-checkbox-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const MultipleCheckboxPreview();
-          },
+          builder: (context, state) => const MultipleCheckboxPreview(),
         ),
         GoRoute(
           path: "multiple-checkbox-horizontal-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const MultipleCheckboxHorizontalPreview();
-          },
+          builder: (context, state) =>
+              const MultipleCheckboxHorizontalPreview(),
         ),
         GoRoute(
           path: "checkbox-with-help-text-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const CheckboxWithHelpTextPreview();
-          },
+          builder: (context, state) => const CheckboxWithHelpTextPreview(),
         ),
         GoRoute(
           path: "form-control-checkbox-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const FormControlCheckboxPreview();
-          },
+          builder: (context, state) => const FormControlCheckboxPreview(),
         ),
         GoRoute(
           path: "controlled-checkbox-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ControlledCheckboxPreview();
-          },
+          builder: (context, state) => const ControlledCheckboxPreview(),
         ),
         GoRoute(
           path: "uncontrolled-checkbox-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const UncontrolledCheckboxPreview();
-          },
+          builder: (context, state) => const UncontrolledCheckboxPreview(),
         ),
         GoRoute(
           path: "checkbox-group-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const CheckboxGroupPreview();
-          },
+          builder: (context, state) => const CheckboxGroupPreview(),
         ),
         GoRoute(
           path: "example-divider",
@@ -178,9 +151,7 @@ final GoRouter router = GoRouter(
 
         GoRoute(
           path: "divider-variants-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const DividerVariantsPreview();
-          },
+          builder: (context, state) => const DividerVariantsPreview(),
         ),
         GoRoute(
           path: "example-fab",
@@ -204,9 +175,7 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "hstack-reversed-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const HStackReversedPreview();
-          },
+          builder: (context, state) => const HStackReversedPreview(),
         ),
         GoRoute(
           path: "example-icon",
@@ -222,15 +191,11 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "input-with-formcontrol-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const InputWithFormcontrolPreview();
-          },
+          builder: (context, state) => const InputWithFormcontrolPreview(),
         ),
         GoRoute(
           path: "input-with-icon-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const InputWithIconPreview();
-          },
+          builder: (context, state) => const InputWithIconPreview(),
         ),
         GoRoute(
           path: "example-link",
@@ -238,15 +203,11 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "link-with-text-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const LinkWithTextPreview();
-          },
+          builder: (context, state) => const LinkWithTextPreview(),
         ),
         GoRoute(
           path: "link-with-icon-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const LinkWithIconPreview();
-          },
+          builder: (context, state) => const LinkWithIconPreview(),
         ),
         GoRoute(
           path: "example-pressable",
@@ -254,9 +215,7 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "pressable-with-states-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const PressableWithStatesPreview();
-          },
+          builder: (context, state) => const PressableWithStatesPreview(),
         ),
         GoRoute(
           path: "example-progress",
@@ -265,21 +224,15 @@ final GoRouter router = GoRouter(
 
         GoRoute(
           path: "progress-value-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ProgressValuePreview();
-          },
+          builder: (context, state) => const ProgressValuePreview(),
         ),
         GoRoute(
           path: "progress-colors-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ProgressColorsPreview();
-          },
+          builder: (context, state) => const ProgressColorsPreview(),
         ),
         GoRoute(
           path: "progress-custom-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ProgressCustomPreview();
-          },
+          builder: (context, state) => const ProgressCustomPreview(),
         ),
         GoRoute(
           path: "example-radio-button",
@@ -288,33 +241,25 @@ final GoRouter router = GoRouter(
 
         GoRoute(
           path: "multiple-radio-button-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const MultipleRadioButtonPreview();
-          },
+          builder: (context, state) => const MultipleRadioButtonPreview(),
         ),
         GoRoute(
           path: "multiple-radio-button-horizontal-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const MultipleRadioButtonHorizontalPreview();
-          },
+          builder: (context, state) =>
+              const MultipleRadioButtonHorizontalPreview(),
         ),
         GoRoute(
           path: "radio-button-with-help-text-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const RadioButtonWithHelpTextPreview();
-          },
+          builder: (context, state) => const RadioButtonWithHelpTextPreview(),
         ),
         GoRoute(
           path: "radio-button-with-formcontrol-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const RadioButtonWithFormControlPreview();
-          },
+          builder: (context, state) =>
+              const RadioButtonWithFormControlPreview(),
         ),
         GoRoute(
           path: "radio-button-controlled-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const RadioButtonControlledPreview();
-          },
+          builder: (context, state) => const RadioButtonControlledPreview(),
         ),
         GoRoute(
           path: "example-spinner",
@@ -323,15 +268,11 @@ final GoRouter router = GoRouter(
 
         GoRoute(
           path: "spinner-with-label-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const SpinnerWithLabelPreview();
-          },
+          builder: (context, state) => const SpinnerWithLabelPreview(),
         ),
         GoRoute(
           path: "spinner-with-colors-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const SpinnerWithColorsPreview();
-          },
+          builder: (context, state) => const SpinnerWithColorsPreview(),
         ),
         GoRoute(
           path: "example-switch",
@@ -339,21 +280,15 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "switch-with-label-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const SwitchWithLabelPreview();
-          },
+          builder: (context, state) => const SwitchWithLabelPreview(),
         ),
         GoRoute(
           path: "switch-checked-state-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const SwitchCheckedStatePreview();
-          },
+          builder: (context, state) => const SwitchCheckedStatePreview(),
         ),
         GoRoute(
           path: "switch-with-color-scheme-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const SwitchWithColorSchemePreview();
-          },
+          builder: (context, state) => const SwitchWithColorSchemePreview(),
         ),
         GoRoute(
           path: "example-text_area",
@@ -361,9 +296,7 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "textarea-formcontrol-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const TextareaFormControlPreview();
-          },
+          builder: (context, state) => const TextareaFormControlPreview(),
         ),
         GoRoute(
           path: "example-text",
@@ -379,9 +312,7 @@ final GoRouter router = GoRouter(
         ),
         GoRoute(
           path: "vstack-reversed-preview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const VStackReversedPreview();
-          },
+          builder: (context, state) => const VStackReversedPreview(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
