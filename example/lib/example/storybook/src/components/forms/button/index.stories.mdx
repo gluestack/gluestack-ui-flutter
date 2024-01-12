@@ -11,6 +11,7 @@ showHeader: true
 ---
 
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { env } from "process";
 
 import {
   AppProvider,
@@ -23,7 +24,7 @@ import {
 <Meta title="Components/Forms/Button" />
 
 <iframe
-  src="https://gluestack-flutter.web.app/#/button-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + "#/button-preview"}
   title="Example"
   width="1000"
   height="400"
