@@ -11,6 +11,7 @@ class HStackReversedPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'HStack',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'HStack',

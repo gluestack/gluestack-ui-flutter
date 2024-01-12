@@ -11,6 +11,7 @@ class InputWithIconPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Input',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Input',

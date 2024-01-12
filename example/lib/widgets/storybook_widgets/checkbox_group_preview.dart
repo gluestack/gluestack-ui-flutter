@@ -10,6 +10,7 @@ class CheckboxGroupPreview extends StatelessWidget {
     return materialWrapper(
       context,
       Storybook(
+        initialLayout: Layout.compact,
         initialStory: 'Checkbox',
         stories: [
           Story(

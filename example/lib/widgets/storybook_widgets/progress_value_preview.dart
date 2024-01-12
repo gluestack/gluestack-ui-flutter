@@ -11,6 +11,7 @@ class ProgressValuePreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Progress',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Progress',

@@ -35,6 +35,7 @@ class TextPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Text',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Text',

@@ -11,6 +11,7 @@ class LinkWithIconPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Link',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Link',
