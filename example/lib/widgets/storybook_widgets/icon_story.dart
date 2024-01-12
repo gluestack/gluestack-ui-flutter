@@ -26,7 +26,7 @@ final class IconStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "iconPreview";
+  String get routePath => "icon-preview";
 
   @override
   String get storyName => "Icon";

@@ -58,7 +58,7 @@ final class FabStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "fabPreview";
+  String get routePath => "fab-preview";
 
   @override
   String get storyName => "Fab";

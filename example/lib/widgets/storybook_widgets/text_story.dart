@@ -20,7 +20,7 @@ final class TextStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "textPreview";
+  String get routePath => "text-preview";
 
   @override
   String get storyName => "Text";

@@ -32,7 +32,7 @@ final class CheckboxStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "checkboxPreview";
+  String get routePath => "checkbox-preview";
 
   @override
   String get storyName => "Checkbox";

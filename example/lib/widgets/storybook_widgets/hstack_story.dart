@@ -45,7 +45,7 @@ final class HStackStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "hstackPreview";
+  String get routePath => "hstack-preview";
 
   @override
   String get storyName => "HStack";
