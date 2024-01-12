@@ -11,6 +11,7 @@ class TextareaFormControlPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Textarea',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Textarea',

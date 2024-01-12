@@ -11,6 +11,7 @@ class FormControlCheckboxPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Checkbox',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Checkbox',

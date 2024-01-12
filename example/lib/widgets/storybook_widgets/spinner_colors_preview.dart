@@ -11,6 +11,7 @@ class SpinnerWithColorsPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Spinner',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Spinner',

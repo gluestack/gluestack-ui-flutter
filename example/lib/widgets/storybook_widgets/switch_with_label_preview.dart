@@ -15,28 +15,31 @@ class _SwitchWithLabelPreviewState extends State<SwitchWithLabelPreview> {
   Widget build(BuildContext context) {
     return materialWrapper(
       context,
-      Storybook(initialStory: 'Switch', stories: [
-        Story(
-            name: 'Switch',
-            builder: (context) => GSBox(
-                  style: GSStyle(width: 150, height: 200),
-                  child: GSHStack(
-                    children: [
-                      GSSwitch(
-                          value: isSelected,
-                          onToggle: (value) {
-                            setState(() {
-                              isSelected = value;
-                            });
-                          }),
-                      const SizedBox(
-                        width: 10,
+      Storybook(
+          initialStory: 'Switch',
+          initialLayout: Layout.compact,
+          stories: [
+            Story(
+                name: 'Switch',
+                builder: (context) => GSBox(
+                      style: GSStyle(width: 150, height: 200),
+                      child: GSHStack(
+                        children: [
+                          GSSwitch(
+                              value: isSelected,
+                              onToggle: (value) {
+                                setState(() {
+                                  isSelected = value;
+                                });
+                              }),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          const GSText(text: 'Allow notifications')
+                        ],
                       ),
-                      const GSText(text: 'Allow notifications')
-                    ],
-                  ),
-                ))
-      ]),
+                    ))
+          ]),
     );
   }
 }
