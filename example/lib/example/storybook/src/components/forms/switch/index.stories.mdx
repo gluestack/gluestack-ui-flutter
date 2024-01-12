@@ -10,7 +10,9 @@ pageDescription: The GSSwitch widget offers a stylish alternative to the GSCheck
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import { env } from 'process';
 
 import {
   AppProvider,
@@ -18,14 +20,14 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from "@gluestack/design-system";
+} from '@gluestack/design-system';
 
 This is an illustration of a **Themed GSSwitch** widget with default configuration.
 
 <Meta title="Components/Forms/Switch" />
 
 <iframe
-  src="#/switch-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + 'switch-preview'}
   title="Example"
   width="800"
   height="350"
@@ -238,7 +240,7 @@ The Examples section provides visual representations of the different variants o
 An example of a switch widget with a label, which includes another switch widget for toggling additional options.
 
 <iframe
-  src="#/switch-with-label-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + 'switch-with-label-preview'}
   title="Example"
   width="800"
   height="350"
@@ -273,7 +275,7 @@ GSHStack(
 An example of a switch widget used within a checked state widget to represent a pre-selected or activated option.
 
 <iframe
-  src="#/switch-checked-state-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + 'switch-checked-state-preview'}
   title="Example"
   width="800"
   height="350"
@@ -308,7 +310,7 @@ GSHStack(
 An example of a switch widget being used with a different color scheme.
 
 <iframe
-  src="#/switch-with-color-scheme-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + 'switch-with-color-scheme-preview'}
   title="Example"
   width="800"
   height="350"

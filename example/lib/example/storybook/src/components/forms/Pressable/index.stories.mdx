@@ -10,14 +10,16 @@ pageDescription: By providing access to hover, pressed, and focus events, GSPres
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import { env } from 'process';
 
 <Meta title="Components/Forms/Pressable" />
 
 This is an illustration of a **Themed GSPressable** widget with default configuration.
 
 <iframe
-  src="#/pressable-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + 'pressable-preview'}
   title="Example"
   width="800"
   height="350"
@@ -86,7 +88,7 @@ The Examples section provides visual representations of the different variants o
 You can change the child elements according to the states of GSPressable widget.
 
 <iframe
-  src="#/pressable-with-states-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + 'pressable-with-states-preview'}
   title="Example"
   width="800"
   height="350"

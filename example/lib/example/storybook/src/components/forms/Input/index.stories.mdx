@@ -10,7 +10,8 @@ pageDescription: The GSInput widget is your go-to tool for gathering user input 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+import { env } from 'process';
 
 import {
   AppProvider,
@@ -19,13 +20,18 @@ import {
   TableContainer,
   Text,
   InlineCode,
-} from "@gluestack/design-system";
+} from '@gluestack/design-system';
 
 <Meta title="Components/Forms/Input" />
 
 This is an illustration of a **Themed GSInput** widget with default configuration.
 
-<iframe src="#/input-preview" title="Example" width="800" height="350"></iframe>
+<iframe
+  src={env.NEXT_PUBLIC_PREVIEW + 'input-preview'}
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
@@ -207,11 +213,12 @@ GSInput widget is created using TextFormField widget from flutter. It extends al
 The GSInput widget integrates with an icon and a button, providing users with a comprehensive login window inside a FormControl layout.
 
 <iframe
-  src="#/input-with-form-control-preview"
-  title="Example"
-  width="800"
-  height="500"
-></iframe>
+  src={env.NEXT_PUBLIC_PREVIEW + 'input-with-formcontrol-preview'}
+title="Example"
+width="800"
+height="500"
+
+> </iframe>
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
@@ -267,7 +274,7 @@ GSBox(
 The GSInput with GSIcons is a variation of the GSInput widget that displays icons next to input field. It's commonly used in apps for a more visual representation of options and easier navigation.
 
 <iframe
-  src="#/input-with-icon-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + 'input-with-icon-preview'}
   title="Example"
   width="800"
   height="350"
