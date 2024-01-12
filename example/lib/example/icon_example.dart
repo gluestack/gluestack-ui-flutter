@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
 
 class IconExample extends StatefulWidget {
   const IconExample({super.key});
@@ -28,10 +28,11 @@ class _IconExampleState extends State<IconExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSIcon(
-            icon: Icons.calendar_month,
-            size: GSSizes.\$md,
-          )
+    var code = '''
+          GSIcon(
+              icon: Icons.calendar_month,
+              size: GSSizes.\$md,
+           )
   ''';
     return Scaffold(
       appBar: AppBar(

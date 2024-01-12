@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
 
 class AvatarExample extends StatefulWidget {
   const AvatarExample({super.key});
@@ -46,17 +46,16 @@ class _AvatarExampleState extends State<AvatarExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSAvatar(
-            radius: GSBorderRadius.\$full,
-            size: GSSizes.\$md,
+    var code = '''
+        GSAvatar(
+            radius: selectedRadiusOption,
+            size: selectedSizeOption,
             style: GSStyle(
               bg: Colors.orange,
               textStyle: const TextStyle(color: Colors.white),
             ),
-            fallBackText: const GSAvatarFallBackText(
-              'Geeky Stack',
-            ),
-          )
+            fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+         )
 ''';
     return Scaffold(
       appBar: AppBar(
@@ -64,37 +63,14 @@ class _AvatarExampleState extends State<AvatarExample> {
       ),
       body: BaseLayout(
         code: code,
-        component: GSAvatarGroup(
-          direction: GSDirection.column,
-          children: [
-            GSAvatar(
-              radius: selectedRadiusOption,
-              size: selectedSizeOption,
-              style: GSStyle(
-                bg: Colors.orange,
-                textStyle: const TextStyle(color: Colors.white),
-              ),
-              fallBackText: const GSAvatarFallBackText('Geeky Stack'),
-            ),
-            GSAvatar(
-              radius: selectedRadiusOption,
-              size: selectedSizeOption,
-              style: GSStyle(
-                bg: Colors.orange,
-                textStyle: const TextStyle(color: Colors.white),
-              ),
-              fallBackText: const GSAvatarFallBackText('Geeky Stack'),
-            ),
-            GSAvatar(
-              radius: selectedRadiusOption,
-              size: selectedSizeOption,
-              style: GSStyle(
-                bg: Colors.orange,
-                textStyle: const TextStyle(color: Colors.white),
-              ),
-              fallBackText: const GSAvatarFallBackText('Geeky Stack'),
-            ),
-          ],
+        component: GSAvatar(
+          radius: selectedRadiusOption,
+          size: selectedSizeOption,
+          style: GSStyle(
+            bg: Colors.orange,
+            textStyle: const TextStyle(color: Colors.white),
+          ),
+          fallBackText: const GSAvatarFallBackText('Geeky Stack'),
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

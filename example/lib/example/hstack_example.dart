@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
-import 'package:gluestack_ui_example/utils/toggle.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/toggle.dart';
 
 class HStackExample extends StatefulWidget {
   const HStackExample({super.key});
@@ -39,25 +39,26 @@ class _HStackExampleState extends State<HStackExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSHStack(
-          mainAxisAlignment: MainAxisAlignment.center,
-          isReversed: false,
-          space: GSSpaces.\$none,
-          children: [
-            GSBox(
-              style: GSStyle(height: 100, width: 100, color: \$GSColors.blue300),
-              child: const Text('1'),
-            ),
-            GSBox(
-              style: GSStyle(height: 100, width: 100, color: \$GSColors.blue400),
-              child: const Text('2'),
-            ),
-            GSBox(
-              style: GSStyle(height: 100, width: 100, color: \$GSColors.blue500),
-              child: const Text('3'),
-            ),
-          ],
-        )
+    var code = '''
+        GSHStack(
+            mainAxisAlignment: MainAxisAlignment.center,
+            isReversed: false,
+            space: GSSpaces.\$none,
+            children: [
+              GSBox(
+                style: GSStyle(height: 100, width: 100, color: \$GSColors.blue300),
+                child: const Text('1'),
+              ),
+              GSBox(
+                style: GSStyle(height: 100, width: 100, color: \$GSColors.blue400),
+                child: const Text('2'),
+              ),
+              GSBox(
+                style: GSStyle(height: 100, width: 100, color: \$GSColors.blue500),
+                child: const Text('3'),
+              ),
+            ],
+         )
   ''';
     return Scaffold(
       appBar: AppBar(

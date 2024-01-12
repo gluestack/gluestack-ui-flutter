@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/form_label_text_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
@@ -27,7 +27,8 @@ class GSFormLabelText extends StatelessWidget {
               GSText(
                 text: '*',
                 size: size,
-                style: GSStyle(textStyle: const TextStyle(color: Colors.red)),
+                style: GSStyle(
+                    textStyle: const TextStyle(color: const Color(0xFFFF0000))),
               )
             ],
           )

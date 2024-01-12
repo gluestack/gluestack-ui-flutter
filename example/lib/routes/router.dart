@@ -1,34 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_ui_example/example/public.dart';
 import 'package:gluestack_ui_example/home.dart';
-import 'package:gluestack_ui_example/main.dart';
-import 'package:gluestack_ui_example/preview_widgets/alert_dialog_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/avatar_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/badge_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/box_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/button_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/center_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/checkbox_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/divider_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/fab_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/heading_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/hstack_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/icon_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/image_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/input_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/link_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/pressable_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/progress_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/radio_button_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/spinner_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/switch_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/text_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/textarea_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/toast_preview.dart';
-import 'package:gluestack_ui_example/preview_widgets/vstack_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook.dart';
+import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
+import 'package:gluestack_ui_example/widgets/storybook_wrapper.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
-  navigatorKey: navigatorKey,
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -37,148 +15,120 @@ final GoRouter router = GoRouter(
       },
       routes: <RouteBase>[
         GoRoute(
-          path: "buttonPreview",
+          path: "storybook",
           builder: (BuildContext context, GoRouterState state) {
-            return const ButtonPreview();
+            return const StorybookWidget();
           },
         ),
         GoRoute(
-          path: "inputPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const InputPreview();
-          },
+          path: "example-alert",
+          builder: (context, state) => const AlertExample(),
         ),
         GoRoute(
-          path: "badgePreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const BadgePreview();
-          },
+          path: "example-avatar",
+          builder: (context, state) => const AvatarExample(),
         ),
         GoRoute(
-          path: "switchPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const SwitchPreview();
-          },
+          path: "example-badge",
+          builder: (context, state) => const BadgeExample(),
         ),
         GoRoute(
-          path: "avatarPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const AvatarPreview();
-          },
+          path: "example-button",
+          builder: (context, state) => const ButtonExample(),
         ),
         GoRoute(
-          path: "checkboxPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const CheckboxPreview();
-          },
+          path: "example-center",
+          builder: (context, state) => const CenterExample(),
         ),
         GoRoute(
-          path: "hstackPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const HStackPreview();
-          },
+          path: "example-checkbox",
+          builder: (context, state) => const CheckBoxExample(),
         ),
         GoRoute(
-          path: "vstackPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const VStackPreview();
-          },
+          path: "example-divider",
+          builder: (context, state) => const DividerExample(),
         ),
         GoRoute(
-          path: "imagePreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ImagePreview();
-          },
+          path: "example-fab",
+          builder: (context, state) => const FabExample(),
         ),
         GoRoute(
-          path: "radioButtonPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const RadioButtonPreview();
-          },
+          path: "example-flex",
+          builder: (context, state) => const FlexExample(),
         ),
         GoRoute(
-          path: "progressPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ProgressPreview();
-          },
+          path: "example-form",
+          builder: (context, state) => const FormExample(),
         ),
         GoRoute(
-          path: "iconPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const IconPreview();
-          },
+          path: "example-heading",
+          builder: (context, state) => const HeadingExample(),
         ),
         GoRoute(
-          path: "textPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const TextPreview();
-          },
+          path: "example-hstack",
+          builder: (context, state) => const HStackExample(),
         ),
         GoRoute(
-          path: "headingPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const HeadingPreview();
-          },
+          path: "example-icon",
+          builder: (context, state) => const IconExample(),
         ),
         GoRoute(
-          path: "dividerPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const DividerPreview();
-          },
+          path: "example-image",
+          builder: (context, state) => const ImageExample(),
         ),
         GoRoute(
-          path: "centerPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const CenterPreview();
-          },
+          path: "example-input",
+          builder: (context, state) => const InputExample(),
         ),
         GoRoute(
-          path: "boxPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const BoxPreview();
-          },
+          path: "example-link",
+          builder: (context, state) => const LinkExample(),
         ),
         GoRoute(
-          path: "spinnerPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const SpinnerPreview();
-          },
+          path: "example-pressable",
+          builder: (context, state) => const PressableExample(),
         ),
         GoRoute(
-          path: "toastPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const ToastPreview();
-          },
+          path: "example-progress",
+          builder: (context, state) => const ProgressExample(),
         ),
         GoRoute(
-          path: "linkPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const LinkPreview();
-          },
+          path: "example-radio_button",
+          builder: (context, state) => const RadioButtonExample(),
         ),
         GoRoute(
-          path: "pressablePreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const PressablePreview();
-          },
+          path: "example-spinner",
+          builder: (context, state) => const SpinnerExample(),
         ),
         GoRoute(
-          path: "textareaPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const TextareaPreview();
-          },
+          path: "example-switch",
+          builder: (context, state) => const SwitchExample(),
         ),
         GoRoute(
-          path: "alertDialogPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const AlertDialogPreview();
-          },
+          path: "example-text_area",
+          builder: (context, state) => const TextAreaExample(),
         ),
         GoRoute(
-          path: "fabPreview",
-          builder: (BuildContext context, GoRouterState state) {
-            return const FabPreview();
-          },
+          path: "example-text",
+          builder: (context, state) => const TextExample(),
+        ),
+        GoRoute(
+          path: "example-toast",
+          builder: (context, state) => const ToastExample(),
+        ),
+        GoRoute(
+          path: "example-vstack",
+          builder: (context, state) => const VStackExample(),
+        ),
+        // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
+        ...kStories.map(
+          (item) => GoRoute(
+            path: item.routePath,
+            builder: (context, state) => StorybookWrapper(
+              story: item.story,
+              storyName: item.storyName,
+            ),
+          ),
         ),
       ],
     ),

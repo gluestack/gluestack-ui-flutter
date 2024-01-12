@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
 
 class ImageExample extends StatefulWidget {
   const ImageExample({super.key});
@@ -47,12 +47,14 @@ class _ImageExampleState extends State<ImageExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSImage(
-              size: GSSizes.\$md,
-              borderRadius: GSBorderRadius.\$full,
-              path:
-                  'https://plus.unsplash.com/premium_photo-1697211174198-18da849f87c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTI2NTM4Mg&ixlib=rb-4.0.3&q=80&w=1080',
-              imageType: GSImageType.network)
+    var code = '''
+            GSImage(
+                size: GSSizes.\$md,
+                borderRadius: GSBorderRadius.\$full,
+                path:
+                    'https://plus.unsplash.com/premium_photo-1697211174198-18da849f87c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTI2NTM4Mg&ixlib=rb-4.0.3&q=80&w=1080',
+                imageType: GSImageType.network,
+             )
   ''';
     return Scaffold(
       appBar: AppBar(

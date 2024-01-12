@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
-import 'package:gluestack_ui_example/utils/toggle.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/toggle.dart';
 
 class RadioButtonExample extends StatefulWidget {
   const RadioButtonExample({super.key});
@@ -41,20 +41,21 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSRadio<Value>(
-            size: GSSizes.\$md,
-            isDisabled: false,
-            isInvalid: false,
-            value: Value.four,
-            groupValue: groupValue,
-            onChanged: (p0) {
-              setState(() {
-                groupValue = p0!;
-              });
-            },
-            icon: const GSRadioIcon<Value>(),
-            label: const GSRadioText<Value>(text: 'text4'),
-            style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.\$2)),
+    var code = '''
+          GSRadio<Value>(
+              size: GSSizes.\$md,
+              isDisabled: false,
+              isInvalid: false,
+              value: Value.four,
+              groupValue: groupValue,
+              onChanged: (p0) {
+                  setState(() {
+                    groupValue = p0!;
+                  });
+              },
+              icon: const GSRadioIcon<Value>(),
+              label: const GSRadioText<Value>(text: 'text4'),
+              style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.\$2)),
           )
   ''';
     return Scaffold(
@@ -76,7 +77,7 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
           },
           icon: const GSRadioIcon<Value>(),
           label: const GSRadioText<Value>(text: 'text4'),
-          style: GSStyle(margin:  EdgeInsets.only(right: $GSSpace.$2)),
+          style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -1,40 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
 
 class FlexExample extends StatelessWidget {
   const FlexExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var code = ''' GSFlex(
-          style: GSStyle(
-            direction: Axis.vertical,
-            md: GSStyle(direction: Axis.horizontal),
-          ),
-          children: [
-            GSBox(
-              style: GSStyle(
-                height: 150,
-                width: 150,
-                bg: Colors.red,
-              ),
+    var code = '''
+        GSFlex(
+            style: GSStyle(
+              direction: Axis.vertical,
+              md: GSStyle(direction: Axis.horizontal),
             ),
-            GSBox(
-              style: GSStyle(
-                height: 150,
-                width: 150,
-                bg: Colors.green,
+            children: [
+              GSBox(
+                style: GSStyle(
+                  height: 150,
+                  width: 150,
+                  bg: Colors.red,
+                ),
               ),
-            ),
-            GSBox(
-              style: GSStyle(
-                height: 150,
-                width: 150,
-                bg: Colors.blue,
+              GSBox(
+                style: GSStyle(
+                  height: 150,
+                  width: 150,
+                  bg: Colors.green,
+                ),
               ),
-            ),
-          ],
+              GSBox(
+                style: GSStyle(
+                  height: 150,
+                  width: 150,
+                  bg: Colors.blue,
+                ),
+              ),
+            ],
         )
   ''';
     return Scaffold(

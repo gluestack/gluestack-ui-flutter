@@ -1,39 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
 
 class AlertExample extends StatelessWidget {
   const AlertExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSButton(
-          size: GSSizes.\$lg,
-          child: const GSButtonText(text: "Click Me"),
-          onPressed: () {
-            GSAlertDialog.show(
-              context,
-              size: GSSizes.\$full,
-              content: GSAlertDialogContent(
-                header: GSAlertDialogHeader(
-                  style: GSStyle(
-                    bg: Colors.pink,
+    var code = '''
+          GSButton(
+            size: GSSizes.\$lg,
+            child: const GSButtonText(text: "Click Me"),
+            onPressed: () {
+              GSAlertDialog.show(
+                context,
+                size: GSSizes.\$full,
+                content: GSAlertDialogContent(
+                  header: GSAlertDialogHeader(
+                    style: GSStyle(
+                      bg: Colors.pink,
+                    ),
+                    child: const Text("Header"),
                   ),
-                  child: const Text("Header"),
-                ),
-                body: const GSAlertDialogBody(
-                  child: Text(
-                      "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
-                ),
-                footer: GSAlertDialogFooter(
-                  child: GSButtonGroup(
-                    buttons: [
-                      GSButton(child: const Text("hey"), onPressed: () {}),
-                      GSButton(child: const Text("click"), onPressed: () {}),
-                    ],
+                  body: const GSAlertDialogBody(
+                    child: Text(
+                        "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
+                  ),
+                  footer: GSAlertDialogFooter(
+                    child: GSButtonGroup(
+                      buttons: [
+                        GSButton(
+                            action: GSActions.positive,
+                            variant: GSVariants.outline,
+                            child: const Text("Yes"),
+                            onPressed: () {}),
+                        GSButton(
+                            action: GSActions.negative,
+                            variant: GSVariants.outline,
+                            child: const Text("No"),
+                            onPressed: () {}),
+                      ],
+                    ),
                   ),
                 ),
-              )
+              );
+            },
+          )
 ''';
     return Scaffold(
       appBar: AppBar(
@@ -63,8 +75,16 @@ class AlertExample extends StatelessWidget {
                   footer: GSAlertDialogFooter(
                     child: GSButtonGroup(
                       buttons: [
-                        GSButton(child: const Text("hey"), onPressed: () {}),
-                        GSButton(child: const Text("click"), onPressed: () {}),
+                        GSButton(
+                            action: GSActions.positive,
+                            variant: GSVariants.outline,
+                            child: const Text("Yes"),
+                            onPressed: () {}),
+                        GSButton(
+                            action: GSActions.negative,
+                            variant: GSVariants.outline,
+                            child: const Text("No"),
+                            onPressed: () {}),
                       ],
                     ),
                   ),
