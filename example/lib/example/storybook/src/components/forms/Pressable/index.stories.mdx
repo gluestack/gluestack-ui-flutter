@@ -1,18 +1,20 @@
 ---
-title: Pressable | gluestack-ui | Installation, Usage, and API
+title: GSPressable | gluestack-ui | Installation, Usage, and API
 
-description: By providing access to hover, pressed, and focus events, Pressable serves as a more flexible alternative to buttons at a lower level of abstraction. It is a useful primitive for advanced customization needs.
+description: By providing access to hover, pressed, and focus events, GSPressable serves as a more flexible alternative to buttons at a lower level of abstraction. It is a useful primitive for advanced customization needs.
 
-pageTitle: Pressable
+pageTitle: GSPressable
 
-pageDescription: By providing access to hover, pressed, and focus events, Pressable serves as a more flexible alternative to buttons at a lower level of abstraction. It is a useful primitive for advanced customization needs.
+pageDescription: By providing access to hover, pressed, and focus events, GSPressable serves as a more flexible alternative to buttons at a lower level of abstraction. It is a useful primitive for advanced customization needs.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/Forms/Pressable" />
+
+This is an illustration of a **Themed GSPressable** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/pressablePreview"
@@ -52,5 +54,85 @@ GSPressable(
             const TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
   ),
 ),
+
+```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSPressable
+
+It inherits all the properties of Flutter's [InkWell](https://api.flutter.dev/flutter/material/InkWell-class.html) widget.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### Pressable child elements according to its states
+
+You can change the child elements according to the states of GSPressable widget.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/pressableWithStatesPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSPressable(
+  style: GSStyle(
+    bg: $GSColors.blue600,
+    onHover: GSStyle(
+      color: $GSColors.blue900,
+    ),
+  ),
+  hitSlop: 10,
+  onPress: () {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        backgroundColor: Colors.blue,
+        content: Text('Button Pressed!'),
+        duration: Duration(milliseconds: 300),
+      ),
+    );
+  },
+  onLongPress: () {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        backgroundColor: Colors.green,
+        content: Text('Long Pressed Triggered!'),
+        duration: Duration(milliseconds: 300),
+      ),
+    );
+  },
+  child: const GSHeading(
+    text: 'PRESSABLE',
+  ),
+)
+
+
+```
+
+Similarly, you can change the child elements according to other states of GSPressable
+widget and i.e. `onHover` , `onPressIn` , `onPressOut`, `onLongPress`, `onDoubleTap`, `onSecondaryTap`, `onSecondaryTapUp`, `onSecondaryTapDown`, `onSecondaryTapCancel`.
+
+```
 
 ```

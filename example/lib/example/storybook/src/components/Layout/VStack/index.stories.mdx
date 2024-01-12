@@ -1,24 +1,34 @@
 ---
-title: VStack | gluestack-ui | Installation, Usage, and API
+title: GSVStack | gluestack-ui | Installation, Usage, and API
 
-description: VStack organizes items vertically in a layout. Alternatively, you can use Column as an alias for VStack to achieve the same layout.
+description: GSVStack organizes items vertically in a layout. Alternatively, you can use Column as an alias for GSVStack to achieve the same layout.
 
-pageTitle: VStack
+pageTitle: GSVStack
 
-pageDescription: VStack organizes items vertically in a layout. Alternatively, you can use Column as an alias for VStack to achieve the same layout.
+pageDescription: GSVStack organizes items vertically in a layout. Alternatively, you can use Column as an alias for GSVStack to achieve the same layout.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Layout/VStack" />
+
+This is an illustration of a **Themed GSVStack** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/vstackPreview"
   title="Example"
   width="800"
-  height="350"
+  height="450"
 ></iframe>
 
 ```dart
@@ -47,3 +57,107 @@ GSVStack(
   ],
 )
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+### Accessibility
+
+The accessibility of a GSVStack is primarily determined by the accessibility information of the widget it contains. When you pass an accessible widget inside a GSVStack, its accessibility attributes, such as labels and hints, will be utilized by assistive technologies like screen readers.
+
+In essence, the GSVStack acts as a container that inherits and propagates the accessibility attributes of its child views.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Parameters
+
+GSVStack widget is created using Column widget from flutter. It extends all the properties supported by [Flutter Column](https://api.flutter.dev/flutter/widgets/Column-class.html) and additionally the parameters mentioned below.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Type</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>space</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`GSSpaces `}</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`It sets the space between children.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>reversed</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`boolean`}</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`When true, it places the HStack items in reverse direction.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these properties may not be available.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### GSVStack Reversed
+
+A GSVStack widget with the reversed parameter reverses the order of vertically stacked elements, enabling customized vertical layouts and visual arrangements of content within a user interface.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/vstackReversedPreview"
+  title="Example"
+  width="800"
+  height="450"
+></iframe>

@@ -60,7 +60,7 @@ final class ToastStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "toastPreview";
+  String get routePath => "toast-preview";
 
   @override
   String get storyName => "Toast";

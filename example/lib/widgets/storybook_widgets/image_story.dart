@@ -44,7 +44,7 @@ final class ImageStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "imagePreview";
+  String get routePath => "image-preview";
 
   @override
   String get storyName => "Image";

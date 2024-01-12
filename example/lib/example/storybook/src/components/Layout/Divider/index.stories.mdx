@@ -1,22 +1,32 @@
 ---
-title: Divider | gluestack-ui | Installation, Usage, and API
+title: GSDivider | gluestack-ui | Installation, Usage, and API
 
-description: Revamp your content organization with the Divider component! Use it to visually separate different sections of a list or group for a more structured and easy-to-read interface.
+description: Revamp your content organization with the GSDivider widget! Use it to visually separate different sections of a list or group for a more structured and easy-to-read interface.
 
-pageTitle: Divider
+pageTitle: GSDivider
 
-pageDescription: Revamp your content organization with the Divider component! Use it to visually separate different sections of a list or group for a more structured and easy-to-read interface.
+pageDescription: Revamp your content organization with the GSDivider widget! Use it to visually separate different sections of a list or group for a more structured and easy-to-read interface.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Layout/Divider" />
 
+This is an illustration of a **Themed GSDivider** widget with default configuration.
+
 <iframe
   src="https://gluestack-flutter.web.app/#/dividerPreview"
-  title="Example"
+  title="GSDivider Example"
   width="800"
   height="350"
 ></iframe>
@@ -24,7 +34,7 @@ import { Meta } from "@storybook/addon-docs";
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
 
-Row(
+GSHStack(
   mainAxisAlignment: MainAxisAlignment.center,
   children: [
     const Padding(
@@ -42,3 +52,82 @@ Row(
   ],
 ),
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSDivider
+
+It inherits all the properties of Flutter's [ColoredBox](https://api.flutter.dev/flutter/widgets/ColoredBox-class.html) widget.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+#### GSDivider
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Name</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Value</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>orientation</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>vertical | horizontal</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>horizontal</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these properties may not be available.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### Variants
+
+A GSDivider widget with different layouts offers versatile options for visually dividing content in various arrangements, such as horizontal or vertical orientations, enabling flexible and visually appealing designs for organizing and structuring widgets within a user interface.
+
+#### Orientation
+
+A GSDivider widget with a specified divider orientation allows for clear visual separation of content, either horizontally or vertically, providing a structured and organized layout within a user interface.
+
+#### Adding content within a GSDivider
+
+A GSDivider widget with added content allows for the inclusion of additional text or elements alongside the dividing line, enhancing the visual and informational aspects of the divider while providing a seamless integration of content within a user interface.

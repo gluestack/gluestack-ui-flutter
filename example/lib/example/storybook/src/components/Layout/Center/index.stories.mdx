@@ -1,24 +1,26 @@
 ---
-title: Center | gluestack-ui | Installation, Usage, and API
+title: GSCenter | gluestack-ui | Installation, Usage, and API
 
-description: When you need to center-align content, the Center component comes in handy. It is a layout component that can be used with other components to create complex layouts and positioning.
+description: When you need to center-align content, the GSCenter widget comes in handy. It is a layout widget that can be used with other widgets to create complex layouts and positioning.
 
-pageTitle: Center
+pageTitle: GSCenter
 
-pageDescription: When you need to center-align content, the Center component comes in handy. It is a layout component that can be used with other components to create complex layouts and positioning.
+pageDescription: When you need to center-align content, the GSCenter widget comes in handy. It is a layout widget that can be used with other widgets to create complex layouts and positioning.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Components/Layout/Center" />
+
+This is an illustration of a **Themed GSCenter** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/centerPreview"
   title="Example"
-  width="800"
-  height="350"
+  width="1000"
+  height="400"
 ></iframe>
 
 ```dart
@@ -30,6 +32,31 @@ GSCenter(
     width: 300,
     bg: $GSColors.primary500,
   ),
-  child: const GSCenter(child: Text('This is the Center')),
+  child: const GSCenter(
+    child: const GSText(
+      text: 'This is the Center',
+    ),
+  ),
 )
+
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSCenter
+
+It inherits all the properties of Flutter's [Center](https://api.flutter.dev/flutter/widgets/Center-class.html) widget.

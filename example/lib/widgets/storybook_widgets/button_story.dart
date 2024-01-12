@@ -48,7 +48,7 @@ final class ButtonStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "buttonPreview";
+  String get routePath => "button-preview";
 
   @override
   String get storyName => "Button";

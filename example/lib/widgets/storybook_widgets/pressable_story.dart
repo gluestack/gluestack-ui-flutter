@@ -39,7 +39,7 @@ final class PressableStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "pressablePreview";
+  String get routePath => "pressable-preview";
 
   @override
   String get storyName => "Pressable";

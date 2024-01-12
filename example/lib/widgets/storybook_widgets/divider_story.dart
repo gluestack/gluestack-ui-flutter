@@ -29,7 +29,7 @@ final class DividerStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "dividerPreview";
+  String get routePath => "divider-preview";
 
   @override
   String get storyName => "Divider";
