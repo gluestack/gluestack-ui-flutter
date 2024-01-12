@@ -1,57 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:get_it/get_it.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/theme/config/alert/alert_dialog.dart';
-import 'package:gluestack_ui/src/theme/config/alert/alert_dialog_body.dart';
-import 'package:gluestack_ui/src/theme/config/alert/alert_dialog_content.dart';
-import 'package:gluestack_ui/src/theme/config/alert/alert_dialog_footer.dart';
-import 'package:gluestack_ui/src/theme/config/alert/alert_dialog_header.dart';
-import 'package:gluestack_ui/src/theme/config/avatar/avatar.dart';
-import 'package:gluestack_ui/src/theme/config/avatar/avatar_badge.dart';
-import 'package:gluestack_ui/src/theme/config/avatar/avatar_fallback_text.dart';
-import 'package:gluestack_ui/src/theme/config/avatar/avatar_group.dart';
-import 'package:gluestack_ui/src/theme/config/badge/badge.dart';
-import 'package:gluestack_ui/src/theme/config/badge/badge_icon.dart';
-import 'package:gluestack_ui/src/theme/config/badge/badge_text.dart';
-import 'package:gluestack_ui/src/theme/config/button/button.dart';
-import 'package:gluestack_ui/src/theme/config/button/button_group.dart';
-import 'package:gluestack_ui/src/theme/config/button/button_icon.dart';
-import 'package:gluestack_ui/src/theme/config/button/button_text.dart';
-import 'package:gluestack_ui/src/theme/config/checkbox/checkbox.dart';
-import 'package:gluestack_ui/src/theme/config/checkbox/checkbox_icon.dart';
-import 'package:gluestack_ui/src/theme/config/checkbox/checkbox_indicator.dart';
-import 'package:gluestack_ui/src/theme/config/checkbox/checkbox_label.dart';
-import 'package:gluestack_ui/src/theme/config/divider/divider.dart';
-import 'package:gluestack_ui/src/theme/config/fab/fab.dart';
-import 'package:gluestack_ui/src/theme/config/fab/icon.dart';
-import 'package:gluestack_ui/src/theme/config/fab/label.dart';
-import 'package:gluestack_ui/src/theme/config/form_control/form_control.dart';
-import 'package:gluestack_ui/src/theme/config/form_control/form_control_error_text.dart';
-import 'package:gluestack_ui/src/theme/config/form_control/form_control_helper_text.dart';
-import 'package:gluestack_ui/src/theme/config/form_control/form_control_label_text.dart';
-import 'package:gluestack_ui/src/theme/config/heading/heading.dart';
-import 'package:gluestack_ui/src/theme/config/hstack/hstack.dart';
-import 'package:gluestack_ui/src/theme/config/icon/icon.dart';
-import 'package:gluestack_ui/src/theme/config/image/image.dart';
-import 'package:gluestack_ui/src/theme/config/input/input.dart';
-import 'package:gluestack_ui/src/theme/config/link/link.dart';
-import 'package:gluestack_ui/src/theme/config/link/link_text.dart';
-import 'package:gluestack_ui/src/theme/config/pressable/pressable.dart';
-import 'package:gluestack_ui/src/theme/config/progress/progress.dart';
-import 'package:gluestack_ui/src/theme/config/radio/radio.dart';
-import 'package:gluestack_ui/src/theme/config/radio/radio_icon.dart';
-import 'package:gluestack_ui/src/theme/config/radio/radio_indicator.dart';
-import 'package:gluestack_ui/src/theme/config/radio/radio_label.dart';
-import 'package:gluestack_ui/src/theme/config/spinner/spinner.dart';
-import 'package:gluestack_ui/src/theme/config/switch/switch.dart';
-import 'package:gluestack_ui/src/theme/config/text/text.dart';
-import 'package:gluestack_ui/src/theme/config/text_area/text_area.dart';
-import 'package:gluestack_ui/src/theme/config/toast/toast.dart';
-import 'package:gluestack_ui/src/theme/config/toast/toast_description.dart';
-import 'package:gluestack_ui/src/theme/config/toast/toast_title.dart';
-import 'package:gluestack_ui/src/theme/config/vstack/vstack.dart';
-import 'package:gluestack_ui/src/token/font_weight.dart';
-import 'package:gluestack_ui/src/token/line_height.dart';
+import 'provider.dart';
 
 final getIt = GetIt.instance;
 
@@ -338,7 +285,6 @@ class GluestackCustomConfig {
 
     //button
     button = mergeConfigs(buttonData, button);
-    // print(button);
     buttonText = mergeConfigs(buttonTextData, buttonText);
     buttonIcon = mergeConfigs(buttonIconData, buttonIcon);
     buttonGroup = mergeConfigs(buttonGroupData, buttonGroup);
@@ -402,32 +348,26 @@ class GluestackTokenConfig {
     this.gsColorsToken = const GSColorsToken(),
     this.gsScreenBreakpointToken = const GSScreenBreakpointToken(),
   }) {
-    if (!getIt.isRegistered<GSBorderWidthToken>()) {
-      getIt.registerSingleton<GSBorderWidthToken>(gsBorderWidthToken);
-    }
-    if (!getIt.isRegistered<GSFontSizeToken>()) {
-      getIt.registerSingleton<GSFontSizeToken>(gsFontSizeToken);
-    }
-    if (!getIt.isRegistered<GSFontWeightsToken>()) {
-      getIt.registerSingleton<GSFontWeightsToken>(gsFontWeightsToken);
-    }
-    if (!getIt.isRegistered<GSLetterSpacingToken>()) {
-      getIt.registerSingleton<GSLetterSpacingToken>(gsLetterSpacingToken);
-    }
-    if (!getIt.isRegistered<GSLineHeightToken>()) {
-      getIt.registerSingleton<GSLineHeightToken>(gsLineHeightToken);
-    }
-    if (!getIt.isRegistered<GSRadiiToken>()) {
-      getIt.registerSingleton<GSRadiiToken>(gsRadiiToken);
-    }
-    if (!getIt.isRegistered<GSSpaceToken>()) {
-      getIt.registerSingleton<GSSpaceToken>(gsSpaceToken);
-    }
-    if (!getIt.isRegistered<GSColorsToken>()) {
-      getIt.registerSingleton<GSColorsToken>(gsColorsToken);
-    }
-    if (!getIt.isRegistered<GSScreenBreakpointToken>()) {
-      getIt.registerSingleton<GSScreenBreakpointToken>(gsScreenBreakpointToken);
-    }
+    _registerTokens();
+  }
+
+  void _registerTokens() {
+    registerSingletonIfNotRegistered<GSBorderWidthToken>(gsBorderWidthToken);
+    registerSingletonIfNotRegistered<GSFontSizeToken>(gsFontSizeToken);
+    registerSingletonIfNotRegistered<GSFontWeightsToken>(gsFontWeightsToken);
+    registerSingletonIfNotRegistered<GSLetterSpacingToken>(
+        gsLetterSpacingToken);
+    registerSingletonIfNotRegistered<GSLineHeightToken>(gsLineHeightToken);
+    registerSingletonIfNotRegistered<GSRadiiToken>(gsRadiiToken);
+    registerSingletonIfNotRegistered<GSSpaceToken>(gsSpaceToken);
+    registerSingletonIfNotRegistered<GSColorsToken>(gsColorsToken);
+    registerSingletonIfNotRegistered<GSScreenBreakpointToken>(
+        gsScreenBreakpointToken);
+  }
+}
+
+void registerSingletonIfNotRegistered<T extends Object>(T instance) {
+  if (!getIt.isRegistered<T>()) {
+    getIt.registerSingleton<T>(instance);
   }
 }

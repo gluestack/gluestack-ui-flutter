@@ -46,7 +46,7 @@ final class VStackStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "vstackPreview";
+  String get routePath => "vstack-preview";
 
   @override
   String get storyName => "VStack";

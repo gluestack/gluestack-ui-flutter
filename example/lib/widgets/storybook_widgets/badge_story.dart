@@ -57,7 +57,7 @@ final class BadgeStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "badgePreview";
+  String get routePath => "badge-preview";
 
   @override
   String get storyName => "Badge";

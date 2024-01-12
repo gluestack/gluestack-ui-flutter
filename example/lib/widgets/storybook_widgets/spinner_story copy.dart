@@ -19,7 +19,7 @@ final class SpinnerStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "spinnerPreview";
+  String get routePath => "spinner-preview";
 
   @override
   String get storyName => "Spinner";

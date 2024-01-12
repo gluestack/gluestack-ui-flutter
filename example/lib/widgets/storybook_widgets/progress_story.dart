@@ -26,7 +26,7 @@ final class ProgressStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "progressPreview";
+  String get routePath => "progress-preview";
 
   @override
   String get storyName => "Progress";

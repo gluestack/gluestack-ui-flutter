@@ -16,7 +16,7 @@ final class LinkStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "linkPreview";
+  String get routePath => "link-preview";
 
   @override
   String get storyName => "Link";

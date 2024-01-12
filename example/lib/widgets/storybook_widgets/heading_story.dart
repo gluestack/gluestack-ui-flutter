@@ -16,7 +16,7 @@ final class HeadingStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "headingPreview";
+  String get routePath => "heading-preview";
 
   @override
   String get storyName => "Heading";

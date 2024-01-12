@@ -32,7 +32,7 @@ final class VStackReversedStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "vstackReversedPreview";
+  String get routePath => "vstack-reversed-preview";
 
   @override
   String get storyName => "VStack";
