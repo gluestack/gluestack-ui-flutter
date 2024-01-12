@@ -98,6 +98,9 @@ class _ButtonExampleState extends State<ButtonExample> {
           size: selectedSizeOption,
           isDisabled: isDisabled,
           isFocusVisible: isFocusVisible,
+          onHover: () {
+            print('Hovering');
+          },
           onPressed: () {},
           child: const Row(
             children: [
