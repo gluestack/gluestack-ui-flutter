@@ -152,7 +152,7 @@ GluestackProvider(
 
 - **Omitting Material Dependency:** Developers can tailor the UI components to fit the exact needs and aesthetics of their applications without being restricted to Material Design standards. From performance improvement respective, by building a system independent of Material Design, you might optimize performance, especially for applications that require lightweight and fast-loading interfaces.
 
-- **Enhanced Widget Configuration::** The widgets will be designed in a modular fashion, allowing users to plug in different components or features as needed. This modular approach enables more complex and varied widget compositions.With more control over the widget design, developers can create applications that offer a better user experience, tailored to their target audience.
+- **Enhanced Widget Configuration:** The widgets will be designed in a modular fashion, allowing users to plug in different components or features as needed. This modular approach enables more complex and varied widget compositions.With more control over the widget design, developers can create applications that offer a better user experience, tailored to their target audience.
 
 - **Configurable Token System:** Design the token system to be scalable and customizable. Users should be able to add new tokens or modify existing ones to suit their project needs.
 
