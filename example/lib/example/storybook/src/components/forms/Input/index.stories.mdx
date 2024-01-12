@@ -220,6 +220,51 @@ The GSInput widget integrates with an icon and a button, providing users with a 
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSBox(
+  style: GSStyle(
+    width: 250,
+    height: 300,
+    borderRadius: 8,
+    borderColor: $GSColors.blueGray300,
+    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+  ),
+  child: GSVStack(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const GSHeading(text: "Login"),
+      const SizedBox(
+        height: 20,
+      ),
+      const GSText(text: 'Email'),
+      GSInput(
+        style: GSStyle(
+          width: 300,
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      const GSText(text: 'Password'),
+      GSInput(
+        obscureText: true,
+        style: GSStyle(
+          width: 300,
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      GSButton(
+        style: GSStyle(),
+        onPressed: () {},
+        child: const GSButtonText(text: "Save"),
+      ),
+    ],
+  ),
+)
+
 ```
 
 ### GSInput with Icons
@@ -235,4 +280,19 @@ The GSInput with GSIcons is a variation of the GSInput widget that displays icon
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSBox(
+  style: GSStyle(
+    width: 250,
+    height: 100,
+    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+  ),
+  child: const GSInput(
+    prefixIcon: GSIcon(icon: Icons.search),
+    obscureText: true,
+    hintText: 'Search...',
+  ),
+)
+
 ```

@@ -94,6 +94,40 @@ You can change the child elements according to the states of GSPressable widget.
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSPressable(
+  style: GSStyle(
+    bg: $GSColors.blue600,
+    onHover: GSStyle(
+      color: $GSColors.blue900,
+    ),
+  ),
+  hitSlop: 10,
+  onPress: () {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        backgroundColor: Colors.blue,
+        content: Text('Button Pressed!'),
+        duration: Duration(milliseconds: 300),
+      ),
+    );
+  },
+  onLongPress: () {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        backgroundColor: Colors.green,
+        content: Text('Long Pressed Triggered!'),
+        duration: Duration(milliseconds: 300),
+      ),
+    );
+  },
+  child: const GSHeading(
+    text: 'PRESSABLE',
+  ),
+)
+
+
 ```
 
 Similarly, you can change the child elements according to other states of GSPressable

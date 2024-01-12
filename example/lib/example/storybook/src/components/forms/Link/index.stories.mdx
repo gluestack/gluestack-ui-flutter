@@ -171,6 +171,25 @@ The Examples section provides visual representations of the different variants o
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  children: [
+    const GSText(text: 'Design inspiration from'),
+    const SizedBox(
+      width: 10,
+    ),
+    GSLink(
+      style: GSStyle(),
+      url: 'https://gluestack.io/',
+      text: GSLinkText(
+        text: 'gluestack',
+        style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
+      ),
+    ),
+  ],
+)
+
 ```
 
 #### Link with icon
@@ -184,4 +203,23 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  children: [
+    const GSText(text: 'Go to'),
+    const SizedBox(width: 10),
+    GSLink(
+      style: GSStyle(),
+      url: 'https://gluestack.io/',
+      text: GSLinkText(
+        text: 'gluestack',
+        style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
+      ),
+    ),
+    const SizedBox(width: 10),
+    const GSIcon(icon: Icons.arrow_circle_right_outlined),
+  ],
+)
+
 ```
