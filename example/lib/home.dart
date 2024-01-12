@@ -210,6 +210,48 @@ class _HomePageState extends State<HomePage> {
               elementSpacing,
               GestureDetector(
                 onTap: () {
+                  router.go("/switchWithLabelPreview");
+                },
+                child: const Text(
+                  'Preview Switch with Label',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/switchCheckedStatePreview");
+                },
+                child: const Text(
+                  'Preview Switch Checked State',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/switchWithColorSchemePreview");
+                },
+                child: const Text(
+                  'Preview Switch Color Scheme',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
                   router.go("/avatarPreview");
                 },
                 child: const Text(
@@ -452,6 +494,34 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text(
                   'Preview Radio Button with Help Text',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/radioButtonWithFormControlPreview");
+                },
+                child: const Text(
+                  'Preview Radio Button with Form Control',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/radioButtonControlledPreview");
+                },
+                child: const Text(
+                  'Preview Controlled Radio Button',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.blue,
@@ -746,6 +816,20 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Text(
                   'Preview Text Area',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+              elementSpacing,
+              GestureDetector(
+                onTap: () {
+                  router.go("/textareaFormControlPreview");
+                },
+                child: const Text(
+                  'Preview Text Area with Form Control',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.blue,

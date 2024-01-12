@@ -42,13 +42,19 @@ import 'package:gluestack_ui_example/preview_widgets/progress_colors_preview.dar
 import 'package:gluestack_ui_example/preview_widgets/progress_custom_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/progress_value_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/radio_button_controlled_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/radio_button_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/radio_button_with_formcontrol_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/radio_button_with_help_text_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/spinner_colors_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/spinner_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/spinner_with_label_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/switch_checked_state_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/switch_color_scheme_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/switch_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/switch_with_label_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/text_preview.dart';
+import 'package:gluestack_ui_example/preview_widgets/textarea_formcontrol_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/textarea_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/toast_preview.dart';
 import 'package:gluestack_ui_example/preview_widgets/uncontrolled_checkbox_preview.dart';
@@ -143,6 +149,24 @@ final GoRouter router = GoRouter(
           path: "switchPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const SwitchPreview();
+          },
+        ),
+        GoRoute(
+          path: "switchWithLabelPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SwitchWithLabelPreview();
+          },
+        ),
+        GoRoute(
+          path: "switchCheckedStatePreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SwitchCheckedStatePreview();
+          },
+        ),
+        GoRoute(
+          path: "switchWithColorSchemePreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SwitchWithColorSchemePreview();
           },
         ),
         GoRoute(
@@ -251,6 +275,18 @@ final GoRouter router = GoRouter(
           path: "radioButtonWithHelpTextPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const RadioButtonWithHelpTextPreview();
+          },
+        ),
+        GoRoute(
+          path: "radioButtonWithFormControlPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const RadioButtonWithFormControlPreview();
+          },
+        ),
+        GoRoute(
+          path: "radioButtonControlledPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const RadioButtonControlledPreview();
           },
         ),
         GoRoute(
@@ -377,6 +413,12 @@ final GoRouter router = GoRouter(
           path: "textareaPreview",
           builder: (BuildContext context, GoRouterState state) {
             return const TextareaPreview();
+          },
+        ),
+        GoRoute(
+          path: "textareaFormControlPreview",
+          builder: (BuildContext context, GoRouterState state) {
+            return const TextareaFormControlPreview();
           },
         ),
         GoRoute(
