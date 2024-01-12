@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 // breakpoint ref: https://getbootstrap.com/docs/5.0/layout/breakpoints/
 
 class GSRespLayoutManager extends StatelessWidget {

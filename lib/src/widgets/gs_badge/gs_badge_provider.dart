@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 /// GSBadgeProvider is an InheritedWidget used to provide badge-related information to its descendants.

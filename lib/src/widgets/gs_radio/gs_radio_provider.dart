@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 
 class GSRadioProvider<T> extends InheritedWidget {
@@ -14,7 +14,6 @@ class GSRadioProvider<T> extends InheritedWidget {
     super.key,
     required this.size,
     required this.groupValue,
-
     required this.value,
     required this.onChanged,
     required this.isDisabled,
@@ -27,8 +26,8 @@ class GSRadioProvider<T> extends InheritedWidget {
   bool updateShouldNotify(GSRadioProvider oldWidget) {
     return size != oldWidget.size ||
         groupValue != oldWidget.groupValue ||
-
-        isDisabled != oldWidget.isDisabled || isInvalid!=oldWidget.isInvalid;
+        isDisabled != oldWidget.isDisabled ||
+        isInvalid != oldWidget.isInvalid;
   }
 
   static GSRadioProvider<T>? of<T>(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class GSFocusableActionDetectorProvider extends InheritedWidget {
   final bool hoverStatus;
@@ -24,7 +24,8 @@ class GSFocusableActionDetectorProvider extends InheritedWidget {
             ?.hoverStatus ??
         false;
   }
-    static bool isActive(BuildContext context) {
+
+  static bool isActive(BuildContext context) {
     return context
             .dependOnInheritedWidgetOfExactType<
                 GSFocusableActionDetectorProvider>()
@@ -43,6 +44,7 @@ class GSFocusableActionDetectorProvider extends InheritedWidget {
   @override
   bool updateShouldNotify(GSFocusableActionDetectorProvider oldWidget) {
     return focusStatus != oldWidget.focusStatus ||
-        hoverStatus != oldWidget.hoverStatus || activeStatus!=oldWidget.activeStatus;
+        hoverStatus != oldWidget.hoverStatus ||
+        activeStatus != oldWidget.activeStatus;
   }
 }

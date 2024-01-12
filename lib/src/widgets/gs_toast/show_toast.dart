@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void showToast(
@@ -11,7 +11,7 @@ void showToast(
       Container(
         width: 20,
         height: 20,
-        color: Colors.red,
+        color: const Color(0xFFFF0000), //red
       );
 
   FToast().init(context).showToast(
