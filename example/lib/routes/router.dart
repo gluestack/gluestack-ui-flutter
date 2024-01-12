@@ -120,6 +120,7 @@ final GoRouter router = GoRouter(
           path: "example-vstack",
           builder: (context, state) => const VStackExample(),
         ),
+
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
         ...kStories.map(
           (item) => GoRoute(

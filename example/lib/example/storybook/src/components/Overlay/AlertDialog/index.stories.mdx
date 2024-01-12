@@ -1,18 +1,28 @@
 ---
-title: AlertDialog | gluestack-ui | Installation, Usage, and API
+title: GSAlertDialog | gluestack-ui | Installation, Usage, and API
 
-description: AlertDialog effectively interrupts a user's flow and prompts them to take a specific action. It's commonly used for mandatory confirmations or call-to-actions.
+description: GSAlertDialog effectively interrupts a user's flow and prompts them to take a specific action. It's commonly used for mandatory confirmations or call-to-actions.
 
-pageTitle: AlertDialog
+pageTitle: GSAlertDialog
 
-pageDescription: AlertDialog effectively interrupts a user's flow and prompts them to take a specific action. It's commonly used for mandatory confirmations or call-to-actions.
+pageDescription: GSAlertDialog effectively interrupts a user's flow and prompts them to take a specific action. It's commonly used for mandatory confirmations or call-to-actions.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Overlay/AlertDialog" />
+
+This is an illustration of a **Themed GSAlertDialog** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/alertDialogPreview"
@@ -55,3 +65,95 @@ GSButton(
   },
 ),
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSAlertDialog
+
+Contains all Dialog related layout style properties and actions.
+It inherits all the properties of Flutter's [Dialog](https://api.flutter.dev/flutter/material/Dialog-class.html) widget.
+
+#### GSAlertDialogContent
+
+It contains the content for the GSAlertDialog widget i.e GSAlertDialogHeader, GSAlertDialogBody and GSAlertDialogFooter .
+
+#### GSAlertDialogHeader
+
+It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
+
+#### GSAlertDialogBody
+
+It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
+
+#### GSAlertDialogFooter
+
+It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Parameters
+
+GSAlertDialog widget is created using Container widget from flutter. It extends all the properties supported by [Flutter Container](https://api.flutter.dev/flutter/widgets/Container-class.html) and additionally the properties mentioned below.
+
+#### GSAlertDialog
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Name</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Value</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>size</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>xs | sm | md | lg | full</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>md</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these properties may not be available.
+
+#### GSAlertDialog with semantic icon
+
+An example of an GSAlertDialog widget incorporating an icon widget for visually representing important information or actions.
+
+#### GSAlertDialog Sizes
+
+An GSAlertDialog widget with adjustable sizes, providing flexible and visually appealing pop-up notifications and interactive prompts to users.

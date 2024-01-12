@@ -19,7 +19,7 @@ final class BoxStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "boxPreview";
+  String get routePath => "box-preview";
 
   @override
   String get storyName => "Box";

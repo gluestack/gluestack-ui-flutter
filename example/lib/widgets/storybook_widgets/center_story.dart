@@ -20,7 +20,7 @@ final class CenterStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "centerPreview";
+  String get routePath => "center-preview";
 
   @override
   String get storyName => "Center";

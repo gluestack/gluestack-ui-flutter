@@ -46,7 +46,7 @@ final class SwitchStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "switchPreview";
+  String get routePath => "switch-preview";
 
   @override
   String get storyName => "Switch";

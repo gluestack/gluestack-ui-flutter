@@ -30,7 +30,7 @@ final class TextareaStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "textareaPreview";
+  String get routePath => "textarea-preview";
 
   @override
   String get storyName => "Textarea";

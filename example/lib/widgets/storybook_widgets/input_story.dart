@@ -39,7 +39,7 @@ final class InputStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "inputPreview";
+  String get routePath => "input-preview";
 
   @override
   String get storyName => "Input";

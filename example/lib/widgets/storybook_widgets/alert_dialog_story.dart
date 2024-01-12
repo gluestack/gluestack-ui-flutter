@@ -42,7 +42,7 @@ final class AlertDialogStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "alertDialogPreview";
+  String get routePath => "alert-dialog-preview";
 
   @override
   String get storyName => "Alert Dialog";

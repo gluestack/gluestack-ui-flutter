@@ -46,7 +46,7 @@ final class AvatarStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "avatarPreview";
+  String get routePath => "avatar-preview";
 
   @override
   String get storyName => "Avatar";

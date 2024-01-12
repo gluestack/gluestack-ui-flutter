@@ -1,14 +1,24 @@
 ---
-title: Icon | gluestack-ui | Installation, Usage, and API
+title: GSIcon | gluestack-ui | Installation, Usage, and API
 description: Icons are often used to enhance the usability and accessibility of digital products by providing users with clear and intuitive visual cues. It serves as an intuitive and easily recognizable way to communicate with users.
-pageTitle: Icon
+pageTitle: GSIcon
 pageDescription: Icons are often used to enhance the usability and accessibility of digital products by providing users with clear and intuitive visual cues. It serves as an intuitive and easily recognizable way to communicate with users.
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Media And Icons/Icon" />
+
+This is an illustration of a **Themed GSIcon** component with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/iconPreview"
@@ -25,3 +35,78 @@ GSIcon(
   size: GSSizes.$md,
 )
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSIcon
+
+Pre built icons provided by gluestack-ui inherits all the properties of Flutter [Icon](https://api.flutter.dev/flutter/widgets/Icon-class.html) widget.
+
+### Accessibility
+
+We have outlined the various features that ensure the GSIcon widget is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Parameters
+
+GSIcon widget is created using Icon widget from flutter. It extends all the properties and methods supported by [Flutter Icon](https://api.flutter.dev/flutter/widgets/Icon-class.html) and additionally the properties mentioned below.
+
+#### GSSizes
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Name</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Value</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>size</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{'2xs | xs | sm | md | lg | xl'}</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>md</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these props may not be available.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.

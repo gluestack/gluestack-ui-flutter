@@ -1,18 +1,28 @@
 ---
-title: Link | gluestack-ui | Installation, Usage, and API
+title: GSLink | gluestack-ui | Installation, Usage, and API
 
-description: With links, users can navigate seamlessly throughout a website. This component has a hyperlinked appearance for a user-friendly experience.
+description: With links, users can navigate seamlessly throughout a website. This widget has a hyperlinked appearance for a user-friendly experience.
 
-pageTitle: Link
+pageTitle: GSLink
 
-pageDescription: With links, users can navigate seamlessly throughout a website. This component has a hyperlinked appearance for a user-friendly experience.
+pageDescription: With links, users can navigate seamlessly throughout a website. This widget has a hyperlinked appearance for a user-friendly experience.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Forms/Link" />
+
+This is an illustration of a **Themed GSLink** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/linkPreview"
@@ -29,4 +39,187 @@ GSLink(
   url: 'https://gluestack.io/',
   text: const GSLinkText(text: 'gluestack'),
 )
+```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### Link
+
+Contains all link related layout style properties and actions.
+It inherits all the properties of Flutter's [InkWell](https://api.flutter.dev/flutter/material/InkWell-class.html) widget.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Type</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>url</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>String</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`URL that should be opened on Link press.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isExternal</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`If true, link will be opened in new tab on web.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isHovered</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>boolean</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`When true, the link displays a hover state.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+#### GSLinkText
+
+Contains all text related layout style properties and actions. It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutter/widgets/Text-class.html) widget.
+
+### Accessibility
+
+We have outlined the various features that ensure the GSLink widget is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards. Adheres to the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/link/).
+
+#### Keyboard
+
+- `Tab`: Moves focus to the next focusable widget.
+- `Enter`: Users should be able to open a link.
+
+#### Screen Reader
+
+- VoiceOver: When a link receives focus, screen readers should announce a descriptive link name.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### Default
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/linkWithTextPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  children: [
+    const GSText(text: 'Design inspiration from'),
+    const SizedBox(
+      width: 10,
+    ),
+    GSLink(
+      style: GSStyle(),
+      url: 'https://gluestack.io/',
+      text: GSLinkText(
+        text: 'gluestack',
+        style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
+      ),
+    ),
+  ],
+)
+
+```
+
+#### Link with icon
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/linkWithIconPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  children: [
+    const GSText(text: 'Go to'),
+    const SizedBox(width: 10),
+    GSLink(
+      style: GSStyle(),
+      url: 'https://gluestack.io/',
+      text: GSLinkText(
+        text: 'gluestack',
+        style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
+      ),
+    ),
+    const SizedBox(width: 10),
+    const GSIcon(icon: Icons.arrow_circle_right_outlined),
+  ],
+)
+
 ```

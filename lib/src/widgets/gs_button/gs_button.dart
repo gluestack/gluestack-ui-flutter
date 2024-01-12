@@ -7,7 +7,6 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
-import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 
 class GSButton extends StatefulWidget {
   final GSActions? action;

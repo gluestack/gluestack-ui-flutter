@@ -1,24 +1,34 @@
 ---
-title: Checkbox | gluestack-ui | Installation, Usage, and API
+title: GSCheckBox | gluestack-ui | Installation, Usage, and API
 
-description: Whether you're building a simple form or a complex data collection system, the Checkbox component offers a user-friendly way for users to select multiple options from a list.
+description: Whether you're building a simple form or a complex data collection system, the GSCheckBox widget offers a user-friendly way for users to select multiple options from a list.
 
-pageTitle: Checkbox
+pageTitle: GSCheckBox
 
-pageDescription: Whether you're building a simple form or a complex data collection system, the Checkbox component offers a user-friendly way for users to select multiple options from a list.
+pageDescription: Whether you're building a simple form or a complex data collection system, the GSCheckBox widget offers a user-friendly way for users to select multiple options from a list.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Forms/Checkbox" />
+
+This is an illustration of a **Themed GSCheckbox** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/checkboxPreview"
   title="Example"
-  width="800"
-  height="350"
+  width="1000"
+  height="400"
 ></iframe>
 
 ```dart
@@ -36,4 +46,784 @@ GSCheckBox(
   isDisabled: false,
   isInvalid: false,
 )
+```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSCheckbox
+
+Contains all InkWell related layout style properties and actions. It inherits all the properties of Flutter's [InkWell](https://api.flutter.dev/flutter/material/InkWell-class.html) widget.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Type</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>value</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>String</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`The value to be used in the checkbox input. This is the value that will be returned on form submission.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>onChange</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`void Function(bool? value)`}</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`Function called when the state of the checkbox changes.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>defaultIsChecked</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`If true, the checkbox will be initially checked.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isChecked</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`When true, the checkbox will be checked. You'll need to pass onChange to update it's value (since it's now controlled).`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isDisabled</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`To manually set disable to the checkbox.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isInvalid</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`To manually set invalid to the checkbox.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isReadOnly</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`To manually set read-only to the checkbox.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isHovered</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`To manually set hover to the checkbox.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isFocusVisible</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>
+              {`To manually set focus visible state to the checkbox.`}
+            </Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+#### GSCheckboxIndicator
+
+Contains all indicators related layout style properties and actions. It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
+
+#### GSCheckboxIcon
+
+Contains all Icon related layout style properties and actions. It inherits all the properties of Flutter's [Icon](https://api.flutter.dev/flutter/widgets/Icon-class.html) widget.
+
+#### GSCheckboxLabel
+
+Contains all Label related layout style properties and actions. It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutter/widgets/Text-class.html) widget.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Type</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>value</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>string[]</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`The value of the checkbox group.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>onChange</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`void Function(bool? value)`}</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`The callback fired when any children Checkbox is checked or unchecked.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isDisabled</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`To manually set disable to the checkbox.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isInvalid</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`To manually set invalid to the checkbox.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isReadOnly</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`To manually set read-only to the checkbox.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+### Features
+
+- Keyboard support for actions.
+- Support for hover, focus and active states.
+
+### Accessibility
+
+We have outlined the various features that ensure the GSCheckbox widget is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards.Adheres to the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/).
+
+#### Keyboard
+
+- `Tab`: Moves focus to the next focusable widget.
+- `Shift + Tab`: Moves focus to the previous focusable widget.
+- `Space`: To check or uncheck focused checkbox.
+
+#### Screen Reader
+
+- VoiceOver: When the checkbox is focused, the screen reader will announce it's a checkbox and it's current state (check or uncheck) and it's label.
+
+#### States
+
+- In error state, `aria-invalid` will be passed to indicate that the radio input has an error, and providing support for an `aria-errormessage` to describe the error in more detail.
+- In disabled state, `aria-hidden` will be passed to make radio input not focusable.
+- In required state, `aria-required` will be passed to indicate that the radio input is required.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Parameters
+
+GSCheckbox widget is created using InkWell widget from flutter. It extends all the properties supported by [Flutter InkWell](https://api.flutter.dev/flutter/material/InkWell-class.html) and additionally the properties mentioned below.
+
+#### GSCheckbox
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Name</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Value</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>size</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>lg | md | sm</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>md</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these properties may not be available.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widgets allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### Multiple Checkbox
+
+GSCheckbox provide a mutually exclusive selection mechanism, allowing users to choose a multiple option from a set of related choices.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/multipleCheckboxPreview"
+  title="Example"
+  width="1000"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Flutter",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Flutter"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React Native",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React Native"),
+    ),
+  ],
+),
+
+```
+
+#### Horizontal
+
+A horizontal layout incorporating a checkbox allows for intuitive and space-efficient selection of multiple options within a linear layout.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/multipleCheckboxHorizontalPreview"
+  title="Example"
+  width="1000"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Flutter",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Flutter"),
+    ),
+    const SizedBox(
+      width: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React"),
+    ),
+    const SizedBox(
+      width: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React Native",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React Native"),
+    ),
+  ],
+)
+
+```
+
+#### With help text
+
+A checkbox widget with help text provides informative guidance alongside selectable options, ensuring clarity and ease of use.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/checkboxWithHelpTextPreview"
+  title="Example"
+  width="1000"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(
+          margin: EdgeInsets.only(
+            right: $GSSpace.$4,
+          ),
+        ),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Design",
+      onChanged: (value) {},
+      label: GSVStack(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GSCheckBoxLabel(text: "Design"),
+          GSText(
+            text: 'Subscribe to updates from the Design Feed',
+          ),
+        ],
+      ),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(
+          margin: EdgeInsets.only(
+            right: $GSSpace.$4,
+          ),
+        ),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Marketing",
+      onChanged: (value) {},
+      label: GSVStack(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GSCheckBoxLabel(text: "Marketing"),
+          GSText(
+            text: 'Subscribe to updates from the Marketing Feed',
+          ),
+        ],
+      ),
+    ),
+  ],
+)
+
+```
+
+#### Form Control
+
+A checkbox widget integrated with form control enhances the user experience by enabling easy selection and submission of options within a structured input context.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/formControlCheckboxPreview"
+  title="Example"
+  width="1000"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    const GSHeading(text: 'Sign up for newsletters'),
+    const SizedBox(
+      height: 10,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Flutter",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Flutter"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React Native",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React Native"),
+    ),
+    const SizedBox(
+      height: 10,
+    ),
+    const GSText(text: 'Subscribe to newsletters for updates'),
+  ],
+)
+
+
+```
+
+#### Controlled
+
+A controlled widget architecture incorporates a checkbox widget, allowing for precise management of its state and behavior through explicit control mechanisms.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/controlledCheckboxPreview"
+  title="Example"
+  width="1000"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      isChecked: true,
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Flutter",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Flutter"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "React",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      isChecked: true,
+      value: "React Native",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "React Native"),
+    ),
+  ],
+)
+
+```
+
+#### Uncontrolled
+
+An uncontrolled widget utilizes a checkbox widget, providing a simpler implementation where the checkbox state is managed internally, without explicit control from external sources.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/uncontrolledCheckboxPreview"
+  title="Example"
+  width="1000"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Appartments",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Appartments"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Residents",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Residents"),
+    ),
+  ],
+)
+
+
+```
+
+#### Checkbox group
+
+The checkbox group widget allows users to group checkbox and display them in a horizontal or vertical row for better visual representation and functionality.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/checkboxGroupPreview"
+  title="Example"
+  width="1000"
+  height="350"
+></iframe>
+```
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSCheckBox(
+      isDisabled: true,
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Disabled",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Disabled"),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "Active",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "Active"),
+    ),
+  ],
+)
+
+
+
 ```
