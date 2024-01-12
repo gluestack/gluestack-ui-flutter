@@ -1,25 +1,27 @@
 ---
-title: Box | gluestack-ui | Installation, Usage, and API
+title: GSBox | gluestack-ui | Installation, Usage, and API
 
-description: If you're looking for a flexible component to help with low-level layout needs, the Box component might be just what you need. With its customizable styles and props, it can be used to create a wide range of UI elements, from simple containers to complex layout structures.
+description: If you're looking for a flexible widget to help with low-level layout needs, the GSBox widget might be just what you need. With its customizable styles and properties, it can be used to create a wide range of UI elements, from simple containers to complex layout structures.
 
-pageTitle: Box
+pageTitle: GSBox
 
-pageDescription: If you're looking for a flexible component to help with low-level layout needs, the Box component might be just what you need. With its customizable styles and props, it can be used to create a wide range of UI elements, from simple containers to complex layout structures.
+pageDescription: If you're looking for a flexible widget to help with low-level layout needs, the GSBox widget might be just what you need. With its customizable styles and properties, it can be used to create a wide range of UI elements, from simple containers to complex layout structures.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
-import { useRef, useEffect, useState } from "react";
+import { Meta } from '@storybook/addon-docs';
+import { useRef, useEffect, useState } from 'react';
 
 <Meta title="Components/Layout/Box" />
+
+This is an illustration of a **Themed GSBox** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/boxPreview"
   title="Example"
-  width="800"
-  height="350"
+  width="1000"
+  height="400"
 ></iframe>
 
 ```dart
@@ -27,9 +29,34 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSBox(
   style: GSStyle(
-    padding: const EdgeInsets.all($GSSpace.$5),
+    padding: EdgeInsets.all($GSSpace.$5),
     bg: $GSColors.primary500,
   ),
-  child: const Text('This is the Box'),
-)
+  child: const GSText(
+    text: 'This is the Box',
+  ),
+),
+
 ```
+
+<br />
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSBox
+
+It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).

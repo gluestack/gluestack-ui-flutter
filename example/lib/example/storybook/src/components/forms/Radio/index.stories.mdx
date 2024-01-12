@@ -1,18 +1,28 @@
 ---
-title: Radio | gluestack-ui | Installation, Usage, and API
+title: GSRadio | gluestack-ui | Installation, Usage, and API
 
-description: The Radio component presents users with predefined choices and enables them to select only one option. It is commonly used for providing a single-choice selection in forms or surveys.
+description: The GSRadio widget presents users with predefined choices and enables them to select only one option. It is commonly used for providing a single-choice selection in forms or surveys.
 
-pageTitle: Radio
+pageTitle: GSRadio
 
-pageDescription: The Radio component presents users with predefined choices and enables them to select only one option. It is commonly used for providing a single-choice selection in forms or surveys.
+pageDescription: The GSRadio widget presents users with predefined choices and enables them to select only one option. It is commonly used for providing a single-choice selection in forms or surveys.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Forms/Radio" />
+
+This is an illustration of a **Themed GSRadio** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/radioButtonPreview"
@@ -40,3 +50,531 @@ GSRadio<Value>(
   style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.\$2)),
 )
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSRadio
+
+Contains all Radio related layout style properties and actions.
+It inherits all the properties of Flutter's [InkWell](https://api.flutter.dev/flutter/material/InkWell-class.html) widget.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Type</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>value</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>string</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`The value to be used in the radio input. This is the value that will be returned on form submission.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>onChanged</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>function</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`Function called when the state of the radio changes.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isDisabled</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`To manually set disable to the radio.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isInvalid</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`To manually set invalid to the radio.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+#### GSRadioIcon
+
+Contains all Icon related layout style properties and actions. It inherits all the properties of Flutter's [Icon](https://api.flutter.dev/flutter/widgets/Icon-class.html) widget.
+
+#### GSRadioText
+
+Contains all Text related layout style properties and actions. It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutter/widgets/Text-class.html) widget.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Parameters
+
+GSRadio widget is created using InkWell widget from flutter. It extends all the props supported by [InkWell](https://api.flutter.dev/flutter/material/InkWell-class.html) and additionally the properties mentioned below.
+
+#### GSRadio
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Name</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Value</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>size</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>lg | md | sm</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>md</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these properties may not be available.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### Multiple Radio
+
+GSRadio buttons provide a mutually exclusive selection mechanism, allowing users to choose a single option from a set of related choices.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/multipleRadioButtonPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+Value groupValueOne = Value.one;
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSRadio<Value>(
+      value: Value.one,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'English'),
+      style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSRadio<Value>(
+      value: Value.two,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'French'),
+      style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSRadio<Value>(
+      value: Value.three,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'German'),
+      style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+    ),
+  ],
+)
+
+```
+
+#### Horizontal
+
+GSRadio buttons can be used horizontally.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/multipleRadioButtonHorizontalPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSRadio<Value>(
+      value: Value.one,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'Credit Card'),
+      style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+    ),
+    const SizedBox(
+      width: 20,
+    ),
+    GSRadio<Value>(
+      value: Value.two,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'UPI'),
+      style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+    ),
+    const SizedBox(
+      width: 20,
+    ),
+    GSRadio<Value>(
+      value: Value.three,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'Cash on Delivery'),
+      style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+    ),
+  ],
+)
+
+
+```
+
+#### With help text
+
+GSRadio buttons can be used with helper text.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/radioButtonWithHelpTextPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSRadio<Value>(
+      value: Value.one,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSVStack(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GSRadioText<Value>(text: 'Extended Coverage'),
+          GSText(text: 'Extra services included'),
+        ],
+      ),
+      style: GSStyle(
+        margin: EdgeInsets.only(
+          right: $GSSpace.$4,
+          bottom: $GSSpace.$4,
+        ),
+      ),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSRadio<Value>(
+      value: Value.two,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSVStack(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GSRadioText<Value>(text: 'Basic Coverage'),
+          GSText(text: 'Basic services'),
+        ],
+      ),
+      style: GSStyle(
+        margin: EdgeInsets.only(
+          right: $GSSpace.$4,
+          bottom: $GSSpace.$4,
+        ),
+      ),
+    ),
+  ],
+)
+
+
+```
+
+#### Form Control
+
+GSRadio buttons can be used inside FormControl for better control of states and functionality.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/radioButtonWithFormControlPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    const GSHeading(text: 'Which time slot works best for you?'),
+    const SizedBox(
+      height: 10,
+    ),
+    GSRadio<Value>(
+      value: Value.one,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'Monday'),
+      style: GSStyle(
+        margin: EdgeInsets.only(
+          right: $GSSpace.$4,
+        ),
+      ),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSRadio<Value>(
+      value: Value.two,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'Tuesday'),
+      style: GSStyle(
+        margin: EdgeInsets.only(
+          right: $GSSpace.$4,
+        ),
+      ),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSRadio<Value>(
+      value: Value.three,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'Wednesday'),
+      style: GSStyle(
+        margin: EdgeInsets.only(
+          right: $GSSpace.$4,
+        ),
+      ),
+    ),
+    const SizedBox(
+      height: 10,
+    ),
+    const GSText(text: 'Choose a time slot for the meeting'),
+  ],
+)
+
+```
+
+#### Controlled
+
+The GSRadio widget can be used with a controlled state, enabling precise management of the selected option through external state management.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/radioButtonControlledPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+ Value groupValueOne = Value.one;
+
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSRadio<Value>(
+      value: Value.one,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      label: const GSRadioText<Value>(text: 'Apartments'),
+      icon: const GSRadioIcon<Value>(),
+      style: GSStyle(
+        margin: EdgeInsets.only(
+          right: $GSSpace.$4,
+        ),
+      ),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSRadio<Value>(
+      value: Value.two,
+      groupValue: groupValueOne,
+      onChanged: (p0) {
+        setState(() {
+          groupValueOne = p0!;
+        });
+      },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'Houses'),
+      style: GSStyle(
+        margin: EdgeInsets.only(
+          right: $GSSpace.$4,
+        ),
+      ),
+    ),
+  ],
+)
+
+```
+
+#### Uncontrolled
+
+The GSRadio widget can be used with either a ref or no state, providing an uncontrolled state where the selected option is managed internally.
+
+#### Radio group
+
+The GSRadio group widget allows users to group radio and display them in a horizontal or vertical row for better visual representation and functionality.

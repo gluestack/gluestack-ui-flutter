@@ -1,18 +1,28 @@
 ---
-title: Progress | gluestack-ui | Installation, Usage, and API
+title: GSProgress | gluestack-ui | Installation, Usage, and API
 
-description: The Progress component is designed to display the progress of a task that involves multiple steps and takes some time to complete. It helps users stay informed about the current status of a lengthy process.
+description: The GSProgress widget is designed to display the progress of a task that involves multiple steps and takes some time to complete. It helps users stay informed about the current status of a lengthy process.
 
-pageTitle: Progress
+pageTitle: GSProgress
 
-pageDescription: The Progress component is designed to display the progress of a task that involves multiple steps and takes some time to complete. It helps users stay informed about the current status of a lengthy process.
+pageDescription: The GSProgress widget is designed to display the progress of a task that involves multiple steps and takes some time to complete. It helps users stay informed about the current status of a lengthy process.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Feedback/Progress" />
+
+This is an illustration of a **Themed GSProgress** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/progressPreview"
@@ -28,4 +38,276 @@ GSProgress(
   value: 0.4,
   size: GSSizes.$md,
 )
+```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSProgress
+
+It inherits all the properties of Flutter's [LinearProgressIndicator](https://api.flutter.dev/flutter/material/LinearProgressIndicator-class.html) widget.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Type</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>value</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>double</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>-</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`It is used to set the progress of the progress bar`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+**Descendants Styling properties**
+
+Props to style child components.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>style</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`Parameter to style GSProgress widget`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+### Accessibility
+
+We have outlined the various features that ensure the GSProgress widget is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards.
+
+#### Keyboard
+
+- Tab: Moves focus to the next focusable widget.
+
+#### Screen Reader
+
+- VoiceOver: When the Progress is focused, the screen reader will announce it's a progress and it's current progress indicator.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Parameters
+
+GSProgress widget is created using LinearProgressIndicator widget from flutter. It extends all the arguments supported by [Flutter LinearProgressIndicator](https://api.flutter.dev/flutter/material/LinearProgressIndicator-class.html) and additionally the properties mentioned below.
+
+#### GSProgress
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Name</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Value</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>size</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>xs | sm | md | lg | xl | 2xl</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>md</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these props may not be available.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### Value
+
+GSProgress widget with value
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/progressValuePreview"
+  title="Example"
+  width="1000"
+  height="400"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSText(text: "Downloading 55%"),
+    SizedBox(
+      height: 5,
+    ),
+    GSProgress(
+      value: 0.55,
+    ),
+  ],
+)
+
+```
+
+#### Color
+
+You can add track color to progress bar as per our needs.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/progressColorsPreview"
+  title="Example"
+  width="1000"
+  height="400"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(progressValueColor: $GSColors.rose400),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(progressValueColor: $GSColors.blue500),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(progressValueColor: $GSColors.green500),
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(progressValueColor: $GSColors.orange500),
+    ),
+  ],
+)
+
+
+```
+
+#### Custom
+
+You can customize the progress bar. Below is the example where we have change the theme of progress bar.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/progressCustomPreview"
+  title="Example"
+  width="1000"
+  height="400"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    const GSHeading(text: "Internal Storage"),
+    const SizedBox(
+      height: 5,
+    ),
+    GSProgress(
+      value: 0.55,
+      style: GSStyle(
+        progressValueColor: $GSColors.green500,
+        bg: $GSColors.green50,
+      ),
+    ),
+    const SizedBox(
+      height: 5,
+    ),
+    const GSText(text: "14GB"),
+  ],
+),
+
+
 ```

@@ -1,18 +1,28 @@
 ---
-title: Toast | gluestack-ui | Installation, Usage, and API
+title: GSToast | gluestack-ui | Installation, Usage, and API
 
-description: Toast is a component that can display alerts, notifications, or messages on top of an overlay layer. It is commonly used to inform users of important information or actions.
+description: GSToast is a widget that can display alerts, notifications, or messages on top of an overlay layer. It is commonly used to inform users of important information or actions.
 
-pageTitle: Toast
+pageTitle: GSToast
 
-pageDescription: Toast is a component that can display alerts, notifications, or messages on top of an overlay layer. It is commonly used to inform users of important information or actions.
+pageDescription: GSToast is a widget that can display alerts, notifications, or messages on top of an overlay layer. It is commonly used to inform users of important information or actions.
 
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from '@gluestack/design-system';
 
 <Meta title="Components/Feedback/Toast" />
+
+This is an illustration of a **Themed GSToast** widget with default configuration.
 
 <iframe
   src="https://gluestack-flutter.web.app/#/toastPreview"
@@ -35,16 +45,16 @@ GSButton(
             label: 'Action', initial: 9, options: actionOptions)],
         variant: GSVariants.values[context.knobs.options(
             label: 'Variant', initial: 0, options: variantOptions)],
-        child: const Column(
+        child: const GSVStack(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-                    GSToastTitle(
-                      title: "Toast Title",
-                    ),
-                    GSToastDescription(
-                      description: "Here is the toast description!",
-                    ),
+            GSToastTitle(
+              title: "Hey",
+            ),
+            GSToastDescription(
+              description: "Desc Desc Desc Desc Desc Desc ",
+            ),
           ],
         ),
       ),
@@ -52,3 +62,119 @@ GSButton(
   },
 )
 ```
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSToast
+
+It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
+
+#### GSToastTitle
+
+Contains all Text related layout style properties and actions.
+It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutter/widgets/Text-class.html) widget.
+
+#### ToastDescription
+
+Contains all Text related layout style props and actions.
+It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutter/widgets/Text-class.html) widget.
+
+### Accessibility
+
+We have outlined the various features that ensure the GSToast widget is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards.Adheres to the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/).
+
+#### Keyboard
+
+- `Tab + Enter`: Triggers the toast's action.
+
+#### Screen Reader
+
+- VoiceOver: When the toast is focused, the screen reader will announce the toast's title.
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Parameters
+
+GSToast widget is created using Container widget from flutter. It extends all the properties and methods supported by [Flutter Container](https://api.flutter.dev/flutter/widgets/Container-class.html) and additionally the properties mentioned below.
+
+#### GSToast
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Name</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Value</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>action</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>
+              error | warning | success | info | attention
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>attention</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>variant</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>solid | outline | accent</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>solid</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these properties may not be available.
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
+
+#### GSToast with actions
+
+A versatile GSToast widget with customizable actions, enabling users to take various actions directly from the notification popup for enhanced usability and convenience.
+
+#### GSToast with variants
+
+A versatile GSToast widget with multiple variants, offering different styles and visual cues to effectively convey various types of notifications and feedback to users.
