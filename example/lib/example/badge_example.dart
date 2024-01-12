@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
 
 /// Example widget demonstrating the usage of GSBadge, GSBadgeIcon, and GSBadgeText.
 class BadgeExample extends StatefulWidget {
@@ -69,17 +69,18 @@ class _BadgeExampleState extends State<BadgeExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSBadge(
-            action: GSActions.success,
-            variant:  GSVariants.solid,
-            size: GSSizes.\$md,
-            icon: const GSBadgeIcon(
-              iconData: Icons.info_outline,
-            ),
-            text: const GSBadgeText(
-              'information',
-            ),
-          )
+    var code = '''
+          GSBadge(
+              action: GSActions.success,
+              variant:  GSVariants.solid,
+              size: GSSizes.\$md,
+              icon: const GSBadgeIcon(
+                iconData: Icons.info_outline,
+              ),
+              text: const GSBadgeText(
+                'information',
+              ),
+           )
   ''';
     return Scaffold(
       appBar: AppBar(

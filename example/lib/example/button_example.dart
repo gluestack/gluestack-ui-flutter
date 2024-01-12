@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
-import 'package:gluestack_ui_example/utils/toggle.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/toggle.dart';
 
 class ButtonExample extends StatefulWidget {
   const ButtonExample({super.key});
@@ -70,19 +70,20 @@ class _ButtonExampleState extends State<ButtonExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSButton(
-                action: GSActions.primary,
-                variant: GSVariants.solid,
-                size: GSSize.\$md,
-                isDisabled: false,
-                isFocusVisible: false,
-                onPressed: () {},
-                child: const Row(
-                  children: [
-                    GSButtonText(text: "Add"),
-                    GSButtonIcon(icon: Icons.add)
-                  ],
-                ),
+    var code = '''
+              GSButton(
+                    action: GSActions.primary,
+                    variant: GSVariants.solid,
+                    size: GSSize.\$md,
+                    isDisabled: false,
+                    isFocusVisible: false,
+                    onPressed: () {},
+                    child: const Row(
+                      children: [
+                        GSButtonText(text: "Add"),
+                        GSButtonIcon(icon: Icons.add)
+                      ],
+                    ),
               )
   ''';
     return Scaffold(
@@ -97,11 +98,6 @@ class _ButtonExampleState extends State<ButtonExample> {
           size: selectedSizeOption,
           isDisabled: isDisabled,
           isFocusVisible: isFocusVisible,
-          style: GSStyle(
-            dark: GSStyle(
-              bg: $GSColors.red400,
-            ),
-          ),
           onPressed: () {},
           child: const Row(
             children: [

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_divider/gs_divider_style.dart';
@@ -12,12 +12,15 @@ class GSDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     final dividerOrientation = orientation ?? dividerStyle.props?.orientation!;
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: dividerOrientation == GSOrientations.horizontal
-          ? dividerStyle.variants?.orientation?.horizontal
-          : dividerStyle.variants?.orientation?.vertical,
+      context: context,
+      styles: [
+        dividerOrientation == GSOrientations.horizontal
+            ? dividerStyle.variants?.orientation?.horizontal
+            : dividerStyle.variants?.orientation?.vertical,
+      ],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
 
     bool isDividerInsideColumn(BuildContext context) {
       Column? column = context.findAncestorWidgetOfExactType<Column>();

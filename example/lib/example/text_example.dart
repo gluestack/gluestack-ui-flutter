@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
 
 class TextExample extends StatelessWidget {
   const TextExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSText(
-            text: 'test 1',
-            bold: true,
-            underline: true,
-            style: GSStyle(
-              textStyle: const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg),
-            ),
-          )
+    var code = '''
+          GSText(
+              text: 'This is an example of a simple text.',
+              style: GSStyle(
+                textStyle: const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg),
+              ),
+           )
   ''';
     return Scaffold(
       appBar: AppBar(
@@ -24,11 +23,11 @@ class TextExample extends StatelessWidget {
         child: BaseLayout(
           code: code,
           component: GSText(
-            text: 'test 1',
-            bold: true,
-            underline: true,
+            text: 'This is an example of a simple text.',
+            // bold: true,
+            // underline: true,
             style: GSStyle(
-              textStyle:  TextStyle(letterSpacing: $GSLetterSpacing.$lg),
+              textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
             ),
           ),
         ),

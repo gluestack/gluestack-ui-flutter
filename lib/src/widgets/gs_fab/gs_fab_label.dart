@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_label_style.dart';
 
@@ -16,15 +16,13 @@ class GSFabLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[fabLabelConfig.ancestorStyle.first];
-   
-    
+
     var defaultTextStyle = TextStyle(
         color: ancestorStyles?.color,
         fontWeight: ancestorStyles?.textStyle?.fontWeight,
         fontSize: ancestorStyles?.textStyle?.fontSize);
 
-    final mergedStyle =
-        defaultTextStyle.merge(style != null ? style!.textStyle : null);
+    final mergedStyle = defaultTextStyle.merge(style?.textStyle);
 
     return Text(
       text,

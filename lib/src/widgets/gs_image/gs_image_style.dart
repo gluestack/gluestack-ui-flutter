@@ -1,19 +1,10 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/theme/config/image/image.dart';
 import 'package:gluestack_ui/src/token/public.dart';
 
-final imageStyle = GSStyle.fromMap(data: imageData);
+final imageStyle = GSStyle.fromMap(data: getIt<GluestackCustomConfig>().image);
 
 class GSImageStyle {
-  static Map<GSSizes, GSStyle> size = {
-    GSSizes.$sm: imageStyle.variants!.size!.$sm!,
-    GSSizes.$md: imageStyle.variants!.size!.$md!,
-    GSSizes.$lg: imageStyle.variants!.size!.$lg!,
-    GSSizes.$xl: imageStyle.variants!.size!.$xl!,
-    GSSizes.$2xl: imageStyle.variants!.size!.$2xl!,
-    GSSizes.$2xs: imageStyle.variants!.size!.$2xs!
-  };
-
   static Map<GSBorderRadius, double> radius = {
     GSBorderRadius.$sm: $GSRadii.$sm,
     GSBorderRadius.$md: $GSRadii.$md,

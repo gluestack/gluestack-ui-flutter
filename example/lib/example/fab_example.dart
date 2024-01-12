@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
-import 'package:gluestack_ui_example/utils/toggle.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/toggle.dart';
 
 class FabExample extends StatefulWidget {
   const FabExample({super.key});
@@ -58,9 +58,22 @@ class _FabExampleState extends State<FabExample> {
 
   @override
   Widget build(BuildContext context) {
+    const code = """
+              GSFab(
+                  size: selectedSizeOption,
+                  placement: selectedPlacementOption,
+                  onPressed: () {},
+                  isDisabled: isDisabled,
+                  isHovered: isHovered,
+                  isPressed: isPressed,
+                  icon: const GSFabIcon(icon: Icons.add),
+                  label: const GSFabLabel(text: 'Quick Start'),
+               )
+""";
     return Scaffold(
       appBar: AppBar(),
       body: BaseLayout(
+        code: code,
         component: Center(
           child: Stack(
             children: [

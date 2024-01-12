@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
-import 'package:gluestack_ui_example/utils/toggle.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/toggle.dart';
 
 class SwitchExample extends StatefulWidget {
   const SwitchExample({super.key});
@@ -31,22 +31,23 @@ class _SwitchExampleState extends State<SwitchExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSSwitch(
-              size: GSSizes.\$md,
-              isDisabled: false,
-              style: GSStyle(
-                checked: GSStyle(
-                  thumbColor: Colors.grey,
-                  activeThumbColor: Colors.blue,
+    var code = '''
+            GSSwitch(
+                size: GSSizes.\$md,
+                isDisabled: false,
+                style: GSStyle(
+                  checked: GSStyle(
+                    thumbColor: Colors.grey,
+                    activeThumbColor: Colors.blue,
+                  ),
                 ),
-              ),
-              value: val1,
-              onToggle: (bool value) {
-                setState(() {
-                  val1 = value;
-                });
-              },
-            )
+                value: val1,
+                onToggle: (bool value) {
+                  setState(() {
+                    val1 = value;
+                  });
+                },
+             )
 ''';
     return Scaffold(
       appBar: AppBar(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
-import 'package:gluestack_ui_example/utils/toggle.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/toggle.dart';
 
 class CheckBoxExample extends StatefulWidget {
   const CheckBoxExample({super.key});
@@ -37,17 +37,18 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSCheckBox(
-            icon: GSCheckBoxIndicator(
-              style: GSStyle(margin: const EdgeInsets.only(right: \$GSSpace.\$2)),
-              child: const GSCheckBoxIcon(),
-            ),
-            value: "value 1",
-            onChanged: (value) {},
-            label: const GSCheckBoxLabel(text: "value1"),
-            size: GSSizes.\$md,
-            isDisabled: false,
-            isInvalid: false,
+    var code = '''
+          GSCheckBox(
+              icon: GSCheckBoxIndicator(
+                  style: GSStyle(margin: const EdgeInsets.only(right: \$GSSpace.\$2)),
+                  child: const GSCheckBoxIcon(),
+              ),
+              value: "value 1",
+              onChanged: (value) {},
+              label: const GSCheckBoxLabel(text: "value1"),
+              size: GSSizes.\$md,
+              isDisabled: false,
+              isInvalid: false,
           )
   ''';
     return Scaffold(
@@ -58,7 +59,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
         code: code,
         component: GSCheckBox(
           icon: GSCheckBoxIndicator(
-            style: GSStyle(margin:  EdgeInsets.only(right: $GSSpace.$2)),
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
             child: const GSCheckBoxIcon(),
           ),
           value: "value 1",

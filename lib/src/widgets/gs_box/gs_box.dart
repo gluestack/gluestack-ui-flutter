@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
@@ -33,7 +33,7 @@ class GSBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSStyle styler = resolveStylesDeprecated(
       context,
       variantStyle: GSStyle(),
       inlineStyle: style,
@@ -67,8 +67,8 @@ class GSBox extends StatelessWidget {
               style != null ? style!.borderRadius ?? 0 : 0),
           border: Border.all(
               color: style != null
-                  ? style!.borderColor ?? Colors.transparent
-                  : Colors.transparent,
+                  ? style!.borderColor ?? Color(0x00000000)
+                  : Color(0x00000000),
               width: style != null ? style!.borderWidth ?? 0 : 0),
           gradient: gradient,
           backgroundBlendMode: backgroundBlendMode,

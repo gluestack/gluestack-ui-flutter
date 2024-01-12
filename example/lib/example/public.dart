@@ -21,3 +21,5 @@ export 'text_example.dart';
 export 'toast_example.dart';
 export 'vstack_example.dart';
 export 'form_example.dart';
+export 'flex_example.dart';
+export 'fab_example.dart';

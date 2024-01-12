@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
 
 class ToastExample extends StatefulWidget {
   const ToastExample({super.key});
@@ -40,31 +40,23 @@ class _ToastExampleState extends State<ToastExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSButton(
-            size: GSSizes.\$lg,
-            child: const GSButtonText(text: "Click Me"),
-            onPressed: () {
-              showToast(
-                context,
-                child: GSToast(
-                  variant: GSVariants.solid,
-                  action: GSActions.attention,
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GSToastTitle(
-                        title: "Hey",
-                      ),
-                      GSToastDescription(
-                        description: "Desc Desc Desc Desc Desc Desc ",
-                      ),
-                    ],
-                  ),
+    var code = '''
+               GSToast(
+                variant: selectedVariantOption,
+                action: selectedActionOption,
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GSToastTitle(
+                      title: "Toast Title",
+                    ),
+                    GSToastDescription(
+                      description: "Here is the toast description!",
+                    ),
+                  ],
                 ),
-              );
-            },
-          ),
+              ),
 ''';
     return Scaffold(
       appBar: AppBar(
@@ -78,7 +70,8 @@ class _ToastExampleState extends State<ToastExample> {
           onPressed: () {
             showToast(
               context,
-              child: GSToast(
+              child:
+               GSToast(
                 variant: selectedVariantOption,
                 action: selectedActionOption,
                 child: const Column(
@@ -86,10 +79,10 @@ class _ToastExampleState extends State<ToastExample> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     GSToastTitle(
-                      title: "Hey",
+                      title: "Toast Title",
                     ),
                     GSToastDescription(
-                      description: "Desc Desc Desc Desc Desc Desc ",
+                      description: "Here is the toast description!",
                     ),
                   ],
                 ),

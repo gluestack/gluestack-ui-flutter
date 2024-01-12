@@ -22,11 +22,11 @@ class GSProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     final progressSize = size ?? progressStyle.props?.size;
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: progressStyle,
-      size: GSProgressStyle.size[progressSize],
+      context: context,
+      styles: [progressStyle, progressStyle.sizeMap(progressSize)],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
     final progressColor = styler.bg ?? progressStyle.bg;
     final valueColor = styler.progressValueColor ?? $GSColors.primary500;
     final borderRadius = styler.borderRadius ?? progressStyle.borderRadius;

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -81,8 +81,12 @@ class GSCheckBoxIndicator extends StatelessWidget {
     final ancestorCheckBoxStyle = GSAncestorProvider.of(context)
         ?.decedentStyles?[checkBoxIndicatorConfig.descendantStyle.first];
 
-    final styler = resolveStyles(context,
-        variantStyle: checkBoxIndicatorStyle, inlineStyle: style);
+    final styler = resolveStyles(
+      context: context,
+      styles: [checkBoxIndicatorStyle],
+      inlineStyle: style,
+      isFirst: true,
+    );
 
     final value = GSCheckBoxProvider.of(context);
     final isChecked = value?.isChecked ?? false;
@@ -106,17 +110,17 @@ class GSCheckBoxIndicator extends StatelessWidget {
         const Color(0xFF000000);
 
     return Opacity(
-      opacity: isDisabled ? styler?.onDisabled?.opacity ?? 0.0 : 1,
+      opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
       child: Container(
         width: ancestorCheckBoxStyle?.height,
         height: ancestorCheckBoxStyle?.width,
-        margin: styler?.margin,
+        margin: styler.margin,
         decoration: BoxDecoration(
           color: bg,
           border: Border.all(
               width: ancestorCheckBoxStyle?.borderWidth ?? 1.0,
               color: borderColor),
-          borderRadius: BorderRadius.circular(styler?.borderRadius ?? 0.0),
+          borderRadius: BorderRadius.circular(styler.borderRadius ?? 0.0),
         ),
         child: isChecked ? Center(child: child) : null,
       ),

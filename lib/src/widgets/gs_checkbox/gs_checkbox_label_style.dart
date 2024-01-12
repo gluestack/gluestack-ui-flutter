@@ -1,15 +1,15 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/checkbox/checkbox_label.dart';
-import 'package:gluestack_ui/src/theme/config/text/text.dart';
 
 const GSStyleConfig checkBoxLabelConfig = GSStyleConfig(
   componentName: 'CheckboxLabel',
   ancestorStyle: ['_text'],
 );
 
-GSStyle checkBoxLabelStyle = GSStyle.fromMap(data: textData)
-    .merge(GSStyle.fromMap(data: checkBoxLabelData));
+GSStyle checkBoxLabelStyle = GSStyle.fromMap(
+        data: getIt<GluestackCustomConfig>().text)
+    .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().checkboxLabel));
 
 class GSCheckBoxLabelStyle {
   static Map<GSSizes, GSStyle?> size = {

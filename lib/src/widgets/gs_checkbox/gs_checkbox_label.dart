@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -16,16 +16,21 @@ class GSCheckBoxLabel extends StatelessWidget {
     final ancestorCheckBoxStyle = GSAncestorProvider.of(context)
         ?.decedentStyles?[checkBoxLabelConfig.ancestorStyle.first];
 
-    final styler = resolveStyles(context,
-        variantStyle: checkBoxLabelStyle,
-        size: GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size],
-        inlineStyle: style);
+    final styler = resolveStyles(
+      context: context,
+      styles: [
+        checkBoxLabelStyle,
+        GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size]
+      ],
+      inlineStyle: style,
+      isFirst: true,
+    );
     final value = GSCheckBoxProvider.of(context);
     final isChecked = value?.isChecked ?? false;
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final isDisabled = value?.isDisabled ?? true;
 
-    final currentTextStyle = styler?.textStyle?.copyWith(
+    final currentTextStyle = styler.textStyle?.copyWith(
         color: style?.textStyle?.color ??
             _resolveColor(styler,
                 isChecked: isChecked,
@@ -33,9 +38,8 @@ class GSCheckBoxLabel extends StatelessWidget {
                 isHovered: isDisabled ? false : isHovered) ??
             styler.color);
 
-
     return Opacity(
-      opacity: isDisabled?styler?.onDisabled?.opacity??0.0:1,
+      opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
       child: Text(
         text,
         style: currentTextStyle,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/token/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_spinner/gs_spinner_style.dart';
 
 class GSSpinner extends StatelessWidget {
@@ -30,10 +29,11 @@ class GSSpinner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: spinnerStyle,
+      context: context,
+      styles: [spinnerStyle],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
     final spinnerColor = styler.color ?? spinnerStyle.props?.color;
     final spinnerBackgroundColor = styler.bg;
     return SizedBox(

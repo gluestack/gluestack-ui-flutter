@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_icon/gs_icon_style.dart';
@@ -31,11 +31,13 @@ class GSIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final iconSize = size ?? iconStyle.props?.size;
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: iconStyle,
-      size: GSIconStyle.size[iconSize],
-      inlineStyle: style,
-    )!;
+        context: context,
+        styles: [
+          iconStyle,
+          iconStyle.sizeMap(iconSize),
+        ],
+        inlineStyle: style,
+        isFirst: true);
     return Icon(
       icon,
       size: styler.width ?? styler.height,

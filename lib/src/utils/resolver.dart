@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/token/font_weight.dart';
 import 'package:gluestack_ui/src/token/line_height.dart';
@@ -8,17 +8,37 @@ bool parseMap(Map<dynamic, dynamic>? data) {
   return data?.isNotEmpty ?? false;
 }
 
+// Map<String, GSStyle?> mergeStyledMaps({
+//   required Map<String, GSStyle?>? styleMap,
+//   required Map<String, GSStyle?>? overrideStyleMap,
+//   required List<String> keys,
+// }) {
+//   Map<String, GSStyle?> mergedStyleMap = {};
+//   for (var element in keys) {
+//     mergedStyleMap[element] = styleMap?[element] != null
+//         ? styleMap![element]?.merge(overrideStyleMap?[element])
+//         : overrideStyleMap?[element];
+//   }
+//   return mergedStyleMap;
+// }
+
 Map<String, GSStyle?> mergeStyledMaps({
   required Map<String, GSStyle?>? styleMap,
   required Map<String, GSStyle?>? overrideStyleMap,
   required List<String> keys,
 }) {
   Map<String, GSStyle?> mergedStyleMap = {};
-  for (var element in keys) {
-    mergedStyleMap[element] = styleMap?[element] != null
-        ? styleMap![element]?.merge(overrideStyleMap?[element])
-        : overrideStyleMap?[element];
-  }
+  styleMap?.forEach((key, value) {
+    mergedStyleMap[key] = value;
+  });
+  overrideStyleMap?.forEach((key, value) {
+    if (mergedStyleMap.containsKey(key) && value != null) {
+      mergedStyleMap[key] = mergedStyleMap[key]?.merge(value) ?? value;
+    } else {
+      mergedStyleMap[key] = value;
+    }
+  });
+
   return mergedStyleMap;
 }
 
@@ -39,10 +59,10 @@ Color? resolveColorFromString(String? color) {
     return null;
   }
   if (color.contains("transparent")) {
-    return Colors.transparent;
+    return const Color(0x00000000); //transparent
   }
   if (color.contains("white")) {
-    return Colors.white;
+    return const Color(0xFFFFFFFF); // white
   }
   return $GSColors.colorMap[color.substring(1)];
 }
@@ -245,6 +265,15 @@ GSAlignments? resolveAlignmentFromString(String? itemAlignment) {
   return itemAlignment != null ? itemAlignmentMap[itemAlignment] : null;
 }
 
+MainAxisAlignment resolveAlignmentFromNum(num? alignmentNum) {
+  final alignments = {
+    -1: MainAxisAlignment.start,
+    0: MainAxisAlignment.center,
+    1: MainAxisAlignment.end,
+  };
+  return alignments[alignmentNum] ?? MainAxisAlignment.end;
+}
+
 GSSpaces? resolveSpacesFromString(String? space) {
   const spaceMap = {
     'xs': GSSpaces.$xs,
@@ -389,4 +418,28 @@ GSPlacements? resolvePlacementFromString(String? placement) {
   };
 
   return placement != null ? placementMap[placement] : null;
+}
+
+Map<String, GSStyle>? resolveCompoundVariants(
+    {required List<Map<String, dynamic>>? compoundVariants}) {
+  if (compoundVariants == null || compoundVariants.isEmpty) {
+    return null;
+  }
+  final Map<String, GSStyle> resolvedCompoundVariants = {};
+  for (var element in compoundVariants) {
+    final keyName = resolveActionFromString(element['action']).toString() +
+        resolveVariantFromString(element['variant']).toString();
+    resolvedCompoundVariants[keyName] = GSStyle.fromMap(data: element['value']);
+  }
+  return resolvedCompoundVariants;
+}
+
+GSOutlineStyle? resolveOutlineStyleFromString({required String? outlineStyle}) {
+  if (outlineStyle == null) {
+    return null;
+  }
+  Map<String, GSOutlineStyle> outlineStyleMap = {
+    'solid': GSOutlineStyle.solid,
+  };
+  return outlineStyleMap[outlineStyle];
 }

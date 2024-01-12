@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
@@ -45,12 +45,10 @@ class GSAvatar extends StatelessWidget {
     final avatarSize = size ?? avatarStyle.props?.size;
 
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: avatarStyle,
-      size: GSAvatarStyle.size[avatarSize],
+      context: context,
+      styles: [avatarStyle, avatarStyle.sizeMap(avatarSize)],
       inlineStyle: style,
-      descendantStyleKeys: gsAvatarConfig.descendantStyle,
-    )!;
+    );
 
     return GSAncestor(
       decedentStyles: styler.descendantStyles,

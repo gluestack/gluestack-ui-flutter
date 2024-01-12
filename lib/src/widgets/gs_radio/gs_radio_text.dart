@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
@@ -20,19 +20,24 @@ class GSRadioText<T> extends StatelessWidget {
 
     final bool isChecked = value!.value == value.groupValue;
 
-    final fontSize = GSRadioTextStyle
-        .size[ancestorTextStyles?.props?.size]?.textStyle?.fontSize;
+    final fontSize = radioLabelStyle
+        .sizeMap(ancestorTextStyles?.props?.size)
+        ?.textStyle
+        ?.fontSize;
 
     GSStyle styler = resolveStyles(
-      variantStyle: radioLabelStyle,
-      context,
+      context: context,
+      styles: [radioLabelStyle],
       inlineStyle: value.style,
-    )!;
+      isFirst: true,
+    );
 
-    final fontColor = isChecked ? styler.checked?.textStyle?.color : styler.color;
+    final fontColor =
+        isChecked ? styler.checked?.textStyle?.color : styler.color;
 
-    final currentHoverColor =
-        isChecked ? styler.onHover?.textStyle?.color : styler.checked?.onHover?.color;
+    final currentHoverColor = isChecked
+        ? styler.onHover?.textStyle?.color
+        : styler.checked?.onHover?.color;
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final currentTextStyle = TextStyle(
       fontSize: textStyle?.fontSize ?? fontSize,

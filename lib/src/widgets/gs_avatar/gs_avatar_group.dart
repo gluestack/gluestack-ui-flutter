@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar.dart';
@@ -21,25 +21,30 @@ class GSAvatarGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GSStyle styler = resolveStyles(
-      variantStyle: avatarGroupStyle,
-      context,
+      context: context,
+      styles: [avatarGroupStyle],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
     double overlap = styler.gap ?? 40;
 
-    List<Widget> stackLayers = List<Widget>.generate(children.length, (index) {
-      return Padding(
-        padding: direction == GSDirection.column
-            ? overlap.isNegative
-                ? EdgeInsets.fromLTRB(0, 0, 0, index * overlap * -1)
-                : EdgeInsets.fromLTRB(0, index * overlap, 0, 0)
-            : overlap.isNegative
-                ? EdgeInsets.fromLTRB(0, 0, index * overlap * -1, 0)
-                : EdgeInsets.fromLTRB(index * overlap, 0, 0, 0),
-        child:
-            reversed! ? children[children.length - index - 1] : children[index],
-      );
-    });
+    List<Widget> stackLayers = List<Widget>.generate(
+      children.length,
+      (index) {
+        return Padding(
+          padding: direction == GSDirection.column
+              ? overlap.isNegative
+                  ? EdgeInsets.fromLTRB(0, 0, 0, index * overlap * -1)
+                  : EdgeInsets.fromLTRB(0, index * overlap, 0, 0)
+              : overlap.isNegative
+                  ? EdgeInsets.fromLTRB(0, 0, index * overlap * -1, 0)
+                  : EdgeInsets.fromLTRB(index * overlap, 0, 0, 0),
+          child: reversed!
+              ? children[children.length - index - 1]
+              : children[index],
+        );
+      },
+    );
 
     return Stack(
       alignment: AlignmentDirectional.center,

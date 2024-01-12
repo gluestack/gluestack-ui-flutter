@@ -57,7 +57,7 @@ class GSRadio<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formProps = GSFormProvider.of(context);
-    final radioSize = size ?? formProps?.size ??radioStyle.props!.size!;
+    final radioSize = size ?? formProps?.size ?? radioStyle.props!.size!;
     bool? isRadioDisabled = isDisabled;
     bool? isRadioReadOnly = formProps?.isReadOnly ?? false;
     bool? isRadioInvalid = isInvalid;

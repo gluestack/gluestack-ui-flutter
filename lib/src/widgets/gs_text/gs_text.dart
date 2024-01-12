@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
@@ -54,11 +54,15 @@ class GSText extends StatelessWidget {
     final textSize = size ?? gstextStyle.props?.size;
 
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: highlight ? gstextStyle.variants?.highlight : null,
-      size: GSTextStyles.size[textSize],
+      context: context,
+      styles: [
+        gstextStyle,
+        highlight ? gstextStyle.variants?.highlight : null,
+        gstextStyle.sizeMap(textSize),
+      ],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
 
     final currentTextStyle = styler.textStyle?.copyWith(
       fontWeight: bold ? FontWeight.bold : styler.textStyle?.fontWeight,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/utils/base_layout.dart';
-import 'package:gluestack_ui_example/utils/drop_down.dart';
-import 'package:gluestack_ui_example/utils/toggle.dart';
+import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/toggle.dart';
 
 class TextAreaExample extends StatefulWidget {
   const TextAreaExample({super.key});
@@ -50,13 +50,14 @@ class _TextAreaExampleState extends State<TextAreaExample> {
 
   @override
   Widget build(BuildContext context) {
-    var code = '''GSTextArea(
-            size: GSSizes.\$md,
-            hintText: "Enter text here",
-            isDisabled: false,
-            isInvalid: false,
-            readOnly: false,
-          )
+    var code = '''
+          GSTextArea(
+                size: GSSizes.\$md,
+                hintText: "Enter text here",
+                isDisabled: false,
+                isInvalid: false,
+                readOnly: false,
+           )
   ''';
     return Scaffold(
       appBar: AppBar(

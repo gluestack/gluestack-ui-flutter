@@ -3,7 +3,6 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
-import 'package:gluestack_ui/src/widgets/gs_link/gs_link_style.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class GSLink extends StatelessWidget {
@@ -12,21 +11,22 @@ class GSLink extends StatelessWidget {
   final Widget text;
   final bool isExternal;
   final bool isHovered;
-  const GSLink(
-      {super.key,
-      required this.url,
-      required this.text,
-      this.style,
-      this.isExternal = false,
-      this.isHovered=false,
-      });
+  const GSLink({
+    super.key,
+    required this.url,
+    required this.text,
+    this.style,
+    this.isExternal = false,
+    this.isHovered = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final styler = resolveStyles(context,
-        descendantStyles: linkStyle.descendantStyles,
-        descendantStyleKeys: gsLinkConfig.descendantStyle,
-        inlineStyle: style)!;
+    final styler = resolveStyles(
+      context: context,
+      inlineStyle: style,
+      isFirst: true,
+    );
 
     return GSAncestor(
       decedentStyles: styler.descendantStyles,

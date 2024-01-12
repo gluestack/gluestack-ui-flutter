@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
@@ -13,7 +13,7 @@ class GSRespRowColumn extends StatelessWidget {
   final TextBaseline? textBaseline;
   final Clip clipBehavior;
   final Axis? direction;
-  final EdgeInsets? seperatorPadding;
+  final EdgeInsets? separatorPadding;
 
   const GSRespRowColumn({
     super.key,
@@ -26,7 +26,7 @@ class GSRespRowColumn extends StatelessWidget {
     this.textBaseline,
     this.clipBehavior = Clip.none,
     this.direction,
-    this.seperatorPadding,
+    this.separatorPadding,
     this.constraintWidth = 768,
   });
 
@@ -48,17 +48,17 @@ class GSRespRowColumn extends StatelessWidget {
         if (!isSmallScreen) {
           return GSBox(
               style: GSStyle(
-                padding: seperatorPadding ??
+                padding: separatorPadding ??
                     const EdgeInsets.symmetric(horizontal: 4),
               ),
               child: e);
         } else {
           return GSBox(
-                style: GSStyle(
-                  padding: seperatorPadding ??
-                      const EdgeInsets.symmetric(vertical: 4),
-                ),
-                child: e);
+              style: GSStyle(
+                padding:
+                    separatorPadding ?? const EdgeInsets.symmetric(vertical: 4),
+              ),
+              child: e);
         }
       }).toList(),
     );

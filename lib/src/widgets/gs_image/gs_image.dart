@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_image/gs_image_style.dart';
@@ -70,13 +70,14 @@ class GSImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final imageSize = size ?? imageStyle.props!.size;
 
-    final GSStyle styler = resolveStyles(
-      context,
-      size: GSImageStyle.size[imageSize],
-      inlineStyle: style,
-    )!;
-
-    print(GSImageStyle.radius[borderRadius]);
+    GSStyle styler = resolveStyles(
+        context: context,
+        styles: [
+          imageStyle,
+          imageStyle.sizeMap(imageSize),
+        ],
+        inlineStyle: style,
+        isFirst: true);
 
     return borderRadius == GSBorderRadius.$none
         ? _resolveImageType(imageType, styler)

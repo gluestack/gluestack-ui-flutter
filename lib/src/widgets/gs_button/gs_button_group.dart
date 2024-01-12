@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button.dart';
@@ -32,7 +32,7 @@ class GSButtonGroup extends StatelessWidget {
     final buttonList = reversed! ? buttons!.reversed : buttons!;
     final buttonGroupSize = size ?? buttonGroupStyle.props?.size;
     final buttonGroupSpace = space ?? buttonGroupStyle.props?.space;
-    GSStyle styler = resolveStyles(
+    GSStyle styler = resolveStylesDeprecated(
       variantStyle: buttonGroupStyle,
       context,
       inlineStyle: style,

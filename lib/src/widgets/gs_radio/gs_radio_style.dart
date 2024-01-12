@@ -1,6 +1,6 @@
+import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/theme/config/radio/radio.dart';
 
 const GSStyleConfig gsRadioConfig = GSStyleConfig(
     componentName: 'Radio',
@@ -8,7 +8,8 @@ const GSStyleConfig gsRadioConfig = GSStyleConfig(
     descendantStyle: ['_icon', '_text', '_indicator']);
 
 final GSStyle radioStyle = GSStyle.fromMap(
-    data: radioData, descendantStyle: gsRadioConfig.descendantStyle);
+    data: getIt<GluestackCustomConfig>().radio,
+    descendantStyle: gsRadioConfig.descendantStyle);
 
 class GSRadioStyles {
   static Map<GSSizes, Map<String, GSStyle?>> radioDescendantStyles = {

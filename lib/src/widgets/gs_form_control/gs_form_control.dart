@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_control_style.dart';
@@ -65,12 +65,12 @@ class _GSFormControlState extends State<GSFormControl> {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(context,
-        size: GSFormControlStyle.size[widget.size],
-        inlineStyle: widget.style,
-        // descendantStyles: GSFormControlStyle.fromControlDescendantStyles[widget.size],
-        descendantStyleKeys: gsFromControlConfig.descendantStyle)!;
-    print('sirerer: ${widget.size}');
+    GSStyle styler = resolveStyles(
+      context: context,
+      styles: [formControlStyle.sizeMap(widget.size)],
+      inlineStyle: widget.style,
+      isFirst: true,
+    );
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSFormProvider(

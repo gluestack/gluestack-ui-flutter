@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_hstack/gs_hstack_style.dart';
 
@@ -48,7 +48,7 @@ class GSHStack extends StatelessWidget {
           SizedBox(
               width: space == GSSpaces.$none
                   ? null
-                  : GSHStackStyle.space[space]?.gap),
+                  : hstackStyle.spaceMap(space)?.gap),
         );
       }
     }

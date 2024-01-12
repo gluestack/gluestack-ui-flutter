@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
@@ -12,10 +12,11 @@ class GSAlertDialogHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GSStyle styler = resolveStyles(
-      context,
-      variantStyle: alertDialogHeaderStyle,
+      context: context,
+      styles: [alertDialogHeaderStyle],
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
     final y = resolveAlignment(styler.alignItems),
         x = resolveAlignment(styler.justifyContent);
     return Container(

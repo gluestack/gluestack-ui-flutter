@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
@@ -28,11 +28,11 @@ class GSFlex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-      GSStyle styler = resolveStyles(
-      context,
+    GSStyle styler = resolveStyles(
+      context: context,
       inlineStyle: style,
-    )!;
+      isFirst: true,
+    );
 
     return Flex(
       direction: styler.direction ?? Axis.vertical,

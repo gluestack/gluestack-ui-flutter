@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/theme/config/form_control/form_control_error_text.dart';
+import 'package:gluestack_ui/src/widgets/gs_form_control/form_error_text_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 class GSFormErrorText extends StatelessWidget {
@@ -15,7 +15,7 @@ class GSFormErrorText extends StatelessWidget {
     return GSText(
       text: text,
       size: size,
-      style: GSStyle.fromMap(data: formControlErrorTextData).merge(style),
+      style: formErrorTextStyle.merge(style),
     );
   }
 }
