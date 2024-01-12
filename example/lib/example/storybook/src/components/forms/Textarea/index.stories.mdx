@@ -213,3 +213,35 @@ The Examples section provides visual representations of the different variants o
 #### FormControl
 
 The GSTextarea widget can be incorporated within the FormControl.
+
+<iframe
+  src="https://gluestack-flutter.web.app/#/textareaFormControlPreview"
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    const GSHeading(text: "Write with me"),
+    const SizedBox(
+      height: 10,
+    ),
+    GSTextArea(
+      hintText: "Once upon a time...",
+      style: GSStyle(
+        width: 300,
+      ),
+    ),
+    const SizedBox(
+      height: 10,
+    ),
+    const GSText(text: "Start your story"),
+  ],
+),
+
+```
