@@ -11,6 +11,7 @@ showHeader: true
 ---
 
 import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
 
 import {
   AppProvider,
@@ -25,7 +26,7 @@ import {
 This is an illustration of a **Themed GSRadio** widget with default configuration.
 
 <iframe
-  src="#/radio-button-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + "radio-button-preview"}
   title="Example"
   width="800"
   height="350"
@@ -225,7 +226,7 @@ The Examples section provides visual representations of the different variants o
 GSRadio buttons provide a mutually exclusive selection mechanism, allowing users to choose a single option from a set of related choices.
 
 <iframe
-  src="#/multiple-radio-button-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + "multiple-radio-button-preview"}
   title="Example"
   width="800"
   height="350"
@@ -291,7 +292,7 @@ GSVStack(
 GSRadio buttons can be used horizontally.
 
 <iframe
-  src="#/multiple-radio-button-horizontal-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + "multiple-radio-button-horizontal-preview"}
   title="Example"
   width="800"
   height="350"
@@ -357,7 +358,7 @@ GSHStack(
 GSRadio buttons can be used with helper text.
 
 <iframe
-  src="#/radio-button-with-help-text-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + "radio-button-with-help-text-preview"}
   title="Example"
   width="800"
   height="350"
@@ -431,7 +432,7 @@ GSVStack(
 GSRadio buttons can be used inside FormControl for better control of states and functionality.
 
 <iframe
-  src="#/radio-button-with-form-control-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + "radio-button-with-form-control-preview"}
   title="Example"
   width="800"
   height="350"
@@ -516,7 +517,7 @@ GSVStack(
 The GSRadio widget can be used with a controlled state, enabling precise management of the selected option through external state management.
 
 <iframe
-  src="#/radio-button-controlled-preview"
+  src={env.NEXT_PUBLIC_PREVIEW + "radio-button-controlled-preview"}
   title="Example"
   width="800"
   height="350"

@@ -12,12 +12,18 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { useRef, useEffect, useState } from "react";
+import { env } from "process";
 
 <Meta title="Components/Layout/Box" />
 
 This is an illustration of a **Themed GSBox** widget with default configuration.
 
-<iframe src="#/box-preview" title="Example" width="1000" height="400"></iframe>
+<iframe
+  src={env.NEXT_PUBLIC_PREVIEW + "box-preview"}
+  title="Example"
+  width="1000"
+  height="400"
+></iframe>
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
