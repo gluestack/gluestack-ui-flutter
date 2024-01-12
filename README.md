@@ -6,7 +6,9 @@ _Package is in development. APIs may change in the future._
 
 ## Documentation
 
-You can try the example app demo on this link: https://gluestack-flutter.web.app/
+You can try out the gluestack flutter widgets on this storybook link: https://gluestack-ui-example.web.app/#/storybook
+
+Web app build with gluestack:https://kitchensink-23184.web.app/
 
 We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. You can find the detailed documentation for each component, including a list of props and examples, in https://gluestack.io/ui/docs website.
 
@@ -14,9 +16,13 @@ We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentat
 
 - **Customizable widgets:** Each widget in the library comes with a set of customizable props that allow you to tailor its appearance and behavior to your specific needs.
 
-- **Responsive design:** The widgets are built using modern web design principles and are fully responsive, so they work seamlessly across a wide range of devices and screen sizes.
+- **Declarative and Dynamic Styling:** By using JSON for style configurations, you're enabling a more declarative approach to UI design. This can be particularly powerful when styles need to be changed dynamically or loaded from external sources
 
-- **Well-documented:** The comes with comprehensive documentation for each widget, including a list of props and examples, to help you get up and running quickly.
+- **Web-focus:** While Material and Cupertino excel on mobile, gluestack-ui could be tailored for web experiences, offering components and styles optimized for desktop interaction and layout. Think responsive design, mouse hover interactions, and web-specific UI patterns.
+
+- **Flexibility for Developers:** Providing inline style overrides gives developers the flexibility to quickly customize components on a case-by-case basis, without the need to alter the JSON configuration for minor tweaks.
+
+- **Responsive design:** The widgets are built using modern web design principles and are fully responsive, so they work seamlessly across a wide range of devices and screen sizes.
 
 - **Easy to use:** The widgets are designed to be easy to use and integrate into your existing Flutter applications. Simply install the library and import the widgets you need.
 
@@ -82,7 +88,7 @@ GSButton(
 
 All Gluestack widgets support dark theme. Package detects the current theme from Flutter's inbuilt `Theme.of(context).brightness`. Hence, you can manage the theme mode from MaterialApp itself using the state management of your choice.
 
-## Custom tokens
+## Customize tokens via token config
 
 You can customize the default tokens to provide your own design values.
 
@@ -105,11 +111,11 @@ GluestackProvider(
 )
 ```
 
-## Providing custom Gluestack Config
+## Providing custom Widget Config
 
-In case you want to customise the default values provided by the package for individual widgets, you can specify your own configuration for the widgets.
+We have build the widgets from Figma config file. In case you want to customise the default values provided by the package for individual widgets, you can specify your own configuration for the widgets.
 
-**NOTE:** Format of the configuration must be same as the own used by Gluestack internally. Please refer to the default [config file](https://github.com/gluestack/gluestack-ui-flutter/blob/main/lib/src/theme/config/button/button.dart) for GSButton.
+**NOTE:** Format of the configuration must be same as the own used by Gluestack internally. For example, for button please refer to the default [config file](https://github.com/gluestack/gluestack-ui-flutter/blob/main/lib/src/theme/config/button/button.dart) for GSButton.
 
 Below example provides custom configuration for `GSButton` widget.
 
