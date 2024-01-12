@@ -10,7 +10,9 @@ pageDescription: Looking to add text to your gluestack-ui project? Check out our
 showHeader: true
 ---
 
-import { Meta } from "@storybook/addon-docs";
+import { Meta } from '@storybook/addon-docs';
+
+import { env } from 'process';
 
 import {
   AppProvider,
@@ -18,13 +20,18 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from "@gluestack/design-system";
+} from '@gluestack/design-system';
 
 <Meta title="Components/Typography/Text" />
 
 This is an illustration of a **Themed GSText** widget with default configuration.
 
-<iframe src="#/text-preview" title="Example" width="800" height="350"></iframe>
+<iframe
+  src={env.NEXT_PUBLIC_PREVIEW + 'text-preview'}
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
