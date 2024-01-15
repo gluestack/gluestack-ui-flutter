@@ -7,8 +7,9 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
+import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 
-class GSButton extends StatefulWidget {
+class GSButton extends StatelessWidget {
   final GSActions? action;
   final GSVariants? variant;
   final GSSizes? size;
@@ -68,25 +69,14 @@ class GSButton extends StatefulWidget {
         );
 
   @override
-  State<GSButton> createState() => _GSButtonState();
-}
-
-class _GSButtonState extends State<GSButton> {
-  //Work around
-  bool isHovered = false;
-
-  @override
   Widget build(BuildContext context) {
     final value = GSButtonGroupProvider.of(context);
-    final buttonAction = widget.action ?? buttonStyle.props?.action;
-    final buttonVariant = widget.variant ?? buttonStyle.props?.variant;
-    final buttonSize = widget.size ?? value?.size ?? buttonStyle.props?.size;
-    final disabled = widget.isDisabled ?? value?.isDisabled ?? false;
-    final focused = widget.isFocusVisible ?? false;
+    final buttonAction = action ?? buttonStyle.props?.action;
+    final buttonVariant = variant ?? buttonStyle.props?.variant;
+    final buttonSize = size ?? value?.size ?? buttonStyle.props?.size;
+    final disabled = isDisabled ?? value?.isDisabled ?? false;
+    final focused = isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;
-    if (isHovered && widget.onHover != null) {
-      widget.onHover!();
-    }
 
     return GSStyleBuilder(
       isDisabled: disabled,
@@ -99,10 +89,10 @@ class _GSButtonState extends State<GSButton> {
               buttonStyle.actionMap(buttonAction),
               buttonStyle.variantMap(buttonVariant),
               buttonStyle.sizeMap(buttonSize),
-              buttonStyle.compoundVariants?[
-                  widget.action.toString() + widget.variant.toString()]
+              buttonStyle
+                  .compoundVariants?[action.toString() + variant.toString()]
             ],
-            inlineStyle: widget.style,
+            inlineStyle: style,
             isFirst: true);
 
         return GSAncestor(
@@ -113,32 +103,29 @@ class _GSButtonState extends State<GSButton> {
             size: buttonSize!,
             child: Opacity(
               opacity: disabled ? styler.opacity ?? 0.5 : 1,
-              child: SizedBox(
-                height: styler.height,
-                child: MouseRegion(
-                  onEnter: (PointerEvent x) {
-                    setState(() {
-                      isHovered = true;
-                    });
-                  },
-                  onExit: (PointerEvent x) {
-                    setState(() {
-                      isHovered = false;
-                    });
-                  },
+              child: Semantics(
+                label: 'Button',
+                child: SizedBox(
+                  height: styler.height,
                   child: FocusableActionDetector(
-                    onFocusChange: widget.onFocusChange,
-                    focusNode: widget.focusNode,
-                    autofocus: widget.autoFocus,
+                    onFocusChange: onFocusChange,
+                    focusNode: focusNode,
+                    autofocus: autoFocus,
                     child: GestureDetector(
-                      onTap: disabled ? null : widget.onPressed,
-                      onLongPress: disabled ? null : widget.onLongPress,
+                      onTap: disabled ? null : onPressed,
+                      onLongPress: disabled ? null : onLongPress,
                       child: Container(
-                        clipBehavior: widget.clipBehavior,
+                        clipBehavior: clipBehavior,
                         // statesController: statesController,
                         padding: styler.padding,
                         decoration: BoxDecoration(
-                          color: styler.bg,
+                          color: GSStyleBuilderProvider.of(context)
+                                      ?.isFocused ??
+                                  false
+                              ? HSLColor.fromColor(styler.bg ?? $GSColors.black)
+                                  .withLightness(0.45)
+                                  .toColor()
+                              : styler.bg,
                           borderRadius:
                               BorderRadius.circular(styler.borderRadius ?? 0.0),
                           border: Border.fromBorderSide(_resolveBorderSide(
@@ -147,7 +134,7 @@ class _GSButtonState extends State<GSButton> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            widget.child,
+                            child,
                           ],
                         ),
                       ),
@@ -170,7 +157,7 @@ class _GSButtonState extends State<GSButton> {
     if (variant == GSVariants.link) {
       return BorderSide.none;
     }
-    if (widget.isFocusVisible!) {
+    if (isFocusVisible!) {
       return BorderSide(color: $GSColors.primary500, width: 2.0);
     }
     return styler.borderWidth != null || styler.outlineWidth != null
