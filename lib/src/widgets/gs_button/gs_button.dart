@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -12,6 +14,7 @@ import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provi
 class GSButton extends StatelessWidget {
   final GSActions? action;
   final GSVariants? variant;
+  final String? semanticsLabel;
   final GSSizes? size;
   final bool? isDisabled;
   final bool? isFocusVisible;
@@ -33,6 +36,7 @@ class GSButton extends StatelessWidget {
     this.variant = GSVariants.solid,
     this.size = GSSizes.$md,
     this.isDisabled,
+    this.semanticsLabel,
     this.isFocusVisible = false,
     this.style,
     this.onLongPress,
@@ -104,7 +108,8 @@ class GSButton extends StatelessWidget {
             child: Opacity(
               opacity: disabled ? styler.opacity ?? 0.5 : 1,
               child: Semantics(
-                label: 'Button',
+                label: semanticsLabel ?? 'Button',
+                button: true,
                 child: SizedBox(
                   height: styler.height,
                   child: FocusableActionDetector(
