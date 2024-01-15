@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui_example/example/public.dart';
 import 'package:gluestack_ui_example/home.dart';
 import 'package:gluestack_ui_example/widgets/storybook.dart';
+import 'package:gluestack_ui_example/widgets/storybook_widgets/avatar_group_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook_widgets/avatar_with_image_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/avatar_with_label_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/badge_with_avatar_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/button_group_preview.dart';
@@ -11,6 +13,9 @@ import 'package:gluestack_ui_example/widgets/storybook_widgets/checkbox_group_pr
 import 'package:gluestack_ui_example/widgets/storybook_widgets/checkbox_with_help_text_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/controlled_checkbox_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/divider_variants_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook_widgets/fab_placement_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook_widgets/fab_with_icon_and_text_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook_widgets/fab_with_icon_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/hstack_reversed_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/icon_button_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/input_with_formcontrol_preview.dart';
@@ -70,6 +75,15 @@ final GoRouter router = GoRouter(
           path: "avatar-with-label-preview",
           builder: (context, state) => const AvatarWithLabelPreview(),
         ),
+        GoRoute(
+          path: "avatar-with-image-preview",
+          builder: (context, state) => const AvatarWithImagePreview(),
+        ),
+        GoRoute(
+          path: "avatar-group-preview",
+          builder: (context, state) => const AvatarGroupPreview(),
+        ),
+
         GoRoute(
           path: "example-badge",
           builder: (context, state) => const BadgeExample(),
@@ -157,6 +171,19 @@ final GoRouter router = GoRouter(
           path: "example-fab",
           builder: (context, state) => const FabExample(),
         ),
+        GoRoute(
+          path: "fab-with-icon-preview",
+          builder: (context, state) => const FabWithIconPreview(),
+        ),
+        GoRoute(
+          path: "fab-with-icon-and-text-preview",
+          builder: (context, state) => const FabWithIconAndTextPreview(),
+        ),
+        GoRoute(
+          path: "fab-placement-preview",
+          builder: (context, state) => const FabPlacementPreview(),
+        ),
+
         GoRoute(
           path: "example-flex",
           builder: (context, state) => const FlexExample(),
