@@ -93,24 +93,24 @@ class _ButtonExampleState extends State<ButtonExample> {
       body: BaseLayout(
         code: code,
         component: GSButton(
-          action: GSActions.negative,
-          variant: GSVariants.solid,
-          size: GSSizes.$lg,
+          action: selectedActionOption,
+          variant: selectedVariantOption,
+          size: selectedSizeOption,
           onPressed: () {},
-          style: GSStyle(
-            web: GSStyle(
-              bg: $GSColors.amber600,
-            ),
-            ios: GSStyle(
-              bg: $GSColors.pink600,
-            ),
-            onHover: GSStyle(
-              bg: $GSColors.green400,
-            ),
-            md: GSStyle(
-              bg: $GSColors.pink400,
-            ),
-          ),
+          // style: GSStyle(
+          //   web: GSStyle(
+          //     bg: $GSColors.amber600,
+          //   ),
+          //   ios: GSStyle(
+          //     bg: $GSColors.pink600,
+          //   ),
+          //   onHover: GSStyle(
+          //     bg: $GSColors.green400,
+          //   ),
+          //   md: GSStyle(
+          //     bg: $GSColors.pink400,
+          //   ),
+          // ),
           child: const GSButtonText(text: "Click Here"),
         ),
         controls: Column(
