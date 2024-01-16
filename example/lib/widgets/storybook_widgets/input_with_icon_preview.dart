@@ -21,7 +21,7 @@ class InputWithIconPreview extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 15)),
               child: const GSInput(
-                prefixIcon: GSIcon(icon: Icons.search),
+                // prefixIcon: GSIcon(icon: Icons.search),
                 obscureText: true,
                 hintText: 'Search...',
               ),

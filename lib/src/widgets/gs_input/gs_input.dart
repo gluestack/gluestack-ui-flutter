@@ -1,8 +1,8 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -46,7 +46,7 @@ class GSInput extends StatefulWidget {
   final MouseCursor? mouseCursor;
   final ScrollController? scrollController;
   final bool obscureText;
-  final InputBorder? focusedErrorBorder;
+  //final InputBorder? focusedErrorBorder;
   final MaxLengthEnforcement? maxLengthEnforcement;
   final TextSelectionControls? selectionControls;
   final ui.BoxHeightStyle selectionHeightStyle;
@@ -77,55 +77,11 @@ class GSInput extends StatefulWidget {
   final TextInputAction? textInputAction;
   final TextAlignVertical? textAlignVertical;
   final UndoHistoryController? undoController;
-  //decoration
-  final bool? alignLabelWithHint;
+  final ValueChanged<String>? onFieldSubmitted;
   final BoxConstraints? constraints;
-  final Widget? counter;
-  final Color? iconColor;
-  final TextStyle? counterStyle;
-  final String? counterText;
-  final InputBorder? disabledBorder;
-  final Widget? error;
-  final InputBorder? errorBorder;
-  final int? errorMaxLines;
-  final TextStyle? errorStyle;
-  final String? errorText;
-  final FloatingLabelAlignment? floatingLabelAlignment;
-  final FloatingLabelBehavior? floatingLabelBehavior;
-  final TextStyle? floatingLabelStyle;
-  final int? helperMaxLines;
-  final TextStyle? helperStyle;
-  final int? hintMaxLines;
   final TextStyle? hintStyle;
   final String? hintText;
-  final TextDirection? hintTextDirection;
-  final bool isCollapsed;
-  final bool? isDense;
-  final Widget? label;
-  final TextStyle? labelStyle;
-  final String? labelText;
-  final String? semanticCounterText;
   final Color? hoverColor;
-  final Widget? icon;
-  final Widget? prefix;
-  final Widget? prefixIcon;
-  final Color? prefixIconColor;
-  final BoxConstraints? prefixIconConstraints;
-  final TextStyle? prefixStyle;
-  final String? prefixText;
-  final Widget? suffix;
-  final Widget? suffixIcon;
-  final Color? suffixIconColor;
-  final BoxConstraints? suffixIconConstraints;
-  final TextStyle? suffixStyle;
-  final String? suffixText;
-  final bool visualFeedback;
-  final String? initialValue;
-  //form prop
-  final FormFieldValidator? validator;
-  final FormFieldSetter? onSaved;
-  final AutovalidateMode? autovalidateMode;
-  final ValueChanged<String>? onFieldSubmitted;
   const GSInput({
     super.key,
     this.variant = GSVariants.outline,
@@ -136,7 +92,6 @@ class GSInput extends StatefulWidget {
     this.autocorrect = true,
     this.buildCounter,
     this.autofocus = false,
-    this.isCollapsed = false,
     this.autofillHints,
     this.canRequestFocus = true,
     this.clipBehavior = Clip.hardEdge,
@@ -189,55 +144,13 @@ class GSInput extends StatefulWidget {
     this.textDirection,
     this.textInputAction,
     this.undoController,
-    this.alignLabelWithHint,
     this.constraints,
-    this.counter,
-    this.counterStyle,
-    this.counterText,
-    this.disabledBorder,
-    this.error,
-    this.errorBorder,
-    this.errorMaxLines,
-    this.errorStyle,
-    this.errorText,
-    this.floatingLabelAlignment,
-    this.floatingLabelBehavior,
-    this.floatingLabelStyle,
     this.focusColor,
-    this.focusedErrorBorder,
-    this.helperMaxLines,
-    this.helperStyle,
     this.helperText,
-    this.hintMaxLines,
     this.hintStyle,
     this.hintText,
-    this.hintTextDirection,
-    this.isDense,
-    this.label,
-    this.labelStyle,
-    this.labelText,
-    this.semanticCounterText,
-    this.iconColor,
     this.hoverColor,
-    this.icon,
-    this.prefix,
-    this.prefixIcon,
-    this.prefixIconColor,
-    this.prefixIconConstraints,
-    this.prefixStyle,
-    this.prefixText,
-    this.suffix,
-    this.suffixIcon,
-    this.suffixIconColor,
-    this.suffixIconConstraints,
-    this.suffixStyle,
-    this.suffixText,
-    this.visualFeedback = true,
     this.style,
-    this.validator,
-    this.onSaved,
-    this.autovalidateMode = AutovalidateMode.disabled,
-    this.initialValue,
     this.onFieldSubmitted,
   });
 
@@ -250,14 +163,20 @@ class _GSInputState extends State<GSInput> {
 
   @override
   Widget build(BuildContext context) {
-    final formProps = GSFormProvider.of(context);
     final inputVariant = widget.variant ?? inputStyle.props?.variant;
+    final formProps = GSFormProvider.of(context);
     final inputSize =
         widget.size ?? formProps?.size ?? inputStyle.props?.size ?? GSSizes.$md;
-    final bool isDisabled = widget.isDisabled ?? formProps?.isDisabled ?? false;
-    final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
-    final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
-    final bool isRequired = formProps?.isRequired ?? false;
+    bool? isDisabled = widget.isDisabled;
+    bool? isReadOnly = widget.isReadOnly;
+    bool? isInvalid = widget.isInvalid;
+    final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
+
+    final focusNode = FocusNode();
+
+    isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
+    isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
+    isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
 
     GSStyle styler = resolveStyles(
       context: context,
@@ -271,7 +190,7 @@ class _GSInputState extends State<GSInput> {
     );
 
     Color? resolveBorderColor() {
-      if (isInvalid) {
+      if (isInvalid!) {
         if (widget.variant == GSVariants.underlined) {
           return styler.onInvalid?.borderBottomColor;
         }
@@ -280,7 +199,7 @@ class _GSInputState extends State<GSInput> {
       if (_isHovered) {
         return styler.onHover?.borderColor ?? styler.borderColor;
       }
-      if (isDisabled) {
+      if (isDisabled!) {
         return styler.onDisabled?.borderColor ?? styler.borderColor;
       }
 
@@ -289,26 +208,26 @@ class _GSInputState extends State<GSInput> {
 
     double? resolveBorderWidth() {
       if (widget.variant == GSVariants.underlined) {
-        if (isInvalid) {
+        if (isInvalid!) {
           return styler.onInvalid?.borderBottomWidth ??
               styler.borderBottomWidth;
         }
         if (_isHovered) {
           return styler.onHover?.borderBottomWidth ?? styler.borderBottomWidth;
         }
-        if (isDisabled) {
+        if (isDisabled!) {
           return styler.onDisabled?.borderBottomWidth ??
               styler.borderBottomWidth;
         }
         return styler.borderBottomWidth;
       }
-      if (isInvalid) {
+      if (isInvalid!) {
         return styler.onInvalid?.borderWidth ?? styler.borderWidth;
       }
       if (_isHovered) {
         return styler.onHover?.borderWidth ?? styler.borderWidth;
       }
-      if (isDisabled) {
+      if (isDisabled!) {
         return styler.onDisabled?.borderWidth ?? styler.borderWidth;
       }
 
@@ -316,7 +235,7 @@ class _GSInputState extends State<GSInput> {
     }
 
     Color? resolveFocusBorderColor() {
-      if (isInvalid) {
+      if (isInvalid!) {
         if (widget.variant == GSVariants.underlined) {
           return styler.onInvalid?.borderBottomColor;
         }
@@ -339,161 +258,129 @@ class _GSInputState extends State<GSInput> {
     final focusedBorderColor = resolveFocusBorderColor();
     final focusedBorderWidth = resolveFocusBorderWidth();
 
-    final borderStyle = widget.variant != GSVariants.underlined
-        ? OutlineInputBorder(
-            borderSide: BorderSide(color: borderColor!, width: borderWidth!),
-            borderRadius: BorderRadius.circular(styler.borderRadius!))
-        : UnderlineInputBorder(
-            borderSide: BorderSide(color: borderColor!, width: borderWidth!),
-          );
-
     return FocusableActionDetector(
-      onShowHoverHighlight: (value) {
-        final shouldUpdateHover = !isDisabled && value;
-        if (_isHovered != shouldUpdateHover) {
-          setState(() => _isHovered = shouldUpdateHover);
-        }
-      },
-      child: Opacity(
-        opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.5 : 1,
-        child: SizedBox(
-          width: styler.width,
-          height: styler.height,
-          child: TextFormField(
-            onSaved: widget.onSaved,
-            autovalidateMode: widget.autovalidateMode,
-            initialValue: widget.initialValue,
-            onFieldSubmitted: widget.onFieldSubmitted,
-            autocorrect: widget.autocorrect,
-            autofillHints: widget.autofillHints,
-            autofocus: widget.autofocus,
-            buildCounter: widget.buildCounter,
-            canRequestFocus: widget.canRequestFocus,
-            clipBehavior: widget.clipBehavior,
-            contentInsertionConfiguration: widget.contentInsertionConfiguration,
-            contextMenuBuilder: widget.contextMenuBuilder,
-            controller: widget.controller,
-            cursorColor: widget.cursorColor,
-            cursorHeight: widget.cursorHeight,
-            cursorOpacityAnimates: widget.cursorOpacityAnimates,
-            cursorRadius: widget.cursorRadius,
-            cursorWidth: widget.cursorWidth,
-            dragStartBehavior: widget.dragStartBehavior,
-            enabled: !isDisabled,
-            readOnly: isReadOnly,
-            enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
-            enableInteractiveSelection: widget.enableInteractiveSelection,
-            enableSuggestions: widget.enableSuggestions,
-            expands: widget.expands,
-            focusNode: widget.focusNode,
-            inputFormatters: widget.inputFormatters,
-            keyboardAppearance: widget.keyboardAppearance,
-            keyboardType: widget.keyboardType,
-            magnifierConfiguration: widget.magnifierConfiguration,
-            maxLength: widget.maxLength,
-            maxLengthEnforcement: widget.maxLengthEnforcement,
-            maxLines: widget.maxLines,
-            minLines: widget.minLines,
-            mouseCursor: isDisabled
-                ? SystemMouseCursors.forbidden
-                : _isHovered
-                    ? SystemMouseCursors.text
-                    : MouseCursor.defer,
-            obscureText: widget.obscureText,
-            obscuringCharacter: widget.obscuringCharacter,
-            onAppPrivateCommand: widget.onAppPrivateCommand,
-            onChanged: widget.onChanged,
-            onEditingComplete: widget.onEditingComplete,
-            validator: (value) {
-              if (isRequired && value != null && value.isEmpty) {
-                return widget.errorText != null && widget.errorText!.isNotEmpty
-                    ? widget.errorText
-                    : 'This field cannot be empty!';
-              }
+        onShowHoverHighlight: (value) {
+          const shouldUpdateHover = true;
+          if (_isHovered != shouldUpdateHover) {
+            setState(() => _isHovered = shouldUpdateHover);
+          }
+        },
+        child: Opacity(
+          opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.5 : 1,
+          child: SizedBox(
+            width: styler.width,
+            height: styler.height,
+            child: GestureDetector(
+              onTap: widget.onTap,
+              child: Stack(
+                children: [
+                  Container(
+                    padding: styler.padding ??
+                        const EdgeInsets.symmetric(horizontal: 15),
+                    constraints: widget.constraints,
+                    decoration: BoxDecoration(
+                      border: widget.variant == GSVariants.underlined
+                          ? Border(
+                              bottom: BorderSide(
+                                color: borderColor!,
+                                width: borderWidth!,
+                              ),
+                            )
+                          : Border.all(
+                              color: borderColor!, width: borderWidth!),
+                      color: styler.bg,
+                      borderRadius:
+                          BorderRadius.circular(styler.borderRadius ?? 0.0),
+                    ),
+                    child: Center(
+                      child: EditableText(
+                        onSubmitted: widget.onFieldSubmitted,
+                        autocorrect: widget.autocorrect,
+                        autofocus: widget.autofocus,
+                        clipBehavior: widget.clipBehavior,
+                        contentInsertionConfiguration:
+                            widget.contentInsertionConfiguration,
+                        contextMenuBuilder: widget.contextMenuBuilder,
+                        controller: widget.controller!,
+                        cursorColor: widget.cursorColor ?? borderColor,
+                        cursorHeight: widget.cursorHeight,
+                        cursorOpacityAnimates:
+                            widget.cursorOpacityAnimates ?? false,
+                        cursorRadius: widget.cursorRadius,
+                        cursorWidth: widget.cursorWidth,
+                        dragStartBehavior: widget.dragStartBehavior,
+                        readOnly: isReadOnly,
+                        enableIMEPersonalizedLearning:
+                            widget.enableIMEPersonalizedLearning,
+                        enableInteractiveSelection:
+                            widget.enableInteractiveSelection,
+                        enableSuggestions: widget.enableSuggestions,
+                        expands: widget.expands,
+                        focusNode: widget.focusNode ?? focusNode,
+                        inputFormatters: widget.inputFormatters,
+                        keyboardAppearance:
+                            widget.keyboardAppearance ?? Brightness.light,
+                        keyboardType: widget.keyboardType,
+                        magnifierConfiguration: widget.magnifierConfiguration ??
+                            TextMagnifierConfiguration.disabled,
+                        //maxLength: widget.maxLength,
+                        maxLines: widget.maxLines,
+                        minLines: widget.minLines,
+                        mouseCursor: isDisabled
+                            ? SystemMouseCursors.forbidden
+                            : _isHovered
+                                ? SystemMouseCursors.text
+                                : MouseCursor.defer,
 
-              return widget.validator != null ? widget.validator!(value) : null;
-            },
-            onTap: widget.onTap,
-            onTapOutside: widget.onTapOutside,
-            restorationId: widget.restorationId,
-            scribbleEnabled: widget.scribbleEnabled,
-            scrollController: widget.scrollController,
-            scrollPadding: widget.scrollPadding,
-            scrollPhysics: widget.scrollPhysics,
-            selectionControls: widget.selectionControls,
-            selectionHeightStyle: widget.selectionHeightStyle,
-            selectionWidthStyle: widget.selectionWidthStyle,
-            showCursor: widget.showCursor,
-            smartDashesType: widget.smartDashesType,
-            smartQuotesType: widget.smartQuotesType,
-            spellCheckConfiguration: widget.spellCheckConfiguration,
-            strutStyle: widget.strutStyle,
-            style: styler.textStyle,
-            textAlign: widget.textAlign,
-            textAlignVertical: widget.textAlignVertical,
-            textCapitalization: widget.textCapitalization,
-            textDirection: widget.textDirection,
-            textInputAction: widget.textInputAction,
-            undoController: widget.undoController,
-            decoration: InputDecoration(
-              alignLabelWithHint: widget.alignLabelWithHint,
-              constraints: widget.constraints,
-              counter: widget.counter,
-              counterStyle: widget.counterStyle,
-              counterText: widget.counterText,
-              fillColor: styler.color,
-              filled: widget.style != null && widget.style!.color != null,
-              disabledBorder: widget.disabledBorder ?? borderStyle,
-              error: widget.error,
-              errorBorder: widget.errorBorder,
-              errorMaxLines: widget.errorMaxLines,
-              errorStyle: widget.errorStyle,
-              errorText: widget.errorText,
-              floatingLabelAlignment: widget.floatingLabelAlignment,
-              floatingLabelBehavior: widget.floatingLabelBehavior,
-              floatingLabelStyle: widget.floatingLabelStyle,
-              focusColor: widget.focusColor,
-              focusedErrorBorder: widget.focusedErrorBorder,
-              helperMaxLines: widget.helperMaxLines,
-              helperStyle: widget.helperStyle,
-              helperText: widget.helperText,
-              hintMaxLines: widget.hintMaxLines,
-              hintStyle: widget.hintStyle,
-              hintText: widget.hintText,
-              hintTextDirection: widget.hintTextDirection,
-              isCollapsed: widget.isCollapsed,
-              isDense: widget.isDense,
-              label: widget.label,
-              labelStyle: widget.labelStyle,
-              labelText: widget.labelText,
-              semanticCounterText: widget.semanticCounterText,
-              iconColor: widget.iconColor,
-              hoverColor: widget.hoverColor,
-              icon: widget.icon,
-              prefix: widget.prefix,
-              prefixIcon: widget.prefixIcon,
-              prefixIconColor: widget.prefixIconColor,
-              prefixIconConstraints: widget.prefixIconConstraints,
-              prefixStyle: widget.prefixStyle,
-              prefixText: widget.prefixText,
-              suffix: widget.suffix,
-              suffixIcon: widget.suffixIcon,
-              suffixIconColor: widget.suffixIconColor,
-              suffixIconConstraints: widget.suffixIconConstraints,
-              suffixStyle: widget.suffixStyle,
-              suffixText: widget.suffixText,
-              enabledBorder: borderStyle,
-              contentPadding: styler.padding,
-              enabled: widget.visualFeedback,
-              focusedBorder: borderStyle.copyWith(
-                  // handle focusedBorderColor comming null
-                  borderSide: BorderSide(
-                      color: focusedBorderColor!, width: focusedBorderWidth!)),
-              border: borderStyle,
+                        obscureText: widget.obscureText,
+                        obscuringCharacter: widget.obscuringCharacter,
+                        onAppPrivateCommand: widget.onAppPrivateCommand,
+                        onChanged: widget.onChanged ??
+                            (p0) {
+                              setState(() {});
+                            },
+                        onEditingComplete: widget.onEditingComplete,
+                        onTapOutside: widget.onTapOutside,
+                        restorationId: widget.restorationId,
+                        scribbleEnabled: widget.scribbleEnabled,
+                        scrollController: widget.scrollController,
+                        scrollPadding: widget.scrollPadding,
+                        scrollPhysics: widget.scrollPhysics,
+                        selectionControls: widget.selectionControls,
+                        selectionHeightStyle: widget.selectionHeightStyle,
+                        selectionWidthStyle: widget.selectionWidthStyle,
+                        showCursor: widget.showCursor,
+                        smartDashesType: widget.smartDashesType,
+                        smartQuotesType: widget.smartQuotesType,
+                        spellCheckConfiguration: widget.spellCheckConfiguration,
+                        strutStyle: widget.strutStyle,
+                        style: styler.textStyle!,
+                        textAlign: widget.textAlign,
+                        textCapitalization: widget.textCapitalization,
+                        textDirection: widget.textDirection,
+                        textInputAction: widget.textInputAction,
+                        undoController: widget.undoController,
+
+                        backgroundCursorColor: const Color(0xFF808080),
+                      ),
+                    ),
+                  ),
+                  if (widget.controller!.text.isEmpty)
+                    Positioned(
+                      left: 10,
+                      top: 15,
+                      child: Text(
+                        widget.hintText!,
+                        style: widget.hintStyle ??
+                            TextStyle(
+                              color: borderColor,
+                            ),
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

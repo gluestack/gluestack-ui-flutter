@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
@@ -20,6 +21,7 @@ List<Option<int>> sizeOptions = [
 final class InputStory extends StoryWidget {
   @override
   Story createStoryWidget() {
+    TextEditingController textEditingController = TextEditingController();
     return Story(
       name: storyName,
       builder: (context) => GSInput(
@@ -30,6 +32,7 @@ final class InputStory extends StoryWidget {
         isDisabled: context.knobs.boolean(label: "isDisabled", initial: false),
         isInvalid: context.knobs.boolean(label: "isInvalid", initial: false),
         isReadOnly: context.knobs.boolean(label: "isReadOnly", initial: false),
+        controller: textEditingController,
         hintText: "Enter text here",
         style: GSStyle(
           width: 300,
