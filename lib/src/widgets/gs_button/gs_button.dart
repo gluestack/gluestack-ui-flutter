@@ -9,6 +9,7 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
+
 enum GSButtonActions {
   primary,
   secondary,
@@ -17,8 +18,8 @@ enum GSButtonActions {
 }
 
 enum GSButtonVariants {
-  outline,
   solid,
+  outline,
   link,
 }
 
@@ -46,6 +47,7 @@ enum GSButtonSizes {
   $md,
   $lg,
 }
+
 class GSButton extends StatelessWidget {
   final GSButtonActions? action;
   final GSButtonVariants? variant;

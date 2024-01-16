@@ -5,23 +5,23 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 //Need to add value according to GSActions enum order.
 final List<Option<int>> actionOptions = [
-  Option<int>(value: 0, label: GSActions.primary.name),
-  Option<int>(value: 1, label: GSActions.secondary.name),
-  Option<int>(value: 2, label: GSActions.positive.name),
-  Option<int>(value: 3, label: GSActions.negative.name),
+  Option<int>(value: 0, label: GSButtonActions.primary.name),
+  Option<int>(value: 1, label: GSButtonActions.secondary.name),
+  Option<int>(value: 2, label: GSButtonActions.positive.name),
+  Option<int>(value: 3, label: GSButtonActions.negative.name),
 ];
 //Need to add value according to GSVariants enum order.
 final List<Option<int>> variantOptions = [
-  Option<int>(value: 0, label: GSVariants.solid.name),
-  Option<int>(value: 1, label: GSVariants.outline.name),
-  Option<int>(value: 2, label: GSVariants.link.name),
+  Option<int>(value: 0, label: GSButtonVariants.solid.name),
+  Option<int>(value: 1, label: GSButtonVariants.outline.name),
+  Option<int>(value: 2, label: GSButtonVariants.link.name),
 ];
 //Need to add value according to GSSizes enum order.
 final List<Option<int>> sizeOptions = [
-  Option<int>(value: 0, label: GSSizes.$xs.name),
-  Option<int>(value: 1, label: GSSizes.$sm.name),
-  Option<int>(value: 2, label: GSSizes.$md.name),
-  Option<int>(value: 3, label: GSSizes.$lg.name),
+  Option<int>(value: 0, label: GSButtonSizes.$xs.name),
+  Option<int>(value: 1, label: GSButtonSizes.$sm.name),
+  Option<int>(value: 2, label: GSButtonSizes.$md.name),
+  Option<int>(value: 3, label: GSButtonSizes.$lg.name),
 ];
 
 final class ButtonStory extends StoryWidget {
