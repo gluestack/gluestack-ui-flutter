@@ -99,6 +99,12 @@ class GSButton extends StatelessWidget {
             inlineStyle: style,
             isFirst: true);
 
+        if (GSStyleBuilderProvider.of(context)?.isHovered ?? false) {
+          if (onHover != null) {
+            onHover!();
+          }
+        }
+
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(

@@ -96,6 +96,9 @@ class _ButtonExampleState extends State<ButtonExample> {
           action: selectedActionOption,
           variant: selectedVariantOption,
           size: selectedSizeOption,
+          onHover: (){
+            print('Hovering');
+          },
           onPressed: () {},
           // style: GSStyle(
           //   web: GSStyle(
