@@ -38,6 +38,39 @@ bool isScreenLargerThan(double size, BuildContext context) {
   final screenWidth = MediaQuery.sizeOf(context).width;
   return screenWidth >= size;
 }
+//For Actions
+GSActions? mapToGSActions(dynamic action) {
+  String actionName = action.toString().split('.').last;
+  for (var gsAction in GSActions.values) {
+    if (gsAction.toString().split('.').last == actionName) {
+      return gsAction;
+    }
+  }
+  return null;
+}
+
+//For Variants
+GSVariants? mapToGSVariants(dynamic variant) {
+  String variantName = variant.toString().split('.').last;
+
+  for (var gsVariants in GSVariants.values) {
+    if (gsVariants.toString().split('.').last == variantName) {
+      return gsVariants;
+    }
+  }
+  return null;
+}
+
+//For Sizes
+GSSizes? mapToGSSizes(dynamic size) {
+  String sizeValue = size.toString().split('.').last;
+  for (var gsSize in GSSizes.values) {
+    if (gsSize.toString().split('.').last == sizeValue) {
+      return gsSize;
+    }
+  }
+  return null;
+}
 
 GSStyle? resolveStylesDeprecated(
   BuildContext context, {
@@ -153,7 +186,6 @@ GSStyle? resolveStylesDeprecated(
 }
 
 //Refactored style, replace the above with this
-
 GSStyle resolveStyles(
     {required BuildContext context,
     List<GSStyle?> styles = const [],
