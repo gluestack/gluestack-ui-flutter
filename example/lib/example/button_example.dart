@@ -92,35 +92,29 @@ class _ButtonExampleState extends State<ButtonExample> {
       ),
       body: BaseLayout(
         code: code,
-        component: Row(
-          children: [
-            ElevatedButton(
-                onPressed: () {
-                  print('ele pressed!');
-                },
-                child: Text('hihi')),
-            GSButton(
-              action: GSActions.negative,
-              variant: GSVariants.solid,
-              size: GSSizes.$lg,
-              onPressed: () {},
-              style: GSStyle(
-                web: GSStyle(
-                  bg: $GSColors.amber600,
-                ),
-                ios: GSStyle(
-                  bg: $GSColors.pink600,
-                ),
-                onHover: GSStyle(
-                  bg: $GSColors.green400,
-                ),
-                md: GSStyle(
-                  bg: $GSColors.pink400,
-                ),
-              ),
-              child: const GSButtonText(text: "Click Here"),
-            ),
-          ],
+        component: GSButton(
+          action: selectedActionOption,
+          variant: selectedVariantOption,
+          size: selectedSizeOption,
+          onHover: (){
+            print('Hovering');
+          },
+          onPressed: () {},
+          // style: GSStyle(
+          //   web: GSStyle(
+          //     bg: $GSColors.amber600,
+          //   ),
+          //   ios: GSStyle(
+          //     bg: $GSColors.pink600,
+          //   ),
+          //   onHover: GSStyle(
+          //     bg: $GSColors.green400,
+          //   ),
+          //   md: GSStyle(
+          //     bg: $GSColors.pink400,
+          //   ),
+          // ),
+          child: const GSButtonText(text: "Click Here"),
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
