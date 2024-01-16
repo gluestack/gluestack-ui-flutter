@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -18,65 +19,12 @@ class GSPressable extends StatelessWidget {
   /// Additional distance outside of the element in which a press can be detected, same as react native's Pressable's [hitSlop] prop.
   final double? hitSlop;
 
-  /// Callback when the user presses this widget.
-  final GestureTapCallback? onPress;
-
-  /// Callback when the user starts to tap/press this widget.
-  final GestureTapUpCallback? onPressIn;
-
-  /// Callback when the user releases the tap/press that was started on this widget.
-  final GestureTapDownCallback? onPressOut;
-
-  /// Callback when the user cancels a press that was started on this widget.
-  final GestureTapCallback? onPressCancel;
-
-  /// Callback when the user long presses this widget.
-  final GestureLongPressCallback? onLongPress;
-
-  /// Callback when the user double taps this part of the material.
-  final GestureTapCallback? onDoubleTap;
-
-  /// Callback when the user taps this part of the material with a secondary button.
-  final GestureTapCallback? onSecondaryTap;
-
-  /// Callback when the user taps down on this part of the material with a
-  /// secondary button.
-  final GestureTapDownCallback? onSecondaryTapDown;
-
-  /// Callback when the user releases a secondary button tap that was started on
-  /// this part of the material. [onSecondaryTap] is called immediately after.
-  final GestureTapUpCallback? onSecondaryTapUp;
-
-  /// Callback when the user cancels a secondary button tap that was started on
-  /// this part of the material.
-  final GestureTapCallback? onSecondaryTapCancel;
+  final String? semanticsLabel;
 
   /// Mouse cursor to use when hovering over this widget.
   final MouseCursor? mouseCursor;
 
-  /// Whether the ink well should be contained within the widget.
-  final bool containedInkWell;
-
-  // /// The shape of the ink well highlight.
-  // final BoxShape highlightShape;
-
-  /// The radius of the ink splash.
-  final double? radius;
-
-  /// The border radius of the containing rectangle. This is effective only if
-  /// [highlightShape] is [BoxShape.rectangle].
-  ///
-  /// If this is null, it is interpreted as [BorderRadius.zero].
   final BorderRadius? borderRadius;
-
-  /// Custom shape border for the ink well.
-  final ShapeBorder? customBorder;
-
-  /// Whether to provide haptic feedback on press.
-  final bool enableFeedback;
-
-  /// Whether to exclude this widget from semantics.
-  final bool excludeFromSemantics;
 
   /// Callback when the focus state changes.
   final ValueChanged<bool>? onFocusChange;
@@ -93,42 +41,159 @@ class GSPressable extends StatelessWidget {
   /// Whether this widget can request focus.
   final bool canRequestFocus;
 
+  /// Callback when the user presses this widget.
+  final GestureTapCallback? onPress;
+
+  /// Executes this function when the user hovers over this widget.
+  final Function? onHover;
+
+  /// Callback when the user long presses this widget.
+  final GestureLongPressCallback? onLongPress;
+//Gesture Detector Stuff
+  final GestureTapDownCallback? onTapDown;
+  final GestureTapUpCallback? onTapUp;
+  final GestureTapCancelCallback? onTapCancel;
+  final GestureTapCallback? onSecondaryTap;
+  final GestureTapDownCallback? onSecondaryTapDown;
+  final GestureTapUpCallback? onSecondaryTapUp;
+  final GestureTapCancelCallback? onSecondaryTapCancel;
+  final GestureTapDownCallback? onTertiaryTapDown;
+  final GestureTapUpCallback? onTertiaryTapUp;
+  final GestureTapCancelCallback? onTertiaryTapCancel;
+  final GestureDoubleTapCallback? onDoubleTap;
+  final GestureLongPressDownCallback? onLongPressDown;
+  final GestureLongPressCancelCallback? onLongPressCancel;
+  final GestureLongPressStartCallback? onLongPressStart;
+  final GestureLongPressMoveUpdateCallback? onLongPressMoveUpdate;
+  final GestureLongPressUpCallback? onLongPressUp;
+  final GestureLongPressEndCallback? onLongPressEnd;
+  final GestureLongPressDownCallback? onSecondaryLongPressDown;
+  final GestureLongPressCancelCallback? onSecondaryLongPressCancel;
+  final GestureLongPressCallback? onSecondaryLongPress;
+  final GestureLongPressStartCallback? onSecondaryLongPressStart;
+  final GestureLongPressMoveUpdateCallback? onSecondaryLongPressMoveUpdate;
+  final GestureLongPressUpCallback? onSecondaryLongPressUp;
+  final GestureLongPressEndCallback? onSecondaryLongPressEnd;
+  final GestureLongPressDownCallback? onTertiaryLongPressDown;
+  final GestureLongPressCancelCallback? onTertiaryLongPressCancel;
+  final GestureLongPressCallback? onTertiaryLongPress;
+  final GestureLongPressStartCallback? onTertiaryLongPressStart;
+  final GestureLongPressMoveUpdateCallback? onTertiaryLongPressMoveUpdate;
+  final GestureLongPressUpCallback? onTertiaryLongPressUp;
+  final GestureLongPressEndCallback? onTertiaryLongPressEnd;
+  final GestureDragDownCallback? onVerticalDragDown;
+  final GestureDragStartCallback? onVerticalDragStart;
+  final GestureDragUpdateCallback? onVerticalDragUpdate;
+  final GestureDragEndCallback? onVerticalDragEnd;
+  final GestureDragCancelCallback? onVerticalDragCancel;
+  final GestureDragDownCallback? onHorizontalDragDown;
+  final GestureDragStartCallback? onHorizontalDragStart;
+  final GestureDragUpdateCallback? onHorizontalDragUpdate;
+  final GestureDragEndCallback? onHorizontalDragEnd;
+  final GestureDragCancelCallback? onHorizontalDragCancel;
+  final GestureForcePressStartCallback? onForcePressStart;
+  final GestureForcePressPeakCallback? onForcePressPeak;
+  final GestureForcePressUpdateCallback? onForcePressUpdate;
+  final GestureForcePressEndCallback? onForcePressEnd;
+  final GestureDragDownCallback? onPanDown;
+  final GestureDragStartCallback? onPanStart;
+  final GestureDragUpdateCallback? onPanUpdate;
+  final GestureDragEndCallback? onPanEnd;
+  final GestureDragCancelCallback? onPanCancel;
+  final GestureScaleStartCallback? onScaleStart;
+  final GestureScaleUpdateCallback? onScaleUpdate;
+  final GestureScaleEndCallback? onScaleEnd;
+  final HitTestBehavior? behavior;
+  final bool excludeFromSemantics;
+  final DragStartBehavior dragStartBehavior;
+  final bool trackpadScrollCausesScale;
+  final Offset trackpadScrollToScaleFactor;
+  final Set<PointerDeviceKind>? supportedDevices;
+
   /// Creates a new instance of GSPressable.
   const GSPressable({
     super.key,
-    this.enableFeedback = true,
-    this.excludeFromSemantics = false,
     this.focusNode,
+    this.semanticsLabel,
     this.canRequestFocus = true,
     this.onFocusChange,
+    this.onHover,
     this.autofocus = false,
-    this.containedInkWell = false,
-    // this.highlightShape = BoxShape.circle,
     this.style,
     required this.child,
+    this.hitSlop,
+    this.mouseCursor,
+    this.borderRadius,
+    this.onShowFocusHighlight,
     this.onPress,
     this.onLongPress,
-    this.onPressIn,
-    this.onPressOut,
-    this.hitSlop,
-    this.onPressCancel,
-    this.onDoubleTap,
+
+//Gesture Detector Stuff
+    this.onTapDown,
+    this.onTapUp,
+    this.onTapCancel,
     this.onSecondaryTap,
     this.onSecondaryTapDown,
     this.onSecondaryTapUp,
     this.onSecondaryTapCancel,
-    this.mouseCursor,
-    this.radius,
-    this.borderRadius,
-    this.customBorder,
-    this.onShowFocusHighlight,
+    this.onTertiaryTapDown,
+    this.onTertiaryTapUp,
+    this.onTertiaryTapCancel,
+    this.onDoubleTap,
+    this.onLongPressDown,
+    this.onLongPressCancel,
+    this.onLongPressStart,
+    this.onLongPressMoveUpdate,
+    this.onLongPressUp,
+    this.onLongPressEnd,
+    this.onSecondaryLongPressDown,
+    this.onSecondaryLongPressCancel,
+    this.onSecondaryLongPress,
+    this.onSecondaryLongPressStart,
+    this.onSecondaryLongPressMoveUpdate,
+    this.onSecondaryLongPressUp,
+    this.onSecondaryLongPressEnd,
+    this.onTertiaryLongPressDown,
+    this.onTertiaryLongPressCancel,
+    this.onTertiaryLongPress,
+    this.onTertiaryLongPressStart,
+    this.onTertiaryLongPressMoveUpdate,
+    this.onTertiaryLongPressUp,
+    this.onTertiaryLongPressEnd,
+    this.onVerticalDragDown,
+    this.onVerticalDragStart,
+    this.onVerticalDragUpdate,
+    this.onVerticalDragEnd,
+    this.onVerticalDragCancel,
+    this.onHorizontalDragDown,
+    this.onHorizontalDragStart,
+    this.onHorizontalDragUpdate,
+    this.onHorizontalDragEnd,
+    this.onHorizontalDragCancel,
+    this.onForcePressStart,
+    this.onForcePressPeak,
+    this.onForcePressUpdate,
+    this.onForcePressEnd,
+    this.onPanDown,
+    this.onPanStart,
+    this.onPanUpdate,
+    this.onPanEnd,
+    this.onPanCancel,
+    this.onScaleStart,
+    this.onScaleUpdate,
+    this.onScaleEnd,
+    this.behavior,
+    this.excludeFromSemantics = false,
+    this.dragStartBehavior = DragStartBehavior.start,
+    this.trackpadScrollCausesScale = false,
+    this.trackpadScrollToScaleFactor =
+        const Offset(0, -1 / kDefaultMouseScrollToScaleFactor),
+    this.supportedDevices,
   });
 
   /// Builds the GSPressable widget.
   @override
   Widget build(BuildContext context) {
-
-
     return GSStyleBuilder(
       child: Builder(builder: (context) {
         // Resolve styles using the provided context and optional style variants.
@@ -138,42 +203,103 @@ class GSPressable extends StatelessWidget {
           inlineStyle: style,
           isFirst: true,
         );
-        return FocusableActionDetector(
-          focusNode: focusNode,
-          onFocusChange: onFocusChange,
-          onShowFocusHighlight: onShowFocusHighlight,
-          mouseCursor: mouseCursor ?? MouseCursor.defer,
-          autofocus: autofocus,
-          child: GestureDetector(
-            onTap: onPress,
-            onTapUp: onPressIn,
-            onTapDown: onPressOut,
-            onLongPress: onLongPress,
-            onDoubleTap: onDoubleTap,
-            onSecondaryTap: onSecondaryTap,
-            onSecondaryTapUp: onSecondaryTapUp,
-            onSecondaryTapDown: onSecondaryTapDown,
-            onSecondaryTapCancel: onSecondaryTapCancel,
-            // radius: widget.radius,
-            // customBorder: widget.customBorder,
-            // splashColor: styler.splashColor,
-            // highlightColor: styler.highlightColor,
-            child: Container(
-              decoration: BoxDecoration(
-                color: styler.bg ?? const Color.fromARGB(0, 0, 0, 0),
-                borderRadius: borderRadius,
-                border: GSStyleBuilderProvider.of(context)?.isFocused ?? false
-                    ? Border.all(
-                        color: styler.onFocus?.borderColor ??
-                            styler.borderColor ??
-                            styler.outlineColor ??
-                            $GSColors.primary300,
-                        width: styler.onFocus?.borderWidth ?? 1)
-                    : null,
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(hitSlop ?? 0),
-                child: child,
+        if (GSStyleBuilderProvider.of(context)?.isHovered ?? false) {
+          if (onHover != null) {
+            onHover!();
+          }
+        }
+        return Semantics(
+          button: true,
+          label: semanticsLabel ?? 'Pressable',
+          child: FocusableActionDetector(
+            focusNode: focusNode,
+            onFocusChange: onFocusChange,
+            onShowFocusHighlight: onShowFocusHighlight,
+            mouseCursor: mouseCursor ?? MouseCursor.defer,
+            autofocus: autofocus,
+            child: GestureDetector(
+              onTap: onPress,
+              onLongPress: onLongPress,
+              onTapDown: onTapDown,
+              onTapUp: onTapUp,
+              onTapCancel: onTapCancel,
+              onSecondaryTap: onSecondaryTap,
+              onSecondaryTapDown: onSecondaryTapDown,
+              onSecondaryTapUp: onSecondaryTapUp,
+              onSecondaryTapCancel: onSecondaryTapCancel,
+              onTertiaryTapDown: onTertiaryTapDown,
+              onTertiaryTapUp: onTertiaryTapUp,
+              onTertiaryTapCancel: onTertiaryTapCancel,
+              onDoubleTap: onDoubleTap,
+              onLongPressDown: onLongPressDown,
+              onLongPressCancel: onLongPressCancel,
+              onLongPressStart: onLongPressStart,
+              onLongPressMoveUpdate: onLongPressMoveUpdate,
+              onLongPressUp: onLongPressUp,
+              onLongPressEnd: onLongPressEnd,
+              onSecondaryLongPressDown: onSecondaryLongPressDown,
+              onSecondaryLongPressCancel: onSecondaryLongPressCancel,
+              onSecondaryLongPress: onSecondaryLongPress,
+              onSecondaryLongPressStart: onSecondaryLongPressStart,
+              onSecondaryLongPressMoveUpdate: onSecondaryLongPressMoveUpdate,
+              onSecondaryLongPressUp: onSecondaryLongPressUp,
+              onSecondaryLongPressEnd: onSecondaryLongPressEnd,
+              onTertiaryLongPressDown: onTertiaryLongPressDown,
+              onTertiaryLongPressCancel: onTertiaryLongPressCancel,
+              onTertiaryLongPress: onTertiaryLongPress,
+              onTertiaryLongPressStart: onTertiaryLongPressStart,
+              onTertiaryLongPressMoveUpdate: onTertiaryLongPressMoveUpdate,
+              onTertiaryLongPressUp: onTertiaryLongPressUp,
+              onTertiaryLongPressEnd: onTertiaryLongPressEnd,
+              onVerticalDragDown: onVerticalDragDown,
+              onVerticalDragStart: onVerticalDragStart,
+              onVerticalDragUpdate: onVerticalDragUpdate,
+              onVerticalDragEnd: onVerticalDragEnd,
+              onVerticalDragCancel: onVerticalDragCancel,
+              onHorizontalDragDown: onHorizontalDragDown,
+              onHorizontalDragStart: onHorizontalDragStart,
+              onHorizontalDragUpdate: onHorizontalDragUpdate,
+              onHorizontalDragEnd: onHorizontalDragEnd,
+              onHorizontalDragCancel: onHorizontalDragCancel,
+              onForcePressStart: onForcePressStart,
+              onForcePressPeak: onForcePressPeak,
+              onForcePressUpdate: onForcePressUpdate,
+              onForcePressEnd: onForcePressEnd,
+              onPanDown: onPanDown,
+              onPanStart: onPanStart,
+              onPanUpdate: onPanUpdate,
+              onPanEnd: onPanEnd,
+              onPanCancel: onPanCancel,
+              onScaleStart: onScaleStart,
+              onScaleUpdate: onScaleUpdate,
+              onScaleEnd: onScaleEnd,
+              behavior: behavior,
+              excludeFromSemantics: excludeFromSemantics,
+              dragStartBehavior: dragStartBehavior,
+              trackpadScrollCausesScale: trackpadScrollCausesScale,
+              trackpadScrollToScaleFactor: trackpadScrollToScaleFactor,
+              supportedDevices: supportedDevices,
+              // radius: widget.radius,
+              // customBorder: widget.customBorder,
+              // splashColor: styler.splashColor,
+              // highlightColor: styler.highlightColor,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: styler.bg ?? const Color.fromARGB(0, 0, 0, 0),
+                  borderRadius: borderRadius,
+                  border: GSStyleBuilderProvider.of(context)?.isFocused ?? false
+                      ? Border.all(
+                          color: styler.onFocus?.borderColor ??
+                              styler.borderColor ??
+                              styler.outlineColor ??
+                              $GSColors.primary300,
+                          width: styler.onFocus?.borderWidth ?? 1)
+                      : null,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(hitSlop ?? 0),
+                  child: child,
+                ),
               ),
             ),
           ),
