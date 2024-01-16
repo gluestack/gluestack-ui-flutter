@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -15,20 +15,17 @@ class GSRadioIcon<T> extends StatelessWidget {
   final Color? focusColor;
   final FocusNode? focusNode;
   final Color? hoverColor;
-  final MaterialStateProperty<Color?>? overlayColor;
   final bool toggleable;
-  final VisualDensity? visualDensity;
-  const GSRadioIcon(
-      {super.key,
-      this.activeColor,
-      this.autofocus = false,
-      this.focusColor,
-      this.focusNode,
-      this.hoverColor,
-      this.overlayColor,
-      this.size,
-      this.toggleable = false,
-      this.visualDensity});
+  const GSRadioIcon({
+    super.key,
+    this.activeColor,
+    this.autofocus = false,
+    this.focusColor,
+    this.focusNode,
+    this.hoverColor,
+    this.size,
+    this.toggleable = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +58,7 @@ class GSRadioIcon<T> extends StatelessWidget {
               autofocus: autofocus,
               focusColor: focusColor,
               focusNode: focusNode,
-              // hoverColor: hoverColor,
-              // overlayColor: overlayColor,
               toggleable: toggleable,
-              // visualDensity: visualDensity,
-
               fillColor: value.isInvalid
                   ? styler.onInvalid!.borderColor!
                   : isHovered
