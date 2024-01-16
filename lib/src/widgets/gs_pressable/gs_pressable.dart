@@ -1,12 +1,14 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/token/color.dart';
 import 'package:gluestack_ui/src/widgets/gs_pressable/gs_pressable_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
+import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 
 /// The GSPressable class represents a pressable widget that can respond to various press-related gestures.
 /// It allows for easy customization of various press-related interactions and styles.
-class GSPressable extends StatefulWidget {
+class GSPressable extends StatelessWidget {
   /// The style to be applied to the GSPressable.
   final GSStyle? style;
 
@@ -55,8 +57,8 @@ class GSPressable extends StatefulWidget {
   /// Whether the ink well should be contained within the widget.
   final bool containedInkWell;
 
-  /// The shape of the ink well highlight.
-  final BoxShape highlightShape;
+  // /// The shape of the ink well highlight.
+  // final BoxShape highlightShape;
 
   /// The radius of the ink splash.
   final double? radius;
@@ -86,13 +88,10 @@ class GSPressable extends StatefulWidget {
   final FocusNode? focusNode;
 
   /// Callback when the highlight state changes.
-  final ValueChanged<bool>? onHighlightChanged;
+  final ValueChanged<bool>? onShowFocusHighlight;
 
   /// Whether this widget can request focus.
   final bool canRequestFocus;
-
-  /// Controller for managing material states.
-  final MaterialStatesController? statesController;
 
   /// Creates a new instance of GSPressable.
   const GSPressable({
@@ -104,7 +103,7 @@ class GSPressable extends StatefulWidget {
     this.onFocusChange,
     this.autofocus = false,
     this.containedInkWell = false,
-    this.highlightShape = BoxShape.circle,
+    // this.highlightShape = BoxShape.circle,
     this.style,
     required this.child,
     this.onPress,
@@ -122,87 +121,64 @@ class GSPressable extends StatefulWidget {
     this.radius,
     this.borderRadius,
     this.customBorder,
-    this.statesController,
-    this.onHighlightChanged,
+    this.onShowFocusHighlight,
   });
-
-  @override
-  State<GSPressable> createState() => _GSPressableState();
-}
-
-class _GSPressableState extends State<GSPressable> {
-  final FocusNode _focusNode = FocusNode();
-  bool showFocusBorder = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _focusNode.addListener(() {
-      if (_focusNode.hasFocus && kIsWeb) {
-        setState(() {
-          showFocusBorder = true;
-        });
-      } else {
-        if (showFocusBorder) {
-          setState(() {
-            showFocusBorder = false;
-          });
-        }
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
-  }
 
   /// Builds the GSPressable widget.
   @override
   Widget build(BuildContext context) {
-    // Resolve styles using the provided context and optional style variants.
-    GSStyle styler = resolveStyles(
-      context: context,
-      styles: [pressableStyle],
-      inlineStyle: widget.style,
-      isFirst: true,
-    );
 
-    // Build the InkWell widget with specified callbacks and styles.
-    return InkWell(
-      onTap: widget.onPress,
-      focusNode: _focusNode,
-      onTapUp: widget.onPressIn,
-      onTapDown: widget.onPressOut,
-      onLongPress: widget.onLongPress,
-      onDoubleTap: widget.onDoubleTap,
-      onSecondaryTap: widget.onSecondaryTap,
-      onSecondaryTapUp: widget.onSecondaryTapUp,
-      onSecondaryTapDown: widget.onSecondaryTapDown,
-      onSecondaryTapCancel: widget.onSecondaryTapCancel,
-      radius: widget.radius,
-      customBorder: widget.customBorder,
-      onHighlightChanged: widget.onHighlightChanged,
-      mouseCursor: widget.mouseCursor,
-      hoverColor: styler.onHover?.color,
-      splashColor: styler.splashColor,
-      highlightColor: styler.highlightColor,
-      borderRadius: widget.borderRadius,
-      child: Ink(
-        decoration: BoxDecoration(
-          color: styler.bg ?? Colors.transparent,
-          border: showFocusBorder
-              ? Border.all(
-                  color: styler.onFocus?.borderColor ?? Colors.transparent,
-                  width: styler.onFocus?.borderWidth ?? 1)
-              : null,
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(widget.hitSlop ?? 0),
-          child: widget.child,
-        ),
-      ),
+
+    return GSStyleBuilder(
+      child: Builder(builder: (context) {
+        // Resolve styles using the provided context and optional style variants.
+        GSStyle styler = resolveStyles(
+          context: context,
+          styles: [pressableStyle],
+          inlineStyle: style,
+          isFirst: true,
+        );
+        return FocusableActionDetector(
+          focusNode: focusNode,
+          onFocusChange: onFocusChange,
+          onShowFocusHighlight: onShowFocusHighlight,
+          mouseCursor: mouseCursor ?? MouseCursor.defer,
+          autofocus: autofocus,
+          child: GestureDetector(
+            onTap: onPress,
+            onTapUp: onPressIn,
+            onTapDown: onPressOut,
+            onLongPress: onLongPress,
+            onDoubleTap: onDoubleTap,
+            onSecondaryTap: onSecondaryTap,
+            onSecondaryTapUp: onSecondaryTapUp,
+            onSecondaryTapDown: onSecondaryTapDown,
+            onSecondaryTapCancel: onSecondaryTapCancel,
+            // radius: widget.radius,
+            // customBorder: widget.customBorder,
+            // splashColor: styler.splashColor,
+            // highlightColor: styler.highlightColor,
+            child: Container(
+              decoration: BoxDecoration(
+                color: styler.bg ?? const Color.fromARGB(0, 0, 0, 0),
+                borderRadius: borderRadius,
+                border: GSStyleBuilderProvider.of(context)?.isFocused ?? false
+                    ? Border.all(
+                        color: styler.onFocus?.borderColor ??
+                            styler.borderColor ??
+                            styler.outlineColor ??
+                            $GSColors.primary300,
+                        width: styler.onFocus?.borderWidth ?? 1)
+                    : null,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(hitSlop ?? 0),
+                child: child,
+              ),
+            ),
+          ),
+        );
+      }),
     );
   }
 }
