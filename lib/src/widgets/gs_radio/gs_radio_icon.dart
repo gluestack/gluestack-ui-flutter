@@ -6,6 +6,7 @@ import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_icon_style.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_provider.dart';
+import 'package:gluestack_ui/src/widgets/gs_radio/radio_fork.dart';
 
 class GSRadioIcon<T> extends StatelessWidget {
   final Color? activeColor;
@@ -51,21 +52,21 @@ class GSRadioIcon<T> extends StatelessWidget {
         height: radioSize?.height,
         width: radioSize?.width,
         margin: styler.margin,
-        child: Radio(
-            activeColor: activeColor,
-            autofocus: autofocus,
-            focusColor: focusColor,
-            focusNode: focusNode,
-            hoverColor: hoverColor,
-            overlayColor: overlayColor,
-            toggleable: toggleable,
-            visualDensity: visualDensity,
-            mouseCursor: value.isDisabled
-                ? SystemMouseCursors.forbidden
-                : SystemMouseCursors.click,
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            fillColor: MaterialStateColor.resolveWith((states) {
-              return value.isInvalid
+        child: MouseRegion(
+          cursor: value.isDisabled
+              ? SystemMouseCursors.forbidden
+              : SystemMouseCursors.click,
+          child: GSRawRadio(
+              activeColor: activeColor,
+              autofocus: autofocus,
+              focusColor: focusColor,
+              focusNode: focusNode,
+              // hoverColor: hoverColor,
+              // overlayColor: overlayColor,
+              toggleable: toggleable,
+              // visualDensity: visualDensity,
+
+              fillColor: value.isInvalid
                   ? styler.onInvalid!.borderColor!
                   : isHovered
                       ? isChecked
@@ -73,12 +74,11 @@ class GSRadioIcon<T> extends StatelessWidget {
                           : styler.onHover!.borderColor!
                       : isChecked
                           ? styler.checked!.color!
-                          : styler.borderColor!;
-            }),
-            splashRadius: 0.0,
-            value: value.value,
-            groupValue: value.groupValue,
-            onChanged: value.onChanged),
+                          : styler.borderColor!,
+              value: value.value,
+              groupValue: value.groupValue,
+              onChanged: value.onChanged),
+        ),
       ),
     );
   }
