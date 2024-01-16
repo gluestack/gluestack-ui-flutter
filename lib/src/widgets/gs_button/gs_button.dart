@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
@@ -8,7 +8,7 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 
-class GSButton extends StatelessWidget {
+class GSButton extends StatefulWidget {
   final GSActions? action;
   final GSVariants? variant;
   final GSSizes? size;
@@ -18,12 +18,12 @@ class GSButton extends StatelessWidget {
   final VoidCallback onPressed;
   final GSStyle? style;
   final VoidCallback? onLongPress;
-  final Function(bool)? onHover;
+  final Function? onHover;
   final Function(bool)? onFocusChange;
   final FocusNode? focusNode;
   final bool autoFocus;
   final Clip clipBehavior;
-  final MaterialStatesController? statesController;
+
   const GSButton({
     super.key,
     required this.child,
@@ -40,7 +40,6 @@ class GSButton extends StatelessWidget {
     this.focusNode,
     this.autoFocus = false,
     this.clipBehavior = Clip.none,
-    this.statesController,
   })  : assert(
           size == null ||
               size == GSSizes.$xs ||
@@ -69,14 +68,25 @@ class GSButton extends StatelessWidget {
         );
 
   @override
+  State<GSButton> createState() => _GSButtonState();
+}
+
+class _GSButtonState extends State<GSButton> {
+  //Work around
+  bool isHovered = false;
+
+  @override
   Widget build(BuildContext context) {
     final value = GSButtonGroupProvider.of(context);
-    final buttonAction = action ?? buttonStyle.props?.action;
-    final buttonVariant = variant ?? buttonStyle.props?.variant;
-    final buttonSize = size ?? value?.size ?? buttonStyle.props?.size;
-    final disabled = isDisabled ?? value?.isDisabled ?? false;
-    final focused = isFocusVisible ?? false;
+    final buttonAction = widget.action ?? buttonStyle.props?.action;
+    final buttonVariant = widget.variant ?? buttonStyle.props?.variant;
+    final buttonSize = widget.size ?? value?.size ?? buttonStyle.props?.size;
+    final disabled = widget.isDisabled ?? value?.isDisabled ?? false;
+    final focused = widget.isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;
+    if (isHovered && widget.onHover != null) {
+      widget.onHover!();
+    }
 
     return GSStyleBuilder(
       isDisabled: disabled,
@@ -89,10 +99,10 @@ class GSButton extends StatelessWidget {
               buttonStyle.actionMap(buttonAction),
               buttonStyle.variantMap(buttonVariant),
               buttonStyle.sizeMap(buttonSize),
-              buttonStyle
-                  .compoundVariants?[action.toString() + variant.toString()]
+              buttonStyle.compoundVariants?[
+                  widget.action.toString() + widget.variant.toString()]
             ],
-            inlineStyle: style,
+            inlineStyle: widget.style,
             isFirst: true);
 
         return GSAncestor(
@@ -105,35 +115,43 @@ class GSButton extends StatelessWidget {
               opacity: disabled ? styler.opacity ?? 0.5 : 1,
               child: SizedBox(
                 height: styler.height,
-                child: ElevatedButton(
-                  onPressed: disabled ? null : onPressed,
-                  onLongPress: disabled ? null : onLongPress,
-                  onHover: onHover,
-                  onFocusChange: onFocusChange,
-                  focusNode: focusNode,
-                  autofocus: autoFocus,
-                  clipBehavior: clipBehavior,
-                  statesController: statesController,
-                  style: ButtonStyle(
-                    elevation: MaterialStateProperty.all<double?>(0),
-                    padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
-                        styler.padding),
-                    backgroundColor: MaterialStatePropertyAll(styler.bg),
-                    shape: MaterialStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(styler.borderRadius ?? 0.0),
-                        // side: resolveBorderSide(currentState),
-                        side: _resolveBorderSide(
-                            buttonVariant, styler, isAttached),
+                child: MouseRegion(
+                  onEnter: (PointerEvent x) {
+                    setState(() {
+                      isHovered = true;
+                    });
+                  },
+                  onExit: (PointerEvent x) {
+                    setState(() {
+                      isHovered = false;
+                    });
+                  },
+                  child: FocusableActionDetector(
+                    onFocusChange: widget.onFocusChange,
+                    focusNode: widget.focusNode,
+                    autofocus: widget.autoFocus,
+                    child: GestureDetector(
+                      onTap: disabled ? null : widget.onPressed,
+                      onLongPress: disabled ? null : widget.onLongPress,
+                      child: Container(
+                        clipBehavior: widget.clipBehavior,
+                        // statesController: statesController,
+                        padding: styler.padding,
+                        decoration: BoxDecoration(
+                          color: styler.bg,
+                          borderRadius:
+                              BorderRadius.circular(styler.borderRadius ?? 0.0),
+                          border: Border.fromBorderSide(_resolveBorderSide(
+                              buttonVariant, styler, isAttached)),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            widget.child,
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      child,
-                    ],
                   ),
                 ),
               ),
@@ -152,13 +170,14 @@ class GSButton extends StatelessWidget {
     if (variant == GSVariants.link) {
       return BorderSide.none;
     }
-    if (isFocusVisible!) {
+    if (widget.isFocusVisible!) {
       return BorderSide(color: $GSColors.primary500, width: 2.0);
     }
     return styler.borderWidth != null || styler.outlineWidth != null
         ? BorderSide(
-            color:
-                styler.borderColor ?? styler.outlineColor ?? Colors.transparent,
+            color: styler.borderColor ??
+                styler.outlineColor ??
+                const Color.fromARGB(0, 0, 0, 0),
             width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
         : BorderSide.none;
   }
