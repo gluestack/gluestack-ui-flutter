@@ -353,13 +353,15 @@ class GSButton extends StatelessWidget {
                         // statesController: statesController,
                         padding: styler.padding,
                         decoration: BoxDecoration(
-                          color: GSStyleBuilderProvider.of(context)
-                                      ?.isFocused ??
-                                  false
-                              ? HSLColor.fromColor(styler.bg ?? $GSColors.black)
-                                  .withLightness(0.50)
-                                  .toColor()
-                              : styler.bg,
+                          color: buttonVariant == GSVariants.link
+                              ? const Color.fromARGB(0, 0, 0, 0)
+                              : GSStyleBuilderProvider.of(context)?.isFocused ??
+                                      false
+                                  ? HSLColor.fromColor(
+                                          styler.bg ?? $GSColors.red400)
+                                      .withLightness(0.50)
+                                      .toColor()
+                                  : styler.bg,
                           borderRadius:
                               BorderRadius.circular(styler.borderRadius ?? 0.0),
                           border: Border.fromBorderSide(_resolveBorderSide(
