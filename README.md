@@ -64,9 +64,9 @@ Here's an example of how to use `GSButton` widget into your flutter app:
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
-  action: GSActions.negative,
-  variant: GSVariants.solid,
-  size: GSSizes.$lg,
+  action: GSButtonActions.negative,
+  variant: GSButtonVariants.solid,
+  size: GSButtonSizes.$lg,
   onPressed: () {},
   style: GSStyle(
     web: GSStyle(
