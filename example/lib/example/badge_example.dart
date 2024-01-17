@@ -12,36 +12,40 @@ class BadgeExample extends StatefulWidget {
 }
 
 class _BadgeExampleState extends State<BadgeExample> {
-  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  final List dropdownSizeOptions = [
+    GSBadgeSizes.$sm,
+    GSBadgeSizes.$md,
+    GSBadgeSizes.$lg
+  ];
+  GSBadgeSizes selectedSizeOption = GSBadgeSizes.$md;
 
   final List dropdownVariantOptions = [
-    GSVariants.solid,
-    GSVariants.outline,
+    GSBadgeVariants.solid,
+    GSBadgeVariants.outline,
   ];
-  GSVariants selectedVariantOption = GSVariants.solid;
+  GSBadgeVariants selectedVariantOption = GSBadgeVariants.solid;
 
   final List dropdownRadiusOptions = [
-    GSBorderRadius.$none,
-    GSBorderRadius.$xs,
-    GSBorderRadius.$sm,
-    GSBorderRadius.$md,
-    GSBorderRadius.$lg,
-    GSBorderRadius.$xl,
-    GSBorderRadius.$2xl,
-    GSBorderRadius.$3xl,
-    GSBorderRadius.$full,
+    GSBadgeRadius.$none,
+    GSBadgeRadius.$xs,
+    GSBadgeRadius.$sm,
+    GSBadgeRadius.$md,
+    GSBadgeRadius.$lg,
+    GSBadgeRadius.$xl,
+    GSBadgeRadius.$2xl,
+    GSBadgeRadius.$3xl,
+    GSBadgeRadius.$full,
   ];
-  GSBorderRadius selectedRadiusOption = GSBorderRadius.$full;
+  GSBadgeRadius selectedRadiusOption = GSBadgeRadius.$full;
 
   final List dropdownActionOptions = [
-    GSActions.error,
-    GSActions.warning,
-    GSActions.success,
-    GSActions.info,
-    GSActions.muted,
+    GSBadgeActions.error,
+    GSBadgeActions.warning,
+    GSBadgeActions.success,
+    GSBadgeActions.info,
+    GSBadgeActions.muted,
   ];
-  GSActions selectedActionOption = GSActions.success;
+  GSBadgeActions selectedActionOption = GSBadgeActions.success;
 
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {

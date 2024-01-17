@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: GSCenter(
             child: GSVStack(
-              space: GSSpaces.$xl,
+              space: GSVstackSpaces.$xl,
               children: [
                 const SizedBox(height: 10),
                 const NavButton(

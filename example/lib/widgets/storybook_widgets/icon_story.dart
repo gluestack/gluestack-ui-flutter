@@ -5,11 +5,11 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 //Need to add value according to GSSizes enum order.
 final List<Option<int>> sizeOptions = [
-  Option<int>(value: 1, label: GSSizes.$xs.name),
-  Option<int>(value: 2, label: GSSizes.$sm.name),
-  Option<int>(value: 3, label: GSSizes.$md.name),
-  Option<int>(value: 4, label: GSSizes.$lg.name),
-  Option<int>(value: 5, label: GSSizes.$xl.name),
+  Option<int>(value: 0, label: GSIconSizes.$xs.name),
+  Option<int>(value: 1, label: GSIconSizes.$sm.name),
+  Option<int>(value: 2, label: GSIconSizes.$md.name),
+  Option<int>(value: 3, label: GSIconSizes.$lg.name),
+  Option<int>(value: 4, label: GSIconSizes.$xl.name),
 ];
 
 final class IconStory extends StoryWidget {
@@ -18,8 +18,8 @@ final class IconStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSIcon(
-        size: GSSizes.values[context.knobs
-            .options(label: 'Size', initial: 3, options: sizeOptions)],
+        size: GSIconSizes.values[context.knobs
+            .options(label: 'Size', initial: 2, options: sizeOptions)],
         icon: Icons.calendar_month,
       ),
     );

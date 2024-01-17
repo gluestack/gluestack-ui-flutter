@@ -5,9 +5,9 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 //Need to add value according to GSSizes enum order.
 final List<Option<int>> sizeOptions = [
-  Option<int>(value: 2, label: GSSizes.$sm.name),
-  Option<int>(value: 3, label: GSSizes.$md.name),
-  Option<int>(value: 4, label: GSSizes.$lg.name),
+  Option<int>(value: 0, label: GSSwitchSizes.$sm.name),
+  Option<int>(value: 1, label: GSSwitchSizes.$md.name),
+  Option<int>(value: 2, label: GSSwitchSizes.$lg.name),
 ];
 
 class _SwitchStory extends StatefulWidget {
@@ -23,8 +23,8 @@ class __SwitchStoryState extends State<_SwitchStory> {
   @override
   Widget build(BuildContext context) {
     return GSSwitch(
-      size: GSSizes.values[context.knobs
-          .options(label: 'Size', initial: 3, options: sizeOptions)],
+      size: GSSwitchSizes.values[context.knobs
+          .options(label: 'Size', initial: 1, options: sizeOptions)],
       value: isSelected,
       isDisabled: context.knobs.boolean(label: 'isDisabled'),
       onToggle: (value) {

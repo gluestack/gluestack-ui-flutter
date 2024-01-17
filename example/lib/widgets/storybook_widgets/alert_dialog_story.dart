@@ -9,12 +9,12 @@ final class AlertDialogStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSButton(
-        size: GSSizes.$lg,
+        size: GSButtonSizes.$lg,
         child: const GSButtonText(text: "Click Me"),
         onPressed: () {
           GSAlertDialog.show(
             context,
-            size: GSSizes.$md,
+            size: GSAlertDialogSizes.$md,
             content: GSAlertDialogContent(
               header: GSAlertDialogHeader(
                 style: GSStyle(

@@ -7,11 +7,25 @@ import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_badge.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_fall_back_text.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_image/gs_image.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
+
+enum GSAvatarSizes{
+  $xs,
+  $sm,
+  $md,
+  $lg,
+  $xl,
+  $2xl,
+}
+
+enum GSAvatarRadius{
+  $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full
+}
 
 class GSAvatar extends StatelessWidget {
-  final GSSizes? size;
+  final GSAvatarSizes? size;
+  final GSAvatarRadius? radius;
   final GSStyle? style;
-  final GSBorderRadius? radius;
   final GSAvatarFallBackText? fallBackText;
   final ImageProvider? backgroundImage;
 
@@ -26,7 +40,7 @@ class GSAvatar extends StatelessWidget {
     super.key,
     this.style,
     this.fallBackText,
-    this.radius = GSBorderRadius.$full,
+    this.radius,
     this.backgroundImage,
     this.foregroundImage,
     this.onBackgroundImageError,
@@ -34,15 +48,12 @@ class GSAvatar extends StatelessWidget {
     this.size,
     this.avatarImage,
     this.avatarBadge,
-  }) : assert(
-            size != GSSizes.$3xl &&
-                size != GSSizes.$4xl &&
-                size != GSSizes.$5xl,
-            "Size Not Supported");
+  });
 
   @override
   Widget build(BuildContext context) {
-    final avatarSize = size ?? avatarStyle.props?.size;
+    final avatarSize = size?.toGSSize ?? avatarStyle.props?.size;
+final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
 
     GSStyle styler = resolveStyles(
       context: context,
@@ -58,7 +69,7 @@ class GSAvatar extends StatelessWidget {
             width: styler.width,
             height: styler.height,
             decoration: BoxDecoration(
-              shape: radius == GSBorderRadius.$full
+              shape: avatarRadius == GSBorderRadius.$full
                   ? BoxShape.circle
                   : BoxShape.rectangle,
               color: styler.bg,
@@ -69,8 +80,8 @@ class GSAvatar extends StatelessWidget {
                       fit: BoxFit.cover,
                     )
                   : null,
-              borderRadius: radius != GSBorderRadius.$full
-                  ? BorderRadius.circular(GSAvatarStyle.borderRadius[radius] ??
+              borderRadius: avatarRadius != GSBorderRadius.$full
+                  ? BorderRadius.circular(GSAvatarStyle.borderRadius[avatarRadius] ??
                       styler.borderRadius ??
                       50)
                   : null,
@@ -84,7 +95,7 @@ class GSAvatar extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.circular(
-                        GSAvatarStyle.borderRadius[radius] ??
+                        GSAvatarStyle.borderRadius[avatarRadius] ??
                             styler.borderRadius ??
                             50),
                   )
@@ -110,7 +121,7 @@ class GSAvatar extends StatelessWidget {
                                   )
                         : null,
                     borderRadius: BorderRadius.circular(
-                        GSAvatarStyle.borderRadius[radius] ??
+                        GSAvatarStyle.borderRadius[avatarRadius] ??
                             styler.borderRadius ??
                             50),
                   ),
