@@ -171,4 +171,3 @@ Licensed under the MIT License, Copyright © 2023 GeekyAnts. See [LICENSE](./LIC
 [] Alert 
 [] Spinner 
 [] Progress Value 
-[] Switch
