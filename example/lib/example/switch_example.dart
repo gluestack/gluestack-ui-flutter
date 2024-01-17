@@ -55,21 +55,25 @@ class _SwitchExampleState extends State<SwitchExample> {
       ),
       body: BaseLayout(
         code: code,
-        component: GSSwitch(
-          size: selectedSizeOption,
-          isDisabled: isDisabled,
-          style: GSStyle(
-            checked: GSStyle(
-              thumbColor: Colors.grey,
-              activeThumbColor: Colors.blue,
+        component: Column(
+          children: [
+            GSSwitch(
+              isDisabled: isDisabled,
+              size: selectedSizeOption,
+              style: GSStyle(
+                thumbColor: Colors.amber,
+                trackColorFalse: Colors.orange,
+                checked: GSStyle(
+                  activeThumbColor: Colors.red,
+                  trackColorTrue: Colors.black,
+                ),
+              ),
+              value: val1,
+              onToggle: (bool a) {
+                print('switch value: $a');
+              },
             ),
-          ),
-          value: val1,
-          onToggle: (bool value) {
-            setState(() {
-              val1 = value;
-            });
-          },
+          ],
         ),
         controls: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
