@@ -31,7 +31,7 @@ final class ToastStory extends StoryWidget {
             .options(label: 'Variant', initial: 0, options: variantOptions)];
 
         return GSButton(
-          size: GSSizes.$lg,
+          size: GSButtonSizes.$lg,
           child: const GSButtonText(text: "Click Me"),
           onPressed: () {
             showToast(

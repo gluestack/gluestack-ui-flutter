@@ -10,11 +10,54 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 
+enum GSButtonActions {
+  primary,
+  secondary,
+  positive,
+  negative,
+}
+
+enum GSButtonVariants {
+  solid,
+  outline,
+  link,
+}
+
+enum GSButtonSizes {
+  $xs,
+  $sm,
+  $md,
+  $lg,
+}
+
+extension GSButtonExtensions on Object {
+  GSActions? get toGSAction {
+    if (this is GSButtonActions) {
+      return mapToGSActions(this as GSButtonActions);
+    }
+    return null;
+  }
+
+  GSVariants? get toGSVariant {
+    if (this is GSButtonVariants) {
+      return mapToGSVariants(this as GSButtonVariants);
+    }
+    return null;
+  }
+
+  GSSizes? get toGSSize {
+    if (this is GSButtonSizes) {
+      return mapToGSSizes(this as GSButtonSizes);
+    }
+    return null;
+  }
+}
+
 class GSButton extends StatelessWidget {
-  final GSActions? action;
-  final GSVariants? variant;
+  final GSButtonActions? action;
+  final GSButtonVariants? variant;
+  final GSButtonSizes? size;
   final String? semanticsLabel;
-  final GSSizes? size;
   final bool? isDisabled;
   final bool? isFocusVisible;
   final Widget child;
@@ -92,9 +135,9 @@ class GSButton extends StatelessWidget {
     super.key,
     required this.child,
     required this.onPressed,
-    this.action = GSActions.primary,
-    this.variant = GSVariants.solid,
-    this.size = GSSizes.$md,
+    this.action = GSButtonActions.primary,
+    this.variant = GSButtonVariants.solid,
+    this.size = GSButtonSizes.$md,
     this.isDisabled,
     this.semanticsLabel,
     this.isFocusVisible = false,
@@ -166,39 +209,14 @@ class GSButton extends StatelessWidget {
     this.trackpadScrollToScaleFactor =
         const Offset(0, -1 / kDefaultMouseScrollToScaleFactor),
     this.supportedDevices,
-  })  : assert(
-          size == null ||
-              size == GSSizes.$xs ||
-              size == GSSizes.$sm ||
-              size == GSSizes.$md ||
-              size == GSSizes.$lg,
-          'GS Button can only have the sizes: \$lg, \$md \$sm and \$xs\n'
-          'To resolve this error, ensure only the above mentioned GSSizes is specified!',
-        ),
-        assert(
-          variant == null ||
-              variant == GSVariants.outline ||
-              variant == GSVariants.solid ||
-              variant == GSVariants.link,
-          'GS Button can only have the vairants: solid, outline and link\n'
-          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
-        ),
-        assert(
-          action == null ||
-              action == GSActions.primary ||
-              action == GSActions.secondary ||
-              action == GSActions.positive ||
-              action == GSActions.negative,
-          'GS Button can only have the actions: primary, secondary, positive and negative\n'
-          'To resolve this error, ensure only the above mentioned GSActions is specified.',
-        );
+  });
 
   @override
   Widget build(BuildContext context) {
     final value = GSButtonGroupProvider.of(context);
-    final buttonAction = action ?? buttonStyle.props?.action;
-    final buttonVariant = variant ?? buttonStyle.props?.variant;
-    final buttonSize = size ?? value?.size ?? buttonStyle.props?.size;
+    final buttonAction = action?.toGSAction ?? buttonStyle.props?.action;
+    final buttonVariant = variant?.toGSVariant ?? buttonStyle.props?.variant;
+    final buttonSize = size?.toGSSize ?? value?.size ?? buttonStyle.props?.size;
     final disabled = isDisabled ?? value?.isDisabled ?? false;
     final focused = isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;

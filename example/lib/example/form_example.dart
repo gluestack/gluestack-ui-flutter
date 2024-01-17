@@ -183,8 +183,8 @@ class _FormExampleState extends State<FormExample> {
                   sp2,
                   sp2,
                   GSButton(
-                      action: GSActions.positive,
-                      variant: GSVariants.outline,
+                      action: GSButtonActions.positive,
+                      variant: GSButtonVariants.outline,
                       child:  Text(
                         'Submit',
                         style: TextStyle(color: Colors.green),
@@ -335,8 +335,8 @@ class _FormExampleState extends State<FormExample> {
                 sp2,
                 sp2,
                 GSButton(
-                    action: GSActions.positive,
-                    variant: GSVariants.outline,
+                    action: GSButtonActions.positive,
+                    variant: GSButtonVariants.outline,
                     child: const Text(
                       'Submit',
                       style: TextStyle(color: Colors.green),
