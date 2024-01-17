@@ -81,6 +81,10 @@ class GSInput extends StatefulWidget {
   final BoxConstraints? constraints;
   final TextStyle? hintStyle;
   final String? hintText;
+  final TextStyle? prefixStyle;
+  final String? prefixText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final Color? hoverColor;
   const GSInput({
     super.key,
@@ -152,6 +156,10 @@ class GSInput extends StatefulWidget {
     this.hoverColor,
     this.style,
     this.onFieldSubmitted,
+    this.prefixStyle,
+    this.prefixText,
+    this.prefixIcon,
+    this.suffixIcon,
   });
 
   @override
@@ -292,83 +300,99 @@ class _GSInputState extends State<GSInput> {
                       borderRadius:
                           BorderRadius.circular(styler.borderRadius ?? 0.0),
                     ),
-                    child: Center(
-                      child: EditableText(
-                        onSubmitted: widget.onFieldSubmitted,
-                        autocorrect: widget.autocorrect,
-                        autofocus: widget.autofocus,
-                        clipBehavior: widget.clipBehavior,
-                        contentInsertionConfiguration:
-                            widget.contentInsertionConfiguration,
-                        contextMenuBuilder: widget.contextMenuBuilder,
-                        controller: widget.controller!,
-                        cursorColor: widget.cursorColor ?? borderColor,
-                        cursorHeight: widget.cursorHeight,
-                        cursorOpacityAnimates:
-                            widget.cursorOpacityAnimates ?? false,
-                        cursorRadius: widget.cursorRadius,
-                        cursorWidth: widget.cursorWidth,
-                        dragStartBehavior: widget.dragStartBehavior,
-                        readOnly: isReadOnly,
-                        enableIMEPersonalizedLearning:
-                            widget.enableIMEPersonalizedLearning,
-                        enableInteractiveSelection:
-                            widget.enableInteractiveSelection,
-                        enableSuggestions: widget.enableSuggestions,
-                        expands: widget.expands,
-                        focusNode: widget.focusNode ?? focusNode,
-                        inputFormatters: widget.inputFormatters,
-                        keyboardAppearance:
-                            widget.keyboardAppearance ?? Brightness.light,
-                        keyboardType: widget.keyboardType,
-                        magnifierConfiguration: widget.magnifierConfiguration ??
-                            TextMagnifierConfiguration.disabled,
-                        //maxLength: widget.maxLength,
-                        maxLines: widget.maxLines,
-                        minLines: widget.minLines,
-                        mouseCursor: isDisabled
-                            ? SystemMouseCursors.forbidden
-                            : _isHovered
-                                ? SystemMouseCursors.text
-                                : MouseCursor.defer,
+                    child: Row(
+                      children: [
+                        _buildPrefixText(),
+                        _buildPrefixIcon(),
+                        Expanded(
+                          child: Center(
+                            child: EditableText(
+                              onSubmitted: widget.onFieldSubmitted,
+                              autocorrect: widget.autocorrect,
+                              autofocus: widget.autofocus,
+                              clipBehavior: widget.clipBehavior,
+                              contentInsertionConfiguration:
+                                  widget.contentInsertionConfiguration,
+                              contextMenuBuilder: widget.contextMenuBuilder,
+                              controller: widget.controller!,
+                              cursorColor: widget.cursorColor ?? borderColor,
+                              cursorHeight: widget.cursorHeight,
+                              cursorOpacityAnimates:
+                                  widget.cursorOpacityAnimates ?? false,
+                              cursorRadius: widget.cursorRadius,
+                              cursorWidth: widget.cursorWidth,
+                              dragStartBehavior: widget.dragStartBehavior,
+                              readOnly: isReadOnly,
+                              enableIMEPersonalizedLearning:
+                                  widget.enableIMEPersonalizedLearning,
+                              enableInteractiveSelection:
+                                  widget.enableInteractiveSelection,
+                              enableSuggestions: widget.enableSuggestions,
+                              expands: widget.expands,
+                              focusNode: widget.focusNode ?? focusNode,
+                              inputFormatters: widget.inputFormatters,
+                              keyboardAppearance:
+                                  widget.keyboardAppearance ?? Brightness.light,
+                              keyboardType: widget.keyboardType,
+                              magnifierConfiguration:
+                                  widget.magnifierConfiguration ??
+                                      TextMagnifierConfiguration.disabled,
+                              //maxLength: widget.maxLength,
+                              maxLines: widget.maxLines,
+                              minLines: widget.minLines,
+                              mouseCursor: isDisabled
+                                  ? SystemMouseCursors.forbidden
+                                  : _isHovered
+                                      ? SystemMouseCursors.text
+                                      : MouseCursor.defer,
 
-                        obscureText: widget.obscureText,
-                        obscuringCharacter: widget.obscuringCharacter,
-                        onAppPrivateCommand: widget.onAppPrivateCommand,
-                        onChanged: widget.onChanged ??
-                            (p0) {
-                              setState(() {});
-                            },
-                        onEditingComplete: widget.onEditingComplete,
-                        onTapOutside: widget.onTapOutside,
-                        restorationId: widget.restorationId,
-                        scribbleEnabled: widget.scribbleEnabled,
-                        scrollController: widget.scrollController,
-                        scrollPadding: widget.scrollPadding,
-                        scrollPhysics: widget.scrollPhysics,
-                        selectionControls: widget.selectionControls,
-                        selectionHeightStyle: widget.selectionHeightStyle,
-                        selectionWidthStyle: widget.selectionWidthStyle,
-                        showCursor: widget.showCursor,
-                        smartDashesType: widget.smartDashesType,
-                        smartQuotesType: widget.smartQuotesType,
-                        spellCheckConfiguration: widget.spellCheckConfiguration,
-                        strutStyle: widget.strutStyle,
-                        style: styler.textStyle!,
-                        textAlign: widget.textAlign,
-                        textCapitalization: widget.textCapitalization,
-                        textDirection: widget.textDirection,
-                        textInputAction: widget.textInputAction,
-                        undoController: widget.undoController,
+                              obscureText: widget.obscureText,
+                              obscuringCharacter: widget.obscuringCharacter,
+                              onAppPrivateCommand: widget.onAppPrivateCommand,
+                              onChanged: widget.onChanged ??
+                                  (p0) {
+                                    setState(() {});
+                                  },
+                              onEditingComplete: widget.onEditingComplete,
+                              onTapOutside: widget.onTapOutside,
+                              restorationId: widget.restorationId,
+                              scribbleEnabled: widget.scribbleEnabled,
+                              scrollController: widget.scrollController,
+                              scrollPadding: widget.scrollPadding,
+                              scrollPhysics: widget.scrollPhysics,
+                              selectionControls: widget.selectionControls,
+                              selectionHeightStyle: widget.selectionHeightStyle,
+                              selectionWidthStyle: widget.selectionWidthStyle,
+                              showCursor: widget.showCursor,
+                              smartDashesType: widget.smartDashesType,
+                              smartQuotesType: widget.smartQuotesType,
+                              spellCheckConfiguration:
+                                  widget.spellCheckConfiguration,
+                              strutStyle: widget.strutStyle,
+                              style: styler.textStyle!,
+                              textAlign: widget.textAlign,
+                              textCapitalization: widget.textCapitalization,
+                              textDirection: widget.textDirection,
+                              textInputAction: widget.textInputAction,
+                              undoController: widget.undoController,
 
-                        backgroundCursorColor: const Color(0xFF808080),
-                      ),
+                              backgroundCursorColor: const Color(0xFF808080),
+                            ),
+                          ),
+                        ),
+                        _buildSuffixIcon()
+                      ],
                     ),
                   ),
                   if (widget.controller!.text.isEmpty)
                     Positioned(
-                      left: 10,
-                      top: 15,
+                      left: widget.prefixText != null &&
+                              widget.prefixText!.isNotEmpty
+                          ? 10 + widget.prefixText!.length * 8
+                          : widget.prefixIcon != null
+                              ? 50
+                              : 10,
+                      top: 10,
                       child: Text(
                         widget.hintText!,
                         style: widget.hintStyle ??
@@ -382,5 +406,53 @@ class _GSInputState extends State<GSInput> {
             ),
           ),
         ));
+  }
+
+  Widget _buildPrefixText() {
+    if (widget.prefixText != null && widget.prefixText!.isNotEmpty) {
+      return Row(
+        children: [
+          Text(
+            widget.prefixText!,
+            style: widget.prefixStyle,
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+        ],
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
+  }
+
+  Widget _buildPrefixIcon() {
+    if (widget.prefixIcon != null) {
+      return Row(
+        children: [
+          widget.prefixIcon!,
+          const SizedBox(
+            width: 10,
+          ),
+        ],
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
+  }
+
+  Widget _buildSuffixIcon() {
+    if (widget.suffixIcon != null) {
+      return Row(
+        children: [
+          const SizedBox(
+            width: 10,
+          ),
+          widget.suffixIcon!,
+        ],
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
   }
 }
