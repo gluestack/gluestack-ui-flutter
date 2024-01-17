@@ -167,29 +167,168 @@ The Examples section provides visual representations of the different variants o
 
 An GSAvatar widget with text displays a stylized representation of a user or entity alongside accompanying text, providing a visual and textual identification within a user interface.
 
-#### GSAvatar with Icon
+<iframe
+  src={env.NEXT_PUBLIC_PREVIEW + "avatar-with-label-preview"}
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
 
-An GSAvatar widget with an icon combines a graphical symbol or icon with a user or entity representation, providing a visually appealing and easily recognizable identification within a user interface.
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+GSHStack(
+  children: [
+    GSAvatar(
+      style: GSStyle(
+        bg: Colors.orange,
+        textStyle: const TextStyle(color: Colors.white),
+      ),
+      fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+    ),
+    const GSHeading(text: 'text'),
+  ],
+)
+
+```
 
 #### GSAvatar with Image
 
 An GSAvatar widget with an image incorporates a user or entity representation using a profile picture or image, adding a personalized touch and visual identification within a user interface.
 
+<iframe
+  src={env.NEXT_PUBLIC_PREVIEW + "avatar-with-image-preview"}
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  children: [
+    GSHStack(
+      children: [
+        GSAvatar(
+          avatarImage: const GSImage(
+            path:
+                'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+            imageType: GSImageType.network,
+          ),
+          style: GSStyle(
+            bg: Colors.orange,
+            textStyle: const TextStyle(color: Colors.white),
+          ),
+          fallBackText: const GSAvatarFallBackText('Ronald Richards'),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const GSVStack(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GSHeading(text: 'Nursing Assistant'),
+            GSText(text: 'Ronald Richards'),
+          ],
+        ),
+      ],
+    ),
+    const SizedBox(
+      height: 20,
+    ),
+    GSHStack(
+      children: [
+        GSAvatar(
+          avatarImage: const GSImage(
+            path:
+                'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+            imageType: GSImageType.network,
+          ),
+          style: GSStyle(
+            bg: Colors.orange,
+            textStyle: const TextStyle(color: Colors.white),
+          ),
+          fallBackText: const GSAvatarFallBackText('Arlene McCoy'),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const GSVStack(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GSHeading(text: 'Arlene McCoy'),
+            GSText(text: 'Marketing Coordinator'),
+          ],
+        ),
+      ],
+    ),
+  ],
+)
+
+```
+
 #### GSAvatar Group
 
 The avatar group allows users to group avatars and display them in a horizontal or vertical row for better visual representation and functionality.
 
-#### GSAvatar Group (Without Badge)
+<iframe
+  src={env.NEXT_PUBLIC_PREVIEW + "avatar-group-preview"}
+  title="Example"
+  width="800"
+  height="350"
+></iframe>
 
-An GSAvatar Group widget without badges organizes multiple avatars in a visually cohesive manner, offering a streamlined display of user or entity representations without additional visual indicators or badges within a user interface.
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
 
-#### GSAvatar Group (with Badge)
+GSAvatarGroup(
+  children: [
+    GSAvatar(
+      size: GSSizes.$sm,
+      avatarImage: const GSImage(
+        path:
+            'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+        imageType: GSImageType.network,
+      ),
+      style: GSStyle(
+        bg: Colors.orange,
+        textStyle: const TextStyle(color: Colors.white),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+      ),
+      fallBackText: const GSAvatarFallBackText('RA'),
+    ),
+    GSAvatar(
+      size: GSSizes.$sm,
+      avatarImage: const GSImage(
+        path:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+        imageType: GSImageType.network,
+      ),
+      style: GSStyle(
+        bg: Colors.orange,
+        textStyle: const TextStyle(color: Colors.white),
+      ),
+      fallBackText: const GSAvatarFallBackText('BA'),
+    ),
+    GSAvatar(
+      size: GSSizes.$sm,
+      avatarImage: const GSImage(
+        path:
+            'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+        imageType: GSImageType.network,
+      ),
+      style: GSStyle(
+        bg: Colors.orange,
+        textStyle: const TextStyle(color: Colors.white),
+      ),
+      fallBackText: const GSAvatarFallBackText('GA'),
+    ),
+  ],
+)
 
-An GSAvatar Group widget with badges presents a collection of avatars with accompanying badges, providing visual indicators or additional information associated with each user or entity representation within a user interface.
-
-#### Custom
-
-A custom GSAvatar widget with text allows for personalized user or entity representations by combining customized visuals, such as an image or icon, with accompanying text, providing a unique and identifiable presentation within a user interface.
+```
 
 #### Fallback
 
