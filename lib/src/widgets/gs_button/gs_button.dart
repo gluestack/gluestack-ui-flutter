@@ -23,29 +23,34 @@ enum GSButtonVariants {
   link,
 }
 
-extension GSButtonActionsExtension on GSButtonActions {
-  GSActions? get toGSAction {
-    return mapToGSActions(this);
-  }
-}
-
-extension GSButtonVariantsExtension on GSButtonVariants {
-  GSVariants? get toGSVariant {
-    return mapToGSVariants(this);
-  }
-}
-
-extension GSButtonSizesExtension on GSButtonSizes {
-  GSSizes? get toGSSize {
-    return mapToGSSizes(this);
-  }
-}
-
 enum GSButtonSizes {
   $xs,
   $sm,
   $md,
   $lg,
+}
+
+extension GSButtonExtensions on Object {
+  GSActions? get toGSAction {
+    if (this is GSButtonActions) {
+      return mapToGSActions(this as GSButtonActions);
+    }
+    return null;
+  }
+
+  GSVariants? get toGSVariant {
+    if (this is GSButtonVariants) {
+      return mapToGSVariants(this as GSButtonVariants);
+    }
+    return null;
+  }
+
+  GSSizes? get toGSSize {
+    if (this is GSButtonSizes) {
+      return mapToGSSizes(this as GSButtonSizes);
+    }
+    return null;
+  }
 }
 
 class GSButton extends StatelessWidget {
