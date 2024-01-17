@@ -65,7 +65,7 @@ class _ToastExampleState extends State<ToastExample> {
       body: BaseLayout(
         code: code,
         component: GSButton(
-          size: GSSizes.$lg,
+          size: GSButtonSizes.$lg,
           child: const GSButtonText(text: "Click Me"),
           onPressed: () {
             showToast(
