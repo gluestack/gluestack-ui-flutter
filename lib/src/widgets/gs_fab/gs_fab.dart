@@ -3,10 +3,26 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_style.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
+
+enum GSFABSizes{
+$sm,
+$md,
+$lg,
+}
+
+enum GSFABPlacements {
+  topLeft,
+  topCenter,
+  topRight,
+  bottomLeft,
+  bottomCenter,
+  bottomRight
+}
 
 class GSFab extends StatelessWidget {
-  final GSSizes? size;
-  final GSPlacements? placement;
+  final GSFABSizes? size;
+  final GSFABPlacements? placement;
   final Widget? label;
   final GSStyle? style;
   final Widget? icon;
@@ -25,17 +41,12 @@ class GSFab extends StatelessWidget {
       this.isHovered = false,
       this.isPressed = false,
       this.isDisabled = false})
-      : assert(
-            size == GSSizes.$lg ||
-                size == GSSizes.$md ||
-                size == GSSizes.$sm ||
-                size == null,
-            "only support sizes of lg,md,sm");
+     ;
 
   @override
   Widget build(BuildContext context) {
-    final fabSize = size ?? fabStyle.props!.size!;
-    final fabPlacement = placement ?? fabStyle.props?.placement!;
+    final fabSize = size?.toGSSize ?? fabStyle.props!.size!;
+    final fabPlacement = placement?.toGSPlacement ?? fabStyle.props?.placement!;
     final styler = resolveStyles(
       context: context,
       styles: [
@@ -46,8 +57,8 @@ class GSFab extends StatelessWidget {
       isFirst: true,
     );
 
-    final bool isCentered = placement == GSPlacements.bottomCenter ||
-        placement == GSPlacements.topCenter;
+    final bool isCentered = fabPlacement == GSPlacements.bottomCenter ||
+        fabPlacement == GSPlacements.topCenter;
 
     final widget = GSAncestor(
       decedentStyles: styler.descendantStyles,

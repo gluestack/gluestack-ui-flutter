@@ -13,19 +13,19 @@ class InputExample extends StatefulWidget {
 
 class _InputExampleState extends State<InputExample> {
   final List dropdownSizeOptions = [
-    GSSizes.$sm,
-    GSSizes.$md,
-    GSSizes.$lg,
-    GSSizes.$xl,
+    GSInputSizes.$sm,
+    GSInputSizes.$md,
+    GSInputSizes.$lg,
+    GSInputSizes.$xl,
   ];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  GSInputSizes selectedSizeOption = GSInputSizes.$md;
 
   final List dropdownVariantOptions = [
-    GSVariants.outline,
-    GSVariants.rounded,
-    GSVariants.underlined,
+    GSInputVariants.outline,
+    GSInputVariants.rounded,
+    GSInputVariants.underlined,
   ];
-  GSVariants selectedVariantOption = GSVariants.outline;
+  GSInputVariants selectedVariantOption = GSInputVariants.outline;
 
   bool isDisabled = false;
   bool isInvalid = false;
@@ -65,8 +65,8 @@ class _InputExampleState extends State<InputExample> {
   Widget build(BuildContext context) {
     var code = '''
       GSInput(
-          size: GSSizes.\$md,
-          variant: GSVariants.outline,
+          size: GSInputSizes.\$md,
+          variant: GSInputVariants.outline,
           hintText: "Enter text here",
           isDisabled: false,
           isInvalid: false,

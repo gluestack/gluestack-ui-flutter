@@ -16,7 +16,7 @@ class HStackReversedPreview extends StatelessWidget {
           Story(
             name: 'HStack',
             builder: (context) => GSHStack(
-              space: GSSpaces.$md,
+              space: GSHstackSpaces.$md,
               mainAxisAlignment: MainAxisAlignment.center,
               isReversed: true,
               children: [

@@ -35,8 +35,8 @@ class ButtonWithFullWidthPreview extends StatelessWidget {
               ],
             ),
             const GSInput(
-              size: GSSizes.$sm,
-              variant: GSVariants.outline,
+              size: GSInputSizes.$sm,
+              variant: GSInputVariants.outline,
               cursorHeight: 12,
               constraints: BoxConstraints(
                 maxWidth: 280,
@@ -49,8 +49,8 @@ class ButtonWithFullWidthPreview extends StatelessWidget {
               ),
             ),
             const GSInput(
-              size: GSSizes.$sm,
-              variant: GSVariants.outline,
+              size: GSInputSizes.$sm,
+              variant: GSInputVariants.outline,
               cursorHeight: 12,
               constraints: BoxConstraints(
                 maxWidth: 280,
@@ -67,9 +67,9 @@ class ButtonWithFullWidthPreview extends StatelessWidget {
                 width: double.maxFinite,
               ),
               child: GSButton(
-                variant: GSVariants.solid,
-                action: GSActions.primary,
-                size: GSSizes.$lg,
+                variant: GSButtonVariants.solid,
+                action: GSButtonActions.primary,
+                size: GSButtonSizes.$lg,
                 child: const GSButtonText(
                   text: "Submit",
                 ),

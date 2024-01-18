@@ -13,17 +13,17 @@ class HStackExample extends StatefulWidget {
 
 class _HStackExampleState extends State<HStackExample> {
   final List dropdownSpaceOptions = [
-    GSSpaces.$none,
-    GSSpaces.$xs,
-    GSSpaces.$sm,
-    GSSpaces.$md,
-    GSSpaces.$lg,
-    GSSpaces.$xl,
-    GSSpaces.$2xl,
-    GSSpaces.$3xl,
-    GSSpaces.$4xl,
+    GSHstackSpaces.$none,
+    GSHstackSpaces.$xs,
+    GSHstackSpaces.$sm,
+    GSHstackSpaces.$md,
+    GSHstackSpaces.$lg,
+    GSHstackSpaces.$xl,
+    GSHstackSpaces.$2xl,
+    GSHstackSpaces.$3xl,
+    GSHstackSpaces.$4xl,
   ];
-  GSSpaces selectedSpaceOption = GSSpaces.$none;
+  GSHstackSpaces selectedSpaceOption = GSHstackSpaces.$none;
   void updateSpaceSelectedOption(dynamic newOption) {
     setState(() {
       selectedSpaceOption = newOption;
@@ -43,7 +43,7 @@ class _HStackExampleState extends State<HStackExample> {
         GSHStack(
             mainAxisAlignment: MainAxisAlignment.center,
             isReversed: false,
-            space: GSSpaces.\$none,
+            space: GSHstackSpaces.\$none,
             children: [
               GSBox(
                 style: GSStyle(height: 100, width: 100, color: \$GSColors.blue300),

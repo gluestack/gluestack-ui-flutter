@@ -1,10 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_vstack/gs_vstack_style.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
+enum GSVstackSpaces{
+   $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl
+} 
 class GSVStack extends StatelessWidget {
   final List<Widget> children;
-  final GSSpaces? space;
+  final GSVstackSpaces? space;
   final MainAxisAlignment mainAxisAlignment;
   final CrossAxisAlignment crossAxisAlignment;
   final MainAxisSize mainAxisSize;
@@ -14,7 +18,7 @@ class GSVStack extends StatelessWidget {
   final VerticalDirection verticalDirection;
   const GSVStack({
     super.key,
-    this.space = GSSpaces.$none,
+    this.space = GSVstackSpaces.$none,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.max,
@@ -23,31 +27,21 @@ class GSVStack extends StatelessWidget {
     this.verticalDirection = VerticalDirection.down,
     this.isReversed = false,
     this.children = const [],
-  }) : assert(
-            space == GSSpaces.$xs ||
-                space == GSSpaces.$sm ||
-                space == GSSpaces.$md ||
-                space == GSSpaces.$lg ||
-                space == GSSpaces.$xl ||
-                space == GSSpaces.$2xl ||
-                space == GSSpaces.$3xl ||
-                space == GSSpaces.$4xl ||
-                space == GSSpaces.$none ||
-                space == null,
-            "only support for spaces of xs, sm, md, lg, xl , 2xl, 3xl and 4xl");
+  });
 
   @override
   Widget build(BuildContext context) {
     List<Widget> spacedChildrenList = [];
+    final vStackSpace = space?.toGSSpaces;
 
     for (var child in children) {
       spacedChildrenList.add(child);
       if (child != children.last) {
         spacedChildrenList.add(
           SizedBox(
-              height: space == GSSpaces.$none
+              height: vStackSpace == GSSpaces.$none
                   ? null
-                  : vstackStyle.spaceMap(space)?.gap),
+                  : vstackStyle.spaceMap(vStackSpace)?.gap),
         );
       }
     }
