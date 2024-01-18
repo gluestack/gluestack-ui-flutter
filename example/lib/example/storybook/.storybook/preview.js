@@ -22,6 +22,8 @@ export const parameters = {
         ["Introduction"],
         "Getting Started",
         ["Installation"],
+        "Styling",
+        ["Overview","Utility", "Responsiveness", "Platform Specific"],
         "Components",
         [
           "Typography",
