@@ -23,12 +23,14 @@ import 'text_story.dart';
 import 'textarea_story.dart';
 import 'toast_story.dart';
 import 'vstack_story.dart';
+import 'flex_story.dart';
 
 final List<StoryWidget> kStories = [
   AlertDialogStory(),
   AvatarStory(),
   BadgeStory(),
   BoxStory(),
+  FlexStory(),
   ButtonStory(),
   CenterStory(),
   CheckboxStory(),
