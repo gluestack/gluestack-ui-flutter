@@ -3,15 +3,13 @@ title: Introduction | gluestack-ui
 description: gluestack-ui is a React Native, React and a Flutter library that provides universal, styled, and accessible components.
 ---
 
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
 <Meta title="Overview/Introduction" />
 
 # Introduction
 
-Customizable Components for React, Next.js, React Native and Flutter with Optional Styling.
-
-gluestack-ui is a universal UI library that provides themed and unstyled components. These components are designed for easy integration into applications developed with React, React Native, Next.js, Flutter and Expo.
+gluestack-ui-flutter is a universal UI library that provides optionally styled and accessible widgets. These widgets are designed for easy integration into applications developed with Flutter.
 
 ## Why we built gluestack-ui?
 
@@ -19,19 +17,33 @@ gluestack-ui originally started as part of NativeBase, a universal component lib
 
 ## Features
 
-- **Consistency**: gluestack-ui provides a consistent design language across different platforms, making it easier to build interfaces that look and feel the same on other devices.
+- **Customizable widgets:** Each widget in the library comes with a set of customizable props that allow you to tailor its appearance and behavior to your specific needs.
 
-- **Accessibility**: gluestack-ui aims to provide a set of accessible components that work across different platforms and devices. The components have accessibility features such as ARIA attributes, keyboard navigation, and focus management.
+- **Declarative and Dynamic Styling:** By using JSON for style configurations, you're enabling a more declarative approach to UI design. This can be particularly powerful when styles need to be changed dynamically or loaded from external sources.
 
-- **Ease of use**: The gluestack-ui components are designed to be easily customizable. They have clear and concise APIs that make integration into existing projects simple.
+- **Web-focus:** While Material and Cupertino excel on mobile, gluestack-ui could be tailored for web experiences, offering components and styles optimized for desktop interaction and layout. Think responsive design, mouse hover interactions, and web-specific UI patterns.
 
-- **Optional styling**: gluestack-ui copies the components to your project which enables you to easily customize or change the look and feel of the components.
+- **Flexibility for Developers:** Providing inline style overrides gives developers the flexibility to quickly customize components on a case-by-case basis, without the need to alter the JSON configuration for minor tweaks.
 
-- **Theming tokens**: gluestack-ui takes a config file in the `GluestackUIProvider`, which contains theme tokens, aliases, component themes, etc, to help with the project requirements.
+- **Responsive design:** The widgets are built using modern web design principles and are fully responsive, so they work seamlessly across a wide range of devices and screen sizes.
+
+- **Well-documented:** The comes with comprehensive documentation for each widget, including a list of props and examples, to help you get up and running quickly.
+
+- **Easy to use:** The widgets are designed to be easy to use and integrate into your existing Flutter applications. Simply install the library and import the widgets you need.
+
+- **Frequent updates:** We are constantly working on improving the library and adding new widgets. Follow us on GitHub to stay up-to-date on the latest releases and features.
+
+- **Community support:** Need help using the library or have a suggestion for a new feature? Join our [Discord](https://discord.com/invite/95qQ84nf6f) channel to connect with the community and get support.
 
 ## Future Considerations
 
 gluestack-ui is committed to continuously expanding its library of components to meet the needs of developers. We plan to add more components to the library, such as navigation, combo box, and accordion. Apart from that, we have plans to introduce bundler plugins in the future to ensure even greater levels of performance.
+
+- **Omitting Material Dependency:** Developers can tailor the UI components to fit the exact needs and aesthetics of their applications without being restricted to Material Design standards. From performance improvement respective, by building a system independent of Material Design, you might optimize performance, especially for applications that require lightweight and fast-loading interfaces.
+
+- **Enhanced Widget Configuration:** The widgets will be designed in a modular fashion, allowing users to plug in different components or features as needed. This modular approach enables more complex and varied widget compositions.With more control over the widget design, developers can create applications that offer a better user experience, tailored to their target audience.
+
+- **Configurable Token System:** Design the token system to be scalable and customizable. Users should be able to add new tokens or modify existing ones to suit their project needs.
 
 ## Community
 
