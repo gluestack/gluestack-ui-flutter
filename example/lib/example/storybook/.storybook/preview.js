@@ -23,7 +23,11 @@ export const parameters = {
         "Getting Started",
         ["Installation"],
         "Theme Configuration",
-        ["Theme", ["Default Tokens", "Default Components"]],
+        [
+          "Theme",
+          ["Default Tokens", "Default Components"],
+          "Customizing Theme",
+        ],
         "Components",
         [
           "Typography",

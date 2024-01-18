@@ -1,8 +1,84 @@
 ---
-title: Default Tokens | gluestack-ui
-description: gluestack-ui is a React Native, React and a Flutter library that provides universal, styled, and accessible components.
+title: Default Tokens
+
+description: gluestack-ui-flutter ships with default tokens that provide access to theme values and lets you build and customize your own themed widgets. It has colors, typography, size, opacity, shadows, breakpoints and more.
+
+pageTitle: Default Tokens
+
+pageDescription: gluestack-ui-flutter ships with default tokens that provide access to theme values and lets you build and customize your own themed widgets. It has colors, typography, size, opacity, shadows, breakpoints and more.
+
+showHeader: true
 ---
 
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
 
+import {
+  ColorPaletteComponent,
+  SpaceComponent,
+  OpacityComponent,
+  ShadowsComponent,
+  BorderWidthComponent,
+  RadiiComponent,
+} from "./DefaultComponent";
+
 <Meta title="Theme Configuration/Theme/Default Tokens" />
+
+Theming in `@gluestack-ui-flutter` is defined in [GSColorsToken](https://github.com/gluestack/gluestack-ui-flutter/blob/main/lib/src/token/color.dart).
+
+## Colors
+
+We recommend adding a palette that ranges from 50 to 900. Tools like [JSON Color Palette Generator](https://json-color-palette-generator.vercel.app), [Smart Swatch](https://smart-swatch.netlify.app/) or [Palx](https://palx.jxnblk.com/) are available to generate these palettes.
+
+<ColorPaletteComponent />
+
+## Typography
+
+To manage Typography options, the tokens object supports the following keys:
+
+- `$GSFontSize`
+- `$GSFontWeights`
+- `$GSLineHeight`
+- `$GSLetterSpacing`
+
+```dart
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GluestackProvider(
+  gluestackTokenConfig: GluestackTokenConfig(
+
+    gsFontSizeToken: const GSFontSizeToken(
+      $sm: 12,
+      $md: 14,
+    ),
+    gsLetterSpacingToken: const GSLetterSpacingToken(
+          $md: 2,
+          $lg: 3,
+    ),
+    gsFontWeightsToken: const GSFontWeightsToken(),
+    // More token configurations....
+  ),
+  child: MaterialApp.router(
+    ....
+  ),
+)
+```
+
+## $GSSpace
+
+The space key allows you to customize the global spacing and sizing scale for your project. By default these spacing value can be referenced by the padding, margin, and top, left, right, bottom. You can refer to [this](https://github.com/gluestack/gluestack-ui-flutter/blob/main/lib/src/token/space.dart) to see the aliases for the spacing properties.
+
+<SpaceComponent />
+
+## Borders
+
+### $GSBorderWidth
+
+`$gsBorderWidthToken` tokens are used to define the border width of an element. You can define your border width tokens or override existing ones using the `gsBorderWidthToken` inside `GluestackTokenConfig` class.
+
+<BorderWidthComponent />
+
+### $GSRadii
+
+`$gsRadiiToken` tokens are used to define the border radius of an element. You can define your radii tokens or override existing ones using the `gsRadiiToken` inside `GluestackTokenConfig` class.
+
+<RadiiComponent />
