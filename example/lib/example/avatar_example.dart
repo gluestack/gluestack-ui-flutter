@@ -12,14 +12,14 @@ class AvatarExample extends StatefulWidget {
 
 class _AvatarExampleState extends State<AvatarExample> {
   final List dropdownSizeOptions = [
-    GSSizes.$xs,
-    GSSizes.$sm,
-    GSSizes.$md,
-    GSSizes.$lg,
-    GSSizes.$xl,
-    GSSizes.$2xl,
+    GSAvatarSizes.$xs,
+    GSAvatarSizes.$sm,
+    GSAvatarSizes.$md,
+    GSAvatarSizes.$lg,
+    GSAvatarSizes.$xl,
+    GSAvatarSizes.$2xl,
   ];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  GSAvatarSizes selectedSizeOption = GSAvatarSizes.$md;
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
       selectedSizeOption = newOption;
@@ -27,17 +27,17 @@ class _AvatarExampleState extends State<AvatarExample> {
   }
 
   final List dropdownRadiusOptions = [
-    GSBorderRadius.$none,
-    GSBorderRadius.$xs,
-    GSBorderRadius.$sm,
-    GSBorderRadius.$md,
-    GSBorderRadius.$lg,
-    GSBorderRadius.$xl,
-    GSBorderRadius.$2xl,
-    GSBorderRadius.$3xl,
-    GSBorderRadius.$full,
+    GSAvatarRadius.$none,
+    GSAvatarRadius.$xs,
+    GSAvatarRadius.$sm,
+    GSAvatarRadius.$md,
+    GSAvatarRadius.$lg,
+    GSAvatarRadius.$xl,
+    GSAvatarRadius.$2xl,
+    GSAvatarRadius.$3xl,
+    GSAvatarRadius.$full,
   ];
-  GSBorderRadius selectedRadiusOption = GSBorderRadius.$full;
+  GSAvatarRadius selectedRadiusOption = GSAvatarRadius.$full;
   void updateRadiusSelectedOption(dynamic newOption) {
     setState(() {
       selectedRadiusOption = newOption;
@@ -48,8 +48,8 @@ class _AvatarExampleState extends State<AvatarExample> {
   Widget build(BuildContext context) {
     var code = '''
         GSAvatar(
-            radius: selectedRadiusOption,
-            size: selectedSizeOption,
+            radius: GSAvatarRadius.\$full,
+            size: GSAvatarSizes.\$md,
             style: GSStyle(
               bg: Colors.orange,
               textStyle: const TextStyle(color: Colors.white),

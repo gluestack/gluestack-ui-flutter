@@ -40,8 +40,8 @@ class ButtonGroupPreview extends StatelessWidget {
             GSHStack(
               children: [
                 GSButton(
-                  variant: GSVariants.outline,
-                  action: GSActions.secondary,
+                  variant: GSButtonVariants.outline,
+                  action: GSButtonActions.secondary,
                   child: GSButtonText(
                     text: "No",
                     style: GSStyle(),
@@ -52,8 +52,8 @@ class ButtonGroupPreview extends StatelessWidget {
                   width: 20,
                 ),
                 GSButton(
-                  variant: GSVariants.solid,
-                  action: GSActions.positive,
+                  variant: GSButtonVariants.solid,
+                  action: GSButtonActions.positive,
                   child: GSButtonText(
                     text: "Yes",
                     style: GSStyle(),

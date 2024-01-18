@@ -4,17 +4,17 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 //Need to add value according to GSVariants enum order.
 final List<Option<int>> variantOptions = [
-  Option<int>(value: 4, label: GSVariants.rounded.name),
-  Option<int>(value: 1, label: GSVariants.outline.name),
-  Option<int>(value: 3, label: GSVariants.underlined.name),
+  Option<int>(value: 0, label: GSInputVariants.outline.name),
+  Option<int>(value: 1, label: GSInputVariants.rounded.name),
+  Option<int>(value: 2, label: GSInputVariants.underlined.name),
 ];
 
 //Need to add value according to GSSizes enum order.
 List<Option<int>> sizeOptions = [
-  Option<int>(value: 2, label: GSSizes.$sm.name),
-  Option<int>(value: 3, label: GSSizes.$md.name),
-  Option<int>(value: 4, label: GSSizes.$lg.name),
-  Option<int>(value: 5, label: GSSizes.$xl.name),
+  Option<int>(value: 0, label: GSInputSizes.$sm.name),
+  Option<int>(value: 1, label: GSInputSizes.$md.name),
+  Option<int>(value: 2, label: GSInputSizes.$lg.name),
+  Option<int>(value: 3, label: GSInputSizes.$xl.name),
 ];
 
 final class InputStory extends StoryWidget {
@@ -23,9 +23,9 @@ final class InputStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSInput(
-        variant: GSVariants.values[context.knobs
+        variant: GSInputVariants.values[context.knobs
             .options(label: 'Variant', initial: 1, options: variantOptions)],
-        size: GSSizes.values[context.knobs
+        size: GSInputSizes.values[context.knobs
             .options(label: 'Size', initial: 3, options: sizeOptions)],
         isDisabled: context.knobs.boolean(label: "isDisabled", initial: false),
         isInvalid: context.knobs.boolean(label: "isInvalid", initial: false),

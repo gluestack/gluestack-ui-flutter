@@ -12,20 +12,20 @@ class ToastExample extends StatefulWidget {
 
 class _ToastExampleState extends State<ToastExample> {
   final List dropdownActionOptions = [
-    GSActions.success,
-    GSActions.info,
-    GSActions.error,
-    GSActions.warning,
-    GSActions.attention,
+    GSToastActions.success,
+    GSToastActions.info,
+    GSToastActions.error,
+    GSToastActions.warning,
+    GSToastActions.attention,
   ];
-  GSActions selectedActionOption = GSActions.attention;
+  GSToastActions selectedActionOption = GSToastActions.attention;
 
   final List dropdownVariantOptions = [
-    GSVariants.solid,
-    GSVariants.outline,
-    GSVariants.accent,
+    GSToastVariants.solid,
+    GSToastVariants.outline,
+    GSToastVariants.accent,
   ];
-  GSVariants selectedVariantOption = GSVariants.solid;
+  GSToastVariants selectedVariantOption = GSToastVariants.solid;
   void updateVariantSelectedOption(dynamic newOption) {
     setState(() {
       selectedVariantOption = newOption;
@@ -42,8 +42,8 @@ class _ToastExampleState extends State<ToastExample> {
   Widget build(BuildContext context) {
     var code = '''
                GSToast(
-                variant: selectedVariantOption,
-                action: selectedActionOption,
+                variant: GSToastVariants.solid,
+                action: GSToastActions.attention,
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +65,7 @@ class _ToastExampleState extends State<ToastExample> {
       body: BaseLayout(
         code: code,
         component: GSButton(
-          size: GSSizes.$lg,
+          size: GSButtonSizes.$lg,
           child: const GSButtonText(text: "Click Me"),
           onPressed: () {
             showToast(

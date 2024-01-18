@@ -337,3 +337,71 @@ GSStyle resolveStyles(
 
   return currentGSStyle!;
 }
+
+
+//For Actions
+GSActions? mapToGSActions(dynamic action) {
+  String actionName = action.toString().split('.').last;
+  for (var gsAction in GSActions.values) {
+    if (gsAction.toString().split('.').last == actionName) {
+      return gsAction;
+    }
+  }
+  return null;
+}
+
+//For Variants
+GSVariants? mapToGSVariants(dynamic variant) {
+  String variantName = variant.toString().split('.').last;
+
+  for (var gsVariants in GSVariants.values) {
+    if (gsVariants.toString().split('.').last == variantName) {
+      return gsVariants;
+    }
+  }
+  return null;
+}
+
+//For Sizes
+GSSizes? mapToGSSizes(dynamic size) {
+  String sizeValue = size.toString().split('.').last;
+  for (var gsSize in GSSizes.values) {
+    if (gsSize.toString().split('.').last == sizeValue) {
+      return gsSize;
+    }
+  }
+  return null;
+}
+
+//For Space
+GSSpaces? mapToGSSpaces(dynamic input) {
+  String spaceValue = input.toString().split('.').last;
+  for (var gsSpace in GSSpaces.values) {
+    if (gsSpace.toString().split('.').last == spaceValue) {
+      return gsSpace;
+    }
+  }
+  return null;
+}
+
+//For Radius
+GSBorderRadius? mapToGSRadius(dynamic size) {
+  String radiusValues = size.toString().split('.').last;
+  for (var gsBorderRadius in GSBorderRadius.values) {
+    if (gsBorderRadius.toString().split('.').last == radiusValues) {
+      return gsBorderRadius;
+    }
+  }
+  return null;
+}
+
+//For Placement
+GSPlacements? mapToGSPlacement(dynamic placement) {
+  String inputValue = placement.toString().split('.').last;
+  for (var gsPlacement in GSPlacements.values) {
+    if (gsPlacement.toString().split('.').last == inputValue) {
+      return gsPlacement;
+    }
+  }
+  return null;
+}

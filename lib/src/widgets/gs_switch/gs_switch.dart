@@ -5,11 +5,18 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_switch/gs_switch_style.dart';
+
+enum GSSwitchSizes {
+  $sm,
+  $md,
+  $lg,
+}
 
 class GSSwitch extends StatefulWidget {
   final GSStyle? style;
-  final GSSizes? size;
+  final GSSwitchSizes? size;
   final bool isDisabled;
   final bool isInvalid;
   final bool isHovered;
@@ -60,14 +67,7 @@ class GSSwitch extends StatefulWidget {
     this.isDisabled = false,
     this.isInvalid = false,
     this.isHovered = false,
-  })  : assert(
-            size == null ||
-                size == GSSizes.$sm ||
-                size == GSSizes.$lg ||
-                size == GSSizes.$md,
-            "Only sm, md and lg sizes allowed here...!"),
-        assert(activeThumbImage != null || onActiveThumbImageError == null),
-        assert(inactiveThumbImage != null || onInactiveThumbImageError == null);
+  });
 
   @override
   State<GSSwitch> createState() => _GSSwitchState();
@@ -110,7 +110,7 @@ class _GSSwitchState extends State<GSSwitch> {
   Widget build(BuildContext context) {
     GSStyle styler = resolveStyles(
       context: context,
-      styles: [switchStyle, switchStyle.sizeMap(widget.size)],
+      styles: [switchStyle, switchStyle.sizeMap(widget.size?.toGSSize)],
       inlineStyle: widget.style,
       isFirst: true,
     );
@@ -132,7 +132,7 @@ cursor: kIsWeb && widget.isDisabled
       child: Transform.scale(
         scale: styler.scale ?? 1,
         child: ConstrainedBox(
-          constraints: widget.size == GSSizes.$lg
+          constraints: widget.size?.toGSSize == GSSizes.$lg
               ? const BoxConstraints(maxHeight: 27, maxWidth: 45)
               : const BoxConstraints(maxHeight: 24, maxWidth: 44),
           child: Stack(
