@@ -186,7 +186,7 @@ class FabWithIconAndTextPreview extends StatelessWidget {
                     ),
                   ),
                   GSFab(
-                    placement: GSPlacements.topRight,
+                    placement: GSFABPlacements.topRight,
                     onPressed: () {},
                     icon: GSFabIcon(
                       icon: Icons.search,

@@ -1,0 +1,51 @@
+---
+title: Overview | Styling | gluestack-ui
+description: Overview of styling prowess in gluestack ui flutter.
+---
+
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+
+<Meta title="Styling/Overview" />
+
+# Styling Overview
+
+All the components of [@gluestack-ui-flutter](https://github.com/gluestack/gluestack-ui-flutter/tree/development/lib/src/widgets) are unstyled by default and take values from config, whose default values can be configured by passing down a custom config object via the **Gluestack Provider** after wrapping the root **MaterialApp**.
+
+```
+GluestackProvider(
+      // This is how we can provide custom configuration to Gluestack Theme.
+       gluestackCustomConfig: GluestackCustomConfig(
+         button: customButton,
+         buttonText: customButtonText,
+       ),
+      child: MaterialApp(),
+)
+```
+
+The imported custom theme object is basically a Map<String, dynamic> object that contains your custom json config. You can refer [here](https://github.com/gluestack/gluestack-ui-flutter/tree/development/lib/src/theme/config) to find out the structure of the default config files that we use.
+Following is an example of the **customButton** config that we have used above.
+```
+Map<String, dynamic> customButton = {
+  'bg': '\$error300',
+  '_dark': {
+    'bg': '\$primary800',
+    'borderColor': '\$primary700',
+    ':hover': {
+      'bg': '\$error300',
+      'borderColor': '\$primary400',
+    }
+  }
+};
+```
+## Custom Tokens
+
+Similarly, all the token available in [@gluestack-ui-flutter](https://github.com/gluestack/gluestack-ui-flutter/tree/development/lib/src/token) can also be configured by passing down a custom token config object via the **Gluestack Provider** after wrapping the root **MaterialApp**.
+```
+GluestackProvider(
+      gluestackTokenConfig: GluestackTokenConfig(
+        gsColorsToken: GSColorsToken(
+          textLight0: Color(0xfffffff),
+        ),
+      ),
+)
+```
