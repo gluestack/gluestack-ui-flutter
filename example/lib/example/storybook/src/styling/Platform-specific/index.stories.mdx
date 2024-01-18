@@ -12,15 +12,15 @@ import { Canvas, Meta, Story } from "@storybook/addon-docs";
 We can provide platform specific styles in the **GSStyle** prop of the component. There are params like android, ios, web which accepts **GSStyle** object as param, which defined the platform specific styling that will be applied to the component.
 
 Let's say you wish for your button component to appear yellow when the app is running on web, you can do that as follows
-![web yellow button example](images/styling-utility-complex-ex1.png)
+![android red button example - platform specific](images/styling-platform-specific-ex1.png)
 ________________________________________________
 ```
         GSButton(
           style: GSStyle(
             bg: $GSColors.green400,
             web: GSStyle(bg: $GSColors.yellow400),
-            android: GSStyle(bg: $GSColors.red400),
-            //....other platforms
+            android: GSStyle(bg: $GSColors.red800),
+            ios: GSStyle(bg: $GSColors.blue400),
           ),
           onPressed: () {},
           child: const Row(
