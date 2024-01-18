@@ -22,6 +22,8 @@ export const parameters = {
         ["Introduction"],
         "Getting Started",
         ["Installation"],
+        "Theme Configuration",
+        ["Theme", ["Default Tokens", "Default Components"]],
         "Components",
         [
           "Typography",
