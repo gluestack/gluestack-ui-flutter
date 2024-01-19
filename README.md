@@ -5,12 +5,10 @@
 _Package is in development. APIs may change in the future._
 
 ## Documentation
-
-You can try out the gluestack flutter widgets on this storybook link: https://gluestack-ui-example.web.app/#/storybook
-
+![Gluestack Flutter Banner](assets/gs_docs_flutter_cover.png)
 Web app build with gluestack:https://kitchensink-23184.web.app/
 
-We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. You can find the detailed documentation for each component, including a list of props and examples, in https://gluestack.io/ui/docs website.
+We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. You can try out the gluestack flutter widgets on this storybook link: https://gluestack-ui-example.web.app/#/storybook.
 
 ## Features
 
