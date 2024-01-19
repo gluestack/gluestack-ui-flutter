@@ -15,7 +15,7 @@ class VStackReversedPreview extends StatelessWidget {
           Story(
             name: 'VStack',
             builder: (context) => GSVStack(
-              space: GSSpaces.$md,
+              space: GSVstackSpaces.$md,
               mainAxisAlignment: MainAxisAlignment.center,
               isReversed: true,
               children: [
