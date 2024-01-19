@@ -23,6 +23,7 @@ import 'text_story.dart';
 import 'textarea_story.dart';
 import 'toast_story.dart';
 import 'vstack_story.dart';
+import 'stack_story.dart';
 
 final List<StoryWidget> kStories = [
   AlertDialogStory(),
@@ -44,6 +45,7 @@ final List<StoryWidget> kStories = [
   ProgressStory(),
   RadioButtonStory(),
   SpinnerStory(),
+  StackStory(),
   SwitchStory(),
   TextStory(),
   TextareaStory(),
