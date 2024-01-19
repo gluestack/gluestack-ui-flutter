@@ -12,13 +12,13 @@ class ImageExample extends StatefulWidget {
 
 class _ImageExampleState extends State<ImageExample> {
   final List dropdownSizeOptions = [
-GSImageSizes.$2xs,
-GSImageSizes.$xs,
-GSImageSizes.$sm,
-GSImageSizes.$md,
-GSImageSizes.$lg,
-GSImageSizes.$xl,
-GSImageSizes.$2xl,
+    GSImageSizes.$2xs,
+    GSImageSizes.$xs,
+    GSImageSizes.$sm,
+    GSImageSizes.$md,
+    GSImageSizes.$lg,
+    GSImageSizes.$xl,
+    GSImageSizes.$2xl,
   ];
   GSImageSizes selectedSizeOption = GSImageSizes.$md;
   void updateSizeSelectedOption(dynamic newOption) {

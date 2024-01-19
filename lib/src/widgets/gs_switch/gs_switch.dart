@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -178,7 +176,8 @@ cursor: kIsWeb && widget.isDisabled
                             styler.trackColorTrue;
                       } else if (states.contains(MaterialState.hovered) &&
                           !states.contains(MaterialState.selected)) {
-                        if (!kIsWeb && Platform.isIOS) {
+                        if (!kIsWeb &&
+                            defaultTargetPlatform == TargetPlatform.iOS) {
                           return styler.onHover?.iosBackgroundColor ??
                               styler.iosBackgroundColor;
                         }
@@ -200,7 +199,8 @@ cursor: kIsWeb && widget.isDisabled
                       } else if (states.contains(MaterialState.disabled) ||
                           widget.isDisabled &&
                               states.contains(MaterialState.hovered)) {
-                        if (!kIsWeb && Platform.isIOS) {
+                        if (!kIsWeb &&
+                            defaultTargetPlatform == TargetPlatform.iOS) {
                           return styler.onDisabled?.iosBackgroundColor ??
                               styler.iosBackgroundColor;
                         } else {
@@ -211,7 +211,8 @@ cursor: kIsWeb && widget.isDisabled
                         return styler.trackColorTrue;
                       }
 
-                      if (!kIsWeb && Platform.isIOS) {
+                      if (!kIsWeb &&
+                          defaultTargetPlatform == TargetPlatform.iOS) {
                         return styler.iosBackgroundColor;
                       } else {
                         return styler.trackColorFalse;
