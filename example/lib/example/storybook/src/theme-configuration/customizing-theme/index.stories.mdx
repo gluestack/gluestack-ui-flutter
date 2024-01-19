@@ -105,68 +105,42 @@ dependencies:
 
 ```
 
-2. **Update Tokens**: go to `main.dart` file. For example, if you want to customize `GSButton` widget, you can find its theme file at `gluestack-ui-flutter/lib/src/widgets/gs_button`.Update the tokens as per your requirements in the `main.dart` file .
+2. **Update Tokens**: We have build the widgets from Figma config file. In case you want to customise the default values provided by the package for individual widgets, you can specify your own configuration for the widgets.
 
+   > NOTE: Format of the configuration must be same as the own used by Gluestack internally. For example, for button please refer to the default config file for GSButton.
 
-3. **Apply Config**: Apply the config to the `GluestackUIProvider`.
+3. **Apply Config**: Apply the config to the `GluestackUIProvider`Below example provides custom configuration for GSButton widget..
 
 ```dart
 
-import 'package:flutter/material.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
+// Example of button configuration.
 
-void main() {
-  runApp(
-    GluestackProvider(
-      gluestackTokenConfig: GluestackTokenConfig(
-        gsColorsToken: GSColorsToken(
-          primary300: Color(0xFF4C1D95),
-          primary400: Color(0xFF4C1D99),
-        ),
-      ),
-      child: const MaterialApp(
-        home: MyScreen(),
-      ),
-    ),
-  );
-}
 
-class MyScreen extends StatelessWidget {
-  const MyScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: GSCenter(
-        child: GSVStack(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const GSText(
-              text: 'Gluestack Flutter',
-            ),
-            const SizedBox(height: 20),
-            GSButton(
-              variant: GSVariants.outline,
-              style: GSStyle(
-                borderColor: $GSColors.primary400,
-                dark: GSStyle(
-                  borderColor: $GSColors.primary300,
-                ),
-              ),
-              onPressed: () {},
-              child: const GSHStack(
-                children: [
-                  GSButtonText(text: "Add"),
-                  GSButtonIcon(icon: Icons.add),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+const Map<String, dynamic> customButtonConfig = {
+  ...
+  '_dark': {
+    'bg': '\$primary400',
+    'borderColor': '\$primary700',
+    ':hover': {
+      'bg': '\$error300',
+      'borderColor': '\$primary400',
+    }
   }
-}
+  ...
+};
+
+
+GluestackProvider(
+  gluestackCustomConfig: GluestackCustomConfig(
+    button: customButtonConfig,
+    buttonText: customButtonTextConfig,
+    ...
+  ),
+  gluestackTokenConfig: GluestackTokenConfig(...),
+  child: MaterialApp.router(
+    ...
+  ),
+)
 
 
 ```
