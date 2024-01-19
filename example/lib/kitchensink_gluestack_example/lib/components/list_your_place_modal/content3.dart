@@ -18,7 +18,7 @@ class _ListYourPlaceModalContent3State
     return GSVStack(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
-      space: GSSpaces.$md,
+      space: GSVstackSpaces.$md,
       children: [
         const GSText(text: "Title", bold: true, size: GSSizes.$sm),
         const GSInput(
@@ -28,7 +28,7 @@ class _ListYourPlaceModalContent3State
         GSBox(
           style: GSStyle(width: double.infinity),
           child: GSTextArea(
-            size: GSSizes.$xl,
+            size: GSTextAreaSizes.$xl,
             hintText: "Provide description",
             style: GSStyle(
               width: 300,
@@ -43,7 +43,7 @@ class _ListYourPlaceModalContent3State
           style: GSStyle(width: double.infinity),
           child: GSButton(
             style: GSStyle(borderRadius: $GSRadii.$md),
-            action: GSActions.negative,
+            action: GSButtonActions.negative,
             child: const GSButtonText(text: 'Post Now'),
             onPressed: () {
               Navigator.of(context).pop();
@@ -58,8 +58,8 @@ class _ListYourPlaceModalContent3State
                 style: GSStyle(width: double.infinity),
                 child: GSButton(
                   style: GSStyle(borderRadius: $GSRadii.$md),
-                  action: GSActions.secondary,
-                  variant: GSVariants.outline,
+                  action: GSButtonActions.secondary,
+                  variant: GSButtonVariants.outline,
                   child: const GSButtonText(text: 'Save for Later'),
                   onPressed: () {
                     setState(() {
@@ -91,10 +91,10 @@ class _ListYourPlaceModalContent3State
       context,
       gravity: ToastGravity.TOP,
       child: GSToast(
-        variant: GSVariants.solid,
-        action: GSActions.success,
+        variant: GSToastVariants.solid,
+        action: GSToastActions.success,
         child: GSHStack(
-          space: GSSpaces.$xs,
+          space: GSHstackSpaces.$xs,
           mainAxisSize: MainAxisSize.min,
           children: [
             const GSIcon(icon: Icons.check_circle_outline_outlined),

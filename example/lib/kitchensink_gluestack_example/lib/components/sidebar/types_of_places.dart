@@ -12,7 +12,7 @@ class KSTypesOfPlaces extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GSVStack(
-      space: GSSpaces.$lg,
+      space: GSVstackSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const GSHeading(
@@ -25,11 +25,11 @@ class KSTypesOfPlaces extends StatelessWidget {
             ],
             child: GSVStack(
               crossAxisAlignment: CrossAxisAlignment.start,
-              space: GSSpaces.$lg,
+              space: GSVstackSpaces.$lg,
               children: [
                 for (int i = 0; i < _typeOfPlacesData.length; i++)
                   GSCheckBox(
-                    size: GSSizes.$sm,
+                    size: GSCheckBoxSizes.$sm,
                     onChanged: (value) {},
                     icon: GSCheckBoxIndicator(
                         style: GSStyle(

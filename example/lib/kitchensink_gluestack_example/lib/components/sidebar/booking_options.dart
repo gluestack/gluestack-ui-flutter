@@ -14,7 +14,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
   @override
   Widget build(BuildContext context) {
     return GSVStack(
-      space: GSSpaces.$lg,
+      space: GSVstackSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const GSHeading(
@@ -51,7 +51,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
               ),
             ),
             GSSwitch(
-              size: GSSizes.$sm,
+              size: GSSwitchSizes.$sm,
               value: switchVal1,
               onToggle: (val) {
                 setState(() {
@@ -92,7 +92,7 @@ class _KSBookingOptionsState extends State<KSBookingOptions> {
               ),
             ),
             GSSwitch(
-              size: GSSizes.$sm,
+              size: GSSwitchSizes.$sm,
               value: switchVal2,
               onToggle: (val) {
                 setState(() {
