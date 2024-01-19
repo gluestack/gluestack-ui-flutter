@@ -35,8 +35,8 @@ class ButtonWithFullWidthPreview extends StatelessWidget {
               ],
             ),
             const GSInput(
-              size: GSSizes.$sm,
-              variant: GSVariants.outline,
+              size: GSInputSizes.$sm,
+              variant: GSInputVariants.outline,
               cursorHeight: 12,
               constraints: BoxConstraints(
                 maxWidth: 280,
@@ -49,8 +49,8 @@ class ButtonWithFullWidthPreview extends StatelessWidget {
               ),
             ),
             const GSInput(
-              size: GSSizes.$sm,
-              variant: GSVariants.outline,
+              size: GSInputSizes.$sm,
+              variant: GSInputVariants.outline,
               cursorHeight: 12,
               constraints: BoxConstraints(
                 maxWidth: 280,

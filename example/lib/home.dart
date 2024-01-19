@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: GSCenter(
             child: GSVStack(
-              space: GSSpaces.$xl,
+              space: GSVstackSpaces.$xl,
               children: [
                 const SizedBox(height: 10),
                 const NavButton(
@@ -140,6 +140,14 @@ class _HomePageState extends State<HomePage> {
                 const NavButton(
                   title: "GS Flex",
                   routePath: "/example-flex",
+                ),
+                const NavButton(
+                  title: "GS Stack",
+                  routePath: "/example-stack",
+                ),
+                const NavButton(
+                  title: "GS Scroll",
+                  routePath: "/example-scroll",
                 ),
 
                 // Preview screens are present to link Docs website to these storybook pages through iframe.

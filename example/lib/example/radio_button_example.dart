@@ -15,8 +15,12 @@ enum Value { one, two, three, four }
 
 class _RadioButtonExampleState extends State<RadioButtonExample> {
   Value groupValue = Value.one;
-  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  final List<GSRadioSizes> dropdownSizeOptions = [
+    GSRadioSizes.$sm,
+    GSRadioSizes.$md,
+    GSRadioSizes.$lg
+  ];
+  GSRadioSizes selectedSizeOption = GSRadioSizes.$md;
 
   bool isDisabled = false;
   bool isInvalid = false;
@@ -43,7 +47,7 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
   Widget build(BuildContext context) {
     var code = '''
           GSRadio<Value>(
-              size: GSSizes.\$md,
+              size: GSRadioSizes.\$md,
               isDisabled: false,
               isInvalid: false,
               value: Value.four,

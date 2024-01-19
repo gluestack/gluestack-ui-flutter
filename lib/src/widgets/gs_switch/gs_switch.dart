@@ -6,13 +6,20 @@ import 'package:gluestack_ui/src/token/color.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_switch/gs_switch_style.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
+
+enum GSSwitchSizes {
+  $sm,
+  $md,
+  $lg,
+}
 
 class GSSwitch extends StatefulWidget {
   final bool value;
   final ValueChanged<bool>? onToggle;
 
   final GSStyle? style;
-  final GSSizes? size;
+  final GSSwitchSizes? size;
   final bool? isDisabled;
 
   final double trackHeight;
@@ -58,7 +65,7 @@ class GSCustomSwitchState extends State<GSSwitch> {
       child: Builder(builder: (context) {
         GSStyle styler = resolveStyles(
           context: context,
-          styles: [switchStyle, switchStyle.sizeMap(widget.size)],
+          styles: [switchStyle, switchStyle.sizeMap(widget.size?.toGSSize)],
           inlineStyle: widget.style,
           isFirst: true,
         );

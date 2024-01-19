@@ -14,7 +14,7 @@ final class AlertDialogStory extends StoryWidget {
         onPressed: () {
           GSAlertDialog.show(
             context,
-            size: GSSizes.$md,
+            size: GSAlertDialogSizes.$md,
             content: GSAlertDialogContent(
               header: GSAlertDialogHeader(
                 style: GSStyle(

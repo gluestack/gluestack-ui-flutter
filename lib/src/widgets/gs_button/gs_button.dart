@@ -9,6 +9,7 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
 enum GSButtonActions {
   primary,
@@ -30,28 +31,6 @@ enum GSButtonSizes {
   $lg,
 }
 
-extension GSButtonExtensions on Object {
-  GSActions? get toGSAction {
-    if (this is GSButtonActions) {
-      return mapToGSActions(this as GSButtonActions);
-    }
-    return null;
-  }
-
-  GSVariants? get toGSVariant {
-    if (this is GSButtonVariants) {
-      return mapToGSVariants(this as GSButtonVariants);
-    }
-    return null;
-  }
-
-  GSSizes? get toGSSize {
-    if (this is GSButtonSizes) {
-      return mapToGSSizes(this as GSButtonSizes);
-    }
-    return null;
-  }
-}
 
 class GSButton extends StatelessWidget {
   final GSButtonActions? action;
@@ -233,7 +212,7 @@ class GSButton extends StatelessWidget {
               buttonStyle.variantMap(buttonVariant),
               buttonStyle.sizeMap(buttonSize),
               buttonStyle
-                  .compoundVariants?[action.toString() + variant.toString()]
+                  .compoundVariants?[buttonAction.toString() + buttonVariant.toString()]
             ],
             inlineStyle: style,
             isFirst: true);
@@ -353,9 +332,7 @@ class GSButton extends StatelessWidget {
                         // statesController: statesController,
                         padding: styler.padding,
                         decoration: BoxDecoration(
-                          color: buttonVariant == GSVariants.link
-                              ? const Color.fromARGB(0, 0, 0, 0)
-                              : GSStyleBuilderProvider.of(context)?.isFocused ??
+                          color:  GSStyleBuilderProvider.of(context)?.isFocused ??
                                       false
                                   ? HSLColor.fromColor(
                                           styler.bg ?? $GSColors.red400)

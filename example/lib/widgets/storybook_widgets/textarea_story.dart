@@ -4,10 +4,10 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 //Need to add value according to GSSizes enum order.
 List<Option<int>> sizeOptions = [
-  Option<int>(value: 2, label: GSSizes.$sm.name),
-  Option<int>(value: 3, label: GSSizes.$md.name),
-  Option<int>(value: 4, label: GSSizes.$lg.name),
-  Option<int>(value: 5, label: GSSizes.$xl.name),
+  Option<int>(value: 0, label: GSTextAreaSizes.$sm.name),
+  Option<int>(value: 1, label: GSTextAreaSizes.$md.name),
+  Option<int>(value: 2, label: GSTextAreaSizes.$lg.name),
+  Option<int>(value: 3, label: GSTextAreaSizes.$xl.name),
 ];
 
 final class TextareaStory extends StoryWidget {
@@ -16,8 +16,8 @@ final class TextareaStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSTextArea(
-        size: GSSizes.values[context.knobs
-            .options(label: 'Size', initial: 3, options: sizeOptions)],
+        size: GSTextAreaSizes.values[context.knobs
+            .options(label: 'Size', initial: 1, options: sizeOptions)],
         isDisabled: context.knobs.boolean(label: "isDisabled", initial: false),
         isInvalid: context.knobs.boolean(label: "isInvalid", initial: false),
         isReadOnly: context.knobs.boolean(label: "isReadOnly", initial: false),

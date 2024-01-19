@@ -13,12 +13,12 @@ class TextAreaExample extends StatefulWidget {
 
 class _TextAreaExampleState extends State<TextAreaExample> {
   final List dropdownSizeOptions = [
-    GSSizes.$sm,
-    GSSizes.$md,
-    GSSizes.$lg,
-    GSSizes.$xl,
+GSTextAreaSizes.$sm,
+GSTextAreaSizes.$md,
+GSTextAreaSizes.$lg,
+GSTextAreaSizes.$xl,
   ];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  GSTextAreaSizes selectedSizeOption = GSTextAreaSizes.$md;
 
   bool isDisabled = false;
   bool isInvalid = false;
@@ -52,7 +52,7 @@ class _TextAreaExampleState extends State<TextAreaExample> {
   Widget build(BuildContext context) {
     var code = '''
           GSTextArea(
-                size: GSSizes.\$md,
+                size: GSTextAreaSizes.\$md,
                 hintText: "Enter text here",
                 isDisabled: false,
                 isInvalid: false,

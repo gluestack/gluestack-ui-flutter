@@ -15,14 +15,14 @@ class FormExample extends StatefulWidget {
 class _FormExampleState extends State<FormExample> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Value groupValue = Value.one;
-  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
+  final List dropdownSizeOptions = [GSFormControlSizes.$sm, GSFormControlSizes.$md, GSFormControlSizes.$lg];
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
       selectedSizeOption = newOption;
     });
   }
 
-  GSSizes selectedSizeOption = GSSizes.$md;
+  GSFormControlSizes selectedSizeOption = GSFormControlSizes.$md;
   bool isDisabled = false;
   void updateIsDisabled(bool value) {
     setState(() {
@@ -59,7 +59,7 @@ class _FormExampleState extends State<FormExample> {
     var code = r"""
         GSFormControl(
             formKey: _formKey,
-            size: selectedSizeOption,
+            size: GSFormControlSizes.\$sm,
             isRequired: isRequired,
             isInvalid: isInvalid,
             isReadOnly: isReadOnly,

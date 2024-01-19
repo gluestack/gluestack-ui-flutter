@@ -12,8 +12,8 @@ class CheckBoxExample extends StatefulWidget {
 }
 
 class _CheckBoxExampleState extends State<CheckBoxExample> {
-  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  final List dropdownSizeOptions = [GSCheckBoxSizes.$sm, GSCheckBoxSizes.$md, GSCheckBoxSizes.$lg];
+  GSCheckBoxSizes selectedSizeOption = GSCheckBoxSizes.$md;
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
       selectedSizeOption = newOption;
@@ -46,7 +46,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
               value: "value 1",
               onChanged: (value) {},
               label: const GSCheckBoxLabel(text: "value1"),
-              size: GSSizes.\$md,
+              size: GSCheckBoxSizes.\$md,
               isDisabled: false,
               isInvalid: false,
           )

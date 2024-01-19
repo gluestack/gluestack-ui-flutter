@@ -9,12 +9,12 @@ class AlertExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var code = '''
           GSButton(
-            size: GSSizes.\$lg,
+            size: GSButtonSizes.\$lg,
             child: const GSButtonText(text: "Click Me"),
             onPressed: () {
               GSAlertDialog.show(
                 context,
-                size: GSSizes.\$full,
+                size: GSAlertDialogSizes.\$full,
                 content: GSAlertDialogContent(
                   header: GSAlertDialogHeader(
                     style: GSStyle(
@@ -60,7 +60,7 @@ class AlertExample extends StatelessWidget {
             onPressed: () {
               GSAlertDialog.show(
                 context,
-                size: GSSizes.$full,
+                size: GSAlertDialogSizes.$full,
                 content: GSAlertDialogContent(
                   header: GSAlertDialogHeader(
                     style: GSStyle(
