@@ -332,9 +332,7 @@ class GSButton extends StatelessWidget {
                         // statesController: statesController,
                         padding: styler.padding,
                         decoration: BoxDecoration(
-                          color: buttonVariant == GSVariants.link
-                              ? const Color.fromARGB(0, 0, 0, 0)
-                              : GSStyleBuilderProvider.of(context)?.isFocused ??
+                          color:  GSStyleBuilderProvider.of(context)?.isFocused ??
                                       false
                                   ? HSLColor.fromColor(
                                           styler.bg ?? $GSColors.red400)
