@@ -14,7 +14,9 @@ Here are few helpful links to give you an idea of what gluestack-ui-flutter is c
 - Getting Started Example: https://github.com/gluestack/flutter-examples
 - KitchenSink (An example layout made with Gluestack): https://kitchensink-23184.web.app/
 
-We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. 
+To keep track of latest developments in gluestack-ui-flutter you can refer to this link: https://github.com/gluestack/gluestack-ui-flutter/tree/feature/core-widgets.
+
+_We are inspired from gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress._
 
 ## Features
 
