@@ -2,13 +2,14 @@
 
 **gluestack-ui-flutter** is a universal UI library that provides optionally styled and accessible widgets. These widgets are designed for easy integration into applications developed with Flutter.
 
-The gluestack-ui-flutter library is designed to enhance web and mobile app development. It features platform-agnostic components for consistent UI across platforms, offers styling flexibility with pre-built themes and custom options, and emphasizes accessibility. Tailored for web development, it includes web-friendly widgets, native web styling, responsive design, and smooth animations. Key considerations are Flutter web specificity, performance optimization, and community engagement. The library also enables centralized styling, consistency, reusability, scalability, efficient development, and rapid prototyping, aiming to foster collaboration and ensure a unique, high-performance UI experience.
-
 _Package is in development. APIs may change in the future._
 
 ## Documentation
 ![Gluestack Flutter Banner](assets/gs_docs_flutter_cover.png)
-Web app build with gluestack:https://kitchensink-23184.web.app/
+
+The gluestack-ui-flutter library is designed to enhance web and mobile app development. It features platform-agnostic components for consistent UI across platforms, offers styling flexibility with pre-built themes and custom options, and emphasizes accessibility. Tailored for web development, it includes web-friendly widgets, native web styling, responsive design, and smooth animations. Key considerations are Flutter web specificity, performance optimization, and community engagement. The library also enables centralized styling, consistency, reusability, scalability, efficient development, and rapid prototyping, aiming to foster collaboration and ensure a unique, high-performance UI experience.
+
+Web app build with gluestack: https://kitchensink-23184.web.app/
 
 We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. You can try out the gluestack flutter widgets on this storybook link: https://gluestack-ui-example.web.app/#/storybook.
 For more examples using gluestack, you can refer this link: https://github.com/gluestack/flutter-examples.
