@@ -1,0 +1,172 @@
+---
+title: Customizing Theme
+description: Customizing the theme in gluestack-ui-flutter involves defining a theme configuration and applying it using GluestackProvider, enabling you to style your application's visual elements according to your design preferences.
+showHeader: true
+---
+
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { AppProvider, CodePreview, Text } from "@gluestack/design-system";
+
+<Meta title="Theme Configuration/Customizing Theme" />
+
+`gluestack-ui-flutter` is intentionally designed as an unstyled library, providing you with the flexibility to style your widgets as you prefer. For users looking for a seamless integration experience, we offer the `@gluestack-ui-flutter/lib/src/theme/config`, which comes with pre-configured theme that can easily be integrated within your app for a convenient styling solution.
+
+## Customizing Tokens
+
+Customizing tokens allows you to tailor the core design elements of the `gluestack-ui-flutter` library to match your project's unique visual identity. To customize tokens, follow these steps:
+
+1. **Installation**: Run following command to install `gluestack-ui-flutter`.
+
+```dart
+flutter pub add gluestack_ui
+```
+
+**OR**
+
+Add the package to your dependencies:
+
+```dart
+dependencies:
+  gluestack_ui: 0.0.1-alpha.4
+
+```
+
+2. **Update Tokens**: go to `main.dart` file. Update the tokens as per your requirements.
+
+```dart
+
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GluestackProvider(
+  gluestackTokenConfig: GluestackTokenConfig(
+    gsColorsToken: const GSColorsToken(
+      primary0: 'Colors.yellow',
+      primary50: 'Colors.red',
+      primary100: 'Colors.orange',
+      primary200: 'Colors.blue',
+      primary300: 'Colors.green',
+      primary400: 'Colors.purple',
+      primary500: 'Colors.red',
+      primary600: 'Colors.orange', // Corrected duplicate key
+      primary700: Colors.pink,
+    ),
+    // More token configurations....
+  ),
+  child: MaterialApp.router(
+    // ....
+  ),
+)
+
+
+```
+
+3. **Apply Config**: Apply the config to the `GluestackProvider`.
+
+```dart
+
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+void main() {
+  runApp(
+    GluestackProvider(
+      child: MaterialApp.router(
+        {/* Your app code */}
+        // ....
+      ),
+    ),
+  );
+}
+
+
+```
+
+You can customize all the tokens of the theme in `GluestackTokenConfig`. For a complete list of tokens and default values, please check [default Tokens](https://github.com/gluestack/gluestack-ui-flutter/tree/main/lib/src/token).
+
+By utilizing this approach, you can seamlessly modify the primary color tokens of the theme while maintaining the overall theme configuration intact.
+
+## Customizing Widgets
+
+Customizing widgets allows you to fine-tune the appearance and behavior of individual UI widget within the `gluestack-ui-flutter`. To customize widgets, follow these steps:
+
+1. **Installation**: Run following command to install `gluestack-ui-flutter`.
+
+```dart
+flutter pub add gluestack_ui
+```
+
+**OR**
+
+Add the package to your dependencies:
+
+```dart
+dependencies:
+  gluestack_ui: 0.0.1-alpha.4
+
+```
+
+2. **Update Tokens**: go to `main.dart` file. For example, if you want to customize `GSButton` widget, you can find its theme file at `gluestack-ui-flutter/lib/src/widgets/gs_button`.Update the tokens as per your requirements in the `main.dart` file .
+
+
+3. **Apply Config**: Apply the config to the `GluestackUIProvider`.
+
+```dart
+
+import 'package:flutter/material.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+void main() {
+  runApp(
+    GluestackProvider(
+      gluestackTokenConfig: GluestackTokenConfig(
+        gsColorsToken: GSColorsToken(
+          primary300: Color(0xFF4C1D95),
+          primary400: Color(0xFF4C1D99),
+        ),
+      ),
+      child: const MaterialApp(
+        home: MyScreen(),
+      ),
+    ),
+  );
+}
+
+class MyScreen extends StatelessWidget {
+  const MyScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GSCenter(
+        child: GSVStack(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const GSText(
+              text: 'Gluestack Flutter',
+            ),
+            const SizedBox(height: 20),
+            GSButton(
+              variant: GSVariants.outline,
+              style: GSStyle(
+                borderColor: $GSColors.primary400,
+                dark: GSStyle(
+                  borderColor: $GSColors.primary300,
+                ),
+              ),
+              onPressed: () {},
+              child: const GSHStack(
+                children: [
+                  GSButtonText(text: "Add"),
+                  GSButtonIcon(icon: Icons.add),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+```
