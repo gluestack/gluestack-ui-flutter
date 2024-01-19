@@ -9,6 +9,7 @@ _Package is in development. APIs may change in the future._
 Web app build with gluestack:https://kitchensink-23184.web.app/
 
 We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. You can try out the gluestack flutter widgets on this storybook link: https://gluestack-ui-example.web.app/#/storybook.
+For more examples using gluestack, you can refer this link: https://github.com/gluestack/flutter-examples.
 
 ## Features
 
