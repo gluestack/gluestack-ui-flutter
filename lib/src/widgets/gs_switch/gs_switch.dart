@@ -1,268 +1,136 @@
-import 'dart:io';
+import 'package:flutter/widgets.dart';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/token/color.dart';
+import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
+import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_switch/gs_switch_style.dart';
 
 class GSSwitch extends StatefulWidget {
-  final GSStyle? style;
-  final GSSizes? size;
-  final bool isDisabled;
-  final bool isInvalid;
-  final bool isHovered;
-
   final bool value;
   final ValueChanged<bool>? onToggle;
-  final ImageProvider? activeThumbImage;
-  final ImageErrorListener? onActiveThumbImageError;
-  final ImageProvider? inactiveThumbImage;
-  final ImageErrorListener? onInactiveThumbImageError;
-  final MaterialStateProperty<Color?>? thumbColor;
-  final MaterialStateProperty<Color?>? trackColor;
-  final MaterialStateProperty<Color?>? trackOutlineColor;
-  final MaterialStateProperty<double?>? trackOutlineWidth;
-  final MaterialStateProperty<Icon?>? thumbIcon;
-  final MaterialTapTargetSize? materialTapTargetSize;
-  final DragStartBehavior dragStartBehavior;
-  final MouseCursor? mouseCursor;
-  final MaterialStateProperty<Color?>? overlayColor;
-  final double? splashRadius;
-  final FocusNode? focusNode;
-  final ValueChanged<bool>? onFocusChange;
-  final bool autofocus;
+
+  final GSStyle? style;
+  final GSSizes? size;
+  final bool? isDisabled;
+
+  final double trackHeight;
+  final double trackWidth;
+  final double switchHeight;
+  final double switchWidth;
+  final Duration animationDuration;
+  final BoxShape switchShape;
 
   const GSSwitch({
     super.key,
+    this.onToggle,
+    this.value = false,
     this.style,
-    required this.value,
-    required this.onToggle,
-    this.activeThumbImage,
-    this.onActiveThumbImageError,
-    this.inactiveThumbImage,
-    this.onInactiveThumbImageError,
-    this.thumbColor,
-    this.trackColor,
-    this.trackOutlineColor,
-    this.trackOutlineWidth,
-    this.thumbIcon,
-    this.materialTapTargetSize,
-    this.dragStartBehavior = DragStartBehavior.start,
-    this.mouseCursor,
-    this.overlayColor,
-    this.splashRadius = 0,
-    this.focusNode,
-    this.onFocusChange,
-    this.autofocus = false,
     this.size,
     this.isDisabled = false,
-    this.isInvalid = false,
-    this.isHovered = false,
-  })  : assert(
-            size == null ||
-                size == GSSizes.$sm ||
-                size == GSSizes.$lg ||
-                size == GSSizes.$md,
-            "Only sm, md and lg sizes allowed here...!"),
-        assert(activeThumbImage != null || onActiveThumbImageError == null),
-        assert(inactiveThumbImage != null || onInactiveThumbImageError == null);
+    this.trackHeight = 16,
+    this.trackWidth = 34,
+    this.switchHeight = 21,
+    this.switchWidth = 21,
+    this.switchShape = BoxShape.circle,
+    this.animationDuration = const Duration(milliseconds: 300),
+  });
 
   @override
-  State<GSSwitch> createState() => _GSSwitchState();
+  GSCustomSwitchState createState() => GSCustomSwitchState();
 }
 
-class _GSSwitchState extends State<GSSwitch> {
-  FocusNode _focusNode = FocusNode();
-  bool showFocusBorder = false;
+class GSCustomSwitchState extends State<GSSwitch> {
+  bool _value = false;
 
   @override
   void initState() {
     super.initState();
-    if (widget.focusNode != null) {
-      _focusNode = widget.focusNode!;
-    }
-    _focusNode.addListener(() {
-      if (_focusNode.hasFocus && kIsWeb) {
-        setState(() {
-          showFocusBorder = true;
-        });
-      } else {
-        if (showFocusBorder) {
-          setState(() {
-            showFocusBorder = false;
-          });
-        }
-      }
-
-      widget.focusNode;
-    });
-  }
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
+    _value = widget.value;
   }
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
-      context: context,
-      styles: [switchStyle, switchStyle.sizeMap(widget.size)],
-      inlineStyle: widget.style,
-      isFirst: true,
-    );
-
-/*
-//TODO: get fix done someday!
-Mouse REgion not working
-  print("web cursor: ${styler.onDisabled?.web?.cursors}");
-    print(
-        "web disabled cursor: ${styler.onDisabled?.web?.onDisabled?.cursors}");
-
-MouseRegion
-cursor: kIsWeb && widget.isDisabled
-          ? MouseCursor.defer
-          : SystemMouseCursors.forbidden,
-*/
-    return Theme(
-      data: ThemeData(useMaterial3: false),
-      child: Transform.scale(
-        scale: styler.scale ?? 1,
-        child: ConstrainedBox(
-          constraints: widget.size == GSSizes.$lg
-              ? const BoxConstraints(maxHeight: 27, maxWidth: 45)
-              : const BoxConstraints(maxHeight: 24, maxWidth: 44),
-          child: Stack(
-            children: [
-              Opacity(
-                opacity:
-                    widget.isDisabled ? styler.onDisabled?.opacity ?? 1 : 1,
-                child: Switch(
-                  value: widget.value,
-                  onChanged: widget.isDisabled ? null : widget.onToggle,
-                  activeColor: styler.activeThumbColor,
-                  inactiveThumbColor: styler.thumbColor,
-                  activeTrackColor: styler.trackColorTrue,
-                  inactiveTrackColor: styler.trackColorFalse,
-                  activeThumbImage: widget.activeThumbImage,
-                  onActiveThumbImageError: widget.onActiveThumbImageError,
-                  inactiveThumbImage: widget.inactiveThumbImage,
-                  onInactiveThumbImageError: widget.onInactiveThumbImageError,
-                  thumbColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.selected) &&
-                          styler.checked?.activeThumbColor != null) {
-                        return styler.checked?.activeThumbColor;
-                      }
-                      return styler.checked?.thumbColor;
-                    },
-                  ),
-                  trackColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (widget.isInvalid &&
-                          states.contains(MaterialState.selected) &&
-                          states.contains(MaterialState.hovered)) {
-                        return styler.onHover?.onInvalid?.trackColorTrue ??
-                            styler.trackColorTrue;
-                      } else if (widget.isInvalid &&
-                          !states.contains(MaterialState.selected) &&
-                          states.contains(MaterialState.hovered)) {
-                        return styler.onHover?.onInvalid?.trackColorFalse ??
-                            styler.trackColorFalse;
-                      } else if (states.contains(MaterialState.hovered) &&
-                          states.contains(MaterialState.selected)) {
-                        return styler.onHover?.trackColorTrue ??
-                            styler.trackColorTrue;
-                      } else if (states.contains(MaterialState.hovered) &&
-                          !states.contains(MaterialState.selected)) {
-                        if (!kIsWeb && Platform.isIOS) {
-                          return styler.onHover?.iosBackgroundColor ??
-                              styler.iosBackgroundColor;
-                        }
-                        return styler.onHover?.trackColorFalse ??
-                            styler.trackColorFalse;
-                      } else if (states.contains(MaterialState.focused) &&
-                          states.contains(MaterialState.selected)) {
-                        return styler.onFocus?.trackColorTrue ??
-                            styler.trackColorTrue;
-                      } else if (states.contains(MaterialState.focused) &&
-                          !states.contains(MaterialState.selected)) {
-                        return styler.onFocus?.trackColorFalse ??
-                            styler.trackColorFalse;
-                      } else if (states.contains(MaterialState.disabled) ||
-                          widget.isDisabled &&
-                              !states.contains(MaterialState.hovered)) {
-                        return styler.onDisabled?.trackColorFalse ??
-                            styler.trackColorFalse;
-                      } else if (states.contains(MaterialState.disabled) ||
-                          widget.isDisabled &&
-                              states.contains(MaterialState.hovered)) {
-                        if (!kIsWeb && Platform.isIOS) {
-                          return styler.onDisabled?.iosBackgroundColor ??
-                              styler.iosBackgroundColor;
-                        } else {
-                          return styler.onDisabled?.trackColorTrue ??
-                              styler.trackColorTrue;
-                        }
-                      } else if (states.contains(MaterialState.selected)) {
-                        return styler.trackColorTrue;
-                      }
-
-                      if (!kIsWeb && Platform.isIOS) {
-                        return styler.iosBackgroundColor;
-                      } else {
-                        return styler.trackColorFalse;
-                      }
-                    },
-                  ),
-                  trackOutlineColor: widget.trackOutlineColor,
-                  trackOutlineWidth: widget.trackOutlineWidth,
-                  thumbIcon: widget.thumbIcon,
-                  materialTapTargetSize: widget.materialTapTargetSize,
-                  dragStartBehavior: widget.dragStartBehavior,
-                  mouseCursor: widget.mouseCursor,
-                  overlayColor: widget.overlayColor,
-                  splashRadius: widget.splashRadius,
-                  focusNode: _focusNode,
-                  onFocusChange: widget.onFocusChange,
-                  autofocus: widget.autofocus,
-                ),
-              ),
-              if (widget.isInvalid)
-                Positioned.fill(
-                  child: IgnorePointer(
-                    child: Container(
+    return GSStyleBuilder(
+      isDisabled: widget.isDisabled!,
+      shouldIgnorePointer: widget.isDisabled!,
+      child: Builder(builder: (context) {
+        GSStyle styler = resolveStyles(
+          context: context,
+          styles: [switchStyle, switchStyle.sizeMap(widget.size)],
+          inlineStyle: widget.style,
+          isFirst: true,
+        );
+        return Transform.scale(
+          scale: styler.scale ?? 1,
+          child: Opacity(
+            opacity: GSStyleBuilderProvider.of(context)?.isDisabled ?? false
+                ? styler.onDisabled?.opacity ?? 0.5
+                : 1,
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _value = !_value;
+                  widget.onToggle?.call(_value);
+                });
+              },
+              //Parent
+              child: SizedBox(
+                width: widget.trackWidth + 5,
+                height: widget.trackHeight +
+                    (widget.switchHeight - widget.trackHeight),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    //Track
+                    Container(
+                      width: widget.trackWidth,
+                      height: widget.trackHeight,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            styler.onInvalid?.borderRadius ?? 0),
-                        border: Border.all(
-                          color: styler.onInvalid?.borderColor ?? Colors.black,
-                          width: styler.onInvalid?.borderWidth ?? 1,
+                        borderRadius: BorderRadius.circular(99),
+                        color: _value
+                            ? styler.checked?.trackColorTrue ??
+                                styler.trackColorTrue ??
+                                $GSColors.primary600
+                            : styler.trackColorFalse ?? $GSColors.blueGray400,
+                      ),
+                    ),
+                    AnimatedPositioned(
+                      duration: widget.animationDuration,
+                      curve: Curves.easeInOut,
+                      left: _value
+                          ? widget.trackWidth - widget.switchWidth + 5
+                          : 0,
+                      //switch icon
+                      child: Container(
+                        width: widget.switchWidth,
+                        height: widget.switchHeight,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _value
+                              ? styler.checked?.activeThumbColor ??
+                                  styler.activeThumbColor ??
+                                  $GSColors.primary400
+                              : styler.thumbColor ?? $GSColors.blueGray400,
+                          boxShadow: [
+                            BoxShadow(
+                              color: $GSColors.black.withOpacity(0.1),
+                              blurRadius: 5,
+                              spreadRadius: 1,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              if (showFocusBorder)
-                Positioned.fill(
-                  child: IgnorePointer(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: styler.dark?.web?.onFocus?.outlineColor ??
-                            Colors.transparent,
-                        width: styler.web?.onFocus?.outlineWidth ?? 1,
-                      )),
-                    ),
-                  ),
-                ),
-            ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }
