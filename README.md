@@ -9,12 +9,12 @@ _Package is in development. APIs may change in the future._
 
 The gluestack-ui-flutter library is designed to enhance web and mobile app development. It features platform-agnostic components for consistent UI across platforms, offers styling flexibility with pre-built themes and custom options, and emphasizes accessibility. Tailored for web development, it includes web-friendly widgets, native web styling, responsive design, and smooth animations. Key considerations are Flutter web specificity, performance optimization, and community engagement. The library also enables centralized styling, consistency, reusability, scalability, efficient development, and rapid prototyping, aiming to foster collaboration and ensure a unique, high-performance UI experience.
 
-We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. 
-
 Here are few helpful links to give you an idea of what gluestack-ui-flutter is capable of:
 - Widget Examples (Storybook): https://gluestack-ui-example.web.app/#/storybook
 - Getting Started Example: https://github.com/gluestack/flutter-examples
 - KitchenSink (An example layout made with Gluestack): https://kitchensink-23184.web.app/
+
+We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. 
 
 ## Features
 
