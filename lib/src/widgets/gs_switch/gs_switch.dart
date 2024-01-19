@@ -12,6 +12,9 @@ enum GSSwitchSizes {
   $lg,
 }
 
+///
+/// Gluestack Switch Widget.
+///
 class GSSwitch extends StatefulWidget {
   final GSStyle? style;
   final GSSwitchSizes? size;

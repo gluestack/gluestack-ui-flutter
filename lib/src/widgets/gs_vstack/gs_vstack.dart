@@ -3,9 +3,11 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_vstack/gs_vstack_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-enum GSVstackSpaces{
-   $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl
-} 
+enum GSVstackSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
+
+///
+/// Gluestack VStack Widget.
+///
 class GSVStack extends StatelessWidget {
   final List<Widget> children;
   final GSVstackSpaces? space;

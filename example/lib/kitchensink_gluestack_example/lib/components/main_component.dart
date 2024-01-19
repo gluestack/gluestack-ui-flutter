@@ -124,9 +124,7 @@ class KSMainComponent extends StatelessWidget {
               GSButton(
                   action: GSButtonActions.secondary,
                   variant: GSButtonVariants.link,
-                  onPressed: () {
-                    print("$title pressed!");
-                  },
+                  onPressed: () {},
                   child: GSButtonText(
                     text: title,
                     style: GSStyle(

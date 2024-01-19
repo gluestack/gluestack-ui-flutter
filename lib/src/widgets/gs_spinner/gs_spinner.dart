@@ -3,6 +3,9 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_spinner/gs_spinner_style.dart';
 
+///
+/// Gluestack Spinner Widget.
+///
 class GSSpinner extends StatelessWidget {
   final GSSpinnerSize? size;
   final GSStyle? style;

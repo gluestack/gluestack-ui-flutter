@@ -1,15 +1,16 @@
 name: kitchensink_gluestack
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.2.1 <4.0.0'
+  sdk: ">=3.2.1 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  gluestack_ui: 
+  fluttertoast: ^8.2.4
+  gluestack_ui:
     path: ../../../
 
 dev_dependencies:

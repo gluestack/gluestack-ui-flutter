@@ -19,6 +19,9 @@ enum GSAvatarSizes {
 
 enum GSAvatarRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
+///
+/// Gluestack Avatar.
+///
 class GSAvatar extends StatelessWidget {
   final GSAvatarSizes? size;
   final GSAvatarRadius? radius;

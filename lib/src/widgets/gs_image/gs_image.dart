@@ -31,6 +31,9 @@ enum GSImageRadius {
   $full,
 }
 
+///
+/// Gluestack Image Widget.
+///
 class GSImage extends StatelessWidget {
   final GSImageSizes? size;
   final GSImageRadius? borderRadius;

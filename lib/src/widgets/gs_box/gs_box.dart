@@ -2,6 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
+///
+/// Gluestack Box.
+///
 class GSBox extends StatelessWidget {
   final Widget? child;
   final GSStyle? style;
@@ -67,8 +70,8 @@ class GSBox extends StatelessWidget {
               style != null ? style!.borderRadius ?? 0 : 0),
           border: Border.all(
               color: style != null
-                  ? style!.borderColor ?? Color(0x00000000)
-                  : Color(0x00000000),
+                  ? style!.borderColor ?? const Color(0x00000000)
+                  : const Color(0x00000000),
               width: style != null ? style!.borderWidth ?? 0 : 0),
           gradient: gradient,
           backgroundBlendMode: backgroundBlendMode,

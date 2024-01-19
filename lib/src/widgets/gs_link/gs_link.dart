@@ -5,6 +5,9 @@ import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+///
+/// Gluestack Link Widget.
+///
 class GSLink extends StatelessWidget {
   final String url;
   final GSStyle? style;
