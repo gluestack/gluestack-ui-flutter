@@ -1,3 +1,7 @@
+## 0.0.1-alpha.6
+
+- Fix documentation image url in Readme.
+
 ## 0.0.1-alpha.5
 
 - Added GS Stack

@@ -6,7 +6,7 @@ _Package is in development. APIs may change in the future._
 
 ## Documentation
 
-![Gluestack Flutter Banner](assets/gs_docs_flutter_cover.png)
+![Gluestack Flutter Banner](https://github.com/gluestack/gluestack-ui-flutter/blob/main/assets/gs_docs_flutter_cover.png?raw=true)
 
 The gluestack-ui-flutter library is designed to enhance web and mobile app development. It features platform-agnostic components for consistent UI across platforms, offers styling flexibility with pre-built themes and custom options, and emphasizes accessibility. Tailored for web development, it includes web-friendly widgets, native web styling, responsive design, and smooth animations. Key considerations are Flutter web specificity, performance optimization, and community engagement. The library also enables centralized styling, consistency, reusability, scalability, efficient development, and rapid prototyping, aiming to foster collaboration and ensure a unique, high-performance UI experience.
 
@@ -44,7 +44,7 @@ Add the package to your dependencies:
 
 ```yaml
 dependencies:
-  gluestack_ui: 0.0.1-alpha.5
+  gluestack_ui: 0.0.1-alpha.6
 ```
 
 OR
