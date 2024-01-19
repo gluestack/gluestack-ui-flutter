@@ -23,3 +23,4 @@ export 'vstack_example.dart';
 export 'form_example.dart';
 export 'flex_example.dart';
 export 'fab_example.dart';
+export 'stack_example.dart';
