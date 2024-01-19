@@ -142,6 +142,10 @@ class _HomePageState extends State<HomePage> {
                   routePath: "/example-flex",
                 ),
                 const NavButton(
+                  title: "GS Stack",
+                  routePath: "/example-stack",
+                ),
+                const NavButton(
                   title: "GS Scroll",
                   routePath: "/example-scroll",
                 ),

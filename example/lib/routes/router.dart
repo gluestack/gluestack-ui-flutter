@@ -122,6 +122,10 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const VStackExample(),
         ),
         GoRoute(
+          path: "example-stack",
+          builder: (context, state) => const StackExample(),
+        ),
+        GoRoute(
           path: "example-scroll",
           builder: (context, state) => const ScrollExample(),
         ),

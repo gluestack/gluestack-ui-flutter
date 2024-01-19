@@ -23,6 +23,8 @@ import 'text_story.dart';
 import 'textarea_story.dart';
 import 'toast_story.dart';
 import 'vstack_story.dart';
+import 'flex_story.dart';
+import 'stack_story.dart';
 import 'scroll_story.dart';
 
 final List<StoryWidget> kStories = [
@@ -30,6 +32,7 @@ final List<StoryWidget> kStories = [
   AvatarStory(),
   BadgeStory(),
   BoxStory(),
+  FlexStory(),
   ButtonStory(),
   CenterStory(),
   CheckboxStory(),
@@ -46,6 +49,7 @@ final List<StoryWidget> kStories = [
   RadioButtonStory(),
   ScrollStory(),
   SpinnerStory(),
+  StackStory(),
   SwitchStory(),
   TextStory(),
   TextareaStory(),
