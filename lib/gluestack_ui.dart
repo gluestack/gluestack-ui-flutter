@@ -28,10 +28,12 @@ export 'src/widgets/gs_toast/public.dart';
 export 'src/widgets/gs_vstack/public.dart';
 export 'src/widgets/gs_fab/public.dart';
 export 'src/widgets/gs_form_control/public.dart';
+export 'src/widgets/gs_scroll_view/public.dart';
 export 'src/provider/gluestack_provider.dart';
 export 'src/widgets/gs_flex/gs_flex.dart';
 export 'src/widgets/gs_responsives/resp_layout_manager.dart';
 export 'src/widgets/gs_responsives/resp_row_column.dart';
 export 'src/widgets/gs_responsives/resp_scaler.dart';
 export 'src/widgets/gs_responsives/resp_value_gettter.dart';
+export 'package:gluestack_ui/src/widgets/gs_stack/gs_stack.dart';
 

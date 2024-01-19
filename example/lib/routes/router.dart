@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui_example/example/public.dart';
+import 'package:gluestack_ui_example/example/scroll_example.dart';
 import 'package:gluestack_ui_example/home.dart';
 import 'package:gluestack_ui_example/widgets/storybook.dart';
 import 'package:gluestack_ui_example/widgets/storybook_widgets/avatar_group_preview.dart';
@@ -340,6 +341,14 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "vstack-reversed-preview",
           builder: (context, state) => const VStackReversedPreview(),
+        ),
+        GoRoute(
+          path: "example-stack",
+          builder: (context, state) => const StackExample(),
+        ),
+        GoRoute(
+          path: "example-scroll",
+          builder: (context, state) => const ScrollExample(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
