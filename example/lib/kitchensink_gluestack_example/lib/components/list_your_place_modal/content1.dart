@@ -32,8 +32,9 @@ class _ListYourPlaceModalContent1State
               children: [
                 GSButton(
                   size: GSButtonSizes.$xs,
-                  action:
-                      isSellSelected ? GSButtonActions.primary : GSButtonActions.secondary,
+                  action: isSellSelected
+                      ? GSButtonActions.primary
+                      : GSButtonActions.secondary,
                   variant: GSButtonVariants.outline,
                   style: GSStyle(borderRadius: $GSRadii.full),
                   child: const GSButtonText(text: "Sell"),
@@ -45,8 +46,9 @@ class _ListYourPlaceModalContent1State
                 ),
                 GSButton(
                   size: GSButtonSizes.$xs,
-                  action:
-                      !isSellSelected ? GSButtonActions.primary : GSButtonActions.secondary,
+                  action: !isSellSelected
+                      ? GSButtonActions.primary
+                      : GSButtonActions.secondary,
                   variant: GSButtonVariants.outline,
                   style: GSStyle(borderRadius: $GSRadii.full),
                   child: const GSButtonText(text: "Rent/Lease"),
@@ -146,7 +148,7 @@ class _ListYourPlaceModalContent1State
               variant: GSButtonVariants.outline,
               style: GSStyle(borderRadius: $GSRadii.full),
               child:
-                   const GSButtonText(text: 'independent floor/building floor'),
+                  const GSButtonText(text: 'independent floor/building floor'),
               onPressed: () {
                 setState(() {
                   selectedPropertyType[2] = !selectedPropertyType[2];
@@ -160,7 +162,7 @@ class _ListYourPlaceModalContent1State
                   : GSButtonActions.secondary,
               variant: GSButtonVariants.outline,
               style: GSStyle(borderRadius: $GSRadii.full),
-              child:  const GSButtonText(text: 'Plot/Land'),
+              child: const GSButtonText(text: 'Plot/Land'),
               onPressed: () {
                 setState(() {
                   selectedPropertyType[3] = !selectedPropertyType[3];

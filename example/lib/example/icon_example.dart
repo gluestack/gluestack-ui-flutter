@@ -12,11 +12,11 @@ class IconExample extends StatefulWidget {
 
 class _IconExampleState extends State<IconExample> {
   final List dropdownSizeOptions = [
-GSIconSizes.$xs,
-GSIconSizes.$sm,
-GSIconSizes.$md,
-GSIconSizes.$lg,
-GSIconSizes.$xl,
+    GSIconSizes.$xs,
+    GSIconSizes.$sm,
+    GSIconSizes.$md,
+    GSIconSizes.$lg,
+    GSIconSizes.$xl,
   ];
   GSIconSizes selectedSizeOption = GSIconSizes.$md;
 

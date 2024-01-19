@@ -10,4 +10,3 @@ const GSStyleConfig gsProgressConfig = GSStyleConfig(
 GSStyle progressStyle = GSStyle.fromMap(
     data: getIt<GluestackCustomConfig>().progress,
     descendantStyle: gsProgressConfig.descendantStyle);
-

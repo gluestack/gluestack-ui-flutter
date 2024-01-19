@@ -30,7 +30,6 @@ Map<String, dynamic> customButton2 = {
             'bg': '\$primary600',
             'borderColor': '\$primary300',
           },
-          
         },
       },
       ':disabled': {

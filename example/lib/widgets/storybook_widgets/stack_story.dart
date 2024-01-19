@@ -9,20 +9,20 @@ final class StackStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSStack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                width: 150,
-                height: 150,
-                color: Colors.red,
-              ),
-              Container(
-                width: 100,
-                height: 100,
-                color: Colors.blue,
-              ),
-            ],
+        alignment: Alignment.center,
+        children: [
+          Container(
+            width: 150,
+            height: 150,
+            color: Colors.red,
           ),
+          Container(
+            width: 100,
+            height: 100,
+            color: Colors.blue,
+          ),
+        ],
+      ),
     );
   }
 
