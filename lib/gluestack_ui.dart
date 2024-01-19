@@ -28,6 +28,7 @@ export 'src/widgets/gs_toast/public.dart';
 export 'src/widgets/gs_vstack/public.dart';
 export 'src/widgets/gs_fab/public.dart';
 export 'src/widgets/gs_form_control/public.dart';
+export 'src/widgets/gs_scroll_view/public.dart';
 export 'src/provider/gluestack_provider.dart';
 export 'src/widgets/gs_flex/gs_flex.dart';
 export 'src/widgets/gs_responsives/resp_layout_manager.dart';
