@@ -8,19 +8,19 @@ final class ScrollStory extends StoryWidget {
   Story createStoryWidget() {
     return Story(
       name: storyName,
-      builder: (context) =>  GSBox(
-            style: GSStyle(
-                height: 250, borderColor: $GSColors.blue400, borderWidth: 2),
-            child: GSScrollView(
-              children: [
-                for (int i = 0; i < 100; i++)
-                  GSText(
-                    text: 'Widget No. $i',
-                    textAlign: TextAlign.center,
-                  ),
-              ],
-            ),
-          ),
+      builder: (context) => GSBox(
+        style: GSStyle(
+            height: 250, borderColor: $GSColors.blue400, borderWidth: 2),
+        child: GSScrollView(
+          children: [
+            for (int i = 0; i < 100; i++)
+              GSText(
+                text: 'Widget No. $i',
+                textAlign: TextAlign.center,
+              ),
+          ],
+        ),
+      ),
     );
   }
 

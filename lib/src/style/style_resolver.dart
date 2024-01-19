@@ -338,7 +338,6 @@ GSStyle resolveStyles(
   return currentGSStyle!;
 }
 
-
 //For Actions
 GSActions? mapToGSActions(dynamic action) {
   String actionName = action.toString().split('.').last;

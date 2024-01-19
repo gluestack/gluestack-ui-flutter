@@ -15,7 +15,11 @@ class FormExample extends StatefulWidget {
 class _FormExampleState extends State<FormExample> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Value groupValue = Value.one;
-  final List dropdownSizeOptions = [GSFormControlSizes.$sm, GSFormControlSizes.$md, GSFormControlSizes.$lg];
+  final List dropdownSizeOptions = [
+    GSFormControlSizes.$sm,
+    GSFormControlSizes.$md,
+    GSFormControlSizes.$lg
+  ];
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
       selectedSizeOption = newOption;

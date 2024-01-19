@@ -8,13 +8,16 @@ import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
 enum GSAlertDialogSizes {
-$full,
-$lg,
-$md, 
-$sm,
-$xs,
+  $full,
+  $lg,
+  $md,
+  $sm,
+  $xs,
 }
 
+///
+/// Gluestack Alert Dialog.
+///
 class GSAlertDialog extends StatefulWidget {
   final GSAlertDialogContent content;
   final GSAlertDialogSizes? size;
@@ -46,7 +49,7 @@ class GSAlertDialog extends StatefulWidget {
     this.insetAnimationCurve = Curves.decelerate,
     this.insetAnimationDuration = const Duration(milliseconds: 100),
     this.size,
-  }) ;
+  });
   static void show(
     BuildContext context, {
     GSAlertDialogContent? content,

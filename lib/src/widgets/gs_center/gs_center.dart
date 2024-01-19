@@ -3,6 +3,9 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 
+///
+/// Gluestack Center widget.
+///
 class GSCenter extends StatelessWidget {
   final GSStyle? style;
   final Widget child;

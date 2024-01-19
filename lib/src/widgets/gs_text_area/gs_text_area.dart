@@ -10,13 +10,18 @@ import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
+
 enum GSTextAreaSizes {
-$sm,
-$md ,
-$lg ,
-$xl,
+  $sm,
+  $md,
+  $lg,
+  $xl,
 }
 // TODO : Work on descendant styles (_input)
+
+///
+/// Gluestack TextArea Widget.
+///
 class GSTextArea extends StatefulWidget {
   final GSTextAreaSizes? size;
   final GSStyle? style;
@@ -244,8 +249,7 @@ class GSTextArea extends StatefulWidget {
       this.onSaved,
       this.autovalidateMode,
       this.onFieldSubmitted,
-      this.initialValue})
-      ;
+      this.initialValue});
 
   @override
   State<GSTextArea> createState() => _GSTextAreaState();

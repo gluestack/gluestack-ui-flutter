@@ -14,20 +14,23 @@ enum GSProgressSizes {
   $2xl,
 }
 
+///
+/// Gluestack Progress Widget.
+///
 class GSProgress extends StatelessWidget {
   final GSStyle? style;
   final GSProgressSizes? size;
   final double? value;
   final String? semanticsLabel;
   final String? semanticsValue;
-  const GSProgress(
-      {super.key,
-      this.style,
-      this.size,
-      this.value = 0,
-      this.semanticsLabel,
-      this.semanticsValue,
-      });
+  const GSProgress({
+    super.key,
+    this.style,
+    this.size,
+    this.value = 0,
+    this.semanticsLabel,
+    this.semanticsValue,
+  });
 
   @override
   Widget build(BuildContext context) {

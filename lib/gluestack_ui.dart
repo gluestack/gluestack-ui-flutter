@@ -36,4 +36,3 @@ export 'src/widgets/gs_responsives/resp_row_column.dart';
 export 'src/widgets/gs_responsives/resp_scaler.dart';
 export 'src/widgets/gs_responsives/resp_value_gettter.dart';
 export 'package:gluestack_ui/src/widgets/gs_stack/gs_stack.dart';
-

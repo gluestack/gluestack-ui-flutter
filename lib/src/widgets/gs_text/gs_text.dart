@@ -3,6 +3,9 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
 
+///
+/// Gluestack Text Widget.
+///
 class GSText extends StatelessWidget {
   final String text;
   final GSSizes? size;

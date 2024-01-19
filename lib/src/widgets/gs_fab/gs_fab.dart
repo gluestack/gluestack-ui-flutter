@@ -5,10 +5,10 @@ import 'package:gluestack_ui/src/utils/resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-enum GSFABSizes{
-$sm,
-$md,
-$lg,
+enum GSFABSizes {
+  $sm,
+  $md,
+  $lg,
 }
 
 enum GSFABPlacements {
@@ -20,6 +20,9 @@ enum GSFABPlacements {
   bottomRight
 }
 
+///
+/// Gluestack Floating Action Button.
+///
 class GSFab extends StatelessWidget {
   final GSFABSizes? size;
   final GSFABPlacements? placement;
@@ -40,8 +43,7 @@ class GSFab extends StatelessWidget {
       this.style,
       this.isHovered = false,
       this.isPressed = false,
-      this.isDisabled = false})
-     ;
+      this.isDisabled = false});
 
   @override
   Widget build(BuildContext context) {

@@ -62,7 +62,8 @@ class KSStackedCard extends StatelessWidget {
                               GSText(
                                 text: stackedCardModel.buttonText,
                                 style: GSStyle(
-                                    textStyle: const TextStyle(color: Colors.white)),
+                                    textStyle:
+                                        const TextStyle(color: Colors.white)),
                               ),
                               const GSButtonIcon(icon: Icons.arrow_forward_ios)
                             ],

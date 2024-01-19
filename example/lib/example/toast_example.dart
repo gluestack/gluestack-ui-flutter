@@ -70,8 +70,7 @@ class _ToastExampleState extends State<ToastExample> {
           onPressed: () {
             showToast(
               context,
-              child:
-               GSToast(
+              child: GSToast(
                 variant: selectedVariantOption,
                 action: selectedActionOption,
                 child: const Column(

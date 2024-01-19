@@ -28,7 +28,7 @@ class GSFormLabelText extends StatelessWidget {
                 text: '*',
                 size: size,
                 style: GSStyle(
-                    textStyle: const TextStyle(color: const Color(0xFFFF0000))),
+                    textStyle: const TextStyle(color: Color(0xFFFF0000))),
               )
             ],
           )

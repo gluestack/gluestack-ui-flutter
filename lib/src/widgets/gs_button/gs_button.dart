@@ -29,6 +29,9 @@ enum GSButtonSizes {
   $lg,
 }
 
+///
+/// Gluestack Button.
+///
 class GSButton extends StatelessWidget {
   final GSButtonActions? action;
   final GSButtonVariants? variant;
@@ -85,8 +88,8 @@ class GSButton extends StatelessWidget {
               buttonStyle.actionMap(buttonAction),
               buttonStyle.variantMap(buttonVariant),
               buttonStyle.sizeMap(buttonSize),
-              buttonStyle
-                  .compoundVariants?[buttonAction.toString() + buttonVariant.toString()]
+              buttonStyle.compoundVariants?[
+                  buttonAction.toString() + buttonVariant.toString()]
             ],
             inlineStyle: style,
             isFirst: true);

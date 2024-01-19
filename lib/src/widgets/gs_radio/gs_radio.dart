@@ -19,7 +19,7 @@ what is achieved so far
 
 
 what is pending
-    
+
     1) managing hover state on custom inline style
     2) making radio icon circle hoverable
     3) passing props to children
@@ -30,6 +30,10 @@ enum GSRadioSizes {
   $md,
   $lg,
 }
+
+///
+/// Gluestack Radio Widget.
+///
 class GSRadio<T> extends StatelessWidget {
   final GSRadioSizes? size;
   final Widget icon;
@@ -56,7 +60,10 @@ class GSRadio<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formProps = GSFormProvider.of(context);
-    final radioSize = size?.toGSSize ?? formProps?.size ?? radioStyle.props?.size ?? GSSizes.$md;
+    final radioSize = size?.toGSSize ??
+        formProps?.size ??
+        radioStyle.props?.size ??
+        GSSizes.$md;
     bool? isRadioDisabled = isDisabled;
     bool? isRadioReadOnly = formProps?.isReadOnly ?? false;
     bool? isRadioInvalid = isInvalid;
