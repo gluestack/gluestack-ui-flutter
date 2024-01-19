@@ -153,7 +153,6 @@ GSStyle? resolveStylesDeprecated(
 }
 
 //Refactored style, replace the above with this
-
 GSStyle resolveStyles(
     {required BuildContext context,
     List<GSStyle?> styles = const [],

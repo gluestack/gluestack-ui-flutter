@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
@@ -32,9 +32,7 @@ class GSLink extends StatelessWidget {
       decedentStyles: styler.descendantStyles,
       child: GSFocusableActionDetector(
         isHovered: isHovered,
-        child: InkWell(
-          highlightColor: Colors.transparent,
-          hoverColor: Colors.transparent,
+        child: GestureDetector(
           onTap: () async {
             if (await canLaunchUrlString(url)) {
               await launchUrlString(url,

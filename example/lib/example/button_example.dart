@@ -74,7 +74,7 @@ class _ButtonExampleState extends State<ButtonExample> {
               GSButton(
                     action: GSButtonActions.primary,
                     variant: GSButtonVariants.solid,
-                    size: GSButtonSize.\$md,
+                    size: GSSize.\$md,
                     isDisabled: false,
                     isFocusVisible: false,
                     onPressed: () {},
@@ -96,15 +96,25 @@ class _ButtonExampleState extends State<ButtonExample> {
           action: selectedActionOption,
           variant: selectedVariantOption,
           size: selectedSizeOption,
-          isDisabled: isDisabled,
-          isFocusVisible: isFocusVisible,
+          onHover: (){
+            print('Hovering');
+          },
           onPressed: () {},
-          child: const Row(
-            children: [
-              GSButtonText(text: "Add"),
-              GSButtonIcon(icon: Icons.add)
-            ],
-          ),
+          // style: GSStyle(
+          //   web: GSStyle(
+          //     bg: $GSColors.amber600,
+          //   ),
+          //   ios: GSStyle(
+          //     bg: $GSColors.pink600,
+          //   ),
+          //   onHover: GSStyle(
+          //     bg: $GSColors.green400,
+          //   ),
+          //   md: GSStyle(
+          //     bg: $GSColors.pink400,
+          //   ),
+          // ),
+          child: const GSButtonText(text: "Click Here"),
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

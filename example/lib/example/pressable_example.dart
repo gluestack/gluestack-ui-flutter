@@ -12,9 +12,7 @@ class PressableExample extends StatelessWidget {
                 hitSlop: 10,
                 style: GSStyle(
                   bg: Colors.yellow,
-                  highlightColor: Colors.blue,
-                  splashColor: Colors.red,
-                  onHover: GSStyle(color: Colors.green),
+                  onHover: GSStyle(bg: Colors.green),
                   onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
                 ),
                 onPress: () {
@@ -49,9 +47,7 @@ class PressableExample extends StatelessWidget {
           hitSlop: 10,
           style: GSStyle(
             bg: Colors.yellow,
-            highlightColor: Colors.blue,
-            splashColor: Colors.red,
-            onHover: GSStyle(color: Colors.green),
+            onHover: GSStyle(bg: Colors.green),
             onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
           ),
           onPress: () {

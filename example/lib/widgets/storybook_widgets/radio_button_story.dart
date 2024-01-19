@@ -52,7 +52,7 @@ final class RadioButtonStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "radioButton-preview";
+  String get routePath => "radio-button-preview";
 
   @override
   String get storyName => "Radio Button";
