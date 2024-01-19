@@ -40,7 +40,7 @@ class _KSSortByState extends State<KSSortBy> {
   @override
   Widget build(BuildContext context) {
     return GSVStack(
-      space: GSSpaces.$lg,
+      space: GSVstackSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const GSHeading(
@@ -50,8 +50,7 @@ class _KSSortByState extends State<KSSortBy> {
         for (int i = 0; i < _sortByData.length; i++)
           GSRadio<KSSortOptions>(
             style: GSStyle(
-                margin:  EdgeInsets.only(
-                    right: $GSSpace.$3, left: $GSSpace.$1)),
+                margin: EdgeInsets.only(right: $GSSpace.$3, left: $GSSpace.$1)),
             icon: const GSRadioIcon<KSSortOptions>(
               size: GSSizes.$sm,
             ),

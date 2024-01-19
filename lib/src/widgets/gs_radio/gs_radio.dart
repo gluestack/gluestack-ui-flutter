@@ -6,6 +6,7 @@ import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_style.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
 /*
 
@@ -18,15 +19,23 @@ what is achieved so far
 
 
 what is pending
-    
+
     1) managing hover state on custom inline style
     2) making radio icon circle hoverable
     3) passing props to children
 
 */
+enum GSRadioSizes {
+  $sm,
+  $md,
+  $lg,
+}
 
+///
+/// Gluestack Radio Widget.
+///
 class GSRadio<T> extends StatelessWidget {
-  final GSSizes? size;
+  final GSRadioSizes? size;
   final Widget icon;
   final Widget? label;
   final T value;
@@ -46,18 +55,15 @@ class GSRadio<T> extends StatelessWidget {
       this.isDisabled,
       this.isInvalid,
       this.label,
-      this.size})
-      : assert(
-            size == GSSizes.$lg ||
-                size == GSSizes.$md ||
-                size == GSSizes.$sm ||
-                size == null,
-            "only support sizes of lg,md,sm");
+      this.size});
 
   @override
   Widget build(BuildContext context) {
     final formProps = GSFormProvider.of(context);
-    final radioSize = size ?? formProps?.size ?? radioStyle.props!.size!;
+    final radioSize = size?.toGSSize ??
+        formProps?.size ??
+        radioStyle.props?.size ??
+        GSSizes.$md;
     bool? isRadioDisabled = isDisabled;
     bool? isRadioReadOnly = formProps?.isReadOnly ?? false;
     bool? isRadioInvalid = isInvalid;
@@ -71,7 +77,7 @@ class GSRadio<T> extends StatelessWidget {
         : null;
 
     return GSAncestor(
-      decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize]!,
+      decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize],
       child: GSFocusableActionDetector(
         child: InkWell(
           focusColor: Colors.transparent,

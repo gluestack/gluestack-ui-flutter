@@ -13,17 +13,17 @@ class VStackExample extends StatefulWidget {
 
 class _VStackExampleState extends State<VStackExample> {
   final List dropdownSpaceOptions = [
-    GSSpaces.$none,
-    GSSpaces.$xs,
-    GSSpaces.$sm,
-    GSSpaces.$md,
-    GSSpaces.$lg,
-    GSSpaces.$xl,
-    GSSpaces.$2xl,
-    GSSpaces.$3xl,
-    GSSpaces.$4xl,
+    GSVstackSpaces.$none,
+    GSVstackSpaces.$xs,
+    GSVstackSpaces.$sm,
+    GSVstackSpaces.$md,
+    GSVstackSpaces.$lg,
+    GSVstackSpaces.$xl,
+    GSVstackSpaces.$2xl,
+    GSVstackSpaces.$3xl,
+    GSVstackSpaces.$4xl,
   ];
-  GSSpaces selectedSpaceOption = GSSpaces.$none;
+  GSVstackSpaces selectedSpaceOption = GSVstackSpaces.$none;
   void updateSpaceSelectedOption(dynamic newOption) {
     setState(() {
       selectedSpaceOption = newOption;
@@ -43,7 +43,7 @@ class _VStackExampleState extends State<VStackExample> {
           GSVStack(
               mainAxisAlignment: MainAxisAlignment.center,
               isReversed: false,
-              space: GSSpaces.\$none,
+              space: GSVstackSpaces.\$none,
               children: [
                 GSBox(
                   style:

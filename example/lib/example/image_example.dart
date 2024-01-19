@@ -12,15 +12,15 @@ class ImageExample extends StatefulWidget {
 
 class _ImageExampleState extends State<ImageExample> {
   final List dropdownSizeOptions = [
-    GSSizes.$2xs,
-    GSSizes.$xs,
-    GSSizes.$sm,
-    GSSizes.$md,
-    GSSizes.$lg,
-    GSSizes.$xl,
-    GSSizes.$2xl,
+    GSImageSizes.$2xs,
+    GSImageSizes.$xs,
+    GSImageSizes.$sm,
+    GSImageSizes.$md,
+    GSImageSizes.$lg,
+    GSImageSizes.$xl,
+    GSImageSizes.$2xl,
   ];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  GSImageSizes selectedSizeOption = GSImageSizes.$md;
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
       selectedSizeOption = newOption;
@@ -28,17 +28,17 @@ class _ImageExampleState extends State<ImageExample> {
   }
 
   final List dropdownRadiusOptions = [
-    GSBorderRadius.$none,
-    GSBorderRadius.$xs,
-    GSBorderRadius.$sm,
-    GSBorderRadius.$md,
-    GSBorderRadius.$lg,
-    GSBorderRadius.$xl,
-    GSBorderRadius.$2xl,
-    GSBorderRadius.$3xl,
-    GSBorderRadius.$full,
+    GSImageRadius.$none,
+    GSImageRadius.$xs,
+    GSImageRadius.$sm,
+    GSImageRadius.$md,
+    GSImageRadius.$lg,
+    GSImageRadius.$xl,
+    GSImageRadius.$2xl,
+    GSImageRadius.$3xl,
+    GSImageRadius.$full,
   ];
-  GSBorderRadius selectedRadiusOption = GSBorderRadius.$full;
+  GSImageRadius selectedRadiusOption = GSImageRadius.$full;
   void updateRadiusSelectedOption(dynamic newOption) {
     setState(() {
       selectedRadiusOption = newOption;

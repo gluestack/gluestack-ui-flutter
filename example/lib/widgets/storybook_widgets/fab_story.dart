@@ -5,9 +5,9 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 //Need to add value according to GSSizes enum order.
 final List<Option<int>> sizeOptions = [
-  Option<int>(value: 2, label: GSSizes.$sm.name),
-  Option<int>(value: 3, label: GSSizes.$md.name),
-  Option<int>(value: 4, label: GSSizes.$lg.name),
+  Option<int>(value: 0, label: GSSizes.$sm.name),
+  Option<int>(value: 1, label: GSSizes.$md.name),
+  Option<int>(value: 2, label: GSSizes.$lg.name),
 ];
 
 final List<Option<int>> placementOptions = [
@@ -37,9 +37,9 @@ final class FabStory extends StoryWidget {
               ),
             ),
             GSFab(
-              size: GSSizes.values[context.knobs
+              size: GSFABSizes.values[context.knobs
                   .options(label: 'Size', initial: 3, options: sizeOptions)],
-              placement: GSPlacements.values[context.knobs.options(
+              placement: GSFABPlacements.values[context.knobs.options(
                   label: 'Placement', initial: 5, options: placementOptions)],
               isHovered:
                   context.knobs.boolean(label: "isHovered", initial: false),

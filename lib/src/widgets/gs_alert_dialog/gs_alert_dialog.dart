@@ -5,10 +5,22 @@ import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_content
 import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_content_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
+enum GSAlertDialogSizes {
+  $full,
+  $lg,
+  $md,
+  $sm,
+  $xs,
+}
+
+///
+/// Gluestack Alert Dialog.
+///
 class GSAlertDialog extends StatefulWidget {
   final GSAlertDialogContent content;
-  final GSSizes? size;
+  final GSAlertDialogSizes? size;
   final GSStyle? style;
   final AlignmentGeometry? alignment;
   final Clip? clipBehavior;
@@ -37,15 +49,7 @@ class GSAlertDialog extends StatefulWidget {
     this.insetAnimationCurve = Curves.decelerate,
     this.insetAnimationDuration = const Duration(milliseconds: 100),
     this.size,
-  }) : assert(
-          size == GSSizes.$full ||
-              size == GSSizes.$lg ||
-              size == GSSizes.$md ||
-              size == GSSizes.$sm ||
-              size == GSSizes.$xs,
-          'AlertDialog can only have the sizes: \$lg, \$md, \$sm and \$xs\n'
-          'To resolve this error, ensure only the above mentioned GSSizes is specified.',
-        );
+  });
   static void show(
     BuildContext context, {
     GSAlertDialogContent? content,
@@ -62,7 +66,7 @@ class GSAlertDialog extends StatefulWidget {
     final ShapeBorder? shape,
     final Curve? insetAnimationCurve = Curves.decelerate,
     final Duration? insetAnimationDuration = const Duration(milliseconds: 100),
-    final GSSizes? size,
+    final GSAlertDialogSizes? size,
   }) {
     showDialog(
       barrierColor:
@@ -95,7 +99,7 @@ class GSAlertDialog extends StatefulWidget {
 class _GSAlertDialogState extends State<GSAlertDialog> {
   @override
   Widget build(BuildContext context) {
-    final alertSize = widget.size ?? alertDialogStyle.props?.size;
+    final alertSize = widget.size?.toGSSize ?? alertDialogStyle.props?.size;
     GSStyle styler = resolveStyles(
       context: context,
       styles: [alertDialogStyle, alertDialogStyle.sizeMap(alertSize)],

@@ -6,20 +6,54 @@ import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_icon.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_text.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
+enum GSBadgeActions {
+  error,
+  warning,
+  success,
+  info,
+  muted,
+}
+
+enum GSBadgeVariants {
+  solid,
+  outline,
+}
+
+enum GSBadgeSizes {
+  $sm,
+  $md,
+  $lg,
+}
+
+enum GSBadgeRadius {
+  $none,
+  $xs,
+  $sm,
+  $md,
+  $lg,
+  $xl,
+  $2xl,
+  $3xl,
+  $full,
+}
+
+///
 /// `GSBadge` is a Flutter widget used to display badges with various styles.
+///
 class GSBadge extends StatelessWidget {
   /// The type of action for the badge (e.g., error, warning, success, info, muted).
-  final GSActions? action;
+  final GSBadgeActions? action;
 
   /// The size of the badge (e.g., lg, md, sm).
-  final GSSizes? size;
+  final GSBadgeSizes? size;
 
   /// The border radius for the badge container.
-  final GSBorderRadius? borderRadius;
+  final GSBadgeRadius? borderRadius;
 
   /// The variant of the badge (e.g., solid, outline).
-  final GSVariants? variant;
+  final GSBadgeVariants? variant;
 
   /// The custom style for the badge.
   final GSStyle? style;
@@ -44,37 +78,14 @@ class GSBadge extends StatelessWidget {
     this.icon,
     required this.text,
     this.borderRadius,
-  })  : assert(
-          action == null ||
-              action == GSActions.error ||
-              action == GSActions.warning ||
-              action == GSActions.success ||
-              action == GSActions.info ||
-              action == GSActions.muted,
-          'Badges can only have the types: error, warning, success, info and muted!\n'
-          'To resolve this error, ensure only the above mentioned GSActions is specified.',
-        ),
-        assert(
-          size == null ||
-              size == GSSizes.$lg ||
-              size == GSSizes.$md ||
-              size == GSSizes.$sm,
-          'Badges can only have the sizes: \$lg, \$md and \$sm\n'
-          'To resolve this error, ensure only the above mentioned GSSizes is specified.',
-        ),
-        assert(
-          variant == null ||
-              variant == GSVariants.outline ||
-              variant == GSVariants.solid,
-          'Badges can only have the vairants: solid and outline\n'
-          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
-        );
+  });
 
   @override
   Widget build(BuildContext context) {
-    final badgeAction = action ?? badgeStyle.props?.action;
-    final badgeVariant = variant ?? badgeStyle.props?.variant;
-    final badgeSize = size ?? badgeStyle.props?.size;
+    final badgeAction = action?.toGSAction ?? badgeStyle.props?.action;
+    final badgeVariant = variant?.toGSVariant ?? badgeStyle.props?.variant;
+    final badgeSize = size?.toGSSize ?? badgeStyle.props?.size;
+    final radius = borderRadius?.toGSBorderRadius ?? GSBorderRadius.$none;
 
     // Resolve the style for the badge.
     GSStyle styler = resolveStyles(
@@ -99,7 +110,7 @@ class GSBadge extends StatelessWidget {
           decoration: BoxDecoration(
             color: style == null ? styler.bg : style!.bg ?? styler.bg,
             borderRadius: BorderRadius.circular(
-                GSBadgeStyle.radius[borderRadius] ?? styler.borderRadius ?? 0),
+                GSBadgeStyle.radius[radius] ?? styler.borderRadius ?? 0),
             border: Border.all(
                 style: badgeVariant == GSVariants.outline
                     ? BorderStyle.solid

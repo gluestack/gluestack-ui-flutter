@@ -1,22 +1,46 @@
-import 'dart:io';
-
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_image/gs_image_style.dart';
 
 enum GSImageType {
   network,
-  file,
   asset,
 }
 
+enum GSImageSizes {
+  $2xs,
+  $xs,
+  $sm,
+  $md,
+  $lg,
+  $xl,
+  $2xl,
+}
+
+enum GSImageRadius {
+  $none,
+  $xs,
+  $sm,
+  $md,
+  $lg,
+  $xl,
+  $2xl,
+  $3xl,
+  $full,
+}
+
+///
+/// Gluestack Image Widget.
+///
 class GSImage extends StatelessWidget {
+  final GSImageSizes? size;
+  final GSImageRadius? borderRadius;
+
   final String path;
   final GSImageType imageType;
   final GSStyle? style;
-  final GSSizes? size;
-  final GSBorderRadius? borderRadius;
   final AlignmentGeometry alignment;
   final int? cacheHeight;
   final int? cacheWidth;
@@ -42,7 +66,7 @@ class GSImage extends StatelessWidget {
     required this.path,
     required this.imageType,
     this.style,
-    this.borderRadius = GSBorderRadius.$none,
+    this.borderRadius = GSImageRadius.$none,
     this.cacheHeight,
     this.cacheWidth,
     this.centerSlice,
@@ -68,7 +92,8 @@ class GSImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageSize = size ?? imageStyle.props!.size;
+    final imageSize = size?.toGSSize ?? imageStyle.props?.size;
+    final imageRadius = borderRadius?.toGSBorderRadius ?? GSBorderRadius.$none;
 
     GSStyle styler = resolveStyles(
         context: context,
@@ -79,17 +104,17 @@ class GSImage extends StatelessWidget {
         inlineStyle: style,
         isFirst: true);
 
-    return borderRadius == GSBorderRadius.$none
+    return imageRadius == GSBorderRadius.$none
         ? _resolveImageType(imageType, styler)
-        : borderRadius == GSBorderRadius.$full
+        : imageRadius == GSBorderRadius.$full
             ? ClipOval(
                 child: SizedBox.fromSize(
                     size: Size(styler.width!, styler.height!),
                     child: _resolveImageType(imageType, styler,
                         boxFit: BoxFit.cover)))
             : ClipRRect(
-                borderRadius: borderRadius != GSBorderRadius.$none
-                    ? BorderRadius.circular(GSImageStyle.radius[borderRadius]!)
+                borderRadius: imageRadius != GSBorderRadius.$none
+                    ? BorderRadius.circular(GSImageStyle.radius[imageRadius]!)
                     : BorderRadius.zero,
                 child:
                     _resolveImageType(imageType, styler, boxFit: BoxFit.cover));
@@ -123,30 +148,6 @@ class GSImage extends StatelessWidget {
           scale: scale,
           semanticLabel: semanticLabel,
           path,
-        );
-      case GSImageType.file:
-        return Image.file(
-          height: styler.height,
-          width: styler.width,
-          alignment: alignment,
-          cacheHeight: cacheHeight,
-          cacheWidth: cacheWidth,
-          centerSlice: centerSlice,
-          color: color,
-          colorBlendMode: colorBlendMode,
-          errorBuilder: errorBuilder,
-          fit: fit,
-          excludeFromSemantics: excludeFromSemantics,
-          filterQuality: filterQuality,
-          frameBuilder: frameBuilder,
-          gaplessPlayback: gaplessPlayback,
-          isAntiAlias: isAntiAlias,
-          matchTextDirection: matchTextDirection,
-          opacity: opacity,
-          repeat: repeat,
-          scale: scale,
-          semanticLabel: semanticLabel,
-          File(path),
         );
       case GSImageType.asset:
         return Image.asset(

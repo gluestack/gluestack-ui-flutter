@@ -4,12 +4,22 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
+enum GSCheckBoxSizes {
+  $sm,
+  $md,
+  $lg,
+}
+
+///
+/// Gluestack CheckBox Widget.
+///
 class GSCheckBox extends StatefulWidget {
+  final GSCheckBoxSizes? size;
   final String value;
   final Widget icon;
   final Widget? label;
-  final GSSizes? size;
   final bool defaultIsChecked;
   final bool? isChecked;
   final bool? isDisabled;
@@ -34,12 +44,7 @@ class GSCheckBox extends StatefulWidget {
     this.isFocusVisible = false,
     this.isHovered = false,
     this.defaultIsChecked = false,
-  }) : assert(
-            size == GSSizes.$lg ||
-                size == GSSizes.$md ||
-                size == GSSizes.$sm ||
-                size == null,
-            "only support sizes of lg,md,sm");
+  });
 
   @override
   State<GSCheckBox> createState() => _GSCheckBoxState();
@@ -71,7 +76,7 @@ class _GSCheckBoxState extends State<GSCheckBox> {
   Widget build(BuildContext context) {
     final formProps = GSFormProvider.of(context);
     final checkBoxSize =
-        widget.size ?? formProps?.size ?? checkboxStyle.props?.size;
+        widget.size?.toGSSize ?? formProps?.size ?? checkboxStyle.props?.size;
     final styler = resolveStyles(
       context: context,
       styles: [checkboxStyle, checkboxStyle.sizeMap(checkBoxSize)],

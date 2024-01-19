@@ -12,13 +12,13 @@ class IconExample extends StatefulWidget {
 
 class _IconExampleState extends State<IconExample> {
   final List dropdownSizeOptions = [
-    GSSizes.$xs,
-    GSSizes.$sm,
-    GSSizes.$md,
-    GSSizes.$lg,
-    GSSizes.$xl,
+    GSIconSizes.$xs,
+    GSIconSizes.$sm,
+    GSIconSizes.$md,
+    GSIconSizes.$lg,
+    GSIconSizes.$xl,
   ];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  GSIconSizes selectedSizeOption = GSIconSizes.$md;
 
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
@@ -31,7 +31,7 @@ class _IconExampleState extends State<IconExample> {
     var code = '''
           GSIcon(
               icon: Icons.calendar_month,
-              size: GSSizes.\$md,
+              size: GSIconSizes.\$md,
            )
   ''';
     return Scaffold(

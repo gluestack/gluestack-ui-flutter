@@ -24,7 +24,7 @@ final class VStackStory extends StoryWidget {
       name: storyName,
       builder: (context) => GSVStack(
         mainAxisAlignment: MainAxisAlignment.center,
-        space: GSSpaces.values[context.knobs
+        space: GSVstackSpaces.values[context.knobs
             .options(label: 'Space', initial: 0, options: spaceOption)],
         isReversed: context.knobs.boolean(label: "isReversed", initial: false),
         children: [

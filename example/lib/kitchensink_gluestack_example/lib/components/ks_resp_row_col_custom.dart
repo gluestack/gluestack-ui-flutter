@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/style/style_resolver.dart';
 
 class KSRespRowCol extends StatelessWidget {
   final double? constraintWidth;
@@ -34,6 +33,11 @@ class KSRespRowCol extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isScreenSmallerThan(double size, BuildContext context) {
+      final screenWidth = MediaQuery.sizeOf(context).width;
+      return screenWidth <= size;
+    }
+
     bool isSmallScreen = isScreenSmallerThan(constraintWidth!, context);
 
     return Flex(

@@ -3,6 +3,9 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_heading/gs_heading_style.dart';
 
+///
+/// Gluestack Heading widget.
+///
 class GSHeading extends StatelessWidget {
   final String text;
   final GSSizes? size;

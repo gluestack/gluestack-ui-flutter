@@ -6,11 +6,19 @@ _Package is in development. APIs may change in the future._
 
 ## Documentation
 
-You can try out the gluestack flutter widgets on this storybook link: https://gluestack-ui-example.web.app/#/storybook
+![Gluestack Flutter Banner](assets/gs_docs_flutter_cover.png)
 
-Web app build with gluestack:https://kitchensink-23184.web.app/
+The gluestack-ui-flutter library is designed to enhance web and mobile app development. It features platform-agnostic components for consistent UI across platforms, offers styling flexibility with pre-built themes and custom options, and emphasizes accessibility. Tailored for web development, it includes web-friendly widgets, native web styling, responsive design, and smooth animations. Key considerations are Flutter web specificity, performance optimization, and community engagement. The library also enables centralized styling, consistency, reusability, scalability, efficient development, and rapid prototyping, aiming to foster collaboration and ensure a unique, high-performance UI experience.
 
-We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. You can find the detailed documentation for each component, including a list of props and examples, in https://gluestack.io/ui/docs website.
+Here are few helpful links to give you an idea of what gluestack-ui-flutter is capable of:
+
+- Widget Examples (Storybook): https://gluestack-ui-example.web.app/#/storybook
+- Getting Started Example: https://github.com/gluestack/flutter-examples
+- KitchenSink (An example layout made with Gluestack): https://kitchensink-23184.web.app/
+
+To keep track of latest developments in gluestack-ui-flutter you can refer to this link: https://github.com/gluestack/gluestack-ui-flutter/tree/feature/core-widgets.
+
+Documentation: https://flutter.gluestack.io/
 
 ## Features
 
@@ -36,7 +44,7 @@ Add the package to your dependencies:
 
 ```yaml
 dependencies:
-  gluestack_ui: 0.0.1-alpha.4
+  gluestack_ui: 0.0.1-alpha.5
 ```
 
 OR
@@ -64,9 +72,9 @@ Here's an example of how to use `GSButton` widget into your flutter app:
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
-  action: GSActions.negative,
-  variant: GSVariants.solid,
-  size: GSSizes.$lg,
+  action: GSButtonActions.negative,
+  variant: GSButtonVariants.solid,
+  size: GSButtonSizes.$lg,
   onPressed: () {},
   style: GSStyle(
     web: GSStyle(

@@ -8,10 +8,27 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_input/gs_input_style.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
+enum GSInputVariants {
+  outline,
+  rounded,
+  underlined,
+}
+
+enum GSInputSizes {
+  $sm,
+  $md,
+  $lg,
+  $xl,
+}
+
+///
+/// Gluestack Input Widget.
+///
 class GSInput extends StatefulWidget {
-  final GSVariants? variant;
-  final GSSizes? size;
+  final GSInputVariants? variant;
+  final GSInputSizes? size;
   final GSStyle? style;
   final bool? isDisabled;
   final bool? isInvalid;
@@ -128,7 +145,7 @@ class GSInput extends StatefulWidget {
   final ValueChanged<String>? onFieldSubmitted;
   const GSInput({
     super.key,
-    this.variant = GSVariants.outline,
+    this.variant = GSInputVariants.outline,
     this.size,
     this.isDisabled,
     this.isInvalid,
@@ -251,9 +268,12 @@ class _GSInputState extends State<GSInput> {
   @override
   Widget build(BuildContext context) {
     final formProps = GSFormProvider.of(context);
-    final inputVariant = widget.variant ?? inputStyle.props?.variant;
-    final inputSize =
-        widget.size ?? formProps?.size ?? inputStyle.props?.size ?? GSSizes.$md;
+    final inputVariant =
+        widget.variant?.toGSVariant ?? inputStyle.props?.variant;
+    final inputSize = widget.size?.toGSSize ??
+        formProps?.size ??
+        inputStyle.props?.size ??
+        GSSizes.$md;
     final bool isDisabled = widget.isDisabled ?? formProps?.isDisabled ?? false;
     final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
     final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
@@ -272,7 +292,7 @@ class _GSInputState extends State<GSInput> {
 
     Color? resolveBorderColor() {
       if (isInvalid) {
-        if (widget.variant == GSVariants.underlined) {
+        if (inputVariant == GSVariants.underlined) {
           return styler.onInvalid?.borderBottomColor;
         }
         return styler.onInvalid?.borderColor ?? styler.borderColor;
@@ -288,7 +308,7 @@ class _GSInputState extends State<GSInput> {
     }
 
     double? resolveBorderWidth() {
-      if (widget.variant == GSVariants.underlined) {
+      if (inputVariant == GSVariants.underlined) {
         if (isInvalid) {
           return styler.onInvalid?.borderBottomWidth ??
               styler.borderBottomWidth;
@@ -317,7 +337,7 @@ class _GSInputState extends State<GSInput> {
 
     Color? resolveFocusBorderColor() {
       if (isInvalid) {
-        if (widget.variant == GSVariants.underlined) {
+        if (inputVariant == GSVariants.underlined) {
           return styler.onInvalid?.borderBottomColor;
         }
         return styler.onInvalid?.borderColor ?? styler.borderColor;
@@ -327,7 +347,7 @@ class _GSInputState extends State<GSInput> {
     }
 
     double? resolveFocusBorderWidth() {
-      if (widget.variant == GSVariants.underlined) {
+      if (inputVariant == GSVariants.underlined) {
         return styler.onFocus?.borderBottomWidth ?? styler.borderBottomWidth;
       }
 
@@ -339,7 +359,7 @@ class _GSInputState extends State<GSInput> {
     final focusedBorderColor = resolveFocusBorderColor();
     final focusedBorderWidth = resolveFocusBorderWidth();
 
-    final borderStyle = widget.variant != GSVariants.underlined
+    final borderStyle = inputVariant != GSVariants.underlined
         ? OutlineInputBorder(
             borderSide: BorderSide(color: borderColor!, width: borderWidth!),
             borderRadius: BorderRadius.circular(styler.borderRadius!))

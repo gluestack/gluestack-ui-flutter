@@ -129,27 +129,27 @@ void main() {
 //Test: Test Variant + Size + Actions Test
   testWidgets('Test Button Variant + Size + Actions',
       (WidgetTester tester) async {
-    const List<GSVariants?> variants = [
+    const List<GSButtonVariants?> variants = [
       null,
-      GSVariants.solid,
-      GSVariants.outline,
-      GSVariants.link
+      GSButtonVariants.solid,
+      GSButtonVariants.outline,
+      GSButtonVariants.link
     ];
 
-    const List<GSActions?> actions = [
+    const List<GSButtonActions?> actions = [
       null,
-      GSActions.primary,
-      GSActions.secondary,
-      GSActions.positive,
-      GSActions.negative,
+      GSButtonActions.primary,
+      GSButtonActions.secondary,
+      GSButtonActions.positive,
+      GSButtonActions.negative,
     ];
 
-    const List<GSSizes?> sizes = [
+    const List<GSButtonSizes?> sizes = [
       null,
-      GSSizes.$xs,
-      GSSizes.$sm,
-      GSSizes.$md,
-      GSSizes.$lg,
+      GSButtonSizes.$xs,
+      GSButtonSizes.$sm,
+      GSButtonSizes.$md,
+      GSButtonSizes.$lg,
     ];
 
     for (int i = 0; i < variants.length; i++) {

@@ -1,3 +1,10 @@
+## 0.0.1-alpha.5
+
+- Added GS Stack
+- Added GS Scroll
+- Widget specific enums for better developer experience
+- Added more examples
+
 ## 0.0.1-alpha.4
 
 - Add support to get custom JSON config for Gluestack Widgets.

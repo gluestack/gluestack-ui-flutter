@@ -48,7 +48,7 @@ class KSMainComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GSVStack(
-      space: GSSpaces.$lg,
+      space: GSVstackSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //r1
@@ -62,8 +62,8 @@ class KSMainComponent extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 9),
               ),
               child: GSButton(
-                variant: GSVariants.outline,
-                action: GSActions.secondary,
+                variant: GSButtonVariants.outline,
+                action: GSButtonActions.secondary,
                 child: GSHStack(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -109,7 +109,7 @@ class KSMainComponent extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     child: GSImage(
                         fit: BoxFit.cover,
-                        size: GSSizes.$2xl,
+                        size: GSImageSizes.$2xl,
                         path: 'assets/images/image$i.png',
                         imageType: GSImageType.asset),
                   ),
@@ -122,11 +122,9 @@ class KSMainComponent extends StatelessWidget {
           child: GSButtonGroup(buttons: [
             for (String title in titles) ...[
               GSButton(
-                  action: GSActions.secondary,
-                  variant: GSVariants.link,
-                  onPressed: () {
-                    print("$title pressed!");
-                  },
+                  action: GSButtonActions.secondary,
+                  variant: GSButtonVariants.link,
+                  onPressed: () {},
                   child: GSButtonText(
                     text: title,
                     style: GSStyle(
