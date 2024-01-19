@@ -1,0 +1,34 @@
+---
+title: Platform Specific | Styling | gluestack-ui
+description: Overview of platform specific styling prowess of gluestack ui
+---
+
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+
+<Meta title="Styling/PlatformSpecific" />
+
+# Platform Specific
+
+We can provide platform specific styles in the **GSStyle** prop of the component. There are params like android, ios, web which accepts **GSStyle** object as param, which defined the platform specific styling that will be applied to the component.
+
+Let's say that we wish for our button component to appear red when the app is running on android, we acheive that via the following implementation.
+
+![android red button example - platform specific](images/styling-platform-specific-ex1.png)
+________________________________________________
+```
+        GSButton(
+          style: GSStyle(
+            bg: $GSColors.green400,
+            web: GSStyle(bg: $GSColors.yellow400),
+            android: GSStyle(bg: $GSColors.red800),
+            ios: GSStyle(bg: $GSColors.blue400),
+          ),
+          onPressed: () {},
+          child: const Row(
+            children: [
+              GSButtonText(text: "Add"),
+              GSButtonIcon(icon: Icons.add)
+            ],
+          ),
+        ),
+```

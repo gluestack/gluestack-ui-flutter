@@ -103,7 +103,7 @@ class FabPlacementPreview extends StatelessWidget {
                     ),
                   ),
                   GSFab(
-                    placement: GSPlacements.bottomCenter,
+                    placement: GSFABPlacements.bottomCenter,
                     onPressed: () {},
                     icon: GSFabIcon(
                       icon: Icons.add,
