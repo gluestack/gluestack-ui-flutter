@@ -289,7 +289,8 @@ class _GSTextAreaState extends State<GSTextArea> {
                 children: [
                   Container(
                     padding: styler.padding ??
-                        const EdgeInsets.symmetric(horizontal: 15),
+                        const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 10),
                     constraints: widget.constraints,
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -400,7 +401,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                           : widget.prefixIcon != null
                               ? 50
                               : 10,
-                      top: 5,
+                      top: 10,
                       child: Text(
                         widget.hintText!,
                         style: hintStyle ??
