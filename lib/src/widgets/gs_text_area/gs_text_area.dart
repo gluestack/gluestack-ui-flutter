@@ -87,6 +87,7 @@ class GSTextArea extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Color? hoverColor;
+  final Color? textSelectionColor;
   const GSTextArea({
     super.key,
     this.size,
@@ -160,6 +161,7 @@ class GSTextArea extends StatefulWidget {
     this.suffixIcon,
     this.style,
     this.onFieldSubmitted,
+    this.textSelectionColor,
   }) : assert(
           size == null ||
               size == GSSizes.$xl ||
@@ -266,6 +268,8 @@ class _GSTextAreaState extends State<GSTextArea> {
           setState(() => _isHovered = shouldUpdateHover);
         }
       },
+      mouseCursor:
+          isDisabled ? SystemMouseCursors.forbidden : MouseCursor.defer,
       child: Opacity(
         opacity: isDisabled ? styler.onDisabled!.opacity! : 1,
         child: SizedBox(
@@ -274,6 +278,13 @@ class _GSTextAreaState extends State<GSTextArea> {
           child: Focus(
             child: GestureDetector(
               onTap: widget.onTap,
+              onDoubleTap: () {
+                if (widget.controller!.text.isNotEmpty) {
+                  widget.controller!.selection = TextSelection(
+                      baseOffset: 0,
+                      extentOffset: widget.controller!.text.length);
+                }
+              },
               child: Stack(
                 children: [
                   Container(
@@ -282,7 +293,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                     constraints: widget.constraints,
                     decoration: BoxDecoration(
                       border: Border.all(
-                          color: isFocused
+                          color: isFocused && !isDisabled
                               ? widget.hoverColor ?? const Color(0xFF2196F3)
                               : borderColor!,
                           width: borderWidth!),
@@ -300,6 +311,8 @@ class _GSTextAreaState extends State<GSTextArea> {
                               onSubmitted: widget.onFieldSubmitted,
                               autocorrect: widget.autocorrect,
                               autofocus: widget.autofocus,
+                              selectionColor: widget.textSelectionColor ??
+                                  const Color.fromRGBO(200, 200, 200, 1.0),
                               clipBehavior: widget.clipBehavior,
                               contentInsertionConfiguration:
                                   widget.contentInsertionConfiguration,
@@ -312,7 +325,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                               cursorRadius: widget.cursorRadius,
                               cursorWidth: widget.cursorWidth,
                               dragStartBehavior: widget.dragStartBehavior,
-                              readOnly: isReadOnly,
+                              readOnly: isReadOnly || isDisabled,
                               enableIMEPersonalizedLearning:
                                   widget.enableIMEPersonalizedLearning,
                               enableInteractiveSelection:
