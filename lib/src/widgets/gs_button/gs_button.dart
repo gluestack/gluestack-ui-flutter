@@ -31,7 +31,6 @@ enum GSButtonSizes {
   $lg,
 }
 
-
 class GSButton extends StatelessWidget {
   final GSButtonActions? action;
   final GSButtonVariants? variant;
@@ -46,6 +45,7 @@ class GSButton extends StatelessWidget {
   final FocusNode? focusNode;
   final bool autoFocus;
   final Clip clipBehavior;
+  final bool? freeSize;
 
   final VoidCallback onPressed;
   final VoidCallback? onLongPress;
@@ -117,6 +117,7 @@ class GSButton extends StatelessWidget {
     this.action = GSButtonActions.primary,
     this.variant = GSButtonVariants.solid,
     this.size = GSButtonSizes.$md,
+    this.freeSize = false,
     this.isDisabled,
     this.semanticsLabel,
     this.isFocusVisible = false,
@@ -211,8 +212,8 @@ class GSButton extends StatelessWidget {
               buttonStyle.actionMap(buttonAction),
               buttonStyle.variantMap(buttonVariant),
               buttonStyle.sizeMap(buttonSize),
-              buttonStyle
-                  .compoundVariants?[buttonAction.toString() + buttonVariant.toString()]
+              buttonStyle.compoundVariants?[
+                  buttonAction.toString() + buttonVariant.toString()]
             ],
             inlineStyle: style,
             isFirst: true);
@@ -235,7 +236,7 @@ class GSButton extends StatelessWidget {
                 label: semanticsLabel ?? 'Button',
                 button: true,
                 child: SizedBox(
-                  height: styler.height,
+                  height: freeSize! ? null : styler.height,
                   child: FocusableActionDetector(
                     onFocusChange: onFocusChange,
                     focusNode: focusNode,
@@ -332,7 +333,8 @@ class GSButton extends StatelessWidget {
                         // statesController: statesController,
                         padding: styler.padding,
                         decoration: BoxDecoration(
-                          color:  GSStyleBuilderProvider.of(context)?.isFocused ??
+                          color:
+                              GSStyleBuilderProvider.of(context)?.isFocused ??
                                       false
                                   ? HSLColor.fromColor(
                                           styler.bg ?? $GSColors.red400)
