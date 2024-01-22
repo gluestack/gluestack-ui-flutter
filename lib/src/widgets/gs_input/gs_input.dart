@@ -86,6 +86,7 @@ class GSInput extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Color? hoverColor;
+  final Color? textSelectionColor;
   const GSInput({
     super.key,
     this.variant = GSVariants.outline,
@@ -160,6 +161,7 @@ class GSInput extends StatefulWidget {
     this.prefixText,
     this.prefixIcon,
     this.suffixIcon,
+    this.textSelectionColor,
   });
 
   @override
@@ -171,19 +173,20 @@ class _GSInputState extends State<GSInput> {
 
   @override
   Widget build(BuildContext context) {
+    final inputVariant = widget.variant ?? inputStyle.props?.variant;
     final formProps = GSFormProvider.of(context);
-    final inputVariant =
-        widget.variant?.toGSVariant ?? inputStyle.props?.variant;
-    final inputSize = widget.size?.toGSSize ??
-        formProps?.size ??
-        inputStyle.props?.size ??
-        GSSizes.$md;
-    final bool isDisabled = widget.isDisabled ?? formProps?.isDisabled ?? false;
-    final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
-    final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
-    final bool isRequired = formProps?.isRequired ?? false;
+    final inputSize =
+        widget.size ?? formProps?.size ?? inputStyle.props?.size ?? GSSizes.$md;
+    bool? isDisabled = widget.isDisabled;
+    bool? isReadOnly = widget.isReadOnly;
+    bool? isInvalid = widget.isInvalid;
+    final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
 
     final focusNode = FocusNode();
+
+    isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
+    isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
+    isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
 
     GSStyle styler = resolveStyles(
       context: context,
@@ -272,6 +275,8 @@ class _GSInputState extends State<GSInput> {
             setState(() => _isHovered = shouldUpdateHover);
           }
         },
+        mouseCursor:
+            isDisabled ? SystemMouseCursors.forbidden : MouseCursor.defer,
         child: Opacity(
           opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.5 : 1,
           child: SizedBox(
@@ -279,6 +284,13 @@ class _GSInputState extends State<GSInput> {
             height: styler.height,
             child: GestureDetector(
               onTap: widget.onTap,
+              onDoubleTap: () {
+                if (widget.controller!.text.isNotEmpty) {
+                  widget.controller!.selection = TextSelection(
+                      baseOffset: 0,
+                      extentOffset: widget.controller!.text.length);
+                }
+              },
               child: Stack(
                 children: [
                   Container(
@@ -309,6 +321,8 @@ class _GSInputState extends State<GSInput> {
                               onSubmitted: widget.onFieldSubmitted,
                               autocorrect: widget.autocorrect,
                               autofocus: widget.autofocus,
+                              selectionColor: widget.textSelectionColor ??
+                                  const Color.fromRGBO(200, 200, 200, 1.0),
                               clipBehavior: widget.clipBehavior,
                               contentInsertionConfiguration:
                                   widget.contentInsertionConfiguration,
@@ -321,7 +335,7 @@ class _GSInputState extends State<GSInput> {
                               cursorRadius: widget.cursorRadius,
                               cursorWidth: widget.cursorWidth,
                               dragStartBehavior: widget.dragStartBehavior,
-                              readOnly: isReadOnly,
+                              readOnly: isReadOnly || isDisabled,
                               enableIMEPersonalizedLearning:
                                   widget.enableIMEPersonalizedLearning,
                               enableInteractiveSelection:
@@ -336,15 +350,8 @@ class _GSInputState extends State<GSInput> {
                               magnifierConfiguration:
                                   widget.magnifierConfiguration ??
                                       TextMagnifierConfiguration.disabled,
-                              //maxLength: widget.maxLength,
                               maxLines: widget.maxLines,
                               minLines: widget.minLines,
-                              mouseCursor: isDisabled
-                                  ? SystemMouseCursors.forbidden
-                                  : _isHovered
-                                      ? SystemMouseCursors.text
-                                      : MouseCursor.defer,
-
                               obscureText: widget.obscureText,
                               obscuringCharacter: widget.obscuringCharacter,
                               onAppPrivateCommand: widget.onAppPrivateCommand,
@@ -368,13 +375,14 @@ class _GSInputState extends State<GSInput> {
                               spellCheckConfiguration:
                                   widget.spellCheckConfiguration,
                               strutStyle: widget.strutStyle,
-                              style: styler.textStyle!,
+                              style: widget.style?.textStyle ??
+                                  TextStyle(
+                                      fontSize: styler.textStyle?.fontSize),
                               textAlign: widget.textAlign,
                               textCapitalization: widget.textCapitalization,
                               textDirection: widget.textDirection,
                               textInputAction: widget.textInputAction,
                               undoController: widget.undoController,
-
                               backgroundCursorColor: const Color(0xFF808080),
                             ),
                           ),
@@ -392,13 +400,11 @@ class _GSInputState extends State<GSInput> {
                               ? 50
                               : 10,
                       top: 10,
-                      child: Text(
-                        widget.hintText!,
-                        style: widget.hintStyle ??
-                            TextStyle(
-                              color: borderColor,
-                            ),
-                      ),
+                      child: Text(widget.hintText!,
+                          style: widget.hintStyle ??
+                              TextStyle(
+                                  color: borderColor,
+                                  fontSize: styler.textStyle?.fontSize)),
                     ),
                 ],
               ),
