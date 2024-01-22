@@ -15,7 +15,7 @@ class LinkButtonPreview extends StatelessWidget {
           Story(
             name: 'Button',
             builder: (context) => GSButton(
-              variant: GSVariants.link,
+              variant: GSButtonVariants.link,
               style: GSStyle(
                   color: Colors.transparent,
                   onHover: GSStyle(bg: Colors.transparent)),

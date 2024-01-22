@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 
@@ -6,6 +6,7 @@ import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_style.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
 /*
 
@@ -24,9 +25,13 @@ what is pending
     3) passing props to children
 
 */
-
+enum GSRadioSizes {
+  $sm,
+  $md,
+  $lg,
+}
 class GSRadio<T> extends StatelessWidget {
-  final GSSizes? size;
+  final GSRadioSizes? size;
   final Widget icon;
   final Widget? label;
   final T value;
@@ -46,18 +51,12 @@ class GSRadio<T> extends StatelessWidget {
       this.isDisabled,
       this.isInvalid,
       this.label,
-      this.size})
-      : assert(
-            size == GSSizes.$lg ||
-                size == GSSizes.$md ||
-                size == GSSizes.$sm ||
-                size == null,
-            "only support sizes of lg,md,sm");
+      this.size});
 
   @override
   Widget build(BuildContext context) {
     final formProps = GSFormProvider.of(context);
-    final radioSize = size ?? formProps?.size ?? radioStyle.props!.size!;
+    final radioSize = size?.toGSSize ?? formProps?.size ?? radioStyle.props?.size ?? GSSizes.$md;
     bool? isRadioDisabled = isDisabled;
     bool? isRadioReadOnly = formProps?.isReadOnly ?? false;
     bool? isRadioInvalid = isInvalid;
@@ -71,31 +70,33 @@ class GSRadio<T> extends StatelessWidget {
         : null;
 
     return GSAncestor(
-      decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize]!,
+      decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize],
       child: GSFocusableActionDetector(
-        child: InkWell(
-          focusColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-          mouseCursor: isRadioDisabled
+        child: MouseRegion(
+          cursor: isRadioDisabled
               ? SystemMouseCursors.forbidden
               : SystemMouseCursors.click,
-          onTap: () {
-            if (!isRadioDisabled! && value != groupValue && !isRadioReadOnly) {
-              onChanged!.call(value);
-            }
-          },
-          child: GSRadioProvider<T>(
-              value: value,
-              groupValue: groupValue,
-              onChanged: null,
-              size: radioSize,
-              style: style,
-              isInvalid: isRadioInvalid,
-              isDisabled: isRadioDisabled,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [icon, if (label != null) label!],
-              )),
+          child: GestureDetector(
+            onTap: () {
+              if (!isRadioDisabled! &&
+                  value != groupValue &&
+                  !isRadioReadOnly) {
+                onChanged!.call(value);
+              }
+            },
+            child: GSRadioProvider<T>(
+                value: value,
+                groupValue: groupValue,
+                onChanged: null,
+                size: radioSize,
+                style: style,
+                isInvalid: isRadioInvalid,
+                isDisabled: isRadioDisabled,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [icon, if (label != null) label!],
+                )),
+          ),
         ),
       ),
     );

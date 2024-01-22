@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_control_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
@@ -13,6 +14,13 @@ Form Control Compatible Components:
     TO DO ->  (x) slider, (x) dropdown
     [(x) -> Not made yet, TBD]
 */
+
+enum GSFormControlSizes {
+  $sm,
+  $md,
+  $lg,
+}
+
 class GSFormControl extends StatefulWidget {
   final GlobalKey<FormState> formKey;
   final Widget child;
@@ -20,7 +28,7 @@ class GSFormControl extends StatefulWidget {
   final VoidCallback? onChanged;
   final AutovalidateMode autovalidateMode;
   final bool? canPop;
-  final GSSizes? size;
+  final GSFormControlSizes? size;
   final GSStyle? style;
 
   //H O P
@@ -65,9 +73,10 @@ class _GSFormControlState extends State<GSFormControl> {
 
   @override
   Widget build(BuildContext context) {
+    final size = widget.size?.toGSSize;
     GSStyle styler = resolveStyles(
       context: context,
-      styles: [formControlStyle.sizeMap(widget.size)],
+      styles: [formControlStyle.sizeMap(size)],
       inlineStyle: widget.style,
       isFirst: true,
     );
@@ -78,7 +87,7 @@ class _GSFormControlState extends State<GSFormControl> {
         isInvalid: widget.isInvalid,
         isReadOnly: widget.isReadOnly,
         isRequired: widget.isRequired,
-        size: widget.size,
+        size: size,
         child: Form(
           key: widget.formKey,
           canPop: widget.canPop,

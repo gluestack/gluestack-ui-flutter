@@ -10,7 +10,7 @@ final class VStackReversedStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSVStack(
-        space: GSSpaces.$md,
+        space: GSVstackSpaces.$md,
         mainAxisAlignment: MainAxisAlignment.center,
         isReversed: true,
         children: [

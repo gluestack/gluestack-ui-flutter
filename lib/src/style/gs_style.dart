@@ -545,8 +545,8 @@ class GSStyle extends BaseStyle<GSStyle> {
 
   Color? progressValueColor;
   //for splash n highlight for pressable
-  Color? highlightColor;
-  Color? splashColor;
+  // Color? highlightColor;
+  // Color? splashColor;
   GSStyle? badge;
   GSTextTransform? textTransform;
   GSSizes? iconSize;
@@ -613,8 +613,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.maxWidth,
     this.progressValueColor,
     this.badge,
-    this.highlightColor,
-    this.splashColor,
+    // this.highlightColor,
+    // this.splashColor,
     this.textTransform,
     this.trackColorTrue,
     this.trackColorFalse,
@@ -749,8 +749,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       alignment: overrideStyle?.alignment ?? alignment,
       progressValueColor:
           overrideStyle?.progressValueColor ?? progressValueColor,
-      highlightColor: overrideStyle?.highlightColor ?? highlightColor,
-      splashColor: overrideStyle?.splashColor ?? splashColor,
+      // highlightColor: overrideStyle?.highlightColor ?? highlightColor,
+      // splashColor: overrideStyle?.splashColor ?? splashColor,
       textTransform: overrideStyle?.textTransform ?? textTransform,
       trackColorTrue: overrideStyle?.trackColorTrue ?? trackColorTrue,
       trackColorFalse: overrideStyle?.trackColorFalse ?? trackColorFalse,

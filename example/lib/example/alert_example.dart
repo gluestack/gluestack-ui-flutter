@@ -9,12 +9,12 @@ class AlertExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var code = '''
           GSButton(
-            size: GSSizes.\$lg,
+            size: GSButtonSizes.\$lg,
             child: const GSButtonText(text: "Click Me"),
             onPressed: () {
               GSAlertDialog.show(
                 context,
-                size: GSSizes.\$full,
+                size: GSAlertDialogSizes.\$full,
                 content: GSAlertDialogContent(
                   header: GSAlertDialogHeader(
                     style: GSStyle(
@@ -30,13 +30,13 @@ class AlertExample extends StatelessWidget {
                     child: GSButtonGroup(
                       buttons: [
                         GSButton(
-                            action: GSActions.positive,
-                            variant: GSVariants.outline,
+                            action: GSButtonActions.positive,
+                            variant: GSButtonVariants.outline,
                             child: const Text("Yes"),
                             onPressed: () {}),
                         GSButton(
-                            action: GSActions.negative,
-                            variant: GSVariants.outline,
+                            action: GSButtonActions.negative,
+                            variant: GSButtonVariants.outline,
                             child: const Text("No"),
                             onPressed: () {}),
                       ],
@@ -55,12 +55,12 @@ class AlertExample extends StatelessWidget {
         code: code,
         component: Center(
           child: GSButton(
-            size: GSSizes.$lg,
+            size: GSButtonSizes.$lg,
             child: const GSButtonText(text: "Click Me"),
             onPressed: () {
               GSAlertDialog.show(
                 context,
-                size: GSSizes.$full,
+                size: GSAlertDialogSizes.$full,
                 content: GSAlertDialogContent(
                   header: GSAlertDialogHeader(
                     style: GSStyle(
@@ -76,13 +76,13 @@ class AlertExample extends StatelessWidget {
                     child: GSButtonGroup(
                       buttons: [
                         GSButton(
-                            action: GSActions.positive,
-                            variant: GSVariants.outline,
+                            action: GSButtonActions.positive,
+                            variant: GSButtonVariants.outline,
                             child: const Text("Yes"),
                             onPressed: () {}),
                         GSButton(
-                            action: GSActions.negative,
-                            variant: GSVariants.outline,
+                            action: GSButtonActions.negative,
+                            variant: GSButtonVariants.outline,
                             child: const Text("No"),
                             onPressed: () {}),
                       ],

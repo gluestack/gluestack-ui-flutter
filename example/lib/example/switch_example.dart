@@ -14,8 +14,12 @@ class SwitchExample extends StatefulWidget {
 class _SwitchExampleState extends State<SwitchExample> {
   bool val1 = false;
 
-  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  final List dropdownSizeOptions = [
+    GSSwitchSizes.$sm,
+    GSSwitchSizes.$md,
+    GSSwitchSizes.$lg
+  ];
+  GSSwitchSizes selectedSizeOption = GSSwitchSizes.$md;
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
       selectedSizeOption = newOption;
@@ -33,7 +37,7 @@ class _SwitchExampleState extends State<SwitchExample> {
   Widget build(BuildContext context) {
     var code = '''
             GSSwitch(
-                size: GSSizes.\$md,
+                size: GSSwitchSizes.\$md,
                 isDisabled: false,
                 style: GSStyle(
                   checked: GSStyle(
@@ -55,21 +59,25 @@ class _SwitchExampleState extends State<SwitchExample> {
       ),
       body: BaseLayout(
         code: code,
-        component: GSSwitch(
-          size: selectedSizeOption,
-          isDisabled: isDisabled,
-          style: GSStyle(
-            checked: GSStyle(
-              thumbColor: Colors.grey,
-              activeThumbColor: Colors.blue,
+        component: Column(
+          children: [
+            GSSwitch(
+              isDisabled: isDisabled,
+              size: selectedSizeOption,
+              style: GSStyle(
+                thumbColor: Colors.amber,
+                trackColorFalse: Colors.orange,
+                checked: GSStyle(
+                  activeThumbColor: Colors.red,
+                  trackColorTrue: Colors.black,
+                ),
+              ),
+              value: val1,
+              onToggle: (bool a) {
+                print('switch value: $a');
+              },
             ),
-          ),
-          value: val1,
-          onToggle: (bool value) {
-            setState(() {
-              val1 = value;
-            });
-          },
+          ],
         ),
         controls: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

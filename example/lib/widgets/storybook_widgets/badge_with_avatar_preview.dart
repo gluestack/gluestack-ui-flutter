@@ -21,7 +21,7 @@ class BadgeWithAvatarPreview extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GSAvatar(
-                    size: GSSizes.$md,
+                    size: GSAvatarSizes.$md,
                     style: GSStyle(bg: $GSColors.backgroundLight600),
                     avatarImage: const GSImage(
                       imageType: GSImageType.network,
@@ -40,7 +40,7 @@ class BadgeWithAvatarPreview extends StatelessWidget {
                     width: 10,
                   ),
                   const GSBadge(
-                    action: GSActions.success,
+                    action: GSBadgeActions.success,
                     text: GSBadgeText(
                       "Verified",
                     ),
