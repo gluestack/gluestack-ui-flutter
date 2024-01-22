@@ -171,20 +171,19 @@ class _GSInputState extends State<GSInput> {
 
   @override
   Widget build(BuildContext context) {
-    final inputVariant = widget.variant ?? inputStyle.props?.variant;
     final formProps = GSFormProvider.of(context);
-    final inputSize =
-        widget.size ?? formProps?.size ?? inputStyle.props?.size ?? GSSizes.$md;
-    bool? isDisabled = widget.isDisabled;
-    bool? isReadOnly = widget.isReadOnly;
-    bool? isInvalid = widget.isInvalid;
-    final isRequired = GSFormProvider.of(context)?.isRequired ?? false;
+    final inputVariant =
+        widget.variant?.toGSVariant ?? inputStyle.props?.variant;
+    final inputSize = widget.size?.toGSSize ??
+        formProps?.size ??
+        inputStyle.props?.size ??
+        GSSizes.$md;
+    final bool isDisabled = widget.isDisabled ?? formProps?.isDisabled ?? false;
+    final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
+    final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
+    final bool isRequired = formProps?.isRequired ?? false;
 
     final focusNode = FocusNode();
-
-    isDisabled == null ? isDisabled = formProps?.isDisabled ?? false : null;
-    isReadOnly == null ? isReadOnly = formProps?.isReadOnly ?? false : null;
-    isInvalid == null ? isInvalid = formProps?.isInvalid ?? false : null;
 
     GSStyle styler = resolveStyles(
       context: context,
