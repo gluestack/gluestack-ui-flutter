@@ -175,4 +175,4 @@ Licensed under the MIT License, Copyright © 2023 GeekyAnts. See [LICENSE](./LIC
 - [ ] Text Area
 - [ ] Alert 
 - [ ] Spinner 
-- [ ] Progress Value 
+- [X] Progress Value 
