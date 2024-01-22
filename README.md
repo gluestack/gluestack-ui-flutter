@@ -171,9 +171,8 @@ We welcome contributions from the community. If you'd like to contribute to `glu
 Licensed under the MIT License, Copyright © 2023 GeekyAnts. See [LICENSE](./LICENSE) for more information.
 
 ## Widgets dependent on material (will get removed)
-[] Input 
-[] Text Area 
-[] FAB 
+[] Input
+[] Text Area
 [] Alert 
 [] Spinner 
 [] Progress Value 
