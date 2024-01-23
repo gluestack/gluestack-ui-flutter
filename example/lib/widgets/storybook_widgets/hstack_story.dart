@@ -23,7 +23,7 @@ final class HStackStory extends StoryWidget {
       name: storyName,
       builder: (context) => GSHStack(
         mainAxisAlignment: MainAxisAlignment.center,
-        space: GSSpaces.values[context.knobs
+        space: GSHstackSpaces.values[context.knobs
             .options(label: 'Space', initial: 0, options: spaceOption)],
         isReversed: context.knobs.boolean(label: "isReversed", initial: false),
         children: [

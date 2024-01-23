@@ -5,12 +5,18 @@
 _Package is in development. APIs may change in the future._
 
 ## Documentation
+![Gluestack Flutter Banner](assets/gs_docs_flutter_cover.png)
 
-You can try out the gluestack flutter widgets on this storybook link: https://gluestack-ui-example.web.app/#/storybook
+The gluestack-ui-flutter library is designed to enhance web and mobile app development. It features platform-agnostic components for consistent UI across platforms, offers styling flexibility with pre-built themes and custom options, and emphasizes accessibility. Tailored for web development, it includes web-friendly widgets, native web styling, responsive design, and smooth animations. Key considerations are Flutter web specificity, performance optimization, and community engagement. The library also enables centralized styling, consistency, reusability, scalability, efficient development, and rapid prototyping, aiming to foster collaboration and ensure a unique, high-performance UI experience.
 
-Web app build with gluestack:https://kitchensink-23184.web.app/
+Here are few helpful links to give you an idea of what gluestack-ui-flutter is capable of:
+- Widget Examples (Storybook): https://gluestack-ui-example.web.app/#/storybook
+- Getting Started Example: https://github.com/gluestack/flutter-examples
+- KitchenSink (An example layout made with Gluestack): https://kitchensink-23184.web.app/
 
-We are referring gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress. You can find the detailed documentation for each component, including a list of props and examples, in https://gluestack.io/ui/docs website.
+To keep track of latest developments in gluestack-ui-flutter you can refer to this link: https://github.com/gluestack/gluestack-ui-flutter/tree/feature/core-widgets.
+
+_We are inspired from gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress._
 
 ## Features
 
@@ -64,9 +70,9 @@ Here's an example of how to use `GSButton` widget into your flutter app:
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
-  action: GSActions.negative,
-  variant: GSVariants.solid,
-  size: GSSizes.$lg,
+  action: GSButtonActions.negative,
+  variant: GSButtonVariants.solid,
+  size: GSButtonSizes.$lg,
   onPressed: () {},
   style: GSStyle(
     web: GSStyle(
@@ -163,3 +169,11 @@ We welcome contributions from the community. If you'd like to contribute to `glu
 ## License
 
 Licensed under the MIT License, Copyright © 2023 GeekyAnts. See [LICENSE](./LICENSE) for more information.
+
+## Widgets dependent on material (will get removed)
+[] Input 
+[] Text Area 
+[] FAB 
+[] Alert 
+[] Spinner 
+[] Progress Value 

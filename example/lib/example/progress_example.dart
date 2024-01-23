@@ -12,14 +12,14 @@ class ProgressExample extends StatefulWidget {
 
 class _ProgressExampleState extends State<ProgressExample> {
   final List dropdownSizeOptions = [
-    GSSizes.$xs,
-    GSSizes.$sm,
-    GSSizes.$md,
-    GSSizes.$lg,
-    GSSizes.$xl,
-    GSSizes.$2xl,
+    GSProgressSizes.$xs,
+    GSProgressSizes.$sm,
+    GSProgressSizes.$md,
+    GSProgressSizes.$lg,
+    GSProgressSizes.$xl,
+    GSProgressSizes.$2xl,
   ];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  GSProgressSizes selectedSizeOption = GSProgressSizes.$md;
 
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
@@ -32,7 +32,7 @@ class _ProgressExampleState extends State<ProgressExample> {
     var code = '''
           GSProgress(
               value: 0.4,
-              size: GSSizes.\$md,
+              size: GSProgressSizes.\$md,
            )
   ''';
     return Scaffold(

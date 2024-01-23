@@ -6,9 +6,9 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 //Need to add value according to GSSizes enum order.
 final List<Option<int>> sizeOptions = [
-  Option<int>(value: 2, label: GSSizes.$sm.name),
-  Option<int>(value: 3, label: GSSizes.$md.name),
-  Option<int>(value: 4, label: GSSizes.$lg.name),
+  Option<int>(value: 0, label: GSRadioSizes.$sm.name),
+  Option<int>(value: 1, label: GSRadioSizes.$md.name),
+  Option<int>(value: 2, label: GSRadioSizes.$lg.name),
 ];
 
 class _RadioButtonExample extends StatefulWidget {
@@ -24,8 +24,8 @@ class _RadioButtonExampleState extends State<_RadioButtonExample> {
   @override
   Widget build(BuildContext context) {
     return GSRadio<Value>(
-      size: GSSizes.values[context.knobs
-          .options(label: 'Size', initial: 3, options: sizeOptions)],
+      size: GSRadioSizes.values[context.knobs
+          .options(label: 'Size', initial: 1, options: sizeOptions)],
       isInvalid: context.knobs.boolean(label: "isInvalid", initial: false),
       isDisabled: context.knobs.boolean(label: "isDisabled", initial: false),
       value: Value.four,
@@ -52,7 +52,7 @@ final class RadioButtonStory extends StoryWidget {
   }
 
   @override
-  String get routePath => "radioButton-preview";
+  String get routePath => "radio-button-preview";
 
   @override
   String get storyName => "Radio Button";

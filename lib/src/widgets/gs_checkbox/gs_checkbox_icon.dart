@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -29,7 +29,7 @@ class GSCheckBoxIcon extends StatelessWidget {
     return Opacity(
       opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
       child: Icon(
-        Icons.check,
+       const IconData(0xe156, fontFamily: 'MaterialIcons'),
         color: color,
         size: styler.height,
       ),

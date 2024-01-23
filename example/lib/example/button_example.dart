@@ -13,27 +13,27 @@ class ButtonExample extends StatefulWidget {
 
 class _ButtonExampleState extends State<ButtonExample> {
   final List dropdownSizeOptions = [
-    GSSizes.$xs,
-    GSSizes.$sm,
-    GSSizes.$md,
-    GSSizes.$lg
+    GSButtonSizes.$xs,
+    GSButtonSizes.$sm,
+    GSButtonSizes.$md,
+    GSButtonSizes.$lg
   ];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  GSButtonSizes selectedSizeOption = GSButtonSizes.$md;
 
   final List dropdownActionOptions = [
-    GSActions.primary,
-    GSActions.secondary,
-    GSActions.positive,
-    GSActions.negative,
+    GSButtonActions.primary,
+    GSButtonActions.secondary,
+    GSButtonActions.positive,
+    GSButtonActions.negative,
   ];
-  GSActions selectedActionOption = GSActions.primary;
+  GSButtonActions selectedActionOption = GSButtonActions.primary;
 
   final List dropdownVariantOptions = [
-    GSVariants.solid,
-    GSVariants.outline,
-    GSVariants.link,
+    GSButtonVariants.solid,
+    GSButtonVariants.outline,
+    GSButtonVariants.link,
   ];
-  GSVariants selectedVariantOption = GSVariants.solid;
+  GSButtonVariants selectedVariantOption = GSButtonVariants.solid;
 
   bool isDisabled = false;
   bool isFocusVisible = false;
@@ -72,8 +72,8 @@ class _ButtonExampleState extends State<ButtonExample> {
   Widget build(BuildContext context) {
     var code = '''
               GSButton(
-                    action: GSActions.primary,
-                    variant: GSVariants.solid,
+                    action: GSButtonActions.primary,
+                    variant: GSButtonVariants.solid,
                     size: GSSize.\$md,
                     isDisabled: false,
                     isFocusVisible: false,
@@ -96,15 +96,25 @@ class _ButtonExampleState extends State<ButtonExample> {
           action: selectedActionOption,
           variant: selectedVariantOption,
           size: selectedSizeOption,
-          isDisabled: isDisabled,
-          isFocusVisible: isFocusVisible,
+          onHover: (){
+            print('Hovering');
+          },
           onPressed: () {},
-          child: const Row(
-            children: [
-              GSButtonText(text: "Add"),
-              GSButtonIcon(icon: Icons.add)
-            ],
-          ),
+          // style: GSStyle(
+          //   web: GSStyle(
+          //     bg: $GSColors.amber600,
+          //   ),
+          //   ios: GSStyle(
+          //     bg: $GSColors.pink600,
+          //   ),
+          //   onHover: GSStyle(
+          //     bg: $GSColors.green400,
+          //   ),
+          //   md: GSStyle(
+          //     bg: $GSColors.pink400,
+          //   ),
+          // ),
+          child: const GSButtonText(text: "Click Here"),
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

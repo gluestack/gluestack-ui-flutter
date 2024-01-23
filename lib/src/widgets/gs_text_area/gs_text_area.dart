@@ -6,13 +6,21 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
 
+enum GSTextAreaSizes {
+  $sm,
+  $md,
+  $lg,
+  $xl,
+}
+
 // TODO : Work on descendant styles (_input)
 class GSTextArea extends StatefulWidget {
-  final GSSizes? size;
+  final GSTextAreaSizes? size;
   final GSStyle? style;
   final bool? isDisabled;
   final bool? isInvalid;
@@ -162,15 +170,7 @@ class GSTextArea extends StatefulWidget {
     this.style,
     this.onFieldSubmitted,
     this.textSelectionColor,
-  }) : assert(
-          size == null ||
-              size == GSSizes.$xl ||
-              size == GSSizes.$lg ||
-              size == GSSizes.$md ||
-              size == GSSizes.$sm,
-          'TextArea can only have the sizes: \$xl, \$lg, \$md and \$sm\n'
-          'To resolve this error, ensure only the above mentioned GSSizes is specified.',
-        );
+  });
 
   @override
   State<GSTextArea> createState() => _GSTextAreaState();
@@ -202,7 +202,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     final bool isRequired = formProps?.isRequired ?? false;
 
     final inputSize =
-        widget.size ?? formProps?.size ?? textAreaStyle.props?.size;
+        widget.size?.toGSSize ?? formProps?.size ?? textAreaStyle.props?.size;
 
     GSStyle styler = resolveStyles(
       context: context,
