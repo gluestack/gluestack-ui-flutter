@@ -66,11 +66,15 @@ class AlertExample extends StatelessWidget {
                     style: GSStyle(
                       bg: Colors.pink,
                     ),
-                    child: const Text("Header"),
+                    child: const GSText(
+                      text: "Header",
+                    ),
                   ),
                   body: const GSAlertDialogBody(
-                    child: Text(
-                        "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
+                    child: GSText(
+                      text:
+                          "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone.",
+                    ),
                   ),
                   footer: GSAlertDialogFooter(
                     child: GSButtonGroup(
@@ -78,12 +82,16 @@ class AlertExample extends StatelessWidget {
                         GSButton(
                             action: GSButtonActions.positive,
                             variant: GSButtonVariants.outline,
-                            child: const Text("Yes"),
+                            child: const GSText(
+                              text: "Yes",
+                            ),
                             onPressed: () {}),
                         GSButton(
                             action: GSButtonActions.negative,
                             variant: GSButtonVariants.outline,
-                            child: const Text("No"),
+                            child: const GSText(
+                              text: "No",
+                            ),
                             onPressed: () {}),
                       ],
                     ),
