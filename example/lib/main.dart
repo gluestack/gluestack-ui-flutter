@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 // import 'package:gluestack_ui_example/custom_config.dart';
-import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
+// import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
 
 void main() {
@@ -27,23 +27,23 @@ class _MyAppState extends State<MyApp> {
       // ),
       child: Consumer(
         builder: (context, ref, child) {
-          final currentThemeMode = ref.watch(toggleThemeProvider);
-
-          return MaterialApp.router(
+          // final currentThemeMode = ref.watch(toggleThemeProvider);
+          return GSAppRouter(
+            color: $GSColors.primary500,
             routerConfig: router,
-            themeMode: currentThemeMode,
-            theme: ThemeData(
-                colorSchemeSeed: Colors.deepPurple,
-                useMaterial3: true,
-                brightness: Brightness.light,
-                appBarTheme:
-                    Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
-            darkTheme: ThemeData(
-                colorSchemeSeed: Colors.deepPurple,
-                useMaterial3: true,
-                brightness: Brightness.dark,
-                appBarTheme:
-                    Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
+            // themeMode: currentThemeMode,
+            // theme: ThemeData(
+            //     colorSchemeSeed: Colors.deepPurple,
+            //     useMaterial3: true,
+            //     brightness: Brightness.light,
+            //     appBarTheme:
+            //         Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
+            // darkTheme: ThemeData(
+            //     colorSchemeSeed: Colors.deepPurple,
+            //     useMaterial3: true,
+            //     brightness: Brightness.dark,
+            //     appBarTheme:
+            //         Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
           );
         },
       ),
