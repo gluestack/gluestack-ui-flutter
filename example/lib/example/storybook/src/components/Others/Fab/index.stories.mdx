@@ -40,32 +40,27 @@ GSCenter(
     children: [
       GSBox(
         style: GSStyle(
-            height: 360,
-            width: 320,
-            borderRadius: $GSRadii.$md,
-            bg: $GSColors.backgroundLight50,
-            dark: GSStyle(color: $GSColors.backgroundDark900)),
+          height: 360,
+          width: 320,
+          borderRadius: $GSRadii.$md,
+          bg: $GSColors.backgroundLight50,
+          dark: GSStyle(color: $GSColors.backgroundDark900),
+        ),
       ),
       GSFab(
-        size: GSSizes.values[context.knobs.options(
-            label: 'Size', initial: 3, options: sizeOptions)],
-        placement: GSPlacements.values[context.knobs.options(
-            label: 'Placement',
-            initial: 5,
-            options: placementOptions)],
-        isHovered:
-            context.knobs.boolean(label: "isHovered", initial: false),
-        isDisabled: context.knobs
-            .boolean(label: "isDisabled", initial: false),
-        isPressed:
-            context.knobs.boolean(label: "isPressed", initial: false),
+        size: GSFABSizes.$md,
+        placement: GSFABPlacements.bottomRight,
         onPressed: () {},
+        isDisabled: false,
+        isHovered: false,
+        isPressed: false,
         icon: const GSFabIcon(icon: Icons.add),
         label: const GSFabLabel(text: 'Quick Start'),
       ),
     ],
   ),
-),
+)
+
 ```
 
 <br />

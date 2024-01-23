@@ -36,25 +36,22 @@ This is an illustration of a **Themed GSSwitch** widget with default configurati
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSSwitch(
-  size: GSSizes.$md,
+  size: GSSwitchSizes.$md,
   isDisabled: false,
-  style: GSStyle
-  (
-    checked: GSStyle
-    (
+  style: GSStyle(
+    checked: GSStyle(
       thumbColor: Colors.grey,
       activeThumbColor: Colors.blue,
     ),
   ),
   value: val1,
-  onToggle: (bool value)
-  {
-    setState(()
-    {
+  onToggle: (bool value) {
+    setState(() {
       val1 = value;
     });
   },
-  )
+)
+
 ```
 
 <br />

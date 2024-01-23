@@ -36,25 +36,23 @@ This is an illustration of a **Themed GSToast** widget with default configuratio
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
-  size: GSSizes.$lg,
+  size: GSButtonSizes.$lg,
   child: const GSButtonText(text: "Click Me"),
   onPressed: () {
     showToast(
       context,
-      child: GSToast(
-        action: GSActions.values[context.knobs.options(
-            label: 'Action', initial: 9, options: actionOptions)],
-        variant: GSVariants.values[context.knobs.options(
-            label: 'Variant', initial: 0, options: variantOptions)],
+      child: const GSToast(
+        variant: GSToastVariants.solid,
+        action: GSToastActions.success,
         child: const GSVStack(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GSToastTitle(
-              title: "Hey",
+              title: "Toast Title",
             ),
             GSToastDescription(
-              description: "Desc Desc Desc Desc Desc Desc ",
+              description: "Here is the toast description!",
             ),
           ],
         ),
@@ -62,6 +60,8 @@ GSButton(
     );
   },
 )
+
+
 ```
 
 <br />

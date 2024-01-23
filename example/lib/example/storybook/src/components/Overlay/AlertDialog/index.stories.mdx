@@ -36,12 +36,12 @@ This is an illustration of a **Themed GSAlertDialog** widget with default config
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
-  size: GSSizes.$lg,
+  size: GSButtonSizes.$lg,
   child: const GSButtonText(text: "Click Me"),
   onPressed: () {
     GSAlertDialog.show(
       context,
-      size: GSSizes.$md,
+      size: GSAlertDialogSizes.$full,
       content: GSAlertDialogContent(
         header: GSAlertDialogHeader(
           style: GSStyle(
@@ -56,15 +56,26 @@ GSButton(
         footer: GSAlertDialogFooter(
           child: GSButtonGroup(
             buttons: [
-              GSButton(child: const Text("hey"), onPressed: () {}),
-              GSButton(child: const Text("click"), onPressed: () {}),
+              GSButton(
+                action: GSButtonActions.positive,
+                variant: GSButtonVariants.outline,
+                child: const Text("Yes"),
+                onPressed: () {},
+              ),
+              GSButton(
+                action: GSButtonActions.negative,
+                variant: GSButtonVariants.outline,
+                child: const Text("No"),
+                onPressed: () {},
+              ),
             ],
           ),
         ),
       ),
     );
   },
-),
+)
+
 ```
 
 <br />

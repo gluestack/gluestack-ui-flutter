@@ -14,21 +14,27 @@ class AvatarWithLabelPreview extends StatelessWidget {
         stories: [
           Story(
             name: 'Avatar',
-            builder: (context) => GSVStack(
-              children: [
-                GSHStack(
-                  children: [
-                    GSAvatar(
-                      style: GSStyle(
-                        bg: Colors.orange,
-                        textStyle: const TextStyle(color: Colors.white),
+            builder: (context) => GSBox(
+              style: GSStyle(
+                width: 250,
+                height: 150,
+              ),
+              child: GSVStack(
+                children: [
+                  GSHStack(
+                    children: [
+                      GSAvatar(
+                        style: GSStyle(
+                          bg: Colors.orange,
+                          textStyle: const TextStyle(color: Colors.white),
+                        ),
+                        fallBackText: const GSAvatarFallBackText('Geeky Stack'),
                       ),
-                      fallBackText: const GSAvatarFallBackText('Geeky Stack'),
-                    ),
-                    const GSHeading(text: 'text')
-                  ],
-                ),
-              ],
+                      const GSHeading(text: 'text')
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],

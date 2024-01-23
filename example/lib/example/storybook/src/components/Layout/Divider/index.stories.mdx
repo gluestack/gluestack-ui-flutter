@@ -134,6 +134,53 @@ A GSDivider widget with different layouts offers versatile options for visually 
 
 ```dart
 import 'package:gluestack_ui/gluestack_ui.dart';
+
+GSVStack(
+  children: [
+    GSHStack(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const GSText(
+          text: "Simple",
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        GSDivider(
+          orientation: GSOrientations.vertical,
+          style: GSStyle(
+            height: 30,
+            color: $GSColors.rose300,
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const GSText(
+          text: "Easy",
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        GSDivider(
+          orientation: GSOrientations.vertical,
+          style: GSStyle(
+            height: 30,
+            color: $GSColors.green300,
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const GSText(
+          text: "Difficult",
+        ),
+      ],
+    ),
+  ],
+)
+
+
 ```
 
 #### Orientation

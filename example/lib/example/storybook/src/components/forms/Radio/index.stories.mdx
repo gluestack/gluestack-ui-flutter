@@ -36,7 +36,7 @@ This is an illustration of a **Themed GSRadio** widget with default configuratio
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSRadio<Value>(
-  size: GSSizes.$md,
+  size: GSRadioSizes.$md,
   isDisabled: false,
   isInvalid: false,
   value: Value.four,
@@ -47,9 +47,10 @@ GSRadio<Value>(
     });
   },
   icon: const GSRadioIcon<Value>(),
-  label: const GSRadioText<Value>(text: 'text4'),
-  style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.\$2)),
+  label: const GSRadioText<Value>(text: 'text'),
+  style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
 )
+
 ```
 
 <br />
