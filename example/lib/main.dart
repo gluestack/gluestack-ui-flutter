@@ -28,22 +28,24 @@ class _MyAppState extends State<MyApp> {
       child: Consumer(
         builder: (context, ref, child) {
           // final currentThemeMode = ref.watch(toggleThemeProvider);
-          return GSAppRouter(
-            color: $GSColors.primary500,
-            routerConfig: router,
-            // themeMode: currentThemeMode,
-            // theme: ThemeData(
-            //     colorSchemeSeed: Colors.deepPurple,
-            //     useMaterial3: true,
-            //     brightness: Brightness.light,
-            //     appBarTheme:
-            //         Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
-            // darkTheme: ThemeData(
-            //     colorSchemeSeed: Colors.deepPurple,
-            //     useMaterial3: true,
-            //     brightness: Brightness.dark,
-            //     appBarTheme:
-            //         Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
+          return ScaffoldMessenger(
+            child: GSApp.router( //gotta add scaffold messenger if using snackbars, which we are!
+              color: $GSColors.primary500,
+              routerConfig: router,
+              // themeMode: currentThemeMode,
+              // theme: ThemeData(
+              //     colorSchemeSeed: Colors.deepPurple,
+              //     useMaterial3: true,
+              //     brightness: Brightness.light,
+              //     appBarTheme:
+              //         Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
+              // darkTheme: ThemeData(
+              //     colorSchemeSeed: Colors.deepPurple,
+              //     useMaterial3: true,
+              //     brightness: Brightness.dark,
+              //     appBarTheme:
+              //         Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
+            ),
           );
         },
       ),

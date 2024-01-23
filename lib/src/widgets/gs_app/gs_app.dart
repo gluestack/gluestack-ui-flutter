@@ -103,7 +103,11 @@ class GSApp extends WidgetsApp {
     GenerateAppTitle? onGenerateTitle,
     Color color = const Color(0xFFFFFFFF),
     Locale? locale,
-    Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates,
+    Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates =  const [
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ],
     LocaleListResolutionCallback? localeListResolutionCallback,
     LocaleResolutionCallback? localeResolutionCallback,
     Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
@@ -119,6 +123,7 @@ class GSApp extends WidgetsApp {
     String? restorationScopeId,
   }) : super.router(
           key: key,
+          routerConfig: routerConfig,
           routeInformationProvider: routeInformationProvider,
           routeInformationParser: routeInformationParser,
           routerDelegate: routerDelegate,
