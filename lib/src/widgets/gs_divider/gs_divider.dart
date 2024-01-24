@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -62,7 +61,7 @@ class GSDivider extends StatelessWidget {
                 top: styler.indent, bottom: styler.endIndent),
             decoration: BoxDecoration(
               border: Border(
-                left: Divider.createBorderSide(
+                left: createBorderSide(
                   context,
                   color: styler.bg ?? styler.color ?? const Color(0xaaaaaaaa),
                   width: styler.width ?? 1, //thickness),

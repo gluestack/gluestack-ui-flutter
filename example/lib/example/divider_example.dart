@@ -10,8 +10,8 @@ class DividerExample extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Divider"),
       ),
-      body: Center(
-        child: Column(
+      body: GSCenter(
+        child: GSVStack(
           children: [
             GSDivider(
               orientation: GSOrientations.vertical,
