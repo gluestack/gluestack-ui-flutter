@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
+import 'package:gluestack_ui/src/widgets/gs_accessibility/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
@@ -30,7 +31,6 @@ enum GSButtonSizes {
   $md,
   $lg,
 }
-
 
 class GSButton extends StatelessWidget {
   final GSButtonActions? action;
@@ -211,8 +211,8 @@ class GSButton extends StatelessWidget {
               buttonStyle.actionMap(buttonAction),
               buttonStyle.variantMap(buttonVariant),
               buttonStyle.sizeMap(buttonSize),
-              buttonStyle
-                  .compoundVariants?[buttonAction.toString() + buttonVariant.toString()]
+              buttonStyle.compoundVariants?[
+                  buttonAction.toString() + buttonVariant.toString()]
             ],
             inlineStyle: style,
             isFirst: true);
@@ -234,123 +234,101 @@ class GSButton extends StatelessWidget {
               child: Semantics(
                 label: semanticsLabel ?? 'Button',
                 button: true,
-                child: SizedBox(
-                  height: styler.height,
-                  child: FocusableActionDetector(
-                    onFocusChange: onFocusChange,
-                    focusNode: focusNode,
-                    autofocus: autoFocus,
-                    child: GestureDetector(
-                      onTap: disabled ? null : onPressed,
-                      onLongPress: disabled ? null : onLongPress,
-                      onTapDown: disabled ? null : onTapDown,
-                      onTapUp: disabled ? null : onTapUp,
-                      onTapCancel: disabled ? null : onTapCancel,
-                      onSecondaryTap: disabled ? null : onSecondaryTap,
-                      onSecondaryTapDown: disabled ? null : onSecondaryTapDown,
-                      onSecondaryTapUp: disabled ? null : onSecondaryTapUp,
-                      onSecondaryTapCancel:
-                          disabled ? null : onSecondaryTapCancel,
-                      onTertiaryTapDown: disabled ? null : onTertiaryTapDown,
-                      onTertiaryTapUp: disabled ? null : onTertiaryTapUp,
-                      onTertiaryTapCancel:
-                          disabled ? null : onTertiaryTapCancel,
-                      onDoubleTap: disabled ? null : onDoubleTap,
-                      onLongPressDown: disabled ? null : onLongPressDown,
-                      onLongPressCancel: disabled ? null : onLongPressCancel,
-                      onLongPressStart: disabled ? null : onLongPressStart,
-                      onLongPressMoveUpdate:
-                          disabled ? null : onLongPressMoveUpdate,
-                      onLongPressUp: disabled ? null : onLongPressUp,
-                      onLongPressEnd: disabled ? null : onLongPressEnd,
-                      onSecondaryLongPressDown:
-                          disabled ? null : onSecondaryLongPressDown,
-                      onSecondaryLongPressCancel:
-                          disabled ? null : onSecondaryLongPressCancel,
-                      onSecondaryLongPress:
-                          disabled ? null : onSecondaryLongPress,
-                      onSecondaryLongPressStart:
-                          disabled ? null : onSecondaryLongPressStart,
-                      onSecondaryLongPressMoveUpdate:
-                          disabled ? null : onSecondaryLongPressMoveUpdate,
-                      onSecondaryLongPressUp:
-                          disabled ? null : onSecondaryLongPressUp,
-                      onSecondaryLongPressEnd:
-                          disabled ? null : onSecondaryLongPressEnd,
-                      onTertiaryLongPressDown:
-                          disabled ? null : onTertiaryLongPressDown,
-                      onTertiaryLongPressCancel:
-                          disabled ? null : onTertiaryLongPressCancel,
-                      onTertiaryLongPress:
-                          disabled ? null : onTertiaryLongPress,
-                      onTertiaryLongPressStart:
-                          disabled ? null : onTertiaryLongPressStart,
-                      onTertiaryLongPressMoveUpdate:
-                          disabled ? null : onTertiaryLongPressMoveUpdate,
-                      onTertiaryLongPressUp:
-                          disabled ? null : onTertiaryLongPressUp,
-                      onTertiaryLongPressEnd:
-                          disabled ? null : onTertiaryLongPressEnd,
-                      onVerticalDragDown: disabled ? null : onVerticalDragDown,
-                      onVerticalDragStart:
-                          disabled ? null : onVerticalDragStart,
-                      onVerticalDragUpdate:
-                          disabled ? null : onVerticalDragUpdate,
-                      onVerticalDragEnd: disabled ? null : onVerticalDragEnd,
-                      onVerticalDragCancel:
-                          disabled ? null : onVerticalDragCancel,
-                      onHorizontalDragDown:
-                          disabled ? null : onHorizontalDragDown,
-                      onHorizontalDragStart:
-                          disabled ? null : onHorizontalDragStart,
-                      onHorizontalDragUpdate:
-                          disabled ? null : onHorizontalDragUpdate,
-                      onHorizontalDragEnd:
-                          disabled ? null : onHorizontalDragEnd,
-                      onHorizontalDragCancel:
-                          disabled ? null : onHorizontalDragCancel,
-                      onForcePressStart: disabled ? null : onForcePressStart,
-                      onForcePressPeak: disabled ? null : onForcePressPeak,
-                      onForcePressUpdate: disabled ? null : onForcePressUpdate,
-                      onForcePressEnd: disabled ? null : onForcePressEnd,
-                      onPanDown: disabled ? null : onPanDown,
-                      onPanStart: disabled ? null : onPanStart,
-                      onPanUpdate: disabled ? null : onPanUpdate,
-                      onPanEnd: disabled ? null : onPanEnd,
-                      onPanCancel: disabled ? null : onPanCancel,
-                      onScaleStart: disabled ? null : onScaleStart,
-                      onScaleUpdate: disabled ? null : onScaleUpdate,
-                      onScaleEnd: disabled ? null : onScaleEnd,
-                      behavior: disabled ? null : behavior,
-                      excludeFromSemantics: excludeFromSemantics,
-                      dragStartBehavior: dragStartBehavior,
-                      trackpadScrollCausesScale: trackpadScrollCausesScale,
-                      trackpadScrollToScaleFactor: trackpadScrollToScaleFactor,
-                      supportedDevices: supportedDevices,
-                      child: Container(
-                        clipBehavior: clipBehavior,
-                        // statesController: statesController,
-                        padding: styler.padding,
-                        decoration: BoxDecoration(
-                          color:  GSStyleBuilderProvider.of(context)?.isFocused ??
-                                      false
-                                  ? HSLColor.fromColor(
-                                          styler.bg ?? $GSColors.red400)
-                                      .withLightness(0.50)
-                                      .toColor()
-                                  : styler.bg,
-                          borderRadius:
-                              BorderRadius.circular(styler.borderRadius ?? 0.0),
-                          border: Border.fromBorderSide(_resolveBorderSide(
-                              buttonVariant, styler, isAttached)),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            child,
-                          ],
-                        ),
-                      ),
+                child: GSAccessibilityHandler(
+                  onPressed: disabled ? () {} : onPressed,
+                  onLongPress: disabled ? null : onLongPress,
+                  onTapDown: disabled ? null : onTapDown,
+                  onTapUp: disabled ? null : onTapUp,
+                  onTapCancel: disabled ? null : onTapCancel,
+                  onSecondaryTap: disabled ? null : onSecondaryTap,
+                  onSecondaryTapDown: disabled ? null : onSecondaryTapDown,
+                  onSecondaryTapUp: disabled ? null : onSecondaryTapUp,
+                  onSecondaryTapCancel: disabled ? null : onSecondaryTapCancel,
+                  onTertiaryTapDown: disabled ? null : onTertiaryTapDown,
+                  onTertiaryTapUp: disabled ? null : onTertiaryTapUp,
+                  onTertiaryTapCancel: disabled ? null : onTertiaryTapCancel,
+                  onDoubleTap: disabled ? null : onDoubleTap,
+                  onLongPressDown: disabled ? null : onLongPressDown,
+                  onLongPressCancel: disabled ? null : onLongPressCancel,
+                  onLongPressStart: disabled ? null : onLongPressStart,
+                  onLongPressMoveUpdate:
+                      disabled ? null : onLongPressMoveUpdate,
+                  onLongPressUp: disabled ? null : onLongPressUp,
+                  onLongPressEnd: disabled ? null : onLongPressEnd,
+                  onSecondaryLongPressDown:
+                      disabled ? null : onSecondaryLongPressDown,
+                  onSecondaryLongPressCancel:
+                      disabled ? null : onSecondaryLongPressCancel,
+                  onSecondaryLongPress: disabled ? null : onSecondaryLongPress,
+                  onSecondaryLongPressStart:
+                      disabled ? null : onSecondaryLongPressStart,
+                  onSecondaryLongPressMoveUpdate:
+                      disabled ? null : onSecondaryLongPressMoveUpdate,
+                  onSecondaryLongPressUp:
+                      disabled ? null : onSecondaryLongPressUp,
+                  onSecondaryLongPressEnd:
+                      disabled ? null : onSecondaryLongPressEnd,
+                  onTertiaryLongPressDown:
+                      disabled ? null : onTertiaryLongPressDown,
+                  onTertiaryLongPressCancel:
+                      disabled ? null : onTertiaryLongPressCancel,
+                  onTertiaryLongPress: disabled ? null : onTertiaryLongPress,
+                  onTertiaryLongPressStart:
+                      disabled ? null : onTertiaryLongPressStart,
+                  onTertiaryLongPressMoveUpdate:
+                      disabled ? null : onTertiaryLongPressMoveUpdate,
+                  onTertiaryLongPressUp:
+                      disabled ? null : onTertiaryLongPressUp,
+                  onTertiaryLongPressEnd:
+                      disabled ? null : onTertiaryLongPressEnd,
+                  onVerticalDragDown: disabled ? null : onVerticalDragDown,
+                  onVerticalDragStart: disabled ? null : onVerticalDragStart,
+                  onVerticalDragUpdate: disabled ? null : onVerticalDragUpdate,
+                  onVerticalDragEnd: disabled ? null : onVerticalDragEnd,
+                  onVerticalDragCancel: disabled ? null : onVerticalDragCancel,
+                  onHorizontalDragDown: disabled ? null : onHorizontalDragDown,
+                  onHorizontalDragStart:
+                      disabled ? null : onHorizontalDragStart,
+                  onHorizontalDragUpdate:
+                      disabled ? null : onHorizontalDragUpdate,
+                  onHorizontalDragEnd: disabled ? null : onHorizontalDragEnd,
+                  onHorizontalDragCancel:
+                      disabled ? null : onHorizontalDragCancel,
+                  onForcePressStart: disabled ? null : onForcePressStart,
+                  onForcePressPeak: disabled ? null : onForcePressPeak,
+                  onForcePressUpdate: disabled ? null : onForcePressUpdate,
+                  onForcePressEnd: disabled ? null : onForcePressEnd,
+                  onPanDown: disabled ? null : onPanDown,
+                  onPanStart: disabled ? null : onPanStart,
+                  onPanUpdate: disabled ? null : onPanUpdate,
+                  onPanEnd: disabled ? null : onPanEnd,
+                  onPanCancel: disabled ? null : onPanCancel,
+                  onScaleStart: disabled ? null : onScaleStart,
+                  onScaleUpdate: disabled ? null : onScaleUpdate,
+                  onScaleEnd: disabled ? null : onScaleEnd,
+                  behavior: disabled ? null : behavior,
+                  excludeFromSemantics: excludeFromSemantics,
+                  dragStartBehavior: dragStartBehavior,
+                  trackpadScrollCausesScale: trackpadScrollCausesScale,
+                  trackpadScrollToScaleFactor: trackpadScrollToScaleFactor,
+                  supportedDevices: supportedDevices,
+                  child: Container(
+                    height: styler.height ?? 40,
+                    clipBehavior: clipBehavior,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: styler.padding!.horizontal / 2),
+                    decoration: BoxDecoration(
+                      color: styler.bg,
+                      borderRadius:
+                          BorderRadius.circular(styler.borderRadius ?? 0.0),
+                      border: Border.fromBorderSide(_resolveBorderSide(
+                          buttonVariant, styler, isAttached)),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        child,
+                      ],
                     ),
                   ),
                 ),

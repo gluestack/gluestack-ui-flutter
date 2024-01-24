@@ -1,0 +1,1 @@
+export 'gs_gesture.dart';
