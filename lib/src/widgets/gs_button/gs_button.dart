@@ -99,7 +99,7 @@ class GSButton extends StatelessWidget {
             isFirst: true);
 
         if (GSStyleBuilderProvider.of(context)?.isHovered ?? false) {
-          if (onHover != null) {
+          if (onHover != null && !disabled) {
             onHover!();
           }
         }
