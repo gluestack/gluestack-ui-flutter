@@ -568,6 +568,9 @@ class GSStyle extends BaseStyle<GSStyle> {
   GSOutlineStyle? outlineStyle;
   Map<String, GSStyle>? compoundVariants;
 
+  double indent;
+  double endIndent;
+
   GSStyle({
     this.borderWidth,
     this.borderColor,
@@ -632,6 +635,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.isVisible,
     this.direction,
     this.compoundVariants,
+    this.indent = 0,
+    this.endIndent = 0,
   });
 
   @override
