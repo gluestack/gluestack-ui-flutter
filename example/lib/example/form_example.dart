@@ -342,6 +342,8 @@ class _FormExampleState extends State<FormExample> {
                   child: GSButton(
                       action: GSButtonActions.positive,
                       variant: GSButtonVariants.outline,
+                      size: GSButtonSizes.$lg,
+                      style: GSStyle(width: double.infinity),
                       onPressed: () {
                         if (_formKey.currentState != null &&
                             _formKey.currentState!.validate() &&

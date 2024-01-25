@@ -131,6 +131,7 @@ class GSButton extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment:  MainAxisAlignment.center, //TODO: give more control to end user
                       children: [
                         child,
                       ],
