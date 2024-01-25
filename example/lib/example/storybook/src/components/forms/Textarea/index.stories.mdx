@@ -36,19 +36,13 @@ This is an illustration of a **Themed GSTextarea** widget with default configura
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSTextArea(
-  size: GSSizes.values[context.knobs
-      .options(label: 'Size', initial: 3, options: sizeOptions)],
-  isDisabled:
-      context.knobs.boolean(label: "isDisabled", initial: false),
-  isInvalid:
-      context.knobs.boolean(label: "isInvalid", initial: false),
-  isReadOnly:
-      context.knobs.boolean(label: "isReadOnly", initial: false),
+  size: GSTextAreaSizes.$md,
   hintText: "Enter text here",
-  style: GSStyle(
-    width: 300,
-  ),
+  isDisabled: false,
+  isInvalid: false,
+  readOnly: false,
 )
+
 ```
 
 <br />
@@ -219,7 +213,7 @@ The GSTextarea widget can be incorporated within the FormControl.
   src={process.env.NEXT_PUBLIC_PREVIEW + "textarea-form-control-preview"}
   title="Example"
   width="800"
-  height="350"
+  height="450"
 ></iframe>
 
 ```dart
