@@ -116,13 +116,12 @@ class GSButton extends StatelessWidget {
                 label: semanticsLabel ?? 'Button',
                 button: true,
                 child: GsGestureDetector(
-                  onPressed: disabled ? () {} : onPressed,
+                  onPressed: disabled ? null : onPressed,
                   onLongPress: disabled ? null : onLongPress,
                   child: Container(
                     height: styler.height ?? 40,
                     clipBehavior: clipBehavior,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: styler.padding!.horizontal / 2),
+                    padding: styler.padding,
                     decoration: BoxDecoration(
                       color: styler.bg,
                       borderRadius:
