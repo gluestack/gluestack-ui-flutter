@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 class GsGestureDetector extends StatefulWidget {
   final Widget child;
 //Gesture Detector Stuff
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
   final GestureTapDownCallback? onTapDown;
   final GestureTapUpCallback? onTapUp;
@@ -73,7 +73,7 @@ class GsGestureDetector extends StatefulWidget {
   const GsGestureDetector({
     super.key,
     required this.child,
-    required this.onPressed,
+    this.onPressed,
     //Gesture Detector Stuff
     this.onTapDown,
     this.onTapUp,
@@ -179,7 +179,9 @@ class GSAccessibilityHandlerWidgetState extends State<GsGestureDetector> {
                 event.logicalKey == LogicalKeyboardKey.space ||
             event is RawKeyDownEvent &&
                 event.logicalKey == LogicalKeyboardKey.enter) {
-          widget.onPressed();
+          if (widget.onPressed != null) {
+            widget.onPressed!();
+          }
           return KeyEventResult.handled;
         }
         return KeyEventResult.ignored;
@@ -187,7 +189,9 @@ class GSAccessibilityHandlerWidgetState extends State<GsGestureDetector> {
       child: GestureDetector(
         onTap: () {
           _focusNode.requestFocus();
-          widget.onPressed();
+          if (widget.onPressed != null) {
+            widget.onPressed!();
+          }
         },
         onLongPress: widget.onLongPress,
         onTapDown: widget.onTapDown,
