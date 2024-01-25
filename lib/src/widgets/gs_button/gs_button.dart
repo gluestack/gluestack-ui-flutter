@@ -103,7 +103,6 @@ class GSButton extends StatelessWidget {
             onHover!();
           }
         }
-
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(
@@ -119,7 +118,8 @@ class GSButton extends StatelessWidget {
                   onPressed: disabled ? null : onPressed,
                   onLongPress: disabled ? null : onLongPress,
                   child: Container(
-                    height: styler.height ?? 40,
+                    height: styler.height,
+                    width: styler.width,
                     clipBehavior: clipBehavior,
                     padding: styler.padding,
                     decoration: BoxDecoration(
