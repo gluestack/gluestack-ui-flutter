@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_accessibility/public.dart';
+import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
@@ -115,7 +115,7 @@ class GSButton extends StatelessWidget {
               child: Semantics(
                 label: semanticsLabel ?? 'Button',
                 button: true,
-                child: GSAccessibilityHandler(
+                child: GsGestureDetector(
                   onPressed: disabled ? () {} : onPressed,
                   onLongPress: disabled ? null : onLongPress,
                   child: Container(

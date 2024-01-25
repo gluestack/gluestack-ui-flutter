@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/color.dart';
-import 'package:gluestack_ui/src/widgets/gs_accessibility/public.dart';
+import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_switch/gs_switch_style.dart';
@@ -76,7 +76,7 @@ class GSCustomSwitchState extends State<GSSwitch> {
             opacity: GSStyleBuilderProvider.of(context)?.isDisabled ?? false
                 ? styler.onDisabled?.opacity ?? 0.5
                 : 1,
-            child: GSAccessibilityHandler(
+            child: GsGestureDetector(
               onPressed: () {
                 setState(() {
                   _value = !_value;

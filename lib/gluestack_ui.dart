@@ -2,7 +2,7 @@ export 'src/style/gs_style.dart';
 export 'src/token/public.dart';
 
 export 'src/widgets/gs_alert_dialog/public.dart';
-export 'src/widgets/gs_accessibility/public.dart';
+export 'src/widgets/gs_gesture_detector/public.dart';
 export 'src/widgets/gs_ancestor/public.dart';
 export 'src/widgets/gs_avatar/public.dart';
 export 'src/widgets/gs_badge/public.dart';

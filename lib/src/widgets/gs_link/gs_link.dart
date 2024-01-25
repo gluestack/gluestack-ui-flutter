@@ -30,7 +30,7 @@ class GSLink extends StatelessWidget {
       decedentStyles: styler.descendantStyles,
       child: GSFocusableActionDetector(
         isHovered: isHovered,
-        child: GSAccessibilityHandler(
+        child: GsGestureDetector(
           onPressed: () async {
             if (await canLaunchUrlString(url)) {
               await launchUrlString(url,

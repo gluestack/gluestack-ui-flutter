@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-class GSAccessibilityHandler extends StatefulWidget {
+class GsGestureDetector extends StatefulWidget {
   final Widget child;
 //Gesture Detector Stuff
   final VoidCallback onPressed;
@@ -70,7 +70,7 @@ class GSAccessibilityHandler extends StatefulWidget {
   final Offset trackpadScrollToScaleFactor;
   final Set<PointerDeviceKind>? supportedDevices;
 
-  const GSAccessibilityHandler({
+  const GsGestureDetector({
     super.key,
     required this.child,
     required this.onPressed,
@@ -145,7 +145,7 @@ class GSAccessibilityHandler extends StatefulWidget {
       GSAccessibilityHandlerWidgetState();
 }
 
-class GSAccessibilityHandlerWidgetState extends State<GSAccessibilityHandler> {
+class GSAccessibilityHandlerWidgetState extends State<GsGestureDetector> {
   final FocusNode _focusNode = FocusNode();
   bool _isFocused = false;
 
