@@ -15,7 +15,11 @@ class FormExample extends StatefulWidget {
 class _FormExampleState extends State<FormExample> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Value groupValue = Value.one;
-  final List dropdownSizeOptions = [GSFormControlSizes.$sm, GSFormControlSizes.$md, GSFormControlSizes.$lg];
+  final List dropdownSizeOptions = [
+    GSFormControlSizes.$sm,
+    GSFormControlSizes.$md,
+    GSFormControlSizes.$lg
+  ];
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
       selectedSizeOption = newOption;
@@ -334,28 +338,32 @@ class _FormExampleState extends State<FormExample> {
                 ),
                 sp2,
                 sp2,
-                GSButton(
-                    action: GSButtonActions.positive,
-                    variant: GSButtonVariants.outline,
-                    child: const Text(
-                      'Submit',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState != null &&
-                          _formKey.currentState!.validate() &&
-                          !isDisabled) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              'Submitting data...',
-                              style: TextStyle(color: Colors.white),
+                GSCenter(
+                  child: GSButton(
+                      action: GSButtonActions.positive,
+                      variant: GSButtonVariants.outline,
+                      onPressed: () {
+                        if (_formKey.currentState != null &&
+                            _formKey.currentState!.validate() &&
+                            !isDisabled) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Submitting data...',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.green,
                             ),
-                            backgroundColor: Colors.green,
-                          ),
-                        );
-                      }
-                    }),
+                          );
+                        }
+                      },
+                      child: GSText(
+                        text: 'Submit',
+                        textAlign: TextAlign.center,
+                        style: GSStyle(
+                            textStyle: const TextStyle(color: Colors.green)),
+                      )),
+                ),
               ],
             ),
           ),
