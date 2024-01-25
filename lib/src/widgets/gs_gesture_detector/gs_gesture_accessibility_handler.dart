@@ -190,7 +190,6 @@ class GSAccessibilityHandlerWidgetState extends State<GsGestureDetector> {
       },
       child: GestureDetector(
         onTap: () {
-          _focusNode.requestFocus();
           if (widget.onPressed != null) {
             widget.onPressed!();
           }

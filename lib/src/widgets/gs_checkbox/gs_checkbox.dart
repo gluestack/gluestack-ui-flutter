@@ -115,7 +115,6 @@ class _GSCheckBoxState extends State<GSCheckBox> {
             value: widget.value,
             onChanged: isCheckBoxDisabled ? null : widget.onChanged,
             child: GsGestureDetector(
-                showFocusHighlight: false,
                 onPressed: widget.onChanged != null && !isCheckBoxDisabled
                     ? () {
                         if (groupValue != null) {

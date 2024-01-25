@@ -4,6 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
+import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
@@ -30,6 +31,7 @@ enum GSRadioSizes {
   $md,
   $lg,
 }
+
 class GSRadio<T> extends StatelessWidget {
   final GSRadioSizes? size;
   final Widget icon;
@@ -56,7 +58,10 @@ class GSRadio<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formProps = GSFormProvider.of(context);
-    final radioSize = size?.toGSSize ?? formProps?.size ?? radioStyle.props?.size ?? GSSizes.$md;
+    final radioSize = size?.toGSSize ??
+        formProps?.size ??
+        radioStyle.props?.size ??
+        GSSizes.$md;
     bool? isRadioDisabled = isDisabled;
     bool? isRadioReadOnly = formProps?.isReadOnly ?? false;
     bool? isRadioInvalid = isInvalid;
@@ -76,8 +81,9 @@ class GSRadio<T> extends StatelessWidget {
           cursor: isRadioDisabled
               ? SystemMouseCursors.forbidden
               : SystemMouseCursors.click,
-          child: GestureDetector(
-            onTap: () {
+          child: GsGestureDetector(
+            
+            onPressed: () {
               if (!isRadioDisabled! &&
                   value != groupValue &&
                   !isRadioReadOnly) {
