@@ -176,9 +176,10 @@ class GSAccessibilityHandlerWidgetState extends State<GSAccessibilityHandler> {
       focusNode: _focusNode,
       onKey: (FocusNode node, RawKeyEvent event) {
         if (event is RawKeyDownEvent &&
-                event.logicalKey == LogicalKeyboardKey.enter ||
-            event.logicalKey == LogicalKeyboardKey.space) {
-          widget.onPressed.call();
+                event.logicalKey == LogicalKeyboardKey.space ||
+            event is RawKeyDownEvent &&
+                event.logicalKey == LogicalKeyboardKey.enter) {
+          widget.onPressed();
           return KeyEventResult.handled;
         }
         return KeyEventResult.ignored;
@@ -186,7 +187,7 @@ class GSAccessibilityHandlerWidgetState extends State<GSAccessibilityHandler> {
       child: GestureDetector(
         onTap: () {
           _focusNode.requestFocus();
-          widget.onPressed.call();
+          widget.onPressed();
         },
         onLongPress: widget.onLongPress,
         onTapDown: widget.onTapDown,

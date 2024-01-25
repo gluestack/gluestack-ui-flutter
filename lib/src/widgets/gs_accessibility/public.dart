@@ -1,1 +1,1 @@
-export 'gs_gesture.dart';
+export 'gs_accessibility_gesture_handler.dart';
