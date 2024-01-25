@@ -6,11 +6,12 @@ import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-enum GSCheckBoxSizes{
-$sm,
-$md,
-$lg,
+enum GSCheckBoxSizes {
+  $sm,
+  $md,
+  $lg,
 }
+
 class GSCheckBox extends StatefulWidget {
   final GSCheckBoxSizes? size;
   final String value;
@@ -113,8 +114,9 @@ class _GSCheckBoxState extends State<GSCheckBox> {
             isChecked: widget.isChecked ?? isChecked,
             value: widget.value,
             onChanged: isCheckBoxDisabled ? null : widget.onChanged,
-            child: GestureDetector(
-                onTap: widget.onChanged != null && !isCheckBoxDisabled
+            child: GsGestureDetector(
+                showFocusHighlight: false,
+                onPressed: widget.onChanged != null && !isCheckBoxDisabled
                     ? () {
                         if (groupValue != null) {
                           if (!isCheckBoxReadOnly! &&

@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 
 class GsGestureDetector extends StatefulWidget {
   final Widget child;
+  final bool showFocusHighlight;
 //Gesture Detector Stuff
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
@@ -73,6 +74,7 @@ class GsGestureDetector extends StatefulWidget {
   const GsGestureDetector({
     super.key,
     required this.child,
+    this.showFocusHighlight = true,
     this.onPressed,
     //Gesture Detector Stuff
     this.onTapDown,
@@ -255,17 +257,19 @@ class GSAccessibilityHandlerWidgetState extends State<GsGestureDetector> {
         supportedDevices: widget.supportedDevices,
         onDoubleTapCancel: widget.onDoubleTapCancel,
         onDoubleTapDown: widget.onDoubleTapDown,
-        child: Stack(
-          children: [
-            widget.child,
-            Positioned.fill(
-                child: ColoredBox(
-              color: _isFocused
-                  ? const Color.fromARGB(35, 0, 0, 0)
-                  : const Color.fromARGB(0, 0, 0, 0),
-            ))
-          ],
-        ),
+        child: widget.showFocusHighlight
+            ? Stack(
+                children: [
+                  widget.child,
+                  Positioned.fill(
+                      child: ColoredBox(
+                    color: _isFocused
+                        ? const Color.fromARGB(35, 0, 0, 0)
+                        : const Color.fromARGB(0, 0, 0, 0),
+                  ))
+                ],
+              )
+            : widget.child,
       ),
     );
   }
