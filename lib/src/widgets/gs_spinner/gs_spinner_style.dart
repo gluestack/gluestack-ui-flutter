@@ -7,5 +7,3 @@ const GSStyleConfig gsSpinnerConfig = GSStyleConfig(
 );
 GSStyle spinnerStyle =
     GSStyle.fromMap(data: getIt<GluestackCustomConfig>().spinner);
-
-enum GSSpinnerSize { small, large }
