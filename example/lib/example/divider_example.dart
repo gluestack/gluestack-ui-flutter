@@ -10,8 +10,8 @@ class DividerExample extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Divider"),
       ),
-      body: Center(
-        child: Column(
+      body: GSCenter(
+        child: GSVStack(
           children: [
             GSDivider(
               orientation: GSOrientations.vertical,
@@ -25,6 +25,7 @@ class DividerExample extends StatelessWidget {
             GSDivider(
               orientation: GSOrientations.vertical,
               style: GSStyle(
+                height: 200,
                 bg: Colors.red,
               ),
             ),
@@ -33,19 +34,15 @@ class DividerExample extends StatelessWidget {
                 bg: Colors.orange,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 2),
-              child: Text('GS Divider'),
+            GSBox(
+              style: GSStyle(
+                padding: const EdgeInsets.only(bottom: 2),
+              ),
+              child: const Text('GS Divider'),
             ),
             GSDivider(
               style: GSStyle(
                 bg: Colors.purple,
-              ),
-            ),
-            GSDivider(
-              orientation: GSOrientations.vertical,
-              style: GSStyle(
-                bg: Colors.yellow,
               ),
             ),
           ],

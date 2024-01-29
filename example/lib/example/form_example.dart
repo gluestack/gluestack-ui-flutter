@@ -234,7 +234,7 @@ class _FormExampleState extends State<FormExample> {
                 const GSFormLabelText('Username'),
                 sp,
                 const GSInput(
-                  initialValue: "GlueStacky",
+                  // initialValue: "GlueStacky",
                   hintText: 'Enter your username here... | Ex. John Doe',
                   // style: GSStyle(height: 70),
                 ),
@@ -245,12 +245,12 @@ class _FormExampleState extends State<FormExample> {
                   style: GSStyle(height: 80),
                   obscureText: true,
                   hintText: 'Enter you password here...',
-                  validator: (input) {
-                    if (input != null && (input as String).length < 8) {
-                      return "Password must have atleast 8 characters!";
-                    }
-                    return null;
-                  },
+                  // validator: (input) {
+                  //   if (input != null && (input as String).length < 8) {
+                  //     return "Password must have atleast 8 characters!";
+                  //   }
+                  //   return null;
+                  // },
                 ),
                 //TEXTAREA---------------------
                 const GSFormLabelText('Bio'),

@@ -12,6 +12,7 @@ class InputExample extends StatefulWidget {
 }
 
 class _InputExampleState extends State<InputExample> {
+  TextEditingController textEditingController = TextEditingController();
   final List dropdownSizeOptions = [
     GSInputSizes.$sm,
     GSInputSizes.$md,
@@ -88,6 +89,7 @@ class _InputExampleState extends State<InputExample> {
           hintText: "Enter text here",
           isDisabled: isDisabled,
           isInvalid: isInvalid,
+          controller: textEditingController,
           isReadOnly: isReadOnly,
           style: GSStyle(
             width: 300,
