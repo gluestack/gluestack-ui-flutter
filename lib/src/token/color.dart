@@ -400,9 +400,11 @@ class GSColorsToken {
   final Color black;
 
   /// Generates a swatch containing primary colors for the app
+  /// Overrides any other primary color declaration
   final Color? primaryColorsFromBase;
 
   /// Generates a swatch containing secondary colors for the app
+  /// Overrides any other secondary color declaration
   final Color? secondaryColorsFromBase;
 
   const GSColorsToken({
