@@ -9,11 +9,11 @@ class InternalColorTestScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const GSText(
-          text: 'Color Test (PrimaryColorSwatch)',
+          text: 'Color Test (Primary+Secondary)',
         ),
       ),
       body: GridView.count(
-        crossAxisCount: 2,
+        crossAxisCount: 3,
         children: [
           GSBox(
               style: GSStyle(bg: $GSColors.primary0),
@@ -51,6 +51,43 @@ class InternalColorTestScreen extends StatelessWidget {
           GSBox(
               style: GSStyle(bg: $GSColors.primary950),
               child: const GSText(text: 'primary950')),
+          //------------Secondary----------
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary0),
+              child: const GSText(text: 'secondary0')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary50),
+              child: const GSText(text: 'secondary50')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary100),
+              child: const GSText(text: 'secondary100')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary200),
+              child: const GSText(text: 'secondary200')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary300),
+              child: const GSText(text: 'secondary300')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary400),
+              child: const GSText(text: 'secondary400')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary500),
+              child: const GSText(text: 'secondary500')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary600),
+              child: const GSText(text: 'secondary600')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary700),
+              child: const GSText(text: 'secondary700')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary800),
+              child: const GSText(text: 'secondary800')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary900),
+              child: const GSText(text: 'secondary900')),
+          GSBox(
+              style: GSStyle(bg: $GSColors.secondary950),
+              child: const GSText(text: 'secondary950')),
         ],
       ),
     );

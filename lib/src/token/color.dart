@@ -398,7 +398,12 @@ class GSColorsToken {
   final Color backgroundDarkMuted;
   final Color white;
   final Color black;
-  final Color? fromBaseColor;
+
+  /// Generates a swatch containing primary colors for the app
+  final Color? primaryColorsFromBase;
+
+  /// Generates a swatch containing secondary colors for the app
+  final Color? secondaryColorsFromBase;
 
   const GSColorsToken({
     this.rose50 = const Color(0xFFFFF1F2),
@@ -793,7 +798,8 @@ class GSColorsToken {
     this.backgroundDarkMuted = const Color(0xFF252526),
     this.white = const Color(0xFFFFFFFF),
     this.black = const Color(0xFF000000),
-    this.fromBaseColor,
+    this.primaryColorsFromBase,
+    this.secondaryColorsFromBase,
   });
 
   GSColorsToken copyWith({
@@ -1189,7 +1195,8 @@ class GSColorsToken {
     Color? backgroundDarkMuted,
     Color? white,
     Color? black,
-    ValueGetter<Color?>? colorFromBase,
+    Color? primaryColorsFromBase,
+    Color? secondaryColorsFromBase,
   }) {
     return GSColorsToken(
       rose50: rose50 ?? this.rose50,
@@ -1588,8 +1595,8 @@ class GSColorsToken {
       backgroundDarkMuted: backgroundDarkMuted ?? this.backgroundDarkMuted,
       white: white ?? this.white,
       black: black ?? this.black,
-      fromBaseColor:
-          colorFromBase != null ? colorFromBase() : fromBaseColor,
+      primaryColorsFromBase: primaryColorsFromBase ?? this.primaryColorsFromBase,
+      secondaryColorsFromBase: secondaryColorsFromBase ?? this.secondaryColorsFromBase,
     );
   }
 }

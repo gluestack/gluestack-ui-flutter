@@ -25,11 +25,12 @@ class _MyAppState extends State<MyApp> {
       //   button: customButton,
       //   buttonText: customButtonText,
       // ),
-      // gluestackTokenConfig: GluestackTokenConfig(
-      //   gsColorsToken: const GSColorsToken(
-      //     fromBaseColor: Color.fromRGBO(0, 255, 0, 1),
-      //   ),
-      // ),
+      gluestackTokenConfig: GluestackTokenConfig(
+        gsColorsToken: const GSColorsToken(
+          primaryColorsFromBase: Color(0xFF00FF00),
+          secondaryColorsFromBase: Color(0xFFFF0000),
+        ),
+      ),
       child: Consumer(
         builder: (context, ref, child) {
           final currentThemeMode = ref.watch(toggleThemeProvider);
