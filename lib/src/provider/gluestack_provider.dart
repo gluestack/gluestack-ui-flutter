@@ -334,7 +334,7 @@ class GluestackTokenConfig {
   final GSLineHeightToken gsLineHeightToken;
   final GSRadiiToken gsRadiiToken;
   final GSSpaceToken gsSpaceToken;
-  final GSColorsToken gsColorsToken;
+  GSColorsToken gsColorsToken;
   final GSScreenBreakpointToken gsScreenBreakpointToken;
 
   GluestackTokenConfig({
@@ -348,7 +348,39 @@ class GluestackTokenConfig {
     this.gsColorsToken = const GSColorsToken(),
     this.gsScreenBreakpointToken = const GSScreenBreakpointToken(),
   }) {
+    if (gsColorsToken.fromBaseColor != null) {
+      gsColorsToken = gsColorsToken.copyWith(
+        primary0: _getColorShade(gsColorsToken.fromBaseColor!, 0),
+        primary50: _getColorShade(gsColorsToken.fromBaseColor!, 0.05),
+        primary100: _getColorShade(gsColorsToken.fromBaseColor!, 0.1),
+        primary200: _getColorShade(gsColorsToken.fromBaseColor!, 0.2),
+        primary300: _getColorShade(gsColorsToken.fromBaseColor!, 0.3),
+        primary400: _getColorShade(gsColorsToken.fromBaseColor!, 0.4),
+        primary500: _getColorShade(gsColorsToken.fromBaseColor!, 0.5),
+        primary600: _getColorShade(gsColorsToken.fromBaseColor!, 0.6),
+        primary700: _getColorShade(gsColorsToken.fromBaseColor!, 0.7),
+        primary800: _getColorShade(gsColorsToken.fromBaseColor!, 0.8),
+        primary900: _getColorShade(gsColorsToken.fromBaseColor!, 0.9),
+        primary950: _getColorShade(gsColorsToken.fromBaseColor!, 0.95),
+      );
+    }
     _registerTokens();
+  }
+
+  Color _getColorShade(Color baseColor, double strength) {
+    int r = baseColor.red;
+    int g = baseColor.green;
+    int b = baseColor.blue;
+    final double ds = 0.5 - strength;
+
+    final result = Color.fromRGBO(
+      r + ((ds < 0 ? r : (255 - r)) * ds).round(),
+      g + ((ds < 0 ? g : (255 - g)) * ds).round(),
+      b + ((ds < 0 ? b : (255 - b)) * ds).round(),
+      1,
+    );
+
+    return result;
   }
 
   void _registerTokens() {
