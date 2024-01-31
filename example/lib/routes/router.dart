@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_ui_example/example/icon_button_example.dart';
 import 'package:gluestack_ui_example/example/public.dart';
 import 'package:gluestack_ui_example/example/scroll_example.dart';
 import 'package:gluestack_ui_example/home.dart';
@@ -128,6 +129,10 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "example-scroll",
           builder: (context, state) => const ScrollExample(),
+        ),
+        GoRoute(
+          path: "example-icon-button",
+          builder: (context, state) => const IconButtonExample(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
