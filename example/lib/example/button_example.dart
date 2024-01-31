@@ -96,10 +96,14 @@ class _ButtonExampleState extends State<ButtonExample> {
           action: selectedActionOption,
           variant: selectedVariantOption,
           size: selectedSizeOption,
-          onHover: (){
+          isDisabled: isDisabled,
+          isFocusVisible: isFocusVisible,
+          onHover: () {
             print('Hovering');
           },
-          onPressed: () {},
+          onPressed: () {
+            print('presssed');
+          },
           // style: GSStyle(
           //   web: GSStyle(
           //     bg: $GSColors.amber600,

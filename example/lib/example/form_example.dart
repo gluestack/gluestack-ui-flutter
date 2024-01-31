@@ -338,28 +338,34 @@ class _FormExampleState extends State<FormExample> {
                 ),
                 sp2,
                 sp2,
-                GSButton(
-                    action: GSButtonActions.positive,
-                    variant: GSButtonVariants.outline,
-                    child: const Text(
-                      'Submit',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState != null &&
-                          _formKey.currentState!.validate() &&
-                          !isDisabled) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              'Submitting data...',
-                              style: TextStyle(color: Colors.white),
+                GSCenter(
+                  child: GSButton(
+                      action: GSButtonActions.positive,
+                      variant: GSButtonVariants.outline,
+                      size: GSButtonSizes.$lg,
+                      style: GSStyle(width: double.infinity),
+                      onPressed: () {
+                        if (_formKey.currentState != null &&
+                            _formKey.currentState!.validate() &&
+                            !isDisabled) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Submitting data...',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.green,
                             ),
-                            backgroundColor: Colors.green,
-                          ),
-                        );
-                      }
-                    }),
+                          );
+                        }
+                      },
+                      child: GSText(
+                        text: 'Submit',
+                        textAlign: TextAlign.center,
+                        style: GSStyle(
+                            textStyle: const TextStyle(color: Colors.green)),
+                      )),
+                ),
               ],
             ),
           ),

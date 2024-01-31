@@ -74,7 +74,6 @@ class GSFab extends StatelessWidget {
         opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
         child: GSButton(
           isDisabled: isDisabled,
-          freeSize: true,
           style: fabStyler,
           onPressed: onPressed ?? () {},
           onLongPress: isDisabled ? null : onLongPress,
