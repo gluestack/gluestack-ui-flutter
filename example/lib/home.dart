@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 import 'package:gluestack_ui_example/widgets/nav_button.dart';
-import 'package:gluestack_ui/src/widgets/gs_app/gs_theme.dart';
 // import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,11 +20,13 @@ class _HomePageState extends State<HomePage> {
     final theme = GSTheme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(title: const Text('Gluestack UI examples')),
+      appBar: AppBar(
+        title: const Text('Gluestack UI examples'),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: GSBox(
-            //  style: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.green)),
+            //  style: GSStyle(bg: Colors.white, dark: GSStyle(bg: Colors.black)),
             child: GSCenter(
               child: GSVStack(
                 space: GSVstackSpaces.$xl,
@@ -174,7 +175,7 @@ class _HomePageState extends State<HomePage> {
           return FloatingActionButton(
             onPressed: ref.read(toggleThemeProvider.notifier).toggleThemeMode,
             child: Icon(
-              Theme.of(context).brightness == Brightness.dark
+              GSTheme.of(context).brightness == Brightness.dark
                   ? Icons.light_mode
                   : Icons.dark_mode,
             ),

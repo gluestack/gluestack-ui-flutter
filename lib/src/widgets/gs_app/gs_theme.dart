@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/token/color.dart';
-import 'styles/typography.dart';
-import 'styles/visual_density.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 
 const Duration kGSThemeAnimationDuration = Duration(milliseconds: 200);
 
