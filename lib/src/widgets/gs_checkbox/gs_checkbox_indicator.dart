@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/token/color.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_indicator_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_provider.dart';
@@ -109,20 +110,33 @@ class GSCheckBoxIndicator extends StatelessWidget {
             isActive: isActive) ??
         const Color(0xFF000000);
 
-    return Opacity(
-      opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
-      child: Container(
-        width: ancestorCheckBoxStyle?.height,
-        height: ancestorCheckBoxStyle?.width,
-        margin: styler.margin,
-        decoration: BoxDecoration(
-          color: bg,
-          border: Border.all(
-              width: ancestorCheckBoxStyle?.borderWidth ?? 1.0,
-              color: borderColor),
-          borderRadius: BorderRadius.circular(styler.borderRadius ?? 0.0),
+    return Container(
+      margin: styler.margin,
+      decoration: BoxDecoration(
+        border:
+            GSFocusableActionDetectorProvider.of(context)?.focusStatus ?? false
+                ? Border.all(
+                    width: ancestorCheckBoxStyle?.borderWidth ?? 1.0,
+                    color: styler.onFocus?.color ?? $GSColors.primary400)
+                : Border.all(
+                    width: ancestorCheckBoxStyle?.borderWidth ?? 1.0,
+                    color: const Color.fromARGB(0, 0, 0, 0)),
+        borderRadius: BorderRadius.circular(styler.borderRadius ?? 0.0),
+      ),
+      child: Opacity(
+        opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
+        child: Container(
+          width: ancestorCheckBoxStyle?.height,
+          height: ancestorCheckBoxStyle?.width,
+          decoration: BoxDecoration(
+            color: bg,
+            border: Border.all(
+                width: ancestorCheckBoxStyle?.borderWidth ?? 1.0,
+                color: borderColor),
+            borderRadius: BorderRadius.circular(styler.borderRadius ?? 0.0),
+          ),
+          child: isChecked ? Center(child: child) : null,
         ),
-        child: isChecked ? Center(child: child) : null,
       ),
     );
   }

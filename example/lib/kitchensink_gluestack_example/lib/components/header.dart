@@ -64,10 +64,6 @@ class KSHeader extends StatelessWidget {
                       ),
                       child: GSPressable(
                         hitSlop: 2,
-                        style: GSStyle(
-                            splashColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onHover: GSStyle(color: Colors.transparent)),
                         child: Transform.rotate(
                           angle: -0.7,
                           child: GSIcon(

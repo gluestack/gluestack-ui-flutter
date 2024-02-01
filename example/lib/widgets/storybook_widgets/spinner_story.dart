@@ -7,14 +7,7 @@ final class SpinnerStory extends StoryWidget {
   Story createStoryWidget() {
     return Story(
       name: storyName,
-      builder: (context) => GSSpinner(
-        strokeWidth: 4,
-        style: GSStyle(
-          bg: $GSColors.blueGray300,
-          width: 30,
-          height: 30,
-        ),
-      ),
+      builder: (context) => const GSSpinner(),
     );
   }
 

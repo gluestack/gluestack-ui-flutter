@@ -545,8 +545,8 @@ class GSStyle extends BaseStyle<GSStyle> {
 
   Color? progressValueColor;
   //for splash n highlight for pressable
-  Color? highlightColor;
-  Color? splashColor;
+  // Color? highlightColor;
+  // Color? splashColor;
   GSStyle? badge;
   GSTextTransform? textTransform;
   GSSizes? iconSize;
@@ -567,6 +567,9 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? outlineColor;
   GSOutlineStyle? outlineStyle;
   Map<String, GSStyle>? compoundVariants;
+
+  double indent;
+  double endIndent;
 
   GSStyle({
     this.borderWidth,
@@ -613,8 +616,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.maxWidth,
     this.progressValueColor,
     this.badge,
-    this.highlightColor,
-    this.splashColor,
+    // this.highlightColor,
+    // this.splashColor,
     this.textTransform,
     this.trackColorTrue,
     this.trackColorFalse,
@@ -632,6 +635,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.isVisible,
     this.direction,
     this.compoundVariants,
+    this.indent = 0,
+    this.endIndent = 0,
   });
 
   @override
@@ -749,8 +754,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       alignment: overrideStyle?.alignment ?? alignment,
       progressValueColor:
           overrideStyle?.progressValueColor ?? progressValueColor,
-      highlightColor: overrideStyle?.highlightColor ?? highlightColor,
-      splashColor: overrideStyle?.splashColor ?? splashColor,
+      // highlightColor: overrideStyle?.highlightColor ?? highlightColor,
+      // splashColor: overrideStyle?.splashColor ?? splashColor,
       textTransform: overrideStyle?.textTransform ?? textTransform,
       trackColorTrue: overrideStyle?.trackColorTrue ?? trackColorTrue,
       trackColorFalse: overrideStyle?.trackColorFalse ?? trackColorFalse,
@@ -819,8 +824,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-        fontSize: resolveFontSizeFromString(
-            data?['fontSize'] ?? data?['props']?['size'].toString()),
+        fontSize: resolveFontSizeFromString(data?['fontSize'] ??
+            data?['props']?['size'].toString() ??
+            data?['_input']?['props']?['size'].toString()),
         height:
             resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
         decoration:

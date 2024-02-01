@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_content.dart';
@@ -7,12 +7,14 @@ import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_style.d
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
+import 'gs_show_alert_dailog.dart';
+
 enum GSAlertDialogSizes {
-$full,
-$lg,
-$md, 
-$sm,
-$xs,
+  $full,
+  $lg,
+  $md,
+  $sm,
+  $xs,
 }
 
 class GSAlertDialog extends StatefulWidget {
@@ -46,7 +48,7 @@ class GSAlertDialog extends StatefulWidget {
     this.insetAnimationCurve = Curves.decelerate,
     this.insetAnimationDuration = const Duration(milliseconds: 100),
     this.size,
-  }) ;
+  });
   static void show(
     BuildContext context, {
     GSAlertDialogContent? content,
@@ -65,9 +67,10 @@ class GSAlertDialog extends StatefulWidget {
     final Duration? insetAnimationDuration = const Duration(milliseconds: 100),
     final GSAlertDialogSizes? size,
   }) {
-    showDialog(
-      barrierColor:
-          !showBackdrop! ? Colors.transparent : Colors.black.withOpacity(0.5),
+    GSShowAlertDialog.showDialog(
+      barrierColor: !showBackdrop!
+          ? const Color(0x00000000)
+          : const Color(0xFF000000).withOpacity(0.5),
       context: context,
       builder: (BuildContext context) {
         return GSAlertDialog(
@@ -96,6 +99,8 @@ class GSAlertDialog extends StatefulWidget {
 class _GSAlertDialogState extends State<GSAlertDialog> {
   @override
   Widget build(BuildContext context) {
+    final EdgeInsets effectivePadding = MediaQuery.viewInsetsOf(context) +
+        (widget.insetPadding ?? EdgeInsets.zero);
     final alertSize = widget.size?.toGSSize ?? alertDialogStyle.props?.size;
     GSStyle styler = resolveStyles(
       context: context,
@@ -116,28 +121,36 @@ class _GSAlertDialogState extends State<GSAlertDialog> {
         double.infinity;
 
     return GSAncestor(
-      decedentStyles: styler.descendantStyles,
-      child: Dialog(
-        backgroundColor: widget.backgroundColor ?? styler.bg,
-        alignment: widget.alignment,
-        clipBehavior: widget.clipBehavior!,
-        elevation: widget.elevation,
-        insetPadding: widget.insetPadding!,
-        shadowColor: widget.shadowColor,
-        shape: widget.shape,
-        surfaceTintColor: widget.surfaceTintColor,
-        insetAnimationCurve: widget.insetAnimationCurve!,
-        insetAnimationDuration: widget.insetAnimationDuration!,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(styler.borderRadius ?? 4.0),
-          child: Container(
-            width: alertWidth,
-            height: styler.height,
-            constraints: BoxConstraints(maxWidth: alertMaxWidth),
-            child: widget.content,
+        decedentStyles: styler.descendantStyles,
+        child: AnimatedPadding(
+          padding: effectivePadding,
+          duration: widget.insetAnimationDuration ??
+              const Duration(milliseconds: 100),
+          curve: widget.insetAnimationCurve ?? Curves.decelerate,
+          child: MediaQuery.removeViewInsets(
+            removeLeft: true,
+            removeTop: true,
+            removeRight: true,
+            removeBottom: true,
+            context: context,
+            child: Align(
+              alignment: widget.alignment ?? Alignment.center,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(minWidth: 280.0),
+                child: ClipRRect(
+                  borderRadius:
+                      BorderRadius.circular(styler.borderRadius ?? 4.0),
+                  child: Container(
+                    //  padding: const EdgeInsets.all(20),
+                    width: alertWidth,
+                    height: styler.height,
+                    constraints: BoxConstraints(maxWidth: alertMaxWidth),
+                    child: widget.content,
+                  ),
+                ),
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

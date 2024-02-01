@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 
@@ -72,29 +72,31 @@ class GSRadio<T> extends StatelessWidget {
     return GSAncestor(
       decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize],
       child: GSFocusableActionDetector(
-        child: InkWell(
-          focusColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-          mouseCursor: isRadioDisabled
+        child: MouseRegion(
+          cursor: isRadioDisabled
               ? SystemMouseCursors.forbidden
               : SystemMouseCursors.click,
-          onTap: () {
-            if (!isRadioDisabled! && value != groupValue && !isRadioReadOnly) {
-              onChanged!.call(value);
-            }
-          },
-          child: GSRadioProvider<T>(
-              value: value,
-              groupValue: groupValue,
-              onChanged: null,
-              size: radioSize,
-              style: style,
-              isInvalid: isRadioInvalid,
-              isDisabled: isRadioDisabled,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [icon, if (label != null) label!],
-              )),
+          child: GestureDetector(
+            onTap: () {
+              if (!isRadioDisabled! &&
+                  value != groupValue &&
+                  !isRadioReadOnly) {
+                onChanged!.call(value);
+              }
+            },
+            child: GSRadioProvider<T>(
+                value: value,
+                groupValue: groupValue,
+                onChanged: null,
+                size: radioSize,
+                style: style,
+                isInvalid: isRadioInvalid,
+                isDisabled: isRadioDisabled,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [icon, if (label != null) label!],
+                )),
+          ),
         ),
       ),
     );
