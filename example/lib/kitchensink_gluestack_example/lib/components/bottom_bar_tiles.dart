@@ -20,7 +20,7 @@ class BottomBarTile extends StatelessWidget {
           children: [
             GSIcon(
               icon: icon,
-              size: GSSizes.$2xl,
+              size: GSIconSizes.$xl,
             ),
             GSBox(style: GSStyle(height: 2)),
             GSText(

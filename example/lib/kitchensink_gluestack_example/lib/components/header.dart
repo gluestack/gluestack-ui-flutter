@@ -23,7 +23,7 @@ class KSHeader extends StatelessWidget {
                   children: [
                     GSIcon(
                       icon: Icons.home_filled,
-                      size: GSSizes
+                      size: GSIconSizes
                           .$xl, //Error: Should throw at least asetion for now if size not deinfed (3xl. 5xl) in the component
                       style: GSStyle(
                           color: const Color(0xffE11D48),
@@ -67,7 +67,7 @@ class KSHeader extends StatelessWidget {
                         child: Transform.rotate(
                           angle: -0.7,
                           child: GSIcon(
-                            size: GSSizes.$xl,
+                            size: GSIconSizes.$xl,
                             icon:
                                 Theme.of(context).brightness == Brightness.light
                                     ? Icons.nightlight_rounded
@@ -85,7 +85,7 @@ class KSHeader extends StatelessWidget {
                       ),
                     ),
                     GSAvatar(
-                      size: GSSizes.$sm,
+                      size: GSAvatarSizes.$sm,
                       style: GSStyle(bg: $GSColors.backgroundLight600),
                       avatarBadge: const GSAvatarBadge(),
                       avatarImage: const GSImage(
