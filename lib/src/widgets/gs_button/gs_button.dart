@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
+import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
@@ -45,7 +46,6 @@ class GSButton extends StatelessWidget {
   final FocusNode? focusNode;
   final bool autoFocus;
   final Clip clipBehavior;
-  final bool? freeSize;
 
   final VoidCallback onPressed;
   final VoidCallback? onLongPress;
@@ -58,7 +58,6 @@ class GSButton extends StatelessWidget {
     this.action = GSButtonActions.primary,
     this.variant = GSButtonVariants.solid,
     this.size = GSButtonSizes.$md,
-    this.freeSize = false,
     this.isDisabled,
     this.semanticsLabel,
     this.isFocusVisible = false,
@@ -100,11 +99,10 @@ class GSButton extends StatelessWidget {
             isFirst: true);
 
         if (GSStyleBuilderProvider.of(context)?.isHovered ?? false) {
-          if (onHover != null) {
+          if (onHover != null && !disabled) {
             onHover!();
           }
         }
-
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(
@@ -116,40 +114,27 @@ class GSButton extends StatelessWidget {
               child: Semantics(
                 label: semanticsLabel ?? 'Button',
                 button: true,
-                child: SizedBox(
-                  height: freeSize! ? null : styler.height,
-                  child: FocusableActionDetector(
-                    onFocusChange: onFocusChange,
-                    focusNode: focusNode,
-                    autofocus: autoFocus,
-                    child: GestureDetector(
-                      onTap: disabled ? null : onPressed,
-                      onLongPress: disabled ? null : onLongPress,
-                      child: Container(
-                        clipBehavior: clipBehavior,
-                        // statesController: statesController,
-                        padding: styler.padding,
-                        decoration: BoxDecoration(
-                          color:
-                              GSStyleBuilderProvider.of(context)?.isFocused ??
-                                      false
-                                  ? HSLColor.fromColor(
-                                          styler.bg ?? $GSColors.red400)
-                                      .withLightness(0.50)
-                                      .toColor()
-                                  : styler.bg,
-                          borderRadius:
-                              BorderRadius.circular(styler.borderRadius ?? 0.0),
-                          border: Border.fromBorderSide(_resolveBorderSide(
-                              buttonVariant, styler, isAttached)),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            child,
-                          ],
-                        ),
-                      ),
+                child: GsGestureDetector(
+                  onPressed: disabled ? null : onPressed,
+                  onLongPress: disabled ? null : onLongPress,
+                  child: Container(
+                    height: styler.height,
+                    width: styler.width,
+                    clipBehavior: clipBehavior,
+                    padding: styler.padding,
+                    decoration: BoxDecoration(
+                      color: styler.bg,
+                      borderRadius:
+                          BorderRadius.circular(styler.borderRadius ?? 0.0),
+                      border: Border.fromBorderSide(_resolveBorderSide(
+                          buttonVariant, styler, isAttached)),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment:  MainAxisAlignment.center, //TODO: give more control to end user
+                      children: [
+                        child,
+                      ],
                     ),
                   ),
                 ),
