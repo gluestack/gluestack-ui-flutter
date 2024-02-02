@@ -153,6 +153,11 @@ class _HomePageState extends State<HomePage> {
                   title: "GS Icon Button",
                   routePath: "/example-icon-button",
                 ),
+                // // ===== Internal Testing Widgets =====
+                // const NavButton(
+                //   title: "GS Color Test (Internal)",
+                //   routePath: "/internal-color-test",
+                // ),
 
                 // Preview screens are present to link Docs website to these storybook pages through iframe.
                 // No need to show these pages separately in example app.
