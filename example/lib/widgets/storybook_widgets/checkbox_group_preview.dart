@@ -16,7 +16,10 @@ class CheckboxGroupPreview extends StatelessWidget {
           Story(
             name: 'Checkbox',
             builder: (context) => GSBox(
-              style: GSStyle(width: 150, height: 100),
+              style: GSStyle(
+                width: 100,
+                height: 65,
+              ),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

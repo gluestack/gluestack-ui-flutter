@@ -26,7 +26,10 @@ class _MultipleRadioButtonHorizontalPreviewState
           Story(
             name: 'RadioButton',
             builder: (context) => GSBox(
-              style: GSStyle(width: 350, height: 50),
+              style: GSStyle(
+                width: 350,
+                height: 25,
+              ),
               child: GSHStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
