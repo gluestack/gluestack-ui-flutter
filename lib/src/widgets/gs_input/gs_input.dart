@@ -184,6 +184,16 @@ class GSInput extends StatefulWidget {
 
 class _GSInputState extends State<GSInput> {
   bool _isHovered = false;
+  late final TextEditingController? controller;
+
+  @override
+  void initState() {
+    if (widget.controller == null) {
+      controller = TextEditingController();
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -339,7 +349,7 @@ class _GSInputState extends State<GSInput> {
                               contentInsertionConfiguration:
                                   widget.contentInsertionConfiguration,
                               contextMenuBuilder: widget.contextMenuBuilder,
-                              controller: widget.controller!,
+                              controller: widget.controller ?? controller!,
                               cursorColor: widget.cursorColor ?? borderColor,
                               cursorHeight: widget.cursorHeight,
                               cursorOpacityAnimates:
@@ -403,7 +413,8 @@ class _GSInputState extends State<GSInput> {
                       ],
                     ),
                   ),
-                  if (widget.controller!.text.isEmpty)
+                  if (widget.controller?.text.isEmpty ??
+                      controller!.text.isEmpty)
                     Positioned(
                       left: widget.prefixText != null &&
                               widget.prefixText!.isNotEmpty
