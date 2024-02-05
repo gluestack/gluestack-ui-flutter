@@ -149,10 +149,6 @@ class _HomePageState extends State<HomePage> {
                   title: "GS Scroll",
                   routePath: "/example-scroll",
                 ),
-                const NavButton(
-                  title: "Gl",
-                  routePath: "/avatar-with-label-preview",
-                ),
 
                 // Preview screens are present to link Docs website to these storybook pages through iframe.
                 // No need to show these pages separately in example app.
