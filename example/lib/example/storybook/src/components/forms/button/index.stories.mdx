@@ -1,16 +1,10 @@
----
-title: gluestack-ui GSButton Widget | Installation, Usage, and API
+import Meta from "@/components/Meta";
 
-description: A button widget is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
+<Meta
+  pageTitle="gluestack-ui GSButton Widget | Installation, Usage, and API"
+  description="A button widget is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website."
+/>
 
-pageTitle: GSButton
-
-pageDescription: A button widget is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
-
-showHeader: true
----
-
-import { Canvas, Meta, Story } from "@storybook/addon-docs";
 import { env } from "process";
 
 import {
@@ -21,16 +15,23 @@ import {
   InlineCode,
 } from "@gluestack/design-system";
 
-<Meta title="Components/Forms/Button" />
+<div className="ButtonPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "3px", height: "850px" }}>
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "button-preview"}
+  title="Example"
+  height="400px"
+/>
 
 <iframe
   src={process.env.NEXT_PUBLIC_PREVIEW + "button-preview"}
   title="Example"
   width="100%"
   height="400"
+  style={{ border: "none", padding: "none" }}
 ></iframe>
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
@@ -48,6 +49,8 @@ GSButton(
   ),
 )
 ```
+
+</div>
 
 <br />
 
@@ -283,14 +286,17 @@ The Examples section provides visual representations of the different variants o
 
 A loading button is a type of button widget that provides visual feedback to the user during an action that takes some time to complete. It typically displays an animated loading icon or spinner indicating the action is in progress.
 
+<div className="LoadingButtonPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "3px", height: "942px" }}>
+
 <iframe
   src={process.env.NEXT_PUBLIC_PREVIEW + "loading-button-preview"}
   title="Example"
   width="100%"
   height="300"
+  style={{ border: "none" }}
 ></iframe>
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
@@ -316,21 +322,24 @@ GSButton(
   onPressed: () {},
 )
 
-
 ```
+
+</div >
 
 #### Icon Button
 
 A button with an icon integrates a visual symbol within the button widget, enhancing its appearance and providing a recognizable and intuitive representation of its associated action or functionality.
 
+<div className="IconButtonPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "3px", height: "582px" }}>
 <iframe
   src={process.env.NEXT_PUBLIC_PREVIEW + "icon-button-preview"}
   title="Example"
   width="100%"
   height="300"
+  style={{ border: "none" }}
 ></iframe>
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
@@ -344,18 +353,23 @@ GSButton(
 
 ```
 
+</div>
+
 #### Link Button
 
 A button with a link combines the interactive behavior of a button widget with the ability to navigate to a specified URL, providing a clickable element for users to access external resources or internal pages.
+
+<div className="ButtonWithLinkPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "3px", height: "630px" }}>
 
 <iframe
   src={process.env.NEXT_PUBLIC_PREVIEW + "button-with-link-preview"}
   title="Example"
   width="100%"
   height="300"
+  style={{ border: "none" }}
 ></iframe>
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 GSButton(
@@ -371,18 +385,23 @@ GSButton(
 
 ```
 
+</div>
+
 #### Button Group in a Card
 
 A button group within a card widget incorporates multiple button widgets, providing a cohesive and organized interface for selecting various actions or options within the context of the card.
+
+<div className="ButtonGroupPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "2px", height: "1858px" }}>
 
 <iframe
   src={process.env.NEXT_PUBLIC_PREVIEW + "button-group-preview"}
   title="Example"
   width="100%"
   height="400"
+  style={{ border: "none" }}
 ></iframe>
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 
  GSBox(
@@ -445,18 +464,22 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 ```
 
+</div>
+
 #### Button With Icon
 
 The icon widget incorporates a button widget, combining visual representation with interactive functionality for seamless user interaction.
 
+<div className="ButtonWithIconsPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "2px", height: "1690px" }}>
 <iframe
   src={process.env.NEXT_PUBLIC_PREVIEW + "button-with-icons-preview"}
   title="Example"
   width="100%"
   height="400"
+  style={{ border: "none" }}
 ></iframe>
 
-```dart
+```
 
 import 'package:gluestack_ui/gluestack_ui.dart';
 
@@ -513,18 +536,22 @@ GSBox(
 
 ```
 
+</div>
+
 #### Button with Full Width
 
 The button with full width widget utilizes a button widget, expanding its width to occupy the entire available space, creating a visually prominent and easily accessible interface element.
 
+<div className="ButtonWithFullWidthPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "2px", height: "2294px" }}>
 <iframe
   src={process.env.NEXT_PUBLIC_PREVIEW + "button-with-fullwidth-preview"}
   title="Example"
   width="100%"
   height="500"
+  style={{ border: "none" }}
 ></iframe>
 
-```dart
+```
 
 import 'package:gluestack_ui/gluestack_ui.dart';
 
@@ -601,3 +628,5 @@ GSBox(
 
 
 ```
+
+</div>
