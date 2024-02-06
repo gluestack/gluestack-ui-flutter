@@ -1,13 +1,19 @@
-import Meta from "@/components/Meta";
+---
+title: gluestack-ui GSButton Widget | Installation, Usage, and API
+
+description: A button widget is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
+
+pageTitle: GSButton
+
+pageDescription: A button widget is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
+
+showHeader: true
+---
+
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { env } from "process";
 
 import IframeModule from "./IframeModule";
-
-<Meta
-  pageTitle="gluestack-ui GSButton Widget | Installation, Usage, and API"
-  description="A button widget is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website."
-/>
-
-import { env } from "process";
 
 import {
   AppProvider,
@@ -17,13 +23,15 @@ import {
   InlineCode,
 } from "@gluestack/design-system";
 
-<div className="ButtonPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "3px", height: "850px" }}>
+<Meta title="Components/Forms/Button" />
 
 <IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "button-preview"}
   title="Example"
   height="400px"
 />
+
+<div className="ButtonPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "3px", height: "850px" }}>
 
 <iframe
   src={process.env.NEXT_PUBLIC_PREVIEW + "button-preview"}
