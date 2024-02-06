@@ -1,5 +1,6 @@
 import React from "react";
-
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 interface IframeProps {
   src: string;
   title: string;
@@ -25,7 +26,9 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
         height="400"
         style={{ border: "none", padding: "none" }}
       ></iframe>
-      <pre>{code}</pre> {/* Displaying the code */}
+      <SyntaxHighlighter language="javascript" style={docco}>
+        {code}
+      </SyntaxHighlighter>
     </div>
   );
 };
