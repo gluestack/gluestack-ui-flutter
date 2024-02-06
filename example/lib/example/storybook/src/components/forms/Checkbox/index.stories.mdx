@@ -12,6 +12,7 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -25,30 +26,28 @@ import {
 
 This is an illustration of a **Themed GSCheckbox** widget with default configuration.
 
-<iframe
-  src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-preview"}
-  title="Example"
-  width="100%"
-  height="400"
-></iframe>
+<IframeModule
+   src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-preview"}
+   title="Example"
+   height="658px"
+   code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSCheckBox(
+      icon: GSCheckBoxIndicator(
+        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+        child: const GSCheckBoxIcon(),
+      ),
+      value: "value 1",
+      onChanged: (value) {},
+      label: const GSCheckBoxLabel(text: "value1"),
+      size: GSCheckBoxSizes.$md,
+      isDisabled: false,
+      isInvalid: false,
+    )
 
-GSCheckBox(
-  icon: GSCheckBoxIndicator(
-    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-    child: const GSCheckBoxIcon(),
-  ),
-  value: "value 1",
-  onChanged: (value) {},
-  label: const GSCheckBoxLabel(text: "value1"),
-  size: GSCheckBoxSizes.$md,
-  isDisabled: false,
-  isInvalid: false,
-)
-
-```
+`}
+/>
 
 <br />
 
@@ -58,7 +57,7 @@ GSCheckBox(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -438,394 +437,389 @@ The Examples section provides visual representations of the different variants o
 
 GSCheckbox provide a mutually exclusive selection mechanism, allowing users to choose a multiple option from a set of related choices.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "multiple-checkbox-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="1047px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "Flutter",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "Flutter"),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "React",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "React"),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "React Native",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "React Native"),
+        ),
+      ],
+    )
 
-
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Flutter",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "Flutter"),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "React",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "React"),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "React Native",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "React Native"),
-    ),
-  ],
-),
-
-```
+`}
+/>
 
 #### Horizontal
 
 A horizontal layout incorporating a checkbox allows for intuitive and space-efficient selection of multiple options within a linear layout.
 
-<iframe
-  src={process.env.NEXT_PUBLIC_PREVIEW + "multiple-checkbox-horizontal-preview"}
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="1047px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSHStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "Flutter",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "Flutter"),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "React",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "React"),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "React Native",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "React Native"),
+        ),
+      ],
+    )
 
-
-GSHStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Flutter",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "Flutter"),
-    ),
-    const SizedBox(
-      width: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "React",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "React"),
-    ),
-    const SizedBox(
-      width: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "React Native",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "React Native"),
-    ),
-  ],
-)
-
-```
+`}
+/>
 
 #### With help text
 
 A checkbox widget with help text provides informative guidance alongside selectable options, ensuring clarity and ease of use.
 
-<iframe
-  src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-with-helptext-preview"}
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="1257px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(
-          margin: EdgeInsets.only(
-            right: $GSSpace.$4,
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(
+                right: $GSSpace.$4,
+              ),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "Design",
+          onChanged: (value) {},
+          label: GSVStack(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GSCheckBoxLabel(text: "Design"),
+              GSText(
+                text: 'Subscribe to updates from the Design Feed',
+              ),
+            ],
           ),
         ),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Design",
-      onChanged: (value) {},
-      label: GSVStack(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GSCheckBoxLabel(text: "Design"),
-          GSText(
-            text: 'Subscribe to updates from the Design Feed',
+        const SizedBox(
+          height: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(
+                right: $GSSpace.$4,
+              ),
+            ),
+            child: const GSCheckBoxIcon(),
           ),
-        ],
-      ),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(
-          margin: EdgeInsets.only(
-            right: $GSSpace.$4,
+          value: "Marketing",
+          onChanged: (value) {},
+          label: GSVStack(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GSCheckBoxLabel(text: "Marketing"),
+              GSText(
+                text: 'Subscribe to updates from the Marketing Feed',
+              ),
+            ],
           ),
         ),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Marketing",
-      onChanged: (value) {},
-      label: GSVStack(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GSCheckBoxLabel(text: "Marketing"),
-          GSText(
-            text: 'Subscribe to updates from the Marketing Feed',
-          ),
-        ],
-      ),
-    ),
-  ],
-)
+      ],
+    )
 
-```
+`}
+/>
 
 #### Form Control
 
 A checkbox widget integrated with form control enhances the user experience by enabling easy selection and submission of options within a structured input context.
 
-<iframe
-  src={process.env.NEXT_PUBLIC_PREVIEW + "form-control-checkbox-preview"}
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="1257px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const GSHeading(text: 'Sign up for newsletters'),
+        const SizedBox(
+          height: 10,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "Flutter",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "Flutter"),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "React",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "React"),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "React Native",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "React Native"),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        const GSText(text: 'Subscribe to newsletters for updates'),
+      ],
+    )
 
-
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    const GSHeading(text: 'Sign up for newsletters'),
-    const SizedBox(
-      height: 10,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Flutter",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "Flutter"),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "React",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "React"),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "React Native",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "React Native"),
-    ),
-    const SizedBox(
-      height: 10,
-    ),
-    const GSText(text: 'Subscribe to newsletters for updates'),
-  ],
-)
-
-
-```
+`}
+/>
 
 #### Controlled
 
 A controlled widget architecture incorporates a checkbox widget, allowing for precise management of its state and behavior through explicit control mechanisms.
 
-<iframe
-  src={process.env.NEXT_PUBLIC_PREVIEW + "controlled-checkbox-preview"}
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="1153px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSCheckBox(
+          isChecked: true,
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "Flutter",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "Flutter"),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "React",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "React"),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          isChecked: true,
+          value: "React Native",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "React Native"),
+        ),
+      ],
+    )
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSCheckBox(
-      isChecked: true,
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Flutter",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "Flutter"),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "React",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "React"),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      isChecked: true,
-      value: "React Native",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "React Native"),
-    ),
-  ],
-)
-
-```
+`}
+/>
 
 #### Uncontrolled
 
 An uncontrolled widget utilizes a checkbox widget, providing a simpler implementation where the checkbox state is managed internally, without explicit control from external sources.
 
-<iframe
-  src={process.env.NEXT_PUBLIC_PREVIEW + "uncontrolled-checkbox-preview"}
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="928px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "Appartments",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "Appartments"),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "Residents",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "Residents"),
+        ),
+      ],
+    )
 
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Appartments",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "Appartments"),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Residents",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "Residents"),
-    ),
-  ],
-)
-
-
-```
+`}
+/>
 
 #### Checkbox group
 
 The checkbox group widget allows users to group checkbox and display them in a horizontal or vertical row for better visual representation and functionality.
 
-<iframe
-  src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-group-preview"}
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "checkbox-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
-```
+  height="942px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSCheckBox(
+          isDisabled: true,
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "Disabled",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "Disabled"),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(
+              margin: EdgeInsets.only(right: $GSSpace.$2),
+            ),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "Active",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "Active"),
+        ),
+      ],
+    )
 
-
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSCheckBox(
-      isDisabled: true,
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Disabled",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "Disabled"),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSCheckBox(
-      icon: GSCheckBoxIndicator(
-        style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-        child: const GSCheckBoxIcon(),
-      ),
-      value: "Active",
-      onChanged: (value) {},
-      label: const GSCheckBoxLabel(text: "Active"),
-    ),
-  ],
-)
-
-
-
-```
+`}
+/>

@@ -12,6 +12,7 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -25,36 +26,35 @@ import {
 
 This is an illustration of a **Themed GSHStack** widget with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "hstack-preview"}
   title="Example"
-  width="100%"
-  height="400"
-></iframe>
+  height="761px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSHStack(
+      mainAxisAlignment: MainAxisAlignment.center,
+      isReversed: false,
+      space: GSSpaces.$none,
+      children: [
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
+          child: const Text('1'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
+          child: const Text('2'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
+          child: const Text('3'),
+        ),
+      ],
+    )
 
-GSHStack(
-  mainAxisAlignment: MainAxisAlignment.center,
-  isReversed: false,
-  space: GSSpaces.$none,
-  children: [
-    GSBox(
-      style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
-      child: const Text('1'),
-    ),
-    GSBox(
-      style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
-      child: const Text('2'),
-    ),
-    GSBox(
-      style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
-      child: const Text('3'),
-    ),
-  ],
-)
-```
+`}
+/>
 
 <br />
 
@@ -64,7 +64,7 @@ GSHStack(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -155,9 +155,11 @@ The Examples section provides visual representations of the different variants o
 
 An GSHStack widget with the reversed parameter reverses the order of horizontally stacked elements, allowing for customized layouts and visual arrangements of content within a user interface.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "hstack-reversed-preview"}
   title="Example"
-  width="100%"
-  height="400"
-></iframe>
+  height="400px"
+
+/>
+
+<br />

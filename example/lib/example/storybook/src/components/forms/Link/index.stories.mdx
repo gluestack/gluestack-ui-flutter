@@ -12,6 +12,7 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -25,22 +26,21 @@ import {
 
 This is an illustration of a **Themed GSLink** widget with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "link-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="552px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSLink(
+      style: GSStyle(),
+      url: 'https://gluestack.io/',
+      text: const GSLinkText(text: 'gluestack'),
+    )
 
-GSLink(
-  style: GSStyle(),
-  url: 'https://gluestack.io/',
-  text: const GSLinkText(text: 'gluestack'),
-)
-```
+`}
+/>
 
 <br />
 
@@ -50,7 +50,7 @@ GSLink(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -163,64 +163,56 @@ The Examples section provides visual representations of the different variants o
 
 #### Default
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "link-with-text-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="687px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSHStack(
+      children: [
+        const GSText(text: 'Design inspiration from'),
+        const SizedBox(width: 10),
+        GSLink(
+          style: GSStyle(),
+          url: 'https://gluestack.io/',
+          text: GSLinkText(
+            text: 'gluestack',
+            style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
+          ),
+        ),
+      ],
+    )
 
-
-GSHStack(
-  children: [
-    const GSText(text: 'Design inspiration from'),
-    const SizedBox(
-      width: 10,
-    ),
-    GSLink(
-      style: GSStyle(),
-      url: 'https://gluestack.io/',
-      text: GSLinkText(
-        text: 'gluestack',
-        style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
-      ),
-    ),
-  ],
-)
-
-```
+`}
+/>
 
 #### Link with icon
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "link-with-icon-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="717px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSHStack(
+      children: [
+        const GSText(text: 'Go to'),
+        const SizedBox(width: 10),
+        GSLink(
+          style: GSStyle(),
+          url: 'https://gluestack.io/',
+          text: GSLinkText(
+            text: 'gluestack',
+            style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
+          ),
+        ),
+        const SizedBox(width: 10),
+        const GSIcon(icon: Icons.arrow_circle_right_outlined),
+      ],
+    )
 
-
-GSHStack(
-  children: [
-    const GSText(text: 'Go to'),
-    const SizedBox(width: 10),
-    GSLink(
-      style: GSStyle(),
-      url: 'https://gluestack.io/',
-      text: GSLinkText(
-        text: 'gluestack',
-        style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
-      ),
-    ),
-    const SizedBox(width: 10),
-    const GSIcon(icon: Icons.arrow_circle_right_outlined),
-  ],
-)
-
-```
+`}
+/>

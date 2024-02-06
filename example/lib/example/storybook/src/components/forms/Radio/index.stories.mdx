@@ -12,6 +12,7 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -25,33 +26,31 @@ import {
 
 This is an illustration of a **Themed GSRadio** widget with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "radio-button-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="701px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSRadio<Value>(
+      size: GSRadioSizes.$md,
+      isDisabled: false,
+      isInvalid: false,
+      value: Value.four,
+      groupValue: groupValue,
+      onChanged: (p0) {
+        setState(() {
+          groupValue = p0!;
+      });
+    },
+      icon: const GSRadioIcon<Value>(),
+      label: const GSRadioText<Value>(text: 'text'),
+      style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
+    )
 
-GSRadio<Value>(
-  size: GSRadioSizes.$md,
-  isDisabled: false,
-  isInvalid: false,
-  value: Value.four,
-  groupValue: groupValue,
-  onChanged: (p0) {
-    setState(() {
-      groupValue = p0!;
-    });
-  },
-  icon: const GSRadioIcon<Value>(),
-  label: const GSRadioText<Value>(text: 'text'),
-  style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.$2)),
-)
-
-```
+`}
+/>
 
 <br />
 
@@ -61,7 +60,7 @@ GSRadio<Value>(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -226,22 +225,18 @@ The Examples section provides visual representations of the different variants o
 
 GSRadio buttons provide a mutually exclusive selection mechanism, allowing users to choose a single option from a set of related choices.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "multiple-radio-button-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="1197px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-Value groupValueOne = Value.one;
-
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSRadio<Value>(
+    Value groupValueOne = Value.one;
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+      GSRadio<Value>(
       value: Value.one,
       groupValue: groupValueOne,
       onChanged: (p0) {
@@ -283,29 +278,26 @@ GSVStack(
       label: const GSRadioText<Value>(text: 'German'),
       style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
     ),
-  ],
-)
+    ],
+    )
 
-```
+`}
+/>
 
 #### Horizontal
 
 GSRadio buttons can be used horizontally.
 
-<iframe
+<IframeModule
   src={
     process.env.NEXT_PUBLIC_PREVIEW + "multiple-radio-button-horizontal-preview"
   }
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
-
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-
-GSHStack(
+  height="1167px"
+  code={`
+  import 'package:gluestack_ui/gluestack_ui.dart';
+  
+  GSHStack(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
     GSRadio<Value>(
@@ -350,229 +342,221 @@ GSHStack(
       label: const GSRadioText<Value>(text: 'Cash on Delivery'),
       style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
     ),
-  ],
-)
-
-
-```
+    ],
+    )
+`}
+/>
 
 #### With help text
 
 GSRadio buttons can be used with helper text.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "radio-button-with-help-text-preview"}
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="1317px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSRadio<Value>(
-      value: Value.one,
-      groupValue: groupValueOne,
-      onChanged: (p0) {
-        setState(() {
-          groupValueOne = p0!;
-        });
-      },
-      icon: const GSRadioIcon<Value>(),
-      label: const GSVStack(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GSRadioText<Value>(text: 'Extended Coverage'),
-          GSText(text: 'Extra services included'),
-        ],
-      ),
-      style: GSStyle(
-        margin: EdgeInsets.only(
-          right: $GSSpace.$4,
-          bottom: $GSSpace.$4,
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSRadio<Value>(
+          value: Value.one,
+          groupValue: groupValueOne,
+          onChanged: (p0) {
+            setState(() {
+              groupValueOne = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSVStack(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GSRadioText<Value>(text: 'Extended Coverage'),
+              GSText(text: 'Extra services included'),
+            ],
+          ),
+          style: GSStyle(
+            margin: EdgeInsets.only(
+              right: $GSSpace.$4,
+              bottom: $GSSpace.$4,
+            ),
+          ),
         ),
-      ),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSRadio<Value>(
-      value: Value.two,
-      groupValue: groupValueOne,
-      onChanged: (p0) {
-        setState(() {
-          groupValueOne = p0!;
-        });
-      },
-      icon: const GSRadioIcon<Value>(),
-      label: const GSVStack(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GSRadioText<Value>(text: 'Basic Coverage'),
-          GSText(text: 'Basic services'),
-        ],
-      ),
-      style: GSStyle(
-        margin: EdgeInsets.only(
-          right: $GSSpace.$4,
-          bottom: $GSSpace.$4,
+        const SizedBox(
+          height: 20,
         ),
-      ),
-    ),
-  ],
-)
+        GSRadio<Value>(
+          value: Value.two,
+          groupValue: groupValueOne,
+          onChanged: (p0) {
+            setState(() {
+              groupValueOne = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSVStack(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GSRadioText<Value>(text: 'Basic Coverage'),
+              GSText(text: 'Basic services'),
+            ],
+          ),
+          style: GSStyle(
+            margin: EdgeInsets.only(
+              right: $GSSpace.$4,
+              bottom: $GSSpace.$4,
+            ),
+          ),
+        ),
+      ],
+    )
 
-
-```
+`}
+/>
 
 #### Form Control
 
 GSRadio buttons can be used inside FormControl for better control of states and functionality.
 
-<iframe
+<IframeModule
   src={
     process.env.NEXT_PUBLIC_PREVIEW + "radio-button-with-form-control-preview"
   }
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="1482px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    const GSHeading(text: 'Which time slot works best for you?'),
-    const SizedBox(
-      height: 10,
-    ),
-    GSRadio<Value>(
-      value: Value.one,
-      groupValue: groupValueOne,
-      onChanged: (p0) {
-        setState(() {
-          groupValueOne = p0!;
-        });
-      },
-      icon: const GSRadioIcon<Value>(),
-      label: const GSRadioText<Value>(text: 'Monday'),
-      style: GSStyle(
-        margin: EdgeInsets.only(
-          right: $GSSpace.$4,
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const GSHeading(text: 'Which time slot works best for you?'),
+        const SizedBox(
+          height: 10,
         ),
-      ),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSRadio<Value>(
-      value: Value.two,
-      groupValue: groupValueOne,
-      onChanged: (p0) {
-        setState(() {
-          groupValueOne = p0!;
-        });
-      },
-      icon: const GSRadioIcon<Value>(),
-      label: const GSRadioText<Value>(text: 'Tuesday'),
-      style: GSStyle(
-        margin: EdgeInsets.only(
-          right: $GSSpace.$4,
+        GSRadio<Value>(
+          value: Value.one,
+          groupValue: groupValueOne,
+          onChanged: (p0) {
+            setState(() {
+              groupValueOne = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSRadioText<Value>(text: 'Monday'),
+          style: GSStyle(
+            margin: EdgeInsets.only(
+              right: $GSSpace.$4,
+            ),
+          ),
         ),
-      ),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSRadio<Value>(
-      value: Value.three,
-      groupValue: groupValueOne,
-      onChanged: (p0) {
-        setState(() {
-          groupValueOne = p0!;
-        });
-      },
-      icon: const GSRadioIcon<Value>(),
-      label: const GSRadioText<Value>(text: 'Wednesday'),
-      style: GSStyle(
-        margin: EdgeInsets.only(
-          right: $GSSpace.$4,
+        const SizedBox(
+          height: 20,
         ),
-      ),
-    ),
-    const SizedBox(
-      height: 10,
-    ),
-    const GSText(text: 'Choose a time slot for the meeting'),
-  ],
-)
+        GSRadio<Value>(
+          value: Value.two,
+          groupValue: groupValueOne,
+          onChanged: (p0) {
+            setState(() {
+              groupValueOne = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSRadioText<Value>(text: 'Tuesday'),
+          style: GSStyle(
+            margin: EdgeInsets.only(
+              right: $GSSpace.$4,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSRadio<Value>(
+          value: Value.three,
+          groupValue: groupValueOne,
+          onChanged: (p0) {
+            setState(() {
+              groupValueOne = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSRadioText<Value>(text: 'Wednesday'),
+          style: GSStyle(
+            margin: EdgeInsets.only(
+              right: $GSSpace.$4,
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        const GSText(text: 'Choose a time slot for the meeting'),
+      ],
+    )
 
-```
+`}
+/>
 
 #### Controlled
 
 The GSRadio widget can be used with a controlled state, enabling precise management of the selected option through external state management.
 
-<iframe
-  src={process.env.NEXT_PUBLIC_PREVIEW + "radio-button-controlled-preview"}
+<IframeModule
+  src={
+    process.env.NEXT_PUBLIC_PREVIEW + "radio-button-with-form-control-preview"
+  }
   title="Example"
-  width="100%"
-  height="350"
-></iframe>
+  height="1107px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    Value groupValueOne = Value.one;
 
- Value groupValueOne = Value.one;
-
-
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSRadio<Value>(
-      value: Value.one,
-      groupValue: groupValueOne,
-      onChanged: (p0) {
-        setState(() {
-          groupValueOne = p0!;
-        });
-      },
-      label: const GSRadioText<Value>(text: 'Apartments'),
-      icon: const GSRadioIcon<Value>(),
-      style: GSStyle(
-        margin: EdgeInsets.only(
-          right: $GSSpace.$4,
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSRadio<Value>(
+          value: Value.one,
+          groupValue: groupValueOne,
+          onChanged: (p0) {
+            setState(() {
+              groupValueOne = p0!;
+            });
+          },
+          label: const GSRadioText<Value>(text: 'Apartments'),
+          icon: const GSRadioIcon<Value>(),
+          style: GSStyle(
+            margin: EdgeInsets.only(
+              right: $GSSpace.$4,
+            ),
+          ),
         ),
-      ),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSRadio<Value>(
-      value: Value.two,
-      groupValue: groupValueOne,
-      onChanged: (p0) {
-        setState(() {
-          groupValueOne = p0!;
-        });
-      },
-      icon: const GSRadioIcon<Value>(),
-      label: const GSRadioText<Value>(text: 'Houses'),
-      style: GSStyle(
-        margin: EdgeInsets.only(
-          right: $GSSpace.$4,
+        const SizedBox(
+          height: 20,
         ),
-      ),
-    ),
-  ],
-)
+        GSRadio<Value>(
+          value: Value.two,
+          groupValue: groupValueOne,
+          onChanged: (p0) {
+            setState(() {
+              groupValueOne = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSRadioText<Value>(text: 'Houses'),
+          style: GSStyle(
+            margin: EdgeInsets.only(
+              right: $GSSpace.$4,
+            ),
+          ),
+        ),
+      ],
+    )
 
-```
+`}
+/>

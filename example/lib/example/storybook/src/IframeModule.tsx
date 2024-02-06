@@ -1,6 +1,6 @@
 import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 interface IframeProps {
   src: string;
   title: string;
@@ -26,7 +26,13 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
         height="400"
         style={{ border: "none", padding: "none" }}
       ></iframe>
-      <SyntaxHighlighter language="javascript" style={docco}>
+      <SyntaxHighlighter
+        language="dart"
+        style={darcula}
+        customStyle={{
+          padding: "none",
+        }}
+      >
         {code}
       </SyntaxHighlighter>
     </div>
