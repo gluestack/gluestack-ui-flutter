@@ -15,7 +15,7 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
       style={{
         border: "0.3px solid #404040",
         borderRadius: "12px",
-        padding: "3px",
+        padding: "2px",
         height: height,
       }}
     >
@@ -31,6 +31,7 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
         style={darcula}
         customStyle={{
           padding: "none",
+          borderRadius: "0 0 10px 10px",
         }}
       >
         {code}
