@@ -4,9 +4,10 @@ interface IframeProps {
   src: string;
   title: string;
   height: string;
+  code: string;
 }
 
-const IframeModule: React.FC<IframeProps> = ({ src, title, height }) => {
+const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
   return (
     <div
       className="ButtonPreview"
@@ -24,6 +25,7 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height }) => {
         height="400"
         style={{ border: "none", padding: "none" }}
       ></iframe>
+      <pre>{code}</pre> {/* Displaying the code */}
     </div>
   );
 };

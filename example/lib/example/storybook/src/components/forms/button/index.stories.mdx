@@ -29,6 +29,25 @@ import {
   src={process.env.NEXT_PUBLIC_PREVIEW + "button-preview"}
   title="Example"
   height="400px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSButton(
+      action: GSActions.primary,
+      variant: GSVariants.solid,
+      size: GSSize.$md,
+      isDisabled: false,
+      isFocusVisible: false,
+      onPressed: () {},
+      child: const GSHStack(
+        children: [
+          GSButtonText(text: "Add"),
+          GSButtonIcon(icon: Icons.add)
+        ],
+      ),
+    )
+
+`}
 />
 
 <div className="ButtonPreview" style={{ border: "0.3px solid #404040", borderRadius: "12px", padding: "3px", height: "850px" }}>
