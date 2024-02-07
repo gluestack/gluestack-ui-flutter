@@ -38,7 +38,7 @@ final class FabStory extends StoryWidget {
             ),
             GSFab(
               size: GSFABSizes.values[context.knobs
-                  .options(label: 'Size', initial: 3, options: sizeOptions)],
+                  .options(label: 'Size', initial: 1, options: sizeOptions)],
               placement: GSFABPlacements.values[context.knobs.options(
                   label: 'Placement', initial: 5, options: placementOptions)],
               isHovered:
@@ -47,7 +47,9 @@ final class FabStory extends StoryWidget {
                   context.knobs.boolean(label: "isDisabled", initial: false),
               isPressed:
                   context.knobs.boolean(label: "isPressed", initial: false),
-              onPressed: () {},
+              onPressed: () {
+                print('fab pressed!');
+              },
               icon: const GSFabIcon(icon: Icons.add),
               label: const GSFabLabel(text: 'Quick Start'),
             ),

@@ -78,8 +78,8 @@ class _FabExampleState extends State<FabExample> {
       appBar: AppBar(),
       body: BaseLayout(
         code: code,
-        component: Center(
-          child: Stack(
+        component: GSCenter(
+          child: GSStack(
             children: [
               GSBox(
                 style: GSStyle(
