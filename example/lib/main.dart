@@ -21,10 +21,17 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GluestackProvider(
-      // This is how we can provide custom configuration to Gluestack Theme.
+      // // This is how we can provide custom configuration to Gluestack Theme.
       // gluestackCustomConfig: GluestackCustomConfig(
       //   button: customButton,
       //   buttonText: customButtonText,
+      // ),
+      // // This is how we can create color themes - primary & secondary swatches from just a base color
+      // gluestackTokenConfig: GluestackTokenConfig(
+      //   gsColorsToken: const GSColorsToken(
+      //     primaryColorsFromBase: Color(0xFF00FF00),
+      //     secondaryColorsFromBase: Color(0xFFFF0000),
+      //   ),
       // ),
       child: Consumer(
         builder: (context, ref, child) {

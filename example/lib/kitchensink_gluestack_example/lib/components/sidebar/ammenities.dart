@@ -23,7 +23,7 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
   @override
   Widget build(BuildContext context) {
     return GSVStack(
-      space: GSSpaces.$lg,
+      space: GSVstackSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const GSHeading(
@@ -36,14 +36,14 @@ class _KSAmmenitiesState extends State<KSAmmenities> {
               _ammenitiesData[2].value,
             ],
             child: GSVStack(
-              space: GSSpaces.$lg,
+              space: GSVstackSpaces.$lg,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 for (int i = 0;
                     i < (showMore ? 5 : _ammenitiesData.length);
                     i++)
                   GSCheckBox(
-                    size: GSSizes.$sm,
+                    size: GSCheckBoxSizes.$sm,
                     onChanged: (value) {},
                     icon: GSCheckBoxIndicator(
                         style: GSStyle(

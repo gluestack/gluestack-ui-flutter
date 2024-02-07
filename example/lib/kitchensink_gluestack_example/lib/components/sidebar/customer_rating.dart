@@ -27,7 +27,7 @@ class KSCustomerRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GSVStack(
-      space: GSSpaces.$lg,
+      space: GSVstackSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const GSHeading(
@@ -37,11 +37,11 @@ class KSCustomerRating extends StatelessWidget {
         GSCheckBoxGroup(
             child: GSVStack(
           crossAxisAlignment: CrossAxisAlignment.start,
-          space: GSSpaces.$lg,
+          space: GSVstackSpaces.$lg,
           children: [
             for (int i = 0; i < _customerRatingData.length; i++)
               GSCheckBox(
-                size: GSSizes.$sm,
+                size: GSCheckBoxSizes.$sm,
                 onChanged: (value) {},
                 icon: GSCheckBoxIndicator(
                     style: GSStyle(
@@ -50,7 +50,7 @@ class KSCustomerRating extends StatelessWidget {
                     child: const GSCheckBoxIcon()),
                 value: _customerRatingData[i].value,
                 label: GSHStack(
-                  space: GSSpaces.$xs,
+                  space: GSHstackSpaces.$xs,
                   children: [
                     GSBox(
                       style: GSStyle(

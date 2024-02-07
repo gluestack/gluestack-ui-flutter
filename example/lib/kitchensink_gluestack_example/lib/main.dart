@@ -182,7 +182,7 @@ class KitchenSink extends StatelessWidget {
                           ),
                         ),
                       ),
-                      variant: GSVariants.outline,
+                      variant: GSInputVariants.outline,
                       style: GSStyle(
                           borderRadius: 99,
                           onFocus: GSStyle(

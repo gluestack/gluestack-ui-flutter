@@ -9,14 +9,13 @@ class SpinnerExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var code = '''
           GSSpinner(
-              strokeWidth: 6,
+              size: GSSpinnerSizes.large,
               style: GSStyle(
-                  color: \$GSColors.rose500,
-                  bg: \$GSColors.blueGray300,
-                  width: 40,
-                  height: 40
-                  ),
-          )
+                  color: \$GSColors.amber400,
+                  bg: \$GSColors.amber200,
+              ),
+              // strokeWidth: 10,
+          ),
   ''';
     return Scaffold(
       appBar: AppBar(
@@ -26,12 +25,12 @@ class SpinnerExample extends StatelessWidget {
         child: BaseLayout(
           code: code,
           component: GSSpinner(
-            strokeWidth: 6,
+            size: GSSpinnerSizes.large,
             style: GSStyle(
-                color: $GSColors.rose500,
-                bg: $GSColors.blueGray300,
-                width: 40,
-                height: 40),
+              color: $GSColors.amber400,
+              bg: $GSColors.amber200,
+            ),
+            // strokeWidth: 10,
           ),
         ),
       ),

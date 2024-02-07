@@ -1,8 +1,8 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -60,7 +60,7 @@ class GSInput extends StatefulWidget {
   final MouseCursor? mouseCursor;
   final ScrollController? scrollController;
   final bool obscureText;
-  final InputBorder? focusedErrorBorder;
+  //final InputBorder? focusedErrorBorder;
   final MaxLengthEnforcement? maxLengthEnforcement;
   final TextSelectionControls? selectionControls;
   final ui.BoxHeightStyle selectionHeightStyle;
@@ -91,55 +91,16 @@ class GSInput extends StatefulWidget {
   final TextInputAction? textInputAction;
   final TextAlignVertical? textAlignVertical;
   final UndoHistoryController? undoController;
-  //decoration
-  final bool? alignLabelWithHint;
+  final ValueChanged<String>? onFieldSubmitted;
   final BoxConstraints? constraints;
-  final Widget? counter;
-  final Color? iconColor;
-  final TextStyle? counterStyle;
-  final String? counterText;
-  final InputBorder? disabledBorder;
-  final Widget? error;
-  final InputBorder? errorBorder;
-  final int? errorMaxLines;
-  final TextStyle? errorStyle;
-  final String? errorText;
-  final FloatingLabelAlignment? floatingLabelAlignment;
-  final FloatingLabelBehavior? floatingLabelBehavior;
-  final TextStyle? floatingLabelStyle;
-  final int? helperMaxLines;
-  final TextStyle? helperStyle;
-  final int? hintMaxLines;
   final TextStyle? hintStyle;
   final String? hintText;
-  final TextDirection? hintTextDirection;
-  final bool isCollapsed;
-  final bool? isDense;
-  final Widget? label;
-  final TextStyle? labelStyle;
-  final String? labelText;
-  final String? semanticCounterText;
-  final Color? hoverColor;
-  final Widget? icon;
-  final Widget? prefix;
-  final Widget? prefixIcon;
-  final Color? prefixIconColor;
-  final BoxConstraints? prefixIconConstraints;
   final TextStyle? prefixStyle;
   final String? prefixText;
-  final Widget? suffix;
+  final Widget? prefixIcon;
   final Widget? suffixIcon;
-  final Color? suffixIconColor;
-  final BoxConstraints? suffixIconConstraints;
-  final TextStyle? suffixStyle;
-  final String? suffixText;
-  final bool visualFeedback;
-  final String? initialValue;
-  //form prop
-  final FormFieldValidator? validator;
-  final FormFieldSetter? onSaved;
-  final AutovalidateMode? autovalidateMode;
-  final ValueChanged<String>? onFieldSubmitted;
+  final Color? hoverColor;
+  final Color? textSelectionColor;
   const GSInput({
     super.key,
     this.variant = GSInputVariants.outline,
@@ -150,7 +111,6 @@ class GSInput extends StatefulWidget {
     this.autocorrect = true,
     this.buildCounter,
     this.autofocus = false,
-    this.isCollapsed = false,
     this.autofillHints,
     this.canRequestFocus = true,
     this.clipBehavior = Clip.hardEdge,
@@ -203,56 +163,19 @@ class GSInput extends StatefulWidget {
     this.textDirection,
     this.textInputAction,
     this.undoController,
-    this.alignLabelWithHint,
     this.constraints,
-    this.counter,
-    this.counterStyle,
-    this.counterText,
-    this.disabledBorder,
-    this.error,
-    this.errorBorder,
-    this.errorMaxLines,
-    this.errorStyle,
-    this.errorText,
-    this.floatingLabelAlignment,
-    this.floatingLabelBehavior,
-    this.floatingLabelStyle,
     this.focusColor,
-    this.focusedErrorBorder,
-    this.helperMaxLines,
-    this.helperStyle,
     this.helperText,
-    this.hintMaxLines,
     this.hintStyle,
     this.hintText,
-    this.hintTextDirection,
-    this.isDense,
-    this.label,
-    this.labelStyle,
-    this.labelText,
-    this.semanticCounterText,
-    this.iconColor,
     this.hoverColor,
-    this.icon,
-    this.prefix,
-    this.prefixIcon,
-    this.prefixIconColor,
-    this.prefixIconConstraints,
+    this.style,
+    this.onFieldSubmitted,
     this.prefixStyle,
     this.prefixText,
-    this.suffix,
+    this.prefixIcon,
     this.suffixIcon,
-    this.suffixIconColor,
-    this.suffixIconConstraints,
-    this.suffixStyle,
-    this.suffixText,
-    this.visualFeedback = true,
-    this.style,
-    this.validator,
-    this.onSaved,
-    this.autovalidateMode = AutovalidateMode.disabled,
-    this.initialValue,
-    this.onFieldSubmitted,
+    this.textSelectionColor,
   });
 
   @override
@@ -261,9 +184,21 @@ class GSInput extends StatefulWidget {
 
 class _GSInputState extends State<GSInput> {
   bool _isHovered = false;
+  late final TextEditingController? controller;
+
+  @override
+  void initState() {
+    if (widget.controller == null) {
+      controller = TextEditingController();
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final focusNode = FocusNode();
+
     final formProps = GSFormProvider.of(context);
     final inputVariant =
         widget.variant?.toGSVariant ?? inputStyle.props?.variant;
@@ -274,7 +209,7 @@ class _GSInputState extends State<GSInput> {
     final bool isDisabled = widget.isDisabled ?? formProps?.isDisabled ?? false;
     final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
     final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
-    final bool isRequired = formProps?.isRequired ?? false;
+    // final bool isRequired = formProps?.isRequired ?? false;
 
     GSStyle styler = resolveStyles(
       context: context,
@@ -353,164 +288,199 @@ class _GSInputState extends State<GSInput> {
 
     final borderColor = resolveBorderColor();
     final borderWidth = resolveBorderWidth();
-    final focusedBorderColor = resolveFocusBorderColor();
-    final focusedBorderWidth = resolveFocusBorderWidth();
-
-    final borderStyle = inputVariant != GSVariants.underlined
-        ? OutlineInputBorder(
-            borderSide: BorderSide(color: borderColor!, width: borderWidth!),
-            borderRadius: BorderRadius.circular(styler.borderRadius!))
-        : UnderlineInputBorder(
-            borderSide: BorderSide(color: borderColor!, width: borderWidth!),
-          );
-
+    // final focusedBorderColor = resolveFocusBorderColor();
+    // final focusedBorderWidth = resolveFocusBorderWidth();
     return FocusableActionDetector(
-      onShowHoverHighlight: (value) {
-        final shouldUpdateHover = !isDisabled && value;
-        if (_isHovered != shouldUpdateHover) {
-          setState(() => _isHovered = shouldUpdateHover);
-        }
-      },
-      child: Opacity(
-        opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.5 : 1,
-        child: SizedBox(
-          width: styler.width,
-          height: styler.height,
-          child: TextFormField(
-            onSaved: widget.onSaved,
-            autovalidateMode: widget.autovalidateMode,
-            initialValue: widget.initialValue,
-            onFieldSubmitted: widget.onFieldSubmitted,
-            autocorrect: widget.autocorrect,
-            autofillHints: widget.autofillHints,
-            autofocus: widget.autofocus,
-            buildCounter: widget.buildCounter,
-            canRequestFocus: widget.canRequestFocus,
-            clipBehavior: widget.clipBehavior,
-            contentInsertionConfiguration: widget.contentInsertionConfiguration,
-            contextMenuBuilder: widget.contextMenuBuilder,
-            controller: widget.controller,
-            cursorColor: widget.cursorColor,
-            cursorHeight: widget.cursorHeight,
-            cursorOpacityAnimates: widget.cursorOpacityAnimates,
-            cursorRadius: widget.cursorRadius,
-            cursorWidth: widget.cursorWidth,
-            dragStartBehavior: widget.dragStartBehavior,
-            enabled: !isDisabled,
-            readOnly: isReadOnly,
-            enableIMEPersonalizedLearning: widget.enableIMEPersonalizedLearning,
-            enableInteractiveSelection: widget.enableInteractiveSelection,
-            enableSuggestions: widget.enableSuggestions,
-            expands: widget.expands,
-            focusNode: widget.focusNode,
-            inputFormatters: widget.inputFormatters,
-            keyboardAppearance: widget.keyboardAppearance,
-            keyboardType: widget.keyboardType,
-            magnifierConfiguration: widget.magnifierConfiguration,
-            maxLength: widget.maxLength,
-            maxLengthEnforcement: widget.maxLengthEnforcement,
-            maxLines: widget.maxLines,
-            minLines: widget.minLines,
-            mouseCursor: isDisabled
-                ? SystemMouseCursors.forbidden
-                : _isHovered
-                    ? SystemMouseCursors.text
-                    : MouseCursor.defer,
-            obscureText: widget.obscureText,
-            obscuringCharacter: widget.obscuringCharacter,
-            onAppPrivateCommand: widget.onAppPrivateCommand,
-            onChanged: widget.onChanged,
-            onEditingComplete: widget.onEditingComplete,
-            validator: (value) {
-              if (isRequired && value != null && value.isEmpty) {
-                return widget.errorText != null && widget.errorText!.isNotEmpty
-                    ? widget.errorText
-                    : 'This field cannot be empty!';
-              }
-
-              return widget.validator != null ? widget.validator!(value) : null;
-            },
-            onTap: widget.onTap,
-            onTapOutside: widget.onTapOutside,
-            restorationId: widget.restorationId,
-            scribbleEnabled: widget.scribbleEnabled,
-            scrollController: widget.scrollController,
-            scrollPadding: widget.scrollPadding,
-            scrollPhysics: widget.scrollPhysics,
-            selectionControls: widget.selectionControls,
-            selectionHeightStyle: widget.selectionHeightStyle,
-            selectionWidthStyle: widget.selectionWidthStyle,
-            showCursor: widget.showCursor,
-            smartDashesType: widget.smartDashesType,
-            smartQuotesType: widget.smartQuotesType,
-            spellCheckConfiguration: widget.spellCheckConfiguration,
-            strutStyle: widget.strutStyle,
-            style: styler.textStyle,
-            textAlign: widget.textAlign,
-            textAlignVertical: widget.textAlignVertical,
-            textCapitalization: widget.textCapitalization,
-            textDirection: widget.textDirection,
-            textInputAction: widget.textInputAction,
-            undoController: widget.undoController,
-            decoration: InputDecoration(
-              alignLabelWithHint: widget.alignLabelWithHint,
-              constraints: widget.constraints,
-              counter: widget.counter,
-              counterStyle: widget.counterStyle,
-              counterText: widget.counterText,
-              fillColor: styler.color,
-              filled: widget.style != null && widget.style!.color != null,
-              disabledBorder: widget.disabledBorder ?? borderStyle,
-              error: widget.error,
-              errorBorder: widget.errorBorder,
-              errorMaxLines: widget.errorMaxLines,
-              errorStyle: widget.errorStyle,
-              errorText: widget.errorText,
-              floatingLabelAlignment: widget.floatingLabelAlignment,
-              floatingLabelBehavior: widget.floatingLabelBehavior,
-              floatingLabelStyle: widget.floatingLabelStyle,
-              focusColor: widget.focusColor,
-              focusedErrorBorder: widget.focusedErrorBorder,
-              helperMaxLines: widget.helperMaxLines,
-              helperStyle: widget.helperStyle,
-              helperText: widget.helperText,
-              hintMaxLines: widget.hintMaxLines,
-              hintStyle: widget.hintStyle,
-              hintText: widget.hintText,
-              hintTextDirection: widget.hintTextDirection,
-              isCollapsed: widget.isCollapsed,
-              isDense: widget.isDense,
-              label: widget.label,
-              labelStyle: widget.labelStyle,
-              labelText: widget.labelText,
-              semanticCounterText: widget.semanticCounterText,
-              iconColor: widget.iconColor,
-              hoverColor: widget.hoverColor,
-              icon: widget.icon,
-              prefix: widget.prefix,
-              prefixIcon: widget.prefixIcon,
-              prefixIconColor: widget.prefixIconColor,
-              prefixIconConstraints: widget.prefixIconConstraints,
-              prefixStyle: widget.prefixStyle,
-              prefixText: widget.prefixText,
-              suffix: widget.suffix,
-              suffixIcon: widget.suffixIcon,
-              suffixIconColor: widget.suffixIconColor,
-              suffixIconConstraints: widget.suffixIconConstraints,
-              suffixStyle: widget.suffixStyle,
-              suffixText: widget.suffixText,
-              enabledBorder: borderStyle,
-              contentPadding: styler.padding,
-              enabled: widget.visualFeedback,
-              focusedBorder: borderStyle.copyWith(
-                  // handle focusedBorderColor comming null
-                  borderSide: BorderSide(
-                      color: focusedBorderColor!, width: focusedBorderWidth!)),
-              border: borderStyle,
+        onShowHoverHighlight: (value) {
+          const shouldUpdateHover = true;
+          if (_isHovered != shouldUpdateHover) {
+            setState(() => _isHovered = shouldUpdateHover);
+          }
+        },
+        mouseCursor:
+            isDisabled ? SystemMouseCursors.forbidden : MouseCursor.defer,
+        child: Opacity(
+          opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.5 : 1,
+          child: SizedBox(
+            width: styler.width,
+            height: styler.height,
+            child: GestureDetector(
+              onTap: widget.onTap,
+              onDoubleTap: () {
+                if (widget.controller!.text.isNotEmpty) {
+                  widget.controller!.selection = TextSelection(
+                      baseOffset: 0,
+                      extentOffset: widget.controller!.text.length);
+                }
+              },
+              child: Stack(
+                children: [
+                  Container(
+                    padding: styler.padding ??
+                        const EdgeInsets.symmetric(horizontal: 15),
+                    constraints: widget.constraints,
+                    decoration: BoxDecoration(
+                      border: widget.variant == GSInputVariants.underlined
+                          ? Border(
+                              bottom: BorderSide(
+                                color: borderColor!,
+                                width: borderWidth!,
+                              ),
+                            )
+                          : Border.all(
+                              color: borderColor!, width: borderWidth!),
+                      color: styler.bg,
+                      borderRadius:
+                          BorderRadius.circular(styler.borderRadius ?? 0.0),
+                    ),
+                    child: Row(
+                      children: [
+                        _buildPrefixText(),
+                        _buildPrefixIcon(),
+                        Expanded(
+                          child: Center(
+                            child: EditableText(
+                              onSubmitted: widget.onFieldSubmitted,
+                              autocorrect: widget.autocorrect,
+                              autofocus: widget.autofocus,
+                              selectionColor: widget.textSelectionColor ??
+                                  const Color.fromRGBO(200, 200, 200, 1.0),
+                              clipBehavior: widget.clipBehavior,
+                              contentInsertionConfiguration:
+                                  widget.contentInsertionConfiguration,
+                              contextMenuBuilder: widget.contextMenuBuilder,
+                              controller: widget.controller ?? controller!,
+                              cursorColor: widget.cursorColor ?? borderColor,
+                              cursorHeight: widget.cursorHeight,
+                              cursorOpacityAnimates:
+                                  widget.cursorOpacityAnimates ?? false,
+                              cursorRadius: widget.cursorRadius,
+                              cursorWidth: widget.cursorWidth,
+                              dragStartBehavior: widget.dragStartBehavior,
+                              readOnly: isReadOnly || isDisabled,
+                              enableIMEPersonalizedLearning:
+                                  widget.enableIMEPersonalizedLearning,
+                              enableInteractiveSelection:
+                                  widget.enableInteractiveSelection,
+                              enableSuggestions: widget.enableSuggestions,
+                              expands: widget.expands,
+                              focusNode: widget.focusNode ?? focusNode,
+                              inputFormatters: widget.inputFormatters,
+                              keyboardAppearance:
+                                  widget.keyboardAppearance ?? Brightness.light,
+                              keyboardType: widget.keyboardType,
+                              magnifierConfiguration:
+                                  widget.magnifierConfiguration ??
+                                      TextMagnifierConfiguration.disabled,
+                              maxLines: widget.maxLines,
+                              minLines: widget.minLines,
+                              obscureText: widget.obscureText,
+                              obscuringCharacter: widget.obscuringCharacter,
+                              onAppPrivateCommand: widget.onAppPrivateCommand,
+                              onChanged: widget.onChanged ??
+                                  (p0) {
+                                    setState(() {});
+                                  },
+                              onEditingComplete: widget.onEditingComplete,
+                              onTapOutside: widget.onTapOutside,
+                              restorationId: widget.restorationId,
+                              scribbleEnabled: widget.scribbleEnabled,
+                              scrollController: widget.scrollController,
+                              scrollPadding: widget.scrollPadding,
+                              scrollPhysics: widget.scrollPhysics,
+                              selectionControls: widget.selectionControls,
+                              selectionHeightStyle: widget.selectionHeightStyle,
+                              selectionWidthStyle: widget.selectionWidthStyle,
+                              showCursor: widget.showCursor,
+                              smartDashesType: widget.smartDashesType,
+                              smartQuotesType: widget.smartQuotesType,
+                              spellCheckConfiguration:
+                                  widget.spellCheckConfiguration,
+                              strutStyle: widget.strutStyle,
+                              style: widget.style?.textStyle ??
+                                  TextStyle(
+                                      fontSize: styler.textStyle?.fontSize),
+                              textAlign: widget.textAlign,
+                              textCapitalization: widget.textCapitalization,
+                              textDirection: widget.textDirection,
+                              textInputAction: widget.textInputAction,
+                              undoController: widget.undoController,
+                              backgroundCursorColor: const Color(0xFF808080),
+                            ),
+                          ),
+                        ),
+                        _buildSuffixIcon()
+                      ],
+                    ),
+                  ),
+                  if (widget.controller?.text.isEmpty ??
+                      controller!.text.isEmpty)
+                    Positioned(
+                      left: widget.prefixText != null &&
+                              widget.prefixText!.isNotEmpty
+                          ? 10 + widget.prefixText!.length * 8
+                          : widget.prefixIcon != null
+                              ? 50
+                              : 10,
+                      top: 10,
+                      child: Text(widget.hintText!,
+                          style: widget.hintStyle ??
+                              TextStyle(
+                                  color: borderColor,
+                                  fontSize: styler.textStyle?.fontSize)),
+                    ),
+                ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
+  }
+
+  Widget _buildPrefixText() {
+    if (widget.prefixText != null && widget.prefixText!.isNotEmpty) {
+      return Row(
+        children: [
+          Text(
+            widget.prefixText!,
+            style: widget.prefixStyle,
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+        ],
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
+  }
+
+  Widget _buildPrefixIcon() {
+    if (widget.prefixIcon != null) {
+      return Row(
+        children: [
+          widget.prefixIcon!,
+          const SizedBox(
+            width: 10,
+          ),
+        ],
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
+  }
+
+  Widget _buildSuffixIcon() {
+    if (widget.suffixIcon != null) {
+      return Row(
+        children: [
+          const SizedBox(
+            width: 10,
+          ),
+          widget.suffixIcon!,
+        ],
+      );
+    } else {
+      return const SizedBox.shrink();
+    }
   }
 }

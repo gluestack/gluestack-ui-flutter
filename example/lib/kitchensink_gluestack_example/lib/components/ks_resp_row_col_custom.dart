@@ -48,7 +48,7 @@ class KSRespRowCol extends StatelessWidget {
       direction: direction ?? (isSmallScreen ? Axis.vertical : Axis.horizontal),
       children: children.map((e) {
         return !isSmallScreen
-            ? Expanded(
+            ? Flexible(
                 child: GSBox(
                     style: GSStyle(
                       padding: seperatorPadding ??

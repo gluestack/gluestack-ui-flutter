@@ -12,7 +12,7 @@ class KSSideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GSVStack(
-      space: GSSpaces.$lg,
+      space: GSVstackSpaces.$lg,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const KSSortBy(),

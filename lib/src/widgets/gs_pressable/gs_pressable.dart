@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/color.dart';
@@ -211,14 +212,10 @@ class GSPressable extends StatelessWidget {
         return Semantics(
           button: true,
           label: semanticsLabel ?? 'Pressable',
-          child: FocusableActionDetector(
-            focusNode: focusNode,
-            onFocusChange: onFocusChange,
-            onShowFocusHighlight: onShowFocusHighlight,
-            mouseCursor: mouseCursor ?? MouseCursor.defer,
-            autofocus: autofocus,
-            child: GestureDetector(
-              onTap: onPress,
+          child: MouseRegion(
+            cursor: mouseCursor ?? MouseCursor.defer,
+            child: GsGestureDetector(
+              onPressed: onPress,
               onLongPress: onLongPress,
               onTapDown: onTapDown,
               onTapUp: onTapUp,
