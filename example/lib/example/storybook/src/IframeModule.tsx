@@ -17,7 +17,8 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
         border: "0.3px solid #404040",
         borderRadius: "12px",
         padding: "2px",
-        height: height,
+        //height: height,
+        // marginBottom: "-10px",
       }}
     >
       <iframe
@@ -33,6 +34,7 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
         customStyle={{
           padding: "none",
           borderRadius: "0 0 10px 10px",
+          marginBottom: "0px",
         }}
       >
         {code}
