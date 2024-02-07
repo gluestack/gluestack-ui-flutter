@@ -12,6 +12,7 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -26,29 +27,27 @@ import {
 
 This is an illustration of a **Themed GSInput** widget with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "input-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="621px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSInput(
+      size: GSInputSizes.$md,
+      variant: GSInputVariants.outline,
+      hintText: "Enter text here",
+      isDisabled: false,
+      isInvalid: false,
+      isReadOnly: false,
+      style: GSStyle(
+        width: 300,
+      ),
+    )
 
-GSInput(
-  size: GSInputSizes.$md,
-  variant: GSInputVariants.outline,
-  hintText: "Enter text here",
-  isDisabled: false,
-  isInvalid: false,
-  isReadOnly: false,
-  style: GSStyle(
-    width: 300,
-  ),
-)
-
-```
+`}
+/>
 
 <br />
 
@@ -58,7 +57,7 @@ GSInput(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -213,88 +212,84 @@ GSInput widget is created using TextFormField widget from flutter. It extends al
 
 The GSInput widget integrates with an icon and a button, providing users with a comprehensive login window inside a FormControl layout.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "input-with-form-control-preview"}
   title="Example"
-  width="800"
-  height="500"
-></iframe>
+  height="1086px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSBox(
+      style: GSStyle(
+        width: 250,
+        height: 300,
+        borderRadius: 8,
+        borderColor: $GSColors.blueGray300,
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      ),
+      child: GSVStack(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const GSHeading(text: "Login"),
+          const SizedBox(
+            height: 20,
+          ),
+          const GSText(text: 'Email'),
+          GSInput(
+            style: GSStyle(
+              width: 300,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const GSText(text: 'Password'),
+          GSInput(
+            obscureText: true,
+            style: GSStyle(
+              width: 300,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          GSButton(
+            style: GSStyle(),
+            onPressed: () {},
+            child: const GSButtonText(text: "Save"),
+          ),
+        ],
+      ),
+    )
 
-
-GSBox(
-  style: GSStyle(
-    width: 250,
-    height: 300,
-    borderRadius: 8,
-    borderColor: $GSColors.blueGray300,
-    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-  ),
-  child: GSVStack(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const GSHeading(text: "Login"),
-      const SizedBox(
-        height: 20,
-      ),
-      const GSText(text: 'Email'),
-      GSInput(
-        style: GSStyle(
-          width: 300,
-        ),
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-      const GSText(text: 'Password'),
-      GSInput(
-        obscureText: true,
-        style: GSStyle(
-          width: 300,
-        ),
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-      GSButton(
-        style: GSStyle(),
-        onPressed: () {},
-        child: const GSButtonText(text: "Save"),
-      ),
-    ],
-  ),
-)
-
-```
+`}
+/>
 
 ### GSInput with Icons
 
 The GSInput with GSIcons is a variation of the GSInput widget that displays icons next to input field. It's commonly used in apps for a more visual representation of options and easier navigation.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "input-with-icon-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="637px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSBox(
+      style: GSStyle(
+        width: 250,
+        height: 100,
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      ),
+      child: const GSInput(
+        prefixIcon: GSIcon(icon: Icons.search),
+        obscureText: true,
+        hintText: 'Search...',
+      ),
+    )
 
+`}
+/>
 
-GSBox(
-  style: GSStyle(
-    width: 250,
-    height: 100,
-    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-  ),
-  child: const GSInput(
-    prefixIcon: GSIcon(icon: Icons.search),
-    obscureText: true,
-    hintText: 'Search...',
-  ),
-)
-
-```
+<br />

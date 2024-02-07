@@ -12,6 +12,7 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -25,44 +26,41 @@ import {
 
 This is an illustration of a **Themed GSToast** widget with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "toast-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="831px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-GSButton(
-  size: GSButtonSizes.$lg,
-  child: const GSButtonText(text: "Click Me"),
-  onPressed: () {
-    showToast(
-      context,
-      child: const GSToast(
-        variant: GSToastVariants.solid,
-        action: GSToastActions.success,
-        child: const GSVStack(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GSToastTitle(
-              title: "Toast Title",
+    GSButton(
+      size: GSButtonSizes.$lg,
+      child: const GSButtonText(text: "Click Me"),
+      onPressed: () {
+        showToast(
+          context,
+          child: const GSToast(
+            variant: GSToastVariants.solid,
+            action: GSToastActions.success,
+            child: const GSVStack(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GSToastTitle(
+                  title: "Toast Title",
+                ),
+                GSToastDescription(
+                  description: "Here is the toast description!",
+                ),
+              ],
             ),
-            GSToastDescription(
-              description: "Here is the toast description!",
-            ),
-          ],
-        ),
-      ),
-    );
-  },
-)
+          ),
+        );
+      },
+    )
 
-
-```
+`}
+/>
 
 <br />
 
@@ -72,7 +70,7 @@ GSButton(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 

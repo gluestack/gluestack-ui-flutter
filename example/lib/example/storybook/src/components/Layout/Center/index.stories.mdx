@@ -12,35 +12,34 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 <Meta title="Components/Layout/Center" />
 
 This is an illustration of a **Themed GSCenter** widget with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "center-preview"}
   title="Example"
-  width="727"
-  height="400"
-></iframe>
+  height="637px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSCenter(
+      style: GSStyle(
+        height: 150,
+        width: 300,
+        bg: $GSColors.primary500,
+      ),
+      child: const GSCenter(
+        child: const GSText(
+          text: 'This is the Center',
+        ),
+      ),
+    )
 
-GSCenter(
-  style: GSStyle(
-    height: 150,
-    width: 300,
-    bg: $GSColors.primary500,
-  ),
-  child: const GSCenter(
-    child: const GSText(
-      text: 'This is the Center',
-    ),
-  ),
-)
-
-```
+`}
+/>
 
 <br />
 
@@ -50,7 +49,7 @@ GSCenter(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -61,3 +60,5 @@ This section provides a comprehensive reference list for the widget parameters, 
 #### GSCenter
 
 It inherits all the properties of Flutter's [Center](https://api.flutter.dev/flutter/widgets/Center-class.html) widget.
+
+<br />

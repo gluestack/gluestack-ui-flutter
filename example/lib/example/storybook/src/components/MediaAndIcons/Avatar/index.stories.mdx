@@ -9,6 +9,8 @@ showHeader: true
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
 
+import IframeModule from "../../../IframeModule";
+
 import {
   AppProvider,
   CodePreview,
@@ -21,27 +23,25 @@ import {
 
 This is an illustration of a **Themed GSAvatar** widget with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "avatar-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="612px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSAvatar(
+      radius: GSAvatarRadius.$full,
+      size: GSAvatarSizes.$md,
+      style: GSStyle(
+        bg: Colors.orange,
+        textStyle: const TextStyle(color: Colors.white),
+      ),
+      fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+    )
 
-GSAvatar(
-  radius: GSAvatarRadius.$full,
-  size: GSAvatarSizes.$md,
-  style: GSStyle(
-    bg: Colors.orange,
-    textStyle: const TextStyle(color: Colors.white),
-  ),
-  fallBackText: const GSAvatarFallBackText('Geeky Stack'),
-)
-
-```
+`}
+/>
 
 <br />
 
@@ -51,7 +51,7 @@ GSAvatar(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -166,51 +166,116 @@ The Examples section provides visual representations of the different variants o
 
 An GSAvatar widget with text displays a stylized representation of a user or entity alongside accompanying text, providing a visual and textual identification within a user interface.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "avatar-with-label-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="657px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSHStack(
+      children: [
+        GSAvatar(
+          style: GSStyle(
+            bg: Colors.orange,
+            textStyle: const TextStyle(color: Colors.white),
+          ),
+          fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+        ),
+        const GSHeading(text: 'text'),
+      ],
+    )
 
-
-GSHStack(
-  children: [
-    GSAvatar(
-      style: GSStyle(
-        bg: Colors.orange,
-        textStyle: const TextStyle(color: Colors.white),
-      ),
-      fallBackText: const GSAvatarFallBackText('Geeky Stack'),
-    ),
-    const GSHeading(text: 'text'),
-  ],
-)
-
-```
+`}
+/>
 
 #### GSAvatar with Image
 
 An GSAvatar widget with an image incorporates a user or entity representation using a profile picture or image, adding a personalized touch and visual identification within a user interface.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "avatar-with-image-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="1339px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      children: [
+        GSHStack(
+          children: [
+            GSAvatar(
+              avatarImage: const GSImage(
+                path: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+                imageType: GSImageType.network,
+              ),
+              style: GSStyle(
+                bg: Colors.orange,
+                textStyle: const TextStyle(color: Colors.white),
+              ),
+              fallBackText: const GSAvatarFallBackText('Ronald Richards'),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            const GSVStack(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GSHeading(text: 'Nursing Assistant'),
+                GSText(text: 'Ronald Richards'),
+              ],
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSHStack(
+          children: [
+            GSAvatar(
+              avatarImage: const GSImage(
+                path: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+                imageType: GSImageType.network,
+              ),
+              style: GSStyle(
+                bg: Colors.orange,
+                textStyle: const TextStyle(color: Colors.white),
+              ),
+              fallBackText: const GSAvatarFallBackText('Arlene McCoy'),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            const GSVStack(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GSHeading(text: 'Arlene McCoy'),
+                GSText(text: 'Marketing Coordinator'),
+              ],
+            ),
+          ],
+        ),
+      ],
+    )
 
-GSVStack(
-  children: [
-    GSHStack(
+`}
+/>
+
+#### GSAvatar Group
+
+The avatar group allows users to group avatars and display them in a horizontal or vertical row for better visual representation and functionality.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "avatar-group-preview"}
+  title="Example"
+   height="1144px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSAvatarGroup(
       children: [
         GSAvatar(
+          size: GSSizes.$sm,
           avatarImage: const GSImage(
             path:
                 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
@@ -219,27 +284,25 @@ GSVStack(
           style: GSStyle(
             bg: Colors.orange,
             textStyle: const TextStyle(color: Colors.white),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
           ),
-          fallBackText: const GSAvatarFallBackText('Ronald Richards'),
+          fallBackText: const GSAvatarFallBackText('RA'),
         ),
-        const SizedBox(
-          width: 10,
-        ),
-        const GSVStack(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GSHeading(text: 'Nursing Assistant'),
-            GSText(text: 'Ronald Richards'),
-          ],
-        ),
-      ],
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSHStack(
-      children: [
         GSAvatar(
+          size: GSSizes.$sm,
+          avatarImage: const GSImage(
+            path:
+                'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+            imageType: GSImageType.network,
+          ),
+          style: GSStyle(
+            bg: Colors.orange,
+            textStyle: const TextStyle(color: Colors.white),
+          ),
+          fallBackText: const GSAvatarFallBackText('BA'),
+        ),
+        GSAvatar(
+          size: GSSizes.$sm,
           avatarImage: const GSImage(
             path:
                 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
@@ -249,85 +312,13 @@ GSVStack(
             bg: Colors.orange,
             textStyle: const TextStyle(color: Colors.white),
           ),
-          fallBackText: const GSAvatarFallBackText('Arlene McCoy'),
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        const GSVStack(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GSHeading(text: 'Arlene McCoy'),
-            GSText(text: 'Marketing Coordinator'),
-          ],
+          fallBackText: const GSAvatarFallBackText('GA'),
         ),
       ],
-    ),
-  ],
-)
+    )
 
-```
-
-#### GSAvatar Group
-
-The avatar group allows users to group avatars and display them in a horizontal or vertical row for better visual representation and functionality.
-
-<iframe
-  src={process.env.NEXT_PUBLIC_PREVIEW + "avatar-group-preview"}
-  title="Example"
-  width="800"
-  height="350"
-></iframe>
-
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-GSAvatarGroup(
-  children: [
-    GSAvatar(
-      size: GSSizes.$sm,
-      avatarImage: const GSImage(
-        path:
-            'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-        imageType: GSImageType.network,
-      ),
-      style: GSStyle(
-        bg: Colors.orange,
-        textStyle: const TextStyle(color: Colors.white),
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-      ),
-      fallBackText: const GSAvatarFallBackText('RA'),
-    ),
-    GSAvatar(
-      size: GSSizes.$sm,
-      avatarImage: const GSImage(
-        path:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-        imageType: GSImageType.network,
-      ),
-      style: GSStyle(
-        bg: Colors.orange,
-        textStyle: const TextStyle(color: Colors.white),
-      ),
-      fallBackText: const GSAvatarFallBackText('BA'),
-    ),
-    GSAvatar(
-      size: GSSizes.$sm,
-      avatarImage: const GSImage(
-        path:
-            'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
-        imageType: GSImageType.network,
-      ),
-      style: GSStyle(
-        bg: Colors.orange,
-        textStyle: const TextStyle(color: Colors.white),
-      ),
-      fallBackText: const GSAvatarFallBackText('GA'),
-    ),
-  ],
-)
-
-```
+`}
+/>
 
 #### Fallback
 

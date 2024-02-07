@@ -16,7 +16,10 @@ class LinkWithTextPreview extends StatelessWidget {
           Story(
             name: 'Link',
             builder: (context) => GSBox(
-              style: GSStyle(width: 300, height: 50),
+              style: GSStyle(
+                width: 260,
+                height: 30,
+              ),
               child: GSHStack(
                 children: [
                   const GSText(text: 'Design inspiration from'),

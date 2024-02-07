@@ -12,30 +12,30 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 <Meta title="Components/Feedback/Spinner" />
 
 This is an illustration of a **Themed GSSpinner** widget with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "spinner-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="577px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSSpinner(
+      strokeWidth: 4,
+      style: GSStyle(
+        bg: $GSColors.blueGray300,
+        width: 30,
+        height: 30,
+      ),
+    )
 
-GSSpinner(
-  strokeWidth: 4,
-  style: GSStyle(
-    bg: $GSColors.blueGray300,
-    width: 30,
-    height: 30,
-  ),
-),
-```
+`}
+/>
 
 <br />
 
@@ -45,7 +45,7 @@ GSSpinner(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -78,99 +78,94 @@ The Examples section provides visual representations of the different variants o
 
 A GSSpinner widget with a label provides informative text or a label alongside the spinner, offering descriptive context and improving user understanding and interaction with the spinner widget within a user interface.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "spinner-with-label-preview"}
   title="Example"
-  width="800"
-  height="300"
-></iframe>
+  height="696px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSHStack(
+      children: [
+        GSSpinner(
+          strokeWidth: 2,
+          style: GSStyle(
+            bg: $GSColors.blueGray300,
+            width: 20,
+            height: 20,
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const GSText(text: "Please wait..."),
+      ],
+    )
 
-
-GSHStack(
-  children: [
-    GSSpinner(
-      strokeWidth: 2,
-      style: GSStyle(
-        bg: $GSColors.blueGray300,
-        width: 20,
-        height: 20,
-      ),
-    ),
-    const SizedBox(
-      width: 10,
-    ),
-    const GSText(text: "Please wait..."),
-  ],
-)
-
-```
+`}
+/>
 
 #### Color Scheme
 
 A GSSpinner widget with a color scheme enhances visual appeal by incorporating distinct colors, adding a touch of customization and style to the spinner widget within a user interface.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "spinner-with-colors-preview"}
   title="Example"
-  width="800"
-  height="400"
-></iframe>
+  height="1176px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      children: [
+        GSSpinner(
+          strokeWidth: 3,
+          style: GSStyle(
+            bg: $GSColors.blueGray700,
+            color: $GSColors.red400,
+            width: 30,
+            height: 30,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        GSSpinner(
+          strokeWidth: 3,
+          style: GSStyle(
+            bg: $GSColors.blueGray700,
+            color: $GSColors.orange400,
+            width: 30,
+            height: 30,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        GSSpinner(
+          strokeWidth: 3,
+          style: GSStyle(
+            bg: $GSColors.blueGray700,
+            color: $GSColors.green400,
+            width: 30,
+            height: 30,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        GSSpinner(
+          strokeWidth: 3,
+          style: GSStyle(
+            bg: $GSColors.blueGray700,
+            width: 30,
+            height: 30,
+          ),
+        ),
+      ],
+    )
 
+`}
+/>
 
-GSVStack(
-  children: [
-    GSSpinner(
-      strokeWidth: 3,
-      style: GSStyle(
-        bg: $GSColors.blueGray700,
-        color: $GSColors.red400,
-        width: 30,
-        height: 30,
-      ),
-    ),
-    const SizedBox(
-      height: 10,
-    ),
-    GSSpinner(
-      strokeWidth: 3,
-      style: GSStyle(
-        bg: $GSColors.blueGray700,
-        color: $GSColors.orange400,
-        width: 30,
-        height: 30,
-      ),
-    ),
-    const SizedBox(
-      height: 10,
-    ),
-    GSSpinner(
-      strokeWidth: 3,
-      style: GSStyle(
-        bg: $GSColors.blueGray700,
-        color: $GSColors.green400,
-        width: 30,
-        height: 30,
-      ),
-    ),
-    const SizedBox(
-      height: 10,
-    ),
-    GSSpinner(
-      strokeWidth: 3,
-      style: GSStyle(
-        bg: $GSColors.blueGray700,
-        width: 30,
-        height: 30,
-      ),
-    ),
-  ],
-)
-
-
-```
+<br />

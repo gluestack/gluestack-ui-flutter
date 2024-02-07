@@ -12,6 +12,7 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -25,39 +26,35 @@ import {
 
 This is an illustration of a **Themed GSVStack** widget with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "vstack-preview"}
   title="Example"
-  width="800"
-  height="450"
-></iframe>
+  height="749px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      mainAxisAlignment: MainAxisAlignment.center,
+      isReversed: false,
+      space: GSSpaces.$none,
+      children: [
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
+          child: const Text('1'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
+          child: const Text('2'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
+          child: const Text('3'),
+        ),
+      ],
+    )
 
-GSVStack(
-  mainAxisAlignment: MainAxisAlignment.center,
-  isReversed: false,
-  space: GSSpaces.$none,
-  children: [
-    GSBox(
-      style:
-          GSStyle(height: 100, width: 100, color: $GSColors.blue300),
-      child: const Text('1'),
-    ),
-    GSBox(
-      style:
-          GSStyle(height: 100, width: 100, color: $GSColors.blue400),
-      child: const Text('2'),
-    ),
-    GSBox(
-      style:
-          GSStyle(height: 100, width: 100, color: $GSColors.blue500),
-      child: const Text('3'),
-    ),
-  ],
-)
-```
+`}
+/>
 
 <br />
 
@@ -67,7 +64,7 @@ GSVStack(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -156,9 +153,10 @@ The Examples section provides visual representations of the different variants o
 
 A GSVStack widget with the reversed parameter reverses the order of vertically stacked elements, enabling customized vertical layouts and visual arrangements of content within a user interface.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "vstack-reversed-preview"}
   title="Example"
-  width="800"
-  height="450"
-></iframe>
+  height="400px"
+/>
+
+<br />

@@ -16,7 +16,10 @@ class LinkWithIconPreview extends StatelessWidget {
           Story(
             name: 'Link',
             builder: (context) => GSBox(
-              style: GSStyle(width: 200, height: 50),
+              style: GSStyle(
+                width: 160,
+                height: 25,
+              ),
               child: GSHStack(
                 children: [
                   const GSText(text: 'Go to'),

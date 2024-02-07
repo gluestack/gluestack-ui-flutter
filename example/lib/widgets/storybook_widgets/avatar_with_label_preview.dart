@@ -9,35 +9,30 @@ class AvatarWithLabelPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return materialWrapper(
       context,
-      Storybook(
-        initialStory: 'Avatar',
-        stories: [
-          Story(
-            name: 'Avatar',
-            builder: (context) => GSBox(
-              style: GSStyle(
-                width: 250,
-                height: 150,
-              ),
-              child: GSVStack(
-                children: [
-                  GSHStack(
-                    children: [
-                      GSAvatar(
-                        style: GSStyle(
-                          bg: Colors.orange,
-                          textStyle: const TextStyle(color: Colors.white),
-                        ),
-                        fallBackText: const GSAvatarFallBackText('Geeky Stack'),
-                      ),
-                      const GSHeading(text: 'text')
-                    ],
+      GSBox(
+        style: GSStyle(
+          width: 100,
+          height: 50,
+        ),
+        child: GSVStack(
+          children: [
+            GSHStack(
+              children: [
+                GSAvatar(
+                  style: GSStyle(
+                    bg: Colors.orange,
+                    textStyle: const TextStyle(color: Colors.white),
                   ),
-                ],
-              ),
+                  fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const GSHeading(text: 'text')
+              ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

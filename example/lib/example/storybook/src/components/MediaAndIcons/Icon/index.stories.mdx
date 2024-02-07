@@ -8,6 +8,7 @@ showHeader: true
 
 import { Meta } from "@storybook/addon-docs";
 import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -21,21 +22,20 @@ import {
 
 This is an illustration of a **Themed GSIcon** component with default configuration.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "icon-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="537px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSIcon(
+      icon: Icons.calendar_month,
+      size: GSIconSizes.$md,
+    )
 
-GSIcon(
-  icon: Icons.calendar_month,
-  size: GSIconSizes.$md,
-)
-```
+`}
+/>
 
 <br />
 
@@ -45,7 +45,7 @@ GSIcon(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
