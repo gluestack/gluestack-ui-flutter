@@ -30,7 +30,6 @@ class _MyAppState extends State<MyApp> {
         builder: (context, ref, child) {
           final GSThemeMode? currentThemeMode = ref.watch(toggleThemeProvider);
 
-          print("CURRENTTHEME: $currentThemeMode");
           return ScaffoldMessenger(
             child: GSApp.router(
               debugShowCheckedModeBanner: false,
