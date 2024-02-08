@@ -237,9 +237,9 @@ void main() {
 
     final btnClr = (internalButtonContainer.decoration as BoxDecoration).color;
 
-    print("Current Button Color: $btnClr");
-    print("Expected bg (base clr): ${$GSColors.primary500}");
-    print("Expected bg (on hover clr): ${$GSColors.primary600}");
+    // print("Current Button Color: $btnClr");
+    // print("Expected bg (base clr): ${$GSColors.primary500}");
+    // print("Expected bg (on hover clr): ${$GSColors.primary600}");
 
     expect(btnClr, $GSColors.primary600);
 
@@ -281,10 +281,10 @@ void main() {
 
     final btnClr = (internalButtonContainer.decoration as BoxDecoration).color;
 
-    print("Current Button Color: $btnClr");
-    print("Expected bg (base clr): ${$GSColors.primary500}");
-    print("Expected bg (hover clr): ${$GSColors.primary600}");
-    print("Expected bg (selection clr): ${$GSColors.primary700}");
+    // print("Current Button Color: $btnClr");
+    // print("Expected bg (base clr): ${$GSColors.primary500}");
+    // print("Expected bg (hover clr): ${$GSColors.primary600}");
+    // print("Expected bg (selection clr): ${$GSColors.primary700}");
 
 
     await gesture.removePointer();
