@@ -12,6 +12,7 @@ class TextAreaExample extends StatefulWidget {
 }
 
 class _TextAreaExampleState extends State<TextAreaExample> {
+  TextEditingController textEditingController = TextEditingController();
   final List dropdownSizeOptions = [
 GSTextAreaSizes.$sm,
 GSTextAreaSizes.$md,
@@ -70,6 +71,7 @@ GSTextAreaSizes.$xl,
           isDisabled: isDisabled,
           isReadOnly: isReadOnly,
           isInvalid: isInvalid,
+          controller: textEditingController,
           hintText: "Enter text here",
         ),
         controls: Column(

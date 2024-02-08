@@ -1,5 +1,3 @@
-import 'package:gluestack_ui_example/widgets/storybook_widgets/button_story_material.dart';
-
 import 'alert_dialog_story.dart';
 import 'avatar_story.dart';
 import 'badge_story.dart';
@@ -28,12 +26,16 @@ import 'vstack_story.dart';
 import 'flex_story.dart';
 import 'stack_story.dart';
 import 'scroll_story.dart';
+import 'button_story_material.dart';
+import 'icon_button_storybook.dart';
+
 
 final List<StoryWidget> kStories = [
   AlertDialogStory(),
   AvatarStory(),
   BadgeStory(),
   BoxStory(),
+  IconButtonStory(),
   FlexStory(),
   ButtonStory(),
   GSMButtonStory(),

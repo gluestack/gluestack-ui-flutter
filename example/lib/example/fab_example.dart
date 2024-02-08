@@ -12,14 +12,18 @@ class FabExample extends StatefulWidget {
 }
 
 class _FabExampleState extends State<FabExample> {
-  final List dropdownSizeOptions = [GSFABSizes.$sm, GSFABSizes.$md, GSFABSizes.$lg];
+  final List dropdownSizeOptions = [
+    GSFABSizes.$sm,
+    GSFABSizes.$md,
+    GSFABSizes.$lg
+  ];
   final List dropdownPlacementOptions = [
-GSFABPlacements.bottomCenter,
-GSFABPlacements.bottomLeft,
-GSFABPlacements.bottomRight,
-GSFABPlacements.topCenter,
-GSFABPlacements.topLeft,
-GSFABPlacements.topRight
+    GSFABPlacements.bottomCenter,
+    GSFABPlacements.bottomLeft,
+    GSFABPlacements.bottomRight,
+    GSFABPlacements.topCenter,
+    GSFABPlacements.topLeft,
+    GSFABPlacements.topRight
   ];
   GSFABSizes selectedSizeOption = GSFABSizes.$md;
   GSFABPlacements selectedPlacementOption = GSFABPlacements.bottomRight;
@@ -88,7 +92,9 @@ GSFABPlacements.topRight
               GSFab(
                 size: selectedSizeOption,
                 placement: selectedPlacementOption,
-                onPressed: () {},
+                onPressed: () {
+                  print('fab pressed!');
+                },
                 isDisabled: isDisabled,
                 isHovered: isHovered,
                 isPressed: isPressed,

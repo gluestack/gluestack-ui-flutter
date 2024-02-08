@@ -15,7 +15,7 @@ class KSStackedCard extends StatelessWidget {
         return GSBox(
           style: GSStyle(width: 400),
           child: GSVStack(
-            space: GSSpaces.$xs,
+            space: GSVstackSpaces.$xs,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
@@ -23,7 +23,7 @@ class KSStackedCard extends StatelessWidget {
                   Opacity(
                     opacity: isHovered ? .9 : 1,
                     child: GSImage(
-                        borderRadius: GSBorderRadius.$md,
+                        borderRadius: GSImageRadius.$md,
                         fit: BoxFit.cover,
                         style: GSStyle(
                             height: $GSSpace.$72, width: double.infinity),
@@ -45,8 +45,8 @@ class KSStackedCard extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.center,
                         child: GSButton(
-                          action: GSActions.secondary,
-                          variant: GSVariants.outline,
+                          action: GSButtonActions.secondary,
+                          variant: GSButtonVariants.outline,
                           style: GSStyle(
                               descendantStyles: {
                                 '_icon': GSStyle(color: $GSColors.white)

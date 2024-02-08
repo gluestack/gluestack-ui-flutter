@@ -20,7 +20,7 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return GSVStack(
       mainAxisSize: MainAxisSize.min,
-      space: GSSpaces.$md,
+      space: GSVstackSpaces.$md,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const GSText(text: "Ammenities", bold: true, size: GSSizes.$sm),
@@ -31,11 +31,11 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
             ],
             child: GSVStack(
               crossAxisAlignment: CrossAxisAlignment.start,
-              space: GSSpaces.$md,
+              space: GSVstackSpaces.$md,
               children: [
                 for (int i = 0; i < (_ammenitiesData.length); i++)
                   GSCheckBox(
-                    size: GSSizes.$sm,
+                    size: GSCheckBoxSizes.$sm,
                     onChanged: (value) {},
                     icon: GSCheckBoxIndicator(
                         style: GSStyle(
@@ -50,7 +50,7 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
           style: GSStyle(width: double.infinity),
           child: GSButton(
             style: GSStyle(borderRadius: $GSRadii.$md),
-            action: GSActions.negative,
+            action: GSButtonActions.negative,
             child: const GSButtonText(text: 'Next'),
             onPressed: () {
               nextFunction.call();
@@ -61,8 +61,8 @@ class ListYourPlaceModalContent2 extends StatelessWidget {
           style: GSStyle(width: double.infinity),
           child: GSButton(
             style: GSStyle(borderRadius: $GSRadii.$md),
-            action: GSActions.secondary,
-            variant: GSVariants.outline,
+            action: GSButtonActions.secondary,
+            variant: GSButtonVariants.outline,
             child: const GSButtonText(text: 'Back'),
             onPressed: () {
               backFunction.call();

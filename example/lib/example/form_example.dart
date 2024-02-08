@@ -15,7 +15,11 @@ class FormExample extends StatefulWidget {
 class _FormExampleState extends State<FormExample> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Value groupValue = Value.one;
-  final List dropdownSizeOptions = [GSFormControlSizes.$sm, GSFormControlSizes.$md, GSFormControlSizes.$lg];
+  final List dropdownSizeOptions = [
+    GSFormControlSizes.$sm,
+    GSFormControlSizes.$md,
+    GSFormControlSizes.$lg
+  ];
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
       selectedSizeOption = newOption;
@@ -230,7 +234,7 @@ class _FormExampleState extends State<FormExample> {
                 const GSFormLabelText('Username'),
                 sp,
                 const GSInput(
-                  initialValue: "GlueStacky",
+                  // initialValue: "GlueStacky",
                   hintText: 'Enter your username here... | Ex. John Doe',
                   // style: GSStyle(height: 70),
                 ),
@@ -241,12 +245,12 @@ class _FormExampleState extends State<FormExample> {
                   style: GSStyle(height: 80),
                   obscureText: true,
                   hintText: 'Enter you password here...',
-                  validator: (input) {
-                    if (input != null && (input as String).length < 8) {
-                      return "Password must have atleast 8 characters!";
-                    }
-                    return null;
-                  },
+                  // validator: (input) {
+                  //   if (input != null && (input as String).length < 8) {
+                  //     return "Password must have atleast 8 characters!";
+                  //   }
+                  //   return null;
+                  // },
                 ),
                 //TEXTAREA---------------------
                 const GSFormLabelText('Bio'),
@@ -334,28 +338,34 @@ class _FormExampleState extends State<FormExample> {
                 ),
                 sp2,
                 sp2,
-                GSButton(
-                    action: GSButtonActions.positive,
-                    variant: GSButtonVariants.outline,
-                    child: const Text(
-                      'Submit',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState != null &&
-                          _formKey.currentState!.validate() &&
-                          !isDisabled) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              'Submitting data...',
-                              style: TextStyle(color: Colors.white),
+                GSCenter(
+                  child: GSButton(
+                      action: GSButtonActions.positive,
+                      variant: GSButtonVariants.outline,
+                      size: GSButtonSizes.$lg,
+                      style: GSStyle(width: double.infinity),
+                      onPressed: () {
+                        if (_formKey.currentState != null &&
+                            _formKey.currentState!.validate() &&
+                            !isDisabled) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Submitting data...',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              backgroundColor: Colors.green,
                             ),
-                            backgroundColor: Colors.green,
-                          ),
-                        );
-                      }
-                    }),
+                          );
+                        }
+                      },
+                      child: GSText(
+                        text: 'Submit',
+                        textAlign: TextAlign.center,
+                        style: GSStyle(
+                            textStyle: const TextStyle(color: Colors.green)),
+                      )),
+                ),
               ],
             ),
           ),
