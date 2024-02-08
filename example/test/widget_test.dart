@@ -5,6 +5,10 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'dart:async';
+import 'dart:developer';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
@@ -201,6 +205,95 @@ void main() {
         }
       }
     }
+  });
+
+//Test: Test Button Hover Color
+  testWidgets('Test button hover color', (WidgetTester tester) async {
+    final button = GSButton(
+      onPressed: () {},
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    //Simulate hover
+    final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    await gesture.addPointer(location: Offset.zero);
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    await tester.pump();
+
+    final internalButtonContainer = find
+        .descendant(
+          of: find.byWidget(button),
+          matching: find.byType(Container),
+        )
+        .evaluate()
+        .first
+        .widget as Container;
+
+    final btnClr = (internalButtonContainer.decoration as BoxDecoration).color;
+
+    print("Current Button Color: $btnClr");
+    print("Expected bg (base clr): ${$GSColors.primary500}");
+    print("Expected bg (on hover clr): ${$GSColors.primary600}");
+
+    expect(btnClr, $GSColors.primary600);
+
+    await gesture.removePointer();
+  });
+
+//Test: Test Button Selection Color
+  testWidgets('Test button slection color', (WidgetTester tester) async {
+    final button = GSButton(
+      onPressed: () {},
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    //Simulate hover
+    final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    await gesture.addPointer(location: Offset.zero);
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    await tester.pump();
+
+    await gesture.down(Offset.zero);
+
+    await tester.pumpAndSettle();
+
+
+    final internalButtonContainer = find
+        .descendant(
+          of: find.byWidget(button),
+          matching: find.byType(Container),
+        )
+        .evaluate()
+        .first
+        .widget as Container;
+
+    final btnClr = (internalButtonContainer.decoration as BoxDecoration).color;
+
+    print("Current Button Color: $btnClr");
+    print("Expected bg (base clr): ${$GSColors.primary500}");
+    print("Expected bg (hover clr): ${$GSColors.primary600}");
+    print("Expected bg (selection clr): ${$GSColors.primary700}");
+
+
+    await gesture.removePointer();
+    await tester.binding.idle();
+
+    //Hacky fix for timer pending error
+    await tester.binding.delayed(const Duration(days: 999));
+    expect(btnClr, $GSColors.primary700);
+
   });
 
 // -----------------------------------------------------
