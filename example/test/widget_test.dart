@@ -290,7 +290,7 @@ void main() {
     await gesture.removePointer();
     await tester.binding.idle();
 
-    //Hacky fix for timer pending error
+    //Hacky fix for timer pending error TODO: Try to find a workaround
     await tester.binding.delayed(const Duration(days: 999));
     expect(btnClr, $GSColors.primary700);
 
