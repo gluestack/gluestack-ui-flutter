@@ -4,6 +4,7 @@
 // utility in the flutter_test package. For example, you can send tap and scroll
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -343,6 +344,26 @@ void main() {
     expect(tapped, false);
     expect(longPressed, false);
     expect(doubleTapped, false);
+  });
+
+//Test: Test Provided Button Semantics
+  testWidgets('Test Provided Button Semantics', (WidgetTester tester) async {
+    const String sem = 'test';
+    final button = GSButton(
+      semanticsLabel: sem,
+      onPressed: () {},
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    final btn = find.byWidget(button).evaluate().first.widget as GSButton;
+
+    expect(btn.semanticsLabel, sem);
   });
 
 // -----------------------------------------------------
