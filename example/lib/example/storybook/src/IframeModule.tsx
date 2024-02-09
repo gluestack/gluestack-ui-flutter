@@ -1,6 +1,6 @@
 import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { darcula } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 interface IframeProps {
   src: string;
@@ -15,10 +15,8 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
       className="ButtonPreview"
       style={{
         border: "0.3px solid #404040",
-        borderRadius: "12px",
-        padding: "2px",
-        //height: height,
-        // marginBottom: "-10px",
+        borderRadius: "0 0 12px 12px ",
+        padding: "1px",
       }}
     >
       <iframe
