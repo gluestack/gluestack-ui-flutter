@@ -5,6 +5,7 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -289,6 +290,60 @@ void main() {
     //Hacky fix for timer pending error TODO: Try to find a workaround
     await tester.binding.delayed(const Duration(days: 999));
     expect(btnClr, $GSColors.primary700);
+  });
+
+//Test: Test Button Disabled state
+  testWidgets('Test Button Disabled state', (WidgetTester tester) async {
+    bool tapped = false;
+    bool doubleTapped = false;
+    bool longPressed = false;
+
+    final button = GSButton(isDisabled: true,
+      onPressed: () {
+        tapped = true;
+      },
+      onDoubleTap: () {
+        doubleTapped = true;
+      },
+      onLongPress: () {
+        longPressed = true;
+      },
+      // isDisabled: true,
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    //simulate presses
+    await tester.tap(find.byWidget(button));
+    await tester.pump(const Duration(milliseconds: 50));
+    await tester.tap(find.byWidget(button));
+    await tester.pump(const Duration(milliseconds: 50));
+    await tester.tap(find.byWidget(button));
+    await tester.pump(const Duration(milliseconds: 50));
+
+    final opa = find
+        .descendant(
+          of: find.byWidget(button),
+          matching: find.byType(Opacity),
+        )
+        .evaluate()
+        .first
+        .widget as Opacity;
+
+    await tester.binding.idle();
+
+    //Hacky fix for timer pending error TODO: Try to find a workaround
+    await tester.binding.delayed(const Duration(days: 999));
+
+    expect(opa.opacity, 0.4); //Test disabled opactiy
+    expect(tapped, false);
+    expect(longPressed, false);
+    expect(doubleTapped, false);
   });
 
 // -----------------------------------------------------
