@@ -49,30 +49,30 @@ void main() {
   });
 
 //Test: Test double button tap
-  testWidgets('Test double button tap', (WidgetTester tester) async {
+  testWidgets('Test button double tap', (WidgetTester tester) async {
     bool doubleTapped = false;
-    int count = 0;
+
+    //Define the widget
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {},
+      onDoubleTap: () {
+        doubleTapped = true;
+      },
+    );
 
     // Build the widget
     await tester.pumpWidget(
-      testFrame(
-        GSButton(
-          child: const GSText(
-            text: 'GSButton',
-          ),
-          onPressed: () {
-            count++;
-            if (count == 2) {
-              doubleTapped = true;
-            }
-          },
-        ),
-      ),
+      testFrame(button),
     );
 
-    await tester.tap(find.text('GSButton'));
-    await tester.tap(find.text('GSButton'));
-    await tester.pump();
+    final btn = find.byWidget(button);
+    await tester.tap(btn);
+    await tester.pump(const Duration(milliseconds: 50));
+    await tester.tap(btn);
+    await tester.pumpAndSettle();
 
     expect(doubleTapped, true);
   });
@@ -267,7 +267,6 @@ void main() {
 
     await tester.pumpAndSettle();
 
-
     final internalButtonContainer = find
         .descendant(
           of: find.byWidget(button),
@@ -284,14 +283,12 @@ void main() {
     // print("Expected bg (hover clr): ${$GSColors.primary600}");
     // print("Expected bg (selection clr): ${$GSColors.primary700}");
 
-
     await gesture.removePointer();
     await tester.binding.idle();
 
     //Hacky fix for timer pending error TODO: Try to find a workaround
     await tester.binding.delayed(const Duration(days: 999));
     expect(btnClr, $GSColors.primary700);
-
   });
 
 // -----------------------------------------------------

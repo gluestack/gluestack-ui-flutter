@@ -124,6 +124,7 @@ class GSButton extends StatelessWidget {
                 button: true,
                 child: GsGestureDetector(
                   onPressed: disabled ? null : onPressed,
+                  onDoubleTap: disabled ? null : onDoubleTap,
                   onLongPress: disabled ? null : onLongPress,
                   child: Container(
                     height: freeSize ? null : styler.height,
