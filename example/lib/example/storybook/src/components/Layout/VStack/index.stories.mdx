@@ -153,14 +153,34 @@ The Examples section provides visual representations of the different variants o
 
 A GSVStack widget with the reversed parameter reverses the order of vertically stacked elements, enabling customized vertical layouts and visual arrangements of content within a user interface.
 
-<iframe
+<IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "vstack-reversed-preview"}
-  style={{
-    border: "0.3px solid #404040",
-  }}
   title="Example"
-  width="100%"
-  height="400px"
-></iframe>
+  height="749px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSVStack(
+      mainAxisAlignment: MainAxisAlignment.center,
+      isReversed: true,
+      space: GSSpaces.$none,
+      children: [
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
+          child: const Text('1'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
+          child: const Text('2'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
+          child: const Text('3'),
+        ),
+      ],
+    )
+
+`}
+/>
 
 <br />
