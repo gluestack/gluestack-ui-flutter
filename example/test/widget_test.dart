@@ -4,7 +4,6 @@
 // utility in the flutter_test package. For example, you can send tap and scroll
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -27,25 +26,49 @@ void main() {
 //Test: Test single button tap
   testWidgets('Test button tap', (WidgetTester tester) async {
     bool tapped = false;
+    //Test GSButton Widget
+
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {
+        tapped = true;
+      },
+    );
 
     // Build the widget
     await tester.pumpWidget(
-      testFrame(
-        GSButton(
-          child: const GSText(
-            text: 'GSButton',
-          ),
-          onPressed: () {
-            tapped = true;
-          },
-        ),
-      ),
+      testFrame(button),
     );
 
-    await tester.tap(find.text('GSButton'));
+    await tester.tap(find.byWidget(button));
     await tester.pump();
 
     expect(tapped, true);
+  });
+
+//Test: Negative - Test single button tap
+  testWidgets('Test button tap (Negative TC)', (WidgetTester tester) async {
+    bool tapped = false;
+    //Test GSButton Widget
+
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {},
+    );
+
+    // Build the widget
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    await tester.tap(find.byWidget(button));
+    await tester.pump();
+
+    expect(tapped, false);
   });
 
 //Test: Test double button tap
@@ -77,29 +100,81 @@ void main() {
     expect(doubleTapped, true);
   });
 
+//Test: Negative - Test double button tap
+  testWidgets('Test button double tap (Negative TC)',
+      (WidgetTester tester) async {
+    bool doubleTapped = false;
+
+    //Define the widget
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {},
+      onDoubleTap: () {},
+    );
+
+    // Build the widget
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    final btn = find.byWidget(button);
+    await tester.tap(btn);
+    await tester.pump(const Duration(milliseconds: 50));
+    await tester.tap(btn);
+    await tester.pumpAndSettle();
+
+    expect(doubleTapped, false);
+  });
+
 //Test: Test long press
   testWidgets('Test long press', (WidgetTester tester) async {
     bool longPressed = false;
 
-    // Build the widget
-    await tester.pumpWidget(
-      testFrame(
-        GSButton(
-          child: const GSText(
-            text: 'GSButton',
-          ),
-          onPressed: () {},
-          onLongPress: () {
-            longPressed = true;
-          },
-        ),
+    //Test GSButton Widget
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
       ),
+      onPressed: () {},
+      onLongPress: () {
+        longPressed = true;
+      },
     );
 
-    await tester.longPress(find.text('GSButton'));
+    // Build the widget
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    await tester.longPress(find.byWidget(button));
     await tester.pump();
 
     expect(longPressed, true);
+  });
+
+//Test: Negative - Test long press
+  testWidgets('Test long press (Negative TC)', (WidgetTester tester) async {
+    bool longPressed = false;
+    //Test GSButton Widget
+
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {},
+      onLongPress: () {},
+    );
+    // Build the widget
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    await tester.longPress(find.byWidget(button));
+    await tester.pump();
+
+    expect(longPressed, false);
   });
 
 //Test: Test Color Prop
@@ -364,6 +439,25 @@ void main() {
     final btn = find.byWidget(button).evaluate().first.widget as GSButton;
 
     expect(btn.semanticsLabel, sem);
+  });
+
+  //Test: Negative - Test Provided Button Semantics
+  testWidgets('Test Provided Button Semantics (Negative TC)',
+      (WidgetTester tester) async {
+    final button = GSButton(
+      onPressed: () {},
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    final btn = find.byWidget(button).evaluate().first.widget as GSButton;
+
+    expect(btn.semanticsLabel, null);
   });
 
 // -----------------------------------------------------
