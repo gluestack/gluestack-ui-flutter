@@ -1,6 +1,7 @@
 export 'src/style/gs_style.dart';
 export 'src/token/public.dart';
 
+export 'src/widgets/gs_app/public.dart';
 export 'src/widgets/gs_alert_dialog/public.dart';
 export 'src/widgets/gs_gesture_detector/public.dart';
 export 'src/widgets/gs_ancestor/public.dart';
