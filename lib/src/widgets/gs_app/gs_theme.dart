@@ -35,13 +35,7 @@ class GSTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     return _GSTheme(
       data: data,
-      child: IconTheme(
-        data: data.iconTheme,
-        child: DefaultTextStyle(
-          style: data.typography.body!,
-          child: child,
-        ),
-      ),
+      child: IconTheme(data: data.iconTheme, child: child),
     );
   }
 }
@@ -126,7 +120,6 @@ const standardCurve = Curves.easeInOut;
 
 @immutable
 class GSThemeData with Diagnosticable {
-  final Typography typography;
   final Map<Object, GSThemeExtension<dynamic>> extensions;
   // final AccentColor accentColor;
   final Color activeColor;
@@ -145,7 +138,6 @@ class GSThemeData with Diagnosticable {
   final Duration slowAnimationDuration;
   final Curve animationCurve;
   final Brightness brightness;
-  final GSVisualDensity visualDensity;
   final IconThemeData iconTheme;
   final GSColorsToken gsColors;
 
@@ -167,10 +159,7 @@ class GSThemeData with Diagnosticable {
   factory GSThemeData({
     Iterable<GSThemeExtension<dynamic>>? extensions,
     Brightness? brightness,
-    GSVisualDensity? visualDensity,
-    Typography? typography,
     String? fontFamily,
-    //  AccentColor? accentColor,
     Color? activeColor,
     Color? inactiveColor,
     Color? inactiveBackgroundColor,
@@ -207,9 +196,6 @@ class GSThemeData with Diagnosticable {
     extensions ??= [];
 
     final isLight = brightness == Brightness.light;
-
-    print("ISLIGHT:: $isLight");
-    visualDensity ??= GSVisualDensity.adaptivePlatformDensity;
     fasterAnimationDuration ??= const Duration(milliseconds: 83);
     fastAnimationDuration ??= const Duration(milliseconds: 167);
     mediumAnimationDuration ??= const Duration(milliseconds: 250);
@@ -231,10 +217,6 @@ class GSThemeData with Diagnosticable {
     menuColor ??= isLight ? const Color(0xFFf9f9f9) : const Color(0xFF2c2c2c);
     cardColor ??= gsColors?.primary400;
     selectionColor ??= const Color(0xFF2c2c2c);
-    typography = Typography.fromBrightness(
-      brightness: brightness,
-      color: gsColors?.textDark700,
-    ).merge(typography).apply(fontFamily: fontFamily);
     iconTheme ??= isLight
         ? const IconThemeData(color: Color(0xFF000000), size: 18.0)
         : const IconThemeData(color: Color(0xFFFFFFFF), size: 18.0);
@@ -252,8 +234,6 @@ class GSThemeData with Diagnosticable {
     //   animationCurve: animationCurve,
     //   animationDuration: fastAnimationDuration,
     //   highlightColor: accentColor.defaultBrushFor(brightness),
-    //   typography: typography,
-    // ).merge(navigationPaneTheme);
     // radioButtonTheme ??= const RadioButtonThemeData();
     // sliderTheme ??= const SliderThemeData();
     // infoBarTheme ??= const InfoBarThemeData();
@@ -263,7 +243,6 @@ class GSThemeData with Diagnosticable {
     return GSThemeData.raw(
       brightness: brightness,
       extensions: _themeExtensionIterableToMap(extensions),
-      visualDensity: visualDensity,
       fasterAnimationDuration: fasterAnimationDuration,
       fastAnimationDuration: fastAnimationDuration,
       mediumAnimationDuration: mediumAnimationDuration,
@@ -278,7 +257,6 @@ class GSThemeData with Diagnosticable {
       micaBackgroundColor: micaBackgroundColor ?? const Color(0xFFf9f9f9),
       shadowColor: shadowColor,
       iconTheme: iconTheme,
-      typography: typography,
       menuColor: menuColor,
       cardColor: cardColor ?? const Color.fromARGB(255, 225, 187, 187),
       gsColors: gsColors ??
@@ -302,7 +280,6 @@ class GSThemeData with Diagnosticable {
   }
 
   const GSThemeData.raw({
-    required this.typography,
     required this.extensions,
     // required this.accentColor,
     required this.activeColor,
@@ -315,7 +292,6 @@ class GSThemeData with Diagnosticable {
     required this.slowAnimationDuration,
     required this.animationCurve,
     required this.brightness,
-    required this.visualDensity,
     required this.scaffoldBackgroundColor,
     required this.acrylicBackgroundColor,
     required this.micaBackgroundColor,
@@ -352,10 +328,7 @@ class GSThemeData with Diagnosticable {
     return GSThemeData.raw(
       brightness: t < 0.5 ? a.brightness : b.brightness,
       extensions: t < 0.5 ? a.extensions : b.extensions,
-      visualDensity: t < 0.5 ? a.visualDensity : b.visualDensity,
       gsColors: const GSColorsToken(),
-      // accentColor: AccentColor.lerp(a.accentColor, b.accentColor, t),
-      typography: Typography.lerp(a.typography, b.typography, t),
       activeColor: Color.lerp(a.activeColor, b.activeColor, t)!,
       inactiveColor: Color.lerp(a.inactiveColor, b.inactiveColor, t)!,
       inactiveBackgroundColor:
@@ -420,9 +393,6 @@ class GSThemeData with Diagnosticable {
   GSThemeData copyWith({
     Brightness? brightness,
     Iterable<GSThemeExtension<dynamic>>? extensions,
-    GSVisualDensity? visualDensity,
-    Typography? typography,
-    //AccentColor? accentColor,
     Color? activeColor,
     Color? inactiveColor,
     Color? inactiveBackgroundColor,
@@ -458,8 +428,6 @@ class GSThemeData with Diagnosticable {
   }) {
     return GSThemeData.raw(
       brightness: brightness ?? this.brightness,
-      visualDensity: visualDensity ?? this.visualDensity,
-      typography: this.typography.merge(typography),
       extensions: extensions != null
           ? _themeExtensionIterableToMap(extensions)
           : this.extensions,

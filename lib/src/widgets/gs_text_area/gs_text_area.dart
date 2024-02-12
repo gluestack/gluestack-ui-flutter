@@ -203,7 +203,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     final bool isDisabled = widget.isDisabled ?? formProps?.isDisabled ?? false;
     final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
     final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
-    final bool isRequired = formProps?.isRequired ?? false;
+    // final bool isRequired = formProps?.isRequired ?? false;
 
     final inputSize =
         widget.size?.toGSSize ?? formProps?.size ?? textAreaStyle.props?.size;
@@ -260,8 +260,8 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     final borderColor = resolveBorderColor();
     final borderWidth = resolveBorderWidth();
-    final focusedBorderColor = resolveFocusBorderColor();
-    final focusedBorderWidth = resolveFocusBorderWidth();
+    // final focusedBorderColor = resolveFocusBorderColor();
+    // final focusedBorderWidth = resolveFocusBorderWidth();
     final hintStyle =
         widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
 

@@ -186,7 +186,6 @@ class _GSAppState extends State<GSApp> {
     final mode = widget.themeMode ?? GSThemeMode.system;
     final platformBrightness = MediaQuery.platformBrightnessOf(context);
 
-    print("PLATFORMBRIGHTNESS: $platformBrightness");
     final usedarkStyle = mode == GSThemeMode.dark ||
         (mode == GSThemeMode.system && platformBrightness == Brightness.dark);
 
