@@ -156,7 +156,31 @@ A GSVStack widget with the reversed parameter reverses the order of vertically s
 <IframeModule
   src={process.env.NEXT_PUBLIC_PREVIEW + "vstack-reversed-preview"}
   title="Example"
-  height="400px"
+  height="749px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSVStack(
+      mainAxisAlignment: MainAxisAlignment.center,
+      isReversed: true,
+      space: GSSpaces.$none,
+      children: [
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
+          child: const Text('1'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
+          child: const Text('2'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
+          child: const Text('3'),
+        ),
+      ],
+    )
+
+`}
 />
 
 <br />

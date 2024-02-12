@@ -156,10 +156,32 @@ The Examples section provides visual representations of the different variants o
 An GSHStack widget with the reversed parameter reverses the order of horizontally stacked elements, allowing for customized layouts and visual arrangements of content within a user interface.
 
 <IframeModule
-  src={process.env.NEXT_PUBLIC_PREVIEW + "hstack-reversed-preview"}
+   src={process.env.NEXT_PUBLIC_PREVIEW + "hstack-reversed-preview"}
   title="Example"
-  height="400px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
+    GSHStack(
+      mainAxisAlignment: MainAxisAlignment.center,
+      isReversed: true,
+      space: GSSpaces.$none,
+      children: [
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
+          child: const Text('1'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
+          child: const Text('2'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
+          child: const Text('3'),
+        ),
+      ],
+    )
+
+`}
 />
 
 <br />
