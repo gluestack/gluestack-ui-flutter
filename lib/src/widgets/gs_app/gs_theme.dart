@@ -224,7 +224,7 @@ class GSThemeData with Diagnosticable {
         isLight ? const Color(0xFFd6d6d6) : const Color(0xFF292929);
     shadowColor ??= isLight ? const Color(0xFF000000) : const Color(0xFFE0E0E0);
     scaffoldBackgroundColor ??=
-        isLight ? const Color(0xFFE0E0E0) : const Color(0xFF000000);
+        isLight ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
     acrylicBackgroundColor ??=
         isLight ? gsColors?.backgroundLight300 : const Color(0xFF2c2c2c);
     micaBackgroundColor ??= gsColors?.backgroundLight500;

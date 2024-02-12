@@ -178,6 +178,7 @@ class GSTextArea extends StatefulWidget {
 
 class _GSTextAreaState extends State<GSTextArea> {
   bool _isHovered = false;
+  late final TextEditingController? controller;
 
   final focusNode = FocusNode();
   bool isFocused = false;
@@ -185,6 +186,9 @@ class _GSTextAreaState extends State<GSTextArea> {
   @override
   void initState() {
     super.initState();
+    if (widget.controller == null) {
+      controller = TextEditingController();
+    }
 
     focusNode.addListener(() {
       setState(() {
@@ -318,7 +322,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                               contentInsertionConfiguration:
                                   widget.contentInsertionConfiguration,
                               contextMenuBuilder: widget.contextMenuBuilder,
-                              controller: widget.controller!,
+                              controller: widget.controller ?? controller!,
                               cursorColor: widget.cursorColor ?? borderColor!,
                               cursorHeight: widget.cursorHeight,
                               cursorOpacityAnimates:
@@ -393,7 +397,8 @@ class _GSTextAreaState extends State<GSTextArea> {
                       ],
                     ),
                   ),
-                  if (widget.controller!.text.isEmpty)
+                  if (widget.controller?.text.isEmpty ??
+                      controller!.text.isEmpty)
                     Positioned(
                       left: widget.prefixText != null &&
                               widget.prefixText!.isNotEmpty
