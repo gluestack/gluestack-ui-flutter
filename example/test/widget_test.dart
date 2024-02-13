@@ -4,6 +4,7 @@
 // utility in the flutter_test package. For example, you can send tap and scroll
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,79 +26,155 @@ void main() {
 //Test: Test single button tap
   testWidgets('Test button tap', (WidgetTester tester) async {
     bool tapped = false;
+    //Test GSButton Widget
+
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {
+        tapped = true;
+      },
+    );
 
     // Build the widget
     await tester.pumpWidget(
-      testFrame(
-        GSButton(
-          child: const GSText(
-            text: 'GSButton',
-          ),
-          onPressed: () {
-            tapped = true;
-          },
-        ),
-      ),
+      testFrame(button),
     );
 
-    await tester.tap(find.text('GSButton'));
+    await tester.tap(find.byWidget(button));
     await tester.pump();
 
     expect(tapped, true);
   });
 
-//Test: Test double button tap
-  testWidgets('Test double button tap', (WidgetTester tester) async {
-    bool doubleTapped = false;
-    int count = 0;
+//Test: Negative - Test single button tap
+  testWidgets('Test button tap (Negative TC)', (WidgetTester tester) async {
+    bool tapped = false;
+    //Test GSButton Widget
+
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {},
+    );
 
     // Build the widget
     await tester.pumpWidget(
-      testFrame(
-        GSButton(
-          child: const GSText(
-            text: 'GSButton',
-          ),
-          onPressed: () {
-            count++;
-            if (count == 2) {
-              doubleTapped = true;
-            }
-          },
-        ),
-      ),
+      testFrame(button),
     );
 
-    await tester.tap(find.text('GSButton'));
-    await tester.tap(find.text('GSButton'));
+    await tester.tap(find.byWidget(button));
     await tester.pump();
 
+    expect(tapped, false);
+  });
+
+//Test: Test double button tap
+  testWidgets('Test button double tap', (WidgetTester tester) async {
+    bool doubleTapped = false;
+
+    //Define the widget
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {},
+      onDoubleTap: () {
+        doubleTapped = true;
+      },
+    );
+
+    // Build the widget
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    final btn = find.byWidget(button);
+    await tester.tap(btn);
+    await tester.pump(const Duration(milliseconds: 50));
+    await tester.tap(btn);
+    await tester.pumpAndSettle();
+
     expect(doubleTapped, true);
+  });
+
+//Test: Negative - Test double button tap
+  testWidgets('Test button double tap (Negative TC)',
+      (WidgetTester tester) async {
+    bool doubleTapped = false;
+
+    //Define the widget
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {},
+      onDoubleTap: () {},
+    );
+
+    // Build the widget
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    final btn = find.byWidget(button);
+    await tester.tap(btn);
+    await tester.pump(const Duration(milliseconds: 50));
+    await tester.tap(btn);
+    await tester.pumpAndSettle();
+
+    expect(doubleTapped, false);
   });
 
 //Test: Test long press
   testWidgets('Test long press', (WidgetTester tester) async {
     bool longPressed = false;
 
-    // Build the widget
-    await tester.pumpWidget(
-      testFrame(
-        GSButton(
-          child: const GSText(
-            text: 'GSButton',
-          ),
-          onPressed: () {},
-          onLongPress: () {
-            longPressed = true;
-          },
-        ),
+    //Test GSButton Widget
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
       ),
+      onPressed: () {},
+      onLongPress: () {
+        longPressed = true;
+      },
     );
 
-    await tester.longPress(find.text('GSButton'));
+    // Build the widget
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    await tester.longPress(find.byWidget(button));
     await tester.pump();
 
     expect(longPressed, true);
+  });
+
+//Test: Negative - Test long press
+  testWidgets('Test long press (Negative TC)', (WidgetTester tester) async {
+    bool longPressed = false;
+    //Test GSButton Widget
+
+    final button = GSButton(
+      child: const GSText(
+        text: 'GSButton',
+      ),
+      onPressed: () {},
+      onLongPress: () {},
+    );
+    // Build the widget
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    await tester.longPress(find.byWidget(button));
+    await tester.pump();
+
+    expect(longPressed, false);
   });
 
 //Test: Test Color Prop
@@ -201,6 +278,186 @@ void main() {
         }
       }
     }
+  });
+
+//Test: Test Button Hover Color
+  testWidgets('Test button hover color', (WidgetTester tester) async {
+    final button = GSButton(
+      onPressed: () {},
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    //Simulate hover
+    final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    await gesture.addPointer(location: Offset.zero);
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    await tester.pump();
+
+    final internalButtonContainer = find
+        .descendant(
+          of: find.byWidget(button),
+          matching: find.byType(Container),
+        )
+        .evaluate()
+        .first
+        .widget as Container;
+
+    final btnClr = (internalButtonContainer.decoration as BoxDecoration).color;
+
+    // print("Current Button Color: $btnClr");
+    // print("Expected bg (base clr): ${$GSColors.primary500}");
+    // print("Expected bg (on hover clr): ${$GSColors.primary600}");
+
+    expect(btnClr, $GSColors.primary600);
+
+    await gesture.removePointer();
+  });
+
+//Test: Test Button Selection Color
+  testWidgets('Test button slection color', (WidgetTester tester) async {
+    final button = GSButton(
+      onPressed: () {},
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    //Simulate hover
+    final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    await gesture.addPointer(location: Offset.zero);
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    await tester.pump();
+
+    await gesture.down(Offset.zero);
+
+    await tester.pumpAndSettle();
+
+    final internalButtonContainer = find
+        .descendant(
+          of: find.byWidget(button),
+          matching: find.byType(Container),
+        )
+        .evaluate()
+        .first
+        .widget as Container;
+
+    final btnClr = (internalButtonContainer.decoration as BoxDecoration).color;
+
+    // print("Current Button Color: $btnClr");
+    // print("Expected bg (base clr): ${$GSColors.primary500}");
+    // print("Expected bg (hover clr): ${$GSColors.primary600}");
+    // print("Expected bg (selection clr): ${$GSColors.primary700}");
+
+    await gesture.removePointer();
+    await tester.binding.idle();
+
+    //Hacky fix for timer pending error TODO: Try to find a workaround
+    await tester.binding.delayed(const Duration(days: 999));
+    expect(btnClr, $GSColors.primary700);
+  });
+
+//Test: Test Button Disabled state
+  testWidgets('Test Button Disabled state', (WidgetTester tester) async {
+    bool tapped = false;
+    bool doubleTapped = false;
+    bool longPressed = false;
+
+    final button = GSButton(
+      isDisabled: true,
+      onPressed: () {
+        tapped = true;
+      },
+      onDoubleTap: () {
+        doubleTapped = true;
+      },
+      onLongPress: () {
+        longPressed = true;
+      },
+      // isDisabled: true,
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    //simulate presses
+    await tester.tap(find.byWidget(button));
+    await tester.pump(const Duration(milliseconds: 50));
+    await tester.tap(find.byWidget(button));
+    await tester.pump(const Duration(milliseconds: 50));
+    await tester.tap(find.byWidget(button));
+    await tester.pump(const Duration(milliseconds: 50));
+
+    final opa = find
+        .descendant(
+          of: find.byWidget(button),
+          matching: find.byType(Opacity),
+        )
+        .evaluate()
+        .first
+        .widget as Opacity;
+
+    await tester.binding.idle();
+
+    //Hacky fix for timer pending error TODO: Try to find a workaround
+    await tester.binding.delayed(const Duration(days: 999));
+
+    expect(opa.opacity, 0.4); //Test disabled opactiy
+    expect(tapped, false);
+    expect(longPressed, false);
+    expect(doubleTapped, false);
+  });
+
+//Test: Test Provided Button Semantics
+  testWidgets('Test Provided Button Semantics', (WidgetTester tester) async {
+    const String sem = 'test';
+    final button = GSButton(
+      semanticsLabel: sem,
+      onPressed: () {},
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    final btn = find.byWidget(button).evaluate().first.widget as GSButton;
+
+    expect(btn.semanticsLabel, sem);
+  });
+
+  //Test: Negative - Test Provided Button Semantics
+  testWidgets('Test Provided Button Semantics (Negative TC)',
+      (WidgetTester tester) async {
+    final button = GSButton(
+      onPressed: () {},
+      child: const GSText(
+        text: 'GSButton',
+      ),
+    );
+
+    await tester.pumpWidget(
+      testFrame(button),
+    );
+
+    final btn = find.byWidget(button).evaluate().first.widget as GSButton;
+
+    expect(btn.semanticsLabel, null);
   });
 
 // -----------------------------------------------------
