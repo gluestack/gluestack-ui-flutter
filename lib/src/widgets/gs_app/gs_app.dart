@@ -103,7 +103,7 @@ class GSApp extends WidgetsApp {
     super.onGenerateTitle,
     super.color = const Color(0xFFFFFFFF),
     super.locale,
-    super.localizationsDelegates =  const [
+    super.localizationsDelegates = const [
       GlobalMaterialLocalizations.delegate,
       GlobalWidgetsLocalizations.delegate,
       GlobalCupertinoLocalizations.delegate,
