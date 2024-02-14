@@ -41,6 +41,7 @@ class GSApp extends StatefulWidget {
     this.themeMode,
     this.restorationScopeId,
     this.scrollBehavior = const GSAppScrollBehavior(),
+    this.pageRouteBuilder,
   })  : routeInformationProvider = null,
         routeInformationParser = null,
         routerDelegate = null,
@@ -79,6 +80,7 @@ class GSApp extends StatefulWidget {
     this.actions,
     this.restorationScopeId,
     this.scrollBehavior = const GSAppScrollBehavior(),
+    this.pageRouteBuilder,
   })  : assert(() {
           if (routerConfig != null) {
             assert(
@@ -143,7 +145,7 @@ class GSApp extends StatefulWidget {
   final Map<Type, Action<Intent>>? actions;
   final String? restorationScopeId;
   final ScrollBehavior scrollBehavior;
-
+  final PageRouteFactory? pageRouteBuilder;
   @override
   State<GSApp> createState() => _GSAppState();
 }
@@ -248,16 +250,15 @@ class _GSAppState extends State<GSApp> {
       );
     }
 
-    return WidgetsApp.router(
-      routerConfig: widget.routerConfig,
-      routeInformationProvider: widget.routeInformationProvider,
-      routeInformationParser: widget.routeInformationParser,
-      routerDelegate: widget.routerDelegate,
-      backButtonDispatcher: widget.backButtonDispatcher,
+    return WidgetsApp(
+      key: widget.key,
+      navigatorKey: widget.navigatorKey,
+      onGenerateRoute: widget.onGenerateRoute,
+      onGenerateInitialRoutes: widget.onGenerateInitialRoutes,
+      onUnknownRoute: widget.onUnknownRoute,
       builder: _builder,
       title: widget.title,
       onGenerateTitle: widget.onGenerateTitle,
-      color: gsAppColor,
       locale: widget.locale,
       localizationsDelegates: widget.localizationsDelegates,
       localeListResolutionCallback: widget.localeListResolutionCallback,
@@ -267,12 +268,33 @@ class _GSAppState extends State<GSApp> {
       checkerboardRasterCacheImages: widget.checkerboardRasterCacheImages,
       checkerboardOffscreenLayers: widget.checkerboardOffscreenLayers,
       showSemanticsDebugger: widget.showSemanticsDebugger,
-      // debugShowWidgetInspector: widget.debugShowWidgetInspector,
       debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
-      //inspectorSelectButtonBuilder: widget.inspectorSelectButtonBuilder,
       shortcuts: widget.shortcuts,
       actions: widget.actions,
       restorationScopeId: widget.restorationScopeId,
+      initialRoute: widget.initialRoute,
+      home: widget.home,
+      // routes: widget.routes,
+      // inspectorSelectButtonBuilder: widget.inspectorSelectButtonBuilder,
+      // navigatorObservers: widget.navigatorObservers,
+      // debugShowWidgetInspector: widget.debugShowWidgetInspector,
+      pageRouteBuilder: widget.pageRouteBuilder ?? _defaultPageRouteBuilder,
+      // textStyle: widget.textStyle,
+      color: gsAppColor,
+    );
+  }
+
+  PageRoute<T> _defaultPageRouteBuilder<T>(
+      RouteSettings settings, WidgetBuilder builder) {
+    return PageRouteBuilder<T>(
+      settings: settings,
+      pageBuilder: (BuildContext context, Animation<double> animation,
+              Animation<double> secondaryAnimation) =>
+          builder(context),
+      transitionsBuilder: (BuildContext context, Animation<double> animation,
+          Animation<double> secondaryAnimation, Widget child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
     );
   }
 }
