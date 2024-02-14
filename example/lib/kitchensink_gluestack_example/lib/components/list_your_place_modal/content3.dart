@@ -22,12 +22,14 @@ class _ListYourPlaceModalContent3State
       children: [
         const GSText(text: "Title", bold: true, size: GSSizes.$sm),
         const GSInput(
+          hoverColor: Color(0xffE11D48),
           hintText: "Enter property name",
         ),
         const GSText(text: "Description", bold: true, size: GSSizes.$sm),
         GSBox(
           style: GSStyle(width: double.infinity),
           child: GSTextArea(
+            hoverColor: const Color(0xffE11D48),
             size: GSTextAreaSizes.$xl,
             hintText: "Provide description",
             style: GSStyle(
@@ -37,6 +39,7 @@ class _ListYourPlaceModalContent3State
         ),
         const GSText(text: "Contact me", bold: true, size: GSSizes.$sm),
         const GSInput(
+          hoverColor: Color(0xffE11D48),
           hintText: "Phone number",
         ),
         GSBox(

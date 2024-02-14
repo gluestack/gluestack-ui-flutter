@@ -32,6 +32,9 @@ class _ListYourPlaceModalState extends State<ListYourPlaceModal> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: GSTheme.of(context).brightness == Brightness.dark
+          ? const Color(0xFF262626)
+          : null,
       title: GSHStack(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -53,9 +53,14 @@ class _MainAppState extends State<MainApp> {
         themeMode: _selectedThemeMode,
         debugShowCheckedModeBanner: false,
         darkTheme: GSThemeData(
-          brightness: Brightness.dark,
-        ),
-        theme: GSThemeData(),
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: const Color(0xFF171717)),
+        theme: GSThemeData(scaffoldBackgroundColor: Colors.white),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         // theme: ThemeData(
         //   colorSchemeSeed: Colors.white,
         //   useMaterial3: false,
@@ -79,76 +84,75 @@ class KitchenSink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       bottomNavigationBar: GSBox(
         style: GSStyle(
           md: GSStyle(isVisible: false),
           height: 85,
         ),
-        child: BottomAppBar(
-          child: GSBox(
-            style: GSStyle(
-              padding: EdgeInsets.only(
-                  left: getRespValue(
-                        buildContext: context,
-                        xsValue: 12,
-                        smValue: 24,
-                      ) ??
-                      4,
-                  right: getRespValue(
-                        buildContext: context,
-                        xsValue: 12,
-                        smValue: 24,
-                      ) ??
-                      4,
-                  top: 5,
-                  bottom: 10),
-            ),
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                BottomBarTile(
-                  icon: Icons.home_outlined,
-                  title: 'Home',
-                ),
-                BottomBarTile(
-                  icon: Icons.filter_list_outlined,
-                  title: 'Filter',
-                ),
-                BottomBarTile(
-                  icon: Icons.add,
-                  title: 'Listing',
-                ),
-                BottomBarTile(
-                  icon: Icons.chat_bubble_outline_rounded,
-                  title: 'Inbox',
-                ),
-                BottomBarTile(
-                  icon: Icons.person_outline_rounded,
-                  title: 'Profile',
-                ),
-              ],
-            ),
+        child: GSBox(
+          style: GSStyle(
+            bg: Colors.white,
+            dark: GSStyle(bg: const Color(0xFF171717)),
+            padding: EdgeInsets.only(
+                left: getRespValue(
+                      buildContext: context,
+                      xsValue: 12,
+                      smValue: 24,
+                    ) ??
+                    4,
+                right: getRespValue(
+                      buildContext: context,
+                      xsValue: 12,
+                      smValue: 24,
+                    ) ??
+                    4,
+                top: 20,
+                bottom: 10),
+          ),
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              BottomBarTile(
+                icon: Icons.home_outlined,
+                title: 'Home',
+              ),
+              BottomBarTile(
+                icon: Icons.filter_list_outlined,
+                title: 'Filter',
+              ),
+              BottomBarTile(
+                icon: Icons.add,
+                title: 'Listing',
+              ),
+              BottomBarTile(
+                icon: Icons.chat_bubble_outline_rounded,
+                title: 'Inbox',
+              ),
+              BottomBarTile(
+                icon: Icons.person_outline_rounded,
+                title: 'Profile',
+              ),
+            ],
           ),
         ),
       ),
       floatingActionButton: GSBox(
         style: GSStyle(md: GSStyle(isVisible: false)),
-        child: Theme(
-          data: ThemeData(useMaterial3: false),
-          child: FloatingActionButton(
-            onPressed: toggleTheme,
-            backgroundColor: const Color(0xffE11D48),
-            child: Transform.rotate(
-                angle: -7,
-                child: Icon(
-                  Theme.of(context).brightness == Brightness.light
-                      ? Icons.nightlight_rounded
-                      : Icons.light_mode,
-                  color: Colors.white,
-                )),
-          ),
+        child: FloatingActionButton(
+          onPressed: toggleTheme,
+          backgroundColor: const Color(0xffE11D48),
+          child: Transform.rotate(
+              angle: -7,
+              child: Icon(
+                GSTheme.of(context).brightness == Brightness.light
+                    ? Icons.nightlight_rounded
+                    : Icons.light_mode,
+                color: Colors.white,
+              )),
         ),
       ),
       body: SafeArea(
@@ -170,6 +174,7 @@ class KitchenSink extends StatelessWidget {
                           0),
                     ),
                     child: GSInput(
+                      hoverColor: const Color(0xffE11D48),
                       suffixIcon: GSBox(
                         style: GSStyle(
                           padding: const EdgeInsets.all(5.5),
@@ -179,9 +184,11 @@ class KitchenSink extends StatelessWidget {
                             style: GSStyle(
                               color: const Color(0xffE11D48),
                             ),
-                            child: const Icon(
-                              Icons.search,
-                              color: Colors.white,
+                            child: GSIcon(
+                              style: GSStyle(
+                                  color: Colors.grey.shade600,
+                                  dark: GSStyle(color: Colors.white)),
+                              icon: Icons.search,
                             ),
                           ),
                         ),
