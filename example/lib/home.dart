@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                   routePath: "/example-icon-button",
                 ),
                 const NavButton(
-                  title: "GS accordion",
+                  title: "GS Accordion",
                   routePath: "/example-accordion",
                 ),
 
