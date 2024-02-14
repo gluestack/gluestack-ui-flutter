@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/utils/resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_content.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_icon.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_trigger.dart';
