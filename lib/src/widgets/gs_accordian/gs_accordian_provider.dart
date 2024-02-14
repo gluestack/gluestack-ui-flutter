@@ -16,8 +16,6 @@ class GSAccordionProvider extends InheritedWidget {
     required this.type,
     required this.size,
     required this.baseAccordionStyle,
-    // required this.groupValue,
-    // required this.refresh,
     required super.child,
   });
 
