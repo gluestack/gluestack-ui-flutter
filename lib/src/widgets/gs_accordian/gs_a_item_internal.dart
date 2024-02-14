@@ -145,14 +145,7 @@ class GSAccordionItemInternal extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: contentStyle?.bg,
                   ),
-                  child: AnimatedOpacity(
-                    duration: animationDuration!,
-                    opacity: isExpanded && !isDisabled ? 1 : 0,
-                    child: Visibility(
-                      visible: isExpanded && !isDisabled,
-                      child: content!,
-                    ),
-                  ),
+                  child: content!,
                 ),
               ),
           ],
