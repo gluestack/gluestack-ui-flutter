@@ -108,7 +108,28 @@ class GluestackCustomConfig {
   //vstack
   Map<String, dynamic>? vstack;
 //getIt<GluestackCustomConfig>().buttonText
+
+//accordion
+  Map<String, dynamic>? accordion;
+  Map<String, dynamic>? accordionHeader;
+  Map<String, dynamic>? accordionContent;
+  Map<String, dynamic>? accordionTitleText;
+  Map<String, dynamic>? accordionContentText;
+  Map<String, dynamic>? accordionTrigger;
+  Map<String, dynamic>? accordionIcon;
+  Map<String, dynamic>? accordionItem;
+
   GluestackCustomConfig({
+    //accordion
+    this.accordion,
+    this.accordionHeader,
+    this.accordionTitleText,
+    this.accordionContent,
+    this.accordionContentText,
+    this.accordionTrigger,
+    this.accordionIcon,
+    this.accordionItem,
+
     //vstack
     this.vstack,
 
@@ -225,6 +246,18 @@ class GluestackCustomConfig {
 
       return mergedMap;
     }
+
+    //accordion
+    accordion = mergeConfigs(accordionData, accordion);
+    accordionHeader = mergeConfigs(accordionHeaderData, accordionHeader);
+    accordionTitleText =
+        mergeConfigs(accordionTitleTextData, accordionTitleText);
+    accordionContent = mergeConfigs(accordionContentData, accordionContent);
+    accordionContentText =
+        mergeConfigs(accordionContentTextData, accordionContentText);
+    accordionTrigger = mergeConfigs(accordionTriggerData, accordionTrigger);
+    accordionIcon = mergeConfigs(accordionIconData, accordionIcon);
+    accordionItem = mergeConfigs(accordionItemData, accordionItem);
 
     //vstack
     vstack = mergeConfigs(vStackData, vstack);
@@ -367,17 +400,28 @@ class GluestackTokenConfig {
     if (gsColorsToken.secondaryColorsFromBase != null) {
       gsColorsToken = gsColorsToken.copyWith(
         secondary0: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0),
-        secondary50: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.05),
-        secondary100: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.1),
-        secondary200: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.2),
-        secondary300: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.3),
-        secondary400: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.4),
-        secondary500: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.5),
-        secondary600: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.6),
-        secondary700: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.7),
-        secondary800: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.8),
-        secondary900: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.9),
-        secondary950: _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.95),
+        secondary50:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.05),
+        secondary100:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.1),
+        secondary200:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.2),
+        secondary300:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.3),
+        secondary400:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.4),
+        secondary500:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.5),
+        secondary600:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.6),
+        secondary700:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.7),
+        secondary800:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.8),
+        secondary900:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.9),
+        secondary950:
+            _getColorShade(gsColorsToken.secondaryColorsFromBase!, 0.95),
       );
     }
     _registerTokens();

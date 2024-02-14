@@ -139,6 +139,10 @@ final GoRouter router = GoRouter(
           path: "internal-color-test",
           builder: (context, state) => const InternalColorTestScreen(),
         ),
+        GoRoute(
+          path: "example-accordion",
+          builder: (context, state) => const AccordionExample(),
+        ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
         ...kStories.map(

@@ -153,6 +153,11 @@ class _HomePageState extends State<HomePage> {
                   title: "GS Icon Button",
                   routePath: "/example-icon-button",
                 ),
+                const NavButton(
+                  title: "GS accordion",
+                  routePath: "/example-accordion",
+                ),
+
                 // // ===== Internal Testing Widgets =====
                 // const NavButton(
                 //   title: "GS Color Test (Internal)",
