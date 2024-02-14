@@ -8,7 +8,27 @@ class AccordionExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var code = '''
-        GSAccordion();
+GSAccordion(
+          animationDuration: Duration(milliseconds: 200),
+          gsAccordionSize: GSAccordionSizes.\$md,
+          gsAccordionType: GSAccordionTypes.multiple,
+          gsAccordionVariant: GSAccordionVariants.filled,
+          isCollapsible: true,
+          children: [
+                GSAccordionItem(
+                  title: GSAccordionTitle(text: 'Title'),
+                  content: GSAccordionContent(
+                    text: "Content Bigggggg ",
+                  ),
+                ),
+                GSAccordionItem(
+                  title: GSAccordionTitle(text: 'Title 2'),
+                  content: GSAccordionContent(
+                    text: "Content 2",
+                  ),
+                ),
+          ],
+),
   ''';
     return Scaffold(
       appBar: AppBar(
@@ -18,9 +38,9 @@ class AccordionExample extends StatelessWidget {
         code: code,
         component: const GSAccordion(
           animationDuration: Duration(milliseconds: 200),
-          gsAccordionSize: GSAccordionSizes.$md,
-          gsAccordionType: GSAccordionTypes.multiple,
-          gsAccordionVariant: GSAccordionVariants.filled,
+          // gsAccordionSize: GSAccordionSizes.$md,
+          // gsAccordionType: GSAccordionTypes.multiple,
+          // gsAccordionVariant: GSAccordionVariants.filled,
           isCollapsible: true,
           // iconWhenTileCollapsed: GSAccordionIcon(icon: Icons.abc),
           isDisabled: false,
