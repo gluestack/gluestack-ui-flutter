@@ -104,6 +104,9 @@ class _ButtonExampleState extends State<ButtonExample> {
           onPressed: () {
             print('presssed');
           },
+          onDoubleTap: (){
+            print('double press');
+          },
           // style: GSStyle(
           //   web: GSStyle(
           //     bg: $GSColors.amber600,

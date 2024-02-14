@@ -29,7 +29,7 @@ const Map<String, dynamic> buttonData = {
   },
   'variants': {
     'action': {
-      'primary': {
+      'primary': { 
         'bg': '\$primary500',
         'borderColor': '\$primary300',
         ':hover': {
