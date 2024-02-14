@@ -21,9 +21,9 @@ class GSAccordion extends StatefulWidget {
 
   final List<GSAccordionItem> children;
 
-  final GSAccordionSizes? gsAccordionSize;
-  final GSAccordionTypes? gsAccordionType;
-  final GSAccordionVariants? gsAccordionVariant;
+  final GSAccordionSizes? size;
+  final GSAccordionTypes? type;
+  final GSAccordionVariants? variant;
 
   final bool? isDisabled;
   final bool? isCollapsible;
@@ -35,9 +35,9 @@ class GSAccordion extends StatefulWidget {
   const GSAccordion({
     super.key,
     required this.children,
-    this.gsAccordionSize = GSAccordionSizes.$md,
-    this.gsAccordionType = GSAccordionTypes.multiple,
-    this.gsAccordionVariant = GSAccordionVariants.unfilled,
+    this.size = GSAccordionSizes.$md,
+    this.type = GSAccordionTypes.multiple,
+    this.variant = GSAccordionVariants.unfilled,
     this.isDisabled = false,
     this.isCollapsible = false,
     this.animationDuration = const Duration(milliseconds: 200),
@@ -63,8 +63,8 @@ class _GSAccordionState extends State<GSAccordion> {
         context: context,
         styles: [
           accordionStyle,
-          accordionStyle.variantMap(widget.gsAccordionVariant?.toGSVariant),
-          accordionStyle.sizeMap(widget.gsAccordionSize?.toGSSize),
+          accordionStyle.variantMap(widget.variant?.toGSVariant),
+          accordionStyle.sizeMap(widget.size?.toGSSize),
         ],
         inlineStyle: widget.style,
         isFirst: true);
@@ -78,8 +78,8 @@ class _GSAccordionState extends State<GSAccordion> {
       // refresh: true,
       isCollapsible: widget.isCollapsible!,
       isDisabled: widget.isDisabled!,
-      type: widget.gsAccordionType!,
-      size: widget.gsAccordionSize!,
+      type: widget.type!,
+      size: widget.size!,
       baseAccordionStyle: styler,
       //TODO: utilise elevation (styler.elevation)
       child: Container(

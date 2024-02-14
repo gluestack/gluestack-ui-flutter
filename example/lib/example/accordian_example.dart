@@ -69,23 +69,26 @@ class _AccordionExampleState extends State<AccordionExample> {
     var code = '''
 GSAccordion(
           animationDuration: Duration(milliseconds: 200),
-          gsAccordionSize: GSAccordionSizes.\$md,
-          gsAccordionType: GSAccordionTypes.multiple,
-          gsAccordionVariant: GSAccordionVariants.filled,
+          size: GSAccordionSizes.\$md,
+          type: GSAccordionTypes.multiple,
+          variant: GSAccordionVariants.filled,
           isCollapsible: true,
-          children: [
-                GSAccordionItem(
-                  title: GSAccordionTitle(text: 'Title'),
-                  content: GSAccordionContent(
-                    text: "Content Bigggggg ",
-                  ),
-                ),
-                GSAccordionItem(
-                  title: GSAccordionTitle(text: 'Title 2'),
-                  content: GSAccordionContent(
-                    text: "Content 2",
-                  ),
-                ),
+          children: const [
+            GSAccordionItem(
+              title: GSAccordionTitle(text: 'How do I place an order?'),
+              content: GSAccordionContent(
+                text:
+                    "To place an order, simply select the products you want, proceed to checkout, provide shipping and payment information, and finalize your purchase.",
+              ),
+            ),
+            GSAccordionItem(
+              title:
+                  GSAccordionTitle(text: 'What payment options do you accept?'),
+              content: GSAccordionContent(
+                text:
+                    "We accept all major credit cards, including Visa, Mastercard, and American Express. We also support payments through PayPal.",
+              ),
+            ),
           ],
 ),
   ''';
@@ -96,9 +99,9 @@ GSAccordion(
       body: BaseLayout(
         code: code,
         component: GSAccordion(
-          gsAccordionSize: selectedSizeOption,
-          gsAccordionVariant: selectedVariantOption,
-          gsAccordionType: selectedTypeOption,
+          size: selectedSizeOption,
+          variant: selectedVariantOption,
+          type: selectedTypeOption,
           isCollapsible: isCollapsible,
           isDisabled: isDisabled,
           children: const [
