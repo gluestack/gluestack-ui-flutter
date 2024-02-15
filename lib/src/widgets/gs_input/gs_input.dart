@@ -23,6 +23,9 @@ enum GSInputSizes {
   $xl,
 }
 
+///
+/// Gluestack Input Widget.
+///
 class GSInput extends StatefulWidget {
   final GSInputVariants? variant;
   final GSInputSizes? size;

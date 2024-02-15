@@ -17,6 +17,9 @@ enum GSAlertDialogSizes {
   $xs,
 }
 
+///
+/// Gluestack Alert Dialog.
+///
 class GSAlertDialog extends StatefulWidget {
   final GSAlertDialogContent content;
   final GSAlertDialogSizes? size;

@@ -39,7 +39,9 @@ enum GSBadgeRadius {
   $full,
 }
 
+///
 /// `GSBadge` is a Flutter widget used to display badges with various styles.
+///
 class GSBadge extends StatelessWidget {
   /// The type of action for the badge (e.g., error, warning, success, info, muted).
   final GSBadgeActions? action;

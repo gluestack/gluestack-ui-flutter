@@ -2,15 +2,27 @@ import 'provider.dart';
 
 final getIt = GetIt.instance;
 
+///
+/// Wrap the widget with [GluestackProvider] to start using Gluestack Widgets.
+///
 class GluestackProvider extends StatelessWidget {
   final Widget child;
+
+  /// Custom token configuration can be passed to override default config.
   GluestackTokenConfig? gluestackTokenConfig;
+
+  /// Custom widget configuration can be passed to override default values.
   GluestackCustomConfig? gluestackCustomConfig;
-  GluestackProvider(
-      {super.key,
-      required this.child,
-      this.gluestackTokenConfig,
-      this.gluestackCustomConfig}) {
+
+  ///
+  /// Wrap the widget with [GluestackProvider] to start using Gluestack Widgets.
+  ///
+  GluestackProvider({
+    super.key,
+    required this.child,
+    this.gluestackTokenConfig,
+    this.gluestackCustomConfig,
+  }) {
     gluestackTokenConfig ??= GluestackTokenConfig();
     gluestackCustomConfig ??= GluestackCustomConfig();
     if (!getIt.isRegistered<GluestackCustomConfig>()) {

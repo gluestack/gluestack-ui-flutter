@@ -1,5 +1,8 @@
 import 'package:flutter/widgets.dart';
 
+///
+/// Gluestack Stack Widget.
+///
 class GSStack extends StatelessWidget {
   final AlignmentGeometry alignment;
   final TextDirection? textDirection;

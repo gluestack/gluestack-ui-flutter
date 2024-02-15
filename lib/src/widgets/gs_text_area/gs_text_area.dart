@@ -19,6 +19,10 @@ enum GSTextAreaSizes {
 }
 
 // TODO : Work on descendant styles (_input)
+
+///
+/// Gluestack TextArea Widget.
+///
 class GSTextArea extends StatefulWidget {
   final GSTextAreaSizes? size;
   final GSStyle? style;

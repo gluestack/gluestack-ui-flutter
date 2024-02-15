@@ -32,6 +32,9 @@ enum GSButtonSizes {
   $lg,
 }
 
+///
+/// Gluestack Button.
+///
 class GSButton extends StatelessWidget {
   final GSButtonActions? action;
   final GSButtonVariants? variant;

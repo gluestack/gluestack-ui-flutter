@@ -14,10 +14,10 @@ class TextAreaExample extends StatefulWidget {
 class _TextAreaExampleState extends State<TextAreaExample> {
   TextEditingController textEditingController = TextEditingController();
   final List dropdownSizeOptions = [
-GSTextAreaSizes.$sm,
-GSTextAreaSizes.$md,
-GSTextAreaSizes.$lg,
-GSTextAreaSizes.$xl,
+    GSTextAreaSizes.$sm,
+    GSTextAreaSizes.$md,
+    GSTextAreaSizes.$lg,
+    GSTextAreaSizes.$xl,
   ];
   GSTextAreaSizes selectedSizeOption = GSTextAreaSizes.$md;
 
