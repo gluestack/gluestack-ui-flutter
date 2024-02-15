@@ -20,13 +20,13 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   // Currently selected theme mode
-  ThemeMode _selectedThemeMode = ThemeMode.light;
+  GSThemeMode _selectedThemeMode = GSThemeMode.light;
 
   void toggleThemeMode() {
     setState(() {
       _selectedThemeMode = switch (_selectedThemeMode) {
-        ThemeMode.light => ThemeMode.dark,
-        ThemeMode.dark || ThemeMode.system => ThemeMode.light,
+        GSThemeMode.light => GSThemeMode.dark,
+        GSThemeMode.dark || GSThemeMode.system => GSThemeMode.light,
       };
     });
   }
@@ -49,19 +49,23 @@ class _MainAppState extends State<MainApp> {
           backgroundDark400: Color(0xffE11D48),
         ),
       ),
-      child: MaterialApp(
+      child: GSApp(
         themeMode: _selectedThemeMode,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorSchemeSeed: Colors.white,
-          useMaterial3: false,
-          brightness: Brightness.light,
-        ),
-        darkTheme: ThemeData(
-          colorSchemeSeed: Colors.black,
-          useMaterial3: false,
+        darkTheme: GSThemeData(
           brightness: Brightness.dark,
         ),
+        theme: GSThemeData(),
+        // theme: ThemeData(
+        //   colorSchemeSeed: Colors.white,
+        //   useMaterial3: false,
+        //   brightness: Brightness.light,
+        // ),
+        // darkTheme: ThemeData(
+        //   colorSchemeSeed: Colors.black,
+        //   useMaterial3: false,
+        //   brightness: Brightness.dark,
+        // ),
         home: KitchenSink(toggleTheme: toggleThemeMode),
       ),
     );
@@ -97,8 +101,8 @@ class KitchenSink extends StatelessWidget {
                         smValue: 24,
                       ) ??
                       4,
-                  top: 21,
-                  bottom: 18),
+                  top: 5,
+                  bottom: 10),
             ),
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

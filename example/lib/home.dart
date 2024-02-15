@@ -17,8 +17,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Gluestack UI examples')),
+      backgroundColor: theme.scaffoldBackgroundColor,
+      appBar: AppBar(
+        title: const Text('Gluestack UI examples'),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: GSCenter(
@@ -182,7 +186,7 @@ class _HomePageState extends State<HomePage> {
           return FloatingActionButton(
             onPressed: ref.read(toggleThemeProvider.notifier).toggleThemeMode,
             child: Icon(
-              Theme.of(context).brightness == Brightness.dark
+              GSTheme.of(context).brightness == Brightness.dark
                   ? Icons.light_mode
                   : Icons.dark_mode,
             ),
