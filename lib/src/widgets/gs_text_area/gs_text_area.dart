@@ -8,6 +8,7 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
+import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
 
@@ -211,6 +212,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     GSStyle styler = resolveStyles(
       context: context,
       styles: [
+        gstextStyle,
         textAreaStyle,
         textAreaStyle.sizeMap(inputSize),
       ],
@@ -379,6 +381,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                               strutStyle: widget.strutStyle,
                               style: widget.style?.textStyle ??
                                   TextStyle(
+                                    color: styler.textStyle?.color,
                                       fontSize: styler
                                           .descendantStyles?['_input']
                                           ?.textStyle
