@@ -64,7 +64,11 @@ class _HStackExampleState extends State<HStackExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("HStack"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "HStack",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

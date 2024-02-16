@@ -59,7 +59,11 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Checkbox"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Checkbox",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

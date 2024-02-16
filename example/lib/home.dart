@@ -21,7 +21,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text('Gluestack UI examples'),
+        backgroundColor: GSTheme.of(context).brightness == Brightness.dark
+            ? const Color(0xFF262626)
+            : null,
+        title: const GSText(
+          text: 'Gluestack UI examples',
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

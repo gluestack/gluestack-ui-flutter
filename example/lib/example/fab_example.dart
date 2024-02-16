@@ -77,7 +77,13 @@ class _FabExampleState extends State<FabExample> {
 """;
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Fab",
+          size: GSSizes.$xl,
+        ),
+      ),
       body: BaseLayout(
         code: code,
         component: Center(

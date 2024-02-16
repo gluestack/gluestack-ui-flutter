@@ -59,7 +59,11 @@ class AlertExample extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Alert"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Alert",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

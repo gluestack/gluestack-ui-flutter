@@ -17,7 +17,11 @@ class HeadingExample extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Heading"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Heading",
+          size: GSSizes.$xl,
+        ),
       ),
       body: Center(
         child: BaseLayout(

@@ -81,7 +81,11 @@ class _InputExampleState extends State<InputExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Input"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Input",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

@@ -38,7 +38,11 @@ class _IconExampleState extends State<IconExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Icon"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Icon",
+          size: GSSizes.$xl,
+        ),
       ),
       body: Center(
         child: BaseLayout(

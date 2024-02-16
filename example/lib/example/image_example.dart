@@ -60,7 +60,11 @@ class _ImageExampleState extends State<ImageExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Image"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Image",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,
