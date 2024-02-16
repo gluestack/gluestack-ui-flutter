@@ -7,6 +7,7 @@ class ScrollExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
             GSScrollView(
                 children: [
@@ -19,6 +20,7 @@ class ScrollExample extends StatelessWidget {
             ),
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Scroll"),
       ),

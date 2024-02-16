@@ -7,6 +7,7 @@ class SpinnerExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSSpinner(
               size: GSSpinnerSizes.large,
@@ -18,6 +19,7 @@ class SpinnerExample extends StatelessWidget {
           ),
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Spinner"),
       ),

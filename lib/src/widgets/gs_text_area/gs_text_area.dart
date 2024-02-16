@@ -407,12 +407,8 @@ class _GSTextAreaState extends State<GSTextArea> {
                               ? 50
                               : 10,
                       top: 10,
-                      child: Text(
-                        widget.hintText!,
-                        style: hintStyle ??
-                            TextStyle(
-                              color: borderColor,
-                            ),
+                      child: GSText(
+                        text: widget.hintText ?? '',
                       ),
                     ),
                 ],
@@ -428,9 +424,11 @@ class _GSTextAreaState extends State<GSTextArea> {
     if (widget.prefixText != null && widget.prefixText!.isNotEmpty) {
       return Row(
         children: [
-          Text(
-            widget.prefixText!,
-            style: widget.prefixStyle,
+          GSText(
+            style: GSStyle(
+              textStyle: widget.prefixStyle,
+            ),
+            text: widget.prefixText!,
           ),
           const SizedBox(
             width: 5,

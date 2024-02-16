@@ -12,11 +12,11 @@ class IconExample extends StatefulWidget {
 
 class _IconExampleState extends State<IconExample> {
   final List dropdownSizeOptions = [
-GSIconSizes.$xs,
-GSIconSizes.$sm,
-GSIconSizes.$md,
-GSIconSizes.$lg,
-GSIconSizes.$xl,
+    GSIconSizes.$xs,
+    GSIconSizes.$sm,
+    GSIconSizes.$md,
+    GSIconSizes.$lg,
+    GSIconSizes.$xl,
   ];
   GSIconSizes selectedSizeOption = GSIconSizes.$md;
 
@@ -28,6 +28,7 @@ GSIconSizes.$xl,
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSIcon(
               icon: Icons.calendar_month,
@@ -35,6 +36,7 @@ GSIconSizes.$xl,
            )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Icon"),
       ),

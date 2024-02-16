@@ -46,6 +46,7 @@ class _AvatarExampleState extends State<AvatarExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
         GSAvatar(
             radius: GSAvatarRadius.\$full,
@@ -58,6 +59,7 @@ class _AvatarExampleState extends State<AvatarExample> {
          )
 ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Avatar"),
       ),

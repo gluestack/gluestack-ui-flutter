@@ -40,6 +40,7 @@ class _ToastExampleState extends State<ToastExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
                GSToast(
                 variant: GSToastVariants.solid,
@@ -59,6 +60,7 @@ class _ToastExampleState extends State<ToastExample> {
               ),
 ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Toast"),
       ),
@@ -70,8 +72,7 @@ class _ToastExampleState extends State<ToastExample> {
           onPressed: () {
             showToast(
               context,
-              child:
-               GSToast(
+              child: GSToast(
                 variant: selectedVariantOption,
                 action: selectedActionOption,
                 child: const Column(

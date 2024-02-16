@@ -73,6 +73,7 @@ class _BadgeExampleState extends State<BadgeExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSBadge(
               action: GSActions.success,
@@ -87,6 +88,7 @@ class _BadgeExampleState extends State<BadgeExample> {
            )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Badge"),
       ),

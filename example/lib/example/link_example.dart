@@ -7,6 +7,7 @@ class LinkExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSLink(
               style: GSStyle(),
@@ -15,6 +16,7 @@ class LinkExample extends StatelessWidget {
           )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Link"),
       ),

@@ -70,6 +70,7 @@ class _ButtonExampleState extends State<ButtonExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
               GSButton(
                     action: GSButtonActions.primary,
@@ -87,6 +88,7 @@ class _ButtonExampleState extends State<ButtonExample> {
               )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Button"),
       ),
@@ -104,7 +106,7 @@ class _ButtonExampleState extends State<ButtonExample> {
           onPressed: () {
             print('presssed');
           },
-          onDoubleTap: (){
+          onDoubleTap: () {
             print('double press');
           },
           // style: GSStyle(

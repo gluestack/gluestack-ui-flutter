@@ -12,13 +12,13 @@ class ImageExample extends StatefulWidget {
 
 class _ImageExampleState extends State<ImageExample> {
   final List dropdownSizeOptions = [
-GSImageSizes.$2xs,
-GSImageSizes.$xs,
-GSImageSizes.$sm,
-GSImageSizes.$md,
-GSImageSizes.$lg,
-GSImageSizes.$xl,
-GSImageSizes.$2xl,
+    GSImageSizes.$2xs,
+    GSImageSizes.$xs,
+    GSImageSizes.$sm,
+    GSImageSizes.$md,
+    GSImageSizes.$lg,
+    GSImageSizes.$xl,
+    GSImageSizes.$2xl,
   ];
   GSImageSizes selectedSizeOption = GSImageSizes.$md;
   void updateSizeSelectedOption(dynamic newOption) {
@@ -47,6 +47,7 @@ GSImageSizes.$2xl,
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
             GSImage(
                 size: GSSizes.\$md,
@@ -57,6 +58,7 @@ GSImageSizes.$2xl,
              )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Image"),
       ),
