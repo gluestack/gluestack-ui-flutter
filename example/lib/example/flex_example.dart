@@ -7,6 +7,7 @@ class FlexExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
         GSFlex(
             style: GSStyle(
@@ -39,6 +40,7 @@ class FlexExample extends StatelessWidget {
         )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Flex"),
       ),

@@ -29,6 +29,7 @@ class _ProgressExampleState extends State<ProgressExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSProgress(
               value: 0.4,
@@ -36,6 +37,7 @@ class _ProgressExampleState extends State<ProgressExample> {
            )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Progress"),
       ),

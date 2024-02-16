@@ -7,6 +7,7 @@ class PressableExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
             GSPressable(
                 hitSlop: 10,
@@ -38,6 +39,7 @@ class PressableExample extends StatelessWidget {
              )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Pressable"),
       ),
