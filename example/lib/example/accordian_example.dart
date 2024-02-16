@@ -92,7 +92,9 @@ GSAccordion(
           ],
 ),
   ''';
+    final theme = GSTheme.of(context);
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text("Accordion"),
       ),
