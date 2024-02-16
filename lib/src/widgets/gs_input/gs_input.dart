@@ -9,6 +9,7 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_input/gs_input_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
+import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
 
 enum GSInputVariants {
   outline,
@@ -221,6 +222,7 @@ class _GSInputState extends State<GSInput> {
     GSStyle styler = resolveStyles(
       context: context,
       styles: [
+        gstextStyle,
         inputStyle,
         inputStyle.variantMap(inputVariant),
         inputStyle.sizeMap(inputSize)
@@ -412,6 +414,7 @@ class _GSInputState extends State<GSInput> {
                                 strutStyle: widget.strutStyle,
                                 style: widget.style?.textStyle ??
                                     TextStyle(
+                                        color: styler.textStyle?.color,
                                         fontSize: styler.textStyle?.fontSize),
                                 textAlign: widget.textAlign,
                                 textCapitalization: widget.textCapitalization,
