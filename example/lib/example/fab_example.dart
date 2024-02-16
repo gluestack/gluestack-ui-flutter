@@ -75,7 +75,9 @@ class _FabExampleState extends State<FabExample> {
                )
 """;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text("Floating Action Button"),
+      ),
       body: BaseLayout(
         code: code,
         component: Center(

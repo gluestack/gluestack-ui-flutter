@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'theme_provider.g.dart';
@@ -6,16 +6,16 @@ part 'theme_provider.g.dart';
 @riverpod
 class ToggleTheme extends _$ToggleTheme {
   @override
-  ThemeMode build() {
+  GSThemeMode build() {
     // Default to light theme mode.
-    return ThemeMode.light;
+    return GSThemeMode.light;
   }
 
-  void toggleThemeMode({ThemeMode? forcedThemeMode}) {
+  void toggleThemeMode({GSThemeMode? forcedThemeMode}) {
     state = forcedThemeMode ??
         switch (state) {
-          ThemeMode.light => ThemeMode.dark,
-          _ => ThemeMode.light,
+          GSThemeMode.light => GSThemeMode.dark,
+          _ => GSThemeMode.light,
         };
   }
 }
