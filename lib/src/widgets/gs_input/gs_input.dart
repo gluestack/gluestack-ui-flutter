@@ -325,6 +325,22 @@ class _GSInputState extends State<GSInput> {
                 },
                 child: Stack(
                   children: [
+                    if (widget.controller?.text.isEmpty ??
+                        controller!.text.isEmpty)
+                      Positioned(
+                        left: widget.prefixText != null &&
+                                widget.prefixText!.isNotEmpty
+                            ? 10 + widget.prefixText!.length * 8
+                            : widget.prefixIcon != null
+                                ? 50
+                                : 10,
+                        top: 10,
+                        child: Text(widget.hintText!,
+                            style: widget.hintStyle ??
+                                TextStyle(
+                                    color: borderColor,
+                                    fontSize: styler.textStyle?.fontSize)),
+                      ),
                     Container(
                       padding: styler.padding ??
                           const EdgeInsets.symmetric(horizontal: 15),
@@ -429,22 +445,6 @@ class _GSInputState extends State<GSInput> {
                         ],
                       ),
                     ),
-                    if (widget.controller?.text.isEmpty ??
-                        controller!.text.isEmpty)
-                      Positioned(
-                        left: widget.prefixText != null &&
-                                widget.prefixText!.isNotEmpty
-                            ? 10 + widget.prefixText!.length * 8
-                            : widget.prefixIcon != null
-                                ? 50
-                                : 10,
-                        top: 10,
-                        child: Text(widget.hintText!,
-                            style: widget.hintStyle ??
-                                TextStyle(
-                                    color: borderColor,
-                                    fontSize: styler.textStyle?.fontSize)),
-                      ),
                   ],
                 ),
               ),

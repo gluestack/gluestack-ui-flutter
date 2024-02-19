@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
-const Duration kGSThemeAnimationDuration = Duration(milliseconds: 200);
 
 abstract class GSThemeExtension<T extends GSThemeExtension<T>> {
   const GSThemeExtension();
@@ -58,56 +57,25 @@ class _GSTheme extends InheritedTheme {
   }
 }
 
-class GSThemeDataTween extends Tween<GSThemeData> {
-  GSThemeDataTween({super.begin, super.end});
 
-  @override
-  GSThemeData lerp(double t) => GSThemeData.lerp(begin!, end!, t);
-}
-
-class AnimatedGSTheme extends ImplicitlyAnimatedWidget {
-  const AnimatedGSTheme({
-    super.key,
-    required this.data,
-    super.curve,
-    super.duration = kGSThemeAnimationDuration,
-    super.onEnd,
-    required this.child,
-  });
-
+class GSThemeWidget extends StatelessWidget {
   final GSThemeData data;
   final Widget child;
-
-  @override
-  AnimatedWidgetBaseState<AnimatedGSTheme> createState() =>
-      _AnimatedGSThemeState();
-}
-
-class _AnimatedGSThemeState extends AnimatedWidgetBaseState<AnimatedGSTheme> {
-  GSThemeDataTween? _data;
-
-  @override
-  void forEachTween(TweenVisitor<dynamic> visitor) {
-    _data = visitor(_data, widget.data,
-            (dynamic value) => GSThemeDataTween(begin: value as GSThemeData))!
-        as GSThemeDataTween;
-  }
+  const GSThemeWidget({
+    super.key,
+    required this.data,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GSTheme(
-      data: _data!.evaluate(animation),
-      child: widget.child,
+      data: data,
+      child: child,
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder description) {
-    super.debugFillProperties(description);
-    description.add(DiagnosticsProperty<GSThemeDataTween>('data', _data,
-        showName: false, defaultValue: null));
-  }
 }
+
 
 extension BrightnessExtension on Brightness {
   bool get isLight => this == Brightness.light;

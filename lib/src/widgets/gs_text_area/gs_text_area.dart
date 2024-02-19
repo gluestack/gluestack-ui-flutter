@@ -293,6 +293,20 @@ class _GSTextAreaState extends State<GSTextArea> {
               },
               child: Stack(
                 children: [
+                  if (widget.controller?.text.isEmpty ??
+                      controller!.text.isEmpty)
+                    Positioned(
+                      left: widget.prefixText != null &&
+                              widget.prefixText!.isNotEmpty
+                          ? 10 + widget.prefixText!.length * 8
+                          : widget.prefixIcon != null
+                              ? 50
+                              : 10,
+                      top: 10,
+                      child: GSText(
+                        text: widget.hintText ?? '',
+                      ),
+                    ),
                   Container(
                     padding: styler.padding ??
                         const EdgeInsets.symmetric(
@@ -381,7 +395,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                               strutStyle: widget.strutStyle,
                               style: widget.style?.textStyle ??
                                   TextStyle(
-                                    color: styler.textStyle?.color,
+                                      color: styler.textStyle?.color,
                                       fontSize: styler
                                           .descendantStyles?['_input']
                                           ?.textStyle
@@ -400,20 +414,6 @@ class _GSTextAreaState extends State<GSTextArea> {
                       ],
                     ),
                   ),
-                  if (widget.controller?.text.isEmpty ??
-                      controller!.text.isEmpty)
-                    Positioned(
-                      left: widget.prefixText != null &&
-                              widget.prefixText!.isNotEmpty
-                          ? 10 + widget.prefixText!.length * 8
-                          : widget.prefixIcon != null
-                              ? 50
-                              : 10,
-                      top: 10,
-                      child: GSText(
-                        text: widget.hintText ?? '',
-                      ),
-                    ),
                 ],
               ),
             ),
