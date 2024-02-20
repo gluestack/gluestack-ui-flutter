@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
@@ -20,6 +19,10 @@ enum GSTextAreaSizes {
 }
 
 // TODO : Work on descendant styles (_input)
+
+///
+/// Gluestack TextArea Widget.
+///
 class GSTextArea extends StatefulWidget {
   final GSTextAreaSizes? size;
   final GSStyle? style;

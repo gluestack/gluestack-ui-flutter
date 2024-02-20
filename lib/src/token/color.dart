@@ -1597,8 +1597,10 @@ class GSColorsToken {
       backgroundDarkMuted: backgroundDarkMuted ?? this.backgroundDarkMuted,
       white: white ?? this.white,
       black: black ?? this.black,
-      primaryColorsFromBase: primaryColorsFromBase ?? this.primaryColorsFromBase,
-      secondaryColorsFromBase: secondaryColorsFromBase ?? this.secondaryColorsFromBase,
+      primaryColorsFromBase:
+          primaryColorsFromBase ?? this.primaryColorsFromBase,
+      secondaryColorsFromBase:
+          secondaryColorsFromBase ?? this.secondaryColorsFromBase,
     );
   }
 }

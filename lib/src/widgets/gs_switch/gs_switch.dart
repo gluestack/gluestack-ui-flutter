@@ -15,6 +15,9 @@ enum GSSwitchSizes {
   $lg,
 }
 
+///
+/// Gluestack Switch Widget.
+///
 class GSSwitch extends StatefulWidget {
   final bool value;
   final ValueChanged<bool>? onToggle;
