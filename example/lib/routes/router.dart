@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui_example/home.dart';
+import 'package:gluestack_ui_example/widgets/components/widgets/accordian_example.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook_wrapper.dart';
 import 'package:go_router/go_router.dart';
@@ -136,6 +137,10 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "internal-color-test",
           builder: (context, state) => const InternalColorTestScreen(),
+        ),
+        GoRoute(
+          path: "example-accordion",
+          builder: (context, state) => const AccordionExample(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.

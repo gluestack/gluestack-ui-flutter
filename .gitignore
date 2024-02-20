@@ -31,4 +31,4 @@ build/
 .flutter-plugins-dependencies
 android/local.properties
 ios/
- 
+macos/
