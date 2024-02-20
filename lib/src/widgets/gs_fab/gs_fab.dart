@@ -20,6 +20,9 @@ enum GSFABPlacements {
   bottomRight
 }
 
+///
+/// Gluestack Floating Action Button.
+///
 class GSFab extends StatelessWidget {
   final GSFABSizes? size;
   final GSFABPlacements? placement;

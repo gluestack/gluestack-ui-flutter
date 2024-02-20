@@ -42,7 +42,11 @@ class FlexExample extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Flex"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Flex",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

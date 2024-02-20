@@ -62,7 +62,11 @@ class _ToastExampleState extends State<ToastExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Toast"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Toast",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

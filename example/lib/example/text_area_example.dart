@@ -64,7 +64,11 @@ class _TextAreaExampleState extends State<TextAreaExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Text Area"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Text Area",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

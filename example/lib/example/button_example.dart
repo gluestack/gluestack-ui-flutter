@@ -90,7 +90,11 @@ class _ButtonExampleState extends State<ButtonExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Button"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Button",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

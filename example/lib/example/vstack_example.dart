@@ -67,7 +67,11 @@ class _VStackExampleState extends State<VStackExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("VStack"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "VStack",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

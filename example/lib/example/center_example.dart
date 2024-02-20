@@ -23,7 +23,11 @@ class CenterExample extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Center"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Center",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

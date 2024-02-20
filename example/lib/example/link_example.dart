@@ -18,7 +18,11 @@ class LinkExample extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Link"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Link",
+          size: GSSizes.$xl,
+        ),
       ),
       body: Center(
         child: BaseLayout(

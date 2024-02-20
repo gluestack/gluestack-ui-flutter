@@ -17,6 +17,7 @@ enum GSProgressSizes {
 class GSProgress extends StatefulWidget {
   final GSStyle? style;
   final GSProgressSizes? size;
+
   /// Ranges from 0 to 1
   final double? value;
   final String? semanticsLabel;

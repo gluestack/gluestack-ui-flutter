@@ -22,7 +22,11 @@ class ScrollExample extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Scroll"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Scroll",
+          size: GSSizes.$xl,
+        ),
       ),
       body: Center(
         child: BaseLayout(

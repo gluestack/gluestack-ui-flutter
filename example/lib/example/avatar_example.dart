@@ -61,7 +61,11 @@ class _AvatarExampleState extends State<AvatarExample> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Avatar"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Avatar",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,
