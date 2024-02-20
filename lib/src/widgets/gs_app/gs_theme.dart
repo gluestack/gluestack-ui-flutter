@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
-
 abstract class GSThemeExtension<T extends GSThemeExtension<T>> {
   const GSThemeExtension();
 
@@ -57,7 +56,6 @@ class _GSTheme extends InheritedTheme {
   }
 }
 
-
 class GSThemeWidget extends StatelessWidget {
   final GSThemeData data;
   final Widget child;
@@ -75,7 +73,6 @@ class GSThemeWidget extends StatelessWidget {
     );
   }
 }
-
 
 extension BrightnessExtension on Brightness {
   bool get isLight => this == Brightness.light;
