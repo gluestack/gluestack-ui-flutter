@@ -207,8 +207,7 @@ class _GSAppState extends State<GSApp> {
     final themeData = theme(context);
     //final mTheme = context.findAncestorWidgetOfExactType<m.Theme>();
 
-    return AnimatedGSTheme(
-      curve: themeData.animationCurve,
+    return GSThemeWidget(
       data: themeData,
       child: widget.builder != null
           ? Builder(

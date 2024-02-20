@@ -39,6 +39,7 @@ class _VStackExampleState extends State<VStackExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSVStack(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -64,8 +65,13 @@ class _VStackExampleState extends State<VStackExample> {
            )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("VStack"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "VStack",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

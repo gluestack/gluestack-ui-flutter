@@ -14,10 +14,10 @@ class TextAreaExample extends StatefulWidget {
 class _TextAreaExampleState extends State<TextAreaExample> {
   TextEditingController textEditingController = TextEditingController();
   final List dropdownSizeOptions = [
-GSTextAreaSizes.$sm,
-GSTextAreaSizes.$md,
-GSTextAreaSizes.$lg,
-GSTextAreaSizes.$xl,
+    GSTextAreaSizes.$sm,
+    GSTextAreaSizes.$md,
+    GSTextAreaSizes.$lg,
+    GSTextAreaSizes.$xl,
   ];
   GSTextAreaSizes selectedSizeOption = GSTextAreaSizes.$md;
 
@@ -51,6 +51,7 @@ GSTextAreaSizes.$xl,
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSTextArea(
                 size: GSTextAreaSizes.\$md,
@@ -61,8 +62,13 @@ GSTextAreaSizes.$xl,
            )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Text Area"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Text Area",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

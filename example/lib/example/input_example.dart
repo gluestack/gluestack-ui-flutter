@@ -64,6 +64,7 @@ class _InputExampleState extends State<InputExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
       GSInput(
           size: GSInputSizes.\$md,
@@ -78,8 +79,13 @@ class _InputExampleState extends State<InputExample> {
        )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Input"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Input",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

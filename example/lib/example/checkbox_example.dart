@@ -12,7 +12,11 @@ class CheckBoxExample extends StatefulWidget {
 }
 
 class _CheckBoxExampleState extends State<CheckBoxExample> {
-  final List dropdownSizeOptions = [GSCheckBoxSizes.$sm, GSCheckBoxSizes.$md, GSCheckBoxSizes.$lg];
+  final List dropdownSizeOptions = [
+    GSCheckBoxSizes.$sm,
+    GSCheckBoxSizes.$md,
+    GSCheckBoxSizes.$lg
+  ];
   GSCheckBoxSizes selectedSizeOption = GSCheckBoxSizes.$md;
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
@@ -37,6 +41,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSCheckBox(
               icon: GSCheckBoxIndicator(
@@ -52,8 +57,13 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
           )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Checkbox"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Checkbox",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

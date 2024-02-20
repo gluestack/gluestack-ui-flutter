@@ -39,6 +39,7 @@ class _HStackExampleState extends State<HStackExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
         GSHStack(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -61,8 +62,13 @@ class _HStackExampleState extends State<HStackExample> {
          )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("HStack"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "HStack",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

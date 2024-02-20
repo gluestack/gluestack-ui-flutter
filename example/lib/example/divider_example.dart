@@ -6,9 +6,15 @@ class DividerExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Divider"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Divider",
+          size: GSSizes.$xl,
+        ),
       ),
       body: GSCenter(
         child: GSVStack(

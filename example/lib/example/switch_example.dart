@@ -35,6 +35,7 @@ class _SwitchExampleState extends State<SwitchExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
             GSSwitch(
                 size: GSSwitchSizes.\$md,
@@ -54,8 +55,13 @@ class _SwitchExampleState extends State<SwitchExample> {
              )
 ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Switch"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Switch",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

@@ -27,6 +27,7 @@ class _IconButtonExampleState extends State<IconButtonExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
       GSIconButton(
           size: GSIconButtonSizes.\$md,
@@ -41,8 +42,13 @@ class _IconButtonExampleState extends State<IconButtonExample> {
        ),
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Icon Button"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Icon Button",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

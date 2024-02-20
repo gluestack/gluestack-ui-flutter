@@ -7,6 +7,7 @@ class AlertExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSButton(
             size: GSButtonSizes.\$lg,
@@ -56,8 +57,13 @@ class AlertExample extends StatelessWidget {
           )
 ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Alert"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Alert",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

@@ -45,6 +45,7 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSRadio<Value>(
               size: GSRadioSizes.\$md,
@@ -63,8 +64,13 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
           )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Radio Button"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Radio Button",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

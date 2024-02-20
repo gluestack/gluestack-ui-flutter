@@ -60,6 +60,7 @@ class _FormExampleState extends State<FormExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = r"""
         GSFormControl(
             formKey: _formKey,
@@ -213,8 +214,13 @@ class _FormExampleState extends State<FormExample> {
             ),
          )""";
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Form Control"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Form Control",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

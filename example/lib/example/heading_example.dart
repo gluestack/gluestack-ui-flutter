@@ -7,6 +7,7 @@ class HeadingExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
         GSHeading(
               text: 'This is an example for a Heading',
@@ -14,8 +15,13 @@ class HeadingExample extends StatelessWidget {
           )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Heading"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Heading",
+          size: GSSizes.$xl,
+        ),
       ),
       body: Center(
         child: BaseLayout(

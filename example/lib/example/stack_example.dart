@@ -7,6 +7,7 @@ class StackExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSStack(
               alignment: Alignment.center,
@@ -25,8 +26,13 @@ class StackExample extends StatelessWidget {
           )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Stack"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Stack",
+          size: GSSizes.$xl,
+        ),
       ),
       body: Center(
         child: BaseLayout(

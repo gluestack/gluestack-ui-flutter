@@ -62,6 +62,7 @@ class _FabExampleState extends State<FabExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     const code = """
               GSFab(
                   size: GSFABSizes.\$md,
@@ -75,8 +76,13 @@ class _FabExampleState extends State<FabExample> {
                )
 """;
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Floating Action Button"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Fab",
+          size: GSSizes.$xl,
+        ),
       ),
       body: BaseLayout(
         code: code,

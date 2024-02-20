@@ -9,6 +9,7 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_input/gs_input_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
+import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
 
 enum GSInputVariants {
   outline,
@@ -221,6 +222,7 @@ class _GSInputState extends State<GSInput> {
     GSStyle styler = resolveStyles(
       context: context,
       styles: [
+        gstextStyle,
         inputStyle,
         inputStyle.variantMap(inputVariant),
         inputStyle.sizeMap(inputSize)
@@ -323,6 +325,22 @@ class _GSInputState extends State<GSInput> {
                 },
                 child: Stack(
                   children: [
+                    if (widget.controller?.text.isEmpty ??
+                        controller!.text.isEmpty)
+                      Positioned(
+                        left: widget.prefixText != null &&
+                                widget.prefixText!.isNotEmpty
+                            ? 10 + widget.prefixText!.length * 8
+                            : widget.prefixIcon != null
+                                ? 50
+                                : 10,
+                        top: 10,
+                        child: Text(widget.hintText!,
+                            style: widget.hintStyle ??
+                                TextStyle(
+                                    color: borderColor,
+                                    fontSize: styler.textStyle?.fontSize)),
+                      ),
                     Container(
                       padding: styler.padding ??
                           const EdgeInsets.symmetric(horizontal: 15),
@@ -412,6 +430,7 @@ class _GSInputState extends State<GSInput> {
                                 strutStyle: widget.strutStyle,
                                 style: widget.style?.textStyle ??
                                     TextStyle(
+                                        color: styler.textStyle?.color,
                                         fontSize: styler.textStyle?.fontSize),
                                 textAlign: widget.textAlign,
                                 textCapitalization: widget.textCapitalization,
@@ -426,22 +445,6 @@ class _GSInputState extends State<GSInput> {
                         ],
                       ),
                     ),
-                    if (widget.controller?.text.isEmpty ??
-                        controller!.text.isEmpty)
-                      Positioned(
-                        left: widget.prefixText != null &&
-                                widget.prefixText!.isNotEmpty
-                            ? 10 + widget.prefixText!.length * 8
-                            : widget.prefixIcon != null
-                                ? 50
-                                : 10,
-                        top: 10,
-                        child: Text(widget.hintText!,
-                            style: widget.hintStyle ??
-                                TextStyle(
-                                    color: borderColor,
-                                    fontSize: styler.textStyle?.fontSize)),
-                      ),
                   ],
                 ),
               ),

@@ -7,6 +7,7 @@ class TextExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     var code = '''
           GSText(
               text: 'This is an example of a simple text.',
@@ -16,8 +17,13 @@ class TextExample extends StatelessWidget {
            )
   ''';
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Text"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Text",
+          size: GSSizes.$xl,
+        ),
       ),
       body: Center(
         child: BaseLayout(
