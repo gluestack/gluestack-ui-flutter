@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/widgets/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/drop_down.dart';
+import '../widgets/components/layout/base_layout.dart';
 
 class AvatarExample extends StatefulWidget {
   const AvatarExample({super.key});

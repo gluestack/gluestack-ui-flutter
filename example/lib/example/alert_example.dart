@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/widgets/base_layout.dart';
+
+import '../widgets/components/layout/base_layout.dart';
 
 class AlertExample extends StatelessWidget {
   const AlertExample({super.key});

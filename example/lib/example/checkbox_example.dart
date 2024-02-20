@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/widgets/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/drop_down.dart';
-import 'package:gluestack_ui_example/widgets/toggle.dart';
+import '../widgets/components/layout/base_layout.dart';
+import '../widgets/components/layout/toggle.dart';
 
 class CheckBoxExample extends StatefulWidget {
   const CheckBoxExample({super.key});
@@ -12,7 +12,11 @@ class CheckBoxExample extends StatefulWidget {
 }
 
 class _CheckBoxExampleState extends State<CheckBoxExample> {
-  final List dropdownSizeOptions = [GSCheckBoxSizes.$sm, GSCheckBoxSizes.$md, GSCheckBoxSizes.$lg];
+  final List dropdownSizeOptions = [
+    GSCheckBoxSizes.$sm,
+    GSCheckBoxSizes.$md,
+    GSCheckBoxSizes.$lg
+  ];
   GSCheckBoxSizes selectedSizeOption = GSCheckBoxSizes.$md;
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {

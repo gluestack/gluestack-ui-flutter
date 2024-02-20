@@ -1,6 +1,8 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/base_story_widget.dart';
+
 import 'package:storybook_flutter/storybook_flutter.dart';
+
+import '../storybook/widgets/base_story_widget.dart';
 
 //Need to add value according to GSActions enum order.
 final List<Option<int>> actionOptions = [
@@ -52,6 +54,7 @@ final class BadgeStory extends StoryWidget {
         borderRadius: GSBadgeRadius.values[context.knobs.options(
             label: 'Border Radius', initial: 0, options: borderRadiusOptions)],
         text: const GSBadgeText("New Feature"),
+        style: GSStyle(),
       ),
     );
   }

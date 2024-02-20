@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import '../widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/drop_down.dart';
 
 class ImageExample extends StatefulWidget {
@@ -12,13 +12,13 @@ class ImageExample extends StatefulWidget {
 
 class _ImageExampleState extends State<ImageExample> {
   final List dropdownSizeOptions = [
-GSImageSizes.$2xs,
-GSImageSizes.$xs,
-GSImageSizes.$sm,
-GSImageSizes.$md,
-GSImageSizes.$lg,
-GSImageSizes.$xl,
-GSImageSizes.$2xl,
+    GSImageSizes.$2xs,
+    GSImageSizes.$xs,
+    GSImageSizes.$sm,
+    GSImageSizes.$md,
+    GSImageSizes.$lg,
+    GSImageSizes.$xl,
+    GSImageSizes.$2xl,
   ];
   GSImageSizes selectedSizeOption = GSImageSizes.$md;
   void updateSizeSelectedOption(dynamic newOption) {

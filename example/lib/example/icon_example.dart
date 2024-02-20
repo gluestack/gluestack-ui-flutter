@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/widgets/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/drop_down.dart';
+import '../widgets/components/layout/base_layout.dart';
 
 class IconExample extends StatefulWidget {
   const IconExample({super.key});
@@ -12,11 +12,11 @@ class IconExample extends StatefulWidget {
 
 class _IconExampleState extends State<IconExample> {
   final List dropdownSizeOptions = [
-GSIconSizes.$xs,
-GSIconSizes.$sm,
-GSIconSizes.$md,
-GSIconSizes.$lg,
-GSIconSizes.$xl,
+    GSIconSizes.$xs,
+    GSIconSizes.$sm,
+    GSIconSizes.$md,
+    GSIconSizes.$lg,
+    GSIconSizes.$xl,
   ];
   GSIconSizes selectedSizeOption = GSIconSizes.$md;
 

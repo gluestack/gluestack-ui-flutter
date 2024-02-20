@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/example/radio_button_example.dart';
-import 'package:gluestack_ui_example/widgets/base_layout.dart';
+import '../widgets/components/layout/base_layout.dart';
+import '../widgets/components/layout/toggle.dart';
 import 'package:gluestack_ui_example/widgets/drop_down.dart';
-import 'package:gluestack_ui_example/widgets/toggle.dart';
 
 class FormExample extends StatefulWidget {
   const FormExample({super.key});

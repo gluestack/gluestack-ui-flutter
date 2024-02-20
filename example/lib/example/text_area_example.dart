@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/widgets/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/drop_down.dart';
-import 'package:gluestack_ui_example/widgets/toggle.dart';
+import '../widgets/components/layout/base_layout.dart';
+import '../widgets/components/layout/toggle.dart';
 
 class TextAreaExample extends StatefulWidget {
   const TextAreaExample({super.key});
@@ -14,10 +14,10 @@ class TextAreaExample extends StatefulWidget {
 class _TextAreaExampleState extends State<TextAreaExample> {
   TextEditingController textEditingController = TextEditingController();
   final List dropdownSizeOptions = [
-GSTextAreaSizes.$sm,
-GSTextAreaSizes.$md,
-GSTextAreaSizes.$lg,
-GSTextAreaSizes.$xl,
+    GSTextAreaSizes.$sm,
+    GSTextAreaSizes.$md,
+    GSTextAreaSizes.$lg,
+    GSTextAreaSizes.$xl,
   ];
   GSTextAreaSizes selectedSizeOption = GSTextAreaSizes.$md;
 

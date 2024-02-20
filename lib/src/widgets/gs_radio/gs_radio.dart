@@ -20,7 +20,7 @@ what is achieved so far
 
 
 what is pending
-    
+
     1) managing hover state on custom inline style
     2) making radio icon circle hoverable
     3) passing props to children
@@ -82,7 +82,6 @@ class GSRadio<T> extends StatelessWidget {
               ? SystemMouseCursors.forbidden
               : SystemMouseCursors.click,
           child: GsGestureDetector(
-            
             onPressed: () {
               if (!isRadioDisabled! &&
                   value != groupValue &&
