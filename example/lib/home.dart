@@ -167,7 +167,10 @@ class _HomePageState extends State<HomePage> {
                   title: "GS Accordion",
                   routePath: "/example-accordion",
                 ),
-
+                const NavButton(
+                  title: "GS Tabs (Draft)",
+                  routePath: "/example-tabs",
+                ),
                 // // ===== Internal Testing Widgets =====
                 // const NavButton(
                 //   title: "GS Color Test (Internal)",
