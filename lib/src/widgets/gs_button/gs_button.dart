@@ -51,6 +51,8 @@ class GSButton extends StatelessWidget {
   final VoidCallback? onLongPress;
   final GestureDoubleTapCallback? onDoubleTap;
 
+  final bool freeSize;
+
   const GSButton({
     super.key,
     required this.child,
@@ -69,6 +71,7 @@ class GSButton extends StatelessWidget {
     this.autoFocus = false,
     this.clipBehavior = Clip.none,
     this.onDoubleTap,
+    this.freeSize = false,
   });
 
   @override
@@ -96,13 +99,18 @@ class GSButton extends StatelessWidget {
                   buttonAction.toString() + buttonVariant.toString()]
             ],
             inlineStyle: style,
-            isFirst: true);
+            isFirst: true,);
 
         if (GSStyleBuilderProvider.of(context)?.isHovered ?? false) {
           if (onHover != null && !disabled) {
             onHover!();
           }
         }
+        //Hacky Fix TODO: brainstorm this
+        if (GSStyleBuilderProvider.of(context)?.isActive ?? false) {
+          styler.bg = styler.onActive?.bg;
+        }
+
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(
@@ -116,10 +124,11 @@ class GSButton extends StatelessWidget {
                 button: true,
                 child: GsGestureDetector(
                   onPressed: disabled ? null : onPressed,
+                  onDoubleTap: disabled ? null : onDoubleTap,
                   onLongPress: disabled ? null : onLongPress,
                   child: Container(
-                    height: styler.height,
-                    width: styler.width,
+                    height: freeSize ? null : styler.height,
+                    width: freeSize ? null : styler.width,
                     clipBehavior: clipBehavior,
                     padding: styler.padding,
                     decoration: BoxDecoration(
@@ -131,7 +140,8 @@ class GSButton extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment:  MainAxisAlignment.center, //TODO: give more control to end user
+                      mainAxisAlignment: MainAxisAlignment
+                          .center, //TODO: give more control to end user
                       children: [
                         child,
                       ],

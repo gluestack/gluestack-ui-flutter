@@ -1,9 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
+
 // import 'package:gluestack_ui_example/custom_config.dart';
-import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
+// import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
+
+import 'providers/theme_provider/theme_provider.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -34,23 +38,24 @@ class _MyAppState extends State<MyApp> {
       // ),
       child: Consumer(
         builder: (context, ref, child) {
-          final currentThemeMode = ref.watch(toggleThemeProvider);
+          final GSThemeMode? currentThemeMode = ref.watch(toggleThemeProvider);
 
-          return MaterialApp.router(
+          return GSApp.router(
+            debugShowCheckedModeBanner: false,
+            //gotta add scaffold messenger if using snackbars, which we are!
+            color: $GSColors.primary500,
             routerConfig: router,
             themeMode: currentThemeMode,
-            theme: ThemeData(
-                colorSchemeSeed: Colors.deepPurple,
-                useMaterial3: true,
-                brightness: Brightness.light,
-                appBarTheme:
-                    Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
-            darkTheme: ThemeData(
-                colorSchemeSeed: Colors.deepPurple,
-                useMaterial3: true,
-                brightness: Brightness.dark,
-                appBarTheme:
-                    Theme.of(context).appBarTheme.copyWith(elevation: 4.0)),
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+
+            darkTheme: GSThemeData(
+              brightness: Brightness.dark,
+            ),
+            theme: GSThemeData(),
           );
         },
       ),

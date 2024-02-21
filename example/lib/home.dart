@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
-import 'package:gluestack_ui_example/widgets/nav_button.dart';
+
+import 'widgets/components/layout/nav_button.dart';
 // import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,8 +18,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Gluestack UI examples')),
+      backgroundColor: theme.scaffoldBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: GSTheme.of(context).brightness == Brightness.dark
+            ? const Color(0xFF262626)
+            : null,
+        title: const GSText(
+          text: 'Gluestack UI examples',
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: GSCenter(
@@ -153,6 +163,11 @@ class _HomePageState extends State<HomePage> {
                   title: "GS Icon Button",
                   routePath: "/example-icon-button",
                 ),
+                const NavButton(
+                  title: "GS Accordion",
+                  routePath: "/example-accordion",
+                ),
+
                 // // ===== Internal Testing Widgets =====
                 // const NavButton(
                 //   title: "GS Color Test (Internal)",
@@ -177,7 +192,7 @@ class _HomePageState extends State<HomePage> {
           return FloatingActionButton(
             onPressed: ref.read(toggleThemeProvider.notifier).toggleThemeMode,
             child: Icon(
-              Theme.of(context).brightness == Brightness.dark
+              GSTheme.of(context).brightness == Brightness.dark
                   ? Icons.light_mode
                   : Icons.dark_mode,
             ),

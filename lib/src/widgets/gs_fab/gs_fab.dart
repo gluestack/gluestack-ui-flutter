@@ -20,6 +20,9 @@ enum GSFABPlacements {
   bottomRight
 }
 
+///
+/// Gluestack Floating Action Button.
+///
 class GSFab extends StatelessWidget {
   final GSFABSizes? size;
   final GSFABPlacements? placement;
@@ -73,6 +76,7 @@ class GSFab extends StatelessWidget {
       child: Opacity(
         opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
         child: GSButton(
+          freeSize: true,
           isDisabled: isDisabled,
           style: fabStyler,
           onPressed: onPressed ?? () {},
