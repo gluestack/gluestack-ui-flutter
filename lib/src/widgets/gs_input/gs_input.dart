@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_input/gs_input_style.dart';
@@ -349,7 +348,9 @@ class _GSInputState extends State<GSInput> {
                       border: widget.variant == GSInputVariants.underlined
                           ? Border(
                               bottom: BorderSide(
-                                color: borderColor!,
+                                color: isDisabled
+                                    ? const Color.fromRGBO(200, 200, 200, 1.0)
+                                    : focusedBorderColor ?? borderColor!,
                                 width: borderWidth!,
                               ),
                             )
