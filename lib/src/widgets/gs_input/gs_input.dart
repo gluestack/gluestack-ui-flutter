@@ -297,7 +297,7 @@ class _GSInputState extends State<GSInput> {
 
     final borderColor = resolveBorderColor();
     final borderWidth = resolveBorderWidth();
-    // final focusedBorderColor = resolveFocusBorderColor();
+    final focusedBorderColor = resolveFocusBorderColor();
     // final focusedBorderWidth = resolveFocusBorderWidth();
     return FocusableActionDetector(
         onShowHoverHighlight: (value) {
@@ -355,7 +355,9 @@ class _GSInputState extends State<GSInput> {
                             )
                           : Border.all(
                               color: isFocused && !isDisabled
-                                  ? widget.hoverColor ?? const Color(0xFF2196F3)
+                                  ? widget.hoverColor ??
+                                      focusedBorderColor ??
+                                      const Color(0xFF2196F3)
                                   : borderColor!,
                               width: borderWidth!),
                       color: styler.bg,

@@ -265,7 +265,7 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     final borderColor = resolveBorderColor();
     final borderWidth = resolveBorderWidth();
-    // final focusedBorderColor = resolveFocusBorderColor();
+    final focusedBorderColor = resolveFocusBorderColor();
     // final focusedBorderWidth = resolveFocusBorderWidth();
     final hintStyle =
         widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
@@ -321,7 +321,9 @@ class _GSTextAreaState extends State<GSTextArea> {
                   decoration: BoxDecoration(
                     border: Border.all(
                         color: isFocused && !isDisabled
-                            ? widget.hoverColor ?? const Color(0xFF2196F3)
+                            ? widget.hoverColor ??
+                                focusedBorderColor ??
+                                const Color(0xFF2196F3)
                             : borderColor!,
                         width: borderWidth!),
                     color: styler.bg,
