@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
+import 'package:gluestack_ui/src/widgets/gs_fab/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
@@ -51,8 +52,6 @@ class GSButton extends StatelessWidget {
   final VoidCallback? onLongPress;
   final GestureDoubleTapCallback? onDoubleTap;
 
-  final bool freeSize;
-
   const GSButton({
     super.key,
     required this.child,
@@ -71,7 +70,6 @@ class GSButton extends StatelessWidget {
     this.autoFocus = false,
     this.clipBehavior = Clip.none,
     this.onDoubleTap,
-    this.freeSize = false,
   });
 
   @override
@@ -83,23 +81,25 @@ class GSButton extends StatelessWidget {
     final disabled = isDisabled ?? value?.isDisabled ?? false;
     final focused = isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;
+    final freeSize = context.findAncestorWidgetOfExactType<GSFab>() != null;
 
     return GSStyleBuilder(
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
         GSStyle styler = resolveStyles(
-            context: context,
-            styles: [
-              buttonStyle,
-              buttonStyle.actionMap(buttonAction),
-              buttonStyle.variantMap(buttonVariant),
-              buttonStyle.sizeMap(buttonSize),
-              buttonStyle.compoundVariants?[
-                  buttonAction.toString() + buttonVariant.toString()]
-            ],
-            inlineStyle: style,
-            isFirst: true,);
+          context: context,
+          styles: [
+            buttonStyle,
+            buttonStyle.actionMap(buttonAction),
+            buttonStyle.variantMap(buttonVariant),
+            buttonStyle.sizeMap(buttonSize),
+            buttonStyle.compoundVariants?[
+                buttonAction.toString() + buttonVariant.toString()]
+          ],
+          inlineStyle: style,
+          isFirst: true,
+        );
 
         if (GSStyleBuilderProvider.of(context)?.isHovered ?? false) {
           if (onHover != null && !disabled) {
