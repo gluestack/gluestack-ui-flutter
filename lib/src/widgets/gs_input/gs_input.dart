@@ -348,9 +348,11 @@ class _GSInputState extends State<GSInput> {
                       border: widget.variant == GSInputVariants.underlined
                           ? Border(
                               bottom: BorderSide(
-                                color: isDisabled
-                                    ? const Color.fromRGBO(200, 200, 200, 1.0)
-                                    : focusedBorderColor ?? borderColor!,
+                                color: isFocused && !isDisabled
+                                    ? widget.hoverColor ??
+                                        focusedBorderColor ??
+                                        const Color(0xFF2196F3)
+                                    : borderColor!,
                                 width: borderWidth!,
                               ),
                             )
