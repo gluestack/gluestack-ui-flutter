@@ -8,6 +8,7 @@ import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
+import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 
 /*
 
@@ -76,7 +77,7 @@ class GSRadio<T> extends StatelessWidget {
 
     return GSAncestor(
       decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize],
-      child: GSFocusableActionDetector(
+      child: GSStyleBuilder(
         child: MouseRegion(
           cursor: isRadioDisabled
               ? SystemMouseCursors.forbidden
