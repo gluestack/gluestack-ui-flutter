@@ -4,10 +4,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
+import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
 
@@ -19,6 +19,10 @@ enum GSTextAreaSizes {
 }
 
 // TODO : Work on descendant styles (_input)
+
+///
+/// Gluestack TextArea Widget.
+///
 class GSTextArea extends StatefulWidget {
   final GSTextAreaSizes? size;
   final GSStyle? style;
@@ -178,6 +182,7 @@ class GSTextArea extends StatefulWidget {
 
 class _GSTextAreaState extends State<GSTextArea> {
   bool _isHovered = false;
+  late final TextEditingController? controller;
 
   final focusNode = FocusNode();
   bool isFocused = false;
@@ -185,6 +190,9 @@ class _GSTextAreaState extends State<GSTextArea> {
   @override
   void initState() {
     super.initState();
+    if (widget.controller == null) {
+      controller = TextEditingController();
+    }
 
     focusNode.addListener(() {
       setState(() {
@@ -199,7 +207,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     final bool isDisabled = widget.isDisabled ?? formProps?.isDisabled ?? false;
     final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
     final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
-    final bool isRequired = formProps?.isRequired ?? false;
+    // final bool isRequired = formProps?.isRequired ?? false;
 
     final inputSize =
         widget.size?.toGSSize ?? formProps?.size ?? textAreaStyle.props?.size;
@@ -207,6 +215,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     GSStyle styler = resolveStyles(
       context: context,
       styles: [
+        gstextStyle,
         textAreaStyle,
         textAreaStyle.sizeMap(inputSize),
       ],
@@ -256,8 +265,8 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     final borderColor = resolveBorderColor();
     final borderWidth = resolveBorderWidth();
-    final focusedBorderColor = resolveFocusBorderColor();
-    final focusedBorderWidth = resolveFocusBorderWidth();
+    // final focusedBorderColor = resolveFocusBorderColor();
+    // final focusedBorderWidth = resolveFocusBorderWidth();
     final hintStyle =
         widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
 
@@ -287,6 +296,20 @@ class _GSTextAreaState extends State<GSTextArea> {
               },
               child: Stack(
                 children: [
+                  if (widget.controller?.text.isEmpty ??
+                      controller!.text.isEmpty)
+                    Positioned(
+                      left: widget.prefixText != null &&
+                              widget.prefixText!.isNotEmpty
+                          ? 10 + widget.prefixText!.length * 8
+                          : widget.prefixIcon != null
+                              ? 50
+                              : 10,
+                      top: 10,
+                      child: GSText(
+                        text: widget.hintText ?? '',
+                      ),
+                    ),
                   Container(
                     padding: styler.padding ??
                         const EdgeInsets.symmetric(
@@ -318,7 +341,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                               contentInsertionConfiguration:
                                   widget.contentInsertionConfiguration,
                               contextMenuBuilder: widget.contextMenuBuilder,
-                              controller: widget.controller!,
+                              controller: widget.controller ?? controller!,
                               cursorColor: widget.cursorColor ?? borderColor!,
                               cursorHeight: widget.cursorHeight,
                               cursorOpacityAnimates:
@@ -375,6 +398,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                               strutStyle: widget.strutStyle,
                               style: widget.style?.textStyle ??
                                   TextStyle(
+                                      color: styler.textStyle?.color,
                                       fontSize: styler
                                           .descendantStyles?['_input']
                                           ?.textStyle
@@ -393,23 +417,6 @@ class _GSTextAreaState extends State<GSTextArea> {
                       ],
                     ),
                   ),
-                  if (widget.controller!.text.isEmpty)
-                    Positioned(
-                      left: widget.prefixText != null &&
-                              widget.prefixText!.isNotEmpty
-                          ? 10 + widget.prefixText!.length * 8
-                          : widget.prefixIcon != null
-                              ? 50
-                              : 10,
-                      top: 10,
-                      child: Text(
-                        widget.hintText!,
-                        style: hintStyle ??
-                            TextStyle(
-                              color: borderColor,
-                            ),
-                      ),
-                    ),
                 ],
               ),
             ),
@@ -423,9 +430,11 @@ class _GSTextAreaState extends State<GSTextArea> {
     if (widget.prefixText != null && widget.prefixText!.isNotEmpty) {
       return Row(
         children: [
-          Text(
-            widget.prefixText!,
-            style: widget.prefixStyle,
+          GSText(
+            style: GSStyle(
+              textStyle: widget.prefixStyle,
+            ),
+            text: widget.prefixText!,
           ),
           const SizedBox(
             width: 5,

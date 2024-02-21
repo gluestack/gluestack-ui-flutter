@@ -88,7 +88,7 @@ class GSText extends StatelessWidget {
       semanticsLabel: semanticsLabel,
       softWrap: softWrap,
       strutStyle: strutStyle,
-      textAlign: textAlign,
+      textAlign: styler.textAlign ?? textAlign,
       textDirection: textDirection,
       textHeightBehavior: textHeightBehavior,
       textScaleFactor: textScaleFactor,

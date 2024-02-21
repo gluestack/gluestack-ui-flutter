@@ -99,13 +99,18 @@ class GSButton extends StatelessWidget {
                   buttonAction.toString() + buttonVariant.toString()]
             ],
             inlineStyle: style,
-            isFirst: true);
+            isFirst: true,);
 
         if (GSStyleBuilderProvider.of(context)?.isHovered ?? false) {
           if (onHover != null && !disabled) {
             onHover!();
           }
         }
+        //Hacky Fix TODO: brainstorm this
+        if (GSStyleBuilderProvider.of(context)?.isActive ?? false) {
+          styler.bg = styler.onActive?.bg;
+        }
+
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(
@@ -119,6 +124,7 @@ class GSButton extends StatelessWidget {
                 button: true,
                 child: GsGestureDetector(
                   onPressed: disabled ? null : onPressed,
+                  onDoubleTap: disabled ? null : onDoubleTap,
                   onLongPress: disabled ? null : onLongPress,
                   child: Container(
                     height: freeSize ? null : styler.height,
