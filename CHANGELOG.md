@@ -1,3 +1,12 @@
+## 0.0.1-alpha.5
+
+- Removed Material dependency from all the components, built from scratch.
+- New widgets: added Icon Button, Accordion
+- Updated example app with new widgets
+- Improved accessibility support
+- Internal refactor
+- Bug Fixes
+
 ## 0.0.1-alpha.4
 
 - Add support to get custom JSON config for Gluestack Widgets.
