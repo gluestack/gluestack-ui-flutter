@@ -1,4 +1,4 @@
-## 0.0.1-Beta.1
+## 0.0.1-beta.1
 
 - Removed Material dependency from all the components, built from Flutter core apis
 - New widgets: added Icon Button, Accordion
