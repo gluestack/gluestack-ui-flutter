@@ -17,16 +17,11 @@ class PressableExample extends StatelessWidget {
                   onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
                 ),
                 onPress: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Button Pressed!'),
-                    duration: Duration(milliseconds: 300),
-                  ));
+                  print('Pressed!');
                 },
                 onLongPress: () {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Long Pressed Triggered!'),
-                    duration: Duration(milliseconds: 300),
-                  ));
+                  print('Long Pressed!');
+
                 },
                 child: GSText(
                   text: 'Press Me',
@@ -57,16 +52,10 @@ class PressableExample extends StatelessWidget {
             onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
           ),
           onPress: () {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Button Pressed!'),
-              duration: Duration(milliseconds: 300),
-            ));
+            print('Pressed!');
           },
           onLongPress: () {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Long Pressed Triggered!'),
-              duration: Duration(milliseconds: 300),
-            ));
+            print('Long Pressed!');
           },
           child: GSText(
             text: 'Press Me',
