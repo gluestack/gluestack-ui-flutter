@@ -183,9 +183,11 @@ class GSAccessibilityHandlerWidgetState extends State<GsGestureDetector> {
                 event.logicalKey == LogicalKeyboardKey.enter) {
           if (widget.onPressed != null) {
             widget.onPressed!();
+            return KeyEventResult.handled;
           }
-          return KeyEventResult.handled;
+          return KeyEventResult.ignored;
         }
+
         return KeyEventResult.ignored;
       },
       child: GestureDetector(
