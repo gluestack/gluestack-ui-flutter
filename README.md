@@ -160,6 +160,7 @@ GluestackProvider(
 
 We performed performance benchmark after taking average of 10 samples from our [KitchenSink app](https://kitchensink-23184.web.app/) after using both GlueStack Material and GlueStack Non-Material components and we're happy to share the following result with you.
 
+<img src='assets/performance_graph_1.svg' width='2400' height='1240'>
 ![Perormance graph - light/dark mode switch](assets/performance_graph_1.svg)
 
 ## Future Scope
