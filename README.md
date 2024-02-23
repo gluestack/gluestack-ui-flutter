@@ -156,6 +156,11 @@ GluestackProvider(
 )
 ```
 
+## Performance
+
+We performed performance benchmark after taking average of 10 samples from our [KitchenSink app](https://kitchensink-23184.web.app/) after using both GlueStack Material and GlueStack Non-Material components and we're happy to share the result with you.
+![Perormance graph - light/dark mode switch](assets/performance_graph_1.svg)
+
 ## Future Scope
 
 - **Enhanced Widget Configuration:** The widgets will be designed in a modular fashion, allowing users to plug in different components or features as needed. This modular approach enables more complex and varied widget compositions.With more control over the widget design, developers can create applications that offer a better user experience, tailored to their target audience.
@@ -170,4 +175,12 @@ We welcome contributions from the community. If you'd like to contribute to `glu
 
 ## License
 
-Licensed under the MIT License, Copyright © 2024 GeekyAnts. See [LICENSE](./LICENSE) for more information.
+Licensed under the MIT License, Copyright © 2023 GeekyAnts. See [LICENSE](./LICENSE) for more information.
+
+## Widgets dependent on material (will get removed)
+
+- [ ] Input
+- [ ] Text Area
+- [ ] Alert
+- [ ] Spinner
+- [x] Progress Value
