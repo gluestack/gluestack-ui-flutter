@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
@@ -12,12 +12,10 @@ enum GSCheckBoxSizes {
   $lg,
 }
 
-///
-/// Gluestack CheckBox Widget.
-///
 class GSCheckBox extends StatefulWidget {
   final GSCheckBoxSizes? size;
   final String value;
+  final String? semanticsLabel;
   final Widget icon;
   final Widget? label;
   final bool defaultIsChecked;
@@ -35,6 +33,7 @@ class GSCheckBox extends StatefulWidget {
     required this.value,
     this.size,
     this.label,
+    this.semanticsLabel,
     this.onChanged,
     this.style,
     this.isChecked,
@@ -101,51 +100,52 @@ class _GSCheckBoxState extends State<GSCheckBox> {
 
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
-      child: GSFocusableActionDetector(
-        isFocused: widget.isFocusVisible,
-        isHovered: widget.isHovered,
-        mouseCursor: isCheckBoxDisabled ? SystemMouseCursors.forbidden : null,
-        child: GSCheckBoxProvider(
-          isInvalid: isCheckBoxInvalid,
-          isDisabled: isCheckBoxDisabled,
-          isChecked: widget.isChecked ?? isChecked,
-          value: widget.value,
-          onChanged: isCheckBoxDisabled ? null : widget.onChanged,
-          child: InkWell(
-              highlightColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              mouseCursor: isCheckBoxDisabled
-                  ? SystemMouseCursors.forbidden
-                  : SystemMouseCursors.click,
-              onTap: widget.onChanged != null && !isCheckBoxDisabled
-                  ? () {
-                      if (groupValue != null) {
+      child: Semantics(
+        button: true,
+        checked: isChecked,
+        label: widget.semanticsLabel ?? 'Checkbox Option ${widget.value}',
+        child: GSFocusableActionDetector(
+          isFocused: widget.isFocusVisible,
+          isHovered: widget.isHovered,
+          mouseCursor: isCheckBoxDisabled ? SystemMouseCursors.forbidden : null,
+          child: GSCheckBoxProvider(
+            isInvalid: isCheckBoxInvalid,
+            isDisabled: isCheckBoxDisabled,
+            isChecked: widget.isChecked ?? isChecked,
+            value: widget.value,
+            onChanged: isCheckBoxDisabled ? null : widget.onChanged,
+            child: GsGestureDetector(
+                onPressed: widget.onChanged != null && !isCheckBoxDisabled
+                    ? () {
+                        if (groupValue != null) {
+                          if (!isCheckBoxReadOnly! &&
+                              widget.isChecked == null) {
+                            groupValue?.updateValues(widget.value);
+                          }
+                          if (groupValue!.onChanged != null) {
+                            groupValue?.onChanged!(groupValue?.values ?? []);
+                          }
+                        }
                         if (!isCheckBoxReadOnly! && widget.isChecked == null) {
-                          groupValue?.updateValues(widget.value);
+                          setState(() {
+                            isChecked = !isChecked;
+                          });
                         }
-                        if (groupValue!.onChanged != null) {
-                          groupValue?.onChanged!(groupValue?.values ?? []);
-                        }
+                        widget.onChanged!(isChecked);
                       }
-                      if (!isCheckBoxReadOnly! && widget.isChecked == null) {
-                        setState(() {
-                          isChecked = !isChecked;
-                        });
-                      }
-                      widget.onChanged!(isChecked);
-                    }
-                  : null,
-              child: Opacity(
-                opacity: isCheckBoxDisabled ? 0.5 : 1,
-                child: resolveFlexWidget(
-                    flexDirection: styler.flexDirection,
-                    mainAxisAlignment: styler.justifyContent,
-                    crossAxisAlignment: styler.alignItems,
-                    children: [
-                      widget.icon,
-                      if (widget.label != null) widget.label!
-                    ]),
-              )),
+                    : null,
+                child: Opacity(
+                  opacity: isCheckBoxDisabled ? 0.5 : 1,
+                  child: resolveFlexWidget(
+                      flexDirection: styler.flexDirection,
+                      mainAxisAlignment: styler.justifyContent,
+                      crossAxisAlignment: styler.alignItems,
+                      children: [
+                        widget.icon,
+                        if (widget.label != null) widget.label!
+                      ]),
+                )),
+          ),
         ),
       ),
     );

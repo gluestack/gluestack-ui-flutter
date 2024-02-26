@@ -1,9 +1,6 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-///
-/// Gluestack Scrollview Widget.
-///
 class GSScrollView extends BoxScrollView {
   final double? itemExtent;
   final ItemExtentBuilder? itemExtentBuilder;

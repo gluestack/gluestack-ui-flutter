@@ -5,9 +5,6 @@ import 'package:gluestack_ui/src/widgets/gs_hstack/gs_hstack_style.dart';
 
 enum GSHstackSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
-///
-/// Gluestack HStack.
-///
 class GSHStack extends StatelessWidget {
   final GSHstackSpaces? space;
   final List<Widget> children;

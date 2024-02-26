@@ -19,9 +19,6 @@ enum GSToastVariants {
   accent,
 }
 
-///
-/// Gluestack Toast Widget.
-///
 class GSToast extends StatelessWidget {
   final Widget? child;
   final GSToastActions? action;

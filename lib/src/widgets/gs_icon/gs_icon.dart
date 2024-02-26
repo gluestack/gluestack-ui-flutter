@@ -6,9 +6,6 @@ import 'package:gluestack_ui/src/widgets/gs_icon/gs_icon_style.dart';
 
 enum GSIconSizes { $xs, $sm, $md, $lg, $xl }
 
-///
-/// Gluestack Icon Widget.
-///
 class GSIcon extends StatelessWidget {
   final IconData icon;
   final GSIconSizes? size;

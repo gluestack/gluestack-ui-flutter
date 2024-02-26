@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
@@ -14,12 +14,11 @@ enum GSProgressSizes {
   $2xl,
 }
 
-///
-/// Gluestack Progress Widget.
-///
-class GSProgress extends StatelessWidget {
+class GSProgress extends StatefulWidget {
   final GSStyle? style;
   final GSProgressSizes? size;
+
+  /// Ranges from 0 to 1
   final double? value;
   final String? semanticsLabel;
   final String? semanticsValue;
@@ -33,28 +32,70 @@ class GSProgress extends StatelessWidget {
   });
 
   @override
+  State<GSProgress> createState() => _GSProgressState();
+}
+
+class _GSProgressState extends State<GSProgress> {
+  static const fallBackValue = 200.0;
+  double parentWidth = fallBackValue;
+  final widgetKey = GlobalKey();
+
+  void updateWidth() {
+    parentWidth = widgetKey.currentContext!.size?.width ?? -0;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) => updateWidth());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final progressSize = size?.toGSSize ?? progressStyle.props?.size;
+    final progressSize = widget.size?.toGSSize ?? progressStyle.props?.size;
     GSStyle styler = resolveStyles(
       context: context,
       styles: [progressStyle, progressStyle.sizeMap(progressSize)],
-      inlineStyle: style,
+      inlineStyle: widget.style,
       isFirst: true,
     );
+
     final progressColor = styler.bg ?? progressStyle.bg;
     final valueColor = styler.progressValueColor ?? $GSColors.primary500;
     final borderRadius = styler.borderRadius ?? progressStyle.borderRadius;
 
-    return SizedBox(
-      width: 200,
-      height: styler.height,
-      child: LinearProgressIndicator(
-        value: value,
-        backgroundColor: progressColor,
-        color: valueColor,
-        borderRadius: BorderRadius.circular(borderRadius!),
-        semanticsLabel: semanticsLabel,
-        semanticsValue: semanticsValue,
+    return Semantics(
+      label: widget.semanticsLabel,
+      value: widget.semanticsValue,
+      child: SizedBox(
+        width: styler.width ?? fallBackValue,
+        child: Stack(
+          children: [
+            Container(
+              key: widgetKey,
+              decoration: BoxDecoration(
+                color: progressColor,
+                borderRadius: BorderRadius.circular(borderRadius!),
+              ),
+              height: styler.height,
+              width: styler.width ?? fallBackValue,
+            ),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              width: styler.width != double.infinity && styler.width != null
+                  ? styler.width! * widget.value!
+                  : parentWidth * widget.value!,
+              height: styler.height,
+              decoration: BoxDecoration(
+                color: valueColor,
+                borderRadius: BorderRadius.circular(borderRadius),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

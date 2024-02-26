@@ -20,7 +20,16 @@ enum GSTextTransform { uppercase, lowercase }
 
 enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
-enum GSVariants { solid, outline, link, underlined, rounded, accent }
+enum GSVariants {
+  solid,
+  outline,
+  link,
+  underlined,
+  rounded,
+  accent,
+  filled,
+  unfilled,
+}
 
 enum GSPlacements {
   topLeft,
@@ -30,6 +39,8 @@ enum GSPlacements {
   bottomCenter,
   bottomRight
 }
+
+enum GSTypes { single, multiple }
 
 enum GSSizes {
   $2xs,
@@ -59,6 +70,27 @@ enum GSOrientations { horizontal, vertical }
 enum GSFlexDirections { row, column }
 
 enum GSCursors { pointer, notAllowed }
+
+class ShadowOffset {
+  final double? height;
+  final double? width;
+
+  const ShadowOffset({
+    this.height,
+    this.width,
+  });
+
+  factory ShadowOffset.fromJson({required Map<String, dynamic>? data}) {
+    return ShadowOffset(
+      height: data?['height'] != null
+          ? double.tryParse((data?['height']).toString())
+          : null,
+      width: data?['width'] != null
+          ? double.tryParse((data?['width']).toString())
+          : null,
+    );
+  }
+}
 
 class GSPlacement {
   GSStyle? topRight;
@@ -98,7 +130,7 @@ class GSProps {
   GSPlacements? placement;
   GSOrientations? orientation;
   Color? color;
-
+//TODO: add theme default prop - context: accordion theme config, do after theming is taken care of without material
   GSProps({
     this.action,
     this.variant,
@@ -143,6 +175,8 @@ class GSVariant {
   GSStyle? solid;
   GSStyle? link;
   GSStyle? accent;
+  GSStyle? filled;
+  GSStyle? unfilled;
 
   GSVariant({
     this.underlined,
@@ -151,6 +185,8 @@ class GSVariant {
     this.solid,
     this.link,
     this.accent,
+    this.filled,
+    this.unfilled,
   });
   factory GSVariant.fromMap(
       {required Map<String, dynamic>? data,
@@ -190,6 +226,18 @@ class GSVariant {
       accent: parseMap(data?['accent'])
           ? GSStyle.fromMap(
               data: data?['accent'],
+              descendantStyle: descendantStyle,
+              fromVariant: true)
+          : null,
+      filled: parseMap(data?['filled'])
+          ? GSStyle.fromMap(
+              data: data?['filled'],
+              descendantStyle: descendantStyle,
+              fromVariant: true)
+          : null,
+      unfilled: parseMap(data?['unfilled'])
+          ? GSStyle.fromMap(
+              data: data?['unfilled'],
               descendantStyle: descendantStyle,
               fromVariant: true)
           : null,
@@ -511,7 +559,7 @@ class Variants {
 after adding decdent style check need for textStyle
 
 */
-
+//TODO: add font family support later on, context accordion theme config
 class GSStyle extends BaseStyle<GSStyle> {
   double? borderWidth;
   Color? borderColor;
@@ -545,8 +593,8 @@ class GSStyle extends BaseStyle<GSStyle> {
 
   Color? progressValueColor;
   //for splash n highlight for pressable
-  Color? highlightColor;
-  Color? splashColor;
+  // Color? highlightColor;
+  // Color? splashColor;
   GSStyle? badge;
   GSTextTransform? textTransform;
   GSSizes? iconSize;
@@ -567,6 +615,21 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? outlineColor;
   GSOutlineStyle? outlineStyle;
   Map<String, GSStyle>? compoundVariants;
+
+  double indent;
+  double endIndent;
+
+  //Accordion
+  Color? iconColor;
+  GSStyle? item;
+  Color? shadowColor;
+  double? shadowRadius;
+  double? shadowOpacity;
+  double? elevation;
+  ShadowOffset? shadowOffset;
+  TextAlign? textAlign;
+  TextStyle? titleTextStyle;
+  TextStyle? contentTextStyle;
 
   GSStyle({
     this.borderWidth,
@@ -613,8 +676,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.maxWidth,
     this.progressValueColor,
     this.badge,
-    this.highlightColor,
-    this.splashColor,
+    // this.highlightColor,
+    // this.splashColor,
     this.textTransform,
     this.trackColorTrue,
     this.trackColorFalse,
@@ -632,6 +695,18 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.isVisible,
     this.direction,
     this.compoundVariants,
+    this.indent = 0,
+    this.endIndent = 0,
+    this.iconColor,
+    this.item,
+    this.shadowColor,
+    this.shadowRadius,
+    this.shadowOpacity,
+    this.elevation,
+    this.shadowOffset,
+    this.textAlign,
+    this.titleTextStyle,
+    this.contentTextStyle,
   });
 
   @override
@@ -642,125 +717,172 @@ class GSStyle extends BaseStyle<GSStyle> {
   @override
   merge(overrideStyle, {List<String> descendantStyleKeys = const []}) {
     return GSStyle(
-      borderColor: overrideStyle?.borderColor ?? borderColor,
-      borderRadius: overrideStyle?.borderRadius ?? borderRadius,
-      borderWidth: overrideStyle?.borderWidth ?? borderWidth,
-      color: overrideStyle?.color ?? props?.style?.color ?? color,
-      bg: overrideStyle?.bg ?? bg,
-      margin: overrideStyle?.margin ?? margin,
-      borderBottomColor: overrideStyle?.borderBottomColor ?? borderBottomColor,
-      borderBottomWidth: overrideStyle?.borderBottomWidth ?? borderBottomWidth,
-      borderLeftWidth: overrideStyle?.borderLeftWidth ?? borderLeftWidth,
-      icon: overrideStyle?.icon ?? icon,
-      input: overrideStyle?.input ?? input,
-      padding: overrideStyle?.padding ?? padding,
-      gap: overrideStyle?.gap ?? gap,
-      placement: overrideStyle?.placement ?? placement,
-      compoundVariants: overrideStyle?.compoundVariants ?? compoundVariants,
-      // descendantStyles: descendantStyleKeys.isEmpty
-      //     ? overrideStyle?.descendantStyles ?? descendantStyles
-      //     : mergeStyledMaps(
-      //         styleMap: descendantStyles,
-      //         overrideStyleMap: overrideStyle?.descendantStyles,
-      //         keys: descendantStyleKeys),
-      descendantStyles: mergeStyledMaps(
-        styleMap: descendantStyles,
-        overrideStyleMap: overrideStyle?.descendantStyles,
-        keys: descendantStyleKeys,
-      ),
-      onFocus: onFocus != null
-          ? onFocus?.merge(overrideStyle?.onFocus)
-          : overrideStyle?.onFocus,
-      onHover: onHover != null
-          ? onHover?.merge(overrideStyle?.onHover)
-          : overrideStyle?.onHover,
-      onActive: onActive != null
-          ? onActive?.merge(overrideStyle?.onActive)
-          : overrideStyle?.onActive,
-      onDisabled: onDisabled != null
-          ? onDisabled?.merge(overrideStyle?.onDisabled)
-          : overrideStyle?.onDisabled,
-      onInvalid: onInvalid != null
-          ? onInvalid?.merge(overrideStyle?.onInvalid)
-          : overrideStyle?.onInvalid,
-      opacity: overrideStyle?.opacity ?? opacity,
-      checked: checked != null
-          ? checked?.merge(overrideStyle?.checked)
-          : overrideStyle?.checked,
-      outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
-      outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
-      outlineColor: overrideStyle?.outlineColor ?? outlineColor,
-      flexDirection: overrideStyle?.flexDirection ?? flexDirection,
-      iconSize: overrideStyle?.iconSize ?? iconSize,
-      textStyle: overrideStyle?.textStyle != null
-          ? TextStyle(
-              height: overrideStyle?.textStyle?.height ?? textStyle?.height,
-              color: overrideStyle?.textStyle?.color ?? textStyle?.color,
-              decoration:
-                  overrideStyle?.textStyle?.decoration ?? textStyle?.decoration,
-              letterSpacing: overrideStyle?.textStyle?.letterSpacing ??
-                  textStyle?.letterSpacing,
-              fontWeight:
-                  overrideStyle?.textStyle?.fontWeight ?? textStyle?.fontWeight,
-              fontSize:
-                  overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
-          : textStyle,
-      right: overrideStyle?.right ?? right,
-      left: overrideStyle?.left ?? left,
-      bottom: overrideStyle?.bottom ?? bottom,
-      top: overrideStyle?.top ?? top,
-      // variants: overrideStyle?.variants ?? variants,
-      variants: Variants(
-        action: overrideStyle?.variants?.action ?? variants?.action,
-        highlight: overrideStyle?.variants?.highlight ?? variants?.highlight,
-        orientation:
-            overrideStyle?.variants?.orientation ?? variants?.orientation,
-        // size: overrideStyle?.variants?.size ?? variants?.size,
-        size: variants?.size != null
-            ? variants?.size!.merge(overrideStyle?.variants?.size)
-            : overrideStyle?.variants?.size,
-        space: overrideStyle?.variants?.space ?? variants?.space,
-        variant: overrideStyle?.variants?.variant ?? variants?.variant,
-      ),
-      props: GSProps(
-        action: overrideStyle?.props?.action ?? props?.action,
-        size: overrideStyle?.props?.size ?? props?.size,
-        space: overrideStyle?.props?.space ?? props?.space,
-        variant: overrideStyle?.props?.variant ?? props?.variant,
-        style: overrideStyle?.props?.style != null
-            ? overrideStyle?.props?.style!.merge(props?.style)
-            : props?.style,
-      ),
-      width: overrideStyle?.width ?? width,
-      height: overrideStyle?.height ?? height,
-      badge: overrideStyle?.badge ?? badge,
-      dark:
-          dark != null ? dark?.merge(overrideStyle?.dark) : overrideStyle?.dark,
-      lg: overrideStyle?.lg ?? lg,
-      md: overrideStyle?.md ?? md,
-      sm: overrideStyle?.sm ?? sm,
-      xs: overrideStyle?.xs ?? xs,
-      web: overrideStyle?.web ?? web,
-      ios: overrideStyle?.ios ?? ios,
-      android: overrideStyle?.android ?? android,
-      alignItems: overrideStyle?.alignItems ?? alignItems,
-      justifyContent: overrideStyle?.justifyContent ?? justifyContent,
-      maxWidth: overrideStyle?.maxWidth ?? maxWidth,
-      alignment: overrideStyle?.alignment ?? alignment,
-      progressValueColor:
-          overrideStyle?.progressValueColor ?? progressValueColor,
-      highlightColor: overrideStyle?.highlightColor ?? highlightColor,
-      splashColor: overrideStyle?.splashColor ?? splashColor,
-      textTransform: overrideStyle?.textTransform ?? textTransform,
-      trackColorTrue: overrideStyle?.trackColorTrue ?? trackColorTrue,
-      trackColorFalse: overrideStyle?.trackColorFalse ?? trackColorFalse,
-      thumbColor: overrideStyle?.thumbColor ?? thumbColor,
-      activeThumbColor: overrideStyle?.activeThumbColor ?? activeThumbColor,
-      scale: overrideStyle?.scale ?? scale,
-      cursors: overrideStyle?.cursors ?? cursors,
-      isVisible: overrideStyle?.isVisible ?? isVisible,
-      direction: overrideStyle?.direction ?? direction,
-    );
+        borderColor: overrideStyle?.borderColor ?? borderColor,
+        borderRadius: overrideStyle?.borderRadius ?? borderRadius,
+        borderWidth: overrideStyle?.borderWidth ?? borderWidth,
+        color: overrideStyle?.color ?? props?.style?.color ?? color,
+        bg: overrideStyle?.bg ?? bg,
+        margin: overrideStyle?.margin ?? margin,
+        borderBottomColor:
+            overrideStyle?.borderBottomColor ?? borderBottomColor,
+        borderBottomWidth:
+            overrideStyle?.borderBottomWidth ?? borderBottomWidth,
+        borderLeftWidth: overrideStyle?.borderLeftWidth ?? borderLeftWidth,
+        icon: overrideStyle?.icon ?? icon,
+        input: overrideStyle?.input ?? input,
+        padding: overrideStyle?.padding ?? padding,
+        gap: overrideStyle?.gap ?? gap,
+        placement: overrideStyle?.placement ?? placement,
+        compoundVariants: overrideStyle?.compoundVariants ?? compoundVariants,
+        // descendantStyles: descendantStyleKeys.isEmpty
+        //     ? overrideStyle?.descendantStyles ?? descendantStyles
+        //     : mergeStyledMaps(
+        //         styleMap: descendantStyles,
+        //         overrideStyleMap: overrideStyle?.descendantStyles,
+        //         keys: descendantStyleKeys),
+        descendantStyles: mergeStyledMaps(
+          styleMap: descendantStyles,
+          overrideStyleMap: overrideStyle?.descendantStyles,
+          keys: descendantStyleKeys,
+        ),
+        onFocus: onFocus != null
+            ? onFocus?.merge(overrideStyle?.onFocus)
+            : overrideStyle?.onFocus,
+        onHover: onHover != null
+            ? onHover?.merge(overrideStyle?.onHover)
+            : overrideStyle?.onHover,
+        onActive: onActive != null
+            ? onActive?.merge(overrideStyle?.onActive)
+            : overrideStyle?.onActive,
+        onDisabled: onDisabled != null
+            ? onDisabled?.merge(overrideStyle?.onDisabled)
+            : overrideStyle?.onDisabled,
+        onInvalid: onInvalid != null
+            ? onInvalid?.merge(overrideStyle?.onInvalid)
+            : overrideStyle?.onInvalid,
+        opacity: overrideStyle?.opacity ?? opacity,
+        checked: checked != null
+            ? checked?.merge(overrideStyle?.checked)
+            : overrideStyle?.checked,
+        outlineStyle: overrideStyle?.outlineStyle ?? outlineStyle,
+        outlineWidth: overrideStyle?.outlineWidth ?? outlineWidth,
+        outlineColor: overrideStyle?.outlineColor ?? outlineColor,
+        flexDirection: overrideStyle?.flexDirection ?? flexDirection,
+        iconSize: overrideStyle?.iconSize ?? iconSize,
+        textStyle: overrideStyle?.textStyle != null
+            ? TextStyle(
+                height: overrideStyle?.textStyle?.height ?? textStyle?.height,
+                color: overrideStyle?.textStyle?.color ?? textStyle?.color,
+                decoration: overrideStyle?.textStyle?.decoration ??
+                    textStyle?.decoration,
+                letterSpacing: overrideStyle?.textStyle?.letterSpacing ??
+                    textStyle?.letterSpacing,
+                fontWeight: overrideStyle?.textStyle?.fontWeight ??
+                    textStyle?.fontWeight,
+                fontSize:
+                    overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
+            : textStyle,
+        titleTextStyle: overrideStyle?.titleTextStyle != null
+            ? TextStyle(
+                height: overrideStyle?.titleTextStyle?.height ??
+                    titleTextStyle?.height,
+                color: overrideStyle?.titleTextStyle?.color ??
+                    titleTextStyle?.color,
+                decoration: overrideStyle?.titleTextStyle?.decoration ??
+                    titleTextStyle?.decoration,
+                letterSpacing: overrideStyle?.titleTextStyle?.letterSpacing ??
+                    titleTextStyle?.letterSpacing,
+                fontWeight: overrideStyle?.titleTextStyle?.fontWeight ??
+                    titleTextStyle?.fontWeight,
+                fontSize: overrideStyle?.titleTextStyle?.fontSize ??
+                    titleTextStyle?.fontSize,
+              )
+            : titleTextStyle,
+        contentTextStyle: overrideStyle?.contentTextStyle != null
+            ? TextStyle(
+                height: overrideStyle?.contentTextStyle?.height ??
+                    contentTextStyle?.height,
+                color: overrideStyle?.contentTextStyle?.color ??
+                    contentTextStyle?.color,
+                decoration: overrideStyle?.contentTextStyle?.decoration ??
+                    contentTextStyle?.decoration,
+                letterSpacing: overrideStyle?.contentTextStyle?.letterSpacing ??
+                    contentTextStyle?.letterSpacing,
+                fontWeight: overrideStyle?.contentTextStyle?.fontWeight ??
+                    contentTextStyle?.fontWeight,
+                fontSize: overrideStyle?.contentTextStyle?.fontSize ??
+                    contentTextStyle?.fontSize,
+              )
+            : contentTextStyle,
+        right: overrideStyle?.right ?? right,
+        left: overrideStyle?.left ?? left,
+        bottom: overrideStyle?.bottom ?? bottom,
+        top: overrideStyle?.top ?? top,
+        // variants: overrideStyle?.variants ?? variants,
+        variants: Variants(
+          action: overrideStyle?.variants?.action ?? variants?.action,
+          highlight: overrideStyle?.variants?.highlight ?? variants?.highlight,
+          orientation:
+              overrideStyle?.variants?.orientation ?? variants?.orientation,
+          // size: overrideStyle?.variants?.size ?? variants?.size,
+          size: variants?.size != null
+              ? variants?.size!.merge(overrideStyle?.variants?.size)
+              : overrideStyle?.variants?.size,
+          space: overrideStyle?.variants?.space ?? variants?.space,
+          variant: overrideStyle?.variants?.variant ?? variants?.variant,
+        ),
+        props: GSProps(
+          action: overrideStyle?.props?.action ?? props?.action,
+          size: overrideStyle?.props?.size ?? props?.size,
+          space: overrideStyle?.props?.space ?? props?.space,
+          variant: overrideStyle?.props?.variant ?? props?.variant,
+          style: overrideStyle?.props?.style != null
+              ? overrideStyle?.props?.style!.merge(props?.style)
+              : props?.style,
+        ),
+        width: overrideStyle?.width ?? width,
+        height: overrideStyle?.height ?? height,
+        badge: overrideStyle?.badge ?? badge,
+        dark: dark != null
+            ? dark?.merge(overrideStyle?.dark)
+            : overrideStyle?.dark,
+        lg: overrideStyle?.lg ?? lg,
+        md: overrideStyle?.md ?? md,
+        sm: overrideStyle?.sm ?? sm,
+        xs: overrideStyle?.xs ?? xs,
+        web: overrideStyle?.web ?? web,
+        ios: overrideStyle?.ios ?? ios,
+        android: overrideStyle?.android ?? android,
+        alignItems: overrideStyle?.alignItems ?? alignItems,
+        justifyContent: overrideStyle?.justifyContent ?? justifyContent,
+        maxWidth: overrideStyle?.maxWidth ?? maxWidth,
+        alignment: overrideStyle?.alignment ?? alignment,
+        progressValueColor:
+            overrideStyle?.progressValueColor ?? progressValueColor,
+        // highlightColor: overrideStyle?.highlightColor ?? highlightColor,
+        // splashColor: overrideStyle?.splashColor ?? splashColor,
+        textTransform: overrideStyle?.textTransform ?? textTransform,
+        trackColorTrue: overrideStyle?.trackColorTrue ?? trackColorTrue,
+        trackColorFalse: overrideStyle?.trackColorFalse ?? trackColorFalse,
+        thumbColor: overrideStyle?.thumbColor ?? thumbColor,
+        activeThumbColor: overrideStyle?.activeThumbColor ?? activeThumbColor,
+        scale: overrideStyle?.scale ?? scale,
+        cursors: overrideStyle?.cursors ?? cursors,
+        isVisible: overrideStyle?.isVisible ?? isVisible,
+        direction: overrideStyle?.direction ?? direction,
+        iconColor: overrideStyle?.iconColor ?? iconColor,
+        shadowColor: overrideStyle?.shadowColor ?? shadowColor,
+        shadowRadius: overrideStyle?.shadowRadius ?? shadowRadius,
+        shadowOpacity: overrideStyle?.shadowOpacity ?? shadowOpacity,
+        elevation: overrideStyle?.elevation ?? elevation,
+        textAlign: overrideStyle?.textAlign ?? textAlign,
+        item: item != null
+            ? item?.merge(overrideStyle?.item)
+            : overrideStyle?.item,
+        shadowOffset: ShadowOffset(
+          height: overrideStyle?.shadowOffset?.height ?? shadowOffset?.height,
+          width: overrideStyle?.shadowOffset?.width ?? shadowOffset?.width,
+        ));
   }
 
   factory GSStyle.fromMap({
@@ -809,20 +931,43 @@ class GSStyle extends BaseStyle<GSStyle> {
                   : data?['py'] != null
                       ? resolvePaddingFromString(
                           data?['py'].toString(), 'vertical')
-                      : null,
+                      : data?['pb'] != null
+                          ? resolvePaddingFromString(
+                              data?['pb'].toString(), 'only')
+                          : null,
+      margin: data?['m'] != null
+          ? resolvePaddingFromString(data?['m'].toString(), 'all')
+          : data?['mx'] != null && data?['my'] != null
+              ? resolvePaddingFromString(data?['mx'].toString(), 'symmetric',
+                  paddingy: data?['my'].toString())
+              : data?['mx'] != null
+                  ? resolvePaddingFromString(
+                      data?['mx'].toString(), 'horizontal')
+                  : data?['my'] != null
+                      ? resolvePaddingFromString(
+                          data?['my'].toString(), 'vertical')
+                      : data?['mb'] != null
+                          ? resolvePaddingFromString(
+                              data?['mb'].toString(), 'only')
+                          : data?['mt'] != null
+                              ? resolvePaddingFromString(
+                                  data?['mt'].toString(), 'only')
+                              : null,
       bottom: resolveSpaceFromString(data?['bottom'].toString()),
       left: resolveSpaceFromString(data?['left'].toString()),
       right: resolveSpaceFromString(data?['right'].toString()),
       top: resolveSpaceFromString(data?['top'].toString()),
-
       iconSize: resolveSizesFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-        fontSize: resolveFontSizeFromString(
-            data?['fontSize'] ?? data?['props']?['size'].toString()),
-        height:
-            resolveLineHeightFromString(data?['lineHeight'], data?['fontSize']),
+        fontSize: resolveFontSizeFromString(data?['fontSize'] ??
+            data?['props']?['size'].toString() ??
+            data?['_input']?['props']?['size'].toString()),
+        height: resolveLineHeightFromString(
+          data?['lineHeight'],
+          data?['fontSize'],
+        ),
         decoration:
             resolveTextDecorationFromString(data?['textDecorationLine']),
         letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
@@ -830,8 +975,35 @@ class GSStyle extends BaseStyle<GSStyle> {
         color:
             resolveColorFromString(data?['_text']?['color'] ?? data?['color']),
       ),
+      titleTextStyle: TextStyle(
+        fontWeight:
+            resolveFontWeightFromString(data?['_titleText']?['fontWeight']),
+        fontSize: resolveFontSizeFromString(data?['_titleText']?['fontSize']),
+        height: resolveLineHeightFromString(data?['_titleText']?['lineHeight'],
+            data?['_titleText']?['fontSize']),
+        decoration:
+            resolveTextDecorationFromString(data?['textDecorationLine']),
+        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
+        // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
+        color: resolveColorFromString(
+            data?['_titleText']?['color'] ?? data?['color']),
+      ),
+      contentTextStyle: TextStyle(
+        fontWeight:
+            resolveFontWeightFromString(data?['_contentText']?['fontWeight']),
+        fontSize: resolveFontSizeFromString(data?['_contentText']?['fontSize']),
+        height: resolveLineHeightFromString(
+            data?['_contentText']?['lineHeight'],
+            data?['_contentText']?['fontSize']),
+        decoration:
+            resolveTextDecorationFromString(data?['textDecorationLine']),
+        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
+        // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
+        color: resolveColorFromString(
+            data?['_contentText']?['color'] ?? data?['color']),
+      ),
       color: resolveColorFromString(data?['color']),
-      bg: resolveColorFromString(data?['bg']),
+      bg: resolveColorFromString(data?['bg'] ?? data?['backgroundColor']),
       borderWidth: data?['borderWidth'] != null
           ? double.tryParse(data!['borderWidth']!.toString()) ??
               resolveBorderWidthFromString(data['borderWidth'])
@@ -851,6 +1023,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderLeftWidth: data?['borderLeftWidth'] != null
           ? resolveBorderWidthFromString(data?['borderLeftWidth'].toString())
           : null,
+      item: GSStyle(
+        bg: resolveColorFromString(data?['_item']?['backgroundColor']),
+      ),
+      shadowOffset: ShadowOffset.fromJson(data: data?['shadowOffset']),
       checked: GSStyle(
         thumbColor:
             resolveColorFromString(data?[':checked']?['props']?['thumbColor']),
@@ -1013,8 +1189,14 @@ class GSStyle extends BaseStyle<GSStyle> {
               data?[':disabled']?[':hover']?['props']?['trackColor']['false']),
         ),
       ),
-
       dark: GSStyle(
+        iconColor: resolveColorFromString(
+          data?['_icon']?['_dark']?['color'],
+        ),
+        item: GSStyle(
+          bg: resolveColorFromString(
+              data?['_dark']?['_item']?['backgroundColor']),
+        ),
         web: GSStyle(
           onFocus: GSStyle(
             outlineColor: resolveColorFromString(
@@ -1033,11 +1215,23 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(
-            fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-            color: resolveColorFromString(data?['_text']?['_dark']?['color'] ??
-                data?['_dark']?['color'])),
+          fontWeight: resolveFontWeightFromString(data?['fontWeight']),
+          color: resolveColorFromString(
+              data?['_text']?['_dark']?['color'] ?? data?['_dark']?['color']),
+        ),
+        contentTextStyle: TextStyle(
+          color: resolveColorFromString(data?['_contentText']?['_dark']
+                  ?['color'] ??
+              data?['_dark']?['color']),
+        ),
+        titleTextStyle: TextStyle(
+          color: resolveColorFromString(data?['_titleText']?['_dark']
+                  ?['color'] ??
+              data?['_dark']?['color']),
+        ),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
-        bg: resolveColorFromString(data?['_dark']?['bg']),
+        bg: resolveColorFromString(
+            data?['_dark']?['bg'] ?? data?['_dark']?['backgroundColor']),
         onActive: GSStyle(
           bg: resolveColorFromString(data?['_dark']?[':active']?['bg']),
           borderColor: resolveColorFromString(
@@ -1212,6 +1406,20 @@ class GSStyle extends BaseStyle<GSStyle> {
               ? (data?['transform'].first as Map)['scale']
               : null
           : null,
+      iconColor: resolveColorFromString(
+        data?['_icon']?['color'],
+      ),
+      shadowColor: resolveColorFromString(data?['shadowColor']),
+      shadowRadius: data?['shadowRadius'] != null
+          ? double.tryParse(data!['shadowRadius'].toString())
+          : null,
+      shadowOpacity: data?['shadowOpacity'] != null
+          ? double.tryParse(data!['shadowOpacity'].toString())
+          : null,
+      elevation: data?['elevation'] != null
+          ? double.tryParse(data!['elevation'].toString())
+          : null,
+      textAlign: resolveTextAlignmentFromString(data?['textAlign']),
     );
   }
 
@@ -1262,6 +1470,10 @@ class GSStyle extends BaseStyle<GSStyle> {
         return variants?.variant?.rounded;
       case GSVariants.accent:
         return variants?.variant?.accent;
+      case GSVariants.filled:
+        return variants?.variant?.filled;
+      case GSVariants.unfilled:
+        return variants?.variant?.unfilled;
       default:
         return null;
     }

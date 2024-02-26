@@ -1,4 +1,4 @@
-# gluestack-ui-flutter (alpha)
+# gluestack-ui-flutter (beta)
 
 **gluestack-ui-flutter** is a universal UI library that provides optionally styled and accessible widgets. These widgets are designed for easy integration into applications developed with Flutter.
 
@@ -18,7 +18,7 @@ Here are few helpful links to give you an idea of what gluestack-ui-flutter is c
 
 To keep track of latest developments in gluestack-ui-flutter you can refer to this link: https://github.com/gluestack/gluestack-ui-flutter/tree/feature/core-widgets.
 
-Documentation: https://flutter.gluestack.io/
+_We are inspired from gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress._
 
 ## Features
 
@@ -44,7 +44,7 @@ Add the package to your dependencies:
 
 ```yaml
 dependencies:
-  gluestack_ui: 0.0.1-alpha.5
+  gluestack_ui: 0.1.0-beta.1
 ```
 
 OR
@@ -156,13 +156,19 @@ GluestackProvider(
 )
 ```
 
-## Future Scope
+## Performance
 
-- **Omitting Material Dependency:** Developers can tailor the UI components to fit the exact needs and aesthetics of their applications without being restricted to Material Design standards. From performance improvement respective, by building a system independent of Material Design, you might optimize performance, especially for applications that require lightweight and fast-loading interfaces.
+We performed performance benchmark after taking average of 10 samples from our [KitchenSink app](https://kitchensink-23184.web.app/) after using both GlueStack Material and GlueStack Non-Material components and we're happy to share the following result with you.
+
+<img src='assets/performance_graph_1.svg' width='2400'>
+
+## Future Scope
 
 - **Enhanced Widget Configuration:** The widgets will be designed in a modular fashion, allowing users to plug in different components or features as needed. This modular approach enables more complex and varied widget compositions.With more control over the widget design, developers can create applications that offer a better user experience, tailored to their target audience.
 
 - **Configurable Token System:** Design the token system to be scalable and customizable. Users should be able to add new tokens or modify existing ones to suit their project needs.
+
+- **Adding New Widgets:** We are committed to implement more functional widgets in the future that would improve the user and the developer experience.
 
 ## Contributing
 
@@ -170,4 +176,4 @@ We welcome contributions from the community. If you'd like to contribute to `glu
 
 ## License
 
-Licensed under the MIT License, Copyright © 2023 GeekyAnts. See [LICENSE](./LICENSE) for more information.
+Licensed under the MIT License, Copyright © 2024 GeekyAnts. See [LICENSE](./LICENSE) for more information.

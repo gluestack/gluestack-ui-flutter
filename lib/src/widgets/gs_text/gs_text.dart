@@ -3,9 +3,6 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
 
-///
-/// Gluestack Text Widget.
-///
 class GSText extends StatelessWidget {
   final String text;
   final GSSizes? size;
@@ -91,7 +88,7 @@ class GSText extends StatelessWidget {
       semanticsLabel: semanticsLabel,
       softWrap: softWrap,
       strutStyle: strutStyle,
-      textAlign: textAlign,
+      textAlign: styler.textAlign ?? textAlign,
       textDirection: textDirection,
       textHeightBehavior: textHeightBehavior,
       textScaleFactor: textScaleFactor,
