@@ -23,7 +23,7 @@ class GSToastDescription extends StatelessWidget {
         ?.merge(TextStyle(color: color, fontSize: fontSize));
 
     final mergedStyle =
-        defaultTextStyle?.merge(style != null ? style!.textStyle : null);
+        defaultTextStyle?.merge(style?.textStyle);
     return Text(
       description,
       style: mergedStyle,
