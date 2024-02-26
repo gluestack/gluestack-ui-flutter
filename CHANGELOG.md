@@ -1,4 +1,4 @@
-## 0.0.1-beta.1
+## 0.1.0-beta.1
 
 - Removed Material dependency from all the components, built from Flutter core apis
 - New widgets: added Icon Button, Accordion
@@ -6,6 +6,13 @@
 - Improved accessibility support
 - Internal refactor & code structurting
 - Bug Fixes
+
+## 0.0.1-alpha.5
+
+- Added GS Stack
+- Added GS Scroll
+- Widget specific enums for better developer experience
+- Added more examples
 
 ## 0.0.1-alpha.4
 
