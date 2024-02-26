@@ -6,7 +6,7 @@ _Package is in development. APIs may change in the future._
 
 ## Documentation
 
-![Gluestack Flutter Banner](assets/gs_docs_flutter_cover.png)
+![Gluestack Flutter Banner](https://github.com/gluestack/gluestack-ui-flutter/blob/main/assets/gs_docs_flutter_cover.png?raw=true)
 
 The gluestack-ui-flutter library is designed to enhance web and mobile app development. It features platform-agnostic components for consistent UI across platforms, offers styling flexibility with pre-built themes and custom options, and emphasizes accessibility. Tailored for web development, it includes web-friendly widgets, native web styling, responsive design, and smooth animations. Key considerations are Flutter web specificity, performance optimization, and community engagement. The library also enables centralized styling, consistency, reusability, scalability, efficient development, and rapid prototyping, aiming to foster collaboration and ensure a unique, high-performance UI experience.
 
@@ -160,7 +160,7 @@ GluestackProvider(
 
 We performed performance benchmark after taking average of 10 samples from our [KitchenSink app](https://kitchensink-23184.web.app/) after using both GlueStack Material and GlueStack Non-Material components and we're happy to share the following result with you.
 
-<img src='assets/performance_graph_1.svg' width='2400'>
+![Performance Benchmark](https://github.com/gluestack/gluestack-ui-flutter/blob/main/assets/performance_graph_1.svg?raw=true)
 
 ## Future Scope
 
