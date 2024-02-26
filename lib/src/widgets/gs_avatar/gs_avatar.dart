@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -20,6 +19,9 @@ enum GSAvatarSizes {
 
 enum GSAvatarRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
+///
+/// Gluestack Avatar.
+///
 class GSAvatar extends StatelessWidget {
   final GSAvatarSizes? size;
   final GSAvatarRadius? radius;
@@ -100,29 +102,24 @@ class GSAvatar extends StatelessWidget {
                   )
                 : BoxDecoration(
                     color: styler.color,
-                    image: avatarImage != null
-                        ? avatarImage?.imageType == GSImageType.network
-                            ? DecorationImage(
-                                image: NetworkImage(avatarImage!.path),
-                                onError: onForegroundImageError,
-                                fit: BoxFit.cover,
-                              )
-                            : avatarImage?.imageType == GSImageType.asset
-                                ? DecorationImage(
-                                    image: AssetImage(avatarImage!.path),
-                                    onError: onForegroundImageError,
-                                    fit: BoxFit.cover,
-                                  )
-                                : DecorationImage(
-                                    image: FileImage(File(avatarImage!.path)),
-                                    onError: onForegroundImageError,
-                                    fit: BoxFit.cover,
-                                  )
-                        : null,
+                    image: switch (avatarImage?.imageType) {
+                      GSImageType.network => DecorationImage(
+                          image: NetworkImage(avatarImage!.path),
+                          onError: onForegroundImageError,
+                          fit: BoxFit.cover,
+                        ),
+                      GSImageType.asset => DecorationImage(
+                          image: AssetImage(avatarImage!.path),
+                          onError: onForegroundImageError,
+                          fit: BoxFit.cover,
+                        ),
+                      null => null,
+                    },
                     borderRadius: BorderRadius.circular(
-                        GSAvatarStyle.borderRadius[avatarRadius] ??
-                            styler.borderRadius ??
-                            50),
+                      GSAvatarStyle.borderRadius[avatarRadius] ??
+                          styler.borderRadius ??
+                          50,
+                    ),
                   ),
             child: Center(child: fallBackText),
           ),

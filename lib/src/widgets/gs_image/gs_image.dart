@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -8,7 +6,6 @@ import 'package:gluestack_ui/src/widgets/gs_image/gs_image_style.dart';
 
 enum GSImageType {
   network,
-  file,
   asset,
 }
 
@@ -34,6 +31,9 @@ enum GSImageRadius {
   $full,
 }
 
+///
+/// Gluestack Image Widget.
+///
 class GSImage extends StatelessWidget {
   final GSImageSizes? size;
   final GSImageRadius? borderRadius;
@@ -148,30 +148,6 @@ class GSImage extends StatelessWidget {
           scale: scale,
           semanticLabel: semanticLabel,
           path,
-        );
-      case GSImageType.file:
-        return Image.file(
-          height: styler.height,
-          width: styler.width,
-          alignment: alignment,
-          cacheHeight: cacheHeight,
-          cacheWidth: cacheWidth,
-          centerSlice: centerSlice,
-          color: color,
-          colorBlendMode: colorBlendMode,
-          errorBuilder: errorBuilder,
-          fit: fit,
-          excludeFromSemantics: excludeFromSemantics,
-          filterQuality: filterQuality,
-          frameBuilder: frameBuilder,
-          gaplessPlayback: gaplessPlayback,
-          isAntiAlias: isAntiAlias,
-          matchTextDirection: matchTextDirection,
-          opacity: opacity,
-          repeat: repeat,
-          scale: scale,
-          semanticLabel: semanticLabel,
-          File(path),
         );
       case GSImageType.asset:
         return Image.asset(
