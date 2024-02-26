@@ -12,7 +12,7 @@ enum GSImageType {
   asset,
 }
 
-enum GSImageSizes{
+enum GSImageSizes {
   $2xs,
   $xs,
   $sm,
@@ -21,6 +21,7 @@ enum GSImageSizes{
   $xl,
   $2xl,
 }
+
 enum GSImageRadius {
   $none,
   $xs,

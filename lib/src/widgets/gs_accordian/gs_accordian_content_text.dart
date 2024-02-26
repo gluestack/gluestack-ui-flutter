@@ -67,7 +67,6 @@ class GSAccordionContent extends StatelessWidget {
       GSStyle(textStyle: contentTextStyle),
     );
 
-
     return GSText(
       text: text,
       size: size.toGSSize,

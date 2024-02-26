@@ -29,7 +29,7 @@ class GSCheckBoxIcon extends StatelessWidget {
     return Opacity(
       opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
       child: Icon(
-       const IconData(0xe156, fontFamily: 'MaterialIcons'),
+        const IconData(0xe156, fontFamily: 'MaterialIcons'),
         color: color,
         size: styler.height,
       ),

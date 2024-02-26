@@ -9,7 +9,7 @@ import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_image/gs_image.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-enum GSAvatarSizes{
+enum GSAvatarSizes {
   $xs,
   $sm,
   $md,
@@ -18,9 +18,7 @@ enum GSAvatarSizes{
   $2xl,
 }
 
-enum GSAvatarRadius{
-  $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full
-}
+enum GSAvatarRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 class GSAvatar extends StatelessWidget {
   final GSAvatarSizes? size;
@@ -53,7 +51,7 @@ class GSAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final avatarSize = size?.toGSSize ?? avatarStyle.props?.size;
-final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
+    final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
 
     GSStyle styler = resolveStyles(
       context: context,
@@ -81,9 +79,10 @@ final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
                     )
                   : null,
               borderRadius: avatarRadius != GSBorderRadius.$full
-                  ? BorderRadius.circular(GSAvatarStyle.borderRadius[avatarRadius] ??
-                      styler.borderRadius ??
-                      50)
+                  ? BorderRadius.circular(
+                      GSAvatarStyle.borderRadius[avatarRadius] ??
+                          styler.borderRadius ??
+                          50)
                   : null,
             ),
             foregroundDecoration: foregroundImage != null

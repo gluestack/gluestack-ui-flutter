@@ -948,10 +948,11 @@ class GSStyle extends BaseStyle<GSStyle> {
                           data?['my'].toString(), 'vertical')
                       : data?['mb'] != null
                           ? resolvePaddingFromString(
-                              data?['mb'].toString(), 'only') :
-                              data?['mt'] != null ? resolvePaddingFromString(
-                              data?['mt'].toString(), 'only')
-                          : null,
+                              data?['mb'].toString(), 'only')
+                          : data?['mt'] != null
+                              ? resolvePaddingFromString(
+                                  data?['mt'].toString(), 'only')
+                              : null,
       bottom: resolveSpaceFromString(data?['bottom'].toString()),
       left: resolveSpaceFromString(data?['left'].toString()),
       right: resolveSpaceFromString(data?['right'].toString()),
@@ -1193,7 +1194,8 @@ class GSStyle extends BaseStyle<GSStyle> {
           data?['_icon']?['_dark']?['color'],
         ),
         item: GSStyle(
-          bg: resolveColorFromString(data?['_dark']?['_item']?['backgroundColor']),
+          bg: resolveColorFromString(
+              data?['_dark']?['_item']?['backgroundColor']),
         ),
         web: GSStyle(
           onFocus: GSStyle(

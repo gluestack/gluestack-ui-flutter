@@ -83,8 +83,7 @@ class GSAvatarFallBackText extends StatelessWidget {
         avatarFallBackStyle.textStyle?.merge(ancestorStyles?.textStyle);
 
     // Merge the default text style with the provided GSStyle or custom style.
-    final mergedStyle =
-        baseTextStyle?.merge(style?.textStyle);
+    final mergedStyle = baseTextStyle?.merge(style?.textStyle);
 
     // Create a Text widget with the specified text and merged style.
     //TODO: handle decendent style overwrite for text transform
