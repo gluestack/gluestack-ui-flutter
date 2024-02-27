@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class GSTabIndicator extends StatefulWidget {
+  final double? width;
   final PageController controller;
   final int tabsCount;
   final Color? color;
@@ -12,6 +13,7 @@ class GSTabIndicator extends StatefulWidget {
     required this.tabsCount,
     this.color,
     this.duration = const Duration(milliseconds: 200),
+    this.width,
   });
 
   @override
@@ -23,22 +25,29 @@ class GSTabIndicatorState extends State<GSTabIndicator> {
   void initState() {
     widget.controller.addListener(() {
       //update state
-      if(mounted){
-      setState(() {});
+      if (mounted) {
+        setState(() {});
       }
     });
     super.initState();
   }
 
- 
-
   @override
   Widget build(BuildContext context) {
     final double indicatorWidth =
         MediaQuery.of(context).size.width / widget.tabsCount;
-    final double pageOffset =
-        widget.controller.hasClients ? widget.controller.page ?? 0 : 0;
-    final double leftPaddingFraction = pageOffset * indicatorWidth;
+    // final double pageOffset =
+    //     widget.controller.hasClients ? widget.controller.page ?? 0 : 0;
+    late double pageOffset;
+    try {
+      pageOffset =
+          widget.controller.hasClients ? widget.controller.page ?? 0 : 0;
+    } catch (e) {
+      print(e);
+      pageOffset = 0;
+    }
+    final double leftPaddingFraction =
+        pageOffset * (widget.width ?? indicatorWidth);
     // print('---');
     // print(leftPaddingFraction);
     // print(pageOffset);
@@ -49,7 +58,7 @@ class GSTabIndicatorState extends State<GSTabIndicator> {
       duration: widget.duration!,
       alignment: Alignment.centerLeft,
       child: Container(
-        width: indicatorWidth,
+        width: widget.width ?? indicatorWidth,
         color: widget.color ?? const Color(0xffaa2132),
         height: 2,
       ),

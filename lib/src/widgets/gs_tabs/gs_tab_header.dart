@@ -8,7 +8,7 @@ import 'package:gluestack_ui/src/widgets/gs_tabs/gs_tabs_tab.dart';
 import 'package:gluestack_ui/src/widgets/gs_tabs/gs_tabs_tab_style.dart';
 import 'gs_tab_indicator.dart';
 
-class GSTabHeader extends StatelessWidget {
+class GSTabHeader extends StatefulWidget {
   final PageController controller;
   final GSStyle? style;
   final bool? disabled;
@@ -25,38 +25,65 @@ class GSTabHeader extends StatelessWidget {
   });
 
   @override
+  State<GSTabHeader> createState() => _GSTabHeaderState();
+}
+
+class _GSTabHeaderState extends State<GSTabHeader> {
+  double? indicatorWidth;
+  final GlobalKey tabWidthKey = GlobalKey();
+
+  void onTabTap() {
+    final RenderBox? renderBox =
+        tabWidthKey.currentContext?.findRenderObject() as RenderBox?;
+    setState(() {
+      indicatorWidth = renderBox?.size.width;
+    });
+  }
+
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, onTabTap);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('indi width:: $indicatorWidth');
+
     return Opacity(
-      opacity: disabled! ? 0.5 : 1,
+      opacity: widget.disabled! ? 0.5 : 1,
       child: Stack(
         children: <Widget>[
           Row(
             mainAxisSize: MainAxisSize.min,
-            children: tabs
-                .map((item) => Expanded(
-                      child: GSRawTab(
-                        alignment: item.alignment,
-                        style: item.style,
-                        child: item.child,
-                        callback: () {
-                          if (controller.positions.isNotEmpty) {
-                            controller.animateToPage(
-                              tabs.indexOf(item),
-                              curve: Curves.easeInOut,
-                              duration: const Duration(milliseconds: 500),
-                            );
-                          }
-                        },
-                      ),
-                    ))
-                .toList(),
+            children: [
+              for (int i = 0; i < widget.tabs.length; i++)
+                Expanded(
+                  child: GSRawTab(
+                    key: i == 0 ? tabWidthKey : null,
+                    alignment: widget.tabs[i].alignment,
+                    style: widget.tabs[i].style,
+                    child: widget.tabs[i].child,
+                    callback: () {
+                      if (widget.controller.positions.isNotEmpty) {
+                        widget.controller.animateToPage(
+                          widget.tabs.indexOf(widget.tabs[i]),
+                          curve: Curves.easeInOut,
+                          duration: const Duration(milliseconds: 500),
+                        );
+                      }
+                    },
+                  ),
+                ),
+            ],
           ),
           Positioned(
             bottom: 0,
             child: GSTabIndicator(
-              controller: controller,
-              color: indicatorColor,
-              tabsCount: tabs.length,
+              width: indicatorWidth != -1 ? indicatorWidth : null,
+              controller: widget.controller,
+              color: widget.indicatorColor,
+              tabsCount: widget.tabs.length,
             ),
           ),
         ],
