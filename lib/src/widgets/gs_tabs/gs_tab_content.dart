@@ -16,11 +16,13 @@ class GSTabContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: controller,
-      pageSnapping: pageSnapping,
-      physics: physics,
-      children: children,
+    return Expanded(
+      child: PageView(
+        controller: controller,
+        pageSnapping: pageSnapping,
+        physics: physics,
+        children: children,
+      ),
     );
   }
 }

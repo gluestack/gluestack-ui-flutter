@@ -36,15 +36,13 @@ class _TabExampleState extends State<TabExample> {
               // Tab(child: Icon(Icons.access_alarm)),
             ],
           ),
-          Expanded(
-            child: GSTabContent(
-              controller: controller,
-              children: <Widget>[
-                Container(color: Colors.yellow),
-                Container(color: Colors.red),
-                Container(color: Colors.purple),
-              ],
-            ),
+          GSTabContent(
+            controller: controller,
+            children: <Widget>[
+              Container(color: Colors.yellow),
+              Container(color: Colors.red),
+              Container(color: Colors.purple),
+            ],
           ),
         ],
       ),
