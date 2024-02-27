@@ -30,9 +30,9 @@ class _TabExampleState extends State<TabExample> {
           child: GSTabHeader(
             controller: controller,
             tabs: const [
-              GSText(text: 'Hey', textAlign: TextAlign.center),
-              GSText(text: 'Hi :)', textAlign: TextAlign.center),
-              GSText(text: 'Hello', textAlign: TextAlign.center),
+              GSTab(child: GSText(text: 'Hey', textAlign: TextAlign.center)),
+              GSTab(child: GSText(text: 'Hi :)', textAlign: TextAlign.center)),
+              GSTab(child: GSText(text: 'Hello', textAlign: TextAlign.center)),
               // Tab(text: "Tab 2"),
               // Tab(child: Icon(Icons.access_alarm)),
             ],

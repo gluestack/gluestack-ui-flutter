@@ -12,15 +12,15 @@ const Map<String, dynamic> tabsTabData = {
   },
   "defaultProps": {"size": "md"},
   ":hover": {
-    // bg: '$secondary50_alpha_20',
+    "bg": '\$backgroundDark500',
     "borderRadius": "\$full"
   },
   ":active": {
-    // bg: '$secondary50_alpha_10',
+    "bg": '\$backgroundDark400',
     "borderRadius": "\$full"
   },
   ":focus": {
-    // bg: '$secondary50_alpha_20',
+    "bg": '\$backgroundDark400',
     "borderRadius": "\$full"
   },
   ":disabled": {"opacity": 0.5},
