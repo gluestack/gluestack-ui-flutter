@@ -24,7 +24,6 @@ final class TabStory extends StoryWidget {
 
   @override
   Story createStoryWidget() {
-    print('asdasdasd');
     return Story(
         name: storyName,
         builder: (context) {

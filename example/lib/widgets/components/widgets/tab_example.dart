@@ -24,16 +24,9 @@ class _TabExampleState extends State<TabExample> {
     final theme = GSTheme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "TabBar Example",
-          size: GSSizes.$xl,
-        ),
-        centerTitle: true,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(kToolbarHeight),
-          child: GSTabHeader(
+      body: Column(
+        children: [
+          GSTabHeader(
             controller: controller,
             tabs: const [
               GSTab(child: GSText(text: 'Hey', textAlign: TextAlign.center)),
@@ -43,14 +36,16 @@ class _TabExampleState extends State<TabExample> {
               // Tab(child: Icon(Icons.access_alarm)),
             ],
           ),
-        ),
-      ),
-      body: GSTabContent(
-        controller: controller,
-        children: <Widget>[
-          Container(color: Colors.yellow),
-          Container(color: Colors.red),
-          Container(color: Colors.purple),
+          Expanded(
+            child: GSTabContent(
+              controller: controller,
+              children: <Widget>[
+                Container(color: Colors.yellow),
+                Container(color: Colors.red),
+                Container(color: Colors.purple),
+              ],
+            ),
+          ),
         ],
       ),
     );

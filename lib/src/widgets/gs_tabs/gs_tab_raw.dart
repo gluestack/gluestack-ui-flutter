@@ -31,9 +31,7 @@ class GSRawTab extends StatelessWidget {
           inlineStyle: style,
           isFirst: true,
         );
-        // print('bg: ${styler.bg}');
-        // print('padding: ${styler.padding}');
-        //Check padding
+      
         return GsGestureDetector(
           onPressed: callback,
           child: Container(
