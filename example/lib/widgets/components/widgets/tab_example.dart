@@ -21,9 +21,16 @@ class _TabExampleState extends State<TabExample> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = GSTheme.of(context);
+
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("TabBar Example"),
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "TabBar Example",
+          size: GSSizes.$xl,
+        ),
         centerTitle: true,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
