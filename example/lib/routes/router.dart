@@ -142,6 +142,10 @@ final GoRouter router = GoRouter(
           path: "example-accordion",
           builder: (context, state) => const AccordionExample(),
         ),
+        GoRoute(
+          path: "example-tabs",
+          builder: (context, state) => const TabExample(),
+        ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
         ...kStories.map(

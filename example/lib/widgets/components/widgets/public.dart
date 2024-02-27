@@ -27,3 +27,4 @@ export 'stack_example.dart';
 export 'scroll_example.dart';
 export 'icon_button_example.dart';
 export 'internal_colors_example.dart';
+export 'tab_example.dart';
