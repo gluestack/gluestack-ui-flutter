@@ -29,7 +29,7 @@ export const parameters = {
           "Customizing Theme",
         ],
         "Styling",
-        ["Overview","Utility", "Responsiveness", "Platform Specific"],
+        ["Overview", "Utility", "Responsiveness", "Platform Specific"],
         "Components",
         [
           "Typography",
@@ -56,7 +56,7 @@ export const parameters = {
           "Media And Icons",
           ["Avatar", "Icon", "Image"],
           "Others",
-          ["Fab"],
+          ["Fab", "Accordion"],
         ],
       ],
     },

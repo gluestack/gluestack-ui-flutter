@@ -1,0 +1,205 @@
+---
+title: GSAccordion | gluestack-ui | Installation, Usage, and API
+
+description: The GSAccordion widget is a versatile and interactive user interface element, designed to efficiently organize and present content in a compact space.
+
+pageTitle: GSAccordion
+
+pageDescription: The GSAccordion widget is a versatile and interactive user interface element, designed to efficiently organize and present content in a compact space.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from "@gluestack/design-system";
+
+<Meta title="Components/Others/Accordion" />
+
+This is an illustration of a **Themed GSAccordion** widget with default configuration.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "accordion-preview"}
+  title="Example"
+  height="851px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSCenter(
+      child: Stack(
+        children: [
+          GSBox(
+            style: GSStyle(
+              height: 360,
+              width: 320,
+              borderRadius: $GSRadii.$md,
+              bg: $GSColors.backgroundLight50,
+              dark: GSStyle(color: $GSColors.backgroundDark900),
+            ),
+          ),
+          GSFab(
+            size: GSFABSizes.$md,
+            placement: GSFABPlacements.bottomRight,
+            onPressed: () {},
+            isDisabled: false,
+            isHovered: false,
+            isPressed: false,
+            icon: const GSFabIcon(icon: Icons.add),
+            label: const GSFabLabel(text: 'Quick Start'),
+          ),
+        ],
+      ),
+    )
+
+`}
+/>
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSAccordion
+
+It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Parameters</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Type</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Description</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>action</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>"single" | "multiple"</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>"single"</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`Determines whether one or multiple items can be opened at the same time.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isCollapsible</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`When action is "single" or "multiple", allows closing content when clicking trigger for an open item.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>isDisabled</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>bool</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>false</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`When true, prevents the user from interacting with the accordion and all its items.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>variant</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>"filled" | "unfilled"</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>"unfilled"</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>{`It creates a box shadow around the accordion when variant is set to filled.`}</Table.TText>
+          </Table.TD>
+        </Table.TR>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>size</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>"$sm | $md | $lg"</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>"$md"</Table.TText>
+          </Table.TD>
+           <Table.TD>
+            <Table.TText>It defines the size of the accordion.</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+
+  </TableContainer>
+</AppProvider>
+
+#### GSAccordionItem
+
+Contains all the parts of a collapsible section. GSAccordionItem consists of GSAccordionTitle and GSAccordionContent which defines the title and content of GSAccordion widget.
+
+#### GSAccordionTitle
+
+It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutter/widgets/Text-class.html) widget.
+
+#### GSAccordionContent
+
+It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutter/widgets/Text-class.html) widget.
+
+#### GSAccordionIcon
+
+It inherits all the properties of Flutter [Icon](https://api.flutter.dev/flutter/widgets/Icon-class.html) widget.
