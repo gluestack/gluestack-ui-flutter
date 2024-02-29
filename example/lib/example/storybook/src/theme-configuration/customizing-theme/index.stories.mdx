@@ -27,7 +27,7 @@ Add the package to your dependencies:
 
 ```
 dependencies:
-  gluestack_ui: 0.0.1-alpha.4
+  gluestack_ui: ^0.1.0-beta.2
 
 ```
 
@@ -52,7 +52,7 @@ GluestackProvider(
     ),
     // More token configurations....
   ),
-  child: MaterialApp.router(
+  child: GSApp.router(
     // ....
   ),
 )
@@ -70,7 +70,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 void main() {
   runApp(
     GluestackProvider(
-      child: MaterialApp.router(
+      child: GSApp.router(
         {/* Your app code */}
         // ....
       ),
@@ -101,7 +101,7 @@ Add the package to your dependencies:
 
 ```
 dependencies:
-  gluestack_ui: 0.0.1-alpha.4
+  gluestack_ui: ^0.1.0-beta.2
 
 ```
 
@@ -137,7 +137,7 @@ GluestackProvider(
     ...
   ),
   gluestackTokenConfig: GluestackTokenConfig(...),
-  child: MaterialApp.router(
+  child: GSApp.router(
     ...
   ),
 )
