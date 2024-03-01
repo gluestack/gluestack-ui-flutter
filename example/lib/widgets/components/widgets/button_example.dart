@@ -105,13 +105,13 @@ class _ButtonExampleState extends State<ButtonExample> {
           isDisabled: isDisabled,
           isFocusVisible: isFocusVisible,
           onHover: () {
-            print('Hovering');
+            // print('Hovering');
           },
           onPressed: () {
-            print('presssed');
+            // print('presssed');
           },
           onDoubleTap: () {
-            print('double press');
+            // print('double press');
           },
           // style: GSStyle(
           //   web: GSStyle(
