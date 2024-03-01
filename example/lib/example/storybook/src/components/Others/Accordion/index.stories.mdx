@@ -32,32 +32,28 @@ This is an illustration of a **Themed GSAccordion** widget with default configur
   height="851px"
   code={`
     import 'package:gluestack_ui/gluestack_ui.dart';
-
-    GSCenter(
-      child: Stack(
-        children: [
-          GSBox(
-            style: GSStyle(
-              height: 360,
-              width: 320,
-              borderRadius: $GSRadii.$md,
-              bg: $GSColors.backgroundLight50,
-              dark: GSStyle(color: $GSColors.backgroundDark900),
+    
+    GSAccordion(
+      animationDuration: Duration(milliseconds: 200),
+      size: GSAccordionSizes.$md,
+      type: GSAccordionTypes.multiple,
+      variant: GSAccordionVariants.filled,
+      isCollapsible: true,
+      children: const [
+        GSAccordionItem(
+          title: GSAccordionTitle(text: 'How do I place an order?'),
+          content: GSAccordionContent(
+            text: "To place an order, simply select the products you want, proceed to checkout, provide shipping and payment information, and finalize your purchase.",
             ),
-          ),
-          GSFab(
-            size: GSFABSizes.$md,
-            placement: GSFABPlacements.bottomRight,
-            onPressed: () {},
-            isDisabled: false,
-            isHovered: false,
-            isPressed: false,
-            icon: const GSFabIcon(icon: Icons.add),
-            label: const GSFabLabel(text: 'Quick Start'),
-          ),
-        ],
-      ),
-    )
+        ),
+        GSAccordionItem(
+          title: GSAccordionTitle(text: 'What payment options do you accept?'),
+          content: GSAccordionContent(
+            text: "We accept all major credit cards, including Visa, Mastercard, and American Express. We also support payments through PayPal.",
+            ),
+        ),
+    ],
+)
 
 `}
 />
@@ -203,3 +199,31 @@ It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutt
 #### GSAccordionIcon
 
 It inherits all the properties of Flutter [Icon](https://api.flutter.dev/flutter/widgets/Icon-class.html) widget.
+
+### Features
+
+- Keyboard support for actions.
+- Option to add your styles or use the default styles.
+
+### Accessibility
+
+We have outlined the various features that ensure the Accordion widget is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards. Adheres to the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
+
+#### Keyboard
+
+- `Space`: When focused on a GSAccordion widget, pressing the spacebar triggers the expansion of the collapsed section.
+- `Enter`: When focused on a GSAccordion widget, pressing the enter triggers the expansion of the collapsed section.
+- `Tab`: Moves focus to the next focusable element.
+- `Shift + Tab`: Moves focus to the previous focusable element.
+
+#### Screen Reader
+
+- VoiceOver: When the GSAccordion Item is focused, the screen reader will announce the GSAccordion's title text and the state of the GSAccordion trigger (expanded or collapsed).
+
+## Themed
+
+The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+
+### Examples
+
+The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
