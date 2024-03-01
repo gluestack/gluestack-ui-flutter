@@ -106,6 +106,7 @@ GSAccordion(
           type: selectedTypeOption,
           isCollapsible: isCollapsible,
           isDisabled: isDisabled,
+          // initialValues: [false, true],
           children: const [
             GSAccordionItem(
               title: GSAccordionTitle(text: 'How do I place an order?'),

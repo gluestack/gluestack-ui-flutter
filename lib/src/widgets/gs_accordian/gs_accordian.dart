@@ -20,6 +20,9 @@ class GSAccordion extends StatefulWidget {
 
   final List<GSAccordionItem> children;
 
+  ///List of boolean values, true -> selected accordion item (expanded)
+  final List<bool>? initialValues;
+
   final GSAccordionSizes? size;
   final GSAccordionTypes? type;
   final GSAccordionVariants? variant;
@@ -34,6 +37,7 @@ class GSAccordion extends StatefulWidget {
   const GSAccordion({
     super.key,
     required this.children,
+    this.initialValues,
     this.size = GSAccordionSizes.$md,
     this.type = GSAccordionTypes.multiple,
     this.variant = GSAccordionVariants.unfilled,
@@ -43,7 +47,8 @@ class GSAccordion extends StatefulWidget {
     this.style,
     this.iconWhenTileExpanded,
     this.iconWhenTileCollapsed,
-  });
+  }) : assert(initialValues?.length == children.length,
+            'Length of initial array provided is not equal to number of accordion items present inside accordion widget!');
 
   @override
   State<GSAccordion> createState() => _GSAccordionState();
@@ -52,7 +57,8 @@ class GSAccordion extends StatefulWidget {
 class _GSAccordionState extends State<GSAccordion> {
   @override
   initState() {
-    accGroupValue.init(widget.children.length);
+    accGroupValue.init(
+        length: widget.children.length, initialValues: widget.initialValues);
     super.initState();
   }
 
