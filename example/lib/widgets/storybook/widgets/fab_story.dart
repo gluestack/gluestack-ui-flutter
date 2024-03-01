@@ -48,7 +48,7 @@ final class FabStory extends StoryWidget {
               isPressed:
                   context.knobs.boolean(label: "isPressed", initial: false),
               onPressed: () {
-                print('fab pressed!');
+                // print('fab pressed!');
               },
               icon: const GSFabIcon(icon: Icons.add),
               label: const GSFabLabel(text: 'Quick Start'),
