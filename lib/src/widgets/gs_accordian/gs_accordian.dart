@@ -20,6 +20,9 @@ class GSAccordion extends StatefulWidget {
 
   final List<GSAccordionItem> children;
 
+  ///List of boolean values, true -> selected accordion item (expanded)
+  final List<bool>? initialValues;
+
   final GSAccordionSizes? size;
   final GSAccordionTypes? type;
   final GSAccordionVariants? variant;
@@ -28,12 +31,19 @@ class GSAccordion extends StatefulWidget {
   final bool? isCollapsible;
 
   final Duration? animationDuration;
-  final GSAccordionIcon? iconWhenTileExpanded;
-  final GSAccordionIcon? iconWhenTileCollapsed;
+  final GSAccordionIcon? suffixIconWhenTileExpanded;
+  final GSAccordionIcon? suffixIconWhenTileCollapsed;
+  final bool? showSuffixIcon;
+
+  final GSAccordionIcon? prefixIconWhenTileCollapsed;
+  final GSAccordionIcon? prefixIconWhenTileExapanded;
+  final EdgeInsets? prefixIconPadding;
+  final EdgeInsets? itemPadding;
 
   const GSAccordion({
     super.key,
     required this.children,
+    this.initialValues,
     this.size = GSAccordionSizes.$md,
     this.type = GSAccordionTypes.multiple,
     this.variant = GSAccordionVariants.unfilled,
@@ -41,9 +51,15 @@ class GSAccordion extends StatefulWidget {
     this.isCollapsible = false,
     this.animationDuration = const Duration(milliseconds: 200),
     this.style,
-    this.iconWhenTileExpanded,
-    this.iconWhenTileCollapsed,
-  });
+    this.suffixIconWhenTileExpanded,
+    this.suffixIconWhenTileCollapsed,
+    this.showSuffixIcon = true,
+    this.prefixIconWhenTileCollapsed,
+    this.prefixIconWhenTileExapanded,
+    this.prefixIconPadding,
+    this.itemPadding,
+  }) : assert(initialValues == null || initialValues.length == children.length,
+            'Length of initial array provided is not equal to number of accordion items present inside accordion widget!');
 
   @override
   State<GSAccordion> createState() => _GSAccordionState();
@@ -52,7 +68,8 @@ class GSAccordion extends StatefulWidget {
 class _GSAccordionState extends State<GSAccordion> {
   @override
   initState() {
-    accGroupValue.init(widget.children.length);
+    accGroupValue.init(
+        length: widget.children.length, initialValues: widget.initialValues);
     super.initState();
   }
 
@@ -83,7 +100,6 @@ class _GSAccordionState extends State<GSAccordion> {
       //TODO: utilise elevation (styler.elevation)
       child: Container(
         decoration: BoxDecoration(
-          color: styler.bg,
           boxShadow: [
             BoxShadow(
               blurRadius: styler.shadowRadius ?? 0,
@@ -109,8 +125,19 @@ class _GSAccordionState extends State<GSAccordion> {
                     animationDuration: widget.animationDuration,
                     contentStyle: styler.item,
                     headerStyle: accordionHeaderStyle,
-                    iconWhenTileCollapsed: widget.iconWhenTileCollapsed,
-                    iconWhenTileExpanded: widget.iconWhenTileExpanded,
+                    suffixIconWhenTileCollapsed:
+                        widget.suffixIconWhenTileCollapsed,
+                    suffixIconWhenTileExpanded:
+                        widget.suffixIconWhenTileExpanded,
+                    showSuffixIcon: widget.showSuffixIcon,
+                    prefixIconWhenTileCollapsed:
+                        widget.prefixIconWhenTileCollapsed,
+                    prefixIconWhenTileExpanded:
+                        widget.prefixIconWhenTileExapanded,
+                    prefixIconPadding: widget.prefixIconPadding,
+                    radius: widget.children[i].radius,
+                    itemPadding: widget.itemPadding,
+                    isItemDisabled: widget.children[i].isDisabled,
                   ),
               ],
             );

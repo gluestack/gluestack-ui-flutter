@@ -16,12 +16,21 @@ class AccordionExpansionValue extends ChangeNotifier {
     notifyListeners();
   }
 
-  void init(int length) {
-    for (int i = 0; i < length; i++) {
-      accGroupValues.value.add(false);
+  void init({required int length, List<bool>? initialValues}) {
+    if (initialValues != null) {
+      if (initialValues.length != length) {
+        //Moving this as asertion
+        // throw ('Length of initial array provided is not equal to number of accordion items present inside accordion widget!');
+      } else {
+        accGroupValues.value = initialValues;
+      }
+    } else {
+      for (int i = 0; i < length; i++) {
+        accGroupValues.value.add(false);
+      }
     }
-    // print('---- init: ----');
-    // print(accGroupValues.toString());
+    print('---- init: ----');
+    print(accGroupValues.toString());
     notifyListeners();
   }
 
