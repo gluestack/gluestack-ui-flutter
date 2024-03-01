@@ -4,17 +4,19 @@ final getIt = GetIt.instance;
 
 class GluestackProvider extends StatelessWidget {
   final Widget child;
-  GluestackTokenConfig? gluestackTokenConfig;
-  GluestackCustomConfig? gluestackCustomConfig;
-  GluestackProvider(
-      {super.key,
-      required this.child,
-      this.gluestackTokenConfig,
-      this.gluestackCustomConfig}) {
-    gluestackTokenConfig ??= GluestackTokenConfig();
-    gluestackCustomConfig ??= GluestackCustomConfig();
+  final GluestackTokenConfig gluestackTokenConfig;
+  final GluestackCustomConfig gluestackCustomConfig;
+  GluestackProvider({
+    super.key,
+    required this.child,
+    GluestackTokenConfig? gluestackTokenConfig,
+    GluestackCustomConfig? gluestackCustomConfig,
+  })  : gluestackTokenConfig = gluestackTokenConfig ?? GluestackTokenConfig(),
+        gluestackCustomConfig =
+            gluestackCustomConfig ?? GluestackCustomConfig() {
     if (!getIt.isRegistered<GluestackCustomConfig>()) {
-      getIt.registerSingleton<GluestackCustomConfig>(gluestackCustomConfig!);
+      getIt
+          .registerSingleton<GluestackCustomConfig>(this.gluestackCustomConfig);
     }
   }
 
