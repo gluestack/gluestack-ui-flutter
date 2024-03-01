@@ -259,9 +259,9 @@ class _GSTextAreaState extends State<GSTextArea> {
       return styler.onFocus?.borderColor;
     }
 
-    double? resolveFocusBorderWidth() {
-      return styler.onFocus?.borderWidth ?? styler.borderWidth;
-    }
+    // double? resolveFocusBorderWidth() {
+    //   return styler.onFocus?.borderWidth ?? styler.borderWidth;
+    // }
 
     final borderColor = resolveBorderColor();
     final borderWidth = resolveBorderWidth();
