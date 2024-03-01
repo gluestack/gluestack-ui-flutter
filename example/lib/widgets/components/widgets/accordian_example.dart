@@ -106,14 +106,14 @@ GSAccordion(
           type: selectedTypeOption,
           isCollapsible: isCollapsible,
           isDisabled: isDisabled,
-          style: GSStyle(bg: $GSColors.amber400),
+          // style: GSStyle(bg: $GSColors.amber400),
           // itemPadding: EdgeInsets.all(12),
           // showSuffixIcon: false,
           // prefixIconPadding: EdgeInsets.only(right: 0),
           // prefixIconWhenTileCollapsed: const GSAccordionIcon(icon: Icons.abc),
           // prefixIconWhenTileExapanded:
           //     const GSAccordionIcon(icon: Icons.ac_unit_sharp),
-          // initialValues: [false, true],
+          // initialValues: [true, true],
           children: const [
             GSAccordionItem(
               // radius: 21,
