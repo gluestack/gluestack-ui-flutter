@@ -119,30 +119,10 @@ GSAccordion(
               // radius: 21,
               // isDisabled: true,
               title: GSAccordionTitle(text: 'How do I place an order?'),
-              content: GSAccordion(isCollapsible: true, children: [
-                GSAccordionItem(
-                  title: GSAccordionTitle(
-                      text: 'What payment options do you accept?'),
-                  content: GSAccordionContent(
-                    text:
-                        "We accept all major credit cards, including Visa, Mastercard, and American Express. We also support payments through PayPal.",
-                  ),
-                ),
-                GSAccordionItem(
-                  title: GSAccordionTitle(text: '2'),
-                  content: GSAccordionContent(
-                    text:
-                        "We accept all major credit cards, including Visa, Mastercard, and American Express. We also support payments through PayPal.",
-                  ),
-                ),
-                GSAccordionItem(
-                  title: GSAccordionTitle(text: '3'),
-                  content: GSAccordionContent(
-                    text:
-                        "We accept all major credit cards, including Visa, Mastercard, and American Express. We also support payments through PayPal.",
-                  ),
-                ),
-              ]),
+              content: GSAccordionContent(
+                text:
+                    "To place an order, simply select the products you want, proceed to checkout, provide shipping and payment information, and finalize your purchase.",
+              ),
             ),
             GSAccordionItem(
               title:
