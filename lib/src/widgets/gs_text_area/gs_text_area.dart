@@ -267,8 +267,8 @@ class _GSTextAreaState extends State<GSTextArea> {
     final borderWidth = resolveBorderWidth();
     final focusedBorderColor = resolveFocusBorderColor();
     // final focusedBorderWidth = resolveFocusBorderWidth();
-    final hintStyle =
-        widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
+    // final hintStyle =
+    //     widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
 
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
