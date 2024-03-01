@@ -10,7 +10,7 @@ class GSAccordionItemInternal extends StatelessWidget {
   final int id;
   final bool isExpanded;
   final GSAccordionTitle title;
-  final GSAccordionContent? content;
+  final Widget? content;
   final Duration? animationDuration;
   final GSStyle? contentStyle;
   final GSStyle? headerStyle;
