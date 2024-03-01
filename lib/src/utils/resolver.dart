@@ -469,9 +469,3 @@ TextAlign? resolveTextAlignmentFromString(String? textAlign) {
 
   return textAlign != null ? textAlignmentMap[textAlign] : null;
 }
-
-//For debug; TODO: remove in prod
-Color? out(String? a) {
-  print('out: $a');
-  return null;
-}
