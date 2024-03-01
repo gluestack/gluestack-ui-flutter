@@ -26,7 +26,7 @@ class GSAvatarFallBackText extends StatelessWidget {
   final TextAlign? textAlign;
   final TextDirection? textDirection;
   final TextHeightBehavior? textHeightBehavior;
-  final double? textScaleFactor;
+  final TextScaler? textScaler;
   final TextWidthBasis? textWidthBasis;
 
   /// Constructor for GSAvatarFallBackText widget:
@@ -45,7 +45,7 @@ class GSAvatarFallBackText extends StatelessWidget {
       this.textAlign,
       this.textDirection,
       this.textHeightBehavior,
-      this.textScaleFactor,
+      this.textScaler,
       this.textWidthBasis,
       this.bold = false,
       this.highlight = false,
@@ -105,7 +105,7 @@ class GSAvatarFallBackText extends StatelessWidget {
       textAlign: textAlign,
       textDirection: textDirection,
       textHeightBehavior: textHeightBehavior,
-      textScaleFactor: textScaleFactor,
+      textScaler: textScaler,
       textWidthBasis: textWidthBasis,
     );
   }
