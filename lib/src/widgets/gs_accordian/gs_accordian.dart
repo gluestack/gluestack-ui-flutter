@@ -8,37 +8,67 @@ import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_header.dart';
 
 
+/// Defines the sizes available for the GSAccordion.
 enum GSAccordionSizes { $sm, $md, $lg }
 
+/// Defines the visual variants for the GSAccordion.
 enum GSAccordionVariants { filled, unfilled }
 
+/// Defines the behavior types of the accordion: single (only one item can be expanded at a time) or multiple (multiple items can be expanded).
 enum GSAccordionTypes { single, multiple }
 
+/// A customizable gluestack accordion widget that allows for collapsible content sections.
+/// This widget supports various sizes, types, and visual variants, and can be further customized with icons and styles.
 class GSAccordion extends StatefulWidget {
+  /// Custom style for the accordion. If null, the default style is applied.
   final GSStyle? style;
 
+  /// The list of items to display within the accordion.
   final List<GSAccordionItem> children;
 
-  ///List of boolean values, true -> selected accordion item (expanded)
+  /// Optional initial expansion state for each accordion item. A value of true indicates the item should be initially expanded.
   final List<bool>? initialValues;
 
+  /// The size of the accordion, affecting its content's font size. Defaults to $md.
   final GSAccordionSizes? size;
+
+  /// The accordion's behavior type, determining whether single or multiple items can be expanded simultaneously.
   final GSAccordionTypes? type;
+
+  /// The visual variant of the accordion, affecting its background and border styles.
   final GSAccordionVariants? variant;
 
+  /// Whether the accordion is disabled. If true, all interactions are disabled.
   final bool? isDisabled;
+
+  /// Whether the accordion items are collapsible. If false, expanded items cannot be collapsed.
   final bool? isCollapsible;
 
+  /// The duration of the animation when expanding or collapsing an item.
   final Duration? animationDuration;
+
+  /// Optional icon displayed next to the title when an item is expanded.
   final GSAccordionIcon? suffixIconWhenTileExpanded;
+
+  /// Optional icon displayed next to the title when an item is collapsed.
   final GSAccordionIcon? suffixIconWhenTileCollapsed;
+
+  /// Whether to show the suffix icon. Defaults to true.
   final bool? showSuffixIcon;
 
+  /// Optional icon displayed before the title when an item is collapsed.
   final GSAccordionIcon? prefixIconWhenTileCollapsed;
+
+  /// Optional icon displayed before the title when an item is expanded.
   final GSAccordionIcon? prefixIconWhenTileExapanded;
+
+  /// Padding applied around the prefix icon.
   final EdgeInsets? prefixIconPadding;
+
+  /// Padding applied around each accordion item.
   final EdgeInsets? itemPadding;
 
+  /// Constructs a GSAccordion widget.
   const GSAccordion({
     super.key,
     required this.children,
