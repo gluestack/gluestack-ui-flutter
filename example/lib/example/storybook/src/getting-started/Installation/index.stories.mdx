@@ -22,12 +22,12 @@ flutter pub add gluestack_ui
 
 ## Usage
 
-Wrap the MaterialApp with GluestackProvider.
+Wrap the GSApp with GluestackProvider.
 
 ```
 
 GluestackProvider(
-  child: MaterialApp.router(
+  child: GSApp.router(
     ....
 )
 ```
@@ -60,7 +60,7 @@ GSButton(
 )
 ```
 
-All gluestack_ui_flutter widgets support dark theme. Package detects the current theme from Flutter's inbuilt Theme.of(context).brightness. Hence, you can manage the theme mode from MaterialApp itself using the state management of your choice.
+All gluestack_ui_flutter widgets support dark theme. Package detects the current theme from Gluestack's inbuilt GSTheme.of(context).brightness. Hence, you can manage the theme mode from GSApp itself using the state management of your choice.
 
 ## Customize tokens via token config
 
@@ -80,7 +80,7 @@ GluestackProvider(
     ),
     // More token configurations....
   ),
-  child: MaterialApp.router(
+  child: GSApp.router(
     ....
   ),
 )
@@ -120,7 +120,7 @@ GluestackProvider(
     ...
   ),
   gluestackTokenConfig: GluestackTokenConfig(...),
-  child: MaterialApp.router(
+  child: GSApp.router(
     ...
   ),
 )
@@ -128,8 +128,6 @@ GluestackProvider(
 ```
 
 ## Future Scope
-
-- **Omitting Material Dependency:** Developers can tailor the UI components to fit the exact needs and aesthetics of their applications without being restricted to Material Design standards. From performance improvement respective, by building a system independent of Material Design, you might optimize performance, especially for applications that require lightweight and fast-loading interfaces.
 
 - **Enhanced Widget Configuration:** The widgets will be designed in a modular fashion, allowing users to plug in different components or features as needed. This modular approach enables more complex and varied widget compositions.With more control over the widget design, developers can create applications that offer a better user experience, tailored to their target audience.
 
