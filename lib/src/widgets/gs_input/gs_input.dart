@@ -286,14 +286,6 @@ class _GSInputState extends State<GSInput> {
       return styler.onFocus?.borderColor;
     }
 
-    // double? resolveFocusBorderWidth() {
-    //   if (inputVariant == GSVariants.underlined) {
-    //     return styler.onFocus?.borderBottomWidth ?? styler.borderBottomWidth;
-    //   }
-
-    //   return styler.onFocus?.borderWidth ?? styler.borderWidth;
-    // }
-
     final borderColor = resolveBorderColor();
     final borderWidth = resolveBorderWidth();
     final focusedBorderColor = resolveFocusBorderColor();
