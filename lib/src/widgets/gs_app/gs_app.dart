@@ -25,7 +25,11 @@ class GSApp extends StatefulWidget {
     this.onGenerateTitle,
     this.color,
     this.locale,
-    this.localizationsDelegates,
+    this.localizationsDelegates = const [
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ],
     this.localeListResolutionCallback,
     this.localeResolutionCallback,
     this.supportedLocales = const <Locale>[Locale('en', 'US')],
@@ -207,8 +211,8 @@ class _GSAppState extends State<GSApp> {
       yield* localizationsDelegates;
     }
     yield GlobalMaterialLocalizations.delegate;
-    yield GlobalCupertinoLocalizations.delegate;
     yield GlobalWidgetsLocalizations.delegate;
+    yield GlobalCupertinoLocalizations.delegate;
   }
 
   bool get _usesRouter =>
@@ -301,7 +305,7 @@ class _GSAppState extends State<GSApp> {
       title: widget.title,
       onGenerateTitle: widget.onGenerateTitle,
       locale: widget.locale,
-      localizationsDelegates: widget.localizationsDelegates,
+      localizationsDelegates: _localizationsDelegates,
       localeListResolutionCallback: widget.localeListResolutionCallback,
       localeResolutionCallback: widget.localeResolutionCallback,
       supportedLocales: widget.supportedLocales,
