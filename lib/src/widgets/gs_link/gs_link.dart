@@ -34,6 +34,7 @@ class GSLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Resolve the final GSStyle.
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       inlineStyle: style,

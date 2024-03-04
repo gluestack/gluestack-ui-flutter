@@ -71,7 +71,8 @@ class GSAccordionContent extends StatelessWidget {
   /// is calculated.
   final TextHeightBehavior? textHeightBehavior;
   final TextScaler? textScaler;
-    /// Determines how the width of the text is measured.
+
+  /// Determines how the width of the text is measured.
   final TextWidthBasis? textWidthBasis;
 
   const GSAccordionContent({
@@ -104,6 +105,7 @@ class GSAccordionContent extends StatelessWidget {
     final contentTextStyle =
         GSAccordionProvider.of(context)?.baseAccordionStyle.contentTextStyle;
 
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [

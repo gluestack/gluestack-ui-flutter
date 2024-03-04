@@ -27,6 +27,7 @@ class GSButtonSpinner extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsButtonSpinnerConfig.ancestorStyle.first];
 
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [

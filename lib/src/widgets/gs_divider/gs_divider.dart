@@ -36,6 +36,7 @@ class GSDivider extends StatelessWidget {
     // Resolve the divider's orientation, defaulting to horizontal if not specified.
     final dividerOrientation = orientation ?? dividerStyle.props?.orientation!;
     // Resolve the GSStyle for the divider
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
         context: context,
         styles: [

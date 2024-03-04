@@ -63,6 +63,7 @@ class GSAccordionIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
         context: context,
         styles: [
