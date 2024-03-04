@@ -80,7 +80,7 @@ class _SwitchExampleState extends State<SwitchExample> {
               ),
               value: val1,
               onToggle: (bool a) {
-                print('switch value: $a');
+                // print('switch value: $a');
               },
             ),
           ],

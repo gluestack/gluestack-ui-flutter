@@ -25,7 +25,7 @@ final class IconButtonStory extends StoryWidget {
           style: GSStyle(color: const Color(0xffffffff)),
         ),
         onPressed: () {
-          print('Icon Button Pressed!');
+          // print('Icon Button Pressed!');
         },
       ),
     );

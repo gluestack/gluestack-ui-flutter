@@ -25,7 +25,7 @@ class GSAccordionTitle extends StatelessWidget {
   final TextAlign? textAlign;
   final TextDirection? textDirection;
   final TextHeightBehavior? textHeightBehavior;
-  final double? textScaleFactor;
+  final TextScaler? textScaler;
   final TextWidthBasis? textWidthBasis;
 
   const GSAccordionTitle({
@@ -43,7 +43,7 @@ class GSAccordionTitle extends StatelessWidget {
     this.textAlign,
     this.textDirection,
     this.textHeightBehavior,
-    this.textScaleFactor,
+    this.textScaler,
     this.textWidthBasis,
     this.bold = false,
     this.highlight = false,
@@ -83,7 +83,7 @@ class GSAccordionTitle extends StatelessWidget {
       textAlign: styler.textAlign ?? textAlign,
       textDirection: textDirection,
       textHeightBehavior: textHeightBehavior,
-      textScaleFactor: textScaleFactor,
+      textScaler: textScaler,
       textWidthBasis: textWidthBasis,
       bold: bold,
       highlight: highlight,

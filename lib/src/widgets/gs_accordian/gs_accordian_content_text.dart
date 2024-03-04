@@ -24,7 +24,7 @@ class GSAccordionContent extends StatelessWidget {
   final TextAlign? textAlign;
   final TextDirection? textDirection;
   final TextHeightBehavior? textHeightBehavior;
-  final double? textScaleFactor;
+  final TextScaler? textScaler;
   final TextWidthBasis? textWidthBasis;
 
   const GSAccordionContent({
@@ -41,7 +41,7 @@ class GSAccordionContent extends StatelessWidget {
     this.textAlign,
     this.textDirection,
     this.textHeightBehavior,
-    this.textScaleFactor,
+    this.textScaler,
     this.textWidthBasis,
     this.bold = false,
     this.highlight = false,
@@ -81,7 +81,7 @@ class GSAccordionContent extends StatelessWidget {
       textAlign: textAlign,
       textDirection: textDirection,
       textHeightBehavior: textHeightBehavior,
-      textScaleFactor: textScaleFactor,
+      textScaler: textScaler,
       textWidthBasis: textWidthBasis,
       bold: bold,
       highlight: highlight,
