@@ -3,6 +3,9 @@ import 'package:gluestack_ui_example/home.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/accordian_example.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook_wrapper.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_default_value_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_disabled_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_with_rounded_corners.dart';
 import 'package:go_router/go_router.dart';
 
 import '../widgets/components/widgets/public.dart';
@@ -141,6 +144,19 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "example-accordion",
           builder: (context, state) => const AccordionExample(),
+        ),
+        GoRoute(
+          path: "accordion-with-rounded-corners",
+          builder: (context, state) =>
+              const AccordionWithRoundedCornersPreview(),
+        ),
+        GoRoute(
+          path: "accordion-disabled-preview",
+          builder: (context, state) => const AccordionDisabledPreview(),
+        ),
+        GoRoute(
+          path: "accordion-default-preview",
+          builder: (context, state) => const AccordionDefaultValuePreview(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
