@@ -3,7 +3,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 class GSAccordionItem extends StatelessWidget {
   final GSAccordionTitle title;
-  final GSAccordionContent? content;
+  final Widget? content;
   final double? radius;
   final bool? isDisabled;
 
