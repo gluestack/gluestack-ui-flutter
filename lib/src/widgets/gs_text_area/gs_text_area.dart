@@ -259,16 +259,16 @@ class _GSTextAreaState extends State<GSTextArea> {
       return styler.onFocus?.borderColor;
     }
 
-    double? resolveFocusBorderWidth() {
-      return styler.onFocus?.borderWidth ?? styler.borderWidth;
-    }
+    // double? resolveFocusBorderWidth() {
+    //   return styler.onFocus?.borderWidth ?? styler.borderWidth;
+    // }
 
     final borderColor = resolveBorderColor();
     final borderWidth = resolveBorderWidth();
     final focusedBorderColor = resolveFocusBorderColor();
     // final focusedBorderWidth = resolveFocusBorderWidth();
-    final hintStyle =
-        widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
+    // final hintStyle =
+    //     widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
 
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {

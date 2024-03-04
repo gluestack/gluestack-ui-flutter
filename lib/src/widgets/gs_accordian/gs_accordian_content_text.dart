@@ -70,12 +70,8 @@ class GSAccordionContent extends StatelessWidget {
   /// The behavior of the text's height. This can be used to modify how text height
   /// is calculated.
   final TextHeightBehavior? textHeightBehavior;
-
-  /// The scale factor to use for the text. Can be used to increase or decrease
-  /// the size of the text.
-  final double? textScaleFactor;
-
-  /// Determines how the width of the text is measured.
+  final TextScaler? textScaler;
+    /// Determines how the width of the text is measured.
   final TextWidthBasis? textWidthBasis;
 
   const GSAccordionContent({
@@ -92,7 +88,7 @@ class GSAccordionContent extends StatelessWidget {
     this.textAlign,
     this.textDirection,
     this.textHeightBehavior,
-    this.textScaleFactor,
+    this.textScaler,
     this.textWidthBasis,
     this.bold = false,
     this.highlight = false,
@@ -132,7 +128,7 @@ class GSAccordionContent extends StatelessWidget {
       textAlign: textAlign,
       textDirection: textDirection,
       textHeightBehavior: textHeightBehavior,
-      textScaleFactor: textScaleFactor,
+      textScaler: textScaler,
       textWidthBasis: textWidthBasis,
       bold: bold,
       highlight: highlight,

@@ -60,7 +60,7 @@ class _IconButtonExampleState extends State<IconButtonExample> {
             style: GSStyle(color: const Color(0xffffffff)),
           ),
           onPressed: () {
-            print('Icon Button Pressed!');
+            // print('Icon Button Pressed!');
           },
         ),
         controls: Column(
