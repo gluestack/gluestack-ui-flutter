@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/token/screen_breakpoint.dart';
+import 'package:gluestack_ui/src/widgets/gs_app/gs_theme.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 
 bool isBaseScreen(BuildContext context) {
@@ -47,7 +48,7 @@ GSStyle? resolveStylesDeprecated(
   Map<String, GSStyle?>? descendantStyles,
   List<String> descendantStyleKeys = const [],
 }) {
-  final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+  final isDarkTheme = GSTheme.of(context).brightness == Brightness.dark;
 
   GSStyle? temp = variantStyle != null
       ? variantStyle.merge(inlineStyle,
@@ -153,13 +154,12 @@ GSStyle? resolveStylesDeprecated(
 }
 
 //Refactored style, replace the above with this
-
 GSStyle resolveStyles(
     {required BuildContext context,
     List<GSStyle?> styles = const [],
     GSStyle? inlineStyle,
     bool isFirst = false}) {
-  final isDarkTheme = Theme.of(context).brightness == Brightness.dark;
+  final isDarkTheme = GSTheme.of(context).brightness == Brightness.dark;
   final isHovered = GSStyleBuilderProvider.hoverStatus(context);
   final isFocused = GSStyleBuilderProvider.focusedStatus(context);
 
@@ -337,7 +337,6 @@ GSStyle resolveStyles(
 
   return currentGSStyle!;
 }
-
 
 //For Actions
 GSActions? mapToGSActions(dynamic action) {

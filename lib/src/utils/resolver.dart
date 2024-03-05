@@ -141,7 +141,7 @@ double? resolveSpaceFromString(String? space) {
 }
 
 EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
-    {String? paddingy}) {
+    {String? paddingy, String? side = 'b'}) {
   if (padding == null) {
     return null;
   }
@@ -159,6 +159,17 @@ EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
   }
   if (type == 'vertical') {
     return EdgeInsets.symmetric(vertical: resolveSpaceFromString(padding)!);
+  }
+  if (type == 'only') {
+    if (side == 'b') {
+      return EdgeInsets.only(bottom: resolveSpaceFromString(padding)!);
+    } else if (side == 'r') {
+      return EdgeInsets.only(right: resolveSpaceFromString(padding)!);
+    } else if (side == 'l') {
+      return EdgeInsets.only(left: resolveSpaceFromString(padding)!);
+    } else {
+      return EdgeInsets.only(top: resolveSpaceFromString(padding)!);
+    }
   }
   return null;
 }
@@ -234,6 +245,8 @@ GSVariants? resolveVariantFromString(String? variant) {
     'underlined': GSVariants.underlined,
     'link': GSVariants.link,
     'accent': GSVariants.accent,
+    'filled': GSVariants.filled,
+    'unfilled': GSVariants.unfilled,
   };
 
   return variant != null ? variantMap[variant] : null;
@@ -442,4 +455,17 @@ GSOutlineStyle? resolveOutlineStyleFromString({required String? outlineStyle}) {
     'solid': GSOutlineStyle.solid,
   };
   return outlineStyleMap[outlineStyle];
+}
+
+TextAlign? resolveTextAlignmentFromString(String? textAlign) {
+  const textAlignmentMap = {
+    'center': TextAlign.center,
+    'start': TextAlign.start,
+    'end': TextAlign.end,
+    'left': TextAlign.left,
+    'right': TextAlign.right,
+    'justify': TextAlign.justify,
+  };
+
+  return textAlign != null ? textAlignmentMap[textAlign] : null;
 }

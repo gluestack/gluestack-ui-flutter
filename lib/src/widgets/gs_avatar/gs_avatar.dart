@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -9,7 +8,7 @@ import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_image/gs_image.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-enum GSAvatarSizes{
+enum GSAvatarSizes {
   $xs,
   $sm,
   $md,
@@ -18,10 +17,11 @@ enum GSAvatarSizes{
   $2xl,
 }
 
-enum GSAvatarRadius{
-  $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full
-}
+enum GSAvatarRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
+///
+/// Gluestack Avatar.
+///
 class GSAvatar extends StatelessWidget {
   final GSAvatarSizes? size;
   final GSAvatarRadius? radius;
@@ -53,7 +53,7 @@ class GSAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final avatarSize = size?.toGSSize ?? avatarStyle.props?.size;
-final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
+    final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
 
     GSStyle styler = resolveStyles(
       context: context,
@@ -81,9 +81,10 @@ final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
                     )
                   : null,
               borderRadius: avatarRadius != GSBorderRadius.$full
-                  ? BorderRadius.circular(GSAvatarStyle.borderRadius[avatarRadius] ??
-                      styler.borderRadius ??
-                      50)
+                  ? BorderRadius.circular(
+                      GSAvatarStyle.borderRadius[avatarRadius] ??
+                          styler.borderRadius ??
+                          50)
                   : null,
             ),
             foregroundDecoration: foregroundImage != null
@@ -101,29 +102,24 @@ final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
                   )
                 : BoxDecoration(
                     color: styler.color,
-                    image: avatarImage != null
-                        ? avatarImage?.imageType == GSImageType.network
-                            ? DecorationImage(
-                                image: NetworkImage(avatarImage!.path),
-                                onError: onForegroundImageError,
-                                fit: BoxFit.cover,
-                              )
-                            : avatarImage?.imageType == GSImageType.asset
-                                ? DecorationImage(
-                                    image: AssetImage(avatarImage!.path),
-                                    onError: onForegroundImageError,
-                                    fit: BoxFit.cover,
-                                  )
-                                : DecorationImage(
-                                    image: FileImage(File(avatarImage!.path)),
-                                    onError: onForegroundImageError,
-                                    fit: BoxFit.cover,
-                                  )
-                        : null,
+                    image: switch (avatarImage?.imageType) {
+                      GSImageType.network => DecorationImage(
+                          image: NetworkImage(avatarImage!.path),
+                          onError: onForegroundImageError,
+                          fit: BoxFit.cover,
+                        ),
+                      GSImageType.asset => DecorationImage(
+                          image: AssetImage(avatarImage!.path),
+                          onError: onForegroundImageError,
+                          fit: BoxFit.cover,
+                        ),
+                      null => null,
+                    },
                     borderRadius: BorderRadius.circular(
-                        GSAvatarStyle.borderRadius[avatarRadius] ??
-                            styler.borderRadius ??
-                            50),
+                      GSAvatarStyle.borderRadius[avatarRadius] ??
+                          styler.borderRadius ??
+                          50,
+                    ),
                   ),
             child: Center(child: fallBackText),
           ),

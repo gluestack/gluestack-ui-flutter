@@ -1,54 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_ui_example/example/public.dart';
-import 'package:gluestack_ui_example/example/scroll_example.dart';
 import 'package:gluestack_ui_example/home.dart';
-import 'package:gluestack_ui_example/widgets/storybook.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/avatar_group_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/avatar_with_image_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/avatar_with_label_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/badge_with_avatar_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/button_group_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/button_with_full_width_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/button_with_icon_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/checkbox_group_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/checkbox_with_help_text_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/controlled_checkbox_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/divider_variants_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/fab_placement_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/fab_with_icon_and_text_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/fab_with_icon_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/hstack_reversed_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/icon_button_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/input_with_formcontrol_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/input_with_icon_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/link_button_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/link_with_icon_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/link_with_text_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/loading_button_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/multiple_checkbox_horizontal_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/multiple_checkbox_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/multiple_radio_button_horizontal_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/multiple_radio_button_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/pressable_with_states_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/progress_colors_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/progress_custom_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/progress_value_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/radio_button_controlled_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/radio_button_with_formcontrol_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/radio_button_with_help_text_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/spinner_colors_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/spinner_with_label_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/switch_checked_state_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/switch_color_scheme_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/switch_with_label_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/textarea_formcontrol_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/uncontrolled_checkbox_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_widgets/vstack_reversed_preview.dart';
-import 'package:gluestack_ui_example/widgets/storybook_wrapper.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/avatar_group_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/avatar_with_image_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/badge_with_avatar_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/button_group_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/button_with_full_width_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/button_with_icon_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/checkbox_group_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/checkbox_with_help_text_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/controlled_checkbox_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/divider_variants_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/fab_placement_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/fab_with_icon_and_text_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/fab_with_icon_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/formcontrol_checkbox_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/hstack_reversed_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/icon_button_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/input_with_formcontrol_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/input_with_icon_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/link_button_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/link_with_icon_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/link_with_text_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/loading_button_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/multiple_checkbox_horizontal_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/multiple_checkbox_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/multiple_radio_button_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/pressable_with_states_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/progress_colors_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/progress_custom_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/progress_value_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/radio_button_controlled_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/radio_button_with_formcontrol_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/radio_button_with_help_text_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/spinner_colors_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/spinner_with_label_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/switch_checked_state_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/switch_color_scheme_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/textarea_formcontrol_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/uncontrolled_checkbox_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/vstack_reversed_preview.dart';
 import 'package:go_router/go_router.dart';
 
-import '../widgets/storybook_widgets/formcontrol_checkbox_preview.dart';
+import 'package:gluestack_ui_example/widgets/components/widgets/accordian_example.dart';
+import 'package:gluestack_ui_example/widgets/storybook/storybook.dart';
+import 'package:gluestack_ui_example/widgets/storybook/storybook_wrapper.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_default_value_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_disabled_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_with_rounded_corners.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/nested_accordion_preview.dart';
+import 'package:go_router/go_router.dart';
+
+import '../widgets/components/widgets/public.dart';
+import '../widgets/storybook/widgets/avatar_with_label_preview.dart';
+import '../widgets/storybook/widgets/multiple_radio_button_horizontal_preview.dart';
+import '../widgets/storybook/widgets/public.dart';
+import '../widgets/storybook/widgets/switch_with_label_preview.dart';
 
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
@@ -349,6 +355,35 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "example-scroll",
           builder: (context, state) => const ScrollExample(),
+        ),
+        GoRoute(
+          path: "example-icon-button",
+          builder: (context, state) => const IconButtonExample(),
+        ),
+        GoRoute(
+          path: "internal-color-test",
+          builder: (context, state) => const InternalColorTestScreen(),
+        ),
+        GoRoute(
+          path: "example-accordion",
+          builder: (context, state) => const AccordionExample(),
+        ),
+        GoRoute(
+          path: "accordion-with-rounded-corners",
+          builder: (context, state) =>
+              const AccordionWithRoundedCornersPreview(),
+        ),
+        GoRoute(
+          path: "accordion-disabled-preview",
+          builder: (context, state) => const AccordionDisabledPreview(),
+        ),
+        GoRoute(
+          path: "accordion-default-preview",
+          builder: (context, state) => const AccordionDefaultValuePreview(),
+        ),
+        GoRoute(
+          path: "nested-accordion-preview",
+          builder: (context, state) => const NestedAccordionPreview(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
