@@ -18,9 +18,7 @@ Here are few helpful links to give you an idea of what gluestack-ui-flutter is c
 
 To keep track of latest developments in gluestack-ui-flutter you can refer to this link: https://github.com/gluestack/gluestack-ui-flutter/tree/feature/core-widgets.
 
-_We are inspired from gluestack-ui to create gluestack-ui-flutter. Please refer to the gluestack-ui-flutter documentation available at the following link for more information._
-
-[gluestack-ui-flutter](https://flutter.gluestack.io/docs/overview/introduction)
+_We are inspired from gluestack-ui to create gluestack-ui-flutter. Please refer to the gluestack-ui-flutter documentation available at the following link for more information: https://flutter.gluestack.io/docs/overview/introduction_
 
 ## Features
 
