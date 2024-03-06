@@ -18,7 +18,9 @@ Here are few helpful links to give you an idea of what gluestack-ui-flutter is c
 
 To keep track of latest developments in gluestack-ui-flutter you can refer to this link: https://github.com/gluestack/gluestack-ui-flutter/tree/feature/core-widgets.
 
-_We are inspired from gluestack-ui to create gluestack-ui-flutter. Flutter documentation is in progress._
+_We are inspired from gluestack-ui to create gluestack-ui-flutter. Please refer to the gluestack-ui-flutter documentation available at the following link for more information._
+
+[gluestack-ui-flutter](https://flutter.gluestack.io/docs/overview/introduction)
 
 ## Features
 
@@ -32,7 +34,11 @@ _We are inspired from gluestack-ui to create gluestack-ui-flutter. Flutter docum
 
 - **Responsive design:** The widgets are built using modern web design principles and are fully responsive, so they work seamlessly across a wide range of devices and screen sizes.
 
+- **Well-documented:** The package comes with comprehensive documentation for each widget, including a list of props and examples, to help you get up and running quickly.
+
 - **Easy to use:** The widgets are designed to be easy to use and integrate into your existing Flutter applications. Simply install the library and import the widgets you need.
+
+- **Independent from Material Design Standards:** Traditional UI frameworks like Material Design offer predefined design principles and guidelines. While beneficial, they may not always align with every application's specific aesthetic or functional requirements. By embracing independence from Material Design, developers gain the freedom to craft UI components tailored to their application's unique needs and branding. Furthermore, decoupling from Material Design can optimize performance, particularly for lightweight and fast-loading interfaces. This independence grants developers greater control over performance characteristics, potentially enhancing user experiences and reducing resource consumption.
 
 - **Frequent updates:** We are constantly working on improving the library and adding new widgets. Follow us on GitHub to stay up-to-date on the latest releases and features.
 
@@ -57,11 +63,11 @@ dependencies:
 
 ## Usage
 
-Wrap the `MaterialApp` with `GluestackProvider`.
+Wrap the `GSApp` with `GluestackProvider`.
 
 ```dart
 GluestackProvider(
-  child: MaterialApp.router(
+  child: GSApp.router(
     ....
 )
 ```
@@ -94,7 +100,7 @@ GSButton(
 )
 ```
 
-All Gluestack widgets support dark theme. Package detects the current theme from Flutter's inbuilt `Theme.of(context).brightness`. Hence, you can manage the theme mode from MaterialApp itself using the state management of your choice.
+All Gluestack widgets support dark theme. Package detects the current theme from Gluestack's inbuilt `GSTheme.of(context).brightness`. Hence, you can manage the theme mode from GSApp itself using the state management of your choice.
 
 ## Customize tokens via token config
 
@@ -113,7 +119,7 @@ GluestackProvider(
     ),
     // More token configurations....
   ),
-  child: MaterialApp.router(
+  child: GSApp.router(
     ....
   ),
 )
@@ -150,7 +156,7 @@ GluestackProvider(
     ...
   ),
   gluestackTokenConfig: GluestackTokenConfig(...),
-  child: MaterialApp.router(
+  child: GSApp.router(
     ...
   ),
 )
@@ -158,7 +164,7 @@ GluestackProvider(
 
 ## Performance
 
-We performed performance benchmark after taking average of 10 samples from our [KitchenSink app](https://kitchensink-23184.web.app/) after using both GlueStack Material and GlueStack Non-Material components and we're happy to share the following result with you.
+After conducting a comprehensive performance benchmark, comprising an average of 10 samples obtained from our [KitchenSink app](https://kitchensink-23184.web.app/) utilizing both gluestack-ui-flutter with Material and gluestack-ui-flutter with Non-Material widgets, we are pleased to present the ensuing results for your review.
 
 ![Performance Benchmark](https://github.com/gluestack/gluestack-ui-flutter/blob/main/assets/performance_graph_1.svg?raw=true)
 
