@@ -121,6 +121,8 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionIcon;
   Map<String, dynamic>? accordionItem;
 
+  Map<String, dynamic>? stepper;
+
   GluestackCustomConfig({
     //accordion
     this.accordion,
@@ -226,6 +228,9 @@ class GluestackCustomConfig {
 
     //input
     this.input,
+
+    //stepper
+    this.stepper,
 //     getIt<GluestackCustomConfig>().buttonText
   }) {
     Map<String, dynamic> mergeConfigs(
@@ -358,6 +363,9 @@ class GluestackCustomConfig {
 
     //input
     input = mergeConfigs(inputData, input);
+
+    //stepper
+    stepper = mergeConfigs(stepperData, stepper);
   }
 }
 
