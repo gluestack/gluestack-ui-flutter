@@ -23,7 +23,7 @@ class ___StepperStoryState extends State<_StepperStory> {
   @override
   Widget build(BuildContext context) {
     return GSStepper(
-      keepAllContentOpen: false,
+      keepAllContentAlive: false,
       currentStep: _index,
       size: GSSizes.values[context.knobs
           .options(label: 'Size', initial: 1, options: sizeOptions)],

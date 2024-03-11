@@ -106,8 +106,6 @@ GSStepper(
               }
             },
             onStepTapped: (int index) {
-              print("CURRENNT INDEX");
-              print(_index);
               setState(() {
                 _index = index;
               });
@@ -115,7 +113,6 @@ GSStepper(
             steps: <GSStep>[
               GSStep(
                 title: const Text('Onboarding'),
-                isActive: true,
                 content: Container(
                   alignment: Alignment.centerLeft,
                   child: const Text('Welcome!!'),
@@ -123,7 +120,6 @@ GSStepper(
               ),
               GSStep(
                 title: const Text('Project Setup'),
-                isActive: true,
                 content: Container(
                   alignment: Alignment.centerLeft,
                   child: const Text('Setup the base project.'),
@@ -131,14 +127,13 @@ GSStepper(
               ),
               GSStep(
                 title: const Text('Code'),
-                isActive: true,
                 content: Container(
                   alignment: Alignment.centerLeft,
                   child: const Text('Start your coding journey.'),
                 ),
               ),
             ],
-            keepAllContentOpen: true,
+            // keepAllContentAlive: true,
           ),
           controls: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

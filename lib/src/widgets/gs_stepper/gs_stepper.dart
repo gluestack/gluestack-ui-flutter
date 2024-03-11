@@ -18,6 +18,9 @@ enum GSStepState {
   /// A step that is disabled and does not to react to taps.
   disabled,
 
+  /// A step that is inactive .
+  inactive,
+
   /// A step that is currently having an error. e.g. the user has submitted wrong
   /// input.
   error,
@@ -120,20 +123,19 @@ class GSStepper extends StatefulWidget {
     this.onStepCancel,
     this.controlsBuilder,
     this.margin,
-    // this.connectorColor,
     this.connectorThickness,
     this.stepIconBuilder,
     this.size,
     this.circleColor,
     this.connectorLineColor,
-    required this.keepAllContentOpen,
+    this.keepAllContentAlive = false,
   }) : assert(0 <= currentStep && currentStep < steps.length);
 
   final GSStyle? style;
   final GSSizes? size;
   final Color? circleColor;
   final Color? connectorLineColor;
-  final bool keepAllContentOpen;
+  final bool? keepAllContentAlive;
   final List<GSStep> steps;
   final ScrollPhysics? physics;
   final ScrollController? controller;
@@ -214,6 +216,10 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     return false;
   }
 
+  Color generateInactiveColor(Color color) {
+    return color.withOpacity(0.5);
+  }
+
   Widget _buildLine(bool visible, bool isActive, Color connectorLineColor) {
     return Container(
       width: visible ? widget.connectorThickness ?? 1.0 : 0.0,
@@ -232,6 +238,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     }
     switch (state) {
       case GSStepState.indexed:
+      case GSStepState.inactive:
       case GSStepState.disabled:
         return Text(
           '${index + 1}',
@@ -307,7 +314,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildIcon(int index, Color circleColor) {
+  Widget _buildIcon(int index, Color circleColor, Color inactiveCircleColor) {
     if (widget.steps[index].state != _oldStates[index]) {
       return AnimatedCrossFade(
         firstChild: _buildCircle(index, true, circleColor),
@@ -321,6 +328,9 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
         duration: kThemeAnimationDuration,
       );
     } else {
+      if (widget.steps[index].state == GSStepState.inactive) {
+        return _buildCircle(index, false, inactiveCircleColor);
+      }
       if (widget.steps[index].state != GSStepState.error) {
         return _buildCircle(index, false, circleColor);
       } else {
@@ -378,6 +388,11 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
         return titleTextStyle!.copyWith(
           color: _isDark() ? _kErrorDark : _kErrorLight,
         );
+
+      case GSStepState.inactive:
+        return titleTextStyle!.copyWith(
+          color: _isDark() ? _kDisabledDark : _kDisabledLight,
+        );
     }
   }
 
@@ -388,6 +403,11 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       case GSStepState.complete:
         return subtitleTextStyle!;
       case GSStepState.disabled:
+        return subtitleTextStyle!.copyWith(
+          color: _isDark() ? _kDisabledDark : _kDisabledLight,
+        );
+
+      case GSStepState.inactive:
         return subtitleTextStyle!.copyWith(
           color: _isDark() ? _kDisabledDark : _kDisabledLight,
         );
@@ -405,6 +425,11 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       case GSStepState.complete:
         return contentTextStyle!;
       case GSStepState.disabled:
+        return contentTextStyle!.copyWith(
+          color: _isDark() ? _kDisabledDark : _kDisabledLight,
+        );
+
+      case GSStepState.inactive:
         return contentTextStyle!.copyWith(
           color: _isDark() ? _kDisabledDark : _kDisabledLight,
         );
@@ -461,9 +486,11 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     TextStyle? titleTextStyle,
     TextStyle? subtitleTextStyle,
     Color? circleColor,
+    Color? inactiveCircleColor,
     Color? connectorLineColor,
   }) {
     final bool isActive = widget.steps[index].isActive;
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Row(
@@ -471,7 +498,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
           Column(
             children: <Widget>[
               _buildLine(!_isFirst(index), isActive, connectorLineColor!),
-              _buildIcon(index, circleColor!),
+              _buildIcon(index, circleColor!, inactiveCircleColor!),
               _buildLine(!_isLast(index), isActive, connectorLineColor),
             ],
           ),
@@ -507,34 +534,55 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
             ),
           ),
         ),
-        AnimatedCrossFade(
-          firstChild: Container(height: 0.0),
-          secondChild: Container(
-            margin: widget.margin ??
-                const EdgeInsetsDirectional.only(
-                  start: 60.0,
-                  end: 24.0,
-                  bottom: 24.0,
+        widget.keepAllContentAlive ?? false
+            ? Container(
+                margin: widget.margin ??
+                    const EdgeInsetsDirectional.only(
+                      start: 60.0,
+                      end: 24.0,
+                      bottom: 24.0,
+                    ),
+                child: Column(
+                  children: <Widget>[
+                    AnimatedDefaultTextStyle(
+                        style: _contentStyle(index, contentTextStyle),
+                        duration: kThemeAnimationDuration,
+                        curve: Curves.fastOutSlowIn,
+                        child: widget.steps[index].content),
+                    _buildVerticalControls(index),
+                  ],
                 ),
-            child: Column(
-              children: <Widget>[
-                AnimatedDefaultTextStyle(
-                    style: _contentStyle(index, contentTextStyle),
-                    duration: kThemeAnimationDuration,
-                    curve: Curves.fastOutSlowIn,
-                    child: widget.steps[index].content),
-                _buildVerticalControls(index),
-              ],
-            ),
-          ),
-          firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
-          secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
-          sizeCurve: Curves.fastOutSlowIn,
-          crossFadeState: _isCurrent(index)
-              ? CrossFadeState.showSecond
-              : CrossFadeState.showFirst,
-          duration: kThemeAnimationDuration,
-        ),
+              )
+            : AnimatedCrossFade(
+                firstChild: Container(height: 0.0),
+                secondChild: Container(
+                  margin: widget.margin ??
+                      const EdgeInsetsDirectional.only(
+                        start: 60.0,
+                        end: 24.0,
+                        bottom: 24.0,
+                      ),
+                  child: Column(
+                    children: <Widget>[
+                      AnimatedDefaultTextStyle(
+                          style: _contentStyle(index, contentTextStyle),
+                          duration: kThemeAnimationDuration,
+                          curve: Curves.fastOutSlowIn,
+                          child: widget.steps[index].content),
+                      _buildVerticalControls(index),
+                    ],
+                  ),
+                ),
+                firstCurve:
+                    const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
+                secondCurve:
+                    const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
+                sizeCurve: Curves.fastOutSlowIn,
+                crossFadeState: _isCurrent(index)
+                    ? CrossFadeState.showSecond
+                    : CrossFadeState.showFirst,
+                duration: kThemeAnimationDuration,
+              ),
       ],
     );
   }
@@ -543,7 +591,8 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       {TextStyle? titleTextStyle,
       TextStyle? subtitleTextStyle,
       Color? circleColor,
-      Color? connectorLineColor}) {
+      Color? connectorLineColor,
+      Color? inactiveCircleColor}) {
     final List<Widget> children = <Widget>[
       for (int i = 0; i < widget.steps.length; i += 1) ...<Widget>[
         GestureDetector(
@@ -564,7 +613,9 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
                       const SizedBox(
                         height: 24.0,
                       ),
-                    Center(child: _buildIcon(i, circleColor!)),
+                    Center(
+                        child:
+                            _buildIcon(i, circleColor!, inactiveCircleColor!)),
                     if (widget.steps[i].label != null)
                       SizedBox(
                         height: 24.0,
@@ -652,6 +703,8 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     final circleColor = widget.circleColor ?? styler.color;
     final connectorLineColor = widget.connectorLineColor ?? styler.bg;
 
+    final inactiveCircleColor = generateInactiveColor(circleColor!);
+
     switch (widget.type) {
       case GSStepperType.vertical:
         return ListView(
@@ -682,6 +735,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
                         subtitleTextStyle: styler.subtitleTextStyle,
                         index: i,
                         circleColor: circleColor,
+                        inactiveCircleColor: inactiveCircleColor,
                         connectorLineColor: connectorLineColor),
                   ),
                   _buildVerticalBody(
@@ -696,6 +750,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
             titleTextStyle: styler.titleTextStyle,
             subtitleTextStyle: styler.subtitleTextStyle,
             circleColor: circleColor,
+            inactiveCircleColor: inactiveCircleColor,
             connectorLineColor: connectorLineColor);
     }
   }
