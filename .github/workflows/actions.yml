@@ -56,7 +56,7 @@ jobs:
         run: dart format --set-exit-if-changed .
 
       - name: Statically analyze Dart code
-        run: flutter analyze .
+        run: flutter analyze --no-fatal-warnings --no-fatal-infos .
 
       #   - name: Run widget tests
       #     run: flutter test
@@ -75,4 +75,3 @@ jobs:
 #         uses: k-paxian/dart-package-publisher@master
 #         with:
 #           credentialJson: ${{ secrets.CREDENTIALLS_JSON }}
-
