@@ -121,6 +121,8 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionIcon;
   Map<String, dynamic>? accordionItem;
 
+  Map<String, dynamic>? modalBottomSheet;
+
   GluestackCustomConfig({
     //accordion
     this.accordion,
@@ -226,6 +228,7 @@ class GluestackCustomConfig {
 
     //input
     this.input,
+    this.modalBottomSheet,
 //     getIt<GluestackCustomConfig>().buttonText
   }) {
     Map<String, dynamic> mergeConfigs(
@@ -358,6 +361,8 @@ class GluestackCustomConfig {
 
     //input
     input = mergeConfigs(inputData, input);
+
+    modalBottomSheet = mergeConfigs(modalBottomSheetData, modalBottomSheet);
   }
 }
 
