@@ -669,11 +669,11 @@ class _BottomSheetState extends State<BottomSheet> {
   bool get _dismissUnderway =>
       widget.animationController!.status == AnimationStatus.reverse;
 
-  Set<MaterialState> dragHandleMaterialState = <MaterialState>{};
+  Set<GSBottomSheetState> dragHandleGSBottomSheetState = <GSBottomSheetState>{};
 
   void _handleDragStart(DragStartDetails details) {
     setState(() {
-      dragHandleMaterialState.add(MaterialState.dragged);
+      dragHandleGSBottomSheetState.add(GSBottomSheetState.dragged);
     });
     widget.onDragStart?.call(details);
   }
@@ -702,7 +702,7 @@ class _BottomSheetState extends State<BottomSheet> {
       return;
     }
     setState(() {
-      dragHandleMaterialState.remove(MaterialState.dragged);
+      dragHandleGSBottomSheetState.remove(GSBottomSheetState.dragged);
     });
     bool isClosing = false;
     if (details.velocity.pixelsPerSecond.dy > _minFlingVelocity) {
@@ -742,12 +742,13 @@ class _BottomSheetState extends State<BottomSheet> {
   }
 
   void _handleDragHandleHover(bool hovering) {
-    if (hovering != dragHandleMaterialState.contains(MaterialState.hovered)) {
+    if (hovering !=
+        dragHandleGSBottomSheetState.contains(GSBottomSheetState.hovered)) {
       setState(() {
         if (hovering) {
-          dragHandleMaterialState.add(MaterialState.hovered);
+          dragHandleGSBottomSheetState.add(GSBottomSheetState.hovered);
         } else {
-          dragHandleMaterialState.remove(MaterialState.hovered);
+          dragHandleGSBottomSheetState.remove(GSBottomSheetState.hovered);
         }
       });
     }
@@ -776,19 +777,17 @@ class _BottomSheetState extends State<BottomSheet> {
         widget.showDragHandle ?? (widget.enableDrag && (false));
 
     Widget? dragHandle;
+
     if (showDragHandle) {
       dragHandle = _DragHandle(
         onSemanticsTap: widget.onClosing,
         handleHover: _handleDragHandleHover,
-        // materialState: dragHandleMaterialState,
         dragHandleColor: widget.dragHandleColor,
         dragHandleSize: widget.dragHandleSize,
       );
-      // Only add [_BottomSheetGestureDetector] to the drag handle when the rest of the
-      // bottom sheet is not draggable. If the whole bottom sheet is draggable,
-      // no need to add it.
+
       if (!widget.enableDrag) {
-        dragHandle = _BottomSheetGestureDetector(
+        dragHandle = _BottomSheetDragHandlerGestureDetector(
           onVerticalDragStart: _handleDragStart,
           onVerticalDragUpdate: _handleDragUpdate,
           onVerticalDragEnd: _handleDragEnd,
@@ -804,29 +803,57 @@ class _BottomSheetState extends State<BottomSheet> {
         color: color,
         shape: shape,
         borderRadius: shape != BoxShape.circle
-            ? BorderRadius.circular(
-                GSModalBottomSheetStyle.borderRadius[borderRadius] ??
-                    styler.borderRadius ??
-                    20)
+            ? BorderRadius.only(
+                topLeft: Radius.circular(
+                    GSModalBottomSheetStyle.borderRadius[borderRadius] ??
+                        styler.borderRadius ??
+                        20),
+                topRight: Radius.circular(
+                    GSModalBottomSheetStyle.borderRadius[borderRadius] ??
+                        styler.borderRadius ??
+                        20),
+              )
             : null,
         boxShadow: widget.boxShadow,
       ),
-      child: NotificationListener<DraggableScrollableNotification>(
-        onNotification: extentChanged,
-        child: !showDragHandle
-            ? widget.builder(context)
-            : Stack(
-                alignment: Alignment.topCenter,
-                children: <Widget>[
-                  dragHandle!,
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: kMinInteractiveDimension),
-                    child: widget.builder(context),
-                  ),
-                ],
+      child: widget.enableDrag
+          ? _BottomSheetGestureDetector(
+              onVerticalDragStart: _handleDragStart,
+              onVerticalDragUpdate: _handleDragUpdate,
+              onVerticalDragEnd: _handleDragEnd,
+              child: NotificationListener<DraggableScrollableNotification>(
+                onNotification: extentChanged,
+                child: !showDragHandle
+                    ? widget.builder(context)
+                    : Stack(
+                        alignment: Alignment.topCenter,
+                        children: <Widget>[
+                          dragHandle!,
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: kMinInteractiveDimension),
+                            child: widget.builder(context),
+                          ),
+                        ],
+                      ),
               ),
-      ),
+            )
+          : NotificationListener<DraggableScrollableNotification>(
+              onNotification: extentChanged,
+              child: !showDragHandle
+                  ? widget.builder(context)
+                  : Stack(
+                      alignment: Alignment.topCenter,
+                      children: <Widget>[
+                        dragHandle!,
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: kMinInteractiveDimension),
+                          child: widget.builder(context),
+                        ),
+                      ],
+                    ),
+            ),
     );
 
     if (constraints != null) {
@@ -844,7 +871,7 @@ class _BottomSheetState extends State<BottomSheet> {
   }
 }
 
-enum MaterialState {
+enum GSBottomSheetState {
   hovered,
 
   focused,
@@ -876,7 +903,7 @@ class _DragHandle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size handleSize = dragHandleSize ?? Size(10, 10);
+    final Size handleSize = dragHandleSize ?? const Size(10, 10);
 
     return MouseRegion(
       onEnter: (PointerEnterEvent event) => handleHover(true),
@@ -893,7 +920,7 @@ class _DragHandle extends StatelessWidget {
               width: handleSize.width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(handleSize.height / 2),
-                  color: Color.fromARGB(0, 9, 190, 54)),
+                  color: dragHandleColor),
             ),
           ),
         ),
@@ -904,6 +931,31 @@ class _DragHandle extends StatelessWidget {
 
 class _BottomSheetGestureDetector extends StatelessWidget {
   const _BottomSheetGestureDetector({
+    required this.child,
+    required this.onVerticalDragStart,
+    required this.onVerticalDragUpdate,
+    required this.onVerticalDragEnd,
+  });
+
+  final Widget child;
+  final GestureDragStartCallback onVerticalDragStart;
+  final GestureDragUpdateCallback onVerticalDragUpdate;
+  final GestureDragEndCallback onVerticalDragEnd;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onVerticalDragStart: onVerticalDragStart,
+      onVerticalDragUpdate: onVerticalDragUpdate,
+      onVerticalDragEnd: onVerticalDragEnd,
+      behavior: HitTestBehavior.translucent,
+      child: child,
+    );
+  }
+}
+
+class _BottomSheetDragHandlerGestureDetector extends StatelessWidget {
+  const _BottomSheetDragHandlerGestureDetector({
     required this.child,
     required this.onVerticalDragStart,
     required this.onVerticalDragUpdate,

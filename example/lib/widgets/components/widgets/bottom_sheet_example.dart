@@ -88,7 +88,7 @@ class _BottomModalSheetExampleState extends State<BottomModalSheetExample> {
             onPressed: () {
               GSModalBottomSheet.showModalBottomSheet<void>(
                 borderRadius: selectedBorderRadiusOption,
-                showDragHandle: true,
+                //enableDrag: false,
                 context: context,
                 builder: (BuildContext context) {
                   return SizedBox(
