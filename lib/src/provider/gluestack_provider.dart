@@ -1,3 +1,5 @@
+import 'package:gluestack_ui/src/theme/config/icon_button/icon_button.dart';
+
 import 'provider.dart';
 
 final getIt = GetIt.instance;
@@ -121,7 +123,14 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionIcon;
   Map<String, dynamic>? accordionItem;
 
+  //Icon Button
+  Map<String, dynamic>? iconButton;
+
+
   GluestackCustomConfig({
+    //Icon button 
+    this.iconButton,
+
     //accordion
     this.accordion,
     this.accordionHeader,
@@ -248,6 +257,8 @@ class GluestackCustomConfig {
 
       return mergedMap;
     }
+
+    iconButton = mergeConfigs(iconButtonData, iconButton);
 
     //accordion
     accordion = mergeConfigs(accordionData, accordion);

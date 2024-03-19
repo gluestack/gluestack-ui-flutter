@@ -12,7 +12,6 @@ class IconButtonExample extends StatefulWidget {
 
 class _IconButtonExampleState extends State<IconButtonExample> {
   final List<GSIconButtonSizes> dropdownSizeOptions = [
-    GSIconButtonSizes.$xs,
     GSIconButtonSizes.$sm,
     GSIconButtonSizes.$md,
     GSIconButtonSizes.$lg,
@@ -31,7 +30,8 @@ class _IconButtonExampleState extends State<IconButtonExample> {
     var code = '''
       GSIconButton(
           size: GSIconButtonSizes.\$md,
-          style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
+          style: GSStyle(borderRadius: 8, bg: const Color(0xff00aaff)),
+          showHighlight: false,
           icon: GSIcon(
                icon: Icons.add_a_photo,
                style: GSStyle(color: const Color(0xffffffff)),
@@ -53,11 +53,11 @@ class _IconButtonExampleState extends State<IconButtonExample> {
       body: BaseLayout(
         code: code,
         component: GSIconButton(
+          showHighlight: false,
           size: selectedSizeOption,
-          style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
-          icon: GSIcon(
+          style: GSStyle(borderRadius: 8, bg: const Color(0xff00aaff)),
+          icon: const GSIcon(
             icon: Icons.add_a_photo,
-            style: GSStyle(color: const Color(0xffffffff)),
           ),
           onPressed: () {
             // print('Icon Button Pressed!');
