@@ -6,7 +6,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_navigation_rail/gs_navigation_rail_style.dart';
 
-const double _kCircularIndicatorDiameter = 56;
+const double _kCircularIndicatorDiameter = 60;
 const double _kIndicatorHeight = 32;
 const Duration kThemeAnimationDuration = Duration(milliseconds: 200);
 const double _kIndicatorWidth = 64;
@@ -16,7 +16,7 @@ const double _verticalDestinationPaddingWithLabel = 16.0;
 const Widget _verticalSpacer = SizedBox(height: 8.0);
 const double _verticalIconLabelSpacing = 4.0;
 const double _verticalDestinationSpacing = 12.0;
-const double _horizontalDestinationSpacing = 12.0;
+const double _verticalSpacing = 25;
 
 enum GSNavigationRailLabelType {
   none,
@@ -24,6 +24,12 @@ enum GSNavigationRailLabelType {
   selected,
 
   all,
+}
+
+enum GSNavigationRailAlignment {
+  start,
+  center,
+  end,
 }
 
 class GSNavigationRail extends StatefulWidget {
@@ -50,6 +56,7 @@ class GSNavigationRail extends StatefulWidget {
     this.indicatorShape,
     this.style,
     this.size,
+    this.indicatorWidth,
   })  : assert(destinations.length >= 2),
         assert(selectedIndex == null ||
             (0 <= selectedIndex && selectedIndex < destinations.length)),
@@ -95,6 +102,8 @@ class GSNavigationRail extends StatefulWidget {
   final bool? useIndicator;
 
   final Color? indicatorColor;
+
+  final double? indicatorWidth;
 
   final ShapeBorder? indicatorShape;
 
@@ -240,6 +249,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
                             useIndicator: useIndicator,
                             indicatorColor:
                                 useIndicator ? indicatorColor : null,
+                            indicatorWidth: widget.indicatorWidth,
                             indicatorShape:
                                 useIndicator ? indicatorShape : null,
                             onTap: () {
@@ -327,6 +337,7 @@ class _GSRailDestination extends StatelessWidget {
     this.indicatorColor,
     this.indicatorShape,
     this.disabled = false,
+    this.indicatorWidth,
   }) : _positionAnimation = CurvedAnimation(
           parent: ReverseAnimation(destinationAnimation),
           curve: Curves.easeInOut,
@@ -348,6 +359,7 @@ class _GSRailDestination extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final bool useIndicator;
   final Color? indicatorColor;
+  final double? indicatorWidth;
   final ShapeBorder? indicatorShape;
   final bool disabled;
 
@@ -398,7 +410,7 @@ class _GSRailDestination extends StatelessWidget {
           children: <Widget>[
             spacing,
             Container(
-              width: _kIndicatorWidth,
+              width: minWidth,
               height: _kIndicatorHeight,
               margin: const EdgeInsetsDirectional.symmetric(
                   horizontal: _verticalDestinationSpacing),
@@ -407,6 +419,7 @@ class _GSRailDestination extends StatelessWidget {
                   addIndicator: useIndicator,
                   indicatorColor: indicatorColor,
                   indicatorShape: indicatorShape,
+                  indicatorWidth: indicatorWidth,
                   isCircular: true,
                   indicatorAnimation: destinationAnimation,
                   child: themedIcon,
@@ -476,7 +489,7 @@ class _GSRailDestination extends StatelessWidget {
             selected ? const Interval(0.25, 0.75) : const Interval(0.75, 1.0);
         final Animation<double> labelFadeAnimation =
             destinationAnimation.drive(CurveTween(curve: interval));
-        final double minHeight = minWidth / 2;
+
         final Widget topSpacing = SizedBox(height: verticalPadding);
         const Widget labelSpacing = SizedBox(height: 0);
         const Widget bottomSpacing =
@@ -492,7 +505,7 @@ class _GSRailDestination extends StatelessWidget {
         content = Container(
           constraints: BoxConstraints(
             minWidth: minWidth,
-            minHeight: minHeight,
+            minHeight: _verticalSpacing,
           ),
           padding: padding ??
               const EdgeInsets.symmetric(
@@ -509,6 +522,7 @@ class _GSRailDestination extends StatelessWidget {
                   indicatorShape: indicatorShape,
                   isCircular: false,
                   indicatorAnimation: destinationAnimation,
+                  indicatorWidth: indicatorWidth,
                   child: themedIcon,
                 ),
                 labelSpacing,
@@ -528,7 +542,6 @@ class _GSRailDestination extends StatelessWidget {
           ),
         );
       case GSNavigationRailLabelType.all:
-        final double minHeight = minWidth / 2;
         const Widget topSpacing =
             SizedBox(height: _verticalDestinationPaddingWithLabel);
         const Widget labelSpacing = SizedBox(height: _verticalIconLabelSpacing);
@@ -545,7 +558,7 @@ class _GSRailDestination extends StatelessWidget {
         content = Container(
           constraints: BoxConstraints(
             minWidth: minWidth,
-            minHeight: minHeight,
+            minHeight: _verticalSpacing,
           ),
           padding: padding ??
               const EdgeInsets.symmetric(
@@ -559,6 +572,7 @@ class _GSRailDestination extends StatelessWidget {
                 indicatorShape: indicatorShape,
                 isCircular: false,
                 indicatorAnimation: destinationAnimation,
+                indicatorWidth: indicatorWidth,
                 child: themedIcon,
               ),
               labelSpacing,
@@ -681,12 +695,14 @@ class _AddIndicator extends StatelessWidget {
     required this.indicatorShape,
     required this.indicatorAnimation,
     required this.child,
+    required this.indicatorWidth,
   });
 
   final bool addIndicator;
   final bool isCircular;
   final Color? indicatorColor;
   final ShapeBorder? indicatorShape;
+  final double? indicatorWidth;
   final Animation<double> indicatorAnimation;
   final Widget child;
 
@@ -700,14 +716,14 @@ class _AddIndicator extends StatelessWidget {
       indicator = NavigationIndicator(
         animation: indicatorAnimation,
         height: _kCircularIndicatorDiameter,
-        width: _kCircularIndicatorDiameter,
+        width: indicatorWidth ?? _kCircularIndicatorDiameter,
         borderRadius: BorderRadius.circular(_kCircularIndicatorDiameter / 2),
         color: indicatorColor,
       );
     } else {
       indicator = NavigationIndicator(
         animation: indicatorAnimation,
-        width: _kCircularIndicatorDiameter,
+        width: indicatorWidth ?? _kCircularIndicatorDiameter,
         shape: indicatorShape,
         color: indicatorColor,
       );

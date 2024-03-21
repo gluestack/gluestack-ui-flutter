@@ -74,17 +74,6 @@ const Map<String, dynamic> navigationRailData = {
         }
       }
     },
-    'placement': {
-      'top': {
-        'groupAlignment': '\$-1.0',
-      },
-      'bottom': {
-        'groupAlignment': '\$0.0',
-      },
-      'center': {
-        'groupAlignment': '\$1.0',
-      },
-    },
   },
   "defaultProps": {
     "theme": "light",

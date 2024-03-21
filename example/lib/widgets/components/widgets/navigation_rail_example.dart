@@ -78,67 +78,74 @@ GSNavigationRail(
       body: BaseLayout(
         code: code,
         component: SafeArea(
-          child: SizedBox(
-            height: 500,
-            child: Row(
-              children: <Widget>[
-                GSNavigationRail(
-                  size: selectedSizeOption,
-                  selectedIndex: _selectedIndex,
-                  groupAlignment: groupAlignment,
-                  onDestinationSelected: (int index) {
-                    setState(() {
-                      _selectedIndex = index;
-                    });
-                  },
-                  labelType: labelType,
-                  destinations: const <GSNavigationRailDestination>[
-                    GSNavigationRailDestination(
-                      icon: Icon(Icons.favorite_border),
-                      selectedIcon: Icon(Icons.favorite),
-                      label: Text('Favourite'),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 500,
+                child: Row(
+                  children: <Widget>[
+                    GSNavigationRail(
+                      size: selectedSizeOption,
+                      indicatorWidth: 100,
+                      minWidth: 200,
+                      selectedIndex: _selectedIndex,
+                      groupAlignment: groupAlignment,
+                      onDestinationSelected: (int index) {
+                        setState(() {
+                          _selectedIndex = index;
+                        });
+                      },
+                      labelType: labelType,
+                      destinations: const <GSNavigationRailDestination>[
+                        GSNavigationRailDestination(
+                          icon: Icon(Icons.favorite_border),
+                          selectedIcon: Icon(Icons.favorite),
+                          label: Text('Favourite'),
+                        ),
+                        GSNavigationRailDestination(
+                          icon: Badge(child: Icon(Icons.bookmark_border)),
+                          selectedIcon: Badge(child: Icon(Icons.book)),
+                          label: Text('Bookmark'),
+                        ),
+                        GSNavigationRailDestination(
+                          icon: Badge(
+                            label: Text('4'),
+                            child: Icon(Icons.star_border),
+                          ),
+                          selectedIcon: Badge(
+                            label: Text('4'),
+                            child: Icon(Icons.star),
+                          ),
+                          label: Text('Rating'),
+                        ),
+                      ],
                     ),
-                    GSNavigationRailDestination(
-                      icon: Badge(child: Icon(Icons.bookmark_border)),
-                      selectedIcon: Badge(child: Icon(Icons.book)),
-                      label: Text('Bookmark'),
-                    ),
-                    GSNavigationRailDestination(
-                      icon: Badge(
-                        label: Text('4'),
-                        child: Icon(Icons.star_border),
+                    const VerticalDivider(thickness: 1, width: 1),
+                    Expanded(
+                      child: Column(
+                        children: <Widget>[
+                          const GSHeading(text: "SELECTED TAB"),
+                          const SizedBox(height: 20),
+                          _selectedIndex == 0
+                              ? const GSText(
+                                  text: 'Favourite Screen',
+                                )
+                              : _selectedIndex == 1
+                                  ? const GSText(
+                                      text: 'Bookmark Screen',
+                                    )
+                                  : const GSText(
+                                      text: 'Rating Screen',
+                                    ),
+                          const SizedBox(height: 20),
+                        ],
                       ),
-                      selectedIcon: Badge(
-                        label: Text('4'),
-                        child: Icon(Icons.star),
-                      ),
-                      label: Text('Rating'),
                     ),
                   ],
                 ),
-                const VerticalDivider(thickness: 1, width: 1),
-                Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      const GSHeading(text: "SELECTED TAB"),
-                      const SizedBox(height: 20),
-                      _selectedIndex == 0
-                          ? const GSText(
-                              text: 'Favourite Screen',
-                            )
-                          : _selectedIndex == 1
-                              ? const GSText(
-                                  text: 'Bookmark Screen',
-                                )
-                              : const GSText(
-                                  text: 'Rating Screen',
-                                ),
-                      const SizedBox(height: 20),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         controls: Column(
