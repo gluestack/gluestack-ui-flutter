@@ -97,7 +97,7 @@ class GSBox extends StatelessWidget {
         //         const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
         //     : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
         decoration: BoxDecoration(
-          color: styler.bg,
+          color: styler.bg ?? styler.color,
           borderRadius: BorderRadius.circular(
               style != null ? style!.borderRadius ?? 0 : 0),
           border: Border.all(
