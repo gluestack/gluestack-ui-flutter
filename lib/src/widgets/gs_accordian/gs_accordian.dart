@@ -7,7 +7,6 @@ import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_header.dart';
 
-
 /// Defines the sizes available for the GSAccordion.
 enum GSAccordionSizes { $sm, $md, $lg }
 
@@ -95,7 +94,7 @@ class GSAccordion extends StatefulWidget {
 }
 
 class _GSAccordionState extends State<GSAccordion> {
-final AccordionExpansionValue accGroupValue = AccordionExpansionValue();
+  final AccordionExpansionValue accGroupValue = AccordionExpansionValue();
 
   @override
   initState() {

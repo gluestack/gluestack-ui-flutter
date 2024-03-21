@@ -26,7 +26,8 @@ class GSAccordionProvider extends InheritedWidget {
   bool updateShouldNotify(GSAccordionProvider oldWidget) {
     return isDisabled != oldWidget.isDisabled ||
         isCollapsible != oldWidget.isCollapsible ||
-        type != oldWidget.type || accGrpValue != oldWidget.accGrpValue ||
+        type != oldWidget.type ||
+        accGrpValue != oldWidget.accGrpValue ||
         baseAccordionStyle != oldWidget.baseAccordionStyle;
   }
 

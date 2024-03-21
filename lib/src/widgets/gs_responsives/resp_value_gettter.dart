@@ -20,7 +20,8 @@ T? getRespValue<T>({
   T? xlValue, // Value for extra large devices
   T? xxlValue, // Value for extra extra large devices
 }) {
-  double screenWidth = MediaQuery.of(buildContext).size.width; // Obtain the current screen width
+  double screenWidth =
+      MediaQuery.of(buildContext).size.width; // Obtain the current screen width
 
   // Determine and return the appropriate value based on the screen width and the specified upper bounds.
   if (xsUpperBound != null && screenWidth < xsUpperBound) {
