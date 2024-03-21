@@ -51,13 +51,14 @@ class GSAccordionItemInternal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accGroupValue = 
-        GSAccordionProvider.of(context)?.accGrpValue ?? AccordionExpansionValue() ;
+    final accGroupValue = GSAccordionProvider.of(context)?.accGrpValue ??
+        AccordionExpansionValue();
 
     final baseAccordionStyle =
         GSAccordionProvider.of(context)?.baseAccordionStyle;
 
-    final isDisabled =  isItemDisabled ?? GSAccordionProvider.of(context)?.isDisabled ?? false;
+    final isDisabled =
+        isItemDisabled ?? GSAccordionProvider.of(context)?.isDisabled ?? false;
     final isCollapsible =
         GSAccordionProvider.of(context)?.isCollapsible ?? false;
 
