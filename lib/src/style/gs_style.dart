@@ -629,6 +629,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   ShadowOffset? shadowOffset;
   TextAlign? textAlign;
   TextStyle? titleTextStyle;
+  TextStyle? subtitleTextStyle;
   TextStyle? contentTextStyle;
 
   GSStyle({
@@ -706,6 +707,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.shadowOffset,
     this.textAlign,
     this.titleTextStyle,
+    this.subtitleTextStyle,
     this.contentTextStyle,
   });
 
@@ -798,6 +800,23 @@ class GSStyle extends BaseStyle<GSStyle> {
                     titleTextStyle?.fontSize,
               )
             : titleTextStyle,
+        subtitleTextStyle: overrideStyle?.subtitleTextStyle != null
+            ? TextStyle(
+                height: overrideStyle?.subtitleTextStyle?.height ??
+                    subtitleTextStyle?.height,
+                color: overrideStyle?.subtitleTextStyle?.color ??
+                    subtitleTextStyle?.color,
+                decoration: overrideStyle?.subtitleTextStyle?.decoration ??
+                    subtitleTextStyle?.decoration,
+                letterSpacing:
+                    overrideStyle?.subtitleTextStyle?.letterSpacing ??
+                        subtitleTextStyle?.letterSpacing,
+                fontWeight: overrideStyle?.subtitleTextStyle?.fontWeight ??
+                    subtitleTextStyle?.fontWeight,
+                fontSize: overrideStyle?.subtitleTextStyle?.fontSize ??
+                    subtitleTextStyle?.fontSize,
+              )
+            : subtitleTextStyle,
         contentTextStyle: overrideStyle?.contentTextStyle != null
             ? TextStyle(
                 height: overrideStyle?.contentTextStyle?.height ??
@@ -987,6 +1006,21 @@ class GSStyle extends BaseStyle<GSStyle> {
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
             data?['_titleText']?['color'] ?? data?['color']),
+      ),
+      subtitleTextStyle: TextStyle(
+        fontWeight:
+            resolveFontWeightFromString(data?['_subtitleText']?['fontWeight']),
+        fontSize:
+            resolveFontSizeFromString(data?['_subtitleText']?['fontSize']),
+        height: resolveLineHeightFromString(
+            data?['_subtitleText']?['lineHeight'],
+            data?['_subtitleText']?['fontSize']),
+        decoration:
+            resolveTextDecorationFromString(data?['textDecorationLine']),
+        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
+        // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
+        color: resolveColorFromString(
+            data?['_subtitleText']?['color'] ?? data?['color']),
       ),
       contentTextStyle: TextStyle(
         fontWeight:
@@ -1226,6 +1260,11 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
         titleTextStyle: TextStyle(
           color: resolveColorFromString(data?['_titleText']?['_dark']
+                  ?['color'] ??
+              data?['_dark']?['color']),
+        ),
+        subtitleTextStyle: TextStyle(
+          color: resolveColorFromString(data?['_subtitleText']?['_dark']
                   ?['color'] ??
               data?['_dark']?['color']),
         ),
