@@ -165,6 +165,10 @@ class _HomePageState extends State<HomePage> {
                   title: "GS Accordion",
                   routePath: "/example-accordion",
                 ),
+                const NavButton(
+                  title: "GS Navigation Rail",
+                  routePath: "/navigation-rail-preview",
+                ),
 
                 // // ===== Internal Testing Widgets =====
                 // const NavButton(

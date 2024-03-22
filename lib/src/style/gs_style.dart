@@ -630,84 +630,91 @@ class GSStyle extends BaseStyle<GSStyle> {
   TextAlign? textAlign;
   TextStyle? titleTextStyle;
   TextStyle? contentTextStyle;
+  TextStyle? selectedLabelTextStyle;
+  TextStyle? unselectedLabelTextStyle;
+  Color? selectedIconColor;
+  Color? unselectedIconColor;
 
-  GSStyle({
-    this.borderWidth,
-    this.borderColor,
-    this.borderRadius,
-    this.padding,
-    this.opacity,
-    this.color,
-    this.bg,
-    this.borderBottomColor,
-    this.height,
-    this.margin,
-    this.placement,
-    this.width,
-    this.gap,
-    this.outlineWidth,
-    this.outlineStyle,
-    this.flexDirection,
-    this.borderBottomWidth,
-    this.borderLeftWidth,
-    this.textStyle,
-    this.checked,
-    super.onHover,
-    super.onFocus,
-    super.onActive,
-    super.onDisabled,
-    super.input,
-    super.icon,
-    super.dark,
-    super.xs,
-    super.sm,
-    super.md,
-    super.lg,
-    super.onInvalid,
-    super.web,
-    super.ios,
-    super.android,
-    this.variants,
-    this.props,
-    this.descendantStyles,
-    this.alignItems,
-    this.justifyContent,
-    this.alignment,
-    this.maxWidth,
-    this.progressValueColor,
-    this.badge,
-    // this.highlightColor,
-    // this.splashColor,
-    this.textTransform,
-    this.trackColorTrue,
-    this.trackColorFalse,
-    this.thumbColor,
-    this.activeThumbColor,
-    this.iosBackgroundColor,
-    this.scale,
-    this.outlineColor,
-    this.cursors,
-    this.iconSize,
-    this.bottom,
-    this.left,
-    this.right,
-    this.top,
-    this.isVisible,
-    this.direction,
-    this.compoundVariants,
-    this.indent = 0,
-    this.endIndent = 0,
-    this.iconColor,
-    this.item,
-    this.shadowColor,
-    this.shadowRadius,
-    this.shadowOpacity,
-    this.elevation,
-    this.shadowOffset,
-    this.textAlign,
-    this.titleTextStyle,
-    this.contentTextStyle,
-  });
+  GSStyle(
+      {this.borderWidth,
+      this.borderColor,
+      this.borderRadius,
+      this.padding,
+      this.opacity,
+      this.color,
+      this.bg,
+      this.borderBottomColor,
+      this.height,
+      this.margin,
+      this.placement,
+      this.width,
+      this.gap,
+      this.outlineWidth,
+      this.outlineStyle,
+      this.flexDirection,
+      this.borderBottomWidth,
+      this.borderLeftWidth,
+      this.textStyle,
+      this.checked,
+      super.onHover,
+      super.onFocus,
+      super.onActive,
+      super.onDisabled,
+      super.input,
+      super.icon,
+      super.dark,
+      super.xs,
+      super.sm,
+      super.md,
+      super.lg,
+      super.onInvalid,
+      super.web,
+      super.ios,
+      super.android,
+      this.variants,
+      this.props,
+      this.descendantStyles,
+      this.alignItems,
+      this.justifyContent,
+      this.alignment,
+      this.maxWidth,
+      this.progressValueColor,
+      this.badge,
+      // this.highlightColor,
+      // this.splashColor,
+      this.textTransform,
+      this.trackColorTrue,
+      this.trackColorFalse,
+      this.thumbColor,
+      this.activeThumbColor,
+      this.iosBackgroundColor,
+      this.scale,
+      this.outlineColor,
+      this.cursors,
+      this.iconSize,
+      this.bottom,
+      this.left,
+      this.right,
+      this.top,
+      this.isVisible,
+      this.direction,
+      this.compoundVariants,
+      this.indent = 0,
+      this.endIndent = 0,
+      this.iconColor,
+      this.item,
+      this.shadowColor,
+      this.shadowRadius,
+      this.shadowOpacity,
+      this.elevation,
+      this.shadowOffset,
+      this.textAlign,
+      this.titleTextStyle,
+      this.contentTextStyle,
+      this.selectedLabelTextStyle,
+      this.unselectedLabelTextStyle,
+      this.selectedIconColor,
+      this.unselectedIconColor});
 
   @override
   copy() {
@@ -814,6 +821,47 @@ class GSStyle extends BaseStyle<GSStyle> {
                     contentTextStyle?.fontSize,
               )
             : contentTextStyle,
+        selectedLabelTextStyle: overrideStyle?.selectedLabelTextStyle != null
+            ? TextStyle(
+                height: overrideStyle?.selectedLabelTextStyle?.height ??
+                    selectedLabelTextStyle?.height,
+                color: overrideStyle?.selectedLabelTextStyle?.color ??
+                    selectedLabelTextStyle?.color,
+                decoration: overrideStyle?.selectedLabelTextStyle?.decoration ??
+                    selectedLabelTextStyle?.decoration,
+                letterSpacing:
+                    overrideStyle?.selectedLabelTextStyle?.letterSpacing ??
+                        selectedLabelTextStyle?.letterSpacing,
+                fontWeight: overrideStyle?.selectedLabelTextStyle?.fontWeight ??
+                    selectedLabelTextStyle?.fontWeight,
+                fontSize: overrideStyle?.selectedLabelTextStyle?.fontSize ??
+                    selectedLabelTextStyle?.fontSize,
+              )
+            : selectedLabelTextStyle,
+        unselectedLabelTextStyle: overrideStyle?.unselectedLabelTextStyle !=
+                null
+            ? TextStyle(
+                height: overrideStyle?.unselectedLabelTextStyle?.height ??
+                    unselectedLabelTextStyle?.height,
+                color: overrideStyle?.unselectedLabelTextStyle?.color ??
+                    unselectedLabelTextStyle?.color,
+                decoration:
+                    overrideStyle?.unselectedLabelTextStyle?.decoration ??
+                        unselectedLabelTextStyle?.decoration,
+                letterSpacing:
+                    overrideStyle?.unselectedLabelTextStyle?.letterSpacing ??
+                        unselectedLabelTextStyle?.letterSpacing,
+                fontWeight:
+                    overrideStyle?.unselectedLabelTextStyle?.fontWeight ??
+                        unselectedLabelTextStyle?.fontWeight,
+                fontSize: overrideStyle?.unselectedLabelTextStyle?.fontSize ??
+                    unselectedLabelTextStyle?.fontSize,
+              )
+            : unselectedLabelTextStyle,
+        selectedIconColor:
+            overrideStyle?.selectedIconColor ?? selectedIconColor,
+        unselectedIconColor:
+            overrideStyle?.unselectedIconColor ?? unselectedIconColor,
         right: overrideStyle?.right ?? right,
         left: overrideStyle?.left ?? left,
         bottom: overrideStyle?.bottom ?? bottom,
@@ -1001,6 +1049,44 @@ class GSStyle extends BaseStyle<GSStyle> {
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
         color: resolveColorFromString(
             data?['_contentText']?['color'] ?? data?['color']),
+      ),
+
+      selectedLabelTextStyle: TextStyle(
+        fontWeight: resolveFontWeightFromString(
+            data?['_selectedLabelText']?['fontWeight']),
+        fontSize:
+            resolveFontSizeFromString(data?['_selectedLabelText']?['fontSize']),
+        height: resolveLineHeightFromString(
+            data?['_selectedLabelText']?['lineHeight'],
+            data?['_selectedLabelText']?['fontSize']),
+        decoration:
+            resolveTextDecorationFromString(data?['textDecorationLine']),
+        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
+        // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
+        color: resolveColorFromString(
+            data?['_selectedLabelText']?['color'] ?? data?['color']),
+      ),
+      unselectedLabelTextStyle: TextStyle(
+        fontWeight: resolveFontWeightFromString(
+            data?['_unselectedLabelText']?['fontWeight']),
+        fontSize: resolveFontSizeFromString(
+            data?['_unselectedLabelText']?['fontSize']),
+        height: resolveLineHeightFromString(
+            data?['_unselectedLabelText']?['lineHeight'],
+            data?['_unselectedLabelText']?['fontSize']),
+        decoration:
+            resolveTextDecorationFromString(data?['textDecorationLine']),
+        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
+        // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
+        color: resolveColorFromString(
+            data?['_unselectedLabelText']?['color'] ?? data?['color']),
+      ),
+
+      selectedIconColor: resolveColorFromString(
+        data?['_selectedIcon']?['color'],
+      ),
+      unselectedIconColor: resolveColorFromString(
+        data?['_unselectedIcon']?['color'],
       ),
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg'] ?? data?['backgroundColor']),
@@ -1228,6 +1314,22 @@ class GSStyle extends BaseStyle<GSStyle> {
           color: resolveColorFromString(data?['_titleText']?['_dark']
                   ?['color'] ??
               data?['_dark']?['color']),
+        ),
+        selectedLabelTextStyle: TextStyle(
+          color: resolveColorFromString(data?['_selectedLabelText']?['_dark']
+                  ?['color'] ??
+              data?['_dark']?['color']),
+        ),
+        unselectedLabelTextStyle: TextStyle(
+          color: resolveColorFromString(data?['_unselectedLabelText']?['_dark']
+                  ?['color'] ??
+              data?['_dark']?['color']),
+        ),
+        selectedIconColor: resolveColorFromString(
+          data?['_selectedIcon']?['_dark']?['color'],
+        ),
+        unselectedIconColor: resolveColorFromString(
+          data?['_unselectedIcon']?['_dark']?['color'],
         ),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
         bg: resolveColorFromString(
