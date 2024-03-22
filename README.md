@@ -1,15 +1,17 @@
-# gluestack-ui-flutter (alpha)
+# gluestack-ui-flutter (beta)
 
 **gluestack-ui-flutter** is a universal UI library that provides optionally styled and accessible widgets. These widgets are designed for easy integration into applications developed with Flutter.
 
 _Package is in development. APIs may change in the future._
 
 ## Documentation
-![Gluestack Flutter Banner](assets/gs_docs_flutter_cover.png)
+
+![Gluestack Flutter Banner](https://github.com/gluestack/gluestack-ui-flutter/blob/main/assets/gs_docs_flutter_cover.png?raw=true)
 
 The gluestack-ui-flutter library is designed to enhance web and mobile app development. It features platform-agnostic components for consistent UI across platforms, offers styling flexibility with pre-built themes and custom options, and emphasizes accessibility. Tailored for web development, it includes web-friendly widgets, native web styling, responsive design, and smooth animations. Key considerations are Flutter web specificity, performance optimization, and community engagement. The library also enables centralized styling, consistency, reusability, scalability, efficient development, and rapid prototyping, aiming to foster collaboration and ensure a unique, high-performance UI experience.
 
 Here are few helpful links to give you an idea of what gluestack-ui-flutter is capable of:
+
 - Widget Examples (Storybook): https://gluestack-ui-example.web.app/#/storybook
 - Getting Started Example: https://github.com/gluestack/flutter-examples
 - KitchenSink (An example layout made with Gluestack): https://kitchensink-23184.web.app/
@@ -42,7 +44,7 @@ Add the package to your dependencies:
 
 ```yaml
 dependencies:
-  gluestack_ui: 0.0.1-alpha.4
+  gluestack_ui: 0.1.0-beta.2
 ```
 
 OR
@@ -154,13 +156,19 @@ GluestackProvider(
 )
 ```
 
-## Future Scope
+## Performance
 
-- **Omitting Material Dependency:** Developers can tailor the UI components to fit the exact needs and aesthetics of their applications without being restricted to Material Design standards. From performance improvement respective, by building a system independent of Material Design, you might optimize performance, especially for applications that require lightweight and fast-loading interfaces.
+We performed performance benchmark after taking average of 10 samples from our [KitchenSink app](https://kitchensink-23184.web.app/) after using both GlueStack Material and GlueStack Non-Material components and we're happy to share the following result with you.
+
+![Performance Benchmark](https://github.com/gluestack/gluestack-ui-flutter/blob/main/assets/performance_graph_1.svg?raw=true)
+
+## Future Scope
 
 - **Enhanced Widget Configuration:** The widgets will be designed in a modular fashion, allowing users to plug in different components or features as needed. This modular approach enables more complex and varied widget compositions.With more control over the widget design, developers can create applications that offer a better user experience, tailored to their target audience.
 
 - **Configurable Token System:** Design the token system to be scalable and customizable. Users should be able to add new tokens or modify existing ones to suit their project needs.
+
+- **Adding New Widgets:** We are committed to implement more functional widgets in the future that would improve the user and the developer experience.
 
 ## Contributing
 
@@ -168,4 +176,4 @@ We welcome contributions from the community. If you'd like to contribute to `glu
 
 ## License
 
-Licensed under the MIT License, Copyright © 2023 GeekyAnts. See [LICENSE](./LICENSE) for more information.
+Licensed under the MIT License, Copyright © 2024 GeekyAnts. See [LICENSE](./LICENSE) for more information.

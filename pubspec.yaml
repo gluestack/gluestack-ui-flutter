@@ -1,12 +1,12 @@
 name: gluestack_ui
-description: "Universal Themed & Unstyled Widgets for Flutter"
+description: "A universal UI library that provides optionally styled and accessible widgets, designed for easy integration into applications developed with Flutter."
 
-homepage: https://github.com/gluestack/gluestack-flutter
-repository: https://github.com/gluestack/gluestack-flutter
-issue_tracker: https://github.com/gluestack/gluestack-flutter/issues
-documentation: https://github.com/gluestack/gluestack-flutter
+homepage: https://flutter.gluestack.io/
+repository: https://github.com/gluestack/gluestack-ui-flutter
+issue_tracker: https://github.com/gluestack/gluestack-ui-flutter/issues
+documentation: https://flutter.gluestack.io/
 
-version: 0.0.1-alpha.4
+version: 0.1.0-beta.2
 
 environment:
   sdk: ">=3.2.1 <4.0.0"
@@ -14,6 +14,8 @@ environment:
 
 dependencies:
   flutter:
+    sdk: flutter
+  flutter_localizations:
     sdk: flutter
 
   fluttertoast: ^8.2.4

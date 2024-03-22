@@ -23,7 +23,7 @@ class GSText extends StatelessWidget {
   final TextAlign? textAlign;
   final TextDirection? textDirection;
   final TextHeightBehavior? textHeightBehavior;
-  final double? textScaleFactor;
+  final TextScaler? textScaler;
   final TextWidthBasis? textWidthBasis;
   const GSText(
       {super.key,
@@ -40,7 +40,7 @@ class GSText extends StatelessWidget {
       this.textAlign,
       this.textDirection,
       this.textHeightBehavior,
-      this.textScaleFactor,
+      this.textScaler,
       this.textWidthBasis,
       this.bold = false,
       this.highlight = false,
@@ -88,10 +88,10 @@ class GSText extends StatelessWidget {
       semanticsLabel: semanticsLabel,
       softWrap: softWrap,
       strutStyle: strutStyle,
-      textAlign: textAlign,
+      textAlign: styler.textAlign ?? textAlign,
       textDirection: textDirection,
       textHeightBehavior: textHeightBehavior,
-      textScaleFactor: textScaleFactor,
+      textScaler: textScaler,
       textWidthBasis: textWidthBasis,
     );
   }

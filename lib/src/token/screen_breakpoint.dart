@@ -24,5 +24,4 @@ class $GSScreenBreakpoint {
   static get medium => screenBreakpointInstance.md;
   static get large => screenBreakpointInstance.lg;
   static get extraLarge => screenBreakpointInstance.xxl;
-
 }

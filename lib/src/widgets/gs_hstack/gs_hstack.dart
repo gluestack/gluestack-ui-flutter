@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_hstack/gs_hstack_style.dart';
-enum GSHstackSpaces{
-   $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl
-} 
+
+enum GSHstackSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
+
 class GSHStack extends StatelessWidget {
   final GSHstackSpaces? space;
   final List<Widget> children;

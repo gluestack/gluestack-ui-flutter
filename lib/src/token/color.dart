@@ -4,398 +4,406 @@ import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 var colorInstance = getIt<GSColorsToken>();
 
 class GSColorsToken {
-  final rose50;
-  final rose100;
-  final rose200;
-  final rose300;
-  final rose400;
-  final rose500;
-  final rose600;
-  final rose700;
-  final rose800;
-  final rose900;
-  final pink50;
-  final pink100;
-  final pink200;
-  final pink300;
-  final pink400;
-  final pink500;
-  final pink600;
-  final pink700;
-  final pink800;
-  final pink900;
-  final fuchsia50;
-  final fuchsia100;
-  final fuchsia200;
-  final fuchsia300;
-  final fuchsia400;
-  final fuchsia500;
-  final fuchsia600;
-  final fuchsia700;
-  final fuchsia800;
-  final fuchsia900;
-  final purple50;
-  final purple100;
-  final purple200;
-  final purple300;
-  final purple400;
-  final purple500;
-  final purple600;
-  final purple700;
-  final purple800;
-  final purple900;
-  final violet50;
-  final violet100;
-  final violet200;
-  final violet300;
-  final violet400;
-  final violet500;
-  final violet600;
-  final violet700;
-  final violet800;
-  final violet900;
-  final indigo50;
-  final indigo100;
-  final indigo200;
-  final indigo300;
-  final indigo400;
-  final indigo500;
-  final indigo600;
-  final indigo700;
-  final indigo800;
-  final indigo900;
-  final blue50;
-  final blue100;
-  final blue200;
-  final blue300;
-  final blue400;
-  final blue500;
-  final blue600;
-  final blue700;
-  final blue800;
-  final blue900;
-  final lightBlue50;
-  final lightBlue100;
-  final lightBlue200;
-  final lightBlue300;
-  final lightBlue400;
-  final lightBlue500;
-  final lightBlue600;
-  final lightBlue700;
-  final lightBlue800;
-  final lightBlue900;
-  final darkBlue50;
-  final darkBlue100;
-  final darkBlue200;
-  final darkBlue300;
-  final darkBlue400;
-  final darkBlue500;
-  final darkBlue600;
-  final darkBlue700;
-  final darkBlue800;
-  final darkBlue900;
-  final cyan50;
-  final cyan100;
-  final cyan200;
-  final cyan300;
-  final cyan400;
-  final cyan500;
-  final cyan600;
-  final cyan700;
-  final cyan800;
-  final cyan900;
-  final teal50;
-  final teal100;
-  final teal200;
-  final teal300;
-  final teal400;
-  final teal500;
-  final teal600;
-  final teal700;
-  final teal800;
-  final teal900;
-  final emerald50;
-  final emerald100;
-  final emerald200;
-  final emerald300;
-  final emerald400;
-  final emerald500;
-  final emerald600;
-  final emerald700;
-  final emerald800;
-  final emerald900;
-  final green50;
-  final green100;
-  final green200;
-  final green300;
-  final green400;
-  final green500;
-  final green600;
-  final green700;
-  final green800;
-  final green900;
-  final lime50;
-  final lime100;
-  final lime200;
-  final lime300;
-  final lime400;
-  final lime500;
-  final lime600;
-  final lime700;
-  final lime800;
-  final lime900;
-  final yellow50;
-  final yellow100;
-  final yellow200;
-  final yellow300;
-  final yellow400;
-  final yellow500;
-  final yellow600;
-  final yellow700;
-  final yellow800;
-  final yellow900;
-  final amber50;
-  final amber100;
-  final amber200;
-  final amber300;
-  final amber400;
-  final amber500;
-  final amber600;
-  final amber700;
-  final amber800;
-  final amber900;
-  final orange50;
-  final orange100;
-  final orange200;
-  final orange300;
-  final orange400;
-  final orange500;
-  final orange600;
-  final orange700;
-  final orange800;
-  final orange900;
-  final red50;
-  final red100;
-  final red200;
-  final red300;
-  final red400;
-  final red500;
-  final red600;
-  final red700;
-  final red800;
-  final red900;
-  final warmGray50;
-  final warmGray100;
-  final warmGray200;
-  final warmGray300;
-  final warmGray400;
-  final warmGray500;
-  final warmGray600;
-  final warmGray700;
-  final warmGray800;
-  final warmGray900;
-  final trueGray50;
-  final trueGray100;
-  final trueGray200;
-  final trueGray300;
-  final trueGray400;
-  final trueGray500;
-  final trueGray600;
-  final trueGray700;
-  final trueGray800;
-  final trueGray900;
-  final coolGray50;
-  final coolGray100;
-  final coolGray200;
-  final coolGray300;
-  final coolGray400;
-  final coolGray500;
-  final coolGray600;
-  final coolGray700;
-  final coolGray800;
-  final coolGray900;
-  final blueGray50;
-  final blueGray100;
-  final blueGray200;
-  final blueGray300;
-  final blueGray400;
-  final blueGray500;
-  final blueGray600;
-  final blueGray700;
-  final blueGray800;
-  final blueGray900;
-  final tertiary50;
-  final tertiary100;
-  final tertiary200;
-  final tertiary300;
-  final tertiary400;
-  final tertiary500;
-  final tertiary600;
-  final tertiary700;
-  final tertiary800;
-  final tertiary900;
-  final error00;
-  final error50;
-  final error100;
-  final error200;
-  final error300;
-  final error400;
-  final error500;
-  final error600;
-  final error700;
-  final error800;
-  final error900;
-  final error950;
-  final success0;
-  final success50;
-  final success100;
-  final success200;
-  final success300;
-  final success400;
-  final success500;
-  final success600;
-  final success700;
-  final success800;
-  final success900;
-  final success950;
-  final warning50;
-  final warning100;
-  final warning200;
-  final warning300;
-  final warning400;
-  final warning500;
-  final warning600;
-  final warning700;
-  final warning800;
-  final warning900;
-  final info50;
-  final info100;
-  final info200;
-  final info300;
-  final info400;
-  final info500;
-  final info600;
-  final info700;
-  final info800;
-  final info900;
-  final light50;
-  final light100;
-  final light200;
-  final light300;
-  final light400;
-  final light500;
-  final light600;
-  final light700;
-  final light800;
-  final light900;
-  final primary0;
-  final primary50;
-  final primary100;
-  final primary200;
-  final primary300;
-  final primary400;
-  final primary500;
-  final primary600;
-  final primary700;
-  final primary800;
-  final primary900;
-  final primary950;
-  final secondary0;
-  final secondary50;
-  final secondary100;
-  final secondary200;
-  final secondary300;
-  final secondary400;
-  final secondary500;
-  final secondary600;
-  final secondary700;
-  final secondary800;
-  final secondary900;
-  final secondary950;
-  final textLight0;
-  final textLight50;
-  final textLight100;
-  final textLight200;
-  final textLight300;
-  final textLight400;
-  final textLight500;
-  final textLight600;
-  final textLight700;
-  final textLight800;
-  final textLight900;
-  final textLight950;
-  final textDark0;
-  final textDark50;
-  final textDark100;
-  final textDark200;
-  final textDark300;
-  final textDark400;
-  final textDark500;
-  final textDark600;
-  final textDark700;
-  final textDark800;
-  final textDark900;
-  final textDark950;
-  final borderDark0;
-  final borderDark50;
-  final borderDark100;
-  final borderDark200;
-  final borderDark300;
-  final borderDark400;
-  final borderDark500;
-  final borderDark600;
-  final borderDark700;
-  final borderDark800;
-  final borderDark900;
-  final borderDark950;
-  final borderLight0;
-  final borderLight50;
-  final borderLight100;
-  final borderLight200;
-  final borderLight300;
-  final borderLight400;
-  final borderLight500;
-  final borderLight600;
-  final borderLight700;
-  final borderLight800;
-  final borderLight900;
-  final borderLight950;
-  final backgroundDark0;
-  final backgroundDark50;
-  final backgroundDark100;
-  final backgroundDark200;
-  final backgroundDark300;
-  final backgroundDark400;
-  final backgroundDark500;
-  final backgroundDark600;
-  final backgroundDark700;
-  final backgroundDark800;
-  final backgroundDark900;
-  final backgroundDark950;
-  final backgroundLight0;
-  final backgroundLight50;
-  final backgroundLight100;
-  final backgroundLight200;
-  final backgroundLight300;
-  final backgroundLight400;
-  final backgroundLight500;
-  final backgroundLight600;
-  final backgroundLight700;
-  final backgroundLight800;
-  final backgroundLight900;
-  final backgroundLight950;
-  final backgroundLightError;
-  final backgroundDarkError;
-  final backgroundLightWarning;
-  final backgroundDarkWarning;
-  final backgroundLightSuccess;
-  final backgroundDarkSuccess;
-  final backgroundLightInfo;
-  final backgroundDarkInfo;
-  final backgroundLightMuted;
-  final backgroundDarkMuted;
-  final white;
-  final black;
+  final Color rose50;
+  final Color rose100;
+  final Color rose200;
+  final Color rose300;
+  final Color rose400;
+  final Color rose500;
+  final Color rose600;
+  final Color rose700;
+  final Color rose800;
+  final Color rose900;
+  final Color pink50;
+  final Color pink100;
+  final Color pink200;
+  final Color pink300;
+  final Color pink400;
+  final Color pink500;
+  final Color pink600;
+  final Color pink700;
+  final Color pink800;
+  final Color pink900;
+  final Color fuchsia50;
+  final Color fuchsia100;
+  final Color fuchsia200;
+  final Color fuchsia300;
+  final Color fuchsia400;
+  final Color fuchsia500;
+  final Color fuchsia600;
+  final Color fuchsia700;
+  final Color fuchsia800;
+  final Color fuchsia900;
+  final Color purple50;
+  final Color purple100;
+  final Color purple200;
+  final Color purple300;
+  final Color purple400;
+  final Color purple500;
+  final Color purple600;
+  final Color purple700;
+  final Color purple800;
+  final Color purple900;
+  final Color violet50;
+  final Color violet100;
+  final Color violet200;
+  final Color violet300;
+  final Color violet400;
+  final Color violet500;
+  final Color violet600;
+  final Color violet700;
+  final Color violet800;
+  final Color violet900;
+  final Color indigo50;
+  final Color indigo100;
+  final Color indigo200;
+  final Color indigo300;
+  final Color indigo400;
+  final Color indigo500;
+  final Color indigo600;
+  final Color indigo700;
+  final Color indigo800;
+  final Color indigo900;
+  final Color blue50;
+  final Color blue100;
+  final Color blue200;
+  final Color blue300;
+  final Color blue400;
+  final Color blue500;
+  final Color blue600;
+  final Color blue700;
+  final Color blue800;
+  final Color blue900;
+  final Color lightBlue50;
+  final Color lightBlue100;
+  final Color lightBlue200;
+  final Color lightBlue300;
+  final Color lightBlue400;
+  final Color lightBlue500;
+  final Color lightBlue600;
+  final Color lightBlue700;
+  final Color lightBlue800;
+  final Color lightBlue900;
+  final Color darkBlue50;
+  final Color darkBlue100;
+  final Color darkBlue200;
+  final Color darkBlue300;
+  final Color darkBlue400;
+  final Color darkBlue500;
+  final Color darkBlue600;
+  final Color darkBlue700;
+  final Color darkBlue800;
+  final Color darkBlue900;
+  final Color cyan50;
+  final Color cyan100;
+  final Color cyan200;
+  final Color cyan300;
+  final Color cyan400;
+  final Color cyan500;
+  final Color cyan600;
+  final Color cyan700;
+  final Color cyan800;
+  final Color cyan900;
+  final Color teal50;
+  final Color teal100;
+  final Color teal200;
+  final Color teal300;
+  final Color teal400;
+  final Color teal500;
+  final Color teal600;
+  final Color teal700;
+  final Color teal800;
+  final Color teal900;
+  final Color emerald50;
+  final Color emerald100;
+  final Color emerald200;
+  final Color emerald300;
+  final Color emerald400;
+  final Color emerald500;
+  final Color emerald600;
+  final Color emerald700;
+  final Color emerald800;
+  final Color emerald900;
+  final Color green50;
+  final Color green100;
+  final Color green200;
+  final Color green300;
+  final Color green400;
+  final Color green500;
+  final Color green600;
+  final Color green700;
+  final Color green800;
+  final Color green900;
+  final Color lime50;
+  final Color lime100;
+  final Color lime200;
+  final Color lime300;
+  final Color lime400;
+  final Color lime500;
+  final Color lime600;
+  final Color lime700;
+  final Color lime800;
+  final Color lime900;
+  final Color yellow50;
+  final Color yellow100;
+  final Color yellow200;
+  final Color yellow300;
+  final Color yellow400;
+  final Color yellow500;
+  final Color yellow600;
+  final Color yellow700;
+  final Color yellow800;
+  final Color yellow900;
+  final Color amber50;
+  final Color amber100;
+  final Color amber200;
+  final Color amber300;
+  final Color amber400;
+  final Color amber500;
+  final Color amber600;
+  final Color amber700;
+  final Color amber800;
+  final Color amber900;
+  final Color orange50;
+  final Color orange100;
+  final Color orange200;
+  final Color orange300;
+  final Color orange400;
+  final Color orange500;
+  final Color orange600;
+  final Color orange700;
+  final Color orange800;
+  final Color orange900;
+  final Color red50;
+  final Color red100;
+  final Color red200;
+  final Color red300;
+  final Color red400;
+  final Color red500;
+  final Color red600;
+  final Color red700;
+  final Color red800;
+  final Color red900;
+  final Color warmGray50;
+  final Color warmGray100;
+  final Color warmGray200;
+  final Color warmGray300;
+  final Color warmGray400;
+  final Color warmGray500;
+  final Color warmGray600;
+  final Color warmGray700;
+  final Color warmGray800;
+  final Color warmGray900;
+  final Color trueGray50;
+  final Color trueGray100;
+  final Color trueGray200;
+  final Color trueGray300;
+  final Color trueGray400;
+  final Color trueGray500;
+  final Color trueGray600;
+  final Color trueGray700;
+  final Color trueGray800;
+  final Color trueGray900;
+  final Color coolGray50;
+  final Color coolGray100;
+  final Color coolGray200;
+  final Color coolGray300;
+  final Color coolGray400;
+  final Color coolGray500;
+  final Color coolGray600;
+  final Color coolGray700;
+  final Color coolGray800;
+  final Color coolGray900;
+  final Color blueGray50;
+  final Color blueGray100;
+  final Color blueGray200;
+  final Color blueGray300;
+  final Color blueGray400;
+  final Color blueGray500;
+  final Color blueGray600;
+  final Color blueGray700;
+  final Color blueGray800;
+  final Color blueGray900;
+  final Color tertiary50;
+  final Color tertiary100;
+  final Color tertiary200;
+  final Color tertiary300;
+  final Color tertiary400;
+  final Color tertiary500;
+  final Color tertiary600;
+  final Color tertiary700;
+  final Color tertiary800;
+  final Color tertiary900;
+  final Color error00;
+  final Color error50;
+  final Color error100;
+  final Color error200;
+  final Color error300;
+  final Color error400;
+  final Color error500;
+  final Color error600;
+  final Color error700;
+  final Color error800;
+  final Color error900;
+  final Color error950;
+  final Color success0;
+  final Color success50;
+  final Color success100;
+  final Color success200;
+  final Color success300;
+  final Color success400;
+  final Color success500;
+  final Color success600;
+  final Color success700;
+  final Color success800;
+  final Color success900;
+  final Color success950;
+  final Color warning50;
+  final Color warning100;
+  final Color warning200;
+  final Color warning300;
+  final Color warning400;
+  final Color warning500;
+  final Color warning600;
+  final Color warning700;
+  final Color warning800;
+  final Color warning900;
+  final Color info50;
+  final Color info100;
+  final Color info200;
+  final Color info300;
+  final Color info400;
+  final Color info500;
+  final Color info600;
+  final Color info700;
+  final Color info800;
+  final Color info900;
+  final Color light50;
+  final Color light100;
+  final Color light200;
+  final Color light300;
+  final Color light400;
+  final Color light500;
+  final Color light600;
+  final Color light700;
+  final Color light800;
+  final Color light900;
+  final Color primary0;
+  final Color primary50;
+  final Color primary100;
+  final Color primary200;
+  final Color primary300;
+  final Color primary400;
+  final Color primary500;
+  final Color primary600;
+  final Color primary700;
+  final Color primary800;
+  final Color primary900;
+  final Color primary950;
+  final Color secondary0;
+  final Color secondary50;
+  final Color secondary100;
+  final Color secondary200;
+  final Color secondary300;
+  final Color secondary400;
+  final Color secondary500;
+  final Color secondary600;
+  final Color secondary700;
+  final Color secondary800;
+  final Color secondary900;
+  final Color secondary950;
+  final Color textLight0;
+  final Color textLight50;
+  final Color textLight100;
+  final Color textLight200;
+  final Color textLight300;
+  final Color textLight400;
+  final Color textLight500;
+  final Color textLight600;
+  final Color textLight700;
+  final Color textLight800;
+  final Color textLight900;
+  final Color textLight950;
+  final Color textDark0;
+  final Color textDark50;
+  final Color textDark100;
+  final Color textDark200;
+  final Color textDark300;
+  final Color textDark400;
+  final Color textDark500;
+  final Color textDark600;
+  final Color textDark700;
+  final Color textDark800;
+  final Color textDark900;
+  final Color textDark950;
+  final Color borderDark0;
+  final Color borderDark50;
+  final Color borderDark100;
+  final Color borderDark200;
+  final Color borderDark300;
+  final Color borderDark400;
+  final Color borderDark500;
+  final Color borderDark600;
+  final Color borderDark700;
+  final Color borderDark800;
+  final Color borderDark900;
+  final Color borderDark950;
+  final Color borderLight0;
+  final Color borderLight50;
+  final Color borderLight100;
+  final Color borderLight200;
+  final Color borderLight300;
+  final Color borderLight400;
+  final Color borderLight500;
+  final Color borderLight600;
+  final Color borderLight700;
+  final Color borderLight800;
+  final Color borderLight900;
+  final Color borderLight950;
+  final Color backgroundDark0;
+  final Color backgroundDark50;
+  final Color backgroundDark100;
+  final Color backgroundDark200;
+  final Color backgroundDark300;
+  final Color backgroundDark400;
+  final Color backgroundDark500;
+  final Color backgroundDark600;
+  final Color backgroundDark700;
+  final Color backgroundDark800;
+  final Color backgroundDark900;
+  final Color backgroundDark950;
+  final Color backgroundLight0;
+  final Color backgroundLight50;
+  final Color backgroundLight100;
+  final Color backgroundLight200;
+  final Color backgroundLight300;
+  final Color backgroundLight400;
+  final Color backgroundLight500;
+  final Color backgroundLight600;
+  final Color backgroundLight700;
+  final Color backgroundLight800;
+  final Color backgroundLight900;
+  final Color backgroundLight950;
+  final Color backgroundLightError;
+  final Color backgroundDarkError;
+  final Color backgroundLightWarning;
+  final Color backgroundDarkWarning;
+  final Color backgroundLightSuccess;
+  final Color backgroundDarkSuccess;
+  final Color backgroundLightInfo;
+  final Color backgroundDarkInfo;
+  final Color backgroundLightMuted;
+  final Color backgroundDarkMuted;
+  final Color white;
+  final Color black;
+
+  /// Generates a swatch containing primary colors for the app
+  /// Overrides any other primary color declaration
+  final Color? primaryColorsFromBase;
+
+  /// Generates a swatch containing secondary colors for the app
+  /// Overrides any other secondary color declaration
+  final Color? secondaryColorsFromBase;
 
   const GSColorsToken({
     this.rose50 = const Color(0xFFFFF1F2),
@@ -790,7 +798,809 @@ class GSColorsToken {
     this.backgroundDarkMuted = const Color(0xFF252526),
     this.white = const Color(0xFFFFFFFF),
     this.black = const Color(0xFF000000),
+    this.primaryColorsFromBase,
+    this.secondaryColorsFromBase,
   });
+
+  GSColorsToken copyWith({
+    Color? rose50,
+    Color? rose100,
+    Color? rose200,
+    Color? rose300,
+    Color? rose400,
+    Color? rose500,
+    Color? rose600,
+    Color? rose700,
+    Color? rose800,
+    Color? rose900,
+    Color? pink50,
+    Color? pink100,
+    Color? pink200,
+    Color? pink300,
+    Color? pink400,
+    Color? pink500,
+    Color? pink600,
+    Color? pink700,
+    Color? pink800,
+    Color? pink900,
+    Color? fuchsia50,
+    Color? fuchsia100,
+    Color? fuchsia200,
+    Color? fuchsia300,
+    Color? fuchsia400,
+    Color? fuchsia500,
+    Color? fuchsia600,
+    Color? fuchsia700,
+    Color? fuchsia800,
+    Color? fuchsia900,
+    Color? purple50,
+    Color? purple100,
+    Color? purple200,
+    Color? purple300,
+    Color? purple400,
+    Color? purple500,
+    Color? purple600,
+    Color? purple700,
+    Color? purple800,
+    Color? purple900,
+    Color? violet50,
+    Color? violet100,
+    Color? violet200,
+    Color? violet300,
+    Color? violet400,
+    Color? violet500,
+    Color? violet600,
+    Color? violet700,
+    Color? violet800,
+    Color? violet900,
+    Color? indigo50,
+    Color? indigo100,
+    Color? indigo200,
+    Color? indigo300,
+    Color? indigo400,
+    Color? indigo500,
+    Color? indigo600,
+    Color? indigo700,
+    Color? indigo800,
+    Color? indigo900,
+    Color? blue50,
+    Color? blue100,
+    Color? blue200,
+    Color? blue300,
+    Color? blue400,
+    Color? blue500,
+    Color? blue600,
+    Color? blue700,
+    Color? blue800,
+    Color? blue900,
+    Color? lightBlue50,
+    Color? lightBlue100,
+    Color? lightBlue200,
+    Color? lightBlue300,
+    Color? lightBlue400,
+    Color? lightBlue500,
+    Color? lightBlue600,
+    Color? lightBlue700,
+    Color? lightBlue800,
+    Color? lightBlue900,
+    Color? darkBlue50,
+    Color? darkBlue100,
+    Color? darkBlue200,
+    Color? darkBlue300,
+    Color? darkBlue400,
+    Color? darkBlue500,
+    Color? darkBlue600,
+    Color? darkBlue700,
+    Color? darkBlue800,
+    Color? darkBlue900,
+    Color? cyan50,
+    Color? cyan100,
+    Color? cyan200,
+    Color? cyan300,
+    Color? cyan400,
+    Color? cyan500,
+    Color? cyan600,
+    Color? cyan700,
+    Color? cyan800,
+    Color? cyan900,
+    Color? teal50,
+    Color? teal100,
+    Color? teal200,
+    Color? teal300,
+    Color? teal400,
+    Color? teal500,
+    Color? teal600,
+    Color? teal700,
+    Color? teal800,
+    Color? teal900,
+    Color? emerald50,
+    Color? emerald100,
+    Color? emerald200,
+    Color? emerald300,
+    Color? emerald400,
+    Color? emerald500,
+    Color? emerald600,
+    Color? emerald700,
+    Color? emerald800,
+    Color? emerald900,
+    Color? green50,
+    Color? green100,
+    Color? green200,
+    Color? green300,
+    Color? green400,
+    Color? green500,
+    Color? green600,
+    Color? green700,
+    Color? green800,
+    Color? green900,
+    Color? lime50,
+    Color? lime100,
+    Color? lime200,
+    Color? lime300,
+    Color? lime400,
+    Color? lime500,
+    Color? lime600,
+    Color? lime700,
+    Color? lime800,
+    Color? lime900,
+    Color? yellow50,
+    Color? yellow100,
+    Color? yellow200,
+    Color? yellow300,
+    Color? yellow400,
+    Color? yellow500,
+    Color? yellow600,
+    Color? yellow700,
+    Color? yellow800,
+    Color? yellow900,
+    Color? amber50,
+    Color? amber100,
+    Color? amber200,
+    Color? amber300,
+    Color? amber400,
+    Color? amber500,
+    Color? amber600,
+    Color? amber700,
+    Color? amber800,
+    Color? amber900,
+    Color? orange50,
+    Color? orange100,
+    Color? orange200,
+    Color? orange300,
+    Color? orange400,
+    Color? orange500,
+    Color? orange600,
+    Color? orange700,
+    Color? orange800,
+    Color? orange900,
+    Color? red50,
+    Color? red100,
+    Color? red200,
+    Color? red300,
+    Color? red400,
+    Color? red500,
+    Color? red600,
+    Color? red700,
+    Color? red800,
+    Color? red900,
+    Color? warmGray50,
+    Color? warmGray100,
+    Color? warmGray200,
+    Color? warmGray300,
+    Color? warmGray400,
+    Color? warmGray500,
+    Color? warmGray600,
+    Color? warmGray700,
+    Color? warmGray800,
+    Color? warmGray900,
+    Color? trueGray50,
+    Color? trueGray100,
+    Color? trueGray200,
+    Color? trueGray300,
+    Color? trueGray400,
+    Color? trueGray500,
+    Color? trueGray600,
+    Color? trueGray700,
+    Color? trueGray800,
+    Color? trueGray900,
+    Color? coolGray50,
+    Color? coolGray100,
+    Color? coolGray200,
+    Color? coolGray300,
+    Color? coolGray400,
+    Color? coolGray500,
+    Color? coolGray600,
+    Color? coolGray700,
+    Color? coolGray800,
+    Color? coolGray900,
+    Color? blueGray50,
+    Color? blueGray100,
+    Color? blueGray200,
+    Color? blueGray300,
+    Color? blueGray400,
+    Color? blueGray500,
+    Color? blueGray600,
+    Color? blueGray700,
+    Color? blueGray800,
+    Color? blueGray900,
+    Color? tertiary50,
+    Color? tertiary100,
+    Color? tertiary200,
+    Color? tertiary300,
+    Color? tertiary400,
+    Color? tertiary500,
+    Color? tertiary600,
+    Color? tertiary700,
+    Color? tertiary800,
+    Color? tertiary900,
+    Color? error00,
+    Color? error50,
+    Color? error100,
+    Color? error200,
+    Color? error300,
+    Color? error400,
+    Color? error500,
+    Color? error600,
+    Color? error700,
+    Color? error800,
+    Color? error900,
+    Color? error950,
+    Color? success0,
+    Color? success50,
+    Color? success100,
+    Color? success200,
+    Color? success300,
+    Color? success400,
+    Color? success500,
+    Color? success600,
+    Color? success700,
+    Color? success800,
+    Color? success900,
+    Color? success950,
+    Color? warning50,
+    Color? warning100,
+    Color? warning200,
+    Color? warning300,
+    Color? warning400,
+    Color? warning500,
+    Color? warning600,
+    Color? warning700,
+    Color? warning800,
+    Color? warning900,
+    Color? info50,
+    Color? info100,
+    Color? info200,
+    Color? info300,
+    Color? info400,
+    Color? info500,
+    Color? info600,
+    Color? info700,
+    Color? info800,
+    Color? info900,
+    Color? light50,
+    Color? light100,
+    Color? light200,
+    Color? light300,
+    Color? light400,
+    Color? light500,
+    Color? light600,
+    Color? light700,
+    Color? light800,
+    Color? light900,
+    Color? primary0,
+    Color? primary50,
+    Color? primary100,
+    Color? primary200,
+    Color? primary300,
+    Color? primary400,
+    Color? primary500,
+    Color? primary600,
+    Color? primary700,
+    Color? primary800,
+    Color? primary900,
+    Color? primary950,
+    Color? secondary0,
+    Color? secondary50,
+    Color? secondary100,
+    Color? secondary200,
+    Color? secondary300,
+    Color? secondary400,
+    Color? secondary500,
+    Color? secondary600,
+    Color? secondary700,
+    Color? secondary800,
+    Color? secondary900,
+    Color? secondary950,
+    Color? textLight0,
+    Color? textLight50,
+    Color? textLight100,
+    Color? textLight200,
+    Color? textLight300,
+    Color? textLight400,
+    Color? textLight500,
+    Color? textLight600,
+    Color? textLight700,
+    Color? textLight800,
+    Color? textLight900,
+    Color? textLight950,
+    Color? textDark0,
+    Color? textDark50,
+    Color? textDark100,
+    Color? textDark200,
+    Color? textDark300,
+    Color? textDark400,
+    Color? textDark500,
+    Color? textDark600,
+    Color? textDark700,
+    Color? textDark800,
+    Color? textDark900,
+    Color? textDark950,
+    Color? borderDark0,
+    Color? borderDark50,
+    Color? borderDark100,
+    Color? borderDark200,
+    Color? borderDark300,
+    Color? borderDark400,
+    Color? borderDark500,
+    Color? borderDark600,
+    Color? borderDark700,
+    Color? borderDark800,
+    Color? borderDark900,
+    Color? borderDark950,
+    Color? borderLight0,
+    Color? borderLight50,
+    Color? borderLight100,
+    Color? borderLight200,
+    Color? borderLight300,
+    Color? borderLight400,
+    Color? borderLight500,
+    Color? borderLight600,
+    Color? borderLight700,
+    Color? borderLight800,
+    Color? borderLight900,
+    Color? borderLight950,
+    Color? backgroundDark0,
+    Color? backgroundDark50,
+    Color? backgroundDark100,
+    Color? backgroundDark200,
+    Color? backgroundDark300,
+    Color? backgroundDark400,
+    Color? backgroundDark500,
+    Color? backgroundDark600,
+    Color? backgroundDark700,
+    Color? backgroundDark800,
+    Color? backgroundDark900,
+    Color? backgroundDark950,
+    Color? backgroundLight0,
+    Color? backgroundLight50,
+    Color? backgroundLight100,
+    Color? backgroundLight200,
+    Color? backgroundLight300,
+    Color? backgroundLight400,
+    Color? backgroundLight500,
+    Color? backgroundLight600,
+    Color? backgroundLight700,
+    Color? backgroundLight800,
+    Color? backgroundLight900,
+    Color? backgroundLight950,
+    Color? backgroundLightError,
+    Color? backgroundDarkError,
+    Color? backgroundLightWarning,
+    Color? backgroundDarkWarning,
+    Color? backgroundLightSuccess,
+    Color? backgroundDarkSuccess,
+    Color? backgroundLightInfo,
+    Color? backgroundDarkInfo,
+    Color? backgroundLightMuted,
+    Color? backgroundDarkMuted,
+    Color? white,
+    Color? black,
+    Color? primaryColorsFromBase,
+    Color? secondaryColorsFromBase,
+  }) {
+    return GSColorsToken(
+      rose50: rose50 ?? this.rose50,
+      rose100: rose100 ?? this.rose100,
+      rose200: rose200 ?? this.rose200,
+      rose300: rose300 ?? this.rose300,
+      rose400: rose400 ?? this.rose400,
+      rose500: rose500 ?? this.rose500,
+      rose600: rose600 ?? this.rose600,
+      rose700: rose700 ?? this.rose700,
+      rose800: rose800 ?? this.rose800,
+      rose900: rose900 ?? this.rose900,
+      pink50: pink50 ?? this.pink50,
+      pink100: pink100 ?? this.pink100,
+      pink200: pink200 ?? this.pink200,
+      pink300: pink300 ?? this.pink300,
+      pink400: pink400 ?? this.pink400,
+      pink500: pink500 ?? this.pink500,
+      pink600: pink600 ?? this.pink600,
+      pink700: pink700 ?? this.pink700,
+      pink800: pink800 ?? this.pink800,
+      pink900: pink900 ?? this.pink900,
+      fuchsia50: fuchsia50 ?? this.fuchsia50,
+      fuchsia100: fuchsia100 ?? this.fuchsia100,
+      fuchsia200: fuchsia200 ?? this.fuchsia200,
+      fuchsia300: fuchsia300 ?? this.fuchsia300,
+      fuchsia400: fuchsia400 ?? this.fuchsia400,
+      fuchsia500: fuchsia500 ?? this.fuchsia500,
+      fuchsia600: fuchsia600 ?? this.fuchsia600,
+      fuchsia700: fuchsia700 ?? this.fuchsia700,
+      fuchsia800: fuchsia800 ?? this.fuchsia800,
+      fuchsia900: fuchsia900 ?? this.fuchsia900,
+      purple50: purple50 ?? this.purple50,
+      purple100: purple100 ?? this.purple100,
+      purple200: purple200 ?? this.purple200,
+      purple300: purple300 ?? this.purple300,
+      purple400: purple400 ?? this.purple400,
+      purple500: purple500 ?? this.purple500,
+      purple600: purple600 ?? this.purple600,
+      purple700: purple700 ?? this.purple700,
+      purple800: purple800 ?? this.purple800,
+      purple900: purple900 ?? this.purple900,
+      violet50: violet50 ?? this.violet50,
+      violet100: violet100 ?? this.violet100,
+      violet200: violet200 ?? this.violet200,
+      violet300: violet300 ?? this.violet300,
+      violet400: violet400 ?? this.violet400,
+      violet500: violet500 ?? this.violet500,
+      violet600: violet600 ?? this.violet600,
+      violet700: violet700 ?? this.violet700,
+      violet800: violet800 ?? this.violet800,
+      violet900: violet900 ?? this.violet900,
+      indigo50: indigo50 ?? this.indigo50,
+      indigo100: indigo100 ?? this.indigo100,
+      indigo200: indigo200 ?? this.indigo200,
+      indigo300: indigo300 ?? this.indigo300,
+      indigo400: indigo400 ?? this.indigo400,
+      indigo500: indigo500 ?? this.indigo500,
+      indigo600: indigo600 ?? this.indigo600,
+      indigo700: indigo700 ?? this.indigo700,
+      indigo800: indigo800 ?? this.indigo800,
+      indigo900: indigo900 ?? this.indigo900,
+      blue50: blue50 ?? this.blue50,
+      blue100: blue100 ?? this.blue100,
+      blue200: blue200 ?? this.blue200,
+      blue300: blue300 ?? this.blue300,
+      blue400: blue400 ?? this.blue400,
+      blue500: blue500 ?? this.blue500,
+      blue600: blue600 ?? this.blue600,
+      blue700: blue700 ?? this.blue700,
+      blue800: blue800 ?? this.blue800,
+      blue900: blue900 ?? this.blue900,
+      lightBlue50: lightBlue50 ?? this.lightBlue50,
+      lightBlue100: lightBlue100 ?? this.lightBlue100,
+      lightBlue200: lightBlue200 ?? this.lightBlue200,
+      lightBlue300: lightBlue300 ?? this.lightBlue300,
+      lightBlue400: lightBlue400 ?? this.lightBlue400,
+      lightBlue500: lightBlue500 ?? this.lightBlue500,
+      lightBlue600: lightBlue600 ?? this.lightBlue600,
+      lightBlue700: lightBlue700 ?? this.lightBlue700,
+      lightBlue800: lightBlue800 ?? this.lightBlue800,
+      lightBlue900: lightBlue900 ?? this.lightBlue900,
+      darkBlue50: darkBlue50 ?? this.darkBlue50,
+      darkBlue100: darkBlue100 ?? this.darkBlue100,
+      darkBlue200: darkBlue200 ?? this.darkBlue200,
+      darkBlue300: darkBlue300 ?? this.darkBlue300,
+      darkBlue400: darkBlue400 ?? this.darkBlue400,
+      darkBlue500: darkBlue500 ?? this.darkBlue500,
+      darkBlue600: darkBlue600 ?? this.darkBlue600,
+      darkBlue700: darkBlue700 ?? this.darkBlue700,
+      darkBlue800: darkBlue800 ?? this.darkBlue800,
+      darkBlue900: darkBlue900 ?? this.darkBlue900,
+      cyan50: cyan50 ?? this.cyan50,
+      cyan100: cyan100 ?? this.cyan100,
+      cyan200: cyan200 ?? this.cyan200,
+      cyan300: cyan300 ?? this.cyan300,
+      cyan400: cyan400 ?? this.cyan400,
+      cyan500: cyan500 ?? this.cyan500,
+      cyan600: cyan600 ?? this.cyan600,
+      cyan700: cyan700 ?? this.cyan700,
+      cyan800: cyan800 ?? this.cyan800,
+      cyan900: cyan900 ?? this.cyan900,
+      teal50: teal50 ?? this.teal50,
+      teal100: teal100 ?? this.teal100,
+      teal200: teal200 ?? this.teal200,
+      teal300: teal300 ?? this.teal300,
+      teal400: teal400 ?? this.teal400,
+      teal500: teal500 ?? this.teal500,
+      teal600: teal600 ?? this.teal600,
+      teal700: teal700 ?? this.teal700,
+      teal800: teal800 ?? this.teal800,
+      teal900: teal900 ?? this.teal900,
+      emerald50: emerald50 ?? this.emerald50,
+      emerald100: emerald100 ?? this.emerald100,
+      emerald200: emerald200 ?? this.emerald200,
+      emerald300: emerald300 ?? this.emerald300,
+      emerald400: emerald400 ?? this.emerald400,
+      emerald500: emerald500 ?? this.emerald500,
+      emerald600: emerald600 ?? this.emerald600,
+      emerald700: emerald700 ?? this.emerald700,
+      emerald800: emerald800 ?? this.emerald800,
+      emerald900: emerald900 ?? this.emerald900,
+      green50: green50 ?? this.green50,
+      green100: green100 ?? this.green100,
+      green200: green200 ?? this.green200,
+      green300: green300 ?? this.green300,
+      green400: green400 ?? this.green400,
+      green500: green500 ?? this.green500,
+      green600: green600 ?? this.green600,
+      green700: green700 ?? this.green700,
+      green800: green800 ?? this.green800,
+      green900: green900 ?? this.green900,
+      lime50: lime50 ?? this.lime50,
+      lime100: lime100 ?? this.lime100,
+      lime200: lime200 ?? this.lime200,
+      lime300: lime300 ?? this.lime300,
+      lime400: lime400 ?? this.lime400,
+      lime500: lime500 ?? this.lime500,
+      lime600: lime600 ?? this.lime600,
+      lime700: lime700 ?? this.lime700,
+      lime800: lime800 ?? this.lime800,
+      lime900: lime900 ?? this.lime900,
+      yellow50: yellow50 ?? this.yellow50,
+      yellow100: yellow100 ?? this.yellow100,
+      yellow200: yellow200 ?? this.yellow200,
+      yellow300: yellow300 ?? this.yellow300,
+      yellow400: yellow400 ?? this.yellow400,
+      yellow500: yellow500 ?? this.yellow500,
+      yellow600: yellow600 ?? this.yellow600,
+      yellow700: yellow700 ?? this.yellow700,
+      yellow800: yellow800 ?? this.yellow800,
+      yellow900: yellow900 ?? this.yellow900,
+      amber50: amber50 ?? this.amber50,
+      amber100: amber100 ?? this.amber100,
+      amber200: amber200 ?? this.amber200,
+      amber300: amber300 ?? this.amber300,
+      amber400: amber400 ?? this.amber400,
+      amber500: amber500 ?? this.amber500,
+      amber600: amber600 ?? this.amber600,
+      amber700: amber700 ?? this.amber700,
+      amber800: amber800 ?? this.amber800,
+      amber900: amber900 ?? this.amber900,
+      orange50: orange50 ?? this.orange50,
+      orange100: orange100 ?? this.orange100,
+      orange200: orange200 ?? this.orange200,
+      orange300: orange300 ?? this.orange300,
+      orange400: orange400 ?? this.orange400,
+      orange500: orange500 ?? this.orange500,
+      orange600: orange600 ?? this.orange600,
+      orange700: orange700 ?? this.orange700,
+      orange800: orange800 ?? this.orange800,
+      orange900: orange900 ?? this.orange900,
+      red50: red50 ?? this.red50,
+      red100: red100 ?? this.red100,
+      red200: red200 ?? this.red200,
+      red300: red300 ?? this.red300,
+      red400: red400 ?? this.red400,
+      red500: red500 ?? this.red500,
+      red600: red600 ?? this.red600,
+      red700: red700 ?? this.red700,
+      red800: red800 ?? this.red800,
+      red900: red900 ?? this.red900,
+      warmGray50: warmGray50 ?? this.warmGray50,
+      warmGray100: warmGray100 ?? this.warmGray100,
+      warmGray200: warmGray200 ?? this.warmGray200,
+      warmGray300: warmGray300 ?? this.warmGray300,
+      warmGray400: warmGray400 ?? this.warmGray400,
+      warmGray500: warmGray500 ?? this.warmGray500,
+      warmGray600: warmGray600 ?? this.warmGray600,
+      warmGray700: warmGray700 ?? this.warmGray700,
+      warmGray800: warmGray800 ?? this.warmGray800,
+      warmGray900: warmGray900 ?? this.warmGray900,
+      trueGray50: trueGray50 ?? this.trueGray50,
+      trueGray100: trueGray100 ?? this.trueGray100,
+      trueGray200: trueGray200 ?? this.trueGray200,
+      trueGray300: trueGray300 ?? this.trueGray300,
+      trueGray400: trueGray400 ?? this.trueGray400,
+      trueGray500: trueGray500 ?? this.trueGray500,
+      trueGray600: trueGray600 ?? this.trueGray600,
+      trueGray700: trueGray700 ?? this.trueGray700,
+      trueGray800: trueGray800 ?? this.trueGray800,
+      trueGray900: trueGray900 ?? this.trueGray900,
+      coolGray50: coolGray50 ?? this.coolGray50,
+      coolGray100: coolGray100 ?? this.coolGray100,
+      coolGray200: coolGray200 ?? this.coolGray200,
+      coolGray300: coolGray300 ?? this.coolGray300,
+      coolGray400: coolGray400 ?? this.coolGray400,
+      coolGray500: coolGray500 ?? this.coolGray500,
+      coolGray600: coolGray600 ?? this.coolGray600,
+      coolGray700: coolGray700 ?? this.coolGray700,
+      coolGray800: coolGray800 ?? this.coolGray800,
+      coolGray900: coolGray900 ?? this.coolGray900,
+      blueGray50: blueGray50 ?? this.blueGray50,
+      blueGray100: blueGray100 ?? this.blueGray100,
+      blueGray200: blueGray200 ?? this.blueGray200,
+      blueGray300: blueGray300 ?? this.blueGray300,
+      blueGray400: blueGray400 ?? this.blueGray400,
+      blueGray500: blueGray500 ?? this.blueGray500,
+      blueGray600: blueGray600 ?? this.blueGray600,
+      blueGray700: blueGray700 ?? this.blueGray700,
+      blueGray800: blueGray800 ?? this.blueGray800,
+      blueGray900: blueGray900 ?? this.blueGray900,
+      tertiary50: tertiary50 ?? this.tertiary50,
+      tertiary100: tertiary100 ?? this.tertiary100,
+      tertiary200: tertiary200 ?? this.tertiary200,
+      tertiary300: tertiary300 ?? this.tertiary300,
+      tertiary400: tertiary400 ?? this.tertiary400,
+      tertiary500: tertiary500 ?? this.tertiary500,
+      tertiary600: tertiary600 ?? this.tertiary600,
+      tertiary700: tertiary700 ?? this.tertiary700,
+      tertiary800: tertiary800 ?? this.tertiary800,
+      tertiary900: tertiary900 ?? this.tertiary900,
+      error00: error00 ?? this.error00,
+      error50: error50 ?? this.error50,
+      error100: error100 ?? this.error100,
+      error200: error200 ?? this.error200,
+      error300: error300 ?? this.error300,
+      error400: error400 ?? this.error400,
+      error500: error500 ?? this.error500,
+      error600: error600 ?? this.error600,
+      error700: error700 ?? this.error700,
+      error800: error800 ?? this.error800,
+      error900: error900 ?? this.error900,
+      error950: error950 ?? this.error950,
+      success0: success0 ?? this.success0,
+      success50: success50 ?? this.success50,
+      success100: success100 ?? this.success100,
+      success200: success200 ?? this.success200,
+      success300: success300 ?? this.success300,
+      success400: success400 ?? this.success400,
+      success500: success500 ?? this.success500,
+      success600: success600 ?? this.success600,
+      success700: success700 ?? this.success700,
+      success800: success800 ?? this.success800,
+      success900: success900 ?? this.success900,
+      success950: success950 ?? this.success950,
+      warning50: warning50 ?? this.warning50,
+      warning100: warning100 ?? this.warning100,
+      warning200: warning200 ?? this.warning200,
+      warning300: warning300 ?? this.warning300,
+      warning400: warning400 ?? this.warning400,
+      warning500: warning500 ?? this.warning500,
+      warning600: warning600 ?? this.warning600,
+      warning700: warning700 ?? this.warning700,
+      warning800: warning800 ?? this.warning800,
+      warning900: warning900 ?? this.warning900,
+      info50: info50 ?? this.info50,
+      info100: info100 ?? this.info100,
+      info200: info200 ?? this.info200,
+      info300: info300 ?? this.info300,
+      info400: info400 ?? this.info400,
+      info500: info500 ?? this.info500,
+      info600: info600 ?? this.info600,
+      info700: info700 ?? this.info700,
+      info800: info800 ?? this.info800,
+      info900: info900 ?? this.info900,
+      light50: light50 ?? this.light50,
+      light100: light100 ?? this.light100,
+      light200: light200 ?? this.light200,
+      light300: light300 ?? this.light300,
+      light400: light400 ?? this.light400,
+      light500: light500 ?? this.light500,
+      light600: light600 ?? this.light600,
+      light700: light700 ?? this.light700,
+      light800: light800 ?? this.light800,
+      light900: light900 ?? this.light900,
+      primary0: primary0 ?? this.primary0,
+      primary50: primary50 ?? this.primary50,
+      primary100: primary100 ?? this.primary100,
+      primary200: primary200 ?? this.primary200,
+      primary300: primary300 ?? this.primary300,
+      primary400: primary400 ?? this.primary400,
+      primary500: primary500 ?? this.primary500,
+      primary600: primary600 ?? this.primary600,
+      primary700: primary700 ?? this.primary700,
+      primary800: primary800 ?? this.primary800,
+      primary900: primary900 ?? this.primary900,
+      primary950: primary950 ?? this.primary950,
+      secondary0: secondary0 ?? this.secondary0,
+      secondary50: secondary50 ?? this.secondary50,
+      secondary100: secondary100 ?? this.secondary100,
+      secondary200: secondary200 ?? this.secondary200,
+      secondary300: secondary300 ?? this.secondary300,
+      secondary400: secondary400 ?? this.secondary400,
+      secondary500: secondary500 ?? this.secondary500,
+      secondary600: secondary600 ?? this.secondary600,
+      secondary700: secondary700 ?? this.secondary700,
+      secondary800: secondary800 ?? this.secondary800,
+      secondary900: secondary900 ?? this.secondary900,
+      secondary950: secondary950 ?? this.secondary950,
+      textLight0: textLight0 ?? this.textLight0,
+      textLight50: textLight50 ?? this.textLight50,
+      textLight100: textLight100 ?? this.textLight100,
+      textLight200: textLight200 ?? this.textLight200,
+      textLight300: textLight300 ?? this.textLight300,
+      textLight400: textLight400 ?? this.textLight400,
+      textLight500: textLight500 ?? this.textLight500,
+      textLight600: textLight600 ?? this.textLight600,
+      textLight700: textLight700 ?? this.textLight700,
+      textLight800: textLight800 ?? this.textLight800,
+      textLight900: textLight900 ?? this.textLight900,
+      textLight950: textLight950 ?? this.textLight950,
+      textDark0: textDark0 ?? this.textDark0,
+      textDark50: textDark50 ?? this.textDark50,
+      textDark100: textDark100 ?? this.textDark100,
+      textDark200: textDark200 ?? this.textDark200,
+      textDark300: textDark300 ?? this.textDark300,
+      textDark400: textDark400 ?? this.textDark400,
+      textDark500: textDark500 ?? this.textDark500,
+      textDark600: textDark600 ?? this.textDark600,
+      textDark700: textDark700 ?? this.textDark700,
+      textDark800: textDark800 ?? this.textDark800,
+      textDark900: textDark900 ?? this.textDark900,
+      textDark950: textDark950 ?? this.textDark950,
+      borderDark0: borderDark0 ?? this.borderDark0,
+      borderDark50: borderDark50 ?? this.borderDark50,
+      borderDark100: borderDark100 ?? this.borderDark100,
+      borderDark200: borderDark200 ?? this.borderDark200,
+      borderDark300: borderDark300 ?? this.borderDark300,
+      borderDark400: borderDark400 ?? this.borderDark400,
+      borderDark500: borderDark500 ?? this.borderDark500,
+      borderDark600: borderDark600 ?? this.borderDark600,
+      borderDark700: borderDark700 ?? this.borderDark700,
+      borderDark800: borderDark800 ?? this.borderDark800,
+      borderDark900: borderDark900 ?? this.borderDark900,
+      borderDark950: borderDark950 ?? this.borderDark950,
+      borderLight0: borderLight0 ?? this.borderLight0,
+      borderLight50: borderLight50 ?? this.borderLight50,
+      borderLight100: borderLight100 ?? this.borderLight100,
+      borderLight200: borderLight200 ?? this.borderLight200,
+      borderLight300: borderLight300 ?? this.borderLight300,
+      borderLight400: borderLight400 ?? this.borderLight400,
+      borderLight500: borderLight500 ?? this.borderLight500,
+      borderLight600: borderLight600 ?? this.borderLight600,
+      borderLight700: borderLight700 ?? this.borderLight700,
+      borderLight800: borderLight800 ?? this.borderLight800,
+      borderLight900: borderLight900 ?? this.borderLight900,
+      borderLight950: borderLight950 ?? this.borderLight950,
+      backgroundDark0: backgroundDark0 ?? this.backgroundDark0,
+      backgroundDark50: backgroundDark50 ?? this.backgroundDark50,
+      backgroundDark100: backgroundDark100 ?? this.backgroundDark100,
+      backgroundDark200: backgroundDark200 ?? this.backgroundDark200,
+      backgroundDark300: backgroundDark300 ?? this.backgroundDark300,
+      backgroundDark400: backgroundDark400 ?? this.backgroundDark400,
+      backgroundDark500: backgroundDark500 ?? this.backgroundDark500,
+      backgroundDark600: backgroundDark600 ?? this.backgroundDark600,
+      backgroundDark700: backgroundDark700 ?? this.backgroundDark700,
+      backgroundDark800: backgroundDark800 ?? this.backgroundDark800,
+      backgroundDark900: backgroundDark900 ?? this.backgroundDark900,
+      backgroundDark950: backgroundDark950 ?? this.backgroundDark950,
+      backgroundLight0: backgroundLight0 ?? this.backgroundLight0,
+      backgroundLight50: backgroundLight50 ?? this.backgroundLight50,
+      backgroundLight100: backgroundLight100 ?? this.backgroundLight100,
+      backgroundLight200: backgroundLight200 ?? this.backgroundLight200,
+      backgroundLight300: backgroundLight300 ?? this.backgroundLight300,
+      backgroundLight400: backgroundLight400 ?? this.backgroundLight400,
+      backgroundLight500: backgroundLight500 ?? this.backgroundLight500,
+      backgroundLight600: backgroundLight600 ?? this.backgroundLight600,
+      backgroundLight700: backgroundLight700 ?? this.backgroundLight700,
+      backgroundLight800: backgroundLight800 ?? this.backgroundLight800,
+      backgroundLight900: backgroundLight900 ?? this.backgroundLight900,
+      backgroundLight950: backgroundLight950 ?? this.backgroundLight950,
+      backgroundLightError: backgroundLightError ?? this.backgroundLightError,
+      backgroundDarkError: backgroundDarkError ?? this.backgroundDarkError,
+      backgroundLightWarning:
+          backgroundLightWarning ?? this.backgroundLightWarning,
+      backgroundDarkWarning:
+          backgroundDarkWarning ?? this.backgroundDarkWarning,
+      backgroundLightSuccess:
+          backgroundLightSuccess ?? this.backgroundLightSuccess,
+      backgroundDarkSuccess:
+          backgroundDarkSuccess ?? this.backgroundDarkSuccess,
+      backgroundLightInfo: backgroundLightInfo ?? this.backgroundLightInfo,
+      backgroundDarkInfo: backgroundDarkInfo ?? this.backgroundDarkInfo,
+      backgroundLightMuted: backgroundLightMuted ?? this.backgroundLightMuted,
+      backgroundDarkMuted: backgroundDarkMuted ?? this.backgroundDarkMuted,
+      white: white ?? this.white,
+      black: black ?? this.black,
+      primaryColorsFromBase:
+          primaryColorsFromBase ?? this.primaryColorsFromBase,
+      secondaryColorsFromBase:
+          secondaryColorsFromBase ?? this.secondaryColorsFromBase,
+    );
+  }
 }
 
 class $GSColors {
