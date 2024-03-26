@@ -34,29 +34,26 @@ class GSResponsiveLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Use LayoutBuilder to obtain screen width and select appropriate layout.
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        final double screenWidth = constraints.maxWidth;
-        // Determine the widget to display based on the current screen width.
-        Widget? layoutWidget;
-        if (screenWidth < $GSScreenBreakpoint.small) {
-          layoutWidget = xsLayout;
-        } else if (screenWidth >= $GSScreenBreakpoint.small &&
-            screenWidth < $GSScreenBreakpoint.medium) {
-          layoutWidget = smLayout ?? xsLayout;
-        } else if (screenWidth >= $GSScreenBreakpoint.medium &&
-            screenWidth < $GSScreenBreakpoint.large) {
-          layoutWidget = mdLayout ?? smLayout ?? xsLayout;
-        } else if (screenWidth >= $GSScreenBreakpoint.large &&
-            screenWidth < $GSScreenBreakpoint.extraLarge) {
-          layoutWidget = lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
-        } else if (screenWidth >= $GSScreenBreakpoint.large) {
-          layoutWidget =
-              xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
-        }
-        // Ensure a Widget is always returned.
-        return layoutWidget ?? const SizedBox.shrink();
-      },
-    );
+
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    // Determine the widget to display based on the current screen width.
+    Widget? layoutWidget;
+    if (screenWidth < $GSScreenBreakpoint.small) {
+      layoutWidget = xsLayout;
+    } else if (screenWidth >= $GSScreenBreakpoint.small &&
+        screenWidth < $GSScreenBreakpoint.medium) {
+      layoutWidget = smLayout ?? xsLayout;
+    } else if (screenWidth >= $GSScreenBreakpoint.medium &&
+        screenWidth < $GSScreenBreakpoint.large) {
+      layoutWidget = mdLayout ?? smLayout ?? xsLayout;
+    } else if (screenWidth >= $GSScreenBreakpoint.large &&
+        screenWidth < $GSScreenBreakpoint.extraLarge) {
+      layoutWidget = lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
+    } else if (screenWidth >= $GSScreenBreakpoint.large) {
+      layoutWidget = xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
+    }
+    // Ensure a Widget is always returned.
+    return layoutWidget ?? const SizedBox.shrink();
   }
 }
