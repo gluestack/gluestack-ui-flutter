@@ -4,13 +4,13 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_layout/style_gs_layout.dart';
 
 class GSLayout extends StatelessWidget {
-  final Widget child;
+  final Widget body;
   final GSStyle? style;
   final Widget? floatingActionButton;
   final AlignmentGeometry floatingActionButtonLocation;
   const GSLayout({
     super.key,
-    required this.child,
+    required this.body,
     this.style,
     this.floatingActionButton,
     this.floatingActionButtonLocation = Alignment.bottomRight,
@@ -30,7 +30,7 @@ class GSLayout extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          child,
+          body,
           Align(
             alignment: floatingActionButtonLocation,
             child: floatingActionButton,
