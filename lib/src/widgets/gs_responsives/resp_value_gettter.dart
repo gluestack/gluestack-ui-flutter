@@ -24,15 +24,15 @@ T? getRespValue<T>({
       MediaQuery.of(context).size.width; // Retrieves current screen width
 
   // Determine and return the appropriate value based on the screen width and the specified upper bounds.
-  if (screenWidth <= xsBreakpoint!) {
+  if (screenWidth < smBreakpoint!) {
     return xsValue;
-  } else if (screenWidth < smBreakpoint!) {
+  } else if (screenWidth >= smBreakpoint && screenWidth < mdBreakpoint!) {
     return smValue ?? xsValue;
-  } else if (screenWidth < mdBreakpoint!) {
+  } else if (screenWidth >= mdBreakpoint! && screenWidth < lgBreakpoint!) {
     return mdValue ?? smValue ?? xsValue;
-  } else if (screenWidth < lgBreakpoint!) {
+  } else if (screenWidth >= lgBreakpoint! && screenWidth < xlBreakpoint!) {
     return lgValue ?? mdValue ?? smValue ?? xsValue;
-  } else if (screenWidth < xlBreakpoint!) {
+  } else if (screenWidth >= xlBreakpoint! && screenWidth < xxlBreakpoint!) {
     return xlValue ?? lgValue ?? mdValue ?? smValue ?? xsValue;
   } else if (screenWidth >= xxlBreakpoint!) {
     return xxlValue ?? xlValue ?? lgValue ?? mdValue ?? smValue ?? xsValue;
