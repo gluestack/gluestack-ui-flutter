@@ -21,25 +21,30 @@ class CenterExample extends StatelessWidget {
          )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Center",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSCenter(
-          style: GSStyle(
-            alignItems: GSAlignments.end,
-            justifyContent: GSAlignments.start,
-            height: 150,
-            bg: Colors.pink,
-            md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
+        ),
+        child: BaseLayout(
+          code: code,
+          component: GSCenter(
+            style: GSStyle(
+              alignItems: GSAlignments.end,
+              justifyContent: GSAlignments.start,
+              height: 150,
+              bg: Colors.pink,
+              md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
+            ),
+            child: const GSCenter(child: Text('Testing Center Widget')),
           ),
-          child: const GSCenter(child: Text('Testing Center Widget')),
         ),
       ),
     );

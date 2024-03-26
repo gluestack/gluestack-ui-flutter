@@ -37,32 +37,37 @@ class _ProgressExampleState extends State<ProgressExample> {
            )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Progress",
           size: GSSizes.$xl,
         ),
       ),
       body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSProgress(
-            value: 0.4,
-            size: selectedSizeOption,
+        child: GSBox(
+          style: GSStyle(
+            dark: GSStyle(bg: $GSColors.black),
           ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-            ],
+          child: BaseLayout(
+            code: code,
+            component: GSProgress(
+              value: 0.4,
+              size: selectedSizeOption,
+            ),
+            controls: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomDropDown(
+                  title: "size",
+                  dropdownOptions: dropdownSizeOptions,
+                  selectedOption: selectedSizeOption,
+                  onChanged: updateSizeSelectedOption,
+                ),
+              ],
+            ),
           ),
         ),
       ),

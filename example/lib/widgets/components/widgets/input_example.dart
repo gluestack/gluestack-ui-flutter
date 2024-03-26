@@ -79,64 +79,69 @@ class _InputExampleState extends State<InputExample> {
        )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Input",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSInput(
-          size: selectedSizeOption,
-          variant: selectedVariantOption,
-          hintText: "Enter text here",
-          isDisabled: isDisabled,
-          isInvalid: isInvalid,
-          controller: textEditingController,
-          isReadOnly: isReadOnly,
-          style: GSStyle(
-            width: 300,
-          ),
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
         ),
-        controls: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "size",
-              dropdownOptions: dropdownSizeOptions,
-              selectedOption: selectedSizeOption,
-              onChanged: updateSizeSelectedOption,
+        child: BaseLayout(
+          code: code,
+          component: GSInput(
+            size: selectedSizeOption,
+            variant: selectedVariantOption,
+            hintText: "Enter text here",
+            isDisabled: isDisabled,
+            isInvalid: isInvalid,
+            controller: textEditingController,
+            isReadOnly: isReadOnly,
+            style: GSStyle(
+              width: 300,
             ),
-            const SizedBox(height: 20),
-            CustomDropDown(
-              title: "variant",
-              dropdownOptions: dropdownVariantOptions,
-              selectedOption: selectedVariantOption,
-              onChanged: updateVariantSelectedOption,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isDisabled",
-              value: isDisabled,
-              onToggle: updateIsDisabled,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isInvalid",
-              value: isInvalid,
-              onToggle: updateIsInvalid,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isReadOnly",
-              value: isReadOnly,
-              onToggle: updateIsReadOnly,
-            )
-          ],
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomDropDown(
+                title: "variant",
+                dropdownOptions: dropdownVariantOptions,
+                selectedOption: selectedVariantOption,
+                onChanged: updateVariantSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isInvalid",
+                value: isInvalid,
+                onToggle: updateIsInvalid,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isReadOnly",
+                value: isReadOnly,
+                onToggle: updateIsReadOnly,
+              )
+            ],
+          ),
         ),
       ),
     );

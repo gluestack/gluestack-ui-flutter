@@ -15,20 +15,25 @@ class HeadingExample extends StatelessWidget {
           )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Heading",
           size: GSSizes.$xl,
         ),
       ),
       body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSHeading(
-            text: 'This is an example for a Heading',
-            style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
+        child: GSBox(
+          style: GSStyle(
+            dark: GSStyle(bg: $GSColors.black),
+          ),
+          child: BaseLayout(
+            code: code,
+            component: GSHeading(
+              text: 'This is an example for a Heading',
+              style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
+            ),
           ),
         ),
       ),

@@ -64,54 +64,59 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
           )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Radio Button",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSRadio<Value>(
-          size: selectedSizeOption,
-          isDisabled: isDisabled,
-          isInvalid: isInvalid,
-          value: Value.four,
-          groupValue: groupValue,
-          onChanged: (p0) {
-            setState(() {
-              groupValue = p0!;
-            });
-          },
-          icon: const GSRadioIcon<Value>(),
-          label: const GSRadioText<Value>(text: 'text4'),
-          style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
         ),
-        controls: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "size",
-              dropdownOptions: dropdownSizeOptions,
-              selectedOption: selectedSizeOption,
-              onChanged: updateSizeSelectedOption,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isDisabled",
-              value: isDisabled,
-              onToggle: updateIsDisabled,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isInvalid",
-              value: isInvalid,
-              onToggle: updateIsInvalid,
-            )
-          ],
+        child: BaseLayout(
+          code: code,
+          component: GSRadio<Value>(
+            size: selectedSizeOption,
+            isDisabled: isDisabled,
+            isInvalid: isInvalid,
+            value: Value.four,
+            groupValue: groupValue,
+            onChanged: (p0) {
+              setState(() {
+                groupValue = p0!;
+              });
+            },
+            icon: const GSRadioIcon<Value>(),
+            label: const GSRadioText<Value>(text: 'text4'),
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isInvalid",
+                value: isInvalid,
+                onToggle: updateIsInvalid,
+              )
+            ],
+          ),
         ),
       ),
     );

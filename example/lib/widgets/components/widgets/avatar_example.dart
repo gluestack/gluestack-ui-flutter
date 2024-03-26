@@ -60,43 +60,48 @@ class _AvatarExampleState extends State<AvatarExample> {
          )
 ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Avatar",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSAvatar(
-          radius: selectedRadiusOption,
-          size: selectedSizeOption,
-          style: GSStyle(
-            bg: Colors.orange,
-            textStyle: const TextStyle(color: Colors.white),
-          ),
-          fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
         ),
-        controls: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "size",
-              dropdownOptions: dropdownSizeOptions,
-              selectedOption: selectedSizeOption,
-              onChanged: updateSizeSelectedOption,
+        child: BaseLayout(
+          code: code,
+          component: GSAvatar(
+            radius: selectedRadiusOption,
+            size: selectedSizeOption,
+            style: GSStyle(
+              bg: Colors.orange,
+              textStyle: const TextStyle(color: Colors.white),
             ),
-            const SizedBox(height: 20),
-            CustomDropDown(
-              title: "borderRadius",
-              dropdownOptions: dropdownRadiusOptions,
-              selectedOption: selectedRadiusOption,
-              onChanged: updateRadiusSelectedOption,
-            ),
-          ],
+            fallBackText: const GSAvatarFallBackText('Geeky Stack'),
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomDropDown(
+                title: "borderRadius",
+                dropdownOptions: dropdownRadiusOptions,
+                selectedOption: selectedRadiusOption,
+                onChanged: updateRadiusSelectedOption,
+              ),
+            ],
+          ),
         ),
       ),
     );

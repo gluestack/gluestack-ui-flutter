@@ -55,52 +55,57 @@ class _SwitchExampleState extends State<SwitchExample> {
              )
 ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Switch",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: Column(
-          children: [
-            GSSwitch(
-              isDisabled: isDisabled,
-              size: selectedSizeOption,
-              style: GSStyle(
-                thumbColor: Colors.amber,
-                trackColorFalse: Colors.orange,
-                checked: GSStyle(
-                  activeThumbColor: Colors.red,
-                  trackColorTrue: Colors.black,
-                ),
-              ),
-              value: val1,
-              onToggle: (bool a) {
-                // print('switch value: $a');
-              },
-            ),
-          ],
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
         ),
-        controls: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "size",
-              dropdownOptions: dropdownSizeOptions,
-              selectedOption: selectedSizeOption,
-              onChanged: updateSizeSelectedOption,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isDisabled",
-              value: isDisabled,
-              onToggle: updateIsDisabled,
-            ),
-          ],
+        child: BaseLayout(
+          code: code,
+          component: Column(
+            children: [
+              GSSwitch(
+                isDisabled: isDisabled,
+                size: selectedSizeOption,
+                style: GSStyle(
+                  thumbColor: Colors.amber,
+                  trackColorFalse: Colors.orange,
+                  checked: GSStyle(
+                    activeThumbColor: Colors.red,
+                    trackColorTrue: Colors.black,
+                  ),
+                ),
+                value: val1,
+                onToggle: (bool a) {
+                  // print('switch value: $a');
+                },
+              ),
+            ],
+          ),
+          controls: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+            ],
+          ),
         ),
       ),
     );

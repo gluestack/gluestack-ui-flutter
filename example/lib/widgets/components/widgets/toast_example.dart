@@ -61,59 +61,64 @@ class _ToastExampleState extends State<ToastExample> {
               ),
 ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Toast",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSButton(
-          size: GSButtonSizes.$lg,
-          child: const GSButtonText(text: "Click Me"),
-          onPressed: () {
-            showToast(
-              context,
-              child: GSToast(
-                variant: selectedVariantOption,
-                action: selectedActionOption,
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GSToastTitle(
-                      title: "Toast Title",
-                    ),
-                    GSToastDescription(
-                      description: "Here is the toast description!",
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
         ),
-        controls: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "variant",
-              dropdownOptions: dropdownVariantOptions,
-              selectedOption: selectedVariantOption,
-              onChanged: updateVariantSelectedOption,
-            ),
-            const SizedBox(height: 20),
-            CustomDropDown(
-              title: "action",
-              dropdownOptions: dropdownActionOptions,
-              selectedOption: selectedActionOption,
-              onChanged: updateActionSelectedOption,
-            ),
-          ],
+        child: BaseLayout(
+          code: code,
+          component: GSButton(
+            size: GSButtonSizes.$lg,
+            child: const GSButtonText(text: "Click Me"),
+            onPressed: () {
+              showToast(
+                context,
+                child: GSToast(
+                  variant: selectedVariantOption,
+                  action: selectedActionOption,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GSToastTitle(
+                        title: "Toast Title",
+                      ),
+                      GSToastDescription(
+                        description: "Here is the toast description!",
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "variant",
+                dropdownOptions: dropdownVariantOptions,
+                selectedOption: selectedVariantOption,
+                onChanged: updateVariantSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomDropDown(
+                title: "action",
+                dropdownOptions: dropdownActionOptions,
+                selectedOption: selectedActionOption,
+                onChanged: updateActionSelectedOption,
+              ),
+            ],
+          ),
         ),
       ),
     );

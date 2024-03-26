@@ -40,44 +40,49 @@ class FlexExample extends StatelessWidget {
         )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Flex",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSFlex(
-          style: GSStyle(
-            direction: Axis.vertical,
-            md: GSStyle(direction: Axis.horizontal),
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
+        ),
+        child: BaseLayout(
+          code: code,
+          component: GSFlex(
+            style: GSStyle(
+              direction: Axis.vertical,
+              md: GSStyle(direction: Axis.horizontal),
+            ),
+            children: [
+              GSBox(
+                style: GSStyle(
+                  height: 150,
+                  width: 150,
+                  bg: Colors.red,
+                ),
+              ),
+              GSBox(
+                style: GSStyle(
+                  height: 150,
+                  width: 150,
+                  bg: Colors.green,
+                ),
+              ),
+              GSBox(
+                style: GSStyle(
+                  height: 150,
+                  width: 150,
+                  bg: Colors.blue,
+                ),
+              ),
+            ],
           ),
-          children: [
-            GSBox(
-              style: GSStyle(
-                height: 150,
-                width: 150,
-                bg: Colors.red,
-              ),
-            ),
-            GSBox(
-              style: GSStyle(
-                height: 150,
-                width: 150,
-                bg: Colors.green,
-              ),
-            ),
-            GSBox(
-              style: GSStyle(
-                height: 150,
-                width: 150,
-                bg: Colors.blue,
-              ),
-            ),
-          ],
         ),
       ),
     );

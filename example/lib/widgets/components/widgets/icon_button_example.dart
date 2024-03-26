@@ -42,38 +42,43 @@ class _IconButtonExampleState extends State<IconButtonExample> {
        ),
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Icon Button",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSIconButton(
-          size: selectedSizeOption,
-          style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
-          icon: GSIcon(
-            icon: Icons.add_a_photo,
-            style: GSStyle(color: const Color(0xffffffff)),
-          ),
-          onPressed: () {
-            // print('Icon Button Pressed!');
-          },
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
         ),
-        controls: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "size",
-              dropdownOptions: dropdownSizeOptions,
-              selectedOption: selectedSizeOption,
-              onChanged: updateSizeSelectedOption,
+        child: BaseLayout(
+          code: code,
+          component: GSIconButton(
+            size: selectedSizeOption,
+            style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
+            icon: GSIcon(
+              icon: Icons.add_a_photo,
+              style: GSStyle(color: const Color(0xffffffff)),
             ),
-          ],
+            onPressed: () {
+              // print('Icon Button Pressed!');
+            },
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+            ],
+          ),
         ),
       ),
     );

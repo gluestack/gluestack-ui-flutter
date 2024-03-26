@@ -37,32 +37,37 @@ class _IconExampleState extends State<IconExample> {
            )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Icon",
           size: GSSizes.$xl,
         ),
       ),
       body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSIcon(
-            icon: Icons.calendar_month,
-            size: selectedSizeOption,
+        child: GSBox(
+          style: GSStyle(
+            dark: GSStyle(bg: $GSColors.black),
           ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-            ],
+          child: BaseLayout(
+            code: code,
+            component: GSIcon(
+              icon: Icons.calendar_month,
+              size: selectedSizeOption,
+            ),
+            controls: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomDropDown(
+                  title: "size",
+                  dropdownOptions: dropdownSizeOptions,
+                  selectedOption: selectedSizeOption,
+                  onChanged: updateSizeSelectedOption,
+                ),
+              ],
+            ),
           ),
         ),
       ),

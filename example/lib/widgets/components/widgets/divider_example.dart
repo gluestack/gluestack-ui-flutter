@@ -8,50 +8,55 @@ class DividerExample extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = GSTheme.of(context);
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Divider",
           size: GSSizes.$xl,
         ),
       ),
-      body: GSCenter(
-        child: GSVStack(
-          children: [
-            GSDivider(
-              orientation: GSOrientations.vertical,
-              style: GSStyle(bg: Colors.black, height: 30),
-            ),
-            GSDivider(
-              style: GSStyle(
-                bg: Colors.blue,
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
+        ),
+        child: GSCenter(
+          child: GSVStack(
+            children: [
+              GSDivider(
+                orientation: GSOrientations.vertical,
+                style: GSStyle(bg: Colors.black, height: 30),
               ),
-            ),
-            GSDivider(
-              orientation: GSOrientations.vertical,
-              style: GSStyle(
-                height: 200,
-                bg: Colors.red,
+              GSDivider(
+                style: GSStyle(
+                  bg: Colors.blue,
+                ),
               ),
-            ),
-            GSDivider(
-              style: GSStyle(
-                bg: Colors.orange,
+              GSDivider(
+                orientation: GSOrientations.vertical,
+                style: GSStyle(
+                  height: 200,
+                  bg: Colors.red,
+                ),
               ),
-            ),
-            GSBox(
-              style: GSStyle(
-                padding: const EdgeInsets.only(bottom: 2),
+              GSDivider(
+                style: GSStyle(
+                  bg: Colors.orange,
+                ),
               ),
-              child: const Text('GS Divider'),
-            ),
-            GSDivider(
-              style: GSStyle(
-                bg: Colors.purple,
+              GSBox(
+                style: GSStyle(
+                  padding: const EdgeInsets.only(bottom: 2),
+                ),
+                child: const Text('GS Divider'),
               ),
-            ),
-          ],
+              GSDivider(
+                style: GSStyle(
+                  bg: Colors.purple,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

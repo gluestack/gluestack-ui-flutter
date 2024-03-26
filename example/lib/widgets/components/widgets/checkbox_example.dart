@@ -57,51 +57,56 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
           )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Checkbox",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSCheckBox(
-          icon: GSCheckBoxIndicator(
-            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-            child: const GSCheckBoxIcon(),
-          ),
-          value: "value 1",
-          onChanged: (value) {},
-          label: const GSCheckBoxLabel(text: "value1"),
-          size: selectedSizeOption,
-          isDisabled: isDisabled,
-          isInvalid: isInvalid,
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
         ),
-        controls: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "size",
-              dropdownOptions: dropdownSizeOptions,
-              selectedOption: selectedSizeOption,
-              onChanged: updateSizeSelectedOption,
+        child: BaseLayout(
+          code: code,
+          component: GSCheckBox(
+            icon: GSCheckBoxIndicator(
+              style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+              child: const GSCheckBoxIcon(),
             ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isDisabled",
-              value: isDisabled,
-              onToggle: updateIsDisabled,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isInvalid",
-              value: isInvalid,
-              onToggle: updateIsInvalid,
-            )
-          ],
+            value: "value 1",
+            onChanged: (value) {},
+            label: const GSCheckBoxLabel(text: "value1"),
+            size: selectedSizeOption,
+            isDisabled: isDisabled,
+            isInvalid: isInvalid,
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isInvalid",
+                value: isInvalid,
+                onToggle: updateIsInvalid,
+              )
+            ],
+          ),
         ),
       ),
     );

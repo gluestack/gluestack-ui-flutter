@@ -19,24 +19,29 @@ class SpinnerExample extends StatelessWidget {
           ),
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Spinner",
           size: GSSizes.$xl,
         ),
       ),
       body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSSpinner(
-            size: GSSpinnerSizes.large,
-            style: GSStyle(
-              color: $GSColors.amber400,
-              bg: $GSColors.amber200,
+        child: GSBox(
+          style: GSStyle(
+            dark: GSStyle(bg: $GSColors.black),
+          ),
+          child: BaseLayout(
+            code: code,
+            component: GSSpinner(
+              size: GSSpinnerSizes.large,
+              style: GSStyle(
+                color: $GSColors.amber400,
+                bg: $GSColors.amber200,
+              ),
+              // strokeWidth: 10,
             ),
-            // strokeWidth: 10,
           ),
         ),
       ),

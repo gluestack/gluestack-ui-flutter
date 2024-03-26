@@ -62,53 +62,58 @@ class _TextAreaExampleState extends State<TextAreaExample> {
            )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Text Area",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSTextArea(
-          size: selectedSizeOption,
-          isDisabled: isDisabled,
-          isReadOnly: isReadOnly,
-          isInvalid: isInvalid,
-          controller: textEditingController,
-          hintText: "Enter text here",
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
         ),
-        controls: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "size",
-              dropdownOptions: dropdownSizeOptions,
-              selectedOption: selectedSizeOption,
-              onChanged: updateSizeSelectedOption,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isDisabled",
-              value: isDisabled,
-              onToggle: updateIsDisabled,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isInvalid",
-              value: isInvalid,
-              onToggle: updateIsInvalid,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isReadOnly",
-              value: isReadOnly,
-              onToggle: updateIsReadOnly,
-            )
-          ],
+        child: BaseLayout(
+          code: code,
+          component: GSTextArea(
+            size: selectedSizeOption,
+            isDisabled: isDisabled,
+            isReadOnly: isReadOnly,
+            isInvalid: isInvalid,
+            controller: textEditingController,
+            hintText: "Enter text here",
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isInvalid",
+                value: isInvalid,
+                onToggle: updateIsInvalid,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isReadOnly",
+                value: isReadOnly,
+                onToggle: updateIsReadOnly,
+              )
+            ],
+          ),
         ),
       ),
     );

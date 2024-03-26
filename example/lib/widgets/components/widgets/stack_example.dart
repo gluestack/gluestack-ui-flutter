@@ -26,31 +26,36 @@ class StackExample extends StatelessWidget {
           )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Stack",
           size: GSSizes.$xl,
         ),
       ),
       body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSStack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                width: 150,
-                height: 150,
-                color: Colors.red,
-              ),
-              Container(
-                width: 100,
-                height: 100,
-                color: Colors.blue,
-              ),
-            ],
+        child: GSBox(
+          style: GSStyle(
+            dark: GSStyle(bg: $GSColors.black),
+          ),
+          child: BaseLayout(
+            code: code,
+            component: GSStack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: 150,
+                  height: 150,
+                  color: Colors.red,
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.blue,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -17,23 +17,28 @@ class TextExample extends StatelessWidget {
            )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
-          text: "Text",
+          text: "Text ",
           size: GSSizes.$xl,
         ),
       ),
       body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSText(
-            text: 'This is an example of a simple text.',
-            // bold: true,
-            // underline: true,
-            style: GSStyle(
-              textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
+        child: GSBox(
+          style: GSStyle(
+            dark: GSStyle(bg: $GSColors.black),
+          ),
+          child: BaseLayout(
+            code: code,
+            component: GSText(
+              text: 'This is an example of a simple text.',
+              // bold: true,
+              // underline: true,
+              style: GSStyle(
+                textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
+              ),
             ),
           ),
         ),

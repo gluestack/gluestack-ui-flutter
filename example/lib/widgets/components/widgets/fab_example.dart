@@ -76,83 +76,88 @@ class _FabExampleState extends State<FabExample> {
                )
 """;
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Fab",
           size: GSSizes.$xl,
         ),
       ),
-      body: BaseLayout(
-        code: code,
-        component: GSCenter(
-          child: GSStack(
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
+        ),
+        child: BaseLayout(
+          code: code,
+          component: GSCenter(
+            child: GSStack(
+              children: [
+                GSBox(
+                  style: GSStyle(
+                      height: 360,
+                      width: 320,
+                      borderRadius: $GSRadii.$md,
+                      bg: $GSColors.backgroundLight50,
+                      dark: GSStyle(color: $GSColors.backgroundDark900)),
+                ),
+                GSFab(
+                  size: selectedSizeOption,
+                  placement: selectedPlacementOption,
+                  onPressed: () {
+                    // print('fab pressed!');
+                  },
+                  isDisabled: isDisabled,
+                  isHovered: isHovered,
+                  isPressed: isPressed,
+                  icon: const GSFabIcon(icon: Icons.add),
+                  label: const GSFabLabel(text: 'Quick Start'),
+                ),
+              ],
+            ),
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GSBox(
-                style: GSStyle(
-                    height: 360,
-                    width: 320,
-                    borderRadius: $GSRadii.$md,
-                    bg: $GSColors.backgroundLight50,
-                    dark: GSStyle(color: $GSColors.backgroundDark900)),
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
               ),
-              GSFab(
-                size: selectedSizeOption,
-                placement: selectedPlacementOption,
-                onPressed: () {
-                  // print('fab pressed!');
-                },
-                isDisabled: isDisabled,
-                isHovered: isHovered,
-                isPressed: isPressed,
-                icon: const GSFabIcon(icon: Icons.add),
-                label: const GSFabLabel(text: 'Quick Start'),
+              CustomDropDown(
+                title: "placement",
+                dropdownOptions: dropdownPlacementOptions,
+                selectedOption: selectedPlacementOption,
+                onChanged: updatePlacementSelectedOption,
               ),
+
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isHovered",
+                value: isHovered,
+                onToggle: updateIsHovered,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isPressed",
+                value: isPressed,
+                onToggle: updateIsPressed,
+              ),
+              // CustomToggle(
+              //   title: "isInvalid",
+              //   value: isInvalid,
+              //   onToggle: updateIsInvalid,
+              // )
             ],
           ),
-        ),
-        controls: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "size",
-              dropdownOptions: dropdownSizeOptions,
-              selectedOption: selectedSizeOption,
-              onChanged: updateSizeSelectedOption,
-            ),
-            CustomDropDown(
-              title: "placement",
-              dropdownOptions: dropdownPlacementOptions,
-              selectedOption: selectedPlacementOption,
-              onChanged: updatePlacementSelectedOption,
-            ),
-
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isDisabled",
-              value: isDisabled,
-              onToggle: updateIsDisabled,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isHovered",
-              value: isHovered,
-              onToggle: updateIsHovered,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isPressed",
-              value: isPressed,
-              onToggle: updateIsPressed,
-            ),
-            // CustomToggle(
-            //   title: "isInvalid",
-            //   value: isInvalid,
-            //   onToggle: updateIsInvalid,
-            // )
-          ],
         ),
       ),
     );

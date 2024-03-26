@@ -16,21 +16,26 @@ class LinkExample extends StatelessWidget {
           )
   ''';
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.menuColor,
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
         title: const GSText(
           text: "Link",
           size: GSSizes.$xl,
         ),
       ),
       body: Center(
-        child: BaseLayout(
-          code: code,
-          component: GSLink(
-            style: GSStyle(),
-            url: 'https://gluestack.io/',
-            text: const GSLinkText(text: 'Go to Gluestack'),
+        child: GSBox(
+          style: GSStyle(
+            dark: GSStyle(bg: $GSColors.black),
+          ),
+          child: BaseLayout(
+            code: code,
+            component: GSLink(
+              style: GSStyle(),
+              url: 'https://gluestack.io/',
+              text: const GSLinkText(text: 'Go to Gluestack'),
+            ),
           ),
         ),
       ),

@@ -94,83 +94,92 @@ GSAccordion(
   ''';
     final theme = GSTheme.of(context);
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("Accordion"),
-      ),
-      body: BaseLayout(
-        code: code,
-        component: GSAccordion(
-          size: selectedSizeOption,
-          variant: selectedVariantOption,
-          type: selectedTypeOption,
-          isCollapsible: isCollapsible,
-          isDisabled: isDisabled,
-          // style: GSStyle(bg: $GSColors.amber400),
-          // itemPadding: EdgeInsets.all(12),
-          // showSuffixIcon: false,
-          // prefixIconPadding: EdgeInsets.only(right: 0),
-          // prefixIconWhenTileCollapsed: const GSAccordionIcon(icon: Icons.abc),
-          // prefixIconWhenTileExapanded:
-          //     const GSAccordionIcon(icon: Icons.ac_unit_sharp),
-          // initialValues: [true, true],
-          children: const [
-            GSAccordionItem(
-              // radius: 21,
-              // isDisabled: true,
-              title: GSAccordionTitle(text: 'How do I place an order?'),
-              content: GSAccordionContent(
-                text:
-                    "To place an order, simply select the products you want, proceed to checkout, provide shipping and payment information, and finalize your purchase.",
-              ),
-            ),
-            GSAccordionItem(
-              title:
-                  GSAccordionTitle(text: 'What payment options do you accept?'),
-              content: GSAccordionContent(
-                text:
-                    "We accept all major credit cards, including Visa, Mastercard, and American Express. We also support payments through PayPal.",
-              ),
-            ),
-          ],
+        backgroundColor:
+            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
+        title: const GSText(
+          text: "Accordion",
+          size: GSSizes.$xl,
         ),
-        controls: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomDropDown(
-              title: "size",
-              dropdownOptions: dropdownSizeOptions,
-              selectedOption: selectedSizeOption,
-              onChanged: updateSizeSelectedOption,
-            ),
-            const SizedBox(height: 20),
-            CustomDropDown(
-              title: "variant",
-              dropdownOptions: dropdownVariantOptions,
-              selectedOption: selectedVariantOption,
-              onChanged: updateVariantSelectedOption,
-            ),
-            const SizedBox(height: 20),
-            CustomDropDown(
-              title: "action",
-              dropdownOptions: dropdownTypeOptions,
-              selectedOption: selectedTypeOption,
-              onChanged: updateTypeSelectedOption,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isDisabled",
-              value: isDisabled,
-              onToggle: updateIsDisabled,
-            ),
-            const SizedBox(height: 20),
-            CustomToggle(
-              title: "isCollapsible",
-              value: isCollapsible,
-              onToggle: updateIsCollapsible,
-            )
-          ],
+      ),
+      body: GSBox(
+        style: GSStyle(
+          dark: GSStyle(bg: $GSColors.black),
+        ),
+        child: BaseLayout(
+          code: code,
+          component: GSAccordion(
+            size: selectedSizeOption,
+            variant: selectedVariantOption,
+            type: selectedTypeOption,
+            isCollapsible: isCollapsible,
+            isDisabled: isDisabled,
+            // style: GSStyle(bg: $GSColors.amber400),
+            // itemPadding: EdgeInsets.all(12),
+            // showSuffixIcon: false,
+            // prefixIconPadding: EdgeInsets.only(right: 0),
+            // prefixIconWhenTileCollapsed: const GSAccordionIcon(icon: Icons.abc),
+            // prefixIconWhenTileExapanded:
+            //     const GSAccordionIcon(icon: Icons.ac_unit_sharp),
+            // initialValues: [true, true],
+            children: const [
+              GSAccordionItem(
+                // radius: 21,
+                // isDisabled: true,
+                title: GSAccordionTitle(text: 'How do I place an order?'),
+                content: GSAccordionContent(
+                  text:
+                      "To place an order, simply select the products you want, proceed to checkout, provide shipping and payment information, and finalize your purchase.",
+                ),
+              ),
+              GSAccordionItem(
+                title: GSAccordionTitle(
+                    text: 'What payment options do you accept?'),
+                content: GSAccordionContent(
+                  text:
+                      "We accept all major credit cards, including Visa, Mastercard, and American Express. We also support payments through PayPal.",
+                ),
+              ),
+            ],
+          ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomDropDown(
+                title: "variant",
+                dropdownOptions: dropdownVariantOptions,
+                selectedOption: selectedVariantOption,
+                onChanged: updateVariantSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomDropDown(
+                title: "action",
+                dropdownOptions: dropdownTypeOptions,
+                selectedOption: selectedTypeOption,
+                onChanged: updateTypeSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isDisabled",
+                value: isDisabled,
+                onToggle: updateIsDisabled,
+              ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "isCollapsible",
+                value: isCollapsible,
+                onToggle: updateIsCollapsible,
+              )
+            ],
+          ),
         ),
       ),
     );
