@@ -24,18 +24,9 @@ class GSRespLayoutManager extends StatelessWidget {
   /// Widgets to display for extra extra-large screens, covering very large desktop displays.
   final Widget? xxlLayout;
 
-  /// A fallback widget to display if no other widgets are applicable. This provides a default
-  /// in case the screen size does not match any of the specified layouts.
-  final Widget? fallBackWidget;
 
-  /// Breakpoints defining the width thresholds for each screen size category.
-  /// These default values are inspired by Bootstrap's responsive breakpoints.
-  final double? xs;
-  final double? sm;
-  final double? md;
-  final double? lg;
-  final double? xl;
-  final double? xxl;
+  /// Breakpoint values for screen widths, inspired by Bootstrap.
+  final double xs, sm, md, lg, xl, xxl;
 
   const GSRespLayoutManager({
     super.key,
@@ -52,74 +43,34 @@ class GSRespLayoutManager extends StatelessWidget {
     this.lg = 992,
     this.xl = 1200,
     this.xxl = 1400,
-    this.fallBackWidget,
   });
 
   @override
   Widget build(BuildContext context) {
-    // Set a default widget to be displayed if none of the layout widgets are provided.
-    late final Widget defaultWidget;
-    defaultWidget = fallBackWidget ??
-        const Center(child: Text('Please specify atleast one widget!'));
-    late final Widget? layoutWidget;
-    // Determine which widget to display based on the current maximum width of the screen.
+    // Use LayoutBuilder to obtain screen width and select appropriate layout.
     return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      double maxWidth = constraints.maxWidth;
-      // Select the appropriate layout widget based on the maxWidth and provided breakpoints.
-      if (maxWidth <= xs!) {
-        layoutWidget = xsLayout ??
-            smLayout ??
-            mdLayout ??
-            lgLayout ??
-            xlLayout ??
-            xxlLayout;
-      } else if (maxWidth <= sm!) {
-        layoutWidget = smLayout ??
-            mdLayout ??
-            lgLayout ??
-            xlLayout ??
-            xxlLayout ??
-            xsLayout;
-      } else if (maxWidth <= md!) {
-        layoutWidget = mdLayout ??
-            lgLayout ??
-            xlLayout ??
-            xxlLayout ??
-            smLayout ??
-            xsLayout;
-      } else if (maxWidth <= lg!) {
-        layoutWidget = lgLayout ??
-            xlLayout ??
-            xxlLayout ??
-            mdLayout ??
-            smLayout ??
-            xsLayout;
-      } else if (maxWidth <= xl!) {
-        layoutWidget = xlLayout ??
-            xxlLayout ??
-            mdLayout ??
-            lgLayout ??
-            smLayout ??
-            xsLayout;
-      } else if (maxWidth <= xxl!) {
-        layoutWidget = xxlLayout ??
-            xlLayout ??
-            mdLayout ??
-            lgLayout ??
-            smLayout ??
-            xsLayout;
-      } else {
-        layoutWidget = xxlLayout ??
-            xlLayout ??
-            mdLayout ??
-            lgLayout ??
-            smLayout ??
-            xsLayout ??
-            defaultWidget;
-      }
-      // Return the selected layout widget or the default widget if none is applicable.
-      return layoutWidget ?? defaultWidget;
-    });
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final double maxWidth = constraints.maxWidth;
+        // Determine the widget to display based on the current screen width.
+        Widget? layoutWidget;
+        if (maxWidth <= xs) {
+          layoutWidget = xsLayout;
+        } else if (maxWidth <= sm) {
+          layoutWidget = smLayout ?? xsLayout;
+        } else if (maxWidth <= md) {
+          layoutWidget = mdLayout ?? smLayout ?? xsLayout;
+        } else if (maxWidth <= lg) {
+          layoutWidget = lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
+        } else if (maxWidth <= xl) {
+          layoutWidget = xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
+        } else if (maxWidth <= xxl) {
+          layoutWidget = xxlLayout ?? xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
+        } else {
+          layoutWidget = xxlLayout ?? xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
+        }
+        // Ensure a Widget is always returned.
+        return layoutWidget ?? const SizedBox.shrink();
+      },
+    );
   }
 }
