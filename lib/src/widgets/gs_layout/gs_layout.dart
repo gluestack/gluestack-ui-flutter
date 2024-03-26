@@ -41,10 +41,7 @@ class GSLayout extends StatelessWidget {
                 ),
               ],
             )
-          : GSBox(
-              style: styler,
-              child: body,
-            ),
+          : body,
     );
   }
 }
