@@ -3,5 +3,5 @@ const Map<String, dynamic> layoutData = {
   "_dark": {
     "backgroundColor": "\$black",
   },
-  "props": {"background": "\$backgroundLight0"}
+  "props": {"background": "\$white"}
 };
