@@ -27,16 +27,21 @@ class GSLayout extends StatelessWidget {
 
     return GSBox(
       style: styler,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          body,
-          Align(
-            alignment: floatingActionButtonLocation,
-            child: floatingActionButton,
-          ),
-        ],
-      ),
+      child: floatingActionButton != null
+          ? Stack(
+              fit: StackFit.expand,
+              children: [
+                body,
+                Align(
+                  alignment: floatingActionButtonLocation,
+                  child: floatingActionButton,
+                ),
+              ],
+            )
+          : GSBox(
+              style: styler,
+              child: body,
+            ),
     );
   }
 }
