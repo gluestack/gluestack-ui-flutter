@@ -16,23 +16,15 @@ class TextExample extends StatelessWidget {
               ),
            )
   ''';
-    return GSLayout(
-      floatingActionButton: CircleAvatar(
-        backgroundColor: Colors.blue,
-        child: Icon(
-          Icons.abc,
-          size: 40,
-          color: Colors.red,
+    return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "Text",
+          size: GSSizes.$xl,
         ),
       ),
-      // backgroundColor: theme.scaffoldBackgroundColor,
-      // appBar: AppBar(
-      //   backgroundColor: theme.menuColor,
-      //   title: const GSText(
-      //     text: "Text",
-      //     size: GSSizes.$xl,
-      //   ),
-      // ),
       body: Center(
         child: BaseLayout(
           code: code,
