@@ -1,0 +1,42 @@
+import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/widgets/gs_layout/style_gs_layout.dart';
+
+class GSLayout extends StatelessWidget {
+  final Widget child;
+  final GSStyle? style;
+  final Widget? floatingActionButton;
+  final AlignmentGeometry floatingActionButtonLocation;
+  const GSLayout({
+    super.key,
+    required this.child,
+    this.style,
+    this.floatingActionButton,
+    this.floatingActionButtonLocation = Alignment.bottomRight,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    GSStyle styler = resolveStyles(
+      context: context,
+      styles: [layoutStyle],
+      inlineStyle: style,
+      isFirst: true,
+    );
+
+    return GSBox(
+      style: styler,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          child,
+          Align(
+            alignment: floatingActionButtonLocation,
+            child: floatingActionButton,
+          ),
+        ],
+      ),
+    );
+  }
+}
