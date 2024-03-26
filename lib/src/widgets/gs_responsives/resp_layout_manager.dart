@@ -1,11 +1,12 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 // Breakpoint ref: https://getbootstrap.com/docs/5.0/layout/breakpoints/
 // Breakpoint reference from Bootstrap documentation for responsive design considerations.
 
 /// A widget that provides a responsive layout management system based on screen size.
 /// It allows for different widgets to be displayed depending on the available width,
 /// similar to responsive design frameworks like Bootstrap.
-class GSRespLayoutManager extends StatelessWidget {
+class GSResponsiveLayout extends StatelessWidget {
   /// Widgets to display for extra small screens, typically phones.
   final Widget? xsLayout;
 
@@ -21,32 +22,13 @@ class GSRespLayoutManager extends StatelessWidget {
   /// Widgets to display for extra-large screens, including large desktop monitors.
   final Widget? xlLayout;
 
-  /// Widgets to display for extra extra-large screens, covering very large desktop displays.
-  final Widget? xxlLayout;
-
-  /// Breakpoint values for screen widths, inspired by Bootstrap.
-  final double xsBreakpoint,
-      smBreakpoint,
-      mdBreakpoint,
-      lgBreakpoint,
-      xlBreakpoint,
-      xxlBreakpoint;
-
-  const GSRespLayoutManager({
+  const GSResponsiveLayout({
     super.key,
     this.xsLayout,
     this.smLayout,
     this.mdLayout,
     this.lgLayout,
     this.xlLayout,
-    this.xxlLayout,
-    //upper bound
-    this.xsBreakpoint = 450,
-    this.smBreakpoint = 576,
-    this.mdBreakpoint = 768,
-    this.lgBreakpoint = 992,
-    this.xlBreakpoint = 1200,
-    this.xxlBreakpoint = 1400,
   });
 
   @override
@@ -57,24 +39,20 @@ class GSRespLayoutManager extends StatelessWidget {
         final double screenWidth = constraints.maxWidth;
         // Determine the widget to display based on the current screen width.
         Widget? layoutWidget;
-        if (screenWidth < smBreakpoint) {
+        if (screenWidth < $GSScreenBreakpoint.small) {
           layoutWidget = xsLayout;
-        } else if (screenWidth >= smBreakpoint && screenWidth < mdBreakpoint) {
+        } else if (screenWidth >= $GSScreenBreakpoint.small &&
+            screenWidth < $GSScreenBreakpoint.medium) {
           layoutWidget = smLayout ?? xsLayout;
-        } else if (screenWidth >= mdBreakpoint && screenWidth < lgBreakpoint) {
+        } else if (screenWidth >= $GSScreenBreakpoint.medium &&
+            screenWidth < $GSScreenBreakpoint.large) {
           layoutWidget = mdLayout ?? smLayout ?? xsLayout;
-        } else if (screenWidth >= lgBreakpoint && screenWidth < xlBreakpoint) {
+        } else if (screenWidth >= $GSScreenBreakpoint.large &&
+            screenWidth < $GSScreenBreakpoint.extraLarge) {
           layoutWidget = lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
-        } else if (screenWidth >= xlBreakpoint && screenWidth < xxlBreakpoint) {
+        } else if (screenWidth >= $GSScreenBreakpoint.large) {
           layoutWidget =
               xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
-        } else if (screenWidth >= xxlBreakpoint) {
-          layoutWidget = xxlLayout ??
-              xlLayout ??
-              lgLayout ??
-              mdLayout ??
-              smLayout ??
-              xsLayout;
         }
         // Ensure a Widget is always returned.
         return layoutWidget ?? const SizedBox.shrink();
