@@ -36,8 +36,8 @@ T? getRespValue<T>({
     return xlValue ?? lgValue ?? mdValue ?? smValue ?? xsValue;
   } else if (screenWidth >= xxlBreakpoint!) {
     return xxlValue ?? xlValue ?? lgValue ?? mdValue ?? smValue ?? xsValue;
+  } else {
+    // Return null if no matching condition is found, which allows for default handling.
+    return null;
   }
-
-  // Return null if no matching condition is found, which allows for default handling.
-  return null;
 }

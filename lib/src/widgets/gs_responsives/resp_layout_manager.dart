@@ -24,9 +24,13 @@ class GSRespLayoutManager extends StatelessWidget {
   /// Widgets to display for extra extra-large screens, covering very large desktop displays.
   final Widget? xxlLayout;
 
-
   /// Breakpoint values for screen widths, inspired by Bootstrap.
-  final double xs, sm, md, lg, xl, xxl;
+  final double xsBreakpoint,
+      smBreakpoint,
+      mdBreakpoint,
+      lgBreakpoint,
+      xlBreakpoint,
+      xxlBreakpoint;
 
   const GSRespLayoutManager({
     super.key,
@@ -37,12 +41,12 @@ class GSRespLayoutManager extends StatelessWidget {
     this.xlLayout,
     this.xxlLayout,
     //upper bound
-    this.xs = 450,
-    this.sm = 576,
-    this.md = 768,
-    this.lg = 992,
-    this.xl = 1200,
-    this.xxl = 1400,
+    this.xsBreakpoint = 450,
+    this.smBreakpoint = 576,
+    this.mdBreakpoint = 768,
+    this.lgBreakpoint = 992,
+    this.xlBreakpoint = 1200,
+    this.xxlBreakpoint = 1400,
   });
 
   @override
@@ -50,23 +54,27 @@ class GSRespLayoutManager extends StatelessWidget {
     // Use LayoutBuilder to obtain screen width and select appropriate layout.
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
-        final double maxWidth = constraints.maxWidth;
+        final double screenWidth = constraints.maxWidth;
         // Determine the widget to display based on the current screen width.
         Widget? layoutWidget;
-        if (maxWidth <= xs) {
+        if (screenWidth < smBreakpoint) {
           layoutWidget = xsLayout;
-        } else if (maxWidth <= sm) {
+        } else if (screenWidth >= smBreakpoint && screenWidth < mdBreakpoint) {
           layoutWidget = smLayout ?? xsLayout;
-        } else if (maxWidth <= md) {
+        } else if (screenWidth >= mdBreakpoint && screenWidth < lgBreakpoint) {
           layoutWidget = mdLayout ?? smLayout ?? xsLayout;
-        } else if (maxWidth <= lg) {
+        } else if (screenWidth >= lgBreakpoint && screenWidth < xlBreakpoint) {
           layoutWidget = lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
-        } else if (maxWidth <= xl) {
-          layoutWidget = xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
-        } else if (maxWidth <= xxl) {
-          layoutWidget = xxlLayout ?? xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
-        } else {
-          layoutWidget = xxlLayout ?? xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
+        } else if (screenWidth >= xlBreakpoint && screenWidth < xxlBreakpoint) {
+          layoutWidget =
+              xlLayout ?? lgLayout ?? mdLayout ?? smLayout ?? xsLayout;
+        } else if (screenWidth >= xxlBreakpoint) {
+          layoutWidget = xxlLayout ??
+              xlLayout ??
+              lgLayout ??
+              mdLayout ??
+              smLayout ??
+              xsLayout;
         }
         // Ensure a Widget is always returned.
         return layoutWidget ?? const SizedBox.shrink();
