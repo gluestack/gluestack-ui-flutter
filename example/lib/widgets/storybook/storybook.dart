@@ -20,12 +20,10 @@ class _StorybookWidgetState extends ConsumerState<StorybookWidget> {
       context,
       Scaffold(
         appBar: AppBar(title: const Text('Storybook')),
-        body: GSBox(
-          child: Storybook(
-            initialLayout: Layout.expanded,
-            initialStory: 'Alert Dialog',
-            stories: kStories.map((item) => item.story),
-          ),
+        body: Storybook(
+          initialLayout: Layout.expanded,
+          initialStory: 'Alert Dialog',
+          stories: kStories.map((item) => item.story),
         ),
       ),
     );

@@ -3,10 +3,15 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 class CustomGSLayout extends StatelessWidget {
   final Widget body;
+  final Widget? floatingActionButton;
   final GSStyle? style;
   final String title;
   const CustomGSLayout(
-      {super.key, required this.body, this.style, required this.title});
+      {super.key,
+      required this.body,
+      this.style,
+      required this.title,
+      this.floatingActionButton});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +20,7 @@ class CustomGSLayout extends StatelessWidget {
           style: GSStyle(
             dark: GSStyle(bg: $GSColors.black),
           ),
+          floatingActionButton: floatingActionButton,
           body: GSVStack(
             children: [
               CustomAppBar(
