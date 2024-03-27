@@ -7,7 +7,7 @@ showHeader: true
 import { Canvas, Meta, Story } from "@storybook/addon-docs";
 import { AppProvider, CodePreview, Text } from "@gluestack/design-system";
 
-<Meta title="Theme Configuration/Customizing Theme" />
+<Meta title="Theme Configuration/Theme/Customizing Theme" />
 
 `gluestack-ui-flutter` is intentionally designed as an unstyled library, providing you with the flexibility to style your widgets as you prefer. For users looking for a seamless integration experience, we offer the `@gluestack-ui-flutter/lib/src/theme/config`, which comes with pre-configured theme that can easily be integrated within your app for a convenient styling solution.
 
@@ -40,15 +40,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 GluestackProvider(
   gluestackTokenConfig: GluestackTokenConfig(
     gsColorsToken: const GSColorsToken(
-      primary0: 'Colors.yellow',
-      primary50: 'Colors.red',
-      primary100: 'Colors.orange',
-      primary200: 'Colors.blue',
-      primary300: 'Colors.green',
-      primary400: 'Colors.purple',
-      primary500: 'Colors.red',
-      primary600: 'Colors.orange', // Corrected duplicate key
-      primary700: Colors.pink,
+
     ),
     // More token configurations....
   ),
@@ -60,7 +52,7 @@ GluestackProvider(
 
 ```
 
-3. **Apply Config**: Apply the config to the `GluestackProvider`.
+3. **Apply Config**: Apply the config to the `GluestackProvider` as shown below for `gsColorToken`.
 
 ```
 
@@ -70,11 +62,26 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 void main() {
   runApp(
     GluestackProvider(
-      child: GSApp.router(
-        {/* Your app code */}
-        // ....
+    gluestackTokenConfig: GluestackTokenConfig(
+      gsColorsToken: const GSColorsToken(
+        primary0: 'Colors.yellow',
+        primary50: 'Colors.red',
+        primary100: 'Colors.orange',
+        primary200: 'Colors.blue',
+        primary300: 'Colors.green',
+        primary400: 'Colors.purple',
+        primary500: 'Colors.red',
+        primary600: 'Colors.orange',
+        primary700: Colors.pink,
+
       ),
+      // More token configurations....
     ),
+    child: GSApp.router(
+      {/* Your app code */}
+      // ...
+    ),
+  ),
   );
 }
 

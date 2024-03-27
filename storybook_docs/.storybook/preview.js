@@ -25,8 +25,7 @@ export const parameters = {
         "Theme Configuration",
         [
           "Theme",
-          ["Default Tokens", "Default Components"],
-          "Customizing Theme",
+          ["Default Tokens", "Default Components", "Customizing Theme"],
         ],
         "Styling",
         ["Overview", "Utility", "Responsiveness", "Platform Specific"],
