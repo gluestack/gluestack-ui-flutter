@@ -32,8 +32,8 @@ class GSLayout extends StatelessWidget {
               fit: StackFit.expand,
               children: [
                 body,
-                GSBox(
-                  style: GSStyle(padding: EdgeInsets.all(styler.gap ?? 0)),
+                Padding(
+                  padding: EdgeInsets.all(styler.gap ?? 0),
                   child: Align(
                     alignment: floatingActionButtonLocation,
                     child: floatingActionButton,
