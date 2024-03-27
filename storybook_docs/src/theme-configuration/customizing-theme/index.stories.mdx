@@ -40,15 +40,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 GluestackProvider(
   gluestackTokenConfig: GluestackTokenConfig(
     gsColorsToken: const GSColorsToken(
-      primary0: 'Colors.yellow',
-      primary50: 'Colors.red',
-      primary100: 'Colors.orange',
-      primary200: 'Colors.blue',
-      primary300: 'Colors.green',
-      primary400: 'Colors.purple',
-      primary500: 'Colors.red',
-      primary600: 'Colors.orange', // Corrected duplicate key
-      primary700: Colors.pink,
+
     ),
     // More token configurations....
   ),
@@ -60,7 +52,7 @@ GluestackProvider(
 
 ```
 
-3. **Apply Config**: Apply the config to the `GluestackProvider`.
+3. **Apply Config**: Apply the config to the `GluestackProvider` as shown below for `gsColorToken`.
 
 ```
 
@@ -70,11 +62,26 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 void main() {
   runApp(
     GluestackProvider(
-      child: GSApp.router(
-        {/* Your app code */}
-        // ....
+    gluestackTokenConfig: GluestackTokenConfig(
+      gsColorsToken: const GSColorsToken(
+        primary0: 'Colors.yellow',
+        primary50: 'Colors.red',
+        primary100: 'Colors.orange',
+        primary200: 'Colors.blue',
+        primary300: 'Colors.green',
+        primary400: 'Colors.purple',
+        primary500: 'Colors.red',
+        primary600: 'Colors.orange',
+        primary700: Colors.pink,
+
       ),
+      // More token configurations....
     ),
+    child: GSApp.router(
+      {/* Your app code */}
+      // ...
+    ),
+  ),
   );
 }
 
