@@ -3,11 +3,21 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_divider/gs_divider_style.dart';
 
+/// A customizable divider widget that can be styled with [GSStyle] and oriented
+/// horizontally or vertically. [GSDivider] is designed to provide a visual separation
+/// between different UI elements.
 class GSDivider extends StatelessWidget {
+  /// Custom [GSStyle] to apply to the divider, enabling detailed customization
+  /// of its appearance, including color, width, height, etc.
   final GSStyle? style;
+
+  /// The orientation of the divider, either [GSOrientations.horizontal] or [GSOrientations.vertical].
+  /// This determines how the divider is displayed within its parent container.
   final GSOrientations? orientation;
   const GSDivider({super.key, this.style, this.orientation});
 
+  /// Helper method to create a [BorderSide] with the specified color and width.
+  /// This is used to construct the divider's line with the appropriate styling.
   static BorderSide createBorderSide(BuildContext? context,
       {Color? color, double? width}) {
     if (color == null) {
@@ -23,8 +33,10 @@ class GSDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Resolve the divider's orientation, defaulting to horizontal if not specified.
     final dividerOrientation = orientation ?? dividerStyle.props?.orientation!;
-
+    // Resolve the GSStyle for the divider
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
         context: context,
         styles: [

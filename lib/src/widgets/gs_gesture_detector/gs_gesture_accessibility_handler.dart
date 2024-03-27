@@ -260,6 +260,7 @@ class GSAccessibilityHandlerWidgetState extends State<GsGestureDetector> {
         onDoubleTapDown: widget.onDoubleTapDown,
         child: widget.showFocusHighlight
             ? Stack(
+                fit: StackFit.passthrough,
                 children: [
                   widget.child,
                   Positioned.fill(

@@ -115,41 +115,83 @@ class GSApp extends StatefulWidget {
         routes = null,
         initialRoute = null;
 
-  final GSThemeData? theme;
-  final GSThemeData? darkTheme;
-  final GSThemeMode? themeMode;
+  /// A key for the navigator, allowing for interaction with the navigator from outside of it.
   final GlobalKey<NavigatorState>? navigatorKey;
-  final Widget? home;
-  final Map<String, WidgetBuilder>? routes;
-  final String? initialRoute;
+
+  /// Functions for generating routes based on settings, supporting on-the-fly route generation.
   final RouteFactory? onGenerateRoute;
   final InitialRouteListFactory? onGenerateInitialRoutes;
   final RouteFactory? onUnknownRoute;
+
+  /// Observers for the navigator, allowing for monitoring of navigation changes.
   final List<NavigatorObserver>? navigatorObservers;
-  final RouteInformationProvider? routeInformationProvider;
-  final RouteInformationParser<Object>? routeInformationParser;
-  final RouterDelegate<Object>? routerDelegate;
-  final BackButtonDispatcher? backButtonDispatcher;
-  final RouterConfig<Object>? routerConfig;
+
+  /// The initial route to load when the app starts.
+  final String? initialRoute;
+
+  /// The widget to display when the app starts, typically the app's home screen.
+  final Widget? home;
+
+  /// A map of routes for the app, allowing for named navigation.
+  final Map<String, WidgetBuilder>? routes;
+
+  /// A builder for inserting widgets above the navigator but below the rest of the app.
   final TransitionBuilder? builder;
+
+  /// The title of the app, displayed in the task switcher.
   final String title;
+
+  /// A function for dynamically generating the app title.
   final GenerateAppTitle? onGenerateTitle;
+
+  /// The primary color of the app, used in the operating system task switcher.
   final Color? color;
+
+  /// The locale for the app, overriding the device default.
   final Locale? locale;
+
+  /// Delegates for localizing the app's content.
   final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
+
+  /// Callbacks for resolving the locale from a list of user preferences.
   final LocaleListResolutionCallback? localeListResolutionCallback;
   final LocaleResolutionCallback? localeResolutionCallback;
+
+  /// A list of supported locales for the app.
   final Iterable<Locale> supportedLocales;
+
+  /// Flags for enabling various development aids.
   final bool showPerformanceOverlay;
   final bool checkerboardRasterCacheImages;
   final bool checkerboardOffscreenLayers;
   final bool showSemanticsDebugger;
   final bool debugShowCheckedModeBanner;
+
+  /// Maps for defining keyboard shortcuts and actions.
   final Map<ShortcutActivator, Intent>? shortcuts;
   final Map<Type, Action<Intent>>? actions;
+
+  /// Custom theme data for the app.
+  final GSThemeData? theme;
+  final GSThemeData? darkTheme;
+
+  /// Controls the theme mode for the app.
+  final GSThemeMode? themeMode;
+
+  /// An ID for restoring the navigation stack's state.
   final String? restorationScopeId;
+
+  /// Custom scroll behavior for the app.
   final ScrollBehavior scrollBehavior;
+
+  /// A custom page route builder for the app.
   final PageRouteFactory? pageRouteBuilder;
+
+  final RouteInformationProvider? routeInformationProvider;
+  final RouteInformationParser<Object>? routeInformationParser;
+  final RouterDelegate<Object>? routerDelegate;
+  final BackButtonDispatcher? backButtonDispatcher;
+  final RouterConfig<Object>? routerConfig;
   @override
   State<GSApp> createState() => _GSAppState();
 }

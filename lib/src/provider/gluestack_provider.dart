@@ -1,3 +1,5 @@
+import 'package:gluestack_ui/src/theme/config/layout/layout.dart';
+
 import 'provider.dart';
 
 final getIt = GetIt.instance;
@@ -122,8 +124,13 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionItem;
 
   Map<String, dynamic>? stepper;
+  //GS Layout
+  Map<String, dynamic>? layout;
 
   GluestackCustomConfig({
+    //GS Layout
+    this.layout,
+
     //accordion
     this.accordion,
     this.accordionHeader,
@@ -253,6 +260,9 @@ class GluestackCustomConfig {
 
       return mergedMap;
     }
+
+//layout
+    layout = mergeConfigs(layoutData, layout);
 
     //accordion
     accordion = mergeConfigs(accordionData, accordion);
