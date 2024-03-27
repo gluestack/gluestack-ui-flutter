@@ -13,12 +13,12 @@ class GSRespScaler extends StatelessWidget {
   /// used as a reference point for scaling the child widget to match the current
   /// screen width. The default value is set to 375, a common width used in design
   /// tools like Figma for iPhone designs.
-  final double ogDesignWidth;
+  final double designWidth;
 
   const GSRespScaler({
     super.key,
     required this.child,
-    this.ogDesignWidth = 375, // Generic Figma design width for iPhone
+    this.designWidth = 375, // Generic Figma design width for iPhone
   });
 
   @override
@@ -28,7 +28,7 @@ class GSRespScaler extends StatelessWidget {
         // Determine the current screen width.
         double screenWidth = constraints.maxWidth;
         // Calculate the scale factor based on the current screen width and the original design width.
-        double scaleFactor = screenWidth / ogDesignWidth;
+        double scaleFactor = screenWidth / designWidth;
         // Apply a minimum scale factor of 1 to ensure the child does not scale down on wider screens.
         return Transform.scale(
           // Scale the child widget according to the calculated scale factor.
