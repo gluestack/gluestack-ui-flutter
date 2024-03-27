@@ -69,49 +69,44 @@ class _VStackExampleState extends State<VStackExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
+      body: BaseLayout(
+        code: code,
+        component: GSVStack(
+          mainAxisAlignment: MainAxisAlignment.center,
+          isReversed: isReversed,
+          space: selectedSpaceOption,
+          children: [
+            GSBox(
+              style: GSStyle(height: 100, width: 100, bg: $GSColors.blue300),
+              child: const Text('1'),
+            ),
+            GSBox(
+              style: GSStyle(height: 100, width: 100, bg: $GSColors.blue400),
+              child: const Text('2'),
+            ),
+            GSBox(
+              style: GSStyle(height: 100, width: 100, bg: $GSColors.blue500),
+              child: const Text('3'),
+            ),
+          ],
         ),
-        child: BaseLayout(
-          code: code,
-          component: GSVStack(
-            mainAxisAlignment: MainAxisAlignment.center,
-            isReversed: isReversed,
-            space: selectedSpaceOption,
-            children: [
-              GSBox(
-                style: GSStyle(height: 100, width: 100, bg: $GSColors.blue300),
-                child: const Text('1'),
-              ),
-              GSBox(
-                style: GSStyle(height: 100, width: 100, bg: $GSColors.blue400),
-                child: const Text('2'),
-              ),
-              GSBox(
-                style: GSStyle(height: 100, width: 100, bg: $GSColors.blue500),
-                child: const Text('3'),
-              ),
-            ],
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "space",
-                dropdownOptions: dropdownSpaceOptions,
-                selectedOption: selectedSpaceOption,
-                onChanged: updateSpaceSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isReversed",
-                value: isReversed,
-                onToggle: updateIsReversed,
-              ),
-            ],
-          ),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "space",
+              dropdownOptions: dropdownSpaceOptions,
+              selectedOption: selectedSpaceOption,
+              onChanged: updateSpaceSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isReversed",
+              value: isReversed,
+              onToggle: updateIsReversed,
+            ),
+          ],
         ),
       ),
     );

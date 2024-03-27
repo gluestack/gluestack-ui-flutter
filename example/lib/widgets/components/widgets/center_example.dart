@@ -25,22 +25,17 @@ class CenterExample extends StatelessWidget {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
-        ),
-        child: BaseLayout(
-          code: code,
-          component: GSCenter(
-            style: GSStyle(
-              alignItems: GSAlignments.end,
-              justifyContent: GSAlignments.start,
-              height: 150,
-              bg: Colors.pink,
-              md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
-            ),
-            child: const GSCenter(child: Text('Testing Center Widget')),
+      body: BaseLayout(
+        code: code,
+        component: GSCenter(
+          style: GSStyle(
+            alignItems: GSAlignments.end,
+            justifyContent: GSAlignments.start,
+            height: 150,
+            bg: Colors.pink,
+            md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
           ),
+          child: const GSCenter(child: Text('Testing Center Widget')),
         ),
       ),
     );

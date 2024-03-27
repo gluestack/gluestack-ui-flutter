@@ -62,37 +62,32 @@ class _ImageExampleState extends State<ImageExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
-        ),
-        child: BaseLayout(
-          code: code,
-          component: GSImage(
-              size: selectedSizeOption,
-              borderRadius: selectedRadiusOption,
-              path:
-                  'https://plus.unsplash.com/premium_photo-1697211174198-18da849f87c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTI2NTM4Mg&ixlib=rb-4.0.3&q=80&w=1080',
-              imageType: GSImageType.network),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomDropDown(
-                title: "borderRadius",
-                dropdownOptions: dropdownRadiusOptions,
-                selectedOption: selectedRadiusOption,
-                onChanged: updateRadiusSelectedOption,
-              ),
-            ],
-          ),
+      body: BaseLayout(
+        code: code,
+        component: GSImage(
+            size: selectedSizeOption,
+            borderRadius: selectedRadiusOption,
+            path:
+                'https://plus.unsplash.com/premium_photo-1697211174198-18da849f87c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTI2NTM4Mg&ixlib=rb-4.0.3&q=80&w=1080',
+            imageType: GSImageType.network),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomDropDown(
+              title: "borderRadius",
+              dropdownOptions: dropdownRadiusOptions,
+              selectedOption: selectedRadiusOption,
+              onChanged: updateRadiusSelectedOption,
+            ),
+          ],
         ),
       ),
     );

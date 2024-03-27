@@ -42,28 +42,23 @@ class _ProgressExampleState extends State<ProgressExample> {
         dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
-        child: GSBox(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
+        child: BaseLayout(
+          code: code,
+          component: GSProgress(
+            value: 0.4,
+            size: selectedSizeOption,
           ),
-          child: BaseLayout(
-            code: code,
-            component: GSProgress(
-              value: 0.4,
-              size: selectedSizeOption,
-            ),
-            controls: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomDropDown(
-                  title: "size",
-                  dropdownOptions: dropdownSizeOptions,
-                  selectedOption: selectedSizeOption,
-                  onChanged: updateSizeSelectedOption,
-                ),
-              ],
-            ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+            ],
           ),
         ),
       ),

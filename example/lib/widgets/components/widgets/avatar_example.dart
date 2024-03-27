@@ -64,40 +64,35 @@ class _AvatarExampleState extends State<AvatarExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
+      body: BaseLayout(
+        code: code,
+        component: GSAvatar(
+          radius: selectedRadiusOption,
+          size: selectedSizeOption,
+          style: GSStyle(
+            bg: Colors.orange,
+            textStyle: const TextStyle(color: Colors.white),
+          ),
+          fallBackText: const GSAvatarFallBackText('Geeky Stack'),
         ),
-        child: BaseLayout(
-          code: code,
-          component: GSAvatar(
-            radius: selectedRadiusOption,
-            size: selectedSizeOption,
-            style: GSStyle(
-              bg: Colors.orange,
-              textStyle: const TextStyle(color: Colors.white),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
             ),
-            fallBackText: const GSAvatarFallBackText('Geeky Stack'),
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomDropDown(
-                title: "borderRadius",
-                dropdownOptions: dropdownRadiusOptions,
-                selectedOption: selectedRadiusOption,
-                onChanged: updateRadiusSelectedOption,
-              ),
-            ],
-          ),
+            const SizedBox(height: 20),
+            CustomDropDown(
+              title: "borderRadius",
+              dropdownOptions: dropdownRadiusOptions,
+              selectedOption: selectedRadiusOption,
+              onChanged: updateRadiusSelectedOption,
+            ),
+          ],
         ),
       ),
     );

@@ -22,19 +22,14 @@ class TextExample extends StatelessWidget {
         dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
-        child: GSBox(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
-          ),
-          child: BaseLayout(
-            code: code,
-            component: GSText(
-              text: 'This is an example of a simple text.',
-              // bold: true,
-              // underline: true,
-              style: GSStyle(
-                textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
-              ),
+        child: BaseLayout(
+          code: code,
+          component: GSText(
+            text: 'This is an example of a simple text.',
+            // bold: true,
+            // underline: true,
+            style: GSStyle(
+              textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
             ),
           ),
         ),

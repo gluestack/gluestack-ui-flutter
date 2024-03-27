@@ -31,27 +31,22 @@ class StackExample extends StatelessWidget {
         dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
-        child: GSBox(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
-          ),
-          child: BaseLayout(
-            code: code,
-            component: GSStack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  width: 150,
-                  height: 150,
-                  color: Colors.red,
-                ),
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.blue,
-                ),
-              ],
-            ),
+        child: BaseLayout(
+          code: code,
+          component: GSStack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                width: 150,
+                height: 150,
+                color: Colors.red,
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Colors.blue,
+              ),
+            ],
           ),
         ),
       ),

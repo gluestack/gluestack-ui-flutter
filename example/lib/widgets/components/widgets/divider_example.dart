@@ -12,47 +12,42 @@ class DividerExample extends StatelessWidget {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
-        ),
-        child: GSCenter(
-          child: GSVStack(
-            children: [
-              GSDivider(
-                orientation: GSOrientations.vertical,
-                style: GSStyle(bg: Colors.black, height: 30),
+      body: GSCenter(
+        child: GSVStack(
+          children: [
+            GSDivider(
+              orientation: GSOrientations.vertical,
+              style: GSStyle(bg: Colors.black, height: 30),
+            ),
+            GSDivider(
+              style: GSStyle(
+                bg: Colors.blue,
               ),
-              GSDivider(
-                style: GSStyle(
-                  bg: Colors.blue,
-                ),
+            ),
+            GSDivider(
+              orientation: GSOrientations.vertical,
+              style: GSStyle(
+                height: 200,
+                bg: Colors.red,
               ),
-              GSDivider(
-                orientation: GSOrientations.vertical,
-                style: GSStyle(
-                  height: 200,
-                  bg: Colors.red,
-                ),
+            ),
+            GSDivider(
+              style: GSStyle(
+                bg: Colors.orange,
               ),
-              GSDivider(
-                style: GSStyle(
-                  bg: Colors.orange,
-                ),
+            ),
+            GSBox(
+              style: GSStyle(
+                padding: const EdgeInsets.only(bottom: 2),
               ),
-              GSBox(
-                style: GSStyle(
-                  padding: const EdgeInsets.only(bottom: 2),
-                ),
-                child: const Text('GS Divider'),
+              child: const Text('GS Divider'),
+            ),
+            GSDivider(
+              style: GSStyle(
+                bg: Colors.purple,
               ),
-              GSDivider(
-                style: GSStyle(
-                  bg: Colors.purple,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

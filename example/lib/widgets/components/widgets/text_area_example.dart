@@ -66,50 +66,45 @@ class _TextAreaExampleState extends State<TextAreaExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
+      body: BaseLayout(
+        code: code,
+        component: GSTextArea(
+          size: selectedSizeOption,
+          isDisabled: isDisabled,
+          isReadOnly: isReadOnly,
+          isInvalid: isInvalid,
+          controller: textEditingController,
+          hintText: "Enter text here",
         ),
-        child: BaseLayout(
-          code: code,
-          component: GSTextArea(
-            size: selectedSizeOption,
-            isDisabled: isDisabled,
-            isReadOnly: isReadOnly,
-            isInvalid: isInvalid,
-            controller: textEditingController,
-            hintText: "Enter text here",
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isDisabled",
-                value: isDisabled,
-                onToggle: updateIsDisabled,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isInvalid",
-                value: isInvalid,
-                onToggle: updateIsInvalid,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isReadOnly",
-                value: isReadOnly,
-                onToggle: updateIsReadOnly,
-              )
-            ],
-          ),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isDisabled",
+              value: isDisabled,
+              onToggle: updateIsDisabled,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isInvalid",
+              value: isInvalid,
+              onToggle: updateIsInvalid,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isReadOnly",
+              value: isReadOnly,
+              onToggle: updateIsReadOnly,
+            )
+          ],
         ),
       ),
     );

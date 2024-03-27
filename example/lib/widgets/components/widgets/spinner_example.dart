@@ -24,20 +24,15 @@ class SpinnerExample extends StatelessWidget {
         dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
-        child: GSBox(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
-          ),
-          child: BaseLayout(
-            code: code,
-            component: GSSpinner(
-              size: GSSpinnerSizes.large,
-              style: GSStyle(
-                color: $GSColors.amber400,
-                bg: $GSColors.amber200,
-              ),
-              // strokeWidth: 10,
+        child: BaseLayout(
+          code: code,
+          component: GSSpinner(
+            size: GSSpinnerSizes.large,
+            style: GSStyle(
+              color: $GSColors.amber400,
+              bg: $GSColors.amber200,
             ),
+            // strokeWidth: 10,
           ),
         ),
       ),

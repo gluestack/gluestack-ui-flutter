@@ -68,51 +68,46 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
+      body: BaseLayout(
+        code: code,
+        component: GSRadio<Value>(
+          size: selectedSizeOption,
+          isDisabled: isDisabled,
+          isInvalid: isInvalid,
+          value: Value.four,
+          groupValue: groupValue,
+          onChanged: (p0) {
+            setState(() {
+              groupValue = p0!;
+            });
+          },
+          icon: const GSRadioIcon<Value>(),
+          label: const GSRadioText<Value>(text: 'text4'),
+          style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
         ),
-        child: BaseLayout(
-          code: code,
-          component: GSRadio<Value>(
-            size: selectedSizeOption,
-            isDisabled: isDisabled,
-            isInvalid: isInvalid,
-            value: Value.four,
-            groupValue: groupValue,
-            onChanged: (p0) {
-              setState(() {
-                groupValue = p0!;
-              });
-            },
-            icon: const GSRadioIcon<Value>(),
-            label: const GSRadioText<Value>(text: 'text4'),
-            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isDisabled",
-                value: isDisabled,
-                onToggle: updateIsDisabled,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isInvalid",
-                value: isInvalid,
-                onToggle: updateIsInvalid,
-              )
-            ],
-          ),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isDisabled",
+              value: isDisabled,
+              onToggle: updateIsDisabled,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isInvalid",
+              value: isInvalid,
+              onToggle: updateIsInvalid,
+            )
+          ],
         ),
       ),
     );

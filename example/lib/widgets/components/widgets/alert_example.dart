@@ -62,59 +62,54 @@ class AlertExample extends StatelessWidget {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
-        ),
-        child: BaseLayout(
-          code: code,
-          component: Center(
-            child: GSButton(
-              size: GSButtonSizes.$lg,
-              child: const GSButtonText(text: "Click Me"),
-              onPressed: () {
-                GSAlertDialog.show(
-                  context,
-                  size: GSAlertDialogSizes.$full,
-                  content: GSAlertDialogContent(
-                    header: GSAlertDialogHeader(
-                      style: GSStyle(
-                        bg: Colors.pink,
-                      ),
-                      child: const GSText(
-                        text: "Header",
-                      ),
+      body: BaseLayout(
+        code: code,
+        component: Center(
+          child: GSButton(
+            size: GSButtonSizes.$lg,
+            child: const GSButtonText(text: "Click Me"),
+            onPressed: () {
+              GSAlertDialog.show(
+                context,
+                size: GSAlertDialogSizes.$full,
+                content: GSAlertDialogContent(
+                  header: GSAlertDialogHeader(
+                    style: GSStyle(
+                      bg: Colors.pink,
                     ),
-                    body: const GSAlertDialogBody(
-                      child: GSText(
-                        text:
-                            "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone.",
-                      ),
-                    ),
-                    footer: GSAlertDialogFooter(
-                      child: GSButtonGroup(
-                        buttons: [
-                          GSButton(
-                              action: GSButtonActions.positive,
-                              variant: GSButtonVariants.outline,
-                              child: const GSText(
-                                text: "Yes",
-                              ),
-                              onPressed: () {}),
-                          GSButton(
-                              action: GSButtonActions.negative,
-                              variant: GSButtonVariants.outline,
-                              child: const GSText(
-                                text: "No",
-                              ),
-                              onPressed: () {}),
-                        ],
-                      ),
+                    child: const GSText(
+                      text: "Header",
                     ),
                   ),
-                );
-              },
-            ),
+                  body: const GSAlertDialogBody(
+                    child: GSText(
+                      text:
+                          "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone.",
+                    ),
+                  ),
+                  footer: GSAlertDialogFooter(
+                    child: GSButtonGroup(
+                      buttons: [
+                        GSButton(
+                            action: GSButtonActions.positive,
+                            variant: GSButtonVariants.outline,
+                            child: const GSText(
+                              text: "Yes",
+                            ),
+                            onPressed: () {}),
+                        GSButton(
+                            action: GSButtonActions.negative,
+                            variant: GSButtonVariants.outline,
+                            child: const GSText(
+                              text: "No",
+                            ),
+                            onPressed: () {}),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),

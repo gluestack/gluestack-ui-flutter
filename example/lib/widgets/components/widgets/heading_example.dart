@@ -20,16 +20,11 @@ class HeadingExample extends StatelessWidget {
         dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
-        child: GSBox(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
-          ),
-          child: BaseLayout(
-            code: code,
-            component: GSHeading(
-              text: 'This is an example for a Heading',
-              style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
-            ),
+        child: BaseLayout(
+          code: code,
+          component: GSHeading(
+            text: 'This is an example for a Heading',
+            style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
           ),
         ),
       ),

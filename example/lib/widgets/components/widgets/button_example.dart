@@ -92,81 +92,76 @@ class _ButtonExampleState extends State<ButtonExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
+      body: BaseLayout(
+        code: code,
+        component: GSButton(
+          action: selectedActionOption,
+          variant: selectedVariantOption,
+          size: selectedSizeOption,
+          isDisabled: isDisabled,
+          isFocusVisible: isFocusVisible,
+          onHover: () {
+            // print('Hovering');
+          },
+          onPressed: () {
+            // print('presssed');
+          },
+          onDoubleTap: () {
+            // print('double press');
+          },
+          // style: GSStyle(
+          //   web: GSStyle(
+          //     bg: $GSColors.amber600,
+          //   ),
+          //   ios: GSStyle(
+          //     bg: $GSColors.pink600,
+          //   ),
+          //   onHover: GSStyle(
+          //     bg: $GSColors.green400,
+          //   ),
+          //   md: GSStyle(
+          //     bg: $GSColors.pink400,
+          //   ),
+          // ),
+          child: const GSButtonText(text: "Click Here"),
         ),
-        child: BaseLayout(
-          code: code,
-          component: GSButton(
-            action: selectedActionOption,
-            variant: selectedVariantOption,
-            size: selectedSizeOption,
-            isDisabled: isDisabled,
-            isFocusVisible: isFocusVisible,
-            onHover: () {
-              // print('Hovering');
-            },
-            onPressed: () {
-              // print('presssed');
-            },
-            onDoubleTap: () {
-              // print('double press');
-            },
-            // style: GSStyle(
-            //   web: GSStyle(
-            //     bg: $GSColors.amber600,
-            //   ),
-            //   ios: GSStyle(
-            //     bg: $GSColors.pink600,
-            //   ),
-            //   onHover: GSStyle(
-            //     bg: $GSColors.green400,
-            //   ),
-            //   md: GSStyle(
-            //     bg: $GSColors.pink400,
-            //   ),
-            // ),
-            child: const GSButtonText(text: "Click Here"),
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomDropDown(
-                title: "variant",
-                dropdownOptions: dropdownVariantOptions,
-                selectedOption: selectedVariantOption,
-                onChanged: updateVariantSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomDropDown(
-                title: "action",
-                dropdownOptions: dropdownActionOptions,
-                selectedOption: selectedActionOption,
-                onChanged: updateActionSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isDisabled",
-                value: isDisabled,
-                onToggle: updateIsDisabled,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isFocusVisible",
-                value: isFocusVisible,
-                onToggle: updateIsFocusVisible,
-              )
-            ],
-          ),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomDropDown(
+              title: "variant",
+              dropdownOptions: dropdownVariantOptions,
+              selectedOption: selectedVariantOption,
+              onChanged: updateVariantSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomDropDown(
+              title: "action",
+              dropdownOptions: dropdownActionOptions,
+              selectedOption: selectedActionOption,
+              onChanged: updateActionSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isDisabled",
+              value: isDisabled,
+              onToggle: updateIsDisabled,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isFocusVisible",
+              value: isFocusVisible,
+              onToggle: updateIsFocusVisible,
+            )
+          ],
         ),
       ),
     );

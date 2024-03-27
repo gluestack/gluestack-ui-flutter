@@ -21,17 +21,12 @@ class LinkExample extends StatelessWidget {
         dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
-        child: GSBox(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
-          ),
-          child: BaseLayout(
-            code: code,
-            component: GSLink(
-              style: GSStyle(),
-              url: 'https://gluestack.io/',
-              text: const GSLinkText(text: 'Go to Gluestack'),
-            ),
+        child: BaseLayout(
+          code: code,
+          component: GSLink(
+            style: GSStyle(),
+            url: 'https://gluestack.io/',
+            text: const GSLinkText(text: 'Go to Gluestack'),
           ),
         ),
       ),

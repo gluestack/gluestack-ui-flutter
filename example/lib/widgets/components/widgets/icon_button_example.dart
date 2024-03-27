@@ -46,35 +46,30 @@ class _IconButtonExampleState extends State<IconButtonExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
+      body: BaseLayout(
+        code: code,
+        component: GSIconButton(
+          size: selectedSizeOption,
+          style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
+          icon: GSIcon(
+            icon: Icons.add_a_photo,
+            style: GSStyle(color: const Color(0xffffffff)),
+          ),
+          onPressed: () {
+            // print('Icon Button Pressed!');
+          },
         ),
-        child: BaseLayout(
-          code: code,
-          component: GSIconButton(
-            size: selectedSizeOption,
-            style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
-            icon: GSIcon(
-              icon: Icons.add_a_photo,
-              style: GSStyle(color: const Color(0xffffffff)),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
             ),
-            onPressed: () {
-              // print('Icon Button Pressed!');
-            },
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-            ],
-          ),
+          ],
         ),
       ),
     );

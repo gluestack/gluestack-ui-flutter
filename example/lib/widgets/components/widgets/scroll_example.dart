@@ -25,24 +25,19 @@ class ScrollExample extends StatelessWidget {
         dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
-        child: GSBox(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
-          ),
-          child: BaseLayout(
-            code: code,
-            component: GSBox(
-              style: GSStyle(
-                  height: 250, borderColor: $GSColors.blue400, borderWidth: 2),
-              child: GSScrollView(
-                children: [
-                  for (int i = 0; i < 100; i++)
-                    GSText(
-                      text: 'Widget No. $i',
-                      textAlign: TextAlign.center,
-                    ),
-                ],
-              ),
+        child: BaseLayout(
+          code: code,
+          component: GSBox(
+            style: GSStyle(
+                height: 250, borderColor: $GSColors.blue400, borderWidth: 2),
+            child: GSScrollView(
+              children: [
+                for (int i = 0; i < 100; i++)
+                  GSText(
+                    text: 'Widget No. $i',
+                    textAlign: TextAlign.center,
+                  ),
+              ],
             ),
           ),
         ),

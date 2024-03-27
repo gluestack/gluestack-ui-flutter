@@ -42,28 +42,23 @@ class _IconExampleState extends State<IconExample> {
         dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
-        child: GSBox(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
+        child: BaseLayout(
+          code: code,
+          component: GSIcon(
+            icon: Icons.calendar_month,
+            size: selectedSizeOption,
           ),
-          child: BaseLayout(
-            code: code,
-            component: GSIcon(
-              icon: Icons.calendar_month,
-              size: selectedSizeOption,
-            ),
-            controls: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomDropDown(
-                  title: "size",
-                  dropdownOptions: dropdownSizeOptions,
-                  selectedOption: selectedSizeOption,
-                  onChanged: updateSizeSelectedOption,
-                ),
-              ],
-            ),
+          controls: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomDropDown(
+                title: "size",
+                dropdownOptions: dropdownSizeOptions,
+                selectedOption: selectedSizeOption,
+                onChanged: updateSizeSelectedOption,
+              ),
+            ],
           ),
         ),
       ),

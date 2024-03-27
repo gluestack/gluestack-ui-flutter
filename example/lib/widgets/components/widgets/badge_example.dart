@@ -93,57 +93,52 @@ class _BadgeExampleState extends State<BadgeExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
+      body: BaseLayout(
+        code: code,
+        component: GSBadge(
+          size: selectedSizeOption,
+          action: selectedActionOption,
+          variant: selectedVariantOption,
+          borderRadius: selectedRadiusOption,
+          icon: const GSBadgeIcon(
+            iconData: Icons.info_outline,
+          ),
+          text: const GSBadgeText(
+            'information',
+          ),
         ),
-        child: BaseLayout(
-          code: code,
-          component: GSBadge(
-            size: selectedSizeOption,
-            action: selectedActionOption,
-            variant: selectedVariantOption,
-            borderRadius: selectedRadiusOption,
-            icon: const GSBadgeIcon(
-              iconData: Icons.info_outline,
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
             ),
-            text: const GSBadgeText(
-              'information',
+            const SizedBox(height: 20),
+            CustomDropDown(
+              title: "variant",
+              dropdownOptions: dropdownVariantOptions,
+              selectedOption: selectedVariantOption,
+              onChanged: updateVariantSelectedOption,
             ),
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomDropDown(
-                title: "variant",
-                dropdownOptions: dropdownVariantOptions,
-                selectedOption: selectedVariantOption,
-                onChanged: updateVariantSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomDropDown(
-                title: "borderRadius",
-                dropdownOptions: dropdownRadiusOptions,
-                selectedOption: selectedRadiusOption,
-                onChanged: updateRadiusSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomDropDown(
-                title: "action",
-                dropdownOptions: dropdownActionOptions,
-                selectedOption: selectedActionOption,
-                onChanged: updateActionSelectedOption,
-              ),
-            ],
-          ),
+            const SizedBox(height: 20),
+            CustomDropDown(
+              title: "borderRadius",
+              dropdownOptions: dropdownRadiusOptions,
+              selectedOption: selectedRadiusOption,
+              onChanged: updateRadiusSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomDropDown(
+              title: "action",
+              dropdownOptions: dropdownActionOptions,
+              selectedOption: selectedActionOption,
+              onChanged: updateActionSelectedOption,
+            ),
+          ],
         ),
       ),
     );

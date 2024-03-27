@@ -59,49 +59,44 @@ class _SwitchExampleState extends State<SwitchExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
-        ),
-        child: BaseLayout(
-          code: code,
-          component: Column(
-            children: [
-              GSSwitch(
-                isDisabled: isDisabled,
-                size: selectedSizeOption,
-                style: GSStyle(
-                  thumbColor: Colors.amber,
-                  trackColorFalse: Colors.orange,
-                  checked: GSStyle(
-                    activeThumbColor: Colors.red,
-                    trackColorTrue: Colors.black,
-                  ),
+      body: BaseLayout(
+        code: code,
+        component: Column(
+          children: [
+            GSSwitch(
+              isDisabled: isDisabled,
+              size: selectedSizeOption,
+              style: GSStyle(
+                thumbColor: Colors.amber,
+                trackColorFalse: Colors.orange,
+                checked: GSStyle(
+                  activeThumbColor: Colors.red,
+                  trackColorTrue: Colors.black,
                 ),
-                value: val1,
-                onToggle: (bool a) {
-                  // print('switch value: $a');
-                },
               ),
-            ],
-          ),
-          controls: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isDisabled",
-                value: isDisabled,
-                onToggle: updateIsDisabled,
-              ),
-            ],
-          ),
+              value: val1,
+              onToggle: (bool a) {
+                // print('switch value: $a');
+              },
+            ),
+          ],
+        ),
+        controls: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isDisabled",
+              value: isDisabled,
+              onToggle: updateIsDisabled,
+            ),
+          ],
         ),
       ),
     );

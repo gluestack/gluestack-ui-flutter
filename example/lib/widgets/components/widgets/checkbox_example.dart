@@ -61,48 +61,43 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
+      body: BaseLayout(
+        code: code,
+        component: GSCheckBox(
+          icon: GSCheckBoxIndicator(
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            child: const GSCheckBoxIcon(),
+          ),
+          value: "value 1",
+          onChanged: (value) {},
+          label: const GSCheckBoxLabel(text: "value1"),
+          size: selectedSizeOption,
+          isDisabled: isDisabled,
+          isInvalid: isInvalid,
         ),
-        child: BaseLayout(
-          code: code,
-          component: GSCheckBox(
-            icon: GSCheckBoxIndicator(
-              style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
-              child: const GSCheckBoxIcon(),
+        controls: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomDropDown(
+              title: "size",
+              dropdownOptions: dropdownSizeOptions,
+              selectedOption: selectedSizeOption,
+              onChanged: updateSizeSelectedOption,
             ),
-            value: "value 1",
-            onChanged: (value) {},
-            label: const GSCheckBoxLabel(text: "value1"),
-            size: selectedSizeOption,
-            isDisabled: isDisabled,
-            isInvalid: isInvalid,
-          ),
-          controls: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomDropDown(
-                title: "size",
-                dropdownOptions: dropdownSizeOptions,
-                selectedOption: selectedSizeOption,
-                onChanged: updateSizeSelectedOption,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isDisabled",
-                value: isDisabled,
-                onToggle: updateIsDisabled,
-              ),
-              const SizedBox(height: 20),
-              CustomToggle(
-                title: "isInvalid",
-                value: isInvalid,
-                onToggle: updateIsInvalid,
-              )
-            ],
-          ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isDisabled",
+              value: isDisabled,
+              onToggle: updateIsDisabled,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "isInvalid",
+              value: isInvalid,
+              onToggle: updateIsInvalid,
+            )
+          ],
         ),
       ),
     );

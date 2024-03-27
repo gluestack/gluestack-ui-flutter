@@ -44,41 +44,36 @@ class FlexExample extends StatelessWidget {
       style: GSStyle(
         dark: GSStyle(bg: $GSColors.black),
       ),
-      body: GSBox(
-        style: GSStyle(
-          dark: GSStyle(bg: $GSColors.black),
-        ),
-        child: BaseLayout(
-          code: code,
-          component: GSFlex(
-            style: GSStyle(
-              direction: Axis.vertical,
-              md: GSStyle(direction: Axis.horizontal),
-            ),
-            children: [
-              GSBox(
-                style: GSStyle(
-                  height: 150,
-                  width: 150,
-                  bg: Colors.red,
-                ),
-              ),
-              GSBox(
-                style: GSStyle(
-                  height: 150,
-                  width: 150,
-                  bg: Colors.green,
-                ),
-              ),
-              GSBox(
-                style: GSStyle(
-                  height: 150,
-                  width: 150,
-                  bg: Colors.blue,
-                ),
-              ),
-            ],
+      body: BaseLayout(
+        code: code,
+        component: GSFlex(
+          style: GSStyle(
+            direction: Axis.vertical,
+            md: GSStyle(direction: Axis.horizontal),
           ),
+          children: [
+            GSBox(
+              style: GSStyle(
+                height: 150,
+                width: 150,
+                bg: Colors.red,
+              ),
+            ),
+            GSBox(
+              style: GSStyle(
+                height: 150,
+                width: 150,
+                bg: Colors.green,
+              ),
+            ),
+            GSBox(
+              style: GSStyle(
+                height: 150,
+                width: 150,
+                bg: Colors.blue,
+              ),
+            ),
+          ],
         ),
       ),
     );
