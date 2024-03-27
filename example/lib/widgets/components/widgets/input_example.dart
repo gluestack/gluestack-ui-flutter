@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import '../layout/drop_down.dart';
 import '../layout/toggle.dart';
 
@@ -64,7 +65,6 @@ class _InputExampleState extends State<InputExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     var code = '''
       GSInput(
           size: GSInputSizes.\$md,
@@ -78,14 +78,10 @@ class _InputExampleState extends State<InputExample> {
           ),
        )
   ''';
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor:
-            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
-        title: const GSText(
-          text: "Input",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "Input",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: GSBox(
         style: GSStyle(

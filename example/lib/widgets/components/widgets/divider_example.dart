@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 
 class DividerExample extends StatelessWidget {
   const DividerExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor:
-            theme.brightness == Brightness.dark ? $GSColors.trueGray800 : null,
-        title: const GSText(
-          text: "Divider",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "Divider",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: GSBox(
         style: GSStyle(
