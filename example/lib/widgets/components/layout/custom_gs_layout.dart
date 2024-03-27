@@ -6,12 +6,14 @@ class CustomGSLayout extends StatelessWidget {
   final Widget? floatingActionButton;
   final GSStyle? style;
   final String title;
+  final bool? hideBackButton;
   const CustomGSLayout(
       {super.key,
       required this.body,
       this.style,
       required this.title,
-      this.floatingActionButton});
+      this.floatingActionButton,
+      this.hideBackButton});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class CustomGSLayout extends StatelessWidget {
             children: [
               CustomAppBar(
                 title: title,
+                hideBackButton: hideBackButton ?? false,
               ),
               Expanded(child: body),
             ],
@@ -35,10 +38,12 @@ class CustomGSLayout extends StatelessWidget {
 
 class CustomAppBar extends StatelessWidget {
   final String title;
+  final bool hideBackButton;
 
   const CustomAppBar({
     super.key,
     required this.title,
+    required this.hideBackButton,
   });
 
   @override
@@ -52,15 +57,17 @@ class CustomAppBar extends StatelessWidget {
       child: GSHStack(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back),
-            color: GSTheme.of(context).brightness == Brightness.dark
-                ? $GSColors.white
-                : null,
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
+          !hideBackButton
+              ? IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  color: GSTheme.of(context).brightness == Brightness.dark
+                      ? $GSColors.white
+                      : null,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              : const SizedBox(),
           Expanded(
             child: Center(
               child: GSText(
@@ -69,6 +76,7 @@ class CustomAppBar extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(width: 48),
         ],
       ),
     );
