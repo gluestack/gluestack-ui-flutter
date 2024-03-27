@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:gluestack_ui/src/widgets/gs_app/gs_theme.dart';
+import 'package:gluestack_ui/src/provider/provider.dart';
 
 enum GSThemeMode {
   system,
@@ -266,7 +264,7 @@ class _GSAppState extends State<GSApp> {
   }
 
   Widget _buildApp(BuildContext context) {
-    final gsAppColor = widget.color ?? const Color(0xFF0000FF);
+    final gsAppColor = widget.color ?? $GSColors.primary400;
     if (_usesRouter) {
       return WidgetsApp.router(
         key: GlobalObjectKey(this),

@@ -42,16 +42,9 @@ class _MyAppState extends State<MyApp> {
 
           return GSApp.router(
             debugShowCheckedModeBanner: false,
-            //gotta add scaffold messenger if using snackbars, which we are!
             color: $GSColors.primary500,
             routerConfig: router,
             themeMode: currentThemeMode,
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-
             darkTheme: GSThemeData(
               brightness: Brightness.dark,
             ),

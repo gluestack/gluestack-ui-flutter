@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 
 class PressableExample extends StatelessWidget {
   const PressableExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     var code = '''
             GSPressable(
                 hitSlop: 10,
@@ -33,14 +33,10 @@ class PressableExample extends StatelessWidget {
                 ),
              )
   ''';
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "Pressable",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "Pressable",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
