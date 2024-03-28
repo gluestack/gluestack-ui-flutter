@@ -45,3 +45,4 @@ export 'src/widgets/gs_accordian/public.dart';
 export 'src/poc/gluestack_state.dart';
 export 'src/poc/temp_gsButton.dart';
 export 'src/poc/temp_token.dart';
+export 'src/widgets/gs_layout/public.dart';

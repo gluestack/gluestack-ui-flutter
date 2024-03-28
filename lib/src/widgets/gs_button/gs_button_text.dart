@@ -21,6 +21,7 @@ class GSButtonText extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsTextConfig.ancestorStyle.first];
 
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [

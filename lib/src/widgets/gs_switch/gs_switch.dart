@@ -9,29 +9,55 @@ import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provi
 import 'package:gluestack_ui/src/widgets/gs_switch/gs_switch_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
+/// predefined sizes for [GSSwitch]
 enum GSSwitchSizes {
   $sm,
   $md,
   $lg,
 }
 
-///
-/// Gluestack Switch Widget.
-///
+/// A customizable switch widget designed for the Gluestack UI framework. [GSSwitch]
+/// provides an interactive toggle with customizable styles, sizes, and states.
 class GSSwitch extends StatefulWidget {
+  /// Determines the current value of the switch, where `true` represents the "on" state
+  /// and `false` represents the "off" state.
   final bool value;
+
+  /// Callback function that is called when the switch is toggled. It passes the new value
+  /// of the switch as a parameter.
   final ValueChanged<bool>? onToggle;
 
+  /// Custom [GSStyle] to apply to the switch, enabling detailed customization of its
+  /// appearance, including colors and dimensions.
   final GSStyle? style;
+
+  /// The size of the switch, affecting its overall dimensions. This can be set to one of
+  /// the predefined [GSSwitchSizes] values.
   final GSSwitchSizes? size;
+
+  /// Indicates whether the switch is disabled. A disabled switch does not respond to
+  /// input and is typically rendered in a visually distinct manner to indicate its
+  /// inactive state.
   final bool? isDisabled;
 
+  /// The height of the track that the switch thumb slides along.
   final double trackHeight;
+
+  /// The width of the switch track.
   final double trackWidth;
+
+  /// The height of the switch thumb.
   final double switchHeight;
+
+  /// The width of the switch thumb.
   final double switchWidth;
-  final Duration animationDuration;
+
+  /// The shape of the switch thumb. Defaults to [BoxShape.circle], rendering the thumb
+  /// as a circle.
   final BoxShape switchShape;
+
+  /// The duration of the animation that occurs when the switch is toggled.
+  final Duration animationDuration;
 
   const GSSwitch({
     super.key,
@@ -67,6 +93,7 @@ class GSCustomSwitchState extends State<GSSwitch> {
       isDisabled: widget.isDisabled!,
       shouldIgnorePointer: widget.isDisabled!,
       child: Builder(builder: (context) {
+        // Resolve styles
         GSStyle styler = resolveStyles(
           context: context,
           styles: [switchStyle, switchStyle.sizeMap(widget.size?.toGSSize)],
