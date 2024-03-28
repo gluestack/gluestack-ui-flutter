@@ -352,13 +352,13 @@ class _FormExampleState extends State<FormExample> {
                         if (_formKey.currentState != null &&
                             _formKey.currentState!.validate() &&
                             !isDisabled) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Submitting data...',
-                                style: TextStyle(color: Colors.white),
+                          showToast(
+                            context,
+                            child: const GSToast(
+                              action: GSToastActions.success,
+                              child: GSToastTitle(
+                                title: "Form Submitted..",
                               ),
-                              backgroundColor: Colors.green,
                             ),
                           );
                         }
