@@ -1,7 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_stepper/gs_stepper_style.dart';
+
+import 'gs_stepper_subtitle_text_style.dart';
+import 'gs_stepper_content_text_style.dart';
+import 'gs_stepper_title_text_style.dart';
 
 const Duration kThemeAnimationDuration = Duration(milliseconds: 200);
 
@@ -24,14 +27,6 @@ enum GSStepState {
   /// A step that is currently having an error. e.g. the user has submitted wrong
   /// input.
   error,
-}
-
-enum GSStepperType {
-  /// A vertical layout of the steps with their content in-between the titles.
-  vertical,
-
-  /// A horizontal layout of the steps with their content below the titles.
-  horizontal,
 }
 
 @immutable
@@ -67,16 +62,6 @@ typedef ControlsStepperWidgetBuilder = Widget Function(
 typedef StepIconBuilder = Widget? Function(
     int stepIndex, GSStepState gsStepState);
 
-const TextStyle _kStepStyle = TextStyle(
-  fontSize: 12.0,
-  color: Color(0xFFFFFFFF),
-);
-const Color _kErrorLight = Color(0xFFFFCDD2);
-const Color _kErrorDark = Color(0xFFD32F2F);
-const Color _kCircleActiveLight = Color(0xFFFFFFFF);
-const Color _kCircleActiveDark = Color(0xFF000000);
-const Color _kDisabledLight = Color(0x61000000);
-const Color _kDisabledDark = Color(0x61FFFFFF);
 const double _kStepSize = 24.0;
 const double _kTriangleHeight = _kStepSize * 0.866025;
 
@@ -104,8 +89,6 @@ class GSStep {
   /// Whether or not the step is active. The flag only influences styling.
   final bool isActive;
 
-  /// Only [GSStepperType.horizontal], Optional widget that appears under the [title].
-  /// By default, uses the `bodyLarge` theme.
   final Widget? label;
 }
 
@@ -116,7 +99,6 @@ class GSStepper extends StatefulWidget {
     required this.steps,
     this.controller,
     this.physics,
-    this.type = GSStepperType.vertical,
     this.currentStep = 0,
     this.onStepTapped,
     this.onStepContinue,
@@ -139,7 +121,6 @@ class GSStepper extends StatefulWidget {
   final List<GSStep> steps;
   final ScrollPhysics? physics;
   final ScrollController? controller;
-  final GSStepperType type;
   final int currentStep;
   final ValueChanged<int>? onStepTapped;
   final VoidCallback? onStepContinue;
@@ -203,19 +184,6 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     return widget.currentStep == index;
   }
 
-  bool _isDark() {
-    return GSTheme.of(context).brightness == Brightness.dark;
-  }
-
-  bool _isLabel() {
-    for (final GSStep step in widget.steps) {
-      if (step.label != null) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   Color generateInactiveColor(Color color) {
     return color.withOpacity(0.5);
   }
@@ -228,10 +196,10 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildCircleChild(int index, bool oldState) {
+  Widget _buildCircleChild(
+      {required int index, required bool oldState, required Color iconColor}) {
     final GSStepState state =
         oldState ? _oldStates[index]! : widget.steps[index].state;
-    final bool isDarkActive = _isDark() && widget.steps[index].isActive;
     final Widget? icon = widget.stepIconBuilder?.call(index, state);
     if (icon != null) {
       return icon;
@@ -240,17 +208,14 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       case GSStepState.indexed:
       case GSStepState.inactive:
       case GSStepState.disabled:
-        return Text(
-          '${index + 1}',
-          style: isDarkActive
-              ? _kStepStyle.copyWith(color: const Color(0xDD000000))
-              : _kStepStyle,
+        return GSText(
+          text: '${index + 1}',
+          style: GSStyle(textStyle: TextStyle(color: iconColor)),
         );
+
       case GSStepState.editing:
         return GSIcon(
-          style: GSStyle(
-              iconColor:
-                  isDarkActive ? _kCircleActiveDark : _kCircleActiveLight),
+          style: GSStyle(color: iconColor),
           icon: const IconData(
             0x270E,
           ),
@@ -258,19 +223,24 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
 
       case GSStepState.complete:
         return GSIcon(
-            style: GSStyle(
-                iconColor:
-                    isDarkActive ? _kCircleActiveDark : _kCircleActiveLight),
+            style: GSStyle(color: iconColor),
             icon: const IconData(
               0xe5cb,
             ));
 
       case GSStepState.error:
-        return const Text('!', style: _kStepStyle);
+        return GSText(
+          text: '!',
+          style: GSStyle(textStyle: TextStyle(color: iconColor)),
+        );
     }
   }
 
-  Widget _buildCircle(int index, bool oldState, Color circleColor) {
+  Widget _buildCircle(
+      {required int index,
+      required bool oldState,
+      required Color circleColor,
+      required Color iconColor}) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       width: _kStepSize,
@@ -283,14 +253,22 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
           shape: BoxShape.circle,
         ),
         child: Center(
-          child: _buildCircleChild(index,
-              oldState && widget.steps[index].state == GSStepState.error),
+          child: _buildCircleChild(
+              index: index,
+              oldState:
+                  oldState && widget.steps[index].state == GSStepState.error,
+              iconColor: iconColor),
         ),
       ),
     );
   }
 
-  Widget _buildTriangle(int index, bool oldState) {
+  Widget _buildTriangle({
+    required int index,
+    required bool oldState,
+    required Color iconColor,
+    required Color errorColor,
+  }) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       width: _kStepSize,
@@ -301,12 +279,15 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
           height: _kTriangleHeight,
           child: CustomPaint(
             painter: _TrianglePainter(
-              color: _isDark() ? _kErrorDark : _kErrorLight,
+              color: errorColor,
             ),
             child: Align(
               alignment: const Alignment(0.0, 0.8),
-              child: _buildCircleChild(index,
-                  oldState && widget.steps[index].state != GSStepState.error),
+              child: _buildCircleChild(
+                  index: index,
+                  oldState: oldState &&
+                      widget.steps[index].state != GSStepState.error,
+                  iconColor: iconColor),
             ),
           ),
         ),
@@ -314,11 +295,24 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildIcon(int index, Color circleColor, Color inactiveCircleColor) {
+  Widget _buildIcon(
+      {required int index,
+      required Color circleColor,
+      required Color inactiveCircleColor,
+      required Color iconColor,
+      required Color errorColor}) {
     if (widget.steps[index].state != _oldStates[index]) {
       return AnimatedCrossFade(
-        firstChild: _buildCircle(index, true, circleColor),
-        secondChild: _buildTriangle(index, true),
+        firstChild: _buildCircle(
+            index: index,
+            oldState: true,
+            circleColor: circleColor,
+            iconColor: iconColor),
+        secondChild: _buildTriangle(
+            index: index,
+            oldState: true,
+            iconColor: iconColor,
+            errorColor: errorColor),
         firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
         secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
         sizeCurve: Curves.fastOutSlowIn,
@@ -328,13 +322,26 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
         duration: kThemeAnimationDuration,
       );
     } else {
-      if (widget.steps[index].state == GSStepState.inactive) {
-        return _buildCircle(index, false, inactiveCircleColor);
+      if (widget.steps[index].state == GSStepState.inactive ||
+          widget.steps[index].state == GSStepState.disabled) {
+        return _buildCircle(
+            index: index,
+            oldState: false,
+            circleColor: inactiveCircleColor,
+            iconColor: iconColor);
       }
       if (widget.steps[index].state != GSStepState.error) {
-        return _buildCircle(index, false, circleColor);
+        return _buildCircle(
+            index: index,
+            oldState: false,
+            circleColor: circleColor,
+            iconColor: iconColor);
       } else {
-        return _buildTriangle(index, false);
+        return _buildTriangle(
+            index: index,
+            oldState: false,
+            iconColor: iconColor,
+            errorColor: errorColor);
       }
     }
   }
@@ -352,20 +359,6 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       );
     }
 
-    // final Color cancelColor;
-    // switch (GSTheme.of(context).brightness) {
-    //   case Brightness.light:
-    //     cancelColor = const Color(0x8A000000);
-    //   case Brightness.dark:
-    //     cancelColor = const Color(0xB3FFFFFF);
-    // }
-
-    // final GSThemeData themeData = GSTheme.of(context);
-
-    // const OutlinedBorder buttonShape = RoundedRectangleBorder(
-    //     borderRadius: BorderRadius.all(Radius.circular(2)));
-    // const EdgeInsets buttonPadding = EdgeInsets.symmetric(horizontal: 16.0);
-
     return Align(
       alignment: AlignmentDirectional.centerStart,
       child: ConstrainedBox(
@@ -374,29 +367,39 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     );
   }
 
-  TextStyle _titleStyle(int index, TextStyle? titleTextStyle) {
+  TextStyle _titleStyle(
+    int index,
+    TextStyle? titleTextStyle,
+    Color disabledTextColor,
+    Color? errorTextColor,
+  ) {
     switch (widget.steps[index].state) {
       case GSStepState.indexed:
+        return titleTextStyle!;
       case GSStepState.editing:
+        return titleTextStyle!;
       case GSStepState.complete:
         return titleTextStyle!;
       case GSStepState.disabled:
-        return titleTextStyle!.copyWith(
-          color: _isDark() ? _kDisabledDark : _kDisabledLight,
-        );
+        return titleTextStyle?.copyWith(
+              color: disabledTextColor,
+            ) ??
+            TextStyle(color: disabledTextColor);
       case GSStepState.error:
         return titleTextStyle!.copyWith(
-          color: _isDark() ? _kErrorDark : _kErrorLight,
+          color: errorTextColor,
         );
 
       case GSStepState.inactive:
-        return titleTextStyle!.copyWith(
-          color: _isDark() ? _kDisabledDark : _kDisabledLight,
-        );
+        return titleTextStyle?.copyWith(
+              color: disabledTextColor,
+            ) ??
+            TextStyle(color: disabledTextColor);
     }
   }
 
-  TextStyle _subtitleStyle(int index, TextStyle? subtitleTextStyle) {
+  TextStyle _subtitleStyle(int index, TextStyle? subtitleTextStyle,
+      Color? disabledTextColor, Color? errorTextColor) {
     switch (widget.steps[index].state) {
       case GSStepState.indexed:
       case GSStepState.editing:
@@ -404,21 +407,22 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
         return subtitleTextStyle!;
       case GSStepState.disabled:
         return subtitleTextStyle!.copyWith(
-          color: _isDark() ? _kDisabledDark : _kDisabledLight,
+          color: disabledTextColor,
         );
 
       case GSStepState.inactive:
         return subtitleTextStyle!.copyWith(
-          color: _isDark() ? _kDisabledDark : _kDisabledLight,
+          color: disabledTextColor,
         );
       case GSStepState.error:
         return subtitleTextStyle!.copyWith(
-          color: _isDark() ? _kErrorDark : _kErrorLight,
+          color: errorTextColor,
         );
     }
   }
 
-  TextStyle _contentStyle(int index, TextStyle? contentTextStyle) {
+  TextStyle _contentStyle(int index, TextStyle? contentTextStyle,
+      Color? disabledTextColor, Color? errorTextColor) {
     switch (widget.steps[index].state) {
       case GSStepState.indexed:
       case GSStepState.editing:
@@ -426,30 +430,34 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
         return contentTextStyle!;
       case GSStepState.disabled:
         return contentTextStyle!.copyWith(
-          color: _isDark() ? _kDisabledDark : _kDisabledLight,
+          color: disabledTextColor,
         );
 
       case GSStepState.inactive:
         return contentTextStyle!.copyWith(
-          color: _isDark() ? _kDisabledDark : _kDisabledLight,
+          color: disabledTextColor,
         );
       case GSStepState.error:
         return contentTextStyle!.copyWith(
-          color: _isDark() ? _kErrorDark : _kErrorLight,
+          color: errorTextColor,
         );
     }
   }
 
-  Widget _buildHeaderText(
-      {required int index,
-      TextStyle? titleTextStyle,
-      TextStyle? subtitleTextStyle}) {
+  Widget _buildHeaderText({
+    required int index,
+    TextStyle? titleTextStyle,
+    TextStyle? subtitleTextStyle,
+    Color? disabledTextColor,
+    Color? errorTextColor,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         AnimatedDefaultTextStyle(
-          style: _titleStyle(index, titleTextStyle),
+          style: _titleStyle(
+              index, titleTextStyle, disabledTextColor!, errorTextColor!),
           duration: kThemeAnimationDuration,
           curve: Curves.fastOutSlowIn,
           child: widget.steps[index].title,
@@ -458,7 +466,8 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
           Container(
             margin: const EdgeInsets.only(top: 2.0),
             child: AnimatedDefaultTextStyle(
-              style: _subtitleStyle(index, subtitleTextStyle),
+              style: _subtitleStyle(
+                  index, subtitleTextStyle, disabledTextColor, errorTextColor),
               duration: kThemeAnimationDuration,
               curve: Curves.fastOutSlowIn,
               child: widget.steps[index].subtitle!,
@@ -468,56 +477,12 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildLabelText(int index) {
-    if (widget.steps[index].label != null) {
-      return AnimatedDefaultTextStyle(
-        style: const TextStyle(color: _kDisabledDark
-            // color: _isDark() ? _kDisabledDark : _kDisabledLight,
-            ),
-        duration: kThemeAnimationDuration,
-        child: widget.steps[index].label!,
-      );
-    }
-    return const SizedBox.shrink();
-  }
-
-  Widget _buildVerticalHeader({
-    required int index,
-    TextStyle? titleTextStyle,
-    TextStyle? subtitleTextStyle,
-    Color? circleColor,
-    Color? inactiveCircleColor,
-    Color? connectorLineColor,
-  }) {
-    final bool isActive = widget.steps[index].isActive;
-
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24.0),
-      child: Row(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              _buildLine(!_isFirst(index), isActive, connectorLineColor!),
-              _buildIcon(index, circleColor!, inactiveCircleColor!),
-              _buildLine(!_isLast(index), isActive, connectorLineColor),
-            ],
-          ),
-          Expanded(
-            child: Container(
-              margin: const EdgeInsetsDirectional.only(start: 12.0),
-              child: _buildHeaderText(
-                  index: index,
-                  titleTextStyle: titleTextStyle,
-                  subtitleTextStyle: subtitleTextStyle),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildVerticalBody(
-      int index, TextStyle? contentTextStyle, Color? connectorLineColor) {
+      int index,
+      TextStyle? contentTextStyle,
+      Color? connectorLineColor,
+      Color? disabledTextColor,
+      Color? errorTextColor) {
     return Stack(
       children: <Widget>[
         PositionedDirectional(
@@ -545,7 +510,8 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
                 child: Column(
                   children: <Widget>[
                     AnimatedDefaultTextStyle(
-                        style: _contentStyle(index, contentTextStyle),
+                        style: _contentStyle(index, contentTextStyle,
+                            disabledTextColor, errorTextColor),
                         duration: kThemeAnimationDuration,
                         curve: Curves.fastOutSlowIn,
                         child: widget.steps[index].content),
@@ -565,7 +531,8 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
                   child: Column(
                     children: <Widget>[
                       AnimatedDefaultTextStyle(
-                          style: _contentStyle(index, contentTextStyle),
+                          style: _contentStyle(index, contentTextStyle,
+                              disabledTextColor, errorTextColor),
                           duration: kThemeAnimationDuration,
                           curve: Curves.fastOutSlowIn,
                           child: widget.steps[index].content),
@@ -587,108 +554,14 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildHorizontal(
-      {TextStyle? titleTextStyle,
-      TextStyle? subtitleTextStyle,
-      Color? circleColor,
-      Color? connectorLineColor,
-      Color? inactiveCircleColor}) {
-    final List<Widget> children = <Widget>[
-      for (int i = 0; i < widget.steps.length; i += 1) ...<Widget>[
-        GestureDetector(
-          onTap: widget.steps[i].state != GSStepState.disabled
-              ? () {
-                  widget.onStepTapped?.call(i);
-                }
-              : null,
-          // canRequestFocus: widget.steps[i].state != StepTestState.disabled,
-          child: Row(
-            children: <Widget>[
-              SizedBox(
-                height: _isLabel() ? 104.0 : 72.0,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    if (widget.steps[i].label != null)
-                      const SizedBox(
-                        height: 24.0,
-                      ),
-                    Center(
-                        child:
-                            _buildIcon(i, circleColor!, inactiveCircleColor!)),
-                    if (widget.steps[i].label != null)
-                      SizedBox(
-                        height: 24.0,
-                        child: _buildLabelText(i),
-                      ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsetsDirectional.only(start: 12.0),
-                child: _buildHeaderText(
-                  index: i,
-                  titleTextStyle: titleTextStyle,
-                  subtitleTextStyle: subtitleTextStyle,
-                ),
-              ),
-            ],
-          ),
-        ),
-        if (!_isLast(i))
-          Expanded(
-            child: Container(
-                key: Key('line$i'),
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                height: widget.connectorThickness ?? 1.0,
-                color: connectorLineColor),
-          ),
-      ],
-    ];
-
-    final List<Widget> stepPanels = <Widget>[];
-    for (int i = 0; i < widget.steps.length; i += 1) {
-      stepPanels.add(
-        Visibility(
-          maintainState: true,
-          visible: i == widget.currentStep,
-          child: widget.steps[i].content,
-        ),
-      );
-    }
-
-    return Column(
-      children: <Widget>[
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Row(
-            children: children,
-          ),
-        ),
-        Expanded(
-          child: ListView(
-            controller: widget.controller,
-            physics: widget.physics,
-            padding: const EdgeInsets.all(24.0),
-            children: <Widget>[
-              AnimatedSize(
-                curve: Curves.fastOutSlowIn,
-                duration: kThemeAnimationDuration,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: stepPanels),
-              ),
-              _buildVerticalControls(widget.currentStep),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final textSize = widget.size ?? gsStepperStyle.props?.size;
+    final contentTextSize =
+        widget.size ?? gsStepperContentTextStyle.props?.size;
+
+    final subtitleTextSize =
+        widget.size ?? gsStepperSubtitleTextStyle.props?.size;
 
     GSStyle styler = resolveStyles(
       context: context,
@@ -700,59 +573,117 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       isFirst: true,
     );
 
-    final circleColor = widget.circleColor ?? styler.color;
-    final connectorLineColor = widget.connectorLineColor ?? styler.bg;
+    GSStyle titleStyler = resolveStyles(
+      context: context,
+      styles: [
+        gsStepperTitleTextStyle,
+        gsStepperTitleTextStyle.sizeMap(textSize),
+      ],
+      inlineStyle: widget.style,
+      isFirst: true,
+    );
 
+    GSStyle contentStyler = resolveStyles(
+      context: context,
+      styles: [
+        gsStepperContentTextStyle,
+        gsStepperContentTextStyle.sizeMap(contentTextSize),
+      ],
+      inlineStyle: widget.style,
+      isFirst: true,
+    );
+
+    GSStyle subtitleStyler = resolveStyles(
+      context: context,
+      styles: [
+        gsStepperSubtitleTextStyle,
+        gsStepperSubtitleTextStyle.sizeMap(subtitleTextSize),
+      ],
+      inlineStyle: widget.style,
+      isFirst: true,
+    );
+
+    final circleColor = widget.circleColor ?? styler.color;
+    final iconColor = styler.iconColor;
+    final connectorLineColor = widget.connectorLineColor ?? styler.bg;
     final inactiveCircleColor = generateInactiveColor(circleColor!);
 
-    switch (widget.type) {
-      case GSStepperType.vertical:
-        return ListView(
-          controller: widget.controller,
-          shrinkWrap: true,
-          physics: widget.physics,
-          children: <Widget>[
-            for (int i = 0; i < widget.steps.length; i += 1)
-              Column(
-                key: _keys[i],
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: widget.steps[i].state != GSStepState.disabled
-                        ? () {
-                            Scrollable.ensureVisible(
-                              _keys[i].currentContext!,
-                              curve: Curves.fastOutSlowIn,
-                              duration: kThemeAnimationDuration,
-                            );
+    return GSAncestor(
+      decedentStyles: styler.descendantStyles,
+      child: ListView(
+        controller: widget.controller,
+        shrinkWrap: true,
+        physics: widget.physics,
+        children: <Widget>[
+          for (int i = 0; i < widget.steps.length; i += 1)
+            Column(
+              key: _keys[i],
+              children: <Widget>[
+                // VerticalHeader
+                GestureDetector(
+                  onTap: widget.steps[i].state != GSStepState.disabled
+                      ? () {
+                          Scrollable.ensureVisible(
+                            _keys[i].currentContext!,
+                            curve: Curves.fastOutSlowIn,
+                            duration: kThemeAnimationDuration,
+                          );
 
-                            widget.onStepTapped?.call(i);
-                          }
-                        : null,
-                    // canRequestFocus:
-                    //     widget.steps[i].state != StepTestState.disabled,
-                    child: _buildVerticalHeader(
-                        titleTextStyle: styler.titleTextStyle,
-                        subtitleTextStyle: styler.subtitleTextStyle,
-                        index: i,
-                        circleColor: circleColor,
-                        inactiveCircleColor: inactiveCircleColor,
-                        connectorLineColor: connectorLineColor),
+                          widget.onStepTapped?.call(i);
+                        }
+                      : null,
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Row(
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            _buildLine(!_isFirst(i), widget.steps[i].isActive,
+                                connectorLineColor!),
+                            _buildIcon(
+                                index: i,
+                                circleColor: circleColor,
+                                inactiveCircleColor: inactiveCircleColor,
+                                iconColor: iconColor!,
+                                errorColor:
+                                    styler.onInvalid!.textStyle!.color!),
+                            _buildLine(!_isLast(i), widget.steps[i].isActive,
+                                connectorLineColor),
+                          ],
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin:
+                                const EdgeInsetsDirectional.only(start: 12.0),
+                            child: _buildHeaderText(
+                              index: i,
+                              titleTextStyle: titleStyler.textStyle,
+                              subtitleTextStyle: subtitleStyler.textStyle,
+                              disabledTextColor:
+                                  styler.onDisabled?.textStyle?.color,
+                              errorTextColor:
+                                  styler.onInvalid?.textStyle?.color,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  _buildVerticalBody(
-                      i, styler.contentTextStyle, connectorLineColor),
-                ],
-              ),
-          ],
-        );
+                ),
 
-      case GSStepperType.horizontal:
-        return _buildHorizontal(
-            titleTextStyle: styler.titleTextStyle,
-            subtitleTextStyle: styler.subtitleTextStyle,
-            circleColor: circleColor,
-            inactiveCircleColor: inactiveCircleColor,
-            connectorLineColor: connectorLineColor);
-    }
+                //Vertical Body
+                _buildVerticalBody(
+                  i,
+                  contentStyler.textStyle,
+                  connectorLineColor,
+                  styler.onDisabled?.textStyle?.color,
+                  styler.onInvalid?.textStyle?.color,
+                ),
+              ],
+            ),
+        ],
+      ),
+    );
   }
 }
 

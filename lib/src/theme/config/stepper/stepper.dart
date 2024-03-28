@@ -6,8 +6,8 @@ const Map<String, dynamic> stepperData = {
     'bg': '\$backgroundLight800',
   },
   "_icon": {
-    "color": "\$textLight900",
-    "_dark": {"color": "\$textDark50"}
+    "color": "\$textLight0",
+    "_dark": {"color": "\$textLight0"}
   },
   "_titleText": {
     "color": "\$textLight900",
@@ -20,6 +20,14 @@ const Map<String, dynamic> stepperData = {
   "_contentText": {
     "color": "\$textLight700",
     "_dark": {"color": "\$textDark50"}
+  },
+  ':disabled': {
+    "color": "\$trueGray200",
+    "_dark": {"color": "\$trueGray800"},
+  },
+  ':invalid': {
+    "color": "\$red600",
+    "_dark": {"color": "\$red700"},
   },
   "variants": {
     "size": {

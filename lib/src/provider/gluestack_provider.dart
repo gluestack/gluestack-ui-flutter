@@ -1,5 +1,7 @@
 import 'package:gluestack_ui/src/theme/config/layout/layout.dart';
 
+import '../theme/config/stepper/stepper_content_text.dart';
+import '../theme/config/stepper/stepper_subtitle_text.dart';
 import 'provider.dart';
 
 final getIt = GetIt.instance;
@@ -123,7 +125,11 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionIcon;
   Map<String, dynamic>? accordionItem;
 
+// stepper
   Map<String, dynamic>? stepper;
+  Map<String, dynamic>? stepperTitleText;
+  Map<String, dynamic>? stepperSubtitleText;
+  Map<String, dynamic>? stepperContentText;
   //GS Layout
   Map<String, dynamic>? layout;
 
@@ -238,6 +244,9 @@ class GluestackCustomConfig {
 
     //stepper
     this.stepper,
+    this.stepperTitleText,
+    this.stepperSubtitleText,
+    this.stepperContentText,
 //     getIt<GluestackCustomConfig>().buttonText
   }) {
     Map<String, dynamic> mergeConfigs(
@@ -376,6 +385,11 @@ class GluestackCustomConfig {
 
     //stepper
     stepper = mergeConfigs(stepperData, stepper);
+    stepperTitleText = mergeConfigs(stepperTitleTextData, stepperTitleText);
+    stepperSubtitleText =
+        mergeConfigs(stepperSubtitleTextData, stepperSubtitleText);
+    stepperContentText =
+        mergeConfigs(stepperContentTextData, stepperContentText);
   }
 }
 

@@ -112,7 +112,9 @@ GSStepper(
             },
             steps: <GSStep>[
               GSStep(
-                title: const Text('Onboarding'),
+                title: const Text(
+                  "Onboarding",
+                ),
                 content: Container(
                   alignment: Alignment.centerLeft,
                   child: const Text('Welcome!!'),
@@ -133,7 +135,7 @@ GSStepper(
                 ),
               ),
             ],
-            // keepAllContentAlive: true,
+            //keepAllContentAlive: true,
           ),
           controls: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
