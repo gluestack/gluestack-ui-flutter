@@ -29,6 +29,10 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 flutter:
+  fonts:
+    - family: Sono
+      fonts:
+        - asset: assets/fonts/Sono-VariableFont.ttf
 
 # TODO: Add relevent icon or screenshot to show in pub.dev listing.
 screenshots:

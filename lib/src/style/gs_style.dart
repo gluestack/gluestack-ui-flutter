@@ -963,37 +963,17 @@ class GSStyle extends BaseStyle<GSStyle> {
       top: resolveSpaceFromString(data?['top'].toString()),
       iconSize: resolveSizesFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
-      textStyle: 
-           data?['fontFamily'] != null && data?['fontFamily'] != '\$body'
-          ? GoogleFonts.getFont(data?['fontFamily']).copyWith(
-              fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-              fontSize: resolveFontSizeFromString(data?['fontSize'] ??
-                  data?['props']?['size'].toString() ??
-                  data?['_input']?['props']?['size'].toString()),
-              height: resolveLineHeightFromString(
-                data?['lineHeight'],
-                data?['fontSize'],
-              ),
-              
-            )
-          : TextStyle(
-              fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-              fontFamily: data?['fontFamily'],
-              fontSize: resolveFontSizeFromString(data?['fontSize'] ??
-                  data?['props']?['size'].toString() ??
-                  data?['_input']?['props']?['size'].toString()),
-              height: resolveLineHeightFromString(
-                data?['lineHeight'],
-                data?['fontSize'],
-              ),
-              decoration:
-                  resolveTextDecorationFromString(data?['textDecorationLine']),
-              letterSpacing:
-                  resolveLetterSpacingFromString(data?['letterSpacing']),
-              // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
-              color: resolveColorFromString(
-                  data?['_text']?['color'] ?? data?['color']),
-            ),
+      textStyle: TextStyle(
+        fontFamily: resolveFontFamilyTokenFromString(data?['fontFamily']),
+        fontWeight: resolveFontWeightFromString(data?['fontWeight']),
+        fontSize: resolveFontSizeFromString(data?['fontSize'] ??
+            data?['props']?['size'].toString() ??
+            data?['_input']?['props']?['size'].toString()),
+        height: resolveLineHeightFromString(
+          data?['lineHeight'],
+          data?['fontSize'],
+        ),
+      ),
       titleTextStyle: TextStyle(
         fontWeight:
             resolveFontWeightFromString(data?['_titleText']?['fontWeight']),

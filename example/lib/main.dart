@@ -25,16 +25,17 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GluestackProvider(
       // // This is how we can provide custom configuration to Gluestack Theme.
-      gluestackCustomConfig: GluestackCustomConfig(
-        text: {'fontFamily':'Lato'}
-      ),
+      // gluestackCustomConfig:
+      //     GluestackCustomConfig(text: {'fontFamily': 'Yellowtail'}),
       // // This is how we can create color themes - primary & secondary swatches from just a base color
-      // gluestackTokenConfig: GluestackTokenConfig(
-      //   gsColorsToken: const GSColorsToken(
-      //     primaryColorsFromBase: Color(0xFF00FF00),
-      //     secondaryColorsFromBase: Color(0xFFFF0000),
-      //   ),
-      // ),
+      gluestackTokenConfig: GluestackTokenConfig(
+          gsFontFamilyToken: const GSFontFamilyToken($body: 'Sono', $heading: 'Sono')
+          // gsColorsToken: const GSColorsToken(
+          //   primaryColorsFromBase: Color(0xFF00FF00),
+          //   secondaryColorsFromBase: Color(0xFFFF0000),
+          // ),
+
+          ),
       child: Consumer(
         builder: (context, ref, child) {
           final GSThemeMode? currentThemeMode = ref.watch(toggleThemeProvider);

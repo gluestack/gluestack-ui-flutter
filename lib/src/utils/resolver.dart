@@ -469,3 +469,13 @@ TextAlign? resolveTextAlignmentFromString(String? textAlign) {
 
   return textAlign != null ? textAlignmentMap[textAlign] : null;
 }
+
+String? resolveFontFamilyTokenFromString(String? fontFamilyToken) {
+  if (fontFamilyToken == null) {
+    return null;
+  }
+  if (fontFamilyToken.contains('\$')) {
+    return $GSFontFamily.fontFamilyMap[fontFamilyToken.substring(1)]!;
+  }
+  return $GSFontFamily.fontFamilyMap[fontFamilyToken];
+}
