@@ -126,6 +126,7 @@ class GSText extends StatelessWidget {
     );
 
     final currentTextStyle = styler.textStyle?.copyWith(
+      fontFamily: styler.textStyle?.fontFamily,
       fontWeight: bold ? FontWeight.bold : styler.textStyle?.fontWeight,
       fontStyle: italic ? FontStyle.italic : styler.textStyle?.fontStyle,
       decoration: TextDecoration.combine([
@@ -138,7 +139,8 @@ class GSText extends StatelessWidget {
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
       color: styler.textStyle?.color ?? gstextStyle.textStyle?.color,
     );
-
+    // print('------');
+    // print(styler.textStyle);
     return Text(
       text,
       style: currentTextStyle,

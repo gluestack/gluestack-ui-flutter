@@ -25,10 +25,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return GluestackProvider(
       // // This is how we can provide custom configuration to Gluestack Theme.
-      // gluestackCustomConfig: GluestackCustomConfig(
-      //   button: customButton,
-      //   buttonText: customButtonText,
-      // ),
+      gluestackCustomConfig: GluestackCustomConfig(
+        text: {'fontFamily':'Lato'}
+      ),
       // // This is how we can create color themes - primary & secondary swatches from just a base color
       // gluestackTokenConfig: GluestackTokenConfig(
       //   gsColorsToken: const GSColorsToken(

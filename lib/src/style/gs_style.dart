@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/base_style.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 enum GSActions {
   primary,
@@ -780,7 +781,10 @@ class GSStyle extends BaseStyle<GSStyle> {
                 fontWeight: overrideStyle?.textStyle?.fontWeight ??
                     textStyle?.fontWeight,
                 fontSize:
-                    overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
+                    overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize,
+                fontFamily: overrideStyle?.textStyle?.fontFamily ??
+                    textStyle?.fontFamily,
+              )
             : textStyle,
         titleTextStyle: overrideStyle?.titleTextStyle != null
             ? TextStyle(
@@ -959,22 +963,37 @@ class GSStyle extends BaseStyle<GSStyle> {
       top: resolveSpaceFromString(data?['top'].toString()),
       iconSize: resolveSizesFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
-      textStyle: TextStyle(
-        fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-        fontSize: resolveFontSizeFromString(data?['fontSize'] ??
-            data?['props']?['size'].toString() ??
-            data?['_input']?['props']?['size'].toString()),
-        height: resolveLineHeightFromString(
-          data?['lineHeight'],
-          data?['fontSize'],
-        ),
-        decoration:
-            resolveTextDecorationFromString(data?['textDecorationLine']),
-        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
-        // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
-        color:
-            resolveColorFromString(data?['_text']?['color'] ?? data?['color']),
-      ),
+      textStyle: 
+           data?['fontFamily'] != null && data?['fontFamily'] != '\$body'
+          ? GoogleFonts.getFont(data?['fontFamily']).copyWith(
+              fontWeight: resolveFontWeightFromString(data?['fontWeight']),
+              fontSize: resolveFontSizeFromString(data?['fontSize'] ??
+                  data?['props']?['size'].toString() ??
+                  data?['_input']?['props']?['size'].toString()),
+              height: resolveLineHeightFromString(
+                data?['lineHeight'],
+                data?['fontSize'],
+              ),
+              
+            )
+          : TextStyle(
+              fontWeight: resolveFontWeightFromString(data?['fontWeight']),
+              fontFamily: data?['fontFamily'],
+              fontSize: resolveFontSizeFromString(data?['fontSize'] ??
+                  data?['props']?['size'].toString() ??
+                  data?['_input']?['props']?['size'].toString()),
+              height: resolveLineHeightFromString(
+                data?['lineHeight'],
+                data?['fontSize'],
+              ),
+              decoration:
+                  resolveTextDecorationFromString(data?['textDecorationLine']),
+              letterSpacing:
+                  resolveLetterSpacingFromString(data?['letterSpacing']),
+              // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
+              color: resolveColorFromString(
+                  data?['_text']?['color'] ?? data?['color']),
+            ),
       titleTextStyle: TextStyle(
         fontWeight:
             resolveFontWeightFromString(data?['_titleText']?['fontWeight']),
