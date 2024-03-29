@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_content.dart';
@@ -55,14 +54,11 @@ class GSAccordionItemInternal extends StatelessWidget {
     final accGroupValue = GSAccordionProvider.of(context)?.accGrpValue ??
         AccordionExpansionValue();
 
-    final baseAccordionStyle = resolveStyles(
-      context: context,
-      styles: [accordionStyle],
-      isFirst: true,
-    );
-    // final baseAccordionStyle =
-    //     GSAccordionProvider.of(context)?.baseAccordionStyle;
-
+    // final baseAccordionStyle = resolveStyles(
+    //   context: context,
+    //   styles: [accordionStyle],
+    //   isFirst: true,
+    // );
     final isDisabled =
         isItemDisabled ?? GSAccordionProvider.of(context)?.isDisabled ?? false;
     final isCollapsible =
@@ -78,13 +74,9 @@ class GSAccordionItemInternal extends StatelessWidget {
         headerStyle?.merge(accordionStyle.merge(accordionTriggerStyle)) ??
             accordionStyle.merge(accordionTriggerStyle);
 
-    print("HEADER: ${headerStylef.textStyle?.fontWeight}");
-
     final contentStylef =
         contentStyle?.merge(accordionStyle.merge(accordionContentStyle)) ??
             accordionStyle.merge(accordionContentStyle);
-
-    print("CONTENT: ${contentStylef.textStyle?.fontWeight}");
 
     final defIconSize = iconStyle
         .sizeMap(accordionIconStyle.props?.size ?? accordionStyle.iconSize)
@@ -150,10 +142,11 @@ class GSAccordionItemInternal extends StatelessWidget {
                                       child: prefixIconWhenTileCollapsed)
                                   : const SizedBox.shrink(),
                           Expanded(
-                              child: GSAccordionTitle(
-                            text: title.text,
-                            style: headerStylef,
-                          )),
+                            child: GSAccordionTitle(
+                              text: title.text,
+                              style: headerStylef,
+                            ),
+                          ),
                           isExpanded && !isDisabled && showSuffixIcon!
                               ? suffixIconWhenTileExpanded ??
                                   RotatedBox(

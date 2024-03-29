@@ -5,9 +5,6 @@ import 'package:gluestack_ui/src/widgets/gs_accordian/gs_a_item_internal.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
-import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordian_title_text.dart';
-import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_content.dart';
-import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_header.dart';
 
 /// Defines the sizes available for the GSAccordion.
 enum GSAccordionSizes { $sm, $md, $lg }

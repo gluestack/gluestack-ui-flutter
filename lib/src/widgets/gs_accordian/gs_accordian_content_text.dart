@@ -3,7 +3,6 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_content_text.dart';
 
 import 'gs_accordian_content_text_style.dart';
 
@@ -103,9 +102,7 @@ class GSAccordionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = gsAccordianContentTextStyle.variants?.size;
-    // final contentTextStyle =
-    //     GSAccordionProvider.of(context)?.baseAccordionStyle.textStyle;
+    final size = GSAccordionProvider.of(context)?.size ?? GSAccordionSizes.$md;
 
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsAccordianContentTextConfig.ancestorStyle.first];
@@ -121,19 +118,9 @@ class GSAccordionContent extends StatelessWidget {
       inlineStyle: style,
     );
 
-    print(ancestorStyles?.props?.size);
-    // final styler = resolveStyles(
-    //   context: context,
-    //   styles: [
-    //     accordionContentText,
-    //   ],
-    //   inlineStyle: style,
-    // ).merge(
-    //   GSStyle(textStyle: contentTextStyle),
-    // );
-
     return GSText(
       text: text,
+      size: size.toGSSize,
       style: styler,
       locale: locale,
       maxLines: maxLines,
