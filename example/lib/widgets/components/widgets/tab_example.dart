@@ -24,16 +24,25 @@ class _TabExampleState extends State<TabExample> {
     final theme = GSTheme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: theme.menuColor,
+        title: const GSText(
+          text: "GS Tabs",
+          size: GSSizes.$xl,
+        ),
+      ),
       body: Column(
         children: [
           GSTabHeader(
+            style: GSStyle(
+              color: $GSColors.amber400, //sets indicator color
+              // bg: $GSColors.amber400, //sets tab header bg color
+            ),
             controller: controller,
-            tabs: const [
+            tabs: [
               GSTab(child: GSText(text: 'Hey', textAlign: TextAlign.center)),
               GSTab(child: GSText(text: 'Hi :)', textAlign: TextAlign.center)),
               GSTab(child: GSText(text: 'Hello', textAlign: TextAlign.center)),
-              // Tab(text: "Tab 2"),
-              // Tab(child: Icon(Icons.access_alarm)),
             ],
           ),
           GSTabContent(

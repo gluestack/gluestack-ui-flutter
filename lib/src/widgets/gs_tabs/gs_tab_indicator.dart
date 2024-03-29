@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 
 class GSTabIndicator extends StatefulWidget {
   final double? indicatorWidth;
@@ -55,7 +56,7 @@ class GSTabIndicatorState extends State<GSTabIndicator> {
       alignment: Alignment.centerLeft,
       child: Container(
         width: widget.indicatorWidth ?? indicatorWidth,
-        color: widget.color ?? const Color(0xffaa2132),
+        color: widget.color ?? $GSColors.primary400,
         height: 2,
       ),
     );

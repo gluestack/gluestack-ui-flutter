@@ -9,33 +9,29 @@ class GSTabHeader extends StatelessWidget {
   final GSStyle? style;
   final bool? disabled;
   final List<GSTab> tabs;
-  final Color indicatorColor;
 
   const GSTabHeader({
     super.key,
     required this.controller,
     required this.tabs,
-    this.indicatorColor = const Color.fromARGB(170, 255, 0, 255),
     this.style,
     this.disabled = false,
   });
 
   @override
   Widget build(BuildContext context) {
-
     return LayoutBuilder(builder: (context, constraints) {
       return Opacity(
         opacity: disabled! ? 0.5 : 1,
         child: Stack(
           children: <Widget>[
             Row(
-              mainAxisSize: MainAxisSize.min,
               children: [
                 for (int i = 0; i < tabs.length; i++)
                   Expanded(
                     child: GSRawTab(
                       alignment: tabs[i].alignment,
-                      style: tabs[i].style,
+                      style: style?.merge(tabs[i].style),
                       child: tabs[i].child,
                       callback: () {
                         if (controller.positions.isNotEmpty) {
@@ -54,8 +50,8 @@ class GSTabHeader extends StatelessWidget {
               bottom: 0,
               child: GSTabIndicator(
                 indicatorWidth: constraints.maxWidth / tabs.length,
+                color: style?.color,
                 controller: controller,
-                color: indicatorColor,
                 tabsCount: tabs.length,
               ),
             ),
