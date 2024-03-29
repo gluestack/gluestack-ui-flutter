@@ -1,3 +1,5 @@
+import 'package:gluestack_ui_example/widgets/storybook/widgets/header_story.dart';
+
 import 'alert_dialog_story.dart';
 import 'avatar_story.dart';
 import 'badge_story.dart';
@@ -61,4 +63,5 @@ final List<StoryWidget> kStories = [
   TextareaStory(),
   ToastStory(),
   VStackStory(),
+  HeaderStory(),
 ];

@@ -49,6 +49,11 @@ class _HomePageState extends State<HomePage> {
                     )),
                   ),
                 ),
+
+                const NavButton(
+                  title: "GS Header",
+                  routePath: "/example-header",
+                ),
                 const NavButton(
                   title: "GS Form",
                   routePath: "/example-form",

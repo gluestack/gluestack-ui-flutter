@@ -163,6 +163,10 @@ final GoRouter router = GoRouter(
           path: "nested-accordion-preview",
           builder: (context, state) => const NestedAccordionPreview(),
         ),
+        GoRoute(
+          path: "example-header",
+          builder: (context, state) => const HeaderExample(),
+        ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.
         ...kStories.map(
