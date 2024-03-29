@@ -59,10 +59,14 @@ class HeaderExample extends StatelessWidget {
           body: GSVStack(
             children: [
               const GSHeader(
-                centerChild: true,
+                // centerChild: true,
                 child: GSText(
                   text: 'GS Header Sample',
                 ),
+                trailingWidget: GSText(
+                  text: 'TRAIL',
+                ),
+                leadingWidget: Icon(Icons.architecture),
               ),
               GSBox(
                 style: GSStyle(

@@ -54,10 +54,16 @@ class GSHeader extends StatelessWidget {
             ? (trailingWidget! as GSHStack).children
             : trailingWidget is Row
                 ? (trailingWidget! as Row).children
-                : [trailingWidget ?? const SizedBox.shrink()],
+                : [trailingWidget ?? SizedBox()],
       );
     }
-
+    //fix for single trail widget
+    if (trailing == null && trailingWidget != null) {
+      trailing = Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [trailingWidget!],
+      );
+    }
     return GSBox(
         style: GSStyle(
           width: double.infinity,
