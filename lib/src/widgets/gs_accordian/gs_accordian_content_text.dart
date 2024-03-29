@@ -5,6 +5,8 @@ import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_content_text.dart';
 
+import 'gs_accordian_content_text_style.dart';
+
 class GSAccordionContent extends StatelessWidget {
   /// The text to display within the accordion content area. This is the primary
   /// content of the widget and is required.
@@ -101,24 +103,37 @@ class GSAccordionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = GSAccordionProvider.of(context)?.size ?? GSAccordionSizes.$md;
-    final contentTextStyle =
-        GSAccordionProvider.of(context)?.baseAccordionStyle.contentTextStyle;
+    final size = gsAccordianContentTextStyle.variants?.size;
+    // final contentTextStyle =
+    //     GSAccordionProvider.of(context)?.baseAccordionStyle.textStyle;
 
+    final ancestorStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsAccordianContentTextConfig.ancestorStyle.first];
     // Resolve the final GSStyle.
+
     final styler = resolveStyles(
       context: context,
       styles: [
-        accordionContentText,
+        gsAccordianContentTextStyle,
+        gsAccordianContentTextStyle.sizeMap(ancestorStyles?.props?.size),
+        ancestorStyles,
       ],
       inlineStyle: style,
-    ).merge(
-      GSStyle(textStyle: contentTextStyle),
     );
+
+    print(ancestorStyles?.props?.size);
+    // final styler = resolveStyles(
+    //   context: context,
+    //   styles: [
+    //     accordionContentText,
+    //   ],
+    //   inlineStyle: style,
+    // ).merge(
+    //   GSStyle(textStyle: contentTextStyle),
+    // );
 
     return GSText(
       text: text,
-      size: size.toGSSize,
       style: styler,
       locale: locale,
       maxLines: maxLines,
