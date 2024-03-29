@@ -1,20 +1,24 @@
+import 'package:gluestack_ui/src/theme/config/layout/layout.dart';
+
 import 'provider.dart';
 
 final getIt = GetIt.instance;
 
 class GluestackProvider extends StatelessWidget {
   final Widget child;
-  GluestackTokenConfig? gluestackTokenConfig;
-  GluestackCustomConfig? gluestackCustomConfig;
-  GluestackProvider(
-      {super.key,
-      required this.child,
-      this.gluestackTokenConfig,
-      this.gluestackCustomConfig}) {
-    gluestackTokenConfig ??= GluestackTokenConfig();
-    gluestackCustomConfig ??= GluestackCustomConfig();
+  final GluestackTokenConfig gluestackTokenConfig;
+  final GluestackCustomConfig gluestackCustomConfig;
+  GluestackProvider({
+    super.key,
+    required this.child,
+    GluestackTokenConfig? gluestackTokenConfig,
+    GluestackCustomConfig? gluestackCustomConfig,
+  })  : gluestackTokenConfig = gluestackTokenConfig ?? GluestackTokenConfig(),
+        gluestackCustomConfig =
+            gluestackCustomConfig ?? GluestackCustomConfig() {
     if (!getIt.isRegistered<GluestackCustomConfig>()) {
-      getIt.registerSingleton<GluestackCustomConfig>(gluestackCustomConfig!);
+      getIt
+          .registerSingleton<GluestackCustomConfig>(this.gluestackCustomConfig);
     }
   }
 
@@ -128,6 +132,9 @@ class GluestackCustomConfig {
   Map<String, dynamic>? tabTabPanels;
   Map<String, dynamic>? tabTabTile;
 
+  //GS Layout
+  Map<String, dynamic>? layout;
+
   GluestackCustomConfig({
     //tabs
     this.tabs,
@@ -137,6 +144,9 @@ class GluestackCustomConfig {
     this.tabTabPanel,
     this.tabTabPanels,
     this.tabTabTile,
+
+    //GS Layout
+    this.layout,
 
     //accordion
     this.accordion,
@@ -265,7 +275,10 @@ class GluestackCustomConfig {
       return mergedMap;
     }
 
-    //tabs
+//layout
+    layout = mergeConfigs(layoutData, layout);
+
+     //tabs
     tabs = mergeConfigs(tabsData, tabs);
     tabsTab = mergeConfigs(tabsTabData, tabsTab);
     tabTabIcon = mergeConfigs(tabsTabIconData, tabTabIcon);

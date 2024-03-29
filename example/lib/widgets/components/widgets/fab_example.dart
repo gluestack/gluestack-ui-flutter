@@ -101,7 +101,7 @@ class _FabExampleState extends State<FabExample> {
                 size: selectedSizeOption,
                 placement: selectedPlacementOption,
                 onPressed: () {
-                  print('fab pressed!');
+                  // print('fab pressed!');
                 },
                 isDisabled: isDisabled,
                 isHovered: isHovered,

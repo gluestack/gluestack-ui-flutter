@@ -52,6 +52,7 @@ class GSFab extends StatelessWidget {
   Widget build(BuildContext context) {
     final fabSize = size?.toGSSize ?? fabStyle.props!.size!;
     final fabPlacement = placement?.toGSPlacement ?? fabStyle.props?.placement!;
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [

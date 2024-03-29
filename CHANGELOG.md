@@ -1,3 +1,8 @@
+## 0.1.0-beta.2
+
+- Fixed: Images not appearing readme on pub.dev
+- Fixed: Web tag missing in previous beta release
+
 ## 0.1.0-beta.1
 
 - Removed Material dependency from all the components, built from Flutter core apis

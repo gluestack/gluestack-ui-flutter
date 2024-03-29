@@ -24,6 +24,7 @@ class GSBadgeText extends StatelessWidget {
     // Access the ancestor provider to retrieve ancestor text styles.
     final GSStyle? ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsBadgeTextConfig.ancestorStyle.first];
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [

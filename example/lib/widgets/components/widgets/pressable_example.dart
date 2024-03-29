@@ -52,10 +52,10 @@ class PressableExample extends StatelessWidget {
             onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
           ),
           onPress: () {
-            print('Pressed!');
+            // print('Pressed!');
           },
           onLongPress: () {
-            print('Long Pressed!');
+            // print('Long Pressed!');
           },
           child: GSText(
             text: 'Press Me',
