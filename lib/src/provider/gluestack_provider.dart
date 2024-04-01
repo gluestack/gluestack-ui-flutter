@@ -382,6 +382,7 @@ class GluestackTokenConfig {
   final GSSpaceToken gsSpaceToken;
   GSColorsToken gsColorsToken;
   final GSScreenBreakpointToken gsScreenBreakpointToken;
+  final GSFontFamilyToken gsFontFamilyToken;
 
   GluestackTokenConfig({
     this.gsBorderWidthToken = const GSBorderWidthToken(),
@@ -393,6 +394,7 @@ class GluestackTokenConfig {
     this.gsSpaceToken = const GSSpaceToken(),
     this.gsColorsToken = const GSColorsToken(),
     this.gsScreenBreakpointToken = const GSScreenBreakpointToken(),
+     this.gsFontFamilyToken = const GSFontFamilyToken(),
   }) {
     if (gsColorsToken.primaryColorsFromBase != null) {
       gsColorsToken = gsColorsToken.copyWith(
@@ -468,6 +470,7 @@ class GluestackTokenConfig {
     registerSingletonIfNotRegistered<GSColorsToken>(gsColorsToken);
     registerSingletonIfNotRegistered<GSScreenBreakpointToken>(
         gsScreenBreakpointToken);
+         registerSingletonIfNotRegistered<GSFontFamilyToken>(gsFontFamilyToken);
   }
 }
 

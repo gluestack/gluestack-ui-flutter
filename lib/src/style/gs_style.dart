@@ -780,7 +780,10 @@ class GSStyle extends BaseStyle<GSStyle> {
                 fontWeight: overrideStyle?.textStyle?.fontWeight ??
                     textStyle?.fontWeight,
                 fontSize:
-                    overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize)
+                    overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize,
+                     fontFamily: overrideStyle?.textStyle?.fontFamily ??
+                    textStyle?.fontFamily,
+                    )
             : textStyle,
         titleTextStyle: overrideStyle?.titleTextStyle != null
             ? TextStyle(
@@ -960,6 +963,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       iconSize: resolveSizesFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
+        fontFamily: resolveFontFamilyTokenFromString(data?['fontFamily']),
         fontWeight: resolveFontWeightFromString(data?['fontWeight']),
         fontSize: resolveFontSizeFromString(data?['fontSize'] ??
             data?['props']?['size'].toString() ??
