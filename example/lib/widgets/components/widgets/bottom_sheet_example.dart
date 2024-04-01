@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/drop_down.dart';
 
 class BottomModalSheetExample extends StatefulWidget {
@@ -33,7 +34,6 @@ class _BottomModalSheetExampleState extends State<BottomModalSheetExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     var code = '''
   GSButton(
   size: GSButtonSizes.\$lg,
@@ -70,14 +70,10 @@ class _BottomModalSheetExampleState extends State<BottomModalSheetExample> {
 ),
 
 ''';
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "Modal Bottom Sheet",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "Modal Bottom Sheet",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

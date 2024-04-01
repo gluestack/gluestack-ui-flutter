@@ -58,8 +58,7 @@ class GSModalBottomSheet {
 
     final NavigatorState navigator =
         Navigator.of(context, rootNavigator: useRootNavigator);
-    // final MaterialLocalizations localizations =
-    //     MaterialLocalizations.of(context);
+
     return navigator.push(GSModalBottomSheetRoute<T>(
       builder: builder,
       capturedThemes:
@@ -165,7 +164,7 @@ class GSModalBottomSheetRoute<T> extends PopupRoute<T> {
   final String? barrierLabel;
 
   @override
-  Color get barrierColor => modalBarrierColor ?? const Color(0x8A000000);
+  Color get barrierColor => modalBarrierColor!;
 
   AnimationController? _animationController;
 
@@ -874,18 +873,7 @@ class _BottomSheetState extends State<BottomSheet> {
 enum GSBottomSheetState {
   hovered,
 
-  focused,
-
-  pressed,
-
   dragged,
-
-  selected,
-
-  scrolledUnder,
-
-  disabled,
-  error,
 }
 
 class _DragHandle extends StatelessWidget {
