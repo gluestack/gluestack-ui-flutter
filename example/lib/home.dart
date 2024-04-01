@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 
+import 'widgets/components/layout/custom_gs_layout.dart';
 import 'widgets/components/layout/nav_button.dart';
 // import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
 
@@ -16,17 +17,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: GSTheme.of(context).brightness == Brightness.dark
-            ? const Color(0xFF262626)
-            : null,
-        title: const GSText(
-          text: 'Gluestack UI examples',
-        ),
+    return CustomGSLayout(
+      title: 'Gluestack UI examples',
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
+      hideBackButton: true,
       body: SafeArea(
         child: SingleChildScrollView(
           child: GSCenter(
@@ -38,6 +34,7 @@ class _HomePageState extends State<HomePage> {
                   title: "Storybook",
                   routePath: "/storybook",
                 ),
+
                 GSLink(
                   url: 'https://kitchensink-23184.web.app/',
                   text: GSLinkText(

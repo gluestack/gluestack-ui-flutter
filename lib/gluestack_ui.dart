@@ -41,3 +41,4 @@ export 'src/widgets/gs_stack/gs_stack.dart';
 export 'src/widgets/gs_icon_button/public.dart';
 export 'src/widgets/gs_accordian/public.dart';
 export 'src/widgets/gs_modal_bottom_sheet/gs_modal_bottom_sheet.dart';
+export 'src/widgets/gs_layout/public.dart';
