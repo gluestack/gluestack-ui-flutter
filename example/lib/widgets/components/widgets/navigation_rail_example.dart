@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/drop_down.dart';
 
 class NavigationRailExample extends StatefulWidget {
@@ -27,7 +28,6 @@ class _NavigationRailExampleState extends State<NavigationRailExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     var code = '''
 
 GSNavigationRail(
@@ -66,14 +66,10 @@ GSNavigationRail(
 
           
   ''';
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "GS Side Navigation",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "GS Side Navigation",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

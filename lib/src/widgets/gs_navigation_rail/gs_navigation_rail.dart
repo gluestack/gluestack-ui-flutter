@@ -5,10 +5,13 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_navigation_rail/gs_navigation_rail_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_navigation_rail/gs_navigation_rail_unselected_textstyle.dart';
+
+import 'gs_navigation_rail_selected_textstyle.dart';
 
 const double _kCircularIndicatorDiameter = 60;
 const double _kIndicatorHeight = 32;
-const Duration kThemeAnimationDuration = Duration(milliseconds: 200);
+const Duration kNavigationThemeAnimationDuration = Duration(milliseconds: 200);
 const double _kIndicatorWidth = 64;
 const double _horizontalDestinationPadding = 8.0;
 const double _verticalDestinationPaddingNoLabel = 24.0;
@@ -178,16 +181,37 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       isFirst: true,
     );
 
+    GSStyle selectedLabelStyler = resolveStyles(
+      context: context,
+      styles: [
+        gsNavigationRailSelectedLabelTextStyle,
+        gsNavigationRailSelectedLabelTextStyle.sizeMap(textSize),
+      ],
+      inlineStyle: widget.style,
+      isFirst: true,
+    );
+
+    GSStyle unselectedLabelStyler = resolveStyles(
+      context: context,
+      styles: [
+        gsNavigationRailUnselectedLabelTextStyle,
+        gsNavigationRailUnselectedLabelTextStyle.sizeMap(textSize),
+      ],
+      inlineStyle: widget.style,
+      isFirst: true,
+    );
+
     final Color? backgroundColor = widget.backgroundColor ?? styler.bg;
     Color? indicatorColor = widget.indicatorColor ?? styler.color;
 
     final double minWidth = widget.minWidth ?? 100;
     final double minExtendedWidth = widget.minExtendedWidth ?? 30;
     final TextStyle? unselectedLabelTextStyle =
-        widget.unselectedLabelTextStyle ?? styler.unselectedLabelTextStyle;
+        widget.unselectedLabelTextStyle ??
+            unselectedLabelStyler.unselectedLabelTextStyle;
 
-    final TextStyle? selectedLabelTextStyle =
-        widget.selectedLabelTextStyle ?? styler.selectedLabelTextStyle;
+    final TextStyle? selectedLabelTextStyle = widget.selectedLabelTextStyle ??
+        selectedLabelStyler.selectedLabelTextStyle;
     final IconThemeData unselectedIconTheme = widget.unselectedIconTheme ??
         IconThemeData(
           color: styler.unselectedIconColor,
@@ -284,7 +308,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
     _destinationControllers = List<AnimationController>.generate(
         widget.destinations.length, (int index) {
       return AnimationController(
-        duration: kThemeAnimationDuration,
+        duration: kNavigationThemeAnimationDuration,
         vsync: this,
       )..addListener(_rebuild);
     });
@@ -295,7 +319,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       _destinationControllers[widget.selectedIndex!].value = 1.0;
     }
     _extendedController = AnimationController(
-      duration: kThemeAnimationDuration,
+      duration: kNavigationThemeAnimationDuration,
       vsync: this,
       value: widget.extended ? 1.0 : 0.0,
     );
