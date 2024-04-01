@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/drop_down.dart';
 
 import '../../components/layout/text_input.dart';
@@ -60,7 +61,6 @@ class _StepperExampleState extends State<StepperExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     var code = '''
 
 GSStepper(
@@ -113,14 +113,10 @@ GSStepper(
 
           
   ''';
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "Stepper",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "Stepper",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(

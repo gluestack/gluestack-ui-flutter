@@ -27,12 +27,8 @@ final class TabStory extends StoryWidget {
     return Story(
         name: storyName,
         builder: (context) {
-          final theme = GSTheme.of(context);
-
           return Scaffold(
-            backgroundColor: theme.scaffoldBackgroundColor,
             appBar: AppBar(
-              backgroundColor: theme.menuColor,
               title: const GSText(
                 text: "TabBar Example",
                 size: GSSizes.$xl,
