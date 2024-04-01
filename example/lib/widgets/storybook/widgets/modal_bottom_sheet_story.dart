@@ -25,6 +25,8 @@ final class ModalBottomSheetStory extends StoryWidget {
         child: const GSButtonText(text: "Open Bottom Sheet"),
         onPressed: () {
           GSModalBottomSheet.showModalBottomSheet<void>(
+            // useSafeArea: true,
+
             borderRadius: GSBorderRadius.$3xl,
             context: context,
             builder: (BuildContext context) {
