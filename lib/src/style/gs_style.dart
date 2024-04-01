@@ -781,9 +781,9 @@ class GSStyle extends BaseStyle<GSStyle> {
                     textStyle?.fontWeight,
                 fontSize:
                     overrideStyle?.textStyle?.fontSize ?? textStyle?.fontSize,
-                     fontFamily: overrideStyle?.textStyle?.fontFamily ??
+                fontFamily: overrideStyle?.textStyle?.fontFamily ??
                     textStyle?.fontFamily,
-                    )
+              )
             : textStyle,
         titleTextStyle: overrideStyle?.titleTextStyle != null
             ? TextStyle(
@@ -963,21 +963,36 @@ class GSStyle extends BaseStyle<GSStyle> {
       iconSize: resolveSizesFromString(data?['_icon']?['props']?['size']),
       // resolvePaddingFromString(data?['p'] ?? data?['px'] ?? data?['py'], ),
       textStyle: TextStyle(
+        fontWeight: resolveFontWeightFromString(data?['fontWeight'] ??
+                data?['_titleText']?['fontWeight'] ??
+                data?['_subtitleText']?['fontWeight']) ??
+            data?['_contentText']?['fontWeight'],
         fontFamily: resolveFontFamilyTokenFromString(data?['fontFamily']),
-        fontWeight: resolveFontWeightFromString(data?['fontWeight']),
         fontSize: resolveFontSizeFromString(data?['fontSize'] ??
+            data?['_titleText']?['fontSize'] ??
+            data?['_subtitleText']?['fontSize'] ??
             data?['props']?['size'].toString() ??
+            data?['_contentText']?['fontSize'] ??
             data?['_input']?['props']?['size'].toString()),
         height: resolveLineHeightFromString(
-          data?['lineHeight'],
-          data?['fontSize'],
+          data?['lineHeight'] ??
+              data?['_titleText']?['lineHeight'] ??
+              data?['_subtitleText']?['lineHeight'] ??
+              data?['_contentText']?['lineHeight'],
+          data?['fontSize'] ??
+              data?['_titleText']?['fontSize'] ??
+              data?['_subtitleText']?['fontSize'] ??
+              data?['_contentText']?['fontSize'],
         ),
         decoration:
             resolveTextDecorationFromString(data?['textDecorationLine']),
         letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
-        color:
-            resolveColorFromString(data?['_text']?['color'] ?? data?['color']),
+        color: resolveColorFromString(data?['_text']?['color'] ??
+            data?['_titleText']?['color'] ??
+            data?['_subtitleText']?['color'] ??
+            data?['_contentText']?['color'] ??
+            data?['color']),
       ),
       titleTextStyle: TextStyle(
         fontWeight:
@@ -992,6 +1007,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         color: resolveColorFromString(
             data?['_titleText']?['color'] ?? data?['color']),
       ),
+
       contentTextStyle: TextStyle(
         fontWeight:
             resolveFontWeightFromString(data?['_contentText']?['fontWeight']),
@@ -1070,10 +1086,13 @@ class GSStyle extends BaseStyle<GSStyle> {
               data?[':hover']?[':invalid']?['props']?['trackColor']?['false']),
         ),
         onDisabled: GSStyle(
-            bg: resolveColorFromString(data?[':hover']?[':disabled']?['bg']),
-            onInvalid: GSStyle(
-                borderColor: resolveColorFromString(data?[':hover']
-                    ?[':disabled']?[':invalid']?['borderColor']))),
+          bg: resolveColorFromString(data?[':hover']?[':disabled']?['bg']),
+          onInvalid: GSStyle(
+            borderColor: resolveColorFromString(
+              data?[':hover']?[':disabled']?[':invalid']?['borderColor'],
+            ),
+          ),
+        ),
         checked: GSStyle(
           onHover: GSStyle(
             color: resolveColorFromString(data?[':checked']?[':hover']
@@ -1133,6 +1152,9 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
       ),
       onInvalid: GSStyle(
+        textStyle: TextStyle(
+          color: resolveColorFromString(data?[':invalid']?['color']),
+        ),
         bg: resolveColorFromString(data?[':invalid']?['bg']),
         borderColor: resolveColorFromString(data?['variants']?['variant']
                 ?['default']?[':invalid']?['borderColor'] ??
@@ -1165,7 +1187,9 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
       ),
       onDisabled: GSStyle(
-        opacity: data?[':disabled']?['opacity'],
+        textStyle: TextStyle(
+          color: resolveColorFromString(data?[':disabled']?['color']),
+        ),
         web: GSStyle(
           cursors:
               resolveCursorFromString(data?[':disabled']?['_web']?['cursor']),
@@ -1319,6 +1343,10 @@ class GSStyle extends BaseStyle<GSStyle> {
           iosBackgroundColor: resolveColorFromString(
               data?['_dark']?[':disabled']?['ios_backgroundColor']),
           opacity: data?['_dark']?[':disabled']?['opacity'],
+          textStyle: TextStyle(
+            color:
+                resolveColorFromString(data?[':disabled']?['_dark']?['color']),
+          ),
           web: GSStyle(
             cursors: resolveCursorFromString(
                 data?['_dark']?[':disabled']?['_web']?['cursor']),
@@ -1337,6 +1365,10 @@ class GSStyle extends BaseStyle<GSStyle> {
           ),
         ),
         onInvalid: GSStyle(
+          textStyle: TextStyle(
+            color:
+                resolveColorFromString(data?[':invalid']?['_dark']?['color']),
+          ),
           bg: resolveColorFromString(data?['_dark']?[':invalid']?['bg']),
           borderRadius: data?['_dark']?[':invalid']?['borderRadius'] != null
               ? double.tryParse(data![':invalid']!['borderRadius']!.toString())

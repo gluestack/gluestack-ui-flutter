@@ -1,5 +1,7 @@
 import 'package:gluestack_ui/src/theme/config/layout/layout.dart';
 
+import '../theme/config/stepper/stepper_content_text.dart';
+import '../theme/config/stepper/stepper_subtitle_text.dart';
 import 'provider.dart';
 
 final getIt = GetIt.instance;
@@ -123,6 +125,11 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionIcon;
   Map<String, dynamic>? accordionItem;
 
+// stepper
+  Map<String, dynamic>? stepper;
+  Map<String, dynamic>? stepperTitleText;
+  Map<String, dynamic>? stepperSubtitleText;
+  Map<String, dynamic>? stepperContentText;
   //tabs
   Map<String, dynamic>? tabs;
   Map<String, dynamic>? tabsTab;
@@ -252,6 +259,12 @@ class GluestackCustomConfig {
 
     //input
     this.input,
+
+    //stepper
+    this.stepper,
+    this.stepperTitleText,
+    this.stepperSubtitleText,
+    this.stepperContentText,
 //     getIt<GluestackCustomConfig>().buttonText
   }) {
     Map<String, dynamic> mergeConfigs(
@@ -278,7 +291,7 @@ class GluestackCustomConfig {
 //layout
     layout = mergeConfigs(layoutData, layout);
 
-     //tabs
+    //tabs
     tabs = mergeConfigs(tabsData, tabs);
     tabsTab = mergeConfigs(tabsTabData, tabsTab);
     tabTabIcon = mergeConfigs(tabsTabIconData, tabTabIcon);
@@ -396,6 +409,14 @@ class GluestackCustomConfig {
 
     //input
     input = mergeConfigs(inputData, input);
+
+    //stepper
+    stepper = mergeConfigs(stepperData, stepper);
+    stepperTitleText = mergeConfigs(stepperTitleTextData, stepperTitleText);
+    stepperSubtitleText =
+        mergeConfigs(stepperSubtitleTextData, stepperSubtitleText);
+    stepperContentText =
+        mergeConfigs(stepperContentTextData, stepperContentText);
   }
 }
 
@@ -421,7 +442,7 @@ class GluestackTokenConfig {
     this.gsSpaceToken = const GSSpaceToken(),
     this.gsColorsToken = const GSColorsToken(),
     this.gsScreenBreakpointToken = const GSScreenBreakpointToken(),
-     this.gsFontFamilyToken = const GSFontFamilyToken(),
+    this.gsFontFamilyToken = const GSFontFamilyToken(),
   }) {
     if (gsColorsToken.primaryColorsFromBase != null) {
       gsColorsToken = gsColorsToken.copyWith(
@@ -497,7 +518,7 @@ class GluestackTokenConfig {
     registerSingletonIfNotRegistered<GSColorsToken>(gsColorsToken);
     registerSingletonIfNotRegistered<GSScreenBreakpointToken>(
         gsScreenBreakpointToken);
-         registerSingletonIfNotRegistered<GSFontFamilyToken>(gsFontFamilyToken);
+    registerSingletonIfNotRegistered<GSFontFamilyToken>(gsFontFamilyToken);
   }
 }
 

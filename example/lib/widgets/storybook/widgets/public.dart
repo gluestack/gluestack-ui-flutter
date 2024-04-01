@@ -20,6 +20,7 @@ import 'pressable_story.dart';
 import 'progress_story.dart';
 import 'radio_button_story.dart';
 import 'spinner_story.dart';
+import 'stepper_story.dart';
 import 'switch_story.dart';
 import 'text_story.dart';
 import 'textarea_story.dart';
@@ -63,5 +64,6 @@ final List<StoryWidget> kStories = [
   TextareaStory(),
   ToastStory(),
   VStackStory(),
+  StepperStory(),
   TabStory(),
 ];

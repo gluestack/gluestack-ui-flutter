@@ -163,6 +163,10 @@ class _HomePageState extends State<HomePage> {
                   routePath: "/example-accordion",
                 ),
                 const NavButton(
+                  title: "Stepper Example",
+                  routePath: "/stepper-example",
+                ),
+                const NavButton(
                   title: "GS Tabs",
                   routePath: "/example-tabs",
                 ),
