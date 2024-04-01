@@ -147,6 +147,10 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const AccordionExample(),
         ),
         GoRoute(
+          path: "example-tabs",
+          builder: (context, state) => const TabExample(),
+        ),
+        GoRoute(
           path: "accordion-with-rounded-corners",
           builder: (context, state) =>
               const AccordionWithRoundedCornersPreview(),

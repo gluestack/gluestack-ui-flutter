@@ -123,10 +123,28 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionIcon;
   Map<String, dynamic>? accordionItem;
 
+  //tabs
+  Map<String, dynamic>? tabs;
+  Map<String, dynamic>? tabsTab;
+  Map<String, dynamic>? tabTabIcon;
+  Map<String, dynamic>? tabTabList;
+  Map<String, dynamic>? tabTabPanel;
+  Map<String, dynamic>? tabTabPanels;
+  Map<String, dynamic>? tabTabTile;
+
   //GS Layout
   Map<String, dynamic>? layout;
 
   GluestackCustomConfig({
+    //tabs
+    this.tabs,
+    this.tabsTab,
+    this.tabTabIcon,
+    this.tabTabList,
+    this.tabTabPanel,
+    this.tabTabPanels,
+    this.tabTabTile,
+
     //GS Layout
     this.layout,
 
@@ -259,6 +277,15 @@ class GluestackCustomConfig {
 
 //layout
     layout = mergeConfigs(layoutData, layout);
+
+     //tabs
+    tabs = mergeConfigs(tabsData, tabs);
+    tabsTab = mergeConfigs(tabsTabData, tabsTab);
+    tabTabIcon = mergeConfigs(tabsTabIconData, tabTabIcon);
+    tabTabList = mergeConfigs(tabsTabListData, tabTabList);
+    tabTabPanel = mergeConfigs(tabsTabPanelData, tabTabPanel);
+    tabTabPanels = mergeConfigs(tabsTabPanelsData, tabTabPanels);
+    tabTabTile = mergeConfigs(tabsTitleData, tabTabTile);
 
     //accordion
     accordion = mergeConfigs(accordionData, accordion);
