@@ -35,7 +35,6 @@ class GSModalBottomSheet {
     GSStyle? style,
     Color? backgroundColor,
     String? barrierLabel,
-    double? elevation,
     BoxShape? shape,
     GSBorderRadius? borderRadius,
     List<BoxShadow>? boxShadow,
@@ -67,7 +66,6 @@ class GSModalBottomSheet {
       scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
       barrierLabel: barrierLabel ?? " ",
       backgroundColor: backgroundColor,
-      elevation: elevation,
       shape: shape,
       style: style,
       borderRadius: borderRadius,
@@ -96,7 +94,6 @@ class GSModalBottomSheetRoute<T> extends PopupRoute<T> {
     this.barrierLabel,
     this.barrierOnTapHint,
     this.backgroundColor,
-    this.elevation,
     this.shape,
     this.borderRadius,
     this.clipBehavior,
@@ -120,7 +117,7 @@ class GSModalBottomSheetRoute<T> extends PopupRoute<T> {
   final bool isScrollControlled;
   final double scrollControlDisabledMaxHeightRatio;
   final Color? backgroundColor;
-  final double? elevation;
+
   final BoxShape? shape;
   final GSBorderRadius? borderRadius;
   final List<BoxShadow>? boxShadow;
@@ -191,7 +188,6 @@ class GSModalBottomSheetRoute<T> extends PopupRoute<T> {
             route: this,
             style: style,
             backgroundColor: backgroundColor,
-            elevation: elevation ?? 2,
             shape: shape,
             borderRadius: borderRadius,
             clipBehavior: clipBehavior,
@@ -479,7 +475,6 @@ class _ModalBottomSheet<T> extends StatefulWidget {
     super.key,
     required this.route,
     this.backgroundColor,
-    this.elevation,
     this.shape,
     this.clipBehavior,
     this.constraints,
@@ -498,7 +493,6 @@ class _ModalBottomSheet<T> extends StatefulWidget {
   final bool isScrollControlled;
   final double scrollControlDisabledMaxHeightRatio;
   final Color? backgroundColor;
-  final double? elevation;
   final BoxShape? shape;
   final GSBorderRadius? borderRadius;
   final List<BoxShadow>? boxShadow;
@@ -559,7 +553,6 @@ class _ModalBottomSheetState<T> extends State<_ModalBottomSheet<T>> {
             builder: widget.route.builder,
             style: widget.style,
             backgroundColor: widget.backgroundColor,
-            elevation: widget.elevation,
             shape: widget.shape,
             borderRadius: widget.borderRadius,
             boxShadow: widget.boxShadow,
@@ -612,7 +605,6 @@ class BottomSheet extends StatefulWidget {
     this.onDragEnd,
     this.backgroundColor,
     this.shadowColor,
-    this.elevation,
     this.shape,
     this.clipBehavior,
     this.constraints,
@@ -621,7 +613,7 @@ class BottomSheet extends StatefulWidget {
     this.borderRadius,
     this.style,
     this.boxShadow,
-  }) : assert(elevation == null || elevation >= 0.0);
+  });
 
   final AnimationController? animationController;
   final GSStyle? style;
@@ -635,7 +627,6 @@ class BottomSheet extends StatefulWidget {
   final GSBorderRadius? borderRadius;
   final List<BoxShadow>? boxShadow;
   final Color? shadowColor;
-  final double? elevation;
   final BoxShape? shape;
   final Clip? clipBehavior;
   final BottomSheetDragStartHandler? onDragStart;
