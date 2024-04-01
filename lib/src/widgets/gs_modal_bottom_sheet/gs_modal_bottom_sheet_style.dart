@@ -4,6 +4,7 @@ final GSStyle gsModalBottomSheetStyle =
     GSStyle.fromMap(data: getIt<GluestackCustomConfig>().modalBottomSheet);
 
 class GSModalBottomSheetStyle {
+  //border radius
   static Map<GSBorderRadius, double> borderRadius = {
     GSBorderRadius.$none: $GSRadii.none,
     GSBorderRadius.$sm: $GSRadii.$sm,
