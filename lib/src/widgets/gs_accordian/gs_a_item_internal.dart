@@ -28,6 +28,7 @@ class GSAccordionItemInternal extends StatelessWidget {
 
   final double? radius;
   final bool? isItemDisabled;
+  final Color? accordionbackground;
 
   const GSAccordionItemInternal({
     super.key,
@@ -47,6 +48,7 @@ class GSAccordionItemInternal extends StatelessWidget {
     this.radius = 0,
     this.itemPadding,
     this.isItemDisabled,
+    this.accordionbackground,
   });
 
   @override
@@ -54,11 +56,6 @@ class GSAccordionItemInternal extends StatelessWidget {
     final accGroupValue = GSAccordionProvider.of(context)?.accGrpValue ??
         AccordionExpansionValue();
 
-    // final baseAccordionStyle = resolveStyles(
-    //   context: context,
-    //   styles: [accordionStyle],
-    //   isFirst: true,
-    // );
     final isDisabled =
         isItemDisabled ?? GSAccordionProvider.of(context)?.isDisabled ?? false;
     final isCollapsible =
@@ -91,7 +88,8 @@ class GSAccordionItemInternal extends StatelessWidget {
           child: AnimatedContainer(
             duration: animationDuration!,
             decoration: BoxDecoration(
-              color: accordionStyle.bg ?? headerStyle?.bg,
+              color:
+                  accordionbackground ?? accordionStyle.bg ?? headerStyle?.bg,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

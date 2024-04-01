@@ -171,6 +171,7 @@ class _GSAccordionState extends State<GSAccordion> {
                       radius: widget.children[i].radius,
                       itemPadding: widget.itemPadding,
                       isItemDisabled: widget.children[i].isDisabled,
+                      accordionbackground: styler.bg,
                     ),
                 ],
               );
