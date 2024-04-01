@@ -3,6 +3,8 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/drop_down.dart';
 
+import '../../components/layout/text_input.dart';
+
 class StepperExample extends StatefulWidget {
   const StepperExample({super.key});
 
@@ -12,7 +14,18 @@ class StepperExample extends StatefulWidget {
 
 class _StepperExampleState extends State<StepperExample> {
   final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
+
+  final List dropdownStepStateOptions = [
+    GSStepState.indexed,
+    GSStepState.editing,
+    GSStepState.complete,
+    GSStepState.disabled,
+    GSStepState.inactive,
+    GSStepState.error
+  ];
   GSSizes selectedSizeOption = GSSizes.$md;
+
+  GSStepState selectedStepStateOption = GSStepState.indexed;
 
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
@@ -20,7 +33,31 @@ class _StepperExampleState extends State<StepperExample> {
     });
   }
 
+  void updateStepStateSelectedOption(dynamic newOption) {
+    setState(() {
+      selectedStepStateOption = newOption;
+    });
+  }
+
   int _index = 0;
+
+  late TextEditingController _titleController;
+  late TextEditingController _contentController;
+
+  @override
+  void initState() {
+    _titleController = TextEditingController();
+    _contentController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _contentController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = GSTheme.of(context);
@@ -115,6 +152,7 @@ GSStepper(
                 title: const Text(
                   "Onboarding",
                 ),
+                state: selectedStepStateOption,
                 content: Container(
                   alignment: Alignment.centerLeft,
                   child: const Text('Welcome!!'),
@@ -134,6 +172,13 @@ GSStepper(
                   child: const Text('Start your coding journey.'),
                 ),
               ),
+              GSStep(
+                title: Text(_titleController.text),
+                content: Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(_contentController.text),
+                ),
+              ),
             ],
             //keepAllContentAlive: true,
           ),
@@ -148,6 +193,22 @@ GSStepper(
                 onChanged: updateSizeSelectedOption,
               ),
               const SizedBox(height: 20),
+              CustomDropDown(
+                title: "StepState",
+                dropdownOptions: dropdownStepStateOptions,
+                selectedOption: selectedStepStateOption,
+                onChanged: updateStepStateSelectedOption,
+              ),
+              const SizedBox(height: 20),
+              CustomInput(
+                title1: "Step Title",
+                title2: "Step Content",
+                controller1: _titleController,
+                controller2: _contentController,
+                onChanged: (String, dynamic) {
+                  setState(() {});
+                },
+              ),
             ],
           ),
         ),

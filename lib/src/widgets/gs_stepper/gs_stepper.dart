@@ -191,7 +191,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
   Widget _buildLine(bool visible, bool isActive, Color connectorLineColor) {
     return Container(
       width: visible ? widget.connectorThickness ?? 1.0 : 0.0,
-      height: 16.0,
+      height: 10.0,
       color: connectorLineColor,
     );
   }
@@ -362,7 +362,9 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     return Align(
       alignment: AlignmentDirectional.centerStart,
       child: ConstrainedBox(
-        constraints: const BoxConstraints.tightFor(height: 38.0),
+        constraints: const BoxConstraints.tightFor(height: 10.0),
+
+        //Set line height
       ),
     );
   }

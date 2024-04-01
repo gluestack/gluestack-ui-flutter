@@ -10,6 +10,15 @@ List<Option<int>> sizeOptions = [
   Option<int>(value: 2, label: GSSizes.$lg.name),
 ];
 
+List<Option<int>> stateOptions = [
+  Option<int>(value: 0, label: GSStepState.indexed.name),
+  Option<int>(value: 1, label: GSStepState.editing.name),
+  Option<int>(value: 2, label: GSStepState.complete.name),
+  Option<int>(value: 3, label: GSStepState.disabled.name),
+  Option<int>(value: 4, label: GSStepState.inactive.name),
+  Option<int>(value: 5, label: GSStepState.error.name),
+];
+
 class _StepperStory extends StatefulWidget {
   const _StepperStory();
 
@@ -49,6 +58,8 @@ class ___StepperStoryState extends State<_StepperStory> {
       steps: <GSStep>[
         GSStep(
           title: const Text('Onboarding'),
+          state: GSStepState.values[context.knobs
+              .options(label: 'State', initial: 0, options: stateOptions)],
           content: Container(
             alignment: Alignment.centerLeft,
             child: const Text('Welcome!!'),
