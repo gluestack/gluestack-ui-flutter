@@ -31,10 +31,12 @@ class _MyAppState extends State<MyApp> {
       // ),
       // // This is how we can create color themes - primary & secondary swatches from just a base color
       // gluestackTokenConfig: GluestackTokenConfig(
-      //   gsColorsToken: const GSColorsToken(
-      //     primaryColorsFromBase: Color(0xFF00FF00),
-      //     secondaryColorsFromBase: Color(0xFFFF0000),
-      //   ),
+      // gsFontFamilyToken:
+      // const GSFontFamilyToken($body: 'Sono', $heading: 'Sono')
+      // gsColorsToken: const GSColorsToken(
+      //   primaryColorsFromBase: Color(0xFF00FF00),
+      //   secondaryColorsFromBase: Color(0xFFFF0000),
+      // ),
       // ),
       child: Consumer(
         builder: (context, ref, child) {
@@ -42,16 +44,9 @@ class _MyAppState extends State<MyApp> {
 
           return GSApp.router(
             debugShowCheckedModeBanner: false,
-            //gotta add scaffold messenger if using snackbars, which we are!
             color: $GSColors.primary500,
             routerConfig: router,
             themeMode: currentThemeMode,
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-
             darkTheme: GSThemeData(
               brightness: Brightness.dark,
             ),
