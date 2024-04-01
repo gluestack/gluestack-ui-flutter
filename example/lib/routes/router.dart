@@ -8,6 +8,7 @@ import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_default
 import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_disabled_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_with_rounded_corners.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/nested_accordion_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/stepper_example.dart';
 import 'package:go_router/go_router.dart';
 
 import '../widgets/components/widgets/public.dart';
@@ -148,6 +149,10 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const AccordionExample(),
         ),
         GoRoute(
+          path: "example-tabs",
+          builder: (context, state) => const TabExample(),
+        ),
+        GoRoute(
           path: "accordion-with-rounded-corners",
           builder: (context, state) =>
               const AccordionWithRoundedCornersPreview(),
@@ -167,6 +172,10 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "example-bottom-sheet",
           builder: (context, state) => const BottomModalSheetExample(),
+        ),
+        GoRoute(
+          path: "stepper-example",
+          builder: (context, state) => const StepperExample(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.

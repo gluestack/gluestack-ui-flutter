@@ -126,6 +126,7 @@ class GSText extends StatelessWidget {
     );
 
     final currentTextStyle = styler.textStyle?.copyWith(
+      fontFamily: styler.textStyle?.fontFamily,
       fontWeight: bold ? FontWeight.bold : styler.textStyle?.fontWeight,
       fontStyle: italic ? FontStyle.italic : styler.textStyle?.fontStyle,
       decoration: TextDecoration.combine([

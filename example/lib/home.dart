@@ -167,6 +167,16 @@ class _HomePageState extends State<HomePage> {
                   routePath: "/example-bottom-sheet",
                 ),
 
+                const NavButton(
+                  title: "Stepper Example",
+                  routePath: "/stepper-example",
+                ),
+
+                const NavButton(
+                  title: "GS Tabs",
+                  routePath: "/example-tabs",
+                ),
+
                 // // ===== Internal Testing Widgets =====
                 // const NavButton(
                 //   title: "GS Color Test (Internal)",

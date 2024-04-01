@@ -1,5 +1,7 @@
 import 'package:gluestack_ui/src/theme/config/layout/layout.dart';
 
+import '../theme/config/stepper/stepper_content_text.dart';
+import '../theme/config/stepper/stepper_subtitle_text.dart';
 import 'provider.dart';
 
 final getIt = GetIt.instance;
@@ -124,10 +126,33 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionItem;
 
   Map<String, dynamic>? modalBottomSheet;
+// stepper
+  Map<String, dynamic>? stepper;
+  Map<String, dynamic>? stepperTitleText;
+  Map<String, dynamic>? stepperSubtitleText;
+  Map<String, dynamic>? stepperContentText;
+  //tabs
+  Map<String, dynamic>? tabs;
+  Map<String, dynamic>? tabsTab;
+  Map<String, dynamic>? tabTabIcon;
+  Map<String, dynamic>? tabTabList;
+  Map<String, dynamic>? tabTabPanel;
+  Map<String, dynamic>? tabTabPanels;
+  Map<String, dynamic>? tabTabTile;
+
   //GS Layout
   Map<String, dynamic>? layout;
 
   GluestackCustomConfig({
+    //tabs
+    this.tabs,
+    this.tabsTab,
+    this.tabTabIcon,
+    this.tabTabList,
+    this.tabTabPanel,
+    this.tabTabPanels,
+    this.tabTabTile,
+
     //GS Layout
     this.layout,
 
@@ -236,6 +261,12 @@ class GluestackCustomConfig {
     //input
     this.input,
     this.modalBottomSheet,
+
+    //stepper
+    this.stepper,
+    this.stepperTitleText,
+    this.stepperSubtitleText,
+    this.stepperContentText,
 //     getIt<GluestackCustomConfig>().buttonText
   }) {
     Map<String, dynamic> mergeConfigs(
@@ -261,6 +292,15 @@ class GluestackCustomConfig {
 
 //layout
     layout = mergeConfigs(layoutData, layout);
+
+    //tabs
+    tabs = mergeConfigs(tabsData, tabs);
+    tabsTab = mergeConfigs(tabsTabData, tabsTab);
+    tabTabIcon = mergeConfigs(tabsTabIconData, tabTabIcon);
+    tabTabList = mergeConfigs(tabsTabListData, tabTabList);
+    tabTabPanel = mergeConfigs(tabsTabPanelData, tabTabPanel);
+    tabTabPanels = mergeConfigs(tabsTabPanelsData, tabTabPanels);
+    tabTabTile = mergeConfigs(tabsTitleData, tabTabTile);
 
     //accordion
     accordion = mergeConfigs(accordionData, accordion);
@@ -373,6 +413,13 @@ class GluestackCustomConfig {
     input = mergeConfigs(inputData, input);
 
     modalBottomSheet = mergeConfigs(modalBottomSheetData, modalBottomSheet);
+    //stepper
+    stepper = mergeConfigs(stepperData, stepper);
+    stepperTitleText = mergeConfigs(stepperTitleTextData, stepperTitleText);
+    stepperSubtitleText =
+        mergeConfigs(stepperSubtitleTextData, stepperSubtitleText);
+    stepperContentText =
+        mergeConfigs(stepperContentTextData, stepperContentText);
   }
 }
 
@@ -386,6 +433,7 @@ class GluestackTokenConfig {
   final GSSpaceToken gsSpaceToken;
   GSColorsToken gsColorsToken;
   final GSScreenBreakpointToken gsScreenBreakpointToken;
+  final GSFontFamilyToken gsFontFamilyToken;
 
   GluestackTokenConfig({
     this.gsBorderWidthToken = const GSBorderWidthToken(),
@@ -397,6 +445,7 @@ class GluestackTokenConfig {
     this.gsSpaceToken = const GSSpaceToken(),
     this.gsColorsToken = const GSColorsToken(),
     this.gsScreenBreakpointToken = const GSScreenBreakpointToken(),
+    this.gsFontFamilyToken = const GSFontFamilyToken(),
   }) {
     if (gsColorsToken.primaryColorsFromBase != null) {
       gsColorsToken = gsColorsToken.copyWith(
@@ -472,6 +521,7 @@ class GluestackTokenConfig {
     registerSingletonIfNotRegistered<GSColorsToken>(gsColorsToken);
     registerSingletonIfNotRegistered<GSScreenBreakpointToken>(
         gsScreenBreakpointToken);
+    registerSingletonIfNotRegistered<GSFontFamilyToken>(gsFontFamilyToken);
   }
 }
 
