@@ -19,6 +19,7 @@ class GSCheckBoxIcon extends StatelessWidget {
     final isDisabled = value?.isDisabled ?? true;
 
     final iconSize = ancestorCheckBoxStyle?.props?.size;
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [checkboxIconStyle, GSCheckBoxIconStyle.size[iconSize]],

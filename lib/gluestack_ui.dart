@@ -41,3 +41,6 @@ export 'src/widgets/gs_stack/gs_stack.dart';
 export 'src/widgets/gs_icon_button/public.dart';
 export 'src/widgets/gs_accordian/public.dart';
 export 'src/widgets/gs_navigation_rail/public.dart';
+export 'src/widgets/gs_stepper/public.dart';
+export 'src/widgets/gs_tabs/public.dart';
+export 'src/widgets/gs_layout/public.dart';

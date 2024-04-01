@@ -24,6 +24,7 @@ class GSButtonIcon extends StatelessWidget {
     final value = GSButtonProvider.of(context);
     final size = GSButtonIconStyle.size[iconSize ?? value?.size];
 
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
         context: context,
         styles: [

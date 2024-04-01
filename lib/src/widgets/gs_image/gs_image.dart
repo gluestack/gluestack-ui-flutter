@@ -4,11 +4,13 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_image/gs_image_style.dart';
 
+/// Types of images that can be displayed by [GSImage].
 enum GSImageType {
   network,
   asset,
 }
 
+/// Predefined sizes for [GSImage].
 enum GSImageSizes {
   $2xs,
   $xs,
@@ -19,6 +21,7 @@ enum GSImageSizes {
   $2xl,
 }
 
+/// Predefined radius for [GSImage].
 enum GSImageRadius {
   $none,
   $xs,
@@ -31,35 +34,80 @@ enum GSImageRadius {
   $full,
 }
 
-///
-/// Gluestack Image Widget.
-///
+/// A widget that displays an image with customizable styling options including size, border radius, and more.
+/// [GSImage] supports both network and asset images, making it versatile for various use cases.
 class GSImage extends StatelessWidget {
+  /// The size category of the image, influencing its dimensions.
   final GSImageSizes? size;
+
+  /// The border radius category of the image, influencing the roundness of its corners.
   final GSImageRadius? borderRadius;
 
+  /// The path or URL of the image to be displayed.
   final String path;
+
+  /// The type of image, specifying whether it's a network or asset image.
   final GSImageType imageType;
+
+  /// Custom [GSStyle] to apply to the image, allowing for further customization.
   final GSStyle? style;
+
+  /// The alignment of the image within its container.
   final AlignmentGeometry alignment;
+
+  /// Optional height to cache the image at for improved performance.
   final int? cacheHeight;
+
+  /// Optional width to cache the image at for improved performance.
   final int? cacheWidth;
+
+  /// An optional slice of the image to stretch when scaling.
   final Rect? centerSlice;
+
+  /// Optional color to apply to the image with an optional blend mode.
   final Color? color;
   final BlendMode? colorBlendMode;
+
+  /// A builder function for customizing the display of errors.
   final Widget Function(BuildContext, Object, StackTrace?)? errorBuilder;
+
+  /// How the image should fit within its allocated space.
   final BoxFit? fit;
+
+  /// Whether to exclude the image from the semantics tree.
   final bool excludeFromSemantics;
+
+  /// The quality of filtering to use when scaling the image.
   final FilterQuality filterQuality;
+
+  /// A builder function for customizing the display of image frames.
   final Widget Function(BuildContext, Widget, int?, bool)? frameBuilder;
+
+  /// A builder function for customizing the display while the image is loading.
   final Widget Function(BuildContext, Widget, ImageChunkEvent?)? loadingBuilder;
+
+  /// Whether the new image should replace the old image without changing the key.
   final bool gaplessPlayback;
+
+  /// Optional headers for network image requests.
   final Map<String, String>? headers;
+
+  /// Whether to apply anti-aliasing to the image.
   final bool isAntiAlias;
+
+  /// Whether the image should match the text direction.
   final bool matchTextDirection;
+
+  /// An animation for the image opacity.
   final Animation<double>? opacity;
+
+  /// How the image should be repeated within its bounds.
   final ImageRepeat repeat;
+
+  /// The scale factor to apply to the image.
   final double scale;
+
+  /// Optional semantic label for the image.
   final String? semanticLabel;
   const GSImage({
     super.key,
