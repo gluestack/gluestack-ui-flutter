@@ -398,16 +398,11 @@ class _GSRailDestination extends StatelessWidget {
     bool applyXOffset = false;
 
     final Widget themedIcon = IconTheme(
-      data: disabled
-          ? iconTheme.copyWith(color: const Color(0xFFD4D4D4).withOpacity(0.38))
-          : iconTheme,
+      data: iconTheme,
       child: icon,
     );
     final Widget styledLabel = DefaultTextStyle(
-      style: disabled
-          ? labelTextStyle.copyWith(
-              color: const Color(0xFFD4D4D4).withOpacity(0.38))
-          : labelTextStyle,
+      style: labelTextStyle,
       child: label ?? const SizedBox(),
     );
 
@@ -607,14 +602,6 @@ class _GSRailDestination extends StatelessWidget {
         );
     }
 
-    final bool primaryColorAlphaModified =
-        const Color(0x00000000).alpha < 255.0;
-    final Color effectiveSplashColor = primaryColorAlphaModified
-        ? const Color(0x00000000)
-        : const Color(0x00000000).withOpacity(0.12);
-    final Color effectiveHoverColor = primaryColorAlphaModified
-        ? const Color(0x00000000)
-        : const Color(0x00000000).withOpacity(0.04);
     return Semantics(
       container: true,
       selected: selected,
@@ -624,8 +611,6 @@ class _GSRailDestination extends StatelessWidget {
             onTap: disabled ? null : onTap,
             borderRadius: BorderRadius.all(Radius.circular(minWidth / 2.0)),
             customBorder: indicatorShape,
-            splashColor: effectiveSplashColor,
-            hoverColor: effectiveHoverColor,
             indicatorOffset: indicatorOffset,
             applyXOffset: applyXOffset,
             textDirection: textDirection,
@@ -646,8 +631,6 @@ class _IndicatorInkWell extends StatefulWidget {
     this.onTap,
     this.customBorder,
     this.borderRadius,
-    this.splashColor,
-    this.hoverColor,
     required this.indicatorOffset,
     required this.applyXOffset,
     required this.textDirection,
@@ -657,8 +640,6 @@ class _IndicatorInkWell extends StatefulWidget {
   final VoidCallback? onTap;
   final ShapeBorder? customBorder;
   final BorderRadius? borderRadius;
-  final Color? splashColor;
-  final Color? hoverColor;
   final Offset indicatorOffset;
   final bool applyXOffset;
   final TextDirection textDirection;
@@ -699,9 +680,8 @@ class _IndicatorInkWellState extends State<_IndicatorInkWell> {
               child: Container(
                 width: _kCircularIndicatorDiameter,
                 height: _kIndicatorHeight,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: widget.splashColor,
                 ),
               ),
             ),
