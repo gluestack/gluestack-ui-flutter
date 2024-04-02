@@ -125,7 +125,7 @@ void generateEnum(String mapName, Map<String, dynamic> variants) {
     finalOutput.writeln('}\n');
   }
 
-  writeToFile('./output.dart', finalOutput.toString());
+  writeToFile('./enums.dart', finalOutput.toString());
 }
 
 void writeToFile(String filePath, String data) {
