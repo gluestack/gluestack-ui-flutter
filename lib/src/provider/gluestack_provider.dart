@@ -18,10 +18,13 @@ class GluestackProvider extends StatelessWidget {
   })  : gluestackTokenConfig = gluestackTokenConfig ?? GluestackTokenConfig(),
         gluestackCustomConfig =
             gluestackCustomConfig ?? GluestackCustomConfig() {
-    if (!getIt.isRegistered<GluestackCustomConfig>()) {
+    //Allow Reassignment
+    GetIt.I.allowReassignment = true;
+
+    // if (!getIt.isRegistered<GluestackCustomConfig>()) {
       getIt
           .registerSingleton<GluestackCustomConfig>(this.gluestackCustomConfig);
-    }
+    // }
   }
 
   @override
@@ -516,14 +519,21 @@ class GluestackTokenConfig {
     registerSingletonIfNotRegistered<GSRadiiToken>(gsRadiiToken);
     registerSingletonIfNotRegistered<GSSpaceToken>(gsSpaceToken);
     registerSingletonIfNotRegistered<GSColorsToken>(gsColorsToken);
+
     registerSingletonIfNotRegistered<GSScreenBreakpointToken>(
         gsScreenBreakpointToken);
-    registerSingletonIfNotRegistered<GSFontFamilyToken>(gsFontFamilyToken);
   }
 }
 
 void registerSingletonIfNotRegistered<T extends Object>(T instance) {
-  if (!getIt.isRegistered<T>()) {
-    getIt.registerSingleton<T>(instance);
+  // log('Get It - Token Assignment Called!');
+
+  // if (!getIt.isRegistered<T>()) {
+  getIt.registerSingleton<T>(instance);
+  if (instance is GSColorsToken) {
+    // log('++++++++++++++++++');
+    // log('${instance.primaryColorsFromBase}');
   }
+
+  // }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var colorInstance = getIt<GSColorsToken>();
 
 class GSColorsToken {
   final Color rose50;
@@ -1604,793 +1603,802 @@ class GSColorsToken {
 }
 
 class $GSColors {
-  static Color get rose50 => colorInstance.rose50;
-  static Color get rose100 => colorInstance.rose100;
-  static Color get rose200 => colorInstance.rose200;
-  static Color get rose300 => colorInstance.rose300;
-  static Color get rose400 => colorInstance.rose400;
-  static Color get rose500 => colorInstance.rose500;
-  static Color get rose600 => colorInstance.rose600;
-  static Color get rose700 => colorInstance.rose700;
-  static Color get rose800 => colorInstance.rose800;
-  static Color get rose900 => colorInstance.rose900;
-  static Color get pink50 => colorInstance.pink50;
-  static Color get pink100 => colorInstance.pink100;
-  static Color get pink200 => colorInstance.pink200;
-  static Color get pink300 => colorInstance.pink300;
-  static Color get pink400 => colorInstance.pink400;
-  static Color get pink500 => colorInstance.pink500;
-  static Color get pink600 => colorInstance.pink600;
-  static Color get pink700 => colorInstance.pink700;
-  static Color get pink800 => colorInstance.pink800;
-  static Color get pink900 => colorInstance.pink900;
-  static Color get fuchsia50 => colorInstance.fuchsia50;
-  static Color get fuchsia100 => colorInstance.fuchsia100;
-  static Color get fuchsia200 => colorInstance.fuchsia200;
-  static Color get fuchsia300 => colorInstance.fuchsia300;
-  static Color get fuchsia400 => colorInstance.fuchsia400;
-  static Color get fuchsia500 => colorInstance.fuchsia500;
-  static Color get fuchsia600 => colorInstance.fuchsia600;
-  static Color get fuchsia700 => colorInstance.fuchsia700;
-  static Color get fuchsia800 => colorInstance.fuchsia800;
-  static Color get fuchsia900 => colorInstance.fuchsia900;
-  static Color get purple50 => colorInstance.purple50;
-  static Color get purple100 => colorInstance.purple100;
-  static Color get purple200 => colorInstance.purple200;
-  static Color get purple300 => colorInstance.purple300;
-  static Color get purple400 => colorInstance.purple400;
-  static Color get purple500 => colorInstance.purple500;
-  static Color get purple600 => colorInstance.purple600;
-  static Color get purple700 => colorInstance.purple700;
-  static Color get purple800 => colorInstance.purple800;
-  static Color get purple900 => colorInstance.purple900;
-  static Color get violet50 => colorInstance.violet50;
-  static Color get violet100 => colorInstance.violet100;
-  static Color get violet200 => colorInstance.violet200;
-  static Color get violet300 => colorInstance.violet300;
-  static Color get violet400 => colorInstance.violet400;
-  static Color get violet500 => colorInstance.violet500;
-  static Color get violet600 => colorInstance.violet600;
-  static Color get violet700 => colorInstance.violet700;
-  static Color get violet800 => colorInstance.violet800;
-  static Color get violet900 => colorInstance.violet900;
-  static Color get indigo50 => colorInstance.indigo50;
-  static Color get indigo100 => colorInstance.indigo100;
-  static Color get indigo200 => colorInstance.indigo200;
-  static Color get indigo300 => colorInstance.indigo300;
-  static Color get indigo400 => colorInstance.indigo400;
-  static Color get indigo500 => colorInstance.indigo500;
-  static Color get indigo600 => colorInstance.indigo600;
-  static Color get indigo700 => colorInstance.indigo700;
-  static Color get indigo800 => colorInstance.indigo800;
-  static Color get indigo900 => colorInstance.indigo900;
-  static Color get blue50 => colorInstance.blue50;
-  static Color get blue100 => colorInstance.blue100;
-  static Color get blue200 => colorInstance.blue200;
-  static Color get blue300 => colorInstance.blue300;
-  static Color get blue400 => colorInstance.blue400;
-  static Color get blue500 => colorInstance.blue500;
-  static Color get blue600 => colorInstance.blue600;
-  static Color get blue700 => colorInstance.blue700;
-  static Color get blue800 => colorInstance.blue800;
-  static Color get blue900 => colorInstance.blue900;
-  static Color get lightBlue50 => colorInstance.lightBlue50;
-  static Color get lightBlue100 => colorInstance.lightBlue100;
-  static Color get lightBlue200 => colorInstance.lightBlue200;
-  static Color get lightBlue300 => colorInstance.lightBlue300;
-  static Color get lightBlue400 => colorInstance.lightBlue400;
-  static Color get lightBlue500 => colorInstance.lightBlue500;
-  static Color get lightBlue600 => colorInstance.lightBlue600;
-  static Color get lightBlue700 => colorInstance.lightBlue700;
-  static Color get lightBlue800 => colorInstance.lightBlue800;
-  static Color get lightBlue900 => colorInstance.lightBlue900;
-  static Color get darkBlue50 => colorInstance.darkBlue50;
-  static Color get darkBlue100 => colorInstance.darkBlue100;
-  static Color get darkBlue200 => colorInstance.darkBlue200;
-  static Color get darkBlue300 => colorInstance.darkBlue300;
-  static Color get darkBlue400 => colorInstance.darkBlue400;
-  static Color get darkBlue500 => colorInstance.darkBlue500;
-  static Color get darkBlue600 => colorInstance.darkBlue600;
-  static Color get darkBlue700 => colorInstance.darkBlue700;
-  static Color get darkBlue800 => colorInstance.darkBlue800;
-  static Color get darkBlue900 => colorInstance.darkBlue900;
-  static Color get cyan50 => colorInstance.cyan50;
-  static Color get cyan100 => colorInstance.cyan100;
-  static Color get cyan200 => colorInstance.cyan200;
-  static Color get cyan300 => colorInstance.cyan300;
-  static Color get cyan400 => colorInstance.cyan400;
-  static Color get cyan500 => colorInstance.cyan500;
-  static Color get cyan600 => colorInstance.cyan600;
-  static Color get cyan700 => colorInstance.cyan700;
-  static Color get cyan800 => colorInstance.cyan800;
-  static Color get cyan900 => colorInstance.cyan900;
-  static Color get teal50 => colorInstance.teal50;
-  static Color get teal100 => colorInstance.teal100;
-  static Color get teal200 => colorInstance.teal200;
-  static Color get teal300 => colorInstance.teal300;
-  static Color get teal400 => colorInstance.teal400;
-  static Color get teal500 => colorInstance.teal500;
-  static Color get teal600 => colorInstance.teal600;
-  static Color get teal700 => colorInstance.teal700;
-  static Color get teal800 => colorInstance.teal800;
-  static Color get teal900 => colorInstance.teal900;
-  static Color get emerald50 => colorInstance.emerald50;
-  static Color get emerald100 => colorInstance.emerald100;
-  static Color get emerald200 => colorInstance.emerald200;
-  static Color get emerald300 => colorInstance.emerald300;
-  static Color get emerald400 => colorInstance.emerald400;
-  static Color get emerald500 => colorInstance.emerald500;
-  static Color get emerald600 => colorInstance.emerald600;
-  static Color get emerald700 => colorInstance.emerald700;
-  static Color get emerald800 => colorInstance.emerald800;
-  static Color get emerald900 => colorInstance.emerald900;
-  static Color get green50 => colorInstance.green50;
-  static Color get green100 => colorInstance.green100;
-  static Color get green200 => colorInstance.green200;
-  static Color get green300 => colorInstance.green300;
-  static Color get green400 => colorInstance.green400;
-  static Color get green500 => colorInstance.green500;
-  static Color get green600 => colorInstance.green600;
-  static Color get green700 => colorInstance.green700;
-  static Color get green800 => colorInstance.green800;
-  static Color get green900 => colorInstance.green900;
-  static Color get lime50 => colorInstance.lime50;
-  static Color get lime100 => colorInstance.lime100;
-  static Color get lime200 => colorInstance.lime200;
-  static Color get lime300 => colorInstance.lime300;
-  static Color get lime400 => colorInstance.lime400;
-  static Color get lime500 => colorInstance.lime500;
-  static Color get lime600 => colorInstance.lime600;
-  static Color get lime700 => colorInstance.lime700;
-  static Color get lime800 => colorInstance.lime800;
-  static Color get lime900 => colorInstance.lime900;
-  static Color get yellow50 => colorInstance.yellow50;
-  static Color get yellow100 => colorInstance.yellow100;
-  static Color get yellow200 => colorInstance.yellow200;
-  static Color get yellow300 => colorInstance.yellow300;
-  static Color get yellow400 => colorInstance.yellow400;
-  static Color get yellow500 => colorInstance.yellow500;
-  static Color get yellow600 => colorInstance.yellow600;
-  static Color get yellow700 => colorInstance.yellow700;
-  static Color get yellow800 => colorInstance.yellow800;
-  static Color get yellow900 => colorInstance.yellow900;
-  static Color get amber50 => colorInstance.amber50;
-  static Color get amber100 => colorInstance.amber100;
-  static Color get amber200 => colorInstance.amber200;
-  static Color get amber300 => colorInstance.amber300;
-  static Color get amber400 => colorInstance.amber400;
-  static Color get amber500 => colorInstance.amber500;
-  static Color get amber600 => colorInstance.amber600;
-  static Color get amber700 => colorInstance.amber700;
-  static Color get amber800 => colorInstance.amber800;
-  static Color get amber900 => colorInstance.amber900;
-  static Color get orange50 => colorInstance.orange50;
-  static Color get orange100 => colorInstance.orange100;
-  static Color get orange200 => colorInstance.orange200;
-  static Color get orange300 => colorInstance.orange300;
-  static Color get orange400 => colorInstance.orange400;
-  static Color get orange500 => colorInstance.orange500;
-  static Color get orange600 => colorInstance.orange600;
-  static Color get orange700 => colorInstance.orange700;
-  static Color get orange800 => colorInstance.orange800;
-  static Color get orange900 => colorInstance.orange900;
-  static Color get red50 => colorInstance.red50;
-  static Color get red100 => colorInstance.red100;
-  static Color get red200 => colorInstance.red200;
-  static Color get red300 => colorInstance.red300;
-  static Color get red400 => colorInstance.red400;
-  static Color get red500 => colorInstance.red500;
-  static Color get red600 => colorInstance.red600;
-  static Color get red700 => colorInstance.red700;
-  static Color get red800 => colorInstance.red800;
-  static Color get red900 => colorInstance.red900;
-  static Color get warmGray50 => colorInstance.warmGray50;
-  static Color get warmGray100 => colorInstance.warmGray100;
-  static Color get warmGray200 => colorInstance.warmGray200;
-  static Color get warmGray300 => colorInstance.warmGray300;
-  static Color get warmGray400 => colorInstance.warmGray400;
-  static Color get warmGray500 => colorInstance.warmGray500;
-  static Color get warmGray600 => colorInstance.warmGray600;
-  static Color get warmGray700 => colorInstance.warmGray700;
-  static Color get warmGray800 => colorInstance.warmGray800;
-  static Color get warmGray900 => colorInstance.warmGray900;
-  static Color get trueGray50 => colorInstance.trueGray50;
-  static Color get trueGray100 => colorInstance.trueGray100;
-  static Color get trueGray200 => colorInstance.trueGray200;
-  static Color get trueGray300 => colorInstance.trueGray300;
-  static Color get trueGray400 => colorInstance.trueGray400;
-  static Color get trueGray500 => colorInstance.trueGray500;
-  static Color get trueGray600 => colorInstance.trueGray600;
-  static Color get trueGray700 => colorInstance.trueGray700;
-  static Color get trueGray800 => colorInstance.trueGray800;
-  static Color get trueGray900 => colorInstance.trueGray900;
-  static Color get coolGray50 => colorInstance.coolGray50;
-  static Color get coolGray100 => colorInstance.coolGray100;
-  static Color get coolGray200 => colorInstance.coolGray200;
-  static Color get coolGray300 => colorInstance.coolGray300;
-  static Color get coolGray400 => colorInstance.coolGray400;
-  static Color get coolGray500 => colorInstance.coolGray500;
-  static Color get coolGray600 => colorInstance.coolGray600;
-  static Color get coolGray700 => colorInstance.coolGray700;
-  static Color get coolGray800 => colorInstance.coolGray800;
-  static Color get coolGray900 => colorInstance.coolGray900;
-  static Color get blueGray50 => colorInstance.blueGray50;
-  static Color get blueGray100 => colorInstance.blueGray100;
-  static Color get blueGray200 => colorInstance.blueGray200;
-  static Color get blueGray300 => colorInstance.blueGray300;
-  static Color get blueGray400 => colorInstance.blueGray400;
-  static Color get blueGray500 => colorInstance.blueGray500;
-  static Color get blueGray600 => colorInstance.blueGray600;
-  static Color get blueGray700 => colorInstance.blueGray700;
-  static Color get blueGray800 => colorInstance.blueGray800;
-  static Color get blueGray900 => colorInstance.blueGray900;
-  static Color get tertiary50 => colorInstance.tertiary50;
-  static Color get tertiary100 => colorInstance.tertiary100;
-  static Color get tertiary200 => colorInstance.tertiary200;
-  static Color get tertiary300 => colorInstance.tertiary300;
-  static Color get tertiary400 => colorInstance.tertiary400;
-  static Color get tertiary500 => colorInstance.tertiary500;
-  static Color get tertiary600 => colorInstance.tertiary600;
-  static Color get tertiary700 => colorInstance.tertiary700;
-  static Color get tertiary800 => colorInstance.tertiary800;
-  static Color get tertiary900 => colorInstance.tertiary900;
-  static Color get error00 => colorInstance.error00;
-  static Color get error50 => colorInstance.error50;
-  static Color get error100 => colorInstance.error100;
-  static Color get error200 => colorInstance.error200;
-  static Color get error300 => colorInstance.error300;
-  static Color get error400 => colorInstance.error400;
-  static Color get error500 => colorInstance.error500;
-  static Color get error600 => colorInstance.error600;
-  static Color get error700 => colorInstance.error700;
-  static Color get error800 => colorInstance.error800;
-  static Color get error900 => colorInstance.error900;
-  static Color get error950 => colorInstance.error950;
-  static Color get success0 => colorInstance.success0;
-  static Color get success50 => colorInstance.success50;
-  static Color get success100 => colorInstance.success100;
-  static Color get success200 => colorInstance.success200;
-  static Color get success300 => colorInstance.success300;
-  static Color get success400 => colorInstance.success400;
-  static Color get success500 => colorInstance.success500;
-  static Color get success600 => colorInstance.success600;
-  static Color get success700 => colorInstance.success700;
-  static Color get success800 => colorInstance.success800;
-  static Color get success900 => colorInstance.success900;
-  static Color get success950 => colorInstance.success950;
-  static Color get warning50 => colorInstance.warning50;
-  static Color get warning100 => colorInstance.warning100;
-  static Color get warning200 => colorInstance.warning200;
-  static Color get warning300 => colorInstance.warning300;
-  static Color get warning400 => colorInstance.warning400;
-  static Color get warning500 => colorInstance.warning500;
-  static Color get warning600 => colorInstance.warning600;
-  static Color get warning700 => colorInstance.warning700;
-  static Color get warning800 => colorInstance.warning800;
-  static Color get warning900 => colorInstance.warning900;
-  static Color get info50 => colorInstance.info50;
-  static Color get info100 => colorInstance.info100;
-  static Color get info200 => colorInstance.info200;
-  static Color get info300 => colorInstance.info300;
-  static Color get info400 => colorInstance.info400;
-  static Color get info500 => colorInstance.info500;
-  static Color get info600 => colorInstance.info600;
-  static Color get info700 => colorInstance.info700;
-  static Color get info800 => colorInstance.info800;
-  static Color get info900 => colorInstance.info900;
-  static Color get light50 => colorInstance.light50;
-  static Color get light100 => colorInstance.light100;
-  static Color get light200 => colorInstance.light200;
-  static Color get light300 => colorInstance.light300;
-  static Color get light400 => colorInstance.light400;
-  static Color get light500 => colorInstance.light500;
-  static Color get light600 => colorInstance.light600;
-  static Color get light700 => colorInstance.light700;
-  static Color get light800 => colorInstance.light800;
-  static Color get light900 => colorInstance.light900;
-  static Color get primary0 => colorInstance.primary0;
-  static Color get primary50 => colorInstance.primary50;
-  static Color get primary100 => colorInstance.primary100;
-  static Color get primary200 => colorInstance.primary200;
-  static Color get primary300 => colorInstance.primary300;
-  static Color get primary400 => colorInstance.primary400;
-  static Color get primary500 => colorInstance.primary500;
-  static Color get primary600 => colorInstance.primary600;
-  static Color get primary700 => colorInstance.primary700;
-  static Color get primary800 => colorInstance.primary800;
-  static Color get primary900 => colorInstance.primary900;
-  static Color get primary950 => colorInstance.primary950;
-  static Color get secondary0 => colorInstance.secondary0;
-  static Color get secondary50 => colorInstance.secondary50;
-  static Color get secondary100 => colorInstance.secondary100;
-  static Color get secondary200 => colorInstance.secondary200;
-  static Color get secondary300 => colorInstance.secondary300;
-  static Color get secondary400 => colorInstance.secondary400;
-  static Color get secondary500 => colorInstance.secondary500;
-  static Color get secondary600 => colorInstance.secondary600;
-  static Color get secondary700 => colorInstance.secondary700;
-  static Color get secondary800 => colorInstance.secondary800;
-  static Color get secondary900 => colorInstance.secondary900;
-  static Color get secondary950 => colorInstance.secondary950;
-  static Color get textLight0 => colorInstance.textLight0;
-  static Color get textLight50 => colorInstance.textLight50;
-  static Color get textLight100 => colorInstance.textLight100;
-  static Color get textLight200 => colorInstance.textLight200;
-  static Color get textLight300 => colorInstance.textLight300;
-  static Color get textLight400 => colorInstance.textLight400;
-  static Color get textLight500 => colorInstance.textLight500;
-  static Color get textLight600 => colorInstance.textLight600;
-  static Color get textLight700 => colorInstance.textLight700;
-  static Color get textLight800 => colorInstance.textLight800;
-  static Color get textLight900 => colorInstance.textLight900;
-  static Color get textLight950 => colorInstance.textLight950;
-  static Color get textDark0 => colorInstance.textDark0;
-  static Color get textDark50 => colorInstance.textDark50;
-  static Color get textDark100 => colorInstance.textDark100;
-  static Color get textDark200 => colorInstance.textDark200;
-  static Color get textDark300 => colorInstance.textDark300;
-  static Color get textDark400 => colorInstance.textDark400;
-  static Color get textDark500 => colorInstance.textDark500;
-  static Color get textDark600 => colorInstance.textDark600;
-  static Color get textDark700 => colorInstance.textDark700;
-  static Color get textDark800 => colorInstance.textDark800;
-  static Color get textDark900 => colorInstance.textDark900;
-  static Color get textDark950 => colorInstance.textDark950;
-  static Color get borderDark0 => colorInstance.borderDark0;
-  static Color get borderDark50 => colorInstance.borderDark50;
-  static Color get borderDark100 => colorInstance.borderDark100;
-  static Color get borderDark200 => colorInstance.borderDark200;
-  static Color get borderDark300 => colorInstance.borderDark300;
-  static Color get borderDark400 => colorInstance.borderDark400;
-  static Color get borderDark500 => colorInstance.borderDark500;
-  static Color get borderDark600 => colorInstance.borderDark600;
-  static Color get borderDark700 => colorInstance.borderDark700;
-  static Color get borderDark800 => colorInstance.borderDark800;
-  static Color get borderDark900 => colorInstance.borderDark900;
-  static Color get borderDark950 => colorInstance.borderDark950;
-  static Color get borderLight0 => colorInstance.borderLight0;
-  static Color get borderLight50 => colorInstance.borderLight50;
-  static Color get borderLight100 => colorInstance.borderLight100;
-  static Color get borderLight200 => colorInstance.borderLight200;
-  static Color get borderLight300 => colorInstance.borderLight300;
-  static Color get borderLight400 => colorInstance.borderLight400;
-  static Color get borderLight500 => colorInstance.borderLight500;
-  static Color get borderLight600 => colorInstance.borderLight600;
-  static Color get borderLight700 => colorInstance.borderLight700;
-  static Color get borderLight800 => colorInstance.borderLight800;
-  static Color get borderLight900 => colorInstance.borderLight900;
-  static Color get borderLight950 => colorInstance.borderLight950;
-  static Color get backgroundDark0 => colorInstance.backgroundDark0;
-  static Color get backgroundDark50 => colorInstance.backgroundDark50;
-  static Color get backgroundDark100 => colorInstance.backgroundDark100;
-  static Color get backgroundDark200 => colorInstance.backgroundDark200;
-  static Color get backgroundDark300 => colorInstance.backgroundDark300;
-  static Color get backgroundDark400 => colorInstance.backgroundDark400;
-  static Color get backgroundDark500 => colorInstance.backgroundDark500;
-  static Color get backgroundDark600 => colorInstance.backgroundDark600;
-  static Color get backgroundDark700 => colorInstance.backgroundDark700;
-  static Color get backgroundDark800 => colorInstance.backgroundDark800;
-  static Color get backgroundDark900 => colorInstance.backgroundDark900;
-  static Color get backgroundDark950 => colorInstance.backgroundDark950;
-  static Color get backgroundLight0 => colorInstance.backgroundLight0;
-  static Color get backgroundLight50 => colorInstance.backgroundLight50;
-  static Color get backgroundLight100 => colorInstance.backgroundLight100;
-  static Color get backgroundLight200 => colorInstance.backgroundLight200;
-  static Color get backgroundLight300 => colorInstance.backgroundLight300;
-  static Color get backgroundLight400 => colorInstance.backgroundLight400;
-  static Color get backgroundLight500 => colorInstance.backgroundLight500;
-  static Color get backgroundLight600 => colorInstance.backgroundLight600;
-  static Color get backgroundLight700 => colorInstance.backgroundLight700;
-  static Color get backgroundLight800 => colorInstance.backgroundLight800;
-  static Color get backgroundLight900 => colorInstance.backgroundLight900;
-  static Color get backgroundLight950 => colorInstance.backgroundLight950;
-  static Color get backgroundLightError => colorInstance.backgroundLightError;
-  static Color get backgroundDarkError => colorInstance.backgroundDarkError;
-  static Color get backgroundLightWarning =>
-      colorInstance.backgroundLightWarning;
-  static Color get backgroundDarkWarning => colorInstance.backgroundDarkWarning;
-  static Color get backgroundLightSuccess =>
-      colorInstance.backgroundLightSuccess;
-  static Color get backgroundDarkSuccess => colorInstance.backgroundDarkSuccess;
-  static Color get backgroundLightInfo => colorInstance.backgroundLightInfo;
-  static Color get backgroundDarkInfo => colorInstance.backgroundDarkInfo;
-  static Color get backgroundLightMuted => colorInstance.backgroundLightMuted;
-  static Color get backgroundDarkMuted => colorInstance.backgroundDarkMuted;
-  static Color get white => colorInstance.white;
-  static Color get black => colorInstance.black;
+  static Color get rose50 => getIt<GSColorsToken>().rose50;
+  static Color get rose200 => getIt<GSColorsToken>().rose200;
+  static Color get rose100 => getIt<GSColorsToken>().rose100;
+  static Color get rose300 => getIt<GSColorsToken>().rose300;
+  static Color get rose400 => getIt<GSColorsToken>().rose400;
+  static Color get rose500 => getIt<GSColorsToken>().rose500;
+  static Color get rose600 => getIt<GSColorsToken>().rose600;
+  static Color get rose700 => getIt<GSColorsToken>().rose700;
+  static Color get rose800 => getIt<GSColorsToken>().rose800;
+  static Color get rose900 => getIt<GSColorsToken>().rose900;
+  static Color get pink50 => getIt<GSColorsToken>().pink50;
+  static Color get pink100 => getIt<GSColorsToken>().pink100;
+  static Color get pink200 => getIt<GSColorsToken>().pink200;
+  static Color get pink300 => getIt<GSColorsToken>().pink300;
+  static Color get pink400 => getIt<GSColorsToken>().pink400;
+  static Color get pink500 => getIt<GSColorsToken>().pink500;
+  static Color get pink600 => getIt<GSColorsToken>().pink600;
+  static Color get pink700 => getIt<GSColorsToken>().pink700;
+  static Color get pink800 => getIt<GSColorsToken>().pink800;
+  static Color get pink900 => getIt<GSColorsToken>().pink900;
+  static Color get fuchsia50 => getIt<GSColorsToken>().fuchsia50;
+  static Color get fuchsia100 => getIt<GSColorsToken>().fuchsia100;
+  static Color get fuchsia200 => getIt<GSColorsToken>().fuchsia200;
+  static Color get fuchsia300 => getIt<GSColorsToken>().fuchsia300;
+  static Color get fuchsia400 => getIt<GSColorsToken>().fuchsia400;
+  static Color get fuchsia500 => getIt<GSColorsToken>().fuchsia500;
+  static Color get fuchsia600 => getIt<GSColorsToken>().fuchsia600;
+  static Color get fuchsia700 => getIt<GSColorsToken>().fuchsia700;
+  static Color get fuchsia800 => getIt<GSColorsToken>().fuchsia800;
+  static Color get fuchsia900 => getIt<GSColorsToken>().fuchsia900;
+  static Color get purple50 => getIt<GSColorsToken>().purple50;
+  static Color get purple100 => getIt<GSColorsToken>().purple100;
+  static Color get purple200 => getIt<GSColorsToken>().purple200;
+  static Color get purple300 => getIt<GSColorsToken>().purple300;
+  static Color get purple400 => getIt<GSColorsToken>().purple400;
+  static Color get purple500 => getIt<GSColorsToken>().purple500;
+  static Color get purple600 => getIt<GSColorsToken>().purple600;
+  static Color get purple700 => getIt<GSColorsToken>().purple700;
+  static Color get purple800 => getIt<GSColorsToken>().purple800;
+  static Color get purple900 => getIt<GSColorsToken>().purple900;
+  static Color get violet50 => getIt<GSColorsToken>().violet50;
+  static Color get violet100 => getIt<GSColorsToken>().violet100;
+  static Color get violet200 => getIt<GSColorsToken>().violet200;
+  static Color get violet300 => getIt<GSColorsToken>().violet300;
+  static Color get violet400 => getIt<GSColorsToken>().violet400;
+  static Color get violet500 => getIt<GSColorsToken>().violet500;
+  static Color get violet600 => getIt<GSColorsToken>().violet600;
+  static Color get violet700 => getIt<GSColorsToken>().violet700;
+  static Color get violet800 => getIt<GSColorsToken>().violet800;
+  static Color get violet900 => getIt<GSColorsToken>().violet900;
+  static Color get indigo50 => getIt<GSColorsToken>().indigo50;
+  static Color get indigo100 => getIt<GSColorsToken>().indigo100;
+  static Color get indigo200 => getIt<GSColorsToken>().indigo200;
+  static Color get indigo300 => getIt<GSColorsToken>().indigo300;
+  static Color get indigo400 => getIt<GSColorsToken>().indigo400;
+  static Color get indigo500 => getIt<GSColorsToken>().indigo500;
+  static Color get indigo600 => getIt<GSColorsToken>().indigo600;
+  static Color get indigo700 => getIt<GSColorsToken>().indigo700;
+  static Color get indigo800 => getIt<GSColorsToken>().indigo800;
+  static Color get indigo900 => getIt<GSColorsToken>().indigo900;
+  static Color get blue50 => getIt<GSColorsToken>().blue50;
+  static Color get blue100 => getIt<GSColorsToken>().blue100;
+  static Color get blue200 => getIt<GSColorsToken>().blue200;
+  static Color get blue300 => getIt<GSColorsToken>().blue300;
+  static Color get blue400 => getIt<GSColorsToken>().blue400;
+  static Color get blue500 => getIt<GSColorsToken>().blue500;
+  static Color get blue600 => getIt<GSColorsToken>().blue600;
+  static Color get blue700 => getIt<GSColorsToken>().blue700;
+  static Color get blue800 => getIt<GSColorsToken>().blue800;
+  static Color get blue900 => getIt<GSColorsToken>().blue900;
+  static Color get lightBlue50 => getIt<GSColorsToken>().lightBlue50;
+  static Color get lightBlue100 => getIt<GSColorsToken>().lightBlue100;
+  static Color get lightBlue200 => getIt<GSColorsToken>().lightBlue200;
+  static Color get lightBlue300 => getIt<GSColorsToken>().lightBlue300;
+  static Color get lightBlue400 => getIt<GSColorsToken>().lightBlue400;
+  static Color get lightBlue500 => getIt<GSColorsToken>().lightBlue500;
+  static Color get lightBlue600 => getIt<GSColorsToken>().lightBlue600;
+  static Color get lightBlue700 => getIt<GSColorsToken>().lightBlue700;
+  static Color get lightBlue800 => getIt<GSColorsToken>().lightBlue800;
+  static Color get lightBlue900 => getIt<GSColorsToken>().lightBlue900;
+  static Color get darkBlue50 => getIt<GSColorsToken>().darkBlue50;
+  static Color get darkBlue100 => getIt<GSColorsToken>().darkBlue100;
+  static Color get darkBlue200 => getIt<GSColorsToken>().darkBlue200;
+  static Color get darkBlue300 => getIt<GSColorsToken>().darkBlue300;
+  static Color get darkBlue400 => getIt<GSColorsToken>().darkBlue400;
+  static Color get darkBlue500 => getIt<GSColorsToken>().darkBlue500;
+  static Color get darkBlue600 => getIt<GSColorsToken>().darkBlue600;
+  static Color get darkBlue700 => getIt<GSColorsToken>().darkBlue700;
+  static Color get darkBlue800 => getIt<GSColorsToken>().darkBlue800;
+  static Color get darkBlue900 => getIt<GSColorsToken>().darkBlue900;
+  static Color get cyan50 => getIt<GSColorsToken>().cyan50;
+  static Color get cyan100 => getIt<GSColorsToken>().cyan100;
+  static Color get cyan200 => getIt<GSColorsToken>().cyan200;
+  static Color get cyan300 => getIt<GSColorsToken>().cyan300;
+  static Color get cyan400 => getIt<GSColorsToken>().cyan400;
+  static Color get cyan500 => getIt<GSColorsToken>().cyan500;
+  static Color get cyan600 => getIt<GSColorsToken>().cyan600;
+  static Color get cyan700 => getIt<GSColorsToken>().cyan700;
+  static Color get cyan800 => getIt<GSColorsToken>().cyan800;
+  static Color get cyan900 => getIt<GSColorsToken>().cyan900;
+  static Color get teal50 => getIt<GSColorsToken>().teal50;
+  static Color get teal100 => getIt<GSColorsToken>().teal100;
+  static Color get teal200 => getIt<GSColorsToken>().teal200;
+  static Color get teal300 => getIt<GSColorsToken>().teal300;
+  static Color get teal400 => getIt<GSColorsToken>().teal400;
+  static Color get teal500 => getIt<GSColorsToken>().teal500;
+  static Color get teal600 => getIt<GSColorsToken>().teal600;
+  static Color get teal700 => getIt<GSColorsToken>().teal700;
+  static Color get teal800 => getIt<GSColorsToken>().teal800;
+  static Color get teal900 => getIt<GSColorsToken>().teal900;
+  static Color get emerald50 => getIt<GSColorsToken>().emerald50;
+  static Color get emerald100 => getIt<GSColorsToken>().emerald100;
+  static Color get emerald200 => getIt<GSColorsToken>().emerald200;
+  static Color get emerald300 => getIt<GSColorsToken>().emerald300;
+  static Color get emerald400 => getIt<GSColorsToken>().emerald400;
+  static Color get emerald500 => getIt<GSColorsToken>().emerald500;
+  static Color get emerald600 => getIt<GSColorsToken>().emerald600;
+  static Color get emerald700 => getIt<GSColorsToken>().emerald700;
+  static Color get emerald800 => getIt<GSColorsToken>().emerald800;
+  static Color get emerald900 => getIt<GSColorsToken>().emerald900;
+  static Color get green50 => getIt<GSColorsToken>().green50;
+  static Color get green100 => getIt<GSColorsToken>().green100;
+  static Color get green200 => getIt<GSColorsToken>().green200;
+  static Color get green300 => getIt<GSColorsToken>().green300;
+  static Color get green400 => getIt<GSColorsToken>().green400;
+  static Color get green500 => getIt<GSColorsToken>().green500;
+  static Color get green600 => getIt<GSColorsToken>().green600;
+  static Color get green700 => getIt<GSColorsToken>().green700;
+  static Color get green800 => getIt<GSColorsToken>().green800;
+  static Color get green900 => getIt<GSColorsToken>().green900;
+  static Color get lime50 => getIt<GSColorsToken>().lime50;
+  static Color get lime100 => getIt<GSColorsToken>().lime100;
+  static Color get lime200 => getIt<GSColorsToken>().lime200;
+  static Color get lime300 => getIt<GSColorsToken>().lime300;
+  static Color get lime400 => getIt<GSColorsToken>().lime400;
+  static Color get lime500 => getIt<GSColorsToken>().lime500;
+  static Color get lime600 => getIt<GSColorsToken>().lime600;
+  static Color get lime700 => getIt<GSColorsToken>().lime700;
+  static Color get lime800 => getIt<GSColorsToken>().lime800;
+  static Color get lime900 => getIt<GSColorsToken>().lime900;
+  static Color get yellow50 => getIt<GSColorsToken>().yellow50;
+  static Color get yellow100 => getIt<GSColorsToken>().yellow100;
+  static Color get yellow200 => getIt<GSColorsToken>().yellow200;
+  static Color get yellow300 => getIt<GSColorsToken>().yellow300;
+  static Color get yellow400 => getIt<GSColorsToken>().yellow400;
+  static Color get yellow500 => getIt<GSColorsToken>().yellow500;
+  static Color get yellow600 => getIt<GSColorsToken>().yellow600;
+  static Color get yellow700 => getIt<GSColorsToken>().yellow700;
+  static Color get yellow800 => getIt<GSColorsToken>().yellow800;
+  static Color get yellow900 => getIt<GSColorsToken>().yellow900;
+  static Color get amber50 => getIt<GSColorsToken>().amber50;
+  static Color get amber100 => getIt<GSColorsToken>().amber100;
+  static Color get amber200 => getIt<GSColorsToken>().amber200;
+  static Color get amber300 => getIt<GSColorsToken>().amber300;
+  static Color get amber400 => getIt<GSColorsToken>().amber400;
+  static Color get amber500 => getIt<GSColorsToken>().amber500;
+  static Color get amber600 => getIt<GSColorsToken>().amber600;
+  static Color get amber700 => getIt<GSColorsToken>().amber700;
+  static Color get amber800 => getIt<GSColorsToken>().amber800;
+  static Color get amber900 => getIt<GSColorsToken>().amber900;
+  static Color get orange50 => getIt<GSColorsToken>().orange50;
+  static Color get orange100 => getIt<GSColorsToken>().orange100;
+  static Color get orange200 => getIt<GSColorsToken>().orange200;
+  static Color get orange300 => getIt<GSColorsToken>().orange300;
+  static Color get orange400 => getIt<GSColorsToken>().orange400;
+  static Color get orange500 => getIt<GSColorsToken>().orange500;
+  static Color get orange600 => getIt<GSColorsToken>().orange600;
+  static Color get orange700 => getIt<GSColorsToken>().orange700;
+  static Color get orange800 => getIt<GSColorsToken>().orange800;
+  static Color get orange900 => getIt<GSColorsToken>().orange900;
+  static Color get red50 => getIt<GSColorsToken>().red50;
+  static Color get red100 => getIt<GSColorsToken>().red100;
+  static Color get red200 => getIt<GSColorsToken>().red200;
+  static Color get red300 => getIt<GSColorsToken>().red300;
+  static Color get red400 => getIt<GSColorsToken>().red400;
+  static Color get red500 => getIt<GSColorsToken>().red500;
+  static Color get red600 => getIt<GSColorsToken>().red600;
+  static Color get red700 => getIt<GSColorsToken>().red700;
+  static Color get red800 => getIt<GSColorsToken>().red800;
+  static Color get red900 => getIt<GSColorsToken>().red900;
+  static Color get warmGray50 => getIt<GSColorsToken>().warmGray50;
+  static Color get warmGray100 => getIt<GSColorsToken>().warmGray100;
+  static Color get warmGray200 => getIt<GSColorsToken>().warmGray200;
+  static Color get warmGray300 => getIt<GSColorsToken>().warmGray300;
+  static Color get warmGray400 => getIt<GSColorsToken>().warmGray400;
+  static Color get warmGray500 => getIt<GSColorsToken>().warmGray500;
+  static Color get warmGray600 => getIt<GSColorsToken>().warmGray600;
+  static Color get warmGray700 => getIt<GSColorsToken>().warmGray700;
+  static Color get warmGray800 => getIt<GSColorsToken>().warmGray800;
+  static Color get warmGray900 => getIt<GSColorsToken>().warmGray900;
+  static Color get trueGray50 => getIt<GSColorsToken>().trueGray50;
+  static Color get trueGray100 => getIt<GSColorsToken>().trueGray100;
+  static Color get trueGray200 => getIt<GSColorsToken>().trueGray200;
+  static Color get trueGray300 => getIt<GSColorsToken>().trueGray300;
+  static Color get trueGray400 => getIt<GSColorsToken>().trueGray400;
+  static Color get trueGray500 => getIt<GSColorsToken>().trueGray500;
+  static Color get trueGray600 => getIt<GSColorsToken>().trueGray600;
+  static Color get trueGray700 => getIt<GSColorsToken>().trueGray700;
+  static Color get trueGray800 => getIt<GSColorsToken>().trueGray800;
+  static Color get trueGray900 => getIt<GSColorsToken>().trueGray900;
+  static Color get coolGray50 => getIt<GSColorsToken>().coolGray50;
+  static Color get coolGray100 => getIt<GSColorsToken>().coolGray100;
+  static Color get coolGray200 => getIt<GSColorsToken>().coolGray200;
+  static Color get coolGray300 => getIt<GSColorsToken>().coolGray300;
+  static Color get coolGray400 => getIt<GSColorsToken>().coolGray400;
+  static Color get coolGray500 => getIt<GSColorsToken>().coolGray500;
+  static Color get coolGray600 => getIt<GSColorsToken>().coolGray600;
+  static Color get coolGray700 => getIt<GSColorsToken>().coolGray700;
+  static Color get coolGray800 => getIt<GSColorsToken>().coolGray800;
+  static Color get coolGray900 => getIt<GSColorsToken>().coolGray900;
+  static Color get blueGray50 => getIt<GSColorsToken>().blueGray50;
+  static Color get blueGray100 => getIt<GSColorsToken>().blueGray100;
+  static Color get blueGray200 => getIt<GSColorsToken>().blueGray200;
+  static Color get blueGray300 => getIt<GSColorsToken>().blueGray300;
+  static Color get blueGray400 => getIt<GSColorsToken>().blueGray400;
+  static Color get blueGray500 => getIt<GSColorsToken>().blueGray500;
+  static Color get blueGray600 => getIt<GSColorsToken>().blueGray600;
+  static Color get blueGray700 => getIt<GSColorsToken>().blueGray700;
+  static Color get blueGray800 => getIt<GSColorsToken>().blueGray800;
+  static Color get blueGray900 => getIt<GSColorsToken>().blueGray900;
+  static Color get tertiary50 => getIt<GSColorsToken>().tertiary50;
+  static Color get tertiary100 => getIt<GSColorsToken>().tertiary100;
+  static Color get tertiary200 => getIt<GSColorsToken>().tertiary200;
+  static Color get tertiary300 => getIt<GSColorsToken>().tertiary300;
+  static Color get tertiary400 => getIt<GSColorsToken>().tertiary400;
+  static Color get tertiary500 => getIt<GSColorsToken>().tertiary500;
+  static Color get tertiary600 => getIt<GSColorsToken>().tertiary600;
+  static Color get tertiary700 => getIt<GSColorsToken>().tertiary700;
+  static Color get tertiary800 => getIt<GSColorsToken>().tertiary800;
+  static Color get tertiary900 => getIt<GSColorsToken>().tertiary900;
+  static Color get error00 => getIt<GSColorsToken>().error00;
+  static Color get error50 => getIt<GSColorsToken>().error50;
+  static Color get error100 => getIt<GSColorsToken>().error100;
+  static Color get error200 => getIt<GSColorsToken>().error200;
+  static Color get error300 => getIt<GSColorsToken>().error300;
+  static Color get error400 => getIt<GSColorsToken>().error400;
+  static Color get error500 => getIt<GSColorsToken>().error500;
+  static Color get error600 => getIt<GSColorsToken>().error600;
+  static Color get error700 => getIt<GSColorsToken>().error700;
+  static Color get error800 => getIt<GSColorsToken>().error800;
+  static Color get error900 => getIt<GSColorsToken>().error900;
+  static Color get error950 => getIt<GSColorsToken>().error950;
+  static Color get success0 => getIt<GSColorsToken>().success0;
+  static Color get success50 => getIt<GSColorsToken>().success50;
+  static Color get success100 => getIt<GSColorsToken>().success100;
+  static Color get success200 => getIt<GSColorsToken>().success200;
+  static Color get success300 => getIt<GSColorsToken>().success300;
+  static Color get success400 => getIt<GSColorsToken>().success400;
+  static Color get success500 => getIt<GSColorsToken>().success500;
+  static Color get success600 => getIt<GSColorsToken>().success600;
+  static Color get success700 => getIt<GSColorsToken>().success700;
+  static Color get success800 => getIt<GSColorsToken>().success800;
+  static Color get success900 => getIt<GSColorsToken>().success900;
+  static Color get success950 => getIt<GSColorsToken>().success950;
+  static Color get warning50 => getIt<GSColorsToken>().warning50;
+  static Color get warning100 => getIt<GSColorsToken>().warning100;
+  static Color get warning200 => getIt<GSColorsToken>().warning200;
+  static Color get warning300 => getIt<GSColorsToken>().warning300;
+  static Color get warning400 => getIt<GSColorsToken>().warning400;
+  static Color get warning500 => getIt<GSColorsToken>().warning500;
+  static Color get warning600 => getIt<GSColorsToken>().warning600;
+  static Color get warning700 => getIt<GSColorsToken>().warning700;
+  static Color get warning800 => getIt<GSColorsToken>().warning800;
+  static Color get warning900 => getIt<GSColorsToken>().warning900;
+  static Color get info50 => getIt<GSColorsToken>().info50;
+  static Color get info100 => getIt<GSColorsToken>().info100;
+  static Color get info200 => getIt<GSColorsToken>().info200;
+  static Color get info300 => getIt<GSColorsToken>().info300;
+  static Color get info400 => getIt<GSColorsToken>().info400;
+  static Color get info500 => getIt<GSColorsToken>().info500;
+  static Color get info600 => getIt<GSColorsToken>().info600;
+  static Color get info700 => getIt<GSColorsToken>().info700;
+  static Color get info800 => getIt<GSColorsToken>().info800;
+  static Color get info900 => getIt<GSColorsToken>().info900;
+  static Color get light50 => getIt<GSColorsToken>().light50;
+  static Color get light100 => getIt<GSColorsToken>().light100;
+  static Color get light200 => getIt<GSColorsToken>().light200;
+  static Color get light300 => getIt<GSColorsToken>().light300;
+  static Color get light400 => getIt<GSColorsToken>().light400;
+  static Color get light500 => getIt<GSColorsToken>().light500;
+  static Color get light600 => getIt<GSColorsToken>().light600;
+  static Color get light700 => getIt<GSColorsToken>().light700;
+  static Color get light800 => getIt<GSColorsToken>().light800;
+  static Color get light900 => getIt<GSColorsToken>().light900;
+  static Color get primary0 => getIt<GSColorsToken>().primary0;
+  static Color get primary50 => getIt<GSColorsToken>().primary50;
+   static Color get primary100 => getIt<GSColorsToken>().primary100;
 
-  static Map<String, Color> colorMap = {
-    "rose50": rose50,
-    "rose100": rose100,
-    "rose200": rose200,
-    "rose300": rose300,
-    "rose400": rose400,
-    "rose500": rose500,
-    "rose600": rose600,
-    "rose700": rose700,
-    "rose800": rose800,
-    "rose900": rose900,
-    "pink50": pink50,
-    "pink100": pink100,
-    "pink200": pink200,
-    "pink300": pink300,
-    "pink400": pink400,
-    "pink500": pink500,
-    "pink600": pink600,
-    "pink700": pink700,
-    "pink800": pink800,
-    "pink900": pink900,
-    "fuchsia50": fuchsia50,
-    "fuchsia100": fuchsia100,
-    "fuchsia200": fuchsia200,
-    "fuchsia300": fuchsia300,
-    "fuchsia400": fuchsia400,
-    "fuchsia500": fuchsia500,
-    "fuchsia600": fuchsia600,
-    "fuchsia700": fuchsia700,
-    "fuchsia800": fuchsia800,
-    "fuchsia900": fuchsia900,
-    "purple50": purple50,
-    "purple100": purple100,
-    "purple200": purple200,
-    "purple300": purple300,
-    "purple400": purple400,
-    "purple500": purple500,
-    "purple600": purple600,
-    "purple700": purple700,
-    "purple800": purple800,
-    "purple900": purple900,
-    "violet50": violet50,
-    "violet100": violet100,
-    "violet200": violet200,
-    "violet300": violet300,
-    "violet400": violet400,
-    "violet500": violet500,
-    "violet600": violet600,
-    "violet700": violet700,
-    "violet800": violet800,
-    "violet900": violet900,
-    "indigo50": indigo50,
-    "indigo100": indigo100,
-    "indigo200": indigo200,
-    "indigo300": indigo300,
-    "indigo400": indigo400,
-    "indigo500": indigo500,
-    "indigo600": indigo600,
-    "indigo700": indigo700,
-    "indigo800": indigo800,
-    "indigo900": indigo900,
-    "blue50": blue50,
-    "blue100": blue100,
-    "blue200": blue200,
-    "blue300": blue300,
-    "blue400": blue400,
-    "blue500": blue500,
-    "blue600": blue600,
-    "blue700": blue700,
-    "blue800": blue800,
-    "blue900": blue900,
-    "lightBlue50": lightBlue50,
-    "lightBlue100": lightBlue100,
-    "lightBlue200": lightBlue200,
-    "lightBlue300": lightBlue300,
-    "lightBlue400": lightBlue400,
-    "lightBlue500": lightBlue500,
-    "lightBlue600": lightBlue600,
-    "lightBlue700": lightBlue700,
-    "lightBlue800": lightBlue800,
-    "lightBlue900": lightBlue900,
-    "darkBlue50": darkBlue50,
-    "darkBlue100": darkBlue100,
-    "darkBlue200": darkBlue200,
-    "darkBlue300": darkBlue300,
-    "darkBlue400": darkBlue400,
-    "darkBlue500": darkBlue500,
-    "darkBlue600": darkBlue600,
-    "darkBlue700": darkBlue700,
-    "darkBlue800": darkBlue800,
-    "darkBlue900": darkBlue900,
-    "cyan50": cyan50,
-    "cyan100": cyan100,
-    "cyan200": cyan200,
-    "cyan300": cyan300,
-    "cyan400": cyan400,
-    "cyan500": cyan500,
-    "cyan600": cyan600,
-    "cyan700": cyan700,
-    "cyan800": cyan800,
-    "cyan900": cyan900,
-    "teal50": teal50,
-    "teal100": teal100,
-    "teal200": teal200,
-    "teal300": teal300,
-    "teal400": teal400,
-    "teal500": teal500,
-    "teal600": teal600,
-    "teal700": teal700,
-    "teal800": teal800,
-    "teal900": teal900,
-    "emerald50": emerald50,
-    "emerald100": emerald100,
-    "emerald200": emerald200,
-    "emerald300": emerald300,
-    "emerald400": emerald400,
-    "emerald500": emerald500,
-    "emerald600": emerald600,
-    "emerald700": emerald700,
-    "emerald800": emerald800,
-    "emerald900": emerald900,
-    "green50": green50,
-    "green100": green100,
-    "green200": green200,
-    "green300": green300,
-    "green400": green400,
-    "green500": green500,
-    "green600": green600,
-    "green700": green700,
-    "green800": green800,
-    "green900": green900,
-    "lime50": lime50,
-    "lime100": lime100,
-    "lime200": lime200,
-    "lime300": lime300,
-    "lime400": lime400,
-    "lime500": lime500,
-    "lime600": lime600,
-    "lime700": lime700,
-    "lime800": lime800,
-    "lime900": lime900,
-    "yellow50": yellow50,
-    "yellow100": yellow100,
-    "yellow200": yellow200,
-    "yellow300": yellow300,
-    "yellow400": yellow400,
-    "yellow500": yellow500,
-    "yellow600": yellow600,
-    "yellow700": yellow700,
-    "yellow800": yellow800,
-    "yellow900": yellow900,
-    "amber50": amber50,
-    "amber100": amber100,
-    "amber200": amber200,
-    "amber300": amber300,
-    "amber400": amber400,
-    "amber500": amber500,
-    "amber600": amber600,
-    "amber700": amber700,
-    "amber800": amber800,
-    "amber900": amber900,
-    "orange50": orange50,
-    "orange100": orange100,
-    "orange200": orange200,
-    "orange300": orange300,
-    "orange400": orange400,
-    "orange500": orange500,
-    "orange600": orange600,
-    "orange700": orange700,
-    "orange800": orange800,
-    "orange900": orange900,
-    "red50": red50,
-    "red100": red100,
-    "red200": red200,
-    "red300": red300,
-    "red400": red400,
-    "red500": red500,
-    "red600": red600,
-    "red700": red700,
-    "red800": red800,
-    "red900": red900,
-    "warmGray50": warmGray50,
-    "warmGray100": warmGray100,
-    "warmGray200": warmGray200,
-    "warmGray300": warmGray300,
-    "warmGray400": warmGray400,
-    "warmGray500": warmGray500,
-    "warmGray600": warmGray600,
-    "warmGray700": warmGray700,
-    "warmGray800": warmGray800,
-    "warmGray900": warmGray900,
-    "trueGray50": trueGray50,
-    "trueGray100": trueGray100,
-    "trueGray200": trueGray200,
-    "trueGray300": trueGray300,
-    "trueGray400": trueGray400,
-    "trueGray500": trueGray500,
-    "trueGray600": trueGray600,
-    "trueGray700": trueGray700,
-    "trueGray800": trueGray800,
-    "trueGray900": trueGray900,
-    "coolGray50": coolGray50,
-    "coolGray100": coolGray100,
-    "coolGray200": coolGray200,
-    "coolGray300": coolGray300,
-    "coolGray400": coolGray400,
-    "coolGray500": coolGray500,
-    "coolGray600": coolGray600,
-    "coolGray700": coolGray700,
-    "coolGray800": coolGray800,
-    "coolGray900": coolGray900,
-    "blueGray50": blueGray50,
-    "blueGray100": blueGray100,
-    "blueGray200": blueGray200,
-    "blueGray300": blueGray300,
-    "blueGray400": blueGray400,
-    "blueGray500": blueGray500,
-    "blueGray600": blueGray600,
-    "blueGray700": blueGray700,
-    "blueGray800": blueGray800,
-    "blueGray900": blueGray900,
-    "tertiary50": tertiary50,
-    "tertiary100": tertiary100,
-    "tertiary200": tertiary200,
-    "tertiary300": tertiary300,
-    "tertiary400": tertiary400,
-    "tertiary500": tertiary500,
-    "tertiary600": tertiary600,
-    "tertiary700": tertiary700,
-    "tertiary800": tertiary800,
-    "tertiary900": tertiary900,
-    "error00": error00,
-    "error50": error50,
-    "error100": error100,
-    "error200": error200,
-    "error300": error300,
-    "error400": error400,
-    "error500": error500,
-    "error600": error600,
-    "error700": error700,
-    "error800": error800,
-    "error900": error900,
-    "error950": error950,
-    "success0": success0,
-    "success50": success50,
-    "success100": success100,
-    "success200": success200,
-    "success300": success300,
-    "success400": success400,
-    "success500": success500,
-    "success600": success600,
-    "success700": success700,
-    "success800": success800,
-    "success900": success900,
-    "success950": success950,
-    "warning50": warning50,
-    "warning100": warning100,
-    "warning200": warning200,
-    "warning300": warning300,
-    "warning400": warning400,
-    "warning500": warning500,
-    "warning600": warning600,
-    "warning700": warning700,
-    "warning800": warning800,
-    "warning900": warning900,
-    "info50": info50,
-    "info100": info100,
-    "info200": info200,
-    "info300": info300,
-    "info400": info400,
-    "info500": info500,
-    "info600": info600,
-    "info700": info700,
-    "info800": info800,
-    "info900": info900,
-    "light50": light50,
-    "light100": light100,
-    "light200": light200,
-    "light300": light300,
-    "light400": light400,
-    "light500": light500,
-    "light600": light600,
-    "light700": light700,
-    "light800": light800,
-    "light900": light900,
-    "primary0": primary0,
-    "primary50": primary50,
-    "primary100": primary100,
-    "primary200": primary200,
-    "primary300": primary300,
-    "primary400": primary400,
-    "primary500": primary500,
-    "primary600": primary600,
-    "primary700": primary700,
-    "primary800": primary800,
-    "primary900": primary900,
-    "primary950": primary950,
-    "secondary0": secondary0,
-    "secondary50": secondary50,
-    "secondary100": secondary100,
-    "secondary200": secondary200,
-    "secondary300": secondary300,
-    "secondary400": secondary400,
-    "secondary500": secondary500,
-    "secondary600": secondary600,
-    "secondary700": secondary700,
-    "secondary800": secondary800,
-    "secondary900": secondary900,
-    "secondary950": secondary950,
-    "textLight0": textLight0,
-    "textLight50": textLight50,
-    "textLight100": textLight100,
-    "textLight200": textLight200,
-    "textLight300": textLight300,
-    "textLight400": textLight400,
-    "textLight500": textLight500,
-    "textLight600": textLight600,
-    "textLight700": textLight700,
-    "textLight800": textLight800,
-    "textLight900": textLight900,
-    "textLight950": textLight950,
-    "textDark0": textDark0,
-    "textDark50": textDark50,
-    "textDark100": textDark100,
-    "textDark200": textDark200,
-    "textDark300": textDark300,
-    "textDark400": textDark400,
-    "textDark500": textDark500,
-    "textDark600": textDark600,
-    "textDark700": textDark700,
-    "textDark800": textDark800,
-    "textDark900": textDark900,
-    "textDark950": textDark950,
-    "borderDark0": borderDark0,
-    "borderDark50": borderDark50,
-    "borderDark100": borderDark100,
-    "borderDark200": borderDark200,
-    "borderDark300": borderDark300,
-    "borderDark400": borderDark400,
-    "borderDark500": borderDark500,
-    "borderDark600": borderDark600,
-    "borderDark700": borderDark700,
-    "borderDark800": borderDark800,
-    "borderDark900": borderDark900,
-    "borderDark950": borderDark950,
-    "borderLight0": borderLight0,
-    "borderLight50": borderLight50,
-    "borderLight100": borderLight100,
-    "borderLight200": borderLight200,
-    "borderLight300": borderLight300,
-    "borderLight400": borderLight400,
-    "borderLight500": borderLight500,
-    "borderLight600": borderLight600,
-    "borderLight700": borderLight700,
-    "borderLight800": borderLight800,
-    "borderLight900": borderLight900,
-    "borderLight950": borderLight950,
-    "backgroundDark0": backgroundDark0,
-    "backgroundDark50": backgroundDark50,
-    "backgroundDark100": backgroundDark100,
-    "backgroundDark200": backgroundDark200,
-    "backgroundDark300": backgroundDark300,
-    "backgroundDark400": backgroundDark400,
-    "backgroundDark500": backgroundDark500,
-    "backgroundDark600": backgroundDark600,
-    "backgroundDark700": backgroundDark700,
-    "backgroundDark800": backgroundDark800,
-    "backgroundDark900": backgroundDark900,
-    "backgroundDark950": backgroundDark950,
-    "backgroundLight0": backgroundLight0,
-    "backgroundLight50": backgroundLight50,
-    "backgroundLight100": backgroundLight100,
-    "backgroundLight200": backgroundLight200,
-    "backgroundLight300": backgroundLight300,
-    "backgroundLight400": backgroundLight400,
-    "backgroundLight500": backgroundLight500,
-    "backgroundLight600": backgroundLight600,
-    "backgroundLight700": backgroundLight700,
-    "backgroundLight800": backgroundLight800,
-    "backgroundLight900": backgroundLight900,
-    "backgroundLight950": backgroundLight950,
-    "backgroundLightError": backgroundLightError,
-    "backgroundDarkError": backgroundDarkError,
-    "backgroundLightWarning": backgroundLightWarning,
-    "backgroundDarkWarning": backgroundDarkWarning,
-    "backgroundLightSuccess": backgroundLightSuccess,
-    "backgroundDarkSuccess": backgroundDarkSuccess,
-    "backgroundLightInfo": backgroundLightInfo,
-    "backgroundDarkInfo": backgroundDarkInfo,
-    "backgroundLightMuted": backgroundLightMuted,
-    "backgroundDarkMuted": backgroundDarkMuted,
-    "white": white,
-    "black": black,
-  };
+  static Color get primary200 => getIt<GSColorsToken>().primary200;
+  static Color get primary300 => getIt<GSColorsToken>().primary300;
+  static Color get primary400 => getIt<GSColorsToken>().primary400;
+  static Color get primary500 => getIt<GSColorsToken>().primary500;
+  static Color get primary600 => getIt<GSColorsToken>().primary600;
+  static Color get primary700 => getIt<GSColorsToken>().primary700;
+  static Color get primary800 => getIt<GSColorsToken>().primary800;
+  static Color get primary900 => getIt<GSColorsToken>().primary900;
+  static Color get primary950 => getIt<GSColorsToken>().primary950;
+  static Color get secondary0 => getIt<GSColorsToken>().secondary0;
+  static Color get secondary50 => getIt<GSColorsToken>().secondary50;
+  static Color get secondary100 => getIt<GSColorsToken>().secondary100;
+  static Color get secondary200 => getIt<GSColorsToken>().secondary200;
+  static Color get secondary300 => getIt<GSColorsToken>().secondary300;
+  static Color get secondary400 => getIt<GSColorsToken>().secondary400;
+  static Color get secondary500 => getIt<GSColorsToken>().secondary500;
+  static Color get secondary600 => getIt<GSColorsToken>().secondary600;
+  static Color get secondary700 => getIt<GSColorsToken>().secondary700;
+  static Color get secondary800 => getIt<GSColorsToken>().secondary800;
+  static Color get secondary900 => getIt<GSColorsToken>().secondary900;
+  static Color get secondary950 => getIt<GSColorsToken>().secondary950;
+  static Color get textLight0 => getIt<GSColorsToken>().textLight0;
+  static Color get textLight50 => getIt<GSColorsToken>().textLight50;
+  static Color get textLight100 => getIt<GSColorsToken>().textLight100;
+  static Color get textLight200 => getIt<GSColorsToken>().textLight200;
+  static Color get textLight300 => getIt<GSColorsToken>().textLight300;
+  static Color get textLight400 => getIt<GSColorsToken>().textLight400;
+  static Color get textLight500 => getIt<GSColorsToken>().textLight500;
+  static Color get textLight600 => getIt<GSColorsToken>().textLight600;
+  static Color get textLight700 => getIt<GSColorsToken>().textLight700;
+  static Color get textLight800 => getIt<GSColorsToken>().textLight800;
+  static Color get textLight900 => getIt<GSColorsToken>().textLight900;
+  static Color get textLight950 => getIt<GSColorsToken>().textLight950;
+  static Color get textDark0 => getIt<GSColorsToken>().textDark0;
+  static Color get textDark50 => getIt<GSColorsToken>().textDark50;
+  static Color get textDark100 => getIt<GSColorsToken>().textDark100;
+  static Color get textDark200 => getIt<GSColorsToken>().textDark200;
+  static Color get textDark300 => getIt<GSColorsToken>().textDark300;
+  static Color get textDark400 => getIt<GSColorsToken>().textDark400;
+  static Color get textDark500 => getIt<GSColorsToken>().textDark500;
+  static Color get textDark600 => getIt<GSColorsToken>().textDark600;
+  static Color get textDark700 => getIt<GSColorsToken>().textDark700;
+  static Color get textDark800 => getIt<GSColorsToken>().textDark800;
+  static Color get textDark900 => getIt<GSColorsToken>().textDark900;
+  static Color get textDark950 => getIt<GSColorsToken>().textDark950;
+  static Color get borderDark0 => getIt<GSColorsToken>().borderDark0;
+  static Color get borderDark50 => getIt<GSColorsToken>().borderDark50;
+  static Color get borderDark100 => getIt<GSColorsToken>().borderDark100;
+  static Color get borderDark200 => getIt<GSColorsToken>().borderDark200;
+  static Color get borderDark300 => getIt<GSColorsToken>().borderDark300;
+  static Color get borderDark400 => getIt<GSColorsToken>().borderDark400;
+  static Color get borderDark500 => getIt<GSColorsToken>().borderDark500;
+  static Color get borderDark600 => getIt<GSColorsToken>().borderDark600;
+  static Color get borderDark700 => getIt<GSColorsToken>().borderDark700;
+  static Color get borderDark800 => getIt<GSColorsToken>().borderDark800;
+  static Color get borderDark900 => getIt<GSColorsToken>().borderDark900;
+  static Color get borderDark950 => getIt<GSColorsToken>().borderDark950;
+  static Color get borderLight0 => getIt<GSColorsToken>().borderLight0;
+  static Color get borderLight50 => getIt<GSColorsToken>().borderLight50;
+  static Color get borderLight100 => getIt<GSColorsToken>().borderLight100;
+  static Color get borderLight200 => getIt<GSColorsToken>().borderLight200;
+  static Color get borderLight300 => getIt<GSColorsToken>().borderLight300;
+  static Color get borderLight400 => getIt<GSColorsToken>().borderLight400;
+  static Color get borderLight500 => getIt<GSColorsToken>().borderLight500;
+  static Color get borderLight600 => getIt<GSColorsToken>().borderLight600;
+  static Color get borderLight700 => getIt<GSColorsToken>().borderLight700;
+  static Color get borderLight800 => getIt<GSColorsToken>().borderLight800;
+  static Color get borderLight900 => getIt<GSColorsToken>().borderLight900;
+  static Color get borderLight950 => getIt<GSColorsToken>().borderLight950;
+  static Color get backgroundDark0 => getIt<GSColorsToken>().backgroundDark0;
+  static Color get backgroundDark50 => getIt<GSColorsToken>().backgroundDark50;
+  static Color get backgroundDark100 => getIt<GSColorsToken>().backgroundDark100;
+  static Color get backgroundDark200 => getIt<GSColorsToken>().backgroundDark200;
+  static Color get backgroundDark300 => getIt<GSColorsToken>().backgroundDark300;
+  static Color get backgroundDark400 => getIt<GSColorsToken>().backgroundDark400;
+  static Color get backgroundDark500 => getIt<GSColorsToken>().backgroundDark500;
+  static Color get backgroundDark600 => getIt<GSColorsToken>().backgroundDark600;
+  static Color get backgroundDark700 => getIt<GSColorsToken>().backgroundDark700;
+  static Color get backgroundDark800 => getIt<GSColorsToken>().backgroundDark800;
+  static Color get backgroundDark900 => getIt<GSColorsToken>().backgroundDark900;
+  static Color get backgroundDark950 => getIt<GSColorsToken>().backgroundDark950;
+  static Color get backgroundLight0 => getIt<GSColorsToken>().backgroundLight0;
+  static Color get backgroundLight50 => getIt<GSColorsToken>().backgroundLight50;
+  static Color get backgroundLight100 => getIt<GSColorsToken>().backgroundLight100;
+  static Color get backgroundLight200 => getIt<GSColorsToken>().backgroundLight200;
+  static Color get backgroundLight300 => getIt<GSColorsToken>().backgroundLight300;
+  static Color get backgroundLight400 => getIt<GSColorsToken>().backgroundLight400;
+  static Color get backgroundLight500 => getIt<GSColorsToken>().backgroundLight500;
+  static Color get backgroundLight600 => getIt<GSColorsToken>().backgroundLight600;
+  static Color get backgroundLight700 => getIt<GSColorsToken>().backgroundLight700;
+  static Color get backgroundLight800 => getIt<GSColorsToken>().backgroundLight800;
+  static Color get backgroundLight900 => getIt<GSColorsToken>().backgroundLight900;
+  static Color get backgroundLight950 => getIt<GSColorsToken>().backgroundLight950;
+  static Color get backgroundLightError => getIt<GSColorsToken>().backgroundLightError;
+  static Color get backgroundDarkError => getIt<GSColorsToken>().backgroundDarkError;
+  static Color get backgroundLightWarning =>
+      getIt<GSColorsToken>().backgroundLightWarning;
+  static Color get backgroundDarkWarning => getIt<GSColorsToken>().backgroundDarkWarning;
+  static Color get backgroundLightSuccess =>
+      getIt<GSColorsToken>().backgroundLightSuccess;
+  static Color get backgroundDarkSuccess => getIt<GSColorsToken>().backgroundDarkSuccess;
+  static Color get backgroundLightInfo => getIt<GSColorsToken>().backgroundLightInfo;
+  static Color get backgroundDarkInfo => getIt<GSColorsToken>().backgroundDarkInfo;
+  static Color get backgroundLightMuted => getIt<GSColorsToken>().backgroundLightMuted;
+  static Color get backgroundDarkMuted => getIt<GSColorsToken>().backgroundDarkMuted;
+  static Color get white => getIt<GSColorsToken>().white;
+  static Color get black => getIt<GSColorsToken>().black;
+
+  $GSColors() {
+    colorMap = {
+      "rose50": rose50,
+      "rose100": rose100,
+      "rose200": rose200,
+      "rose300": rose300,
+      "rose400": rose400,
+      "rose500": rose500,
+      "rose600": rose600,
+      "rose700": rose700,
+      "rose800": rose800,
+      "rose900": rose900,
+      "pink50": pink50,
+      "pink100": pink100,
+      "pink200": pink200,
+      "pink300": pink300,
+      "pink400": pink400,
+      "pink500": pink500,
+      "pink600": pink600,
+      "pink700": pink700,
+      "pink800": pink800,
+      "pink900": pink900,
+      "fuchsia50": fuchsia50,
+      "fuchsia100": fuchsia100,
+      "fuchsia200": fuchsia200,
+      "fuchsia300": fuchsia300,
+      "fuchsia400": fuchsia400,
+      "fuchsia500": fuchsia500,
+      "fuchsia600": fuchsia600,
+      "fuchsia700": fuchsia700,
+      "fuchsia800": fuchsia800,
+      "fuchsia900": fuchsia900,
+      "purple50": purple50,
+      "purple100": purple100,
+      "purple200": purple200,
+      "purple300": purple300,
+      "purple400": purple400,
+      "purple500": purple500,
+      "purple600": purple600,
+      "purple700": purple700,
+      "purple800": purple800,
+      "purple900": purple900,
+      "violet50": violet50,
+      "violet100": violet100,
+      "violet200": violet200,
+      "violet300": violet300,
+      "violet400": violet400,
+      "violet500": violet500,
+      "violet600": violet600,
+      "violet700": violet700,
+      "violet800": violet800,
+      "violet900": violet900,
+      "indigo50": indigo50,
+      "indigo100": indigo100,
+      "indigo200": indigo200,
+      "indigo300": indigo300,
+      "indigo400": indigo400,
+      "indigo500": indigo500,
+      "indigo600": indigo600,
+      "indigo700": indigo700,
+      "indigo800": indigo800,
+      "indigo900": indigo900,
+      "blue50": blue50,
+      "blue100": blue100,
+      "blue200": blue200,
+      "blue300": blue300,
+      "blue400": blue400,
+      "blue500": blue500,
+      "blue600": blue600,
+      "blue700": blue700,
+      "blue800": blue800,
+      "blue900": blue900,
+      "lightBlue50": lightBlue50,
+      "lightBlue100": lightBlue100,
+      "lightBlue200": lightBlue200,
+      "lightBlue300": lightBlue300,
+      "lightBlue400": lightBlue400,
+      "lightBlue500": lightBlue500,
+      "lightBlue600": lightBlue600,
+      "lightBlue700": lightBlue700,
+      "lightBlue800": lightBlue800,
+      "lightBlue900": lightBlue900,
+      "darkBlue50": darkBlue50,
+      "darkBlue100": darkBlue100,
+      "darkBlue200": darkBlue200,
+      "darkBlue300": darkBlue300,
+      "darkBlue400": darkBlue400,
+      "darkBlue500": darkBlue500,
+      "darkBlue600": darkBlue600,
+      "darkBlue700": darkBlue700,
+      "darkBlue800": darkBlue800,
+      "darkBlue900": darkBlue900,
+      "cyan50": cyan50,
+      "cyan100": cyan100,
+      "cyan200": cyan200,
+      "cyan300": cyan300,
+      "cyan400": cyan400,
+      "cyan500": cyan500,
+      "cyan600": cyan600,
+      "cyan700": cyan700,
+      "cyan800": cyan800,
+      "cyan900": cyan900,
+      "teal50": teal50,
+      "teal100": teal100,
+      "teal200": teal200,
+      "teal300": teal300,
+      "teal400": teal400,
+      "teal500": teal500,
+      "teal600": teal600,
+      "teal700": teal700,
+      "teal800": teal800,
+      "teal900": teal900,
+      "emerald50": emerald50,
+      "emerald100": emerald100,
+      "emerald200": emerald200,
+      "emerald300": emerald300,
+      "emerald400": emerald400,
+      "emerald500": emerald500,
+      "emerald600": emerald600,
+      "emerald700": emerald700,
+      "emerald800": emerald800,
+      "emerald900": emerald900,
+      "green50": green50,
+      "green100": green100,
+      "green200": green200,
+      "green300": green300,
+      "green400": green400,
+      "green500": green500,
+      "green600": green600,
+      "green700": green700,
+      "green800": green800,
+      "green900": green900,
+      "lime50": lime50,
+      "lime100": lime100,
+      "lime200": lime200,
+      "lime300": lime300,
+      "lime400": lime400,
+      "lime500": lime500,
+      "lime600": lime600,
+      "lime700": lime700,
+      "lime800": lime800,
+      "lime900": lime900,
+      "yellow50": yellow50,
+      "yellow100": yellow100,
+      "yellow200": yellow200,
+      "yellow300": yellow300,
+      "yellow400": yellow400,
+      "yellow500": yellow500,
+      "yellow600": yellow600,
+      "yellow700": yellow700,
+      "yellow800": yellow800,
+      "yellow900": yellow900,
+      "amber50": amber50,
+      "amber100": amber100,
+      "amber200": amber200,
+      "amber300": amber300,
+      "amber400": amber400,
+      "amber500": amber500,
+      "amber600": amber600,
+      "amber700": amber700,
+      "amber800": amber800,
+      "amber900": amber900,
+      "orange50": orange50,
+      "orange100": orange100,
+      "orange200": orange200,
+      "orange300": orange300,
+      "orange400": orange400,
+      "orange500": orange500,
+      "orange600": orange600,
+      "orange700": orange700,
+      "orange800": orange800,
+      "orange900": orange900,
+      "red50": red50,
+      "red100": red100,
+      "red200": red200,
+      "red300": red300,
+      "red400": red400,
+      "red500": red500,
+      "red600": red600,
+      "red700": red700,
+      "red800": red800,
+      "red900": red900,
+      "warmGray50": warmGray50,
+      "warmGray100": warmGray100,
+      "warmGray200": warmGray200,
+      "warmGray300": warmGray300,
+      "warmGray400": warmGray400,
+      "warmGray500": warmGray500,
+      "warmGray600": warmGray600,
+      "warmGray700": warmGray700,
+      "warmGray800": warmGray800,
+      "warmGray900": warmGray900,
+      "trueGray50": trueGray50,
+      "trueGray100": trueGray100,
+      "trueGray200": trueGray200,
+      "trueGray300": trueGray300,
+      "trueGray400": trueGray400,
+      "trueGray500": trueGray500,
+      "trueGray600": trueGray600,
+      "trueGray700": trueGray700,
+      "trueGray800": trueGray800,
+      "trueGray900": trueGray900,
+      "coolGray50": coolGray50,
+      "coolGray100": coolGray100,
+      "coolGray200": coolGray200,
+      "coolGray300": coolGray300,
+      "coolGray400": coolGray400,
+      "coolGray500": coolGray500,
+      "coolGray600": coolGray600,
+      "coolGray700": coolGray700,
+      "coolGray800": coolGray800,
+      "coolGray900": coolGray900,
+      "blueGray50": blueGray50,
+      "blueGray100": blueGray100,
+      "blueGray200": blueGray200,
+      "blueGray300": blueGray300,
+      "blueGray400": blueGray400,
+      "blueGray500": blueGray500,
+      "blueGray600": blueGray600,
+      "blueGray700": blueGray700,
+      "blueGray800": blueGray800,
+      "blueGray900": blueGray900,
+      "tertiary50": tertiary50,
+      "tertiary100": tertiary100,
+      "tertiary200": tertiary200,
+      "tertiary300": tertiary300,
+      "tertiary400": tertiary400,
+      "tertiary500": tertiary500,
+      "tertiary600": tertiary600,
+      "tertiary700": tertiary700,
+      "tertiary800": tertiary800,
+      "tertiary900": tertiary900,
+      "error00": error00,
+      "error50": error50,
+      "error100": error100,
+      "error200": error200,
+      "error300": error300,
+      "error400": error400,
+      "error500": error500,
+      "error600": error600,
+      "error700": error700,
+      "error800": error800,
+      "error900": error900,
+      "error950": error950,
+      "success0": success0,
+      "success50": success50,
+      "success100": success100,
+      "success200": success200,
+      "success300": success300,
+      "success400": success400,
+      "success500": success500,
+      "success600": success600,
+      "success700": success700,
+      "success800": success800,
+      "success900": success900,
+      "success950": success950,
+      "warning50": warning50,
+      "warning100": warning100,
+      "warning200": warning200,
+      "warning300": warning300,
+      "warning400": warning400,
+      "warning500": warning500,
+      "warning600": warning600,
+      "warning700": warning700,
+      "warning800": warning800,
+      "warning900": warning900,
+      "info50": info50,
+      "info100": info100,
+      "info200": info200,
+      "info300": info300,
+      "info400": info400,
+      "info500": info500,
+      "info600": info600,
+      "info700": info700,
+      "info800": info800,
+      "info900": info900,
+      "light50": light50,
+      "light100": light100,
+      "light200": light200,
+      "light300": light300,
+      "light400": light400,
+      "light500": light500,
+      "light600": light600,
+      "light700": light700,
+      "light800": light800,
+      "light900": light900,
+      "primary0": primary0,
+      "primary50": primary50,
+      "primary100": primary100,
+      "primary200": primary200,
+      "primary300": primary300,
+      "primary400": primary400,
+      "primary500": primary500,
+      "primary600": primary600,
+      "primary700": primary700,
+      "primary800": primary800,
+      "primary900": primary900,
+      "primary950": primary950,
+      "secondary0": secondary0,
+      "secondary50": secondary50,
+      "secondary100": secondary100,
+      "secondary200": secondary200,
+      "secondary300": secondary300,
+      "secondary400": secondary400,
+      "secondary500": secondary500,
+      "secondary600": secondary600,
+      "secondary700": secondary700,
+      "secondary800": secondary800,
+      "secondary900": secondary900,
+      "secondary950": secondary950,
+      "textLight0": textLight0,
+      "textLight50": textLight50,
+      "textLight100": textLight100,
+      "textLight200": textLight200,
+      "textLight300": textLight300,
+      "textLight400": textLight400,
+      "textLight500": textLight500,
+      "textLight600": textLight600,
+      "textLight700": textLight700,
+      "textLight800": textLight800,
+      "textLight900": textLight900,
+      "textLight950": textLight950,
+      "textDark0": textDark0,
+      "textDark50": textDark50,
+      "textDark100": textDark100,
+      "textDark200": textDark200,
+      "textDark300": textDark300,
+      "textDark400": textDark400,
+      "textDark500": textDark500,
+      "textDark600": textDark600,
+      "textDark700": textDark700,
+      "textDark800": textDark800,
+      "textDark900": textDark900,
+      "textDark950": textDark950,
+      "borderDark0": borderDark0,
+      "borderDark50": borderDark50,
+      "borderDark100": borderDark100,
+      "borderDark200": borderDark200,
+      "borderDark300": borderDark300,
+      "borderDark400": borderDark400,
+      "borderDark500": borderDark500,
+      "borderDark600": borderDark600,
+      "borderDark700": borderDark700,
+      "borderDark800": borderDark800,
+      "borderDark900": borderDark900,
+      "borderDark950": borderDark950,
+      "borderLight0": borderLight0,
+      "borderLight50": borderLight50,
+      "borderLight100": borderLight100,
+      "borderLight200": borderLight200,
+      "borderLight300": borderLight300,
+      "borderLight400": borderLight400,
+      "borderLight500": borderLight500,
+      "borderLight600": borderLight600,
+      "borderLight700": borderLight700,
+      "borderLight800": borderLight800,
+      "borderLight900": borderLight900,
+      "borderLight950": borderLight950,
+      "backgroundDark0": backgroundDark0,
+      "backgroundDark50": backgroundDark50,
+      "backgroundDark100": backgroundDark100,
+      "backgroundDark200": backgroundDark200,
+      "backgroundDark300": backgroundDark300,
+      "backgroundDark400": backgroundDark400,
+      "backgroundDark500": backgroundDark500,
+      "backgroundDark600": backgroundDark600,
+      "backgroundDark700": backgroundDark700,
+      "backgroundDark800": backgroundDark800,
+      "backgroundDark900": backgroundDark900,
+      "backgroundDark950": backgroundDark950,
+      "backgroundLight0": backgroundLight0,
+      "backgroundLight50": backgroundLight50,
+      "backgroundLight100": backgroundLight100,
+      "backgroundLight200": backgroundLight200,
+      "backgroundLight300": backgroundLight300,
+      "backgroundLight400": backgroundLight400,
+      "backgroundLight500": backgroundLight500,
+      "backgroundLight600": backgroundLight600,
+      "backgroundLight700": backgroundLight700,
+      "backgroundLight800": backgroundLight800,
+      "backgroundLight900": backgroundLight900,
+      "backgroundLight950": backgroundLight950,
+      "backgroundLightError": backgroundLightError,
+      "backgroundDarkError": backgroundDarkError,
+      "backgroundLightWarning": backgroundLightWarning,
+      "backgroundDarkWarning": backgroundDarkWarning,
+      "backgroundLightSuccess": backgroundLightSuccess,
+      "backgroundDarkSuccess": backgroundDarkSuccess,
+      "backgroundLightInfo": backgroundLightInfo,
+      "backgroundDarkInfo": backgroundDarkInfo,
+      "backgroundLightMuted": backgroundLightMuted,
+      "backgroundDarkMuted": backgroundDarkMuted,
+      "white": white,
+      "black": black,
+    };
+  }
+
+  late Map<String, Color> colorMap;
+
+  Map<String, Color> getColorMap() {
+    return colorMap;
+  }
 }

@@ -64,7 +64,8 @@ Color? resolveColorFromString(String? color) {
   if (color.contains("white")) {
     return const Color(0xFFFFFFFF); // white
   }
-  return $GSColors.colorMap[color.substring(1)];
+  final colorMap = $GSColors().getColorMap();
+  return colorMap[color.substring(1)];
 }
 
 double? resolveRadiusFromString(String? radius) {

@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
@@ -87,6 +88,10 @@ class GSButton extends StatelessWidget {
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
+        buttonStyle = GSStyle.fromMap(
+            data: getIt<GluestackCustomConfig>().button,
+            descendantStyle: gsButtonConfig.descendantStyle);
+
         GSStyle styler = resolveStyles(
           context: context,
           styles: [
