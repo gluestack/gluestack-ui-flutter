@@ -1,31 +1,30 @@
 enum TabsTabSizes {
-md,
+$md,
 }
 
 enum RadioSizes {
-lg,
-md,
-sm,
+$lg,
+$md,
+$sm,
 }
 
 enum ProgressSizes {
-xs,
-sm,
-md,
-lg,
-xl,
-2xl,
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
+$2xl,
 }
 
 enum TextAreaVariants {
-default,
 }
 
 enum TextAreaSizes {
-xl,
-lg,
-md,
-sm,
+$xl,
+$lg,
+$md,
+$sm,
 }
 
 enum InputVariants {
@@ -35,18 +34,18 @@ rounded,
 }
 
 enum InputSizes {
-xl,
-lg,
-md,
-sm,
+$xl,
+$lg,
+$md,
+$sm,
 }
 
 enum AlertDialogSizes {
-xs,
-sm,
-md,
-lg,
-full,
+$xs,
+$sm,
+$md,
+$lg,
+$full,
 }
 
 enum AlertVariants {
@@ -64,15 +63,15 @@ muted,
 }
 
 enum HeadingSizes {
-5xl,
-4xl,
-3xl,
-2xl,
-xl,
-lg,
-md,
-sm,
-xs,
+$5xl,
+$4xl,
+$3xl,
+$2xl,
+$xl,
+$lg,
+$md,
+$sm,
+$xs,
 }
 
 enum ToastVariants {
@@ -90,61 +89,61 @@ attention,
 }
 
 enum FabSizes {
-sm,
-md,
-lg,
+$sm,
+$md,
+$lg,
 }
 
 enum CheckBoxSizes {
-lg,
-md,
-sm,
+$lg,
+$md,
+$sm,
 }
 
 enum StepperTitleTextSizes {
-sm,
-md,
-lg,
+$sm,
+$md,
+$lg,
 }
 
 enum StepperSizes {
-sm,
-md,
-lg,
+$sm,
+$md,
+$lg,
 }
 
 enum StepperContentTextSizes {
-sm,
-md,
-lg,
+$sm,
+$md,
+$lg,
 }
 
 enum StepperSubtitleTextSizes {
-sm,
-md,
-lg,
+$sm,
+$md,
+$lg,
 }
 
 enum ImageSizes {
-2xs,
-xs,
-sm,
-md,
-lg,
-xl,
-2xl,
-full,
+$2xs,
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
+$2xl,
+$full,
 }
 
 enum HstackSpaces {
-xs,
-sm,
-md,
-lg,
-xl,
-2xl,
-3xl,
-4xl,
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
+$2xl,
+$3xl,
+$4xl,
 }
 
 enum ButtonVariants {
@@ -161,52 +160,52 @@ negative,
 }
 
 enum ButtonSizes {
-xs,
-sm,
-md,
-lg,
-xl,
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
 }
 
 enum AvatarSizes {
-xs,
-sm,
-md,
-lg,
-xl,
-2xl,
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
+$2xl,
 }
 
 enum SwitchSizes {
-sm,
-md,
-lg,
+$sm,
+$md,
+$lg,
 }
 
 enum IconSizes {
-2xs,
-xs,
-sm,
-md,
-lg,
-xl,
+$2xs,
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
 }
 
 enum VStackSpaces {
-xs,
-sm,
-md,
-lg,
-xl,
-2xl,
-3xl,
-4xl,
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
+$2xl,
+$3xl,
+$4xl,
 }
 
 enum FormControlSizes {
-sm,
-md,
-lg,
+$sm,
+$md,
+$lg,
 }
 
 enum BadgeVariants {
@@ -223,8 +222,8 @@ muted,
 }
 
 enum BadgeSizes {
-sm,
-md,
-lg,
+$sm,
+$md,
+$lg,
 }
 

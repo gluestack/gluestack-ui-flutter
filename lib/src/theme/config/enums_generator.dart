@@ -9,6 +9,7 @@ void main() {
 
   //For debug purposes
   // readFile(File('./button/button.dart'));
+
 }
 
 void crawlDirectory(Directory dir) {
@@ -87,7 +88,7 @@ void generateEnum(String mapName, Map<String, dynamic> variants) {
 
   if (variantsExists) {
     //fix for default variant in [TextArea variants]
-    actions.removeWhere((element) => element == 'default');
+    variantsList.removeWhere((element) => element == 'default');
 
     final enumName =
         capitalizeFirstLetter(mapName.replaceFirst('Data', 'Variants'));
@@ -116,7 +117,7 @@ void generateEnum(String mapName, Map<String, dynamic> variants) {
         capitalizeFirstLetter(mapName.replaceFirst('Data', 'Sizes'));
 
     finalOutput.writeln('enum $enumName {');
-    sizes.forEach((e) => finalOutput.writeln('$e,'));
+    sizes.forEach((e) => finalOutput.writeln('\$$e,'));
     finalOutput.writeln('}\n');
   }
 
@@ -124,9 +125,8 @@ void generateEnum(String mapName, Map<String, dynamic> variants) {
   if (spaceExists) {
     final enumName =
         capitalizeFirstLetter(mapName.replaceFirst('Data', 'Spaces'));
-
     finalOutput.writeln('enum $enumName {');
-    spaces.forEach((e) => finalOutput.writeln('$e,'));
+    spaces.forEach((e) => finalOutput.writeln('\$$e,'));
     finalOutput.writeln('}\n');
   }
 
