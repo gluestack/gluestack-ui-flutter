@@ -1,0 +1,231 @@
+enum tabsTabSizes {
+md,
+}
+
+enum radioSizes {
+lg,
+md,
+sm,
+}
+
+enum progressSizes {
+xs,
+sm,
+md,
+lg,
+xl,
+2xl,
+}
+
+enum textAreaVariants {
+default,
+}
+
+enum textAreaSizes {
+xl,
+lg,
+md,
+sm,
+}
+
+enum inputVariants {
+underlined,
+outline,
+rounded,
+}
+
+enum inputSizes {
+xl,
+lg,
+md,
+sm,
+}
+
+enum alertDialogSizes {
+xs,
+sm,
+md,
+lg,
+full,
+}
+
+enum alertVariants {
+solid,
+outline,
+accent,
+}
+
+enum alertActions {
+error,
+warning,
+success,
+info,
+muted,
+}
+
+enum headingSizes {
+5xl,
+4xl,
+3xl,
+2xl,
+xl,
+lg,
+md,
+sm,
+xs,
+}
+
+enum toastVariants {
+solid,
+outline,
+accent,
+}
+
+enum toastActions {
+error,
+warning,
+success,
+info,
+attention,
+}
+
+enum fabSizes {
+sm,
+md,
+lg,
+}
+
+enum checkBoxSizes {
+lg,
+md,
+sm,
+}
+
+enum stepperTitleTextSizes {
+sm,
+md,
+lg,
+}
+
+enum stepperSizes {
+sm,
+md,
+lg,
+}
+
+enum stepperContentTextSizes {
+sm,
+md,
+lg,
+}
+
+enum stepperSubtitleTextSizes {
+sm,
+md,
+lg,
+}
+
+enum imageSizes {
+2xs,
+xs,
+sm,
+md,
+lg,
+xl,
+2xl,
+full,
+}
+
+enum hstackSpaces {
+xs,
+sm,
+md,
+lg,
+xl,
+2xl,
+3xl,
+4xl,
+}
+
+enum buttonVariants {
+link,
+outline,
+solid,
+}
+
+enum buttonActions {
+primary,
+secondary,
+positive,
+negative,
+default,
+}
+
+enum buttonSizes {
+xs,
+sm,
+md,
+lg,
+xl,
+}
+
+enum avatarSizes {
+xs,
+sm,
+md,
+lg,
+xl,
+2xl,
+}
+
+enum switchSizes {
+sm,
+md,
+lg,
+}
+
+enum iconSizes {
+2xs,
+xs,
+sm,
+md,
+lg,
+xl,
+}
+
+enum vStackSpaces {
+xs,
+sm,
+md,
+lg,
+xl,
+2xl,
+3xl,
+4xl,
+}
+
+enum formControlSizes {
+sm,
+md,
+lg,
+}
+
+enum badgeVariants {
+solid,
+outline,
+}
+
+enum badgeActions {
+error,
+warning,
+success,
+info,
+muted,
+}
+
+enum badgeSizes {
+sm,
+md,
+lg,
+}
+

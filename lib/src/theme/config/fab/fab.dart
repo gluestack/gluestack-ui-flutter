@@ -16,7 +16,6 @@ const Map<String, dynamic> fabData = {
   ':disabled': {
     'opacity': 0.4,
     '_web': {
-      // @ts-ignore
       'pointerEvents': 'all !important',
       'cursor': 'not-allowed',
     },
@@ -134,26 +133,12 @@ const Map<String, dynamic> fabData = {
       'top center': {
         'top': '\$4',
         'alignSelf': 'center',
-        // TODO: fix this, this is correct way, but React Native doesn't support this on Native
-        // left: '50%',
-        // transform: [
-        //   {
-        //     // @ts-ignore
-        //     translateX: '-50%',
-        //   },
-        // ],
+ 
       },
       'bottom center': {
         'bottom': '\$4',
         'alignSelf': 'center',
-        // TODO: fix this, this is correct way, but React Native doesn't support this on Native
-        // left: '50%',
-        // transform: [
-        //   {
-        //     // @ts-ignore
-        //     translateX: '-50%',
-        //   },
-        // ],
+
       },
     },
   },
