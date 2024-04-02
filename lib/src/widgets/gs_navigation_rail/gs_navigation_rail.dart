@@ -207,18 +207,17 @@ class _GSNavigationRailState extends State<GSNavigationRail>
     final double minWidth = widget.minWidth ?? 100;
     final double minExtendedWidth = widget.minExtendedWidth ?? 30;
     final TextStyle? unselectedLabelTextStyle =
-        widget.unselectedLabelTextStyle ??
-            unselectedLabelStyler.unselectedLabelTextStyle;
+        widget.unselectedLabelTextStyle ?? unselectedLabelStyler.textStyle;
 
-    final TextStyle? selectedLabelTextStyle = widget.selectedLabelTextStyle ??
-        selectedLabelStyler.selectedLabelTextStyle;
+    final TextStyle? selectedLabelTextStyle =
+        widget.selectedLabelTextStyle ?? selectedLabelStyler.textStyle;
     final IconThemeData unselectedIconTheme = widget.unselectedIconTheme ??
         IconThemeData(
-          color: styler.unselectedIconColor,
+          color: styler.iconColor,
         );
     final IconThemeData selectedIconTheme = widget.selectedIconTheme ??
         IconThemeData(
-          color: styler.selectedIconColor,
+          color: styler.iconColor,
         );
     final double groupAlignment = widget.groupAlignment ?? 0.0;
     final GSNavigationRailLabelType labelType =
