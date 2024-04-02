@@ -5,8 +5,8 @@ StringBuffer finalOutput = StringBuffer();
 
 void main() {
   final currentDirectory = Directory.current;
-  crawlDirectory(currentDirectory);
-  // readFile(File('./button/button.dart'));
+  // crawlDirectory(currentDirectory);
+  readFile(File('./button/button.dart'));
 }
 
 void crawlDirectory(Directory dir) {
@@ -84,7 +84,8 @@ void generateEnum(String mapName, Map<String, dynamic> variants) {
   //variants
 
   if (variantsExists) {
-    String enumName = mapName.replaceFirst('Data', 'Variants');
+    final enumName =
+        capitalizeFirstLetter(mapName.replaceFirst('Data', 'Variants'));
     finalOutput.writeln('enum $enumName {');
     variantsList.forEach((e) => finalOutput.writeln('$e,'));
     finalOutput.writeln('}\n');
@@ -92,7 +93,11 @@ void generateEnum(String mapName, Map<String, dynamic> variants) {
 
   //Action Enums
   if (actionsExists) {
-    String enumName = mapName.replaceFirst('Data', 'Actions');
+    //fix for default action in [Button Actions]
+    actions.removeWhere((element) => element == 'default');
+
+    final enumName =
+        capitalizeFirstLetter(mapName.replaceFirst('Data', 'Actions'));
 
     finalOutput.writeln('enum $enumName {');
     actions.forEach((e) => finalOutput.writeln('$e,'));
@@ -102,7 +107,8 @@ void generateEnum(String mapName, Map<String, dynamic> variants) {
 
   //size Enums
   if (sizeExists) {
-    String enumName = mapName.replaceFirst('Data', 'Sizes');
+    final enumName =
+        capitalizeFirstLetter(mapName.replaceFirst('Data', 'Sizes'));
 
     finalOutput.writeln('enum $enumName {');
     sizes.forEach((e) => finalOutput.writeln('$e,'));
@@ -111,14 +117,15 @@ void generateEnum(String mapName, Map<String, dynamic> variants) {
 
   //space Enums
   if (spaceExists) {
-    String enumName = mapName.replaceFirst('Data', 'Spaces');
+    final enumName =
+        capitalizeFirstLetter(mapName.replaceFirst('Data', 'Spaces'));
 
     finalOutput.writeln('enum $enumName {');
     spaces.forEach((e) => finalOutput.writeln('$e,'));
     finalOutput.writeln('}\n');
   }
 
-  writeToFile('./output.txt', finalOutput.toString());
+  writeToFile('./output.dart', finalOutput.toString());
 }
 
 void writeToFile(String filePath, String data) {
@@ -128,4 +135,9 @@ void writeToFile(String filePath, String data) {
       .writeAsString(data)
       .then((_) => print('Data has been written to $filePath'))
       .catchError((error) => print('Error writing to file: $error'));
+}
+
+String capitalizeFirstLetter(String input) {
+  final output = input.split('')[0].toUpperCase() + input.substring(1);
+  return output;
 }
