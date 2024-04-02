@@ -522,6 +522,8 @@ class GluestackTokenConfig {
 
     registerSingletonIfNotRegistered<GSScreenBreakpointToken>(
         gsScreenBreakpointToken);
+    registerSingletonIfNotRegistered<GSFontFamilyToken>(
+        gsFontFamilyToken);
   }
 }
 
