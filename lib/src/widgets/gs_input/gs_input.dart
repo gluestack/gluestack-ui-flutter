@@ -308,7 +308,8 @@ class _GSInputState extends State<GSInput> {
               showFocusHighlight: false,
               onPressed: widget.onTap,
               onDoubleTap: () {
-                if (widget.controller!.text.isNotEmpty) {
+                if (widget.controller?.text.isNotEmpty ??
+                    controller!.text.isEmpty) {
                   widget.controller!.selection = TextSelection(
                       baseOffset: 0,
                       extentOffset: widget.controller!.text.length);
