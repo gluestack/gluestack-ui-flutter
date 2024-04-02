@@ -1,5 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_content.dart';
@@ -29,6 +28,7 @@ class GSAccordionItemInternal extends StatelessWidget {
   final double? radius;
   final bool? isItemDisabled;
   final Color? accordionbackground;
+  final Color? iconColor;
 
   const GSAccordionItemInternal({
     super.key,
@@ -49,6 +49,7 @@ class GSAccordionItemInternal extends StatelessWidget {
     this.itemPadding,
     this.isItemDisabled,
     this.accordionbackground,
+    this.iconColor,
   });
 
   @override
@@ -151,6 +152,7 @@ class GSAccordionItemInternal extends StatelessWidget {
                                     quarterTurns: 1,
                                     child: Icon(
                                       size: defIconSize,
+                                      color: iconColor,
                                       const IconData(0xf571,
                                           fontFamily: 'MaterialIcons',
                                           matchTextDirection: true),
@@ -162,6 +164,7 @@ class GSAccordionItemInternal extends StatelessWidget {
                                         quarterTurns: 3,
                                         child: Icon(
                                           size: defIconSize,
+                                          color: iconColor,
                                           const IconData(0xf571,
                                               fontFamily: 'MaterialIcons',
                                               matchTextDirection: true),

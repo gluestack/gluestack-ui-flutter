@@ -119,7 +119,7 @@ class _GSAccordionState extends State<GSAccordion> {
     // print(accordionStyle.variants?.variant?.filled?.shadowColor);
     // print(
     //     "from json: ${getIt<GluestackCustomConfig>().accordion?['variants']?['variant']?['filled']?['backgroundColor']}");
-    // print("---------END----------");
+
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: GSAccordionProvider(
@@ -172,6 +172,7 @@ class _GSAccordionState extends State<GSAccordion> {
                       itemPadding: widget.itemPadding,
                       isItemDisabled: widget.children[i].isDisabled,
                       accordionbackground: styler.bg,
+                      iconColor: styler.iconColor,
                     ),
                 ],
               );
