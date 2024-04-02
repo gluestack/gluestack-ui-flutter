@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
@@ -21,7 +22,9 @@ class GSRadioText<T> extends StatelessWidget {
         .sizeMap(ancestorTextStyles?.props?.size)
         ?.textStyle
         ?.fontSize;
-
+radioLabelStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().text)
+        .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().radioText));
     GSStyle styler = resolveStyles(
       context: context,
       styles: [radioLabelStyle],

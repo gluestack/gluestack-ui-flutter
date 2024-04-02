@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/color.dart';
@@ -81,7 +82,8 @@ class GSCheckBoxIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorCheckBoxStyle = GSAncestorProvider.of(context)
         ?.decedentStyles?[checkBoxIndicatorConfig.descendantStyle.first];
-
+checkBoxIndicatorStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().checkboxIndicator);
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,

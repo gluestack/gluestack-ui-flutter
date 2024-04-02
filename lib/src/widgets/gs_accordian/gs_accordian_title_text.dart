@@ -105,7 +105,8 @@ class GSAccordionTitle extends StatelessWidget {
     final size = GSAccordionProvider.of(context)?.size ?? GSAccordionSizes.$md;
     final titleTextStyle =
         GSAccordionProvider.of(context)?.baseAccordionStyle.titleTextStyle;
-
+    accordionTitleTextStyle = GSStyle.fromMap(
+        data: getIt<GluestackCustomConfig>().accordionTitleText);
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,

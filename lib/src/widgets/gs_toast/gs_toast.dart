@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
@@ -36,7 +37,9 @@ class GSToast extends StatelessWidget {
   Widget build(BuildContext context) {
     final toastAction = action?.toGSAction ?? toastStyle.props?.action;
     final toastVariant = variant?.toGSVariant ?? toastStyle.props?.variant;
-
+    toastStyle = GSStyle.fromMap(
+        data: getIt<GluestackCustomConfig>().toast,
+        descendantStyle: gsToastConfig.descendantStyle);
     GSStyle styler = resolveStylesDeprecated(
       context,
       variantStyle: GSToastStyle.gsToastCombination[toastAction]![toastVariant],

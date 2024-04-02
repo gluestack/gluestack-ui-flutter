@@ -1,7 +1,5 @@
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var lineHeightInstance = getIt<GSLineHeightToken>();
-
 class GSLineHeightToken {
   final double $2xs;
   final double $xs;
@@ -33,31 +31,39 @@ class GSLineHeightToken {
 }
 
 class $GSLineHeight {
-  static get $2xs => lineHeightInstance.$2xs;
-  static get $xs => lineHeightInstance.$xs;
-  static get $sm => lineHeightInstance.$sm;
-  static get $md => lineHeightInstance.$md;
-  static get $lg => lineHeightInstance.$lg;
-  static get $xl => lineHeightInstance.$xl;
-  static get $2xl => lineHeightInstance.$2xl;
-  static get $3xl => lineHeightInstance.$3xl;
-  static get $4xl => lineHeightInstance.$4xl;
-  static get $5xl => lineHeightInstance.$5xl;
-  static get $6xl => lineHeightInstance.$6xl;
-  static get $7xl => lineHeightInstance.$7xl;
+  static get $2xs => getIt<GSLineHeightToken>().$2xs;
+  static get $xs => getIt<GSLineHeightToken>().$xs;
+  static get $sm => getIt<GSLineHeightToken>().$sm;
+  static get $md => getIt<GSLineHeightToken>().$md;
+  static get $lg => getIt<GSLineHeightToken>().$lg;
+  static get $xl => getIt<GSLineHeightToken>().$xl;
+  static get $2xl => getIt<GSLineHeightToken>().$2xl;
+  static get $3xl => getIt<GSLineHeightToken>().$3xl;
+  static get $4xl => getIt<GSLineHeightToken>().$4xl;
+  static get $5xl => getIt<GSLineHeightToken>().$5xl;
+  static get $6xl => getIt<GSLineHeightToken>().$6xl;
+  static get $7xl => getIt<GSLineHeightToken>().$7xl;
 
-  static Map<String, double> lineHeightMap = {
-    '2xs': $2xs,
-    'xs': $xs,
-    'sm': $sm,
-    'md': $md,
-    'lg': $lg,
-    'xl': $xl,
-    '2xl': $2xl,
-    '3xl': $3xl,
-    '4xl': $4xl,
-    '5xl': $5xl,
-    '6xl': $6xl,
-    '7xl': $7xl,
-  };
+  late Map<String, double> lineHeightMap;
+
+  $GSLineHeight() {
+    lineHeightMap = {
+      '2xs': $2xs,
+      'xs': $xs,
+      'sm': $sm,
+      'md': $md,
+      'lg': $lg,
+      'xl': $xl,
+      '2xl': $2xl,
+      '3xl': $3xl,
+      '4xl': $4xl,
+      '5xl': $5xl,
+      '6xl': $6xl,
+      '7xl': $7xl,
+    };
+  }
+
+  Map<String, double> getLineHeightMap() {
+    return lineHeightMap;
+  }
 }

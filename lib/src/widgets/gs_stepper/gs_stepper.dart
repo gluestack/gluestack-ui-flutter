@@ -565,6 +565,9 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     final subtitleTextSize =
         widget.size ?? gsStepperSubtitleTextStyle.props?.size;
 
+gsStepperStyle = GSStyle.fromMap(
+    data: getIt<GluestackCustomConfig>().stepper,
+    descendantStyle: gsStepperConfig.descendantStyle);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [

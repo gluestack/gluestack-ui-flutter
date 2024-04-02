@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -94,6 +95,9 @@ class GSCustomSwitchState extends State<GSSwitch> {
       shouldIgnorePointer: widget.isDisabled!,
       child: Builder(builder: (context) {
         // Resolve styles
+        switchStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().toggleSwitch);
+
         GSStyle styler = resolveStyles(
           context: context,
           styles: [switchStyle, switchStyle.sizeMap(widget.size?.toGSSize)],

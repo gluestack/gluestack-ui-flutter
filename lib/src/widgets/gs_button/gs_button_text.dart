@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -20,6 +21,8 @@ class GSButtonText extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsTextConfig.ancestorStyle.first];
+buttonTextStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonText);
 
     // Resolve the final GSStyle.
     final styler = resolveStyles(

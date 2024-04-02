@@ -1,7 +1,6 @@
-
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var fontFamilyInstance = getIt<GSFontFamilyToken>();
+
 
 class GSFontFamilyToken {
   final String? $body;
@@ -14,11 +13,19 @@ class GSFontFamilyToken {
 }
 
 class $GSFontFamily {
-  static get $body => fontFamilyInstance.$body;
-  static get $heading => fontFamilyInstance.$heading;
+  static get $body => getIt<GSFontFamilyToken>().$body;
+  static get $heading => getIt<GSFontFamilyToken>().$heading;
 
-  static Map<String, String?> fontFamilyMap = {
-    "body": $body,
-    "heading": $heading,
-  };
+  late Map<String, String?> fontFamilyMap;
+
+  $GSFontFamily() {
+    fontFamilyMap = {
+      "body": $body,
+      "heading": $heading,
+    };
+  }
+
+  Map<String, String?> getFontFamilyMap() {
+    return fontFamilyMap;
+  }
 }

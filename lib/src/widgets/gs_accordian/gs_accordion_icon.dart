@@ -64,6 +64,8 @@ class GSAccordionIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Resolve the final GSStyle.
+    accordionIconStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().accordionIcon);
     final styler = resolveStyles(
         context: context,
         styles: [

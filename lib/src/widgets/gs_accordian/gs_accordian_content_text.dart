@@ -104,7 +104,8 @@ class GSAccordionContent extends StatelessWidget {
     final size = GSAccordionProvider.of(context)?.size ?? GSAccordionSizes.$md;
     final contentTextStyle =
         GSAccordionProvider.of(context)?.baseAccordionStyle.contentTextStyle;
-
+accordionContentText =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().accordionContentText);
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,

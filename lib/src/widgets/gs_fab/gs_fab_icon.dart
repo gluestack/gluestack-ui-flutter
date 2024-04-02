@@ -18,7 +18,9 @@ class GSFabIcon extends StatelessWidget {
         ?.decedentStyles?[gsfabIconConfig.ancestorStyle.first];
 
     final size = GSFabIconStyle.size[ancestorStyles?.props?.size];
-
+fabIconStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().icon)
+        .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().fabIcon));
     GSStyle styler = resolveStyles(
       context: context,
       styles: [fabIconStyle.merge(ancestorStyles), size],

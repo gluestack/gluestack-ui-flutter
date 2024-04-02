@@ -69,6 +69,7 @@ Color? resolveColorFromString(String? color) {
 }
 
 double? resolveRadiusFromString(String? radius) {
+  final radiiMap = $GSRadii().getRadiiMap();
   if (radius == null) {
     return null;
   }
@@ -80,35 +81,38 @@ double? resolveRadiusFromString(String? radius) {
   }
 
   if (radius == 'full' || radius == 'none') {
-    return $GSRadii.radiiMap[radius]!;
+    return radiiMap[radius]!;
   } else {
     if (radius.contains('\$')) {
-      return $GSRadii.radiiMap[radius.substring(1)]!;
+      return radiiMap[radius.substring(1)]!;
     }
-    return $GSRadii.radiiMap[radius]!;
+    return radiiMap[radius]!;
   }
 }
 
 double? resolveBorderWidthFromString(String? borderWidth) {
+  final borderWidthMap = $GSBorderWidth().getBorderWidthMap();
+
   if (borderWidth == null) {
     return null;
   } else {
     if (borderWidth.contains('\$')) {
-      return $GSBorderWidth.borderWidthMap[borderWidth.substring(1)]!;
+      return borderWidthMap[borderWidth.substring(1)]!;
     }
-    return $GSBorderWidth.borderWidthMap[borderWidth]!;
+    return borderWidthMap[borderWidth]!;
   }
 }
 
 FontWeight? resolveFontWeightFromString(String? fontWeight) {
+  final fontWeightMap = $GSFontWeights().getFontWeightMap();
   if (fontWeight == null) {
     return null;
   }
   if (fontWeight.contains('\$')) {
-    return $GSFontWeights.fontWeightMap[fontWeight.substring(1)]!;
+    return fontWeightMap[fontWeight.substring(1)]!;
   }
 
-  return $GSFontWeights.fontWeightMap[fontWeight];
+  return fontWeightMap[fontWeight];
 }
 
 GSFlexDirections? resolveFlexDirectionFromString(String? flexDirection) {
@@ -123,22 +127,23 @@ GSFlexDirections? resolveFlexDirectionFromString(String? flexDirection) {
 }
 
 double? resolveSpaceFromString(String? space) {
+  final spaceMap = $GSSpace().getSpaceMap();
   if (space == null) {
     return null;
   }
   if (space.contains('-')) {
-    return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
+    return (double.parse('-${spaceMap[space.substring(1)]}'));
   }
   if (space == 'px') {
-    return $GSSpace.spaceMap[space];
+    return spaceMap[space];
   }
   if (space.contains('\$')) {
     if (space.contains('-')) {
-      return (double.parse('-${$GSSpace.spaceMap[space.substring(1)]}'));
+      return (double.parse('-${spaceMap[space.substring(1)]}'));
     }
-    return $GSSpace.spaceMap[space.substring(1)];
+    return spaceMap[space.substring(1)];
   }
-  return $GSSpace.spaceMap[space];
+  return spaceMap[space];
 }
 
 EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
@@ -176,38 +181,41 @@ EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
 }
 
 double? resolveFontSizeFromString(String? fontSzie) {
+  final fontMap = $GSFontSize().getFontSizeMap();
   if (fontSzie == null) {
     return null;
   }
   if (fontSzie.contains('\$')) {
-    return $GSFontSize.fontMap[fontSzie.substring(1)]!;
+    return fontMap[fontSzie.substring(1)]!;
   }
 
-  return $GSFontSize.fontMap[fontSzie];
+  return fontMap[fontSzie];
 }
 
 double? resolveLineHeightFromString(String? lineHeight, String? fontSize) {
+  final lineHeightMap = $GSLineHeight().getLineHeightMap();
   if (lineHeight == null || fontSize == null) {
     return null;
   }
   if (lineHeight.contains('\$')) {
-    return $GSLineHeight.lineHeightMap[lineHeight.substring(1)]! /
+    return lineHeightMap[lineHeight.substring(1)]! /
         resolveFontSizeFromString(fontSize)!;
   }
 
-  return $GSLineHeight.lineHeightMap[lineHeight]! /
+  return lineHeightMap[lineHeight]! /
       resolveFontSizeFromString(fontSize)!;
 }
 
 double? resolveLetterSpacingFromString(String? letterSpacing) {
+final letterSpacingMap = $GSLetterSpacing().getLetterSpacingMap();
   if (letterSpacing == null) {
     return null;
   }
   if (letterSpacing.contains('\$')) {
-    return $GSLetterSpacing.letterSpacingMap[letterSpacing.substring(1)]!;
+    return letterSpacingMap[letterSpacing.substring(1)]!;
   }
 
-  return $GSLetterSpacing.letterSpacingMap[letterSpacing];
+  return letterSpacingMap[letterSpacing];
 }
 
 TextDecoration? resolveTextDecorationFromString(String? textDecoration) {
@@ -472,11 +480,14 @@ TextAlign? resolveTextAlignmentFromString(String? textAlign) {
 }
 
 String? resolveFontFamilyTokenFromString(String? fontFamilyToken) {
+  final fontMap = $GSFontFamily().getFontFamilyMap();
+
   if (fontFamilyToken == null) {
     return null;
   }
   if (fontFamilyToken.contains('\$')) {
-    return $GSFontFamily.fontFamilyMap[fontFamilyToken.substring(1)]!;
+    return fontMap[fontFamilyToken.substring(1)]!;
   }
-  return $GSFontFamily.fontFamilyMap[fontFamilyToken];
+
+  return fontMap[fontFamilyToken];
 }

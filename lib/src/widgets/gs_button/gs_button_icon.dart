@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -23,7 +24,9 @@ class GSButtonIcon extends StatelessWidget {
         ?.decedentStyles?[gsButtonIconStyle.ancestorStyle.first];
     final value = GSButtonProvider.of(context);
     final size = GSButtonIconStyle.size[iconSize ?? value?.size];
-
+buttonIconStyle = GSStyle.fromMap(
+        data: getIt<GluestackCustomConfig>().icon)
+    .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonIcon));
     // Resolve the final GSStyle.
     final styler = resolveStyles(
         context: context,

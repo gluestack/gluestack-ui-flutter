@@ -1,6 +1,6 @@
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var screenBreakpointInstance = getIt<GSScreenBreakpointToken>();
+
 
 class GSScreenBreakpointToken {
   final double base;
@@ -19,9 +19,10 @@ class GSScreenBreakpointToken {
 }
 
 class $GSScreenBreakpoint {
-  static get base => screenBreakpointInstance.base;
-  static get small => screenBreakpointInstance.sm;
-  static get medium => screenBreakpointInstance.md;
-  static get large => screenBreakpointInstance.lg;
-  static get extraLarge => screenBreakpointInstance.xxl;
+  static get base => getIt<GSScreenBreakpointToken>().base;
+  static get small => getIt<GSScreenBreakpointToken>().sm;
+  static get medium => getIt<GSScreenBreakpointToken>().md;
+  static get large => getIt<GSScreenBreakpointToken>().lg;
+  static get extraLarge => getIt<GSScreenBreakpointToken>().xxl;
+  //TODO: Since there's no map nor is any resolver depending on this, need to confirm b4 proceeding
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_heading/gs_heading_style.dart';
@@ -116,6 +117,8 @@ class GSHeading extends StatelessWidget {
     final subFontSize = headingStyle.variants?.sub?.textStyle?.fontSize;
     final subLineHeight = headingStyle.variants?.sub?.textStyle?.height;
     // Resolves the heading style
+    headingStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().heading);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [

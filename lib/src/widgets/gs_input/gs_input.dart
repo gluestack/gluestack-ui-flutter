@@ -217,7 +217,9 @@ class _GSInputState extends State<GSInput> {
     final bool isReadOnly = widget.isReadOnly ?? formProps?.isReadOnly ?? false;
     final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
     // final bool isRequired = formProps?.isRequired ?? false;
-
+gstextStyle = GSStyle.fromMap(data: getIt<GluestackCustomConfig>().text);
+inputStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().input);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [

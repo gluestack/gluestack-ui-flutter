@@ -3,7 +3,7 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 
 /// Represents the style configuration for GSBadgeText.
-final GSStyle badgeTextStyle =
+ GSStyle badgeTextStyle =
     GSStyle.fromMap(data: getIt<GluestackCustomConfig>().text)
         .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().badgeText));
 

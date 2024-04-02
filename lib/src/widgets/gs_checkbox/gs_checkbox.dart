@@ -77,6 +77,9 @@ class _GSCheckBoxState extends State<GSCheckBox> {
     final checkBoxSize =
         widget.size?.toGSSize ?? formProps?.size ?? checkboxStyle.props?.size;
     // Resolve the final GSStyle.
+    checkboxStyle = GSStyle.fromMap(
+    data: getIt<GluestackCustomConfig>().checkbox,
+    descendantStyle: checkBoxConfig.descendantStyle);
     final styler = resolveStyles(
       context: context,
       styles: [checkboxStyle, checkboxStyle.sizeMap(checkBoxSize)],

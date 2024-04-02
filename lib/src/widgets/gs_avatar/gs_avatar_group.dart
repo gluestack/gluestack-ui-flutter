@@ -4,6 +4,8 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_group_style.dart';
 
+import '../../provider/provider.dart';
+
 class GSAvatarGroup extends StatelessWidget {
   final List<GSAvatar> children;
   final GSStyle? style;
@@ -20,6 +22,8 @@ class GSAvatarGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    avatarGroupStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().avatarGroup);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [avatarGroupStyle],

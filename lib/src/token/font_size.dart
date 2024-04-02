@@ -1,8 +1,6 @@
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
-var fontSizeInstance = getIt<GSFontSizeToken>();
-
 class GSFontSizeToken {
   final double $2xs;
   final double $xs;
@@ -38,35 +36,43 @@ class GSFontSizeToken {
 }
 
 class $GSFontSize {
-  static get $2xs => fontSizeInstance.$2xs;
-  static get $xs => fontSizeInstance.$xs;
-  static get $sm => fontSizeInstance.$sm;
-  static get $md => fontSizeInstance.$md;
-  static get $lg => fontSizeInstance.$lg;
-  static get $xl => fontSizeInstance.$xl;
-  static get $2xl => fontSizeInstance.$2xl;
-  static get $3xl => fontSizeInstance.$3xl;
-  static get $4xl => fontSizeInstance.$4xl;
-  static get $5xl => fontSizeInstance.$5xl;
-  static get $6xl => fontSizeInstance.$6xl;
-  static get $7xl => fontSizeInstance.$7xl;
-  static get $8xl => fontSizeInstance.$8xl;
-  static get $9xl => fontSizeInstance.$9xl;
+  static get $2xs => getIt<GSFontSizeToken>().$2xs;
+  static get $xs => getIt<GSFontSizeToken>().$xs;
+  static get $sm => getIt<GSFontSizeToken>().$sm;
+  static get $md => getIt<GSFontSizeToken>().$md;
+  static get $lg => getIt<GSFontSizeToken>().$lg;
+  static get $xl => getIt<GSFontSizeToken>().$xl;
+  static get $2xl => getIt<GSFontSizeToken>().$2xl;
+  static get $3xl => getIt<GSFontSizeToken>().$3xl;
+  static get $4xl => getIt<GSFontSizeToken>().$4xl;
+  static get $5xl => getIt<GSFontSizeToken>().$5xl;
+  static get $6xl => getIt<GSFontSizeToken>().$6xl;
+  static get $7xl => getIt<GSFontSizeToken>().$7xl;
+  static get $8xl => getIt<GSFontSizeToken>().$8xl;
+  static get $9xl => getIt<GSFontSizeToken>().$9xl;
 
-  static Map<String, double> fontMap = {
-    '2xs': $2xs,
-    'xs': $xs,
-    'sm': $sm,
-    'md': $md,
-    'lg': $lg,
-    'xl': $xl,
-    '2xl': $2xl,
-    '3xl': $3xl,
-    '4xl': $4xl,
-    '5xl': $5xl,
-    '6xl': $6xl,
-    '7xl': $7xl,
-    '8xl': $8xl,
-    '9xl': $9xl,
-  };
+  late Map<String, double> fontMap;
+
+  $GSFontSize() {
+    fontMap = {
+      '2xs': $2xs,
+      'xs': $xs,
+      'sm': $sm,
+      'md': $md,
+      'lg': $lg,
+      'xl': $xl,
+      '2xl': $2xl,
+      '3xl': $3xl,
+      '4xl': $4xl,
+      '5xl': $5xl,
+      '6xl': $6xl,
+      '7xl': $7xl,
+      '8xl': $8xl,
+      '9xl': $9xl,
+    };
+  }
+
+  Map<String, double> getFontSizeMap() {
+    return fontMap;
+  }
 }

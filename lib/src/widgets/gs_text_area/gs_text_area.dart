@@ -211,7 +211,10 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     final inputSize =
         widget.size?.toGSSize ?? formProps?.size ?? textAreaStyle.props?.size;
-
+gstextStyle = GSStyle.fromMap(data: getIt<GluestackCustomConfig>().text);
+textAreaStyle = GSStyle.fromMap(
+    data: getIt<GluestackCustomConfig>().textArea,
+    descendantStyle: gsTextAreaConfig.descendantStyle);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [

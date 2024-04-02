@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -52,6 +53,8 @@ class GSBadgeIcon extends StatelessWidget {
     final size = GSButtonIconStyle
         .size[iconSize ?? GSBadgeProvider.of(context)?.iconSize];
     // Resolve styles for the icon using the context and provided styles.
+    badgeIconStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().badgeIcon);
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,

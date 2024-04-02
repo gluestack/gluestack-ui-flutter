@@ -26,7 +26,9 @@ class GSButtonSpinner extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsButtonSpinnerConfig.ancestorStyle.first];
-
+buttonIconStyle = GSStyle.fromMap(
+        data: getIt<GluestackCustomConfig>().icon)
+    .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonIcon));
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,

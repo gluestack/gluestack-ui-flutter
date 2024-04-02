@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
@@ -68,6 +69,7 @@ class GSIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconSize = size?.toGSSize ?? iconStyle.props?.size;
+    iconStyle = GSStyle.fromMap(data: getIt<GluestackCustomConfig>().icon);
     GSStyle styler = resolveStyles(
         context: context,
         styles: [

@@ -53,6 +53,22 @@ class GSFab extends StatelessWidget {
     final fabSize = size?.toGSSize ?? fabStyle.props!.size!;
     final fabPlacement = placement?.toGSPlacement ?? fabStyle.props?.placement!;
     // Resolve the final GSStyle.
+    fabStyle = GSStyle.fromMap(
+        data: getIt<GluestackCustomConfig>().fab,
+        descendantStyle: fabConfig.descendantStyle);
+    baseFabStyle = GSStyle(
+        bg: fabStyle.bg,
+        borderRadius: fabStyle.borderRadius,
+        onHover: fabStyle.onHover,
+        onActive: fabStyle.onActive,
+        onDisabled: fabStyle.onDisabled,
+        props: fabStyle.props,
+        flexDirection: fabStyle.flexDirection,
+        alignItems: fabStyle.alignItems,
+        onFocus: fabStyle.onFocus,
+        justifyContent: fabStyle.justifyContent,
+        dark: fabStyle.dark,
+        descendantStyles: fabStyle.descendantStyles);
     final styler = resolveStyles(
       context: context,
       styles: [

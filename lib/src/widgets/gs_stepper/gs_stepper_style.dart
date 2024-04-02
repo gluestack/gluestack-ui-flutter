@@ -8,7 +8,7 @@ const GSStyleConfig gsStepperConfig = GSStyleConfig(
   descendantStyle: ['_titleText', '_subtitleText', '_contentText', '_icon'],
 );
 
-final GSStyle gsStepperStyle = GSStyle.fromMap(
+ GSStyle gsStepperStyle = GSStyle.fromMap(
     data: getIt<GluestackCustomConfig>().stepper,
     descendantStyle: gsStepperConfig.descendantStyle);
 

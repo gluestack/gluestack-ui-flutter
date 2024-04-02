@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
@@ -84,7 +85,9 @@ class GSBadge extends StatelessWidget {
     final badgeVariant = variant?.toGSVariant ?? badgeStyle.props?.variant;
     final badgeSize = size?.toGSSize ?? badgeStyle.props?.size;
     final radius = borderRadius?.toGSBorderRadius ?? GSBorderRadius.$none;
-
+badgeStyle = GSStyle.fromMap(
+    data: getIt<GluestackCustomConfig>().badge,
+    descendantStyle: gsBadgeConfig.descendantStyle);
     // Resolve the style for the badge.
     GSStyle styler = resolveStyles(
       context: context,

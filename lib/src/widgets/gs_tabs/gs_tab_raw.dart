@@ -21,6 +21,8 @@ class GSRawTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    gsTabsTabStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().tabsTab);
     return GSStyleBuilder(
       child: Builder(builder: (context) {
         final styler = resolveStyles(

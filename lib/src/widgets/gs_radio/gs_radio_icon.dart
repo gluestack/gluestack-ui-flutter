@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -36,7 +37,11 @@ class GSRadioIcon<T> extends StatelessWidget {
         ?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
     final radioSize =
         radioIconStyle.sizeMap(size ?? ancestorStyles?.props?.size);
-
+radioIconStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().icon)
+        .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().radioIcon));
+        radioIndicatorStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().radioIndicator);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [radioIconStyle.merge(radioIndicatorStyle)],

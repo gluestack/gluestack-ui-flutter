@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -21,6 +22,8 @@ class GSStepperTitle extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsStepperTitleTextConfig.ancestorStyle.first];
 
+gsStepperTitleTextStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().stepperTitleText);
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,

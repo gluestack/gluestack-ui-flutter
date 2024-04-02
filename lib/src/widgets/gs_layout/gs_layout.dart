@@ -18,6 +18,8 @@ class GSLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    layoutStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().layout);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [layoutStyle],

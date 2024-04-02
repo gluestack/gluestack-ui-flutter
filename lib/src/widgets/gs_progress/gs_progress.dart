@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
@@ -75,6 +76,9 @@ class _GSProgressState extends State<GSProgress> {
   Widget build(BuildContext context) {
     final progressSize = widget.size?.toGSSize ?? progressStyle.props?.size;
     // Resolve the GSStyle for the progress bar.
+    progressStyle = GSStyle.fromMap(
+    data: getIt<GluestackCustomConfig>().progress,
+    descendantStyle: gsProgressConfig.descendantStyle);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [progressStyle, progressStyle.sizeMap(progressSize)],

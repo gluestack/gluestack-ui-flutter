@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -17,7 +18,8 @@ class GSLinkText extends StatelessWidget {
     final isActive = GSFocusableActionDetectorProvider.isActive(context);
     final ancestorTextStyles =
         GSAncestorProvider.of(context)?.decedentStyles?['_text'];
-
+linkTextStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().linkText);
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,

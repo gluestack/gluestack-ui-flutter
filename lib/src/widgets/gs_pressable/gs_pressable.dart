@@ -196,6 +196,8 @@ class GSPressable extends StatelessWidget {
     return GSStyleBuilder(
       child: Builder(builder: (context) {
         // Resolve styles using the provided context and optional style variants.
+        pressableStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().pressable);
         GSStyle styler = resolveStyles(
           context: context,
           styles: [pressableStyle],

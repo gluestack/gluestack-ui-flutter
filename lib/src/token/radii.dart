@@ -1,7 +1,5 @@
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var radiiInstance = getIt<GSRadiiToken>();
-
 class GSRadiiToken {
   final double none;
   final double $xs;
@@ -27,25 +25,33 @@ class GSRadiiToken {
 }
 
 class $GSRadii {
-  static get none => radiiInstance.none;
-  static get $xs => radiiInstance.$xs;
-  static get $sm => radiiInstance.$sm;
-  static get $md => radiiInstance.$md;
-  static get $lg => radiiInstance.$lg;
-  static get $xl => radiiInstance.$xl;
-  static get $2xl => radiiInstance.$2xl;
-  static get $3xl => radiiInstance.$3xl;
-  static get full => radiiInstance.full;
+  static get none => getIt<GSRadiiToken>().none;
+  static get $xs => getIt<GSRadiiToken>().$xs;
+  static get $sm => getIt<GSRadiiToken>().$sm;
+  static get $md => getIt<GSRadiiToken>().$md;
+  static get $lg => getIt<GSRadiiToken>().$lg;
+  static get $xl => getIt<GSRadiiToken>().$xl;
+  static get $2xl => getIt<GSRadiiToken>().$2xl;
+  static get $3xl => getIt<GSRadiiToken>().$3xl;
+  static get full => getIt<GSRadiiToken>().full;
 
-  static Map<String, double> radiiMap = {
-    "none": none,
-    "xs": $xs,
-    "sm": $sm,
-    "md": $md,
-    "lg": $lg,
-    "xl": $xl,
-    "2xl": $2xl,
-    "3xl": $3xl,
-    "full": full,
-  };
+  late Map<String, double> radiiMap;
+
+  $GSRadii() {
+    radiiMap = {
+      "none": none,
+      "xs": $xs,
+      "sm": $sm,
+      "md": $md,
+      "lg": $lg,
+      "xl": $xl,
+      "2xl": $2xl,
+      "3xl": $3xl,
+      "full": full,
+    };
+  }
+
+  Map<String, double> getRadiiMap() {
+    return radiiMap;
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
@@ -72,6 +73,8 @@ class GSSpinnerState extends State<GSSpinner>
   @override
   Widget build(BuildContext context) {
     // Resolve the GSStyle for the spinner.
+    spinnerStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().spinner);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [spinnerStyle],

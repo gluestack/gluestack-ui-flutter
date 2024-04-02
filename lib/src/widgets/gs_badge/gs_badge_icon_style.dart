@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 import 'package:gluestack_ui/src/token/public.dart';
 
 /// Represents the style configuration for GSBadgeIcon.
-final GSStyle badgeIconStyle =
+ GSStyle badgeIconStyle =
     GSStyle.fromMap(data: getIt<GluestackCustomConfig>().badgeIcon);
 
 /// Needed configuration for descendantStyle, specifying the component name and ancestor style.

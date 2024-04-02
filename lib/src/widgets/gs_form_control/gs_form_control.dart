@@ -74,6 +74,9 @@ class _GSFormControlState extends State<GSFormControl> {
   @override
   Widget build(BuildContext context) {
     final size = widget.size?.toGSSize;
+    formControlStyle = GSStyle.fromMap(
+    data: getIt<GluestackCustomConfig>().form,
+    descendantStyle: gsFromControlConfig.descendantStyle);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [formControlStyle.sizeMap(size)],

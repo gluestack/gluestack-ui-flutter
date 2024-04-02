@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
@@ -77,7 +78,9 @@ class GSMaterialButton extends StatelessWidget {
     final disabled = isDisabled ?? value?.isDisabled ?? false;
     final focused = isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;
-
+buttonStyle = GSStyle.fromMap(
+    data: getIt<GluestackCustomConfig>().button,
+    descendantStyle: gsButtonConfig.descendantStyle);
     return GSStyleBuilder(
       isDisabled: disabled,
       isFocused: focused,

@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var fontWeightsInstance = getIt<GSFontWeightsToken>();
-
 class GSFontWeightsToken {
   final FontWeight hairline;
   final FontWeight thin;
@@ -28,25 +26,31 @@ class GSFontWeightsToken {
 }
 
 class $GSFontWeights {
-  static get hairline => fontWeightsInstance.hairline;
-  static get thin => fontWeightsInstance.thin;
-  static get light => fontWeightsInstance.light;
-  static get normal => fontWeightsInstance.normal;
-  static get medium => fontWeightsInstance.medium;
-  static get semibold => fontWeightsInstance.semibold;
-  static get bold => fontWeightsInstance.bold;
-  static get extrabold => fontWeightsInstance.extrabold;
-  static get black => fontWeightsInstance.black;
+  static get hairline => getIt<GSFontWeightsToken>().hairline;
+  static get thin => getIt<GSFontWeightsToken>().thin;
+  static get light => getIt<GSFontWeightsToken>().light;
+  static get normal => getIt<GSFontWeightsToken>().normal;
+  static get medium => getIt<GSFontWeightsToken>().medium;
+  static get semibold => getIt<GSFontWeightsToken>().semibold;
+  static get bold => getIt<GSFontWeightsToken>().bold;
+  static get extrabold => getIt<GSFontWeightsToken>().extrabold;
+  static get black => getIt<GSFontWeightsToken>().black;
 
-  static Map<String, FontWeight> fontWeightMap = {
-    "hairline": hairline,
-    "thin": thin,
-    "light": light,
-    "normal": normal,
-    "medium": medium,
-    "semibold": semibold,
-    "bold": bold,
-    "extrabold": extrabold,
-    "black": black,
-  };
+  late Map<String, FontWeight> fontWeightMap;
+  $GSFontWeights() {
+    fontWeightMap = {
+      "hairline": hairline,
+      "thin": thin,
+      "light": light,
+      "normal": normal,
+      "medium": medium,
+      "semibold": semibold,
+      "bold": bold,
+      "extrabold": extrabold,
+      "black": black,
+    };
+  }
+  Map<String, FontWeight> getFontWeightMap() {
+    return fontWeightMap;
+  }
 }

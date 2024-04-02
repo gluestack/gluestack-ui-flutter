@@ -4,6 +4,8 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_footer_style.dart';
 
+import '../../provider/provider.dart';
+
 class GSAlertDialogFooter extends StatelessWidget {
   final Widget? child;
   final GSStyle? style;
@@ -12,6 +14,9 @@ class GSAlertDialogFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
+      alertDialogFooterStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().alertDialogFooter);
+
       GSStyle styler = resolveStyles(
         context: context,
         styles: [alertDialogFooterStyle],

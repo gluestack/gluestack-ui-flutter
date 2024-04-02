@@ -1,6 +1,6 @@
 import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 
-var letterSpacingInstance = getIt<GSLetterSpacingToken>();
+
 
 class GSLetterSpacingToken {
   final double $xs;
@@ -21,14 +21,16 @@ class GSLetterSpacingToken {
 }
 
 class $GSLetterSpacing {
-  static get $xs => letterSpacingInstance.$xs;
-  static get $sm => letterSpacingInstance.$sm;
-  static get $md => letterSpacingInstance.$md;
-  static get $lg => letterSpacingInstance.$lg;
-  static get $xl => letterSpacingInstance.$xl;
-  static get $2xl => letterSpacingInstance.$2xl;
+  static get $xs =>  getIt<GSLetterSpacingToken>().$xs;
+  static get $sm =>  getIt<GSLetterSpacingToken>().$sm;
+  static get $md =>  getIt<GSLetterSpacingToken>().$md;
+  static get $lg =>  getIt<GSLetterSpacingToken>().$lg;
+  static get $xl =>  getIt<GSLetterSpacingToken>().$xl;
+  static get $2xl =>  getIt<GSLetterSpacingToken>().$2xl;
 
-  static Map<String, double> letterSpacingMap = {
+ late  Map<String, double> letterSpacingMap;
+ $GSLetterSpacing(){
+  letterSpacingMap = {
     "xs": $xs,
     "sm": $sm,
     "md": $md,
@@ -36,4 +38,9 @@ class $GSLetterSpacing {
     "xl": $xl,
     "2xl": $2xl,
   };
+ }
+
+   Map<String, double> getLetterSpacingMap (){
+    return letterSpacingMap;
+   }
 }

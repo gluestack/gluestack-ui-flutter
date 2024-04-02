@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
@@ -15,7 +16,8 @@ class GSToastTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gstoastTitleConfig.ancestorStyle.first];
-
+toastTitleStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().toastTitle);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [

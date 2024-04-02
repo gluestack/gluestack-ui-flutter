@@ -6,6 +6,8 @@ import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_content
 import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_footer.dart';
 import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_header.dart';
 
+import '../../provider/provider.dart';
+
 class GSAlertDialogContent extends StatelessWidget {
   final GSAlertDialogHeader? header;
   final GSAlertDialogBody? body;
@@ -16,6 +18,8 @@ class GSAlertDialogContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    alertDialogContentStyle =
+    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().alertDialogContent);
     GSStyle styler = resolveStyles(
       context: context,
       styles: [alertDialogContentStyle],
