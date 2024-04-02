@@ -5,8 +5,10 @@ StringBuffer finalOutput = StringBuffer();
 
 void main() {
   final currentDirectory = Directory.current;
-  // crawlDirectory(currentDirectory);
-  readFile(File('./button/button.dart'));
+  crawlDirectory(currentDirectory);
+
+  //For debug purposes
+  // readFile(File('./button/button.dart'));
 }
 
 void crawlDirectory(Directory dir) {
@@ -84,6 +86,9 @@ void generateEnum(String mapName, Map<String, dynamic> variants) {
   //variants
 
   if (variantsExists) {
+    //fix for default variant in [TextArea variants]
+    actions.removeWhere((element) => element == 'default');
+
     final enumName =
         capitalizeFirstLetter(mapName.replaceFirst('Data', 'Variants'));
     finalOutput.writeln('enum $enumName {');
