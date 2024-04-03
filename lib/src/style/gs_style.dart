@@ -956,6 +956,8 @@ class GSStyle extends BaseStyle<GSStyle> {
             data?['_titleText']?['color'] ??
             data?['_subtitleText']?['color'] ??
             data?['_contentText']?['color'] ??
+            data?['_selectedLabelText']?['color'] ??
+            data?['_unselectedLabelText']?['color'] ??
             data?['color']),
       ),
 
@@ -1156,7 +1158,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       dark: GSStyle(
         iconColor: resolveColorFromString(
-          data?['_icon']?['_dark']?['color'],
+          data?['_icon']?['_dark']?['color'] ??
+              data?['_selectedIcon']?['_dark']?['color'] ??
+              data?['_unselectedIcon']?['_dark']?['color'],
         ),
         item: GSStyle(
           bg: resolveColorFromString(
@@ -1181,8 +1185,10 @@ class GSStyle extends BaseStyle<GSStyle> {
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(
           fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-          color: resolveColorFromString(
-              data?['_text']?['_dark']?['color'] ?? data?['_dark']?['color']),
+          color: resolveColorFromString(data?['_text']?['_dark']?['color'] ??
+              data?['_selectedLabelText']?['_dark']?['color'] ??
+              data?['_unselectedLabelText']?['_dark']?['color'] ??
+              data?['_dark']?['color']),
         ),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
         bg: resolveColorFromString(
@@ -1370,7 +1376,7 @@ class GSStyle extends BaseStyle<GSStyle> {
               : null
           : null,
       iconColor: resolveColorFromString(
-        data?['_icon']?['color'],
+        data?['_icon']?['color'] ?? data?['_selectedIcon']?['color'],
       ),
       shadowColor: resolveColorFromString(data?['shadowColor']),
       shadowRadius: data?['shadowRadius'] != null

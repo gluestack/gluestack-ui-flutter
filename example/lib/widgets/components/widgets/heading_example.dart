@@ -22,9 +22,10 @@ class HeadingExample extends StatelessWidget {
       body: Center(
         child: BaseLayout(
           code: code,
-          component: GSHeading(
+          component: const GSHeading(
+            size: GSHeadingSizes.$xs,
+            bold: true,
             text: 'This is an example for a Heading',
-            style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
           ),
         ),
       ),
