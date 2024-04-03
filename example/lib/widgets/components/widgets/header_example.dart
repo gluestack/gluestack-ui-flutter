@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 
 class HeaderExample extends StatelessWidget {
   const HeaderExample({super.key});
@@ -44,15 +45,8 @@ class HeaderExample extends StatelessWidget {
             ],
           ),
 """;
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "Header",
-          size: GSSizes.$xl,
-        ),
-      ),
+    return CustomGSLayout(
+      title: "Header",
       body: BaseLayout(
         code: code,
         component: GSLayout(

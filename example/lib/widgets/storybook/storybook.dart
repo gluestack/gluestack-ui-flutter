@@ -16,11 +16,9 @@ class StorybookWidget extends ConsumerStatefulWidget {
 class _StorybookWidgetState extends ConsumerState<StorybookWidget> {
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     return materialWrapper(
       context,
       Scaffold(
-        backgroundColor: theme.scaffoldBackgroundColor,
         appBar: AppBar(title: const Text('Storybook')),
         body: Storybook(
           initialLayout: Layout.expanded,
