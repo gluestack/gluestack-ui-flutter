@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui/src/style/style_resolver.dart';
 
 class GSHeader extends StatelessWidget {
   final Widget? child;
@@ -12,6 +13,7 @@ class GSHeader extends StatelessWidget {
   final double? minSpacingForChild;
   final double? minHeight;
   final GSStyle? style;
+  final List<BoxShadow>? boxShadow;
   const GSHeader({
     super.key,
     this.child,
@@ -23,12 +25,33 @@ class GSHeader extends StatelessWidget {
     this.minPaddingForLeading = const EdgeInsets.only(left: 4, right: 4),
     this.minSpacingForChild,
     this.minPaddingForTrailing = const EdgeInsets.only(right: 4, left: 4),
-    this.style,
+    this.style, this.boxShadow,
   });
 
   @override
   Widget build(BuildContext context) {
     final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
+
+    final styler = resolveStyles(
+      context: context,
+      styles: [
+        GSStyle(
+          width: double.infinity,
+          height: minHeight,
+          bg: $GSColors.primary500,
+        ),
+      ],
+      inlineStyle: style,
+      isFirst: true,
+    );
+
+    bool isLightColor(Color? color) {
+      if (color == null) return true;
+      // WCAG formula
+      final luminance =
+          0.2126 * color.red + 0.7152 * color.green + 0.0722 * color.blue;
+      return luminance > 0.5;
+    }
 
     Widget? leading = leadingWidget;
 
@@ -36,9 +59,17 @@ class GSHeader extends StatelessWidget {
       if (parentRoute?.impliesAppBarDismissal ?? false) {
         leading = GSButton(
           variant: GSButtonVariants.link,
-          child: const GSIcon(
-              icon: IconData(0xf570,
-                  fontFamily: 'MaterialIcons', matchTextDirection: true)),
+          child: GSIcon(
+            icon: const IconData(
+              0xf570,
+              fontFamily: 'MaterialIcons',
+              matchTextDirection: true,
+            ),
+            style: GSStyle(
+                color: isLightColor(styler.bg)
+                    ? $GSColors.black
+                    : $GSColors.white),
+          ),
           onPressed: () => Navigator.maybePop(context),
         );
       }
@@ -54,7 +85,7 @@ class GSHeader extends StatelessWidget {
             ? (trailingWidget! as GSHStack).children
             : trailingWidget is Row
                 ? (trailingWidget! as Row).children
-                : [trailingWidget ?? SizedBox()],
+                : [trailingWidget ?? const SizedBox()],
       );
     }
     //fix for single trail widget
@@ -64,12 +95,10 @@ class GSHeader extends StatelessWidget {
         children: [trailingWidget!],
       );
     }
+
     return GSBox(
-        style: GSStyle(
-          width: double.infinity,
-          height: minHeight,
-          color: style?.color ?? style?.bg ?? $GSColors.primary400,
-        ),
+        style: styler,
+        boxShadow: boxShadow,
         child: NavigationToolbar(
           leading: Padding(padding: minPaddingForLeading!, child: leading),
           middle: child,
