@@ -2,6 +2,19 @@ import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_heading/gs_heading_style.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
+
+enum GSHeadingSizes {
+  $xs,
+  $sm,
+  $md,
+  $lg,
+  $xl,
+  $2xl,
+  $3xl,
+  $4xl,
+  $5xl,
+}
 
 /// A widget designed to display headings with customizable styles within the Gluestack UI framework.
 /// [GSHeading] supports various typographic customizations, making it suitable for titles,
@@ -12,7 +25,7 @@ class GSHeading extends StatelessWidget {
 
   /// The size of the text, allowing for predefined scaling according to [GSSizes].
   /// This provides a consistent method for adjusting text size across different headings.
-  final GSSizes? size;
+  final GSHeadingSizes? size;
 
   /// Custom [GSStyle] to apply to the heading, enabling detailed customization
   /// of text appearance, including font, color, size, and more.
@@ -120,7 +133,7 @@ class GSHeading extends StatelessWidget {
       context: context,
       styles: [
         highlight ? headingStyle.variants?.highlight : null,
-        headingStyle.sizeMap(textSize),
+        headingStyle.sizeMap(textSize?.toGSSize),
       ],
       inlineStyle: headingStyle.merge(style),
       isFirst: true,
@@ -128,7 +141,7 @@ class GSHeading extends StatelessWidget {
 
     final currentTextStyle = styler.textStyle?.copyWith(
       color: styler.color,
-      fontWeight: bold ? FontWeight.bold : styler.textStyle?.fontWeight,
+      fontWeight: bold ? FontWeight.w900 : styler.textStyle?.fontWeight,
       fontStyle: italic ? FontStyle.italic : styler.textStyle?.fontStyle,
       fontSize: sub ? subFontSize : styler.textStyle?.fontSize,
       height: sub ? subLineHeight : styler.textStyle?.height,
