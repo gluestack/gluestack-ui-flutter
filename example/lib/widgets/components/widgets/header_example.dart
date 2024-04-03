@@ -8,7 +8,6 @@ class HeaderExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     const code = """
         GSVStack(
             children: [
