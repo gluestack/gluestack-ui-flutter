@@ -117,6 +117,7 @@ class _GSAccordionState extends State<GSAccordion> {
     // print("param: ${accordionHeaderStyle.margin}");
     // print("test: ${widget.gsAccordionVariant?.toGSVariant}");
     // print(accordionStyle.variants?.variant?.filled?.shadowColor);
+
     // print(
     //     "from json: ${getIt<GluestackCustomConfig>().accordion?['variants']?['variant']?['filled']?['backgroundColor']}");
 
