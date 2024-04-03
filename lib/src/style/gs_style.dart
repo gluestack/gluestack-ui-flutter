@@ -992,6 +992,8 @@ class GSStyle extends BaseStyle<GSStyle> {
             data?['_titleText']?['color'] ??
             data?['_subtitleText']?['color'] ??
             data?['_contentText']?['color'] ??
+            data?['_selectedLabelText']?['color'] ??
+            data?['_unselectedLabelText']?['color'] ??
             data?['color']),
       ),
       titleTextStyle: TextStyle(
@@ -1022,6 +1024,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         color: resolveColorFromString(
             data?['_contentText']?['color'] ?? data?['color']),
       ),
+
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg'] ?? data?['backgroundColor']),
       borderWidth: data?['borderWidth'] != null
@@ -1219,7 +1222,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       dark: GSStyle(
         iconColor: resolveColorFromString(
-          data?['_icon']?['_dark']?['color'],
+          data?['_icon']?['_dark']?['color'] ??
+              data?['_selectedIcon']?['_dark']?['color'] ??
+              data?['_unselectedIcon']?['_dark']?['color'],
         ),
         item: GSStyle(
           bg: resolveColorFromString(
@@ -1244,8 +1249,10 @@ class GSStyle extends BaseStyle<GSStyle> {
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(
           fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-          color: resolveColorFromString(
-              data?['_text']?['_dark']?['color'] ?? data?['_dark']?['color']),
+          color: resolveColorFromString(data?['_text']?['_dark']?['color'] ??
+              data?['_selectedLabelText']?['_dark']?['color'] ??
+              data?['_unselectedLabelText']?['_dark']?['color'] ??
+              data?['_dark']?['color']),
         ),
         contentTextStyle: TextStyle(
           color: resolveColorFromString(data?['_contentText']?['_dark']
@@ -1443,7 +1450,7 @@ class GSStyle extends BaseStyle<GSStyle> {
               : null
           : null,
       iconColor: resolveColorFromString(
-        data?['_icon']?['color'],
+        data?['_icon']?['color'] ?? data?['_selectedIcon']?['color'],
       ),
       shadowColor: resolveColorFromString(data?['shadowColor']),
       shadowRadius: data?['shadowRadius'] != null
