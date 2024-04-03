@@ -3,9 +3,9 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
 /// A responsive layout widget that switches between a [Row] and a [Column] layout based on
-/// the available screen width. [GSRespRowColumn] is designed to provide a flexible layout
+/// the available screen width. [GSResponsiveRowColumn] is designed to provide a flexible layout
 /// solution for applications that need to adapt their layout dynamically to screen size changes.
-class GSRespRowColumn extends StatelessWidget {
+class GSResponsiveRowColumn extends StatelessWidget {
   /// The threshold width at which the layout switches from horizontal ([Row]) to vertical ([Column]).
   final double? constraintWidth;
 
@@ -40,7 +40,7 @@ class GSRespRowColumn extends StatelessWidget {
   /// by the current layout direction ([Row] or [Column]).
   final EdgeInsets? separatorPadding;
 
-  const GSRespRowColumn({
+  const GSResponsiveRowColumn({
     super.key,
     required this.children,
     this.mainAxisAlignment = MainAxisAlignment.start,
