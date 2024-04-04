@@ -962,7 +962,11 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
 
       color: resolveColorFromString(data?['color']),
-      bg: resolveColorFromString(data?['bg'] ?? data?['backgroundColor']),
+      bg: resolveColorFromString(
+        data?['bg'] ??
+            data?['_item']?['backgroundColor'] ??
+            data?['backgroundColor'],
+      ),
       borderWidth: data?['borderWidth'] != null
           ? double.tryParse(data!['borderWidth']!.toString()) ??
               resolveBorderWidthFromString(data['borderWidth'])
@@ -1191,8 +1195,9 @@ class GSStyle extends BaseStyle<GSStyle> {
               data?['_dark']?['color']),
         ),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
-        bg: resolveColorFromString(
-            data?['_dark']?['bg'] ?? data?['_dark']?['backgroundColor']),
+        bg: resolveColorFromString(data?['_dark']?['bg'] ??
+            data?['_dark']?['_item']?['backgroundColor'] ??
+            data?['_dark']?['backgroundColor']),
         onActive: GSStyle(
           bg: resolveColorFromString(data?['_dark']?[':active']?['bg']),
           borderColor: resolveColorFromString(

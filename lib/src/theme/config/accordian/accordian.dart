@@ -67,7 +67,7 @@ const accordionData = {
         "shadowOpacity": 0.2,
         "elevation": 10,
         "_dark": {
-          "backgroundColor": "\$backgroundDark950",
+          "backgroundColor": "transparent",
           "_item": {"backgroundColor": "\$backgroundDark950"}
         }
       },
