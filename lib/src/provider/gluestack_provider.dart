@@ -1,7 +1,3 @@
-import 'package:gluestack_ui/src/theme/config/layout/layout.dart';
-
-import '../theme/config/stepper/stepper_content_text.dart';
-import '../theme/config/stepper/stepper_subtitle_text.dart';
 import 'provider.dart';
 
 final getIt = GetIt.instance;
@@ -126,6 +122,9 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionItem;
 
   Map<String, dynamic>? modalBottomSheet;
+  Map<String, dynamic>? navigationRail;
+  Map<String, dynamic>? navigationRailSelectedLableText;
+  Map<String, dynamic>? navigationRailUnselectedLableText;
 // stepper
   Map<String, dynamic>? stepper;
   Map<String, dynamic>? stepperTitleText;
@@ -261,6 +260,9 @@ class GluestackCustomConfig {
     //input
     this.input,
     this.modalBottomSheet,
+    this.navigationRail,
+    this.navigationRailSelectedLableText,
+    this.navigationRailUnselectedLableText,
 
     //stepper
     this.stepper,
@@ -413,6 +415,14 @@ class GluestackCustomConfig {
     input = mergeConfigs(inputData, input);
 
     modalBottomSheet = mergeConfigs(modalBottomSheetData, modalBottomSheet);
+    //navigation rail
+
+    navigationRail = mergeConfigs(navigationRailData, navigationRail);
+    navigationRailSelectedLableText = mergeConfigs(
+        navigationRailSelectedLabelData, navigationRailSelectedLableText);
+
+    navigationRailUnselectedLableText = mergeConfigs(
+        navigationRailUnselectedLabelData, navigationRailUnselectedLableText);
     //stepper
     stepper = mergeConfigs(stepperData, stepper);
     stepperTitleText = mergeConfigs(stepperTitleTextData, stepperTitleText);
