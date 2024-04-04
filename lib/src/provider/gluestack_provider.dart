@@ -414,6 +414,8 @@ class GluestackCustomConfig {
     //input
     input = mergeConfigs(inputData, input);
 
+    //modalbottomsheet
+
     modalBottomSheet = mergeConfigs(modalBottomSheetData, modalBottomSheet);
     //navigation rail
 
