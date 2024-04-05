@@ -60,7 +60,7 @@ class GSButtonGroup extends StatelessWidget {
       ],
       context: context,
       inlineStyle: style,
-    )!;
+    );
     List<Widget> spacedButtonList = [];
 
     for (var button in buttonList) {
