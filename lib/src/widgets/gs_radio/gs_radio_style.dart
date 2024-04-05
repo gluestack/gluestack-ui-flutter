@@ -11,10 +11,10 @@ final GSStyle radioStyle = GSStyle.fromMap(
     data: getIt<GluestackCustomConfig>().radio,
     descendantStyle: gsRadioConfig.descendantStyle);
 
-class GSRadioStyles {
-  static Map<GSSizes, Map<String, GSStyle?>> radioDescendantStyles = {
-    GSSizes.$sm: radioStyle.variants!.size!.$sm!.descendantStyles!,
-    GSSizes.$md: radioStyle.variants!.size!.$md!.descendantStyles!,
-    GSSizes.$lg: radioStyle.variants!.size!.$lg!.descendantStyles!,
-  };
-}
+// class GSRadioStyles {
+//   static Map<GSSizes, Map<String, GSStyle?>> radioDescendantStyles = {
+//     GSSizes.$sm: radioStyle.variants!.size!.$sm!.descendantStyles!,
+//     GSSizes.$md: radioStyle.variants!.size!.$md!.descendantStyles!,
+//     GSSizes.$lg: radioStyle.variants!.size!.$lg!.descendantStyles!,
+//   };
+// }

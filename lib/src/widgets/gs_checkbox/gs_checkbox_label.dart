@@ -21,7 +21,8 @@ class GSCheckBoxLabel extends StatelessWidget {
       context: context,
       styles: [
         checkBoxLabelStyle,
-        GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size]
+        checkBoxLabelStyle.sizeMap(ancestorCheckBoxStyle?.props?.size),
+        // GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size]
       ],
       inlineStyle: style,
       isFirst: true,
