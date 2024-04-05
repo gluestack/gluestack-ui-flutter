@@ -10,10 +10,4 @@ GSStyle checkboxStyle = GSStyle.fromMap(
     data: getIt<GluestackCustomConfig>().checkbox,
     descendantStyle: checkBoxConfig.descendantStyle);
 
-class GsCheckBoxStyle {
-  static Map<GSSizes, GSStyle?> size = {
-    GSSizes.$lg: checkboxStyle.variants?.size?.$lg,
-    GSSizes.$md: checkboxStyle.variants?.size?.$md,
-    GSSizes.$sm: checkboxStyle.variants?.size?.$sm,
-  };
-}
+

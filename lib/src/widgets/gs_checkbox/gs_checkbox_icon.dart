@@ -22,7 +22,7 @@ class GSCheckBoxIcon extends StatelessWidget {
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
-      styles: [checkboxIconStyle, GSCheckBoxIconStyle.size[iconSize]],
+      styles: [checkboxIconStyle, checkboxIconStyle.sizeMap(iconSize)],
       inlineStyle: style,
       isFirst: true,
     );

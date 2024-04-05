@@ -37,12 +37,19 @@ class GSToast extends StatelessWidget {
     final toastAction = action?.toGSAction ?? toastStyle.props?.action;
     final toastVariant = variant?.toGSVariant ?? toastStyle.props?.variant;
 
-    GSStyle styler = resolveStylesDeprecated(
-      context,
-      variantStyle: GSToastStyle.gsToastCombination[toastAction]![toastVariant],
-      inlineStyle: style,
-      descendantStyleKeys: gsToastConfig.descendantStyle,
-    )!;
+    // GSStyle styler = resolveStylesDeprecated(
+    //   context,
+    //   variantStyle: GSToastStyle.gsToastCombination[toastAction]![toastVariant],
+    //   inlineStyle: style,
+    //   descendantStyleKeys: gsToastConfig.descendantStyle,
+    // )!;
+
+    GSStyle styler = resolveStyles(context: context, styles: [
+      toastStyle,
+      toastStyle
+          .compoundVariants?[toastAction.toString() + toastVariant.toString()]
+    ]);
+
     final border = toastVariant == GSVariants.outline
         ? Border.all(color: styler.borderColor!)
         : toastVariant == GSVariants.accent
