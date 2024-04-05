@@ -179,7 +179,7 @@ class GSVariant {
     var variantStyles = <GSVariants, GSStyle?>{};
     for (GSVariants enumValue in GSVariants.values) {
       var key = enumValue.name;
-      if (data?.containsKey(key) ?? false) {
+      if (data?[key] is Map<String, dynamic> && (data?.containsKey(key) ?? false)) {
         variantStyles[enumValue] = GSStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
@@ -203,7 +203,7 @@ class GSAction {
     var actionStyles = <GSActions, GSStyle?>{};
     for (GSActions enumValue in GSActions.values) {
       var key = enumValue.name;
-      if (data?.containsKey(key) ?? false) {
+      if (data?[key] is Map<String, dynamic> && (data?.containsKey(key) ?? false)) {
         actionStyles[enumValue] = GSStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
@@ -229,7 +229,8 @@ class GSSpace {
       //cuz of $ sign
       var key = enumValue.name.substring(1);
 
-      if (data?.containsKey(key) ?? false) {
+
+      if (data?[key] is Map<String, dynamic> && (data?.containsKey(key) ?? false)) {
         spaceStyles[enumValue] = GSStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
@@ -255,15 +256,15 @@ class GSSize {
       //cuz of $ sign
       var key = enumValue.name.substring(1);
 
-      if (data?.containsKey(key) ?? false) {
+      if (data?[key] is Map<String, dynamic> &&( data?.containsKey(key) ?? false)) {
         //to handle edge case where values were being list n stuff 
-        if (data?[key] is Map<String, dynamic>) {
+
           sizeStyles[enumValue] = GSStyle.fromMap(
             data: data![key],
             descendantStyle: descendantStyle,
             fromVariant: true,
           );
-        } 
+
       }
     }
     return GSSize(styles: sizeStyles);
