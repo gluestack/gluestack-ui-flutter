@@ -171,6 +171,10 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const NestedAccordionPreview(),
         ),
         GoRoute(
+          path: "example-header",
+          builder: (context, state) => const HeaderExample(),
+        ),
+        GoRoute(
           path: "example-bottom-sheet",
           builder: (context, state) => const BottomModalSheetExample(),
         ),

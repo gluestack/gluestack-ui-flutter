@@ -45,3 +45,4 @@ export 'src/widgets/gs_navigation_rail/public.dart';
 export 'src/widgets/gs_stepper/public.dart';
 export 'src/widgets/gs_tabs/public.dart';
 export 'src/widgets/gs_layout/public.dart';
+export 'src/widgets/gs_header/public.dart';
