@@ -121,6 +121,7 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionIcon;
   Map<String, dynamic>? accordionItem;
 
+  Map<String, dynamic>? modalBottomSheet;
   Map<String, dynamic>? navigationRail;
   Map<String, dynamic>? navigationRailSelectedLableText;
   Map<String, dynamic>? navigationRailUnselectedLableText;
@@ -258,6 +259,7 @@ class GluestackCustomConfig {
 
     //input
     this.input,
+    this.modalBottomSheet,
     this.navigationRail,
     this.navigationRailSelectedLableText,
     this.navigationRailUnselectedLableText,
@@ -412,6 +414,9 @@ class GluestackCustomConfig {
     //input
     input = mergeConfigs(inputData, input);
 
+    //modalbottomsheet
+
+    modalBottomSheet = mergeConfigs(modalBottomSheetData, modalBottomSheet);
     //navigation rail
 
     navigationRail = mergeConfigs(navigationRailData, navigationRail);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui_example/home.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/accordian_example.dart';
+import 'package:gluestack_ui_example/widgets/components/widgets/bottom_sheet_example.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/navigation_rail_example.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook_wrapper.dart';
@@ -168,6 +169,10 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "nested-accordion-preview",
           builder: (context, state) => const NestedAccordionPreview(),
+        ),
+        GoRoute(
+          path: "example-bottom-sheet",
+          builder: (context, state) => const BottomModalSheetExample(),
         ),
         GoRoute(
           path: "stepper-example",
