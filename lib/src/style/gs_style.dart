@@ -628,8 +628,6 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? elevation;
   ShadowOffset? shadowOffset;
   TextAlign? textAlign;
-  TextStyle? titleTextStyle;
-  TextStyle? contentTextStyle;
 
   GSStyle({
     this.borderWidth,
@@ -705,8 +703,6 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.elevation,
     this.shadowOffset,
     this.textAlign,
-    this.titleTextStyle,
-    this.contentTextStyle,
   });
 
   @override
@@ -785,38 +781,6 @@ class GSStyle extends BaseStyle<GSStyle> {
                     textStyle?.fontFamily,
               )
             : textStyle,
-        titleTextStyle: overrideStyle?.titleTextStyle != null
-            ? TextStyle(
-                height: overrideStyle?.titleTextStyle?.height ??
-                    titleTextStyle?.height,
-                color: overrideStyle?.titleTextStyle?.color ??
-                    titleTextStyle?.color,
-                decoration: overrideStyle?.titleTextStyle?.decoration ??
-                    titleTextStyle?.decoration,
-                letterSpacing: overrideStyle?.titleTextStyle?.letterSpacing ??
-                    titleTextStyle?.letterSpacing,
-                fontWeight: overrideStyle?.titleTextStyle?.fontWeight ??
-                    titleTextStyle?.fontWeight,
-                fontSize: overrideStyle?.titleTextStyle?.fontSize ??
-                    titleTextStyle?.fontSize,
-              )
-            : titleTextStyle,
-        contentTextStyle: overrideStyle?.contentTextStyle != null
-            ? TextStyle(
-                height: overrideStyle?.contentTextStyle?.height ??
-                    contentTextStyle?.height,
-                color: overrideStyle?.contentTextStyle?.color ??
-                    contentTextStyle?.color,
-                decoration: overrideStyle?.contentTextStyle?.decoration ??
-                    contentTextStyle?.decoration,
-                letterSpacing: overrideStyle?.contentTextStyle?.letterSpacing ??
-                    contentTextStyle?.letterSpacing,
-                fontWeight: overrideStyle?.contentTextStyle?.fontWeight ??
-                    contentTextStyle?.fontWeight,
-                fontSize: overrideStyle?.contentTextStyle?.fontSize ??
-                    contentTextStyle?.fontSize,
-              )
-            : contentTextStyle,
         right: overrideStyle?.right ?? right,
         left: overrideStyle?.left ?? left,
         bottom: overrideStyle?.bottom ?? bottom,
@@ -996,37 +960,13 @@ class GSStyle extends BaseStyle<GSStyle> {
             data?['_unselectedLabelText']?['color'] ??
             data?['color']),
       ),
-      titleTextStyle: TextStyle(
-        fontWeight:
-            resolveFontWeightFromString(data?['_titleText']?['fontWeight']),
-        fontSize: resolveFontSizeFromString(data?['_titleText']?['fontSize']),
-        height: resolveLineHeightFromString(data?['_titleText']?['lineHeight'],
-            data?['_titleText']?['fontSize']),
-        decoration:
-            resolveTextDecorationFromString(data?['textDecorationLine']),
-        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
-        // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
-        color: resolveColorFromString(
-            data?['_titleText']?['color'] ?? data?['color']),
-      ),
-
-      contentTextStyle: TextStyle(
-        fontWeight:
-            resolveFontWeightFromString(data?['_contentText']?['fontWeight']),
-        fontSize: resolveFontSizeFromString(data?['_contentText']?['fontSize']),
-        height: resolveLineHeightFromString(
-            data?['_contentText']?['lineHeight'],
-            data?['_contentText']?['fontSize']),
-        decoration:
-            resolveTextDecorationFromString(data?['textDecorationLine']),
-        letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
-        // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
-        color: resolveColorFromString(
-            data?['_contentText']?['color'] ?? data?['color']),
-      ),
 
       color: resolveColorFromString(data?['color']),
-      bg: resolveColorFromString(data?['bg'] ?? data?['backgroundColor']),
+      bg: resolveColorFromString(
+        data?['bg'] ??
+            data?['_item']?['backgroundColor'] ??
+            data?['backgroundColor'],
+      ),
       borderWidth: data?['borderWidth'] != null
           ? double.tryParse(data!['borderWidth']!.toString()) ??
               resolveBorderWidthFromString(data['borderWidth'])
@@ -1254,19 +1194,10 @@ class GSStyle extends BaseStyle<GSStyle> {
               data?['_unselectedLabelText']?['_dark']?['color'] ??
               data?['_dark']?['color']),
         ),
-        contentTextStyle: TextStyle(
-          color: resolveColorFromString(data?['_contentText']?['_dark']
-                  ?['color'] ??
-              data?['_dark']?['color']),
-        ),
-        titleTextStyle: TextStyle(
-          color: resolveColorFromString(data?['_titleText']?['_dark']
-                  ?['color'] ??
-              data?['_dark']?['color']),
-        ),
         borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
-        bg: resolveColorFromString(
-            data?['_dark']?['bg'] ?? data?['_dark']?['backgroundColor']),
+        bg: resolveColorFromString(data?['_dark']?['bg'] ??
+            data?['_dark']?['_item']?['backgroundColor'] ??
+            data?['_dark']?['backgroundColor']),
         onActive: GSStyle(
           bg: resolveColorFromString(data?['_dark']?[':active']?['bg']),
           borderColor: resolveColorFromString(

@@ -3,7 +3,8 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_content_text.dart';
+
+import 'gs_accordian_content_text_style.dart';
 
 class GSAccordionContent extends StatelessWidget {
   /// The text to display within the accordion content area. This is the primary
@@ -102,18 +103,19 @@ class GSAccordionContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = GSAccordionProvider.of(context)?.size ?? GSAccordionSizes.$md;
-    final contentTextStyle =
-        GSAccordionProvider.of(context)?.baseAccordionStyle.contentTextStyle;
 
+    final ancestorStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsAccordianContentTextConfig.ancestorStyle.first];
     // Resolve the final GSStyle.
+
     final styler = resolveStyles(
       context: context,
       styles: [
-        accordionContentText,
+        gsAccordianContentTextStyle,
+        gsAccordianContentTextStyle.sizeMap(ancestorStyles?.props?.size),
+        ancestorStyles,
       ],
       inlineStyle: style,
-    ).merge(
-      GSStyle(textStyle: contentTextStyle),
     );
 
     return GSText(

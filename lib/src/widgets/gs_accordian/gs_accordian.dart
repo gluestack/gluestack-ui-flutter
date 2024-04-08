@@ -5,8 +5,6 @@ import 'package:gluestack_ui/src/widgets/gs_accordian/gs_a_item_internal.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
-import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_header.dart';
-
 
 /// Defines the sizes available for the GSAccordion.
 enum GSAccordionSizes { $sm, $md, $lg }
@@ -95,7 +93,7 @@ class GSAccordion extends StatefulWidget {
 }
 
 class _GSAccordionState extends State<GSAccordion> {
-final AccordionExpansionValue accGroupValue = AccordionExpansionValue();
+  final AccordionExpansionValue accGroupValue = AccordionExpansionValue();
 
   @override
   initState() {
@@ -115,65 +113,72 @@ final AccordionExpansionValue accGroupValue = AccordionExpansionValue();
         ],
         inlineStyle: widget.style,
         isFirst: true);
+
     // print("param: ${accordionHeaderStyle.margin}");
     // print("test: ${widget.gsAccordionVariant?.toGSVariant}");
     // print(accordionStyle.variants?.variant?.filled?.shadowColor);
+
     // print(
     //     "from json: ${getIt<GluestackCustomConfig>().accordion?['variants']?['variant']?['filled']?['backgroundColor']}");
-    // print("---------END----------");
-    return GSAccordionProvider(
-      // refresh: true,
-      isCollapsible: widget.isCollapsible!,
-      isDisabled: widget.isDisabled!,
-      type: widget.type!,
-      size: widget.size!,
-      baseAccordionStyle: styler,
-      accGrpValue: accGroupValue,
-      //TODO: utilise elevation (styler.elevation)
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              blurRadius: styler.shadowRadius ?? 0,
-              color:
-                  styler.shadowColor?.withOpacity(styler.shadowOpacity ?? 0) ??
-                      $GSColors.backgroundDark100,
-              offset: Offset(styler.shadowOffset?.width ?? 0,
-                  styler.shadowOffset?.height ?? 0),
-            ),
-          ],
-        ),
-        child: ValueListenableBuilder<List<bool>>(
-          valueListenable: accGroupValue.accGroupValues,
-          builder: (context, value, child) {
-            return Column(
-              children: [
-                for (int i = 0; i < widget.children.length; i++)
-                  GSAccordionItemInternal(
-                    id: i,
-                    isExpanded: value[i],
-                    title: widget.children[i].title,
-                    content: widget.children[i].content,
-                    animationDuration: widget.animationDuration,
-                    contentStyle: styler.item,
-                    headerStyle: accordionHeaderStyle,
-                    suffixIconWhenTileCollapsed:
-                        widget.suffixIconWhenTileCollapsed,
-                    suffixIconWhenTileExpanded:
-                        widget.suffixIconWhenTileExpanded,
-                    showSuffixIcon: widget.showSuffixIcon,
-                    prefixIconWhenTileCollapsed:
-                        widget.prefixIconWhenTileCollapsed,
-                    prefixIconWhenTileExpanded:
-                        widget.prefixIconWhenTileExapanded,
-                    prefixIconPadding: widget.prefixIconPadding,
-                    radius: widget.children[i].radius,
-                    itemPadding: widget.itemPadding,
-                    isItemDisabled: widget.children[i].isDisabled,
-                  ),
-              ],
-            );
-          },
+
+    return GSAncestor(
+      decedentStyles: styler.descendantStyles,
+      child: GSAccordionProvider(
+        // refresh: true,
+        isCollapsible: widget.isCollapsible!,
+        isDisabled: widget.isDisabled!,
+        type: widget.type!,
+        size: widget.size!,
+
+        accGrpValue: accGroupValue,
+
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                blurRadius: styler.shadowRadius ?? 0,
+                color: styler.shadowColor
+                        ?.withOpacity(styler.shadowOpacity ?? 0) ??
+                    $GSColors.backgroundDark100,
+                offset: Offset(styler.shadowOffset?.width ?? 0,
+                    styler.shadowOffset?.height ?? 0),
+              ),
+            ],
+          ),
+          child: ValueListenableBuilder<List<bool>>(
+            valueListenable: accGroupValue.accGroupValues,
+            builder: (context, value, child) {
+              return Column(
+                children: [
+                  for (int i = 0; i < widget.children.length; i++)
+                    GSAccordionItemInternal(
+                      id: i,
+                      isExpanded: value[i],
+                      title: widget.children[i].title,
+                      content: widget.children[i].content,
+                      animationDuration: widget.animationDuration,
+                      contentStyle: styler.descendantStyles!["_contentText"],
+                      headerStyle: styler.descendantStyles!["_titleText"],
+                      suffixIconWhenTileCollapsed:
+                          widget.suffixIconWhenTileCollapsed,
+                      suffixIconWhenTileExpanded:
+                          widget.suffixIconWhenTileExpanded,
+                      showSuffixIcon: widget.showSuffixIcon,
+                      prefixIconWhenTileCollapsed:
+                          widget.prefixIconWhenTileCollapsed,
+                      prefixIconWhenTileExpanded:
+                          widget.prefixIconWhenTileExapanded,
+                      prefixIconPadding: widget.prefixIconPadding,
+                      radius: widget.children[i].radius,
+                      itemPadding: widget.itemPadding,
+                      isItemDisabled: widget.children[i].isDisabled,
+                      accordionbackground: styler.bg,
+                      iconColor: styler.iconColor,
+                    ),
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

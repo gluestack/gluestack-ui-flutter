@@ -103,18 +103,18 @@ class GSAccordionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = GSAccordionProvider.of(context)?.size ?? GSAccordionSizes.$md;
-    final titleTextStyle =
-        GSAccordionProvider.of(context)?.baseAccordionStyle.titleTextStyle;
+
+    final ancestorStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsAccordionTitleTextConfig.ancestorStyle.first];
 
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [
         accordionTitleTextStyle,
+        accordionTitleTextStyle.sizeMap(ancestorStyles?.props?.size),
       ],
       inlineStyle: style,
-    ).merge(
-      GSStyle(textStyle: titleTextStyle),
     );
 
     return GSText(
