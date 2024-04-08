@@ -18,6 +18,7 @@ import 'icon_story.dart';
 import 'image_story.dart';
 import 'input_story.dart';
 import 'link_story.dart';
+import 'modal_bottom_sheet_story.dart';
 import 'navigation_rail_story.dart';
 import 'pressable_story.dart';
 import 'progress_story.dart';
@@ -68,6 +69,7 @@ final List<StoryWidget> kStories = [
   ToastStory(),
   VStackStory(),
   HeaderStory(),
+  ModalBottomSheetStory(),
   NavigationRailStory(),
   StepperStory(),
   TabStory(),

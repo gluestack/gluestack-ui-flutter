@@ -7,7 +7,7 @@ import 'gs_tab_indicator.dart';
 class GSTabHeader extends StatelessWidget {
   final PageController controller;
   final GSStyle? style;
-  final bool? disabled;
+  final bool? isDisabled;
   final List<GSTab> tabs;
 
   const GSTabHeader({
@@ -15,14 +15,14 @@ class GSTabHeader extends StatelessWidget {
     required this.controller,
     required this.tabs,
     this.style,
-    this.disabled = false,
+    this.isDisabled = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Opacity(
-        opacity: disabled! ? 0.5 : 1,
+        opacity: isDisabled! ? 0.5 : 1,
         child: Stack(
           children: <Widget>[
             Row(
@@ -34,7 +34,7 @@ class GSTabHeader extends StatelessWidget {
                       style: style?.merge(tabs[i].style),
                       child: tabs[i].child,
                       callback: () {
-                        if (controller.positions.isNotEmpty) {
+                        if (controller.positions.isNotEmpty && !isDisabled!) {
                           controller.animateToPage(
                             tabs.indexOf(tabs[i]),
                             curve: Curves.easeInOut,

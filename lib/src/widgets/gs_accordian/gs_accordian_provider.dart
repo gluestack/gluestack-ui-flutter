@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 
@@ -8,7 +7,6 @@ class GSAccordionProvider extends InheritedWidget {
   final bool isCollapsible;
   final GSAccordionTypes type;
   final GSAccordionSizes size;
-  final GSStyle baseAccordionStyle;
   final AccordionExpansionValue accGrpValue;
 
   const GSAccordionProvider({
@@ -17,7 +15,6 @@ class GSAccordionProvider extends InheritedWidget {
     required this.isCollapsible,
     required this.type,
     required this.size,
-    required this.baseAccordionStyle,
     required super.child,
     required this.accGrpValue,
   });
@@ -26,8 +23,8 @@ class GSAccordionProvider extends InheritedWidget {
   bool updateShouldNotify(GSAccordionProvider oldWidget) {
     return isDisabled != oldWidget.isDisabled ||
         isCollapsible != oldWidget.isCollapsible ||
-        type != oldWidget.type || accGrpValue != oldWidget.accGrpValue ||
-        baseAccordionStyle != oldWidget.baseAccordionStyle;
+        type != oldWidget.type ||
+        accGrpValue != oldWidget.accGrpValue;
   }
 
   static GSAccordionProvider? of(BuildContext context) {
