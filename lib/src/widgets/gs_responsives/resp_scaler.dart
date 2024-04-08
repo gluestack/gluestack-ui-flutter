@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 
 /// A widget that scales its child based on the current screen width, maintaining
-/// the design's intended dimensions relative to a base design width. [GSRespScaler]
+/// the design's intended dimensions relative to a base design width. [GSScaler]
 /// is useful for adapting UI elements designed for a specific screen width to
 /// different screen sizes.
-class GSRespScaler extends StatelessWidget {
+class GSScaler extends StatelessWidget {
   /// The child widget to scale. This can be any widget that needs to be adapted
   /// to the screen size while preserving its aspect ratio and layout proportions.
   final Widget child;
@@ -15,7 +15,7 @@ class GSRespScaler extends StatelessWidget {
   /// tools like Figma for iPhone designs.
   final double designWidth;
 
-  const GSRespScaler({
+  const GSScaler({
     super.key,
     required this.child,
     this.designWidth = 375, // Generic Figma design width for iPhone
