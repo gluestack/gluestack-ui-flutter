@@ -1130,6 +1130,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         ),
       ),
       onDisabled: GSStyle(
+        opacity: data?[':disabled']?['opacity'],
         textStyle: TextStyle(
           color: resolveColorFromString(data?[':disabled']?['color']),
         ),
