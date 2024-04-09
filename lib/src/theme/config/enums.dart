@@ -8,6 +8,17 @@ $md,
 $sm,
 }
 
+enum AccordionVariants {
+filled,
+unfilled,
+}
+
+enum AccordionSizes {
+$sm,
+$md,
+$lg,
+}
+
 enum ProgressSizes {
 $xs,
 $sm,

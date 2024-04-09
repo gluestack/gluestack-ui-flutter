@@ -9,7 +9,6 @@ void main() {
 
   //For debug purposes
   // readFile(File('./button/button.dart'));
-
 }
 
 void crawlDirectory(Directory dir) {
@@ -29,9 +28,11 @@ void readFile(File file) {
     for (var match in pattern.allMatches(contents)) {
       final mapName = match.group(1);
       String? mapData = match.group(2);
+
+      // print('${mapName} \n ${mapData} \n--------------');
       if (mapData != null
-          //  && mapData.contains('"variants"')
-          ) {
+       && mapData.contains('variants')
+       ) {
         //fix for that $ sign issue + other , issues
         mapData = mapData.replaceAll(r'\$', "");
         mapData = mapData.replaceAll(r"'", r'"');
@@ -44,10 +45,13 @@ void readFile(File file) {
         final map = jsonDecode(mapData);
 
         final variants = map['variants'];
+        // print(variants);
 
         if (variants is Map<String, dynamic>) {
           generateEnum(mapName ?? 'DebugErrorValue-CheckScript', variants);
         }
+      } else {
+        print('Variants do not exist for: $mapName');
       }
     }
   } catch (e) {
