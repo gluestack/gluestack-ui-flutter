@@ -60,6 +60,7 @@ export 'package:gluestack_ui/src/theme/config/accordian/accordian_icon.dart';
 export 'package:gluestack_ui/src/theme/config/accordian/accordian_header.dart';
 export 'package:gluestack_ui/src/theme/config/accordian/accordion_item.dart';
 export 'package:gluestack_ui/src/theme/config/accordian/accordion_title_text.dart';
+export 'package:gluestack_ui/src/theme/config/modal_bottom_sheet/modal_bottom_sheet.dart';
 export 'package:gluestack_ui/src/theme/config/navigation_rail/navigation_rail.dart';
 export 'package:gluestack_ui/src/theme/config/stepper/stepper.dart';
 export '../theme/config/stepper/stepper_title_text.dart';
