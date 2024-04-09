@@ -28,8 +28,7 @@ $xl,
 $2xl,
 }
 
-enum TextAreaVariants {
-}
+
 
 enum TextAreaSizes {
 $xl,

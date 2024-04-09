@@ -13,8 +13,8 @@ class HStackExample extends StatefulWidget {
 }
 
 class _HStackExampleState extends State<HStackExample> {
-  final List dropdownSpaceOptions = [
-    GSHstackSpaces.$none,
+  final List<GSHstackSpaces?> dropdownSpaceOptions = [
+    null,
     GSHstackSpaces.$xs,
     GSHstackSpaces.$sm,
     GSHstackSpaces.$md,
@@ -24,7 +24,7 @@ class _HStackExampleState extends State<HStackExample> {
     GSHstackSpaces.$3xl,
     GSHstackSpaces.$4xl,
   ];
-  GSHstackSpaces selectedSpaceOption = GSHstackSpaces.$none;
+  GSHstackSpaces? selectedSpaceOption;
   void updateSpaceSelectedOption(dynamic newOption) {
     setState(() {
       selectedSpaceOption = newOption;

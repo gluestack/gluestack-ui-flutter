@@ -13,8 +13,8 @@ class VStackExample extends StatefulWidget {
 }
 
 class _VStackExampleState extends State<VStackExample> {
-  final List dropdownSpaceOptions = [
-    GSVstackSpaces.$none,
+  final List<GSVstackSpaces?> dropdownSpaceOptions = [
+    null,
     GSVstackSpaces.$xs,
     GSVstackSpaces.$sm,
     GSVstackSpaces.$md,
@@ -24,7 +24,7 @@ class _VStackExampleState extends State<VStackExample> {
     GSVstackSpaces.$3xl,
     GSVstackSpaces.$4xl,
   ];
-  GSVstackSpaces selectedSpaceOption = GSVstackSpaces.$none;
+  GSVstackSpaces? selectedSpaceOption;
   void updateSpaceSelectedOption(dynamic newOption) {
     setState(() {
       selectedSpaceOption = newOption;

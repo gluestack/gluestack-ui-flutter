@@ -5,7 +5,7 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 //Need to add value according to GSSizes enum order.
 final List<Option<int>> spaceOption = [
-  Option<int>(value: 0, label: GSSpaces.$none.name),
+  const Option<int>(value: 0, label: 'null'),
   Option<int>(value: 1, label: GSSpaces.$xs.name),
   Option<int>(value: 2, label: GSSpaces.$sm.name),
   Option<int>(value: 3, label: GSSpaces.$md.name),
@@ -16,6 +16,18 @@ final List<Option<int>> spaceOption = [
   Option<int>(value: 8, label: GSSpaces.$4xl.name),
 ];
 
+final List<GSHstackSpaces?> dropdownSpaceOptions = [
+  null,
+  GSHstackSpaces.$xs,
+  GSHstackSpaces.$sm,
+  GSHstackSpaces.$md,
+  GSHstackSpaces.$lg,
+  GSHstackSpaces.$xl,
+  GSHstackSpaces.$2xl,
+  GSHstackSpaces.$3xl,
+  GSHstackSpaces.$4xl,
+];
+
 final class HStackStory extends StoryWidget {
   @override
   Story createStoryWidget() {
@@ -23,7 +35,7 @@ final class HStackStory extends StoryWidget {
       name: storyName,
       builder: (context) => GSHStack(
         mainAxisAlignment: MainAxisAlignment.center,
-        space: GSHstackSpaces.values[context.knobs
+        space: dropdownSpaceOptions[context.knobs
             .options(label: 'Space', initial: 0, options: spaceOption)],
         isReversed: context.knobs.boolean(label: "isReversed", initial: false),
         children: [

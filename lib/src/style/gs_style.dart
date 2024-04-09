@@ -61,7 +61,7 @@ enum GSOutlineStyle { solid }
 
 enum GSDirection { row, column }
 
-enum GSSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
+enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 enum GSAlignments { start, center, end, spaceBetween, flexEnd, flexStart }
 

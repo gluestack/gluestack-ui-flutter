@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_vstack/gs_vstack_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
 /// Provides a consistent set of spacing values that can be applied between the children of a [GSVStack].
-enum GSVstackSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
+enum GSVstackSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 /// A widget that arranges its children in a vertical sequence. [GSVStack] allows for
 /// flexible layout configurations and spacing between its child widgets, making it
@@ -47,7 +47,7 @@ class GSVStack extends StatelessWidget {
   final VerticalDirection verticalDirection;
   const GSVStack({
     super.key,
-    this.space = GSVstackSpaces.$none,
+    this.space,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.max,
@@ -63,17 +63,14 @@ class GSVStack extends StatelessWidget {
     List<Widget> spacedChildrenList = [];
     // Convert the [GSVstackSpaces] enum to a GSSpace spacing value.
     final vStackSpace = space?.toGSSpaces;
-
+    print('space: $space');
     // Iterate over the children to insert spacing widgets between them, based on the
     // specified [space] value, except after the last child.
     for (var child in children) {
       spacedChildrenList.add(child);
-      if (child != children.last) {
+      if (child != children.last && space != null) {
         spacedChildrenList.add(
-          SizedBox(
-              height: vStackSpace == GSSpaces.$none
-                  ? null
-                  : vstackStyle.spaceMap(vStackSpace)?.gap),
+          SizedBox(height: vstackStyle.spaceMap(vStackSpace)?.gap),
         );
       }
     }
