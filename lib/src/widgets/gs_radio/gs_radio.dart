@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
@@ -74,8 +75,15 @@ class GSRadio<T> extends StatelessWidget {
         ? isRadioInvalid = formProps?.isInvalid ?? false
         : null;
 
+    final styler = resolveStyles(
+        context: context,
+        styles: [
+          radioStyle,
+        ],
+        inlineStyle: style);
+
     return GSAncestor(
-      decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize],
+      decedentStyles: styler.descendantStyles,
       child: GSStyleBuilder(
         child: MouseRegion(
           cursor: isRadioDisabled

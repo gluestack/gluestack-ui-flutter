@@ -169,340 +169,116 @@ class GSOrientation {
 }
 
 class GSVariant {
-  GSStyle? underlined;
-  GSStyle? outline;
-  GSStyle? rounded;
-  GSStyle? solid;
-  GSStyle? link;
-  GSStyle? accent;
-  GSStyle? filled;
-  GSStyle? unfilled;
+  Map<GSVariants, GSStyle?> styles;
+  GSVariant({this.styles = const {}});
 
-  GSVariant({
-    this.underlined,
-    this.outline,
-    this.rounded,
-    this.solid,
-    this.link,
-    this.accent,
-    this.filled,
-    this.unfilled,
-  });
-  factory GSVariant.fromMap(
-      {required Map<String, dynamic>? data,
-      List<String> descendantStyle = const []}) {
-    return GSVariant(
-      underlined: parseMap(data?['underlined'])
-          ? GSStyle.fromMap(
-              data: data?['underlined'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      outline: parseMap(data?['outline'])
-          ? GSStyle.fromMap(
-              data: data?['outline'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      solid: parseMap(data?['solid'])
-          ? GSStyle.fromMap(
-              data: data?['solid'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      rounded: parseMap(data?['rounded'])
-          ? GSStyle.fromMap(
-              data: data?['rounded'],
-              descendantStyle: descendantStyle,
-              fromVariant: true,
-            )
-          : null,
-      link: parseMap(data?['link'])
-          ? GSStyle.fromMap(
-              data: data?['link'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      accent: parseMap(data?['accent'])
-          ? GSStyle.fromMap(
-              data: data?['accent'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      filled: parseMap(data?['filled'])
-          ? GSStyle.fromMap(
-              data: data?['filled'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      unfilled: parseMap(data?['unfilled'])
-          ? GSStyle.fromMap(
-              data: data?['unfilled'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-    );
-  }
-}
-
-class GSSize {
-  GSStyle? $xs;
-  GSStyle? $sm;
-  GSStyle? $md;
-  GSStyle? $lg;
-  GSStyle? $xl;
-  GSStyle? $2xs;
-  GSStyle? $2xl;
-  GSStyle? $3xl;
-  GSStyle? $4xl;
-  GSStyle? $5xl;
-  GSStyle? $6xl;
-  GSStyle? $full;
-
-  GSSize(
-      {this.$xs,
-      this.$sm,
-      this.$md,
-      this.$lg,
-      this.$xl,
-      this.$2xl,
-      this.$2xs,
-      this.$3xl,
-      this.$4xl,
-      this.$5xl,
-      this.$6xl,
-      this.$full});
-  factory GSSize.fromMap({
+  factory GSVariant.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
   }) {
-    return GSSize(
-      $lg: parseMap(data?['lg'])
-          ? GSStyle.fromMap(
-              data: data?['lg'],
-              descendantStyle: descendantStyle,
-              fromVariant: true,
-            )
-          : null,
-      $md: parseMap(data?['md'])
-          ? GSStyle.fromMap(
-              data: data?['md'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $sm: parseMap(data?['sm'])
-          ? GSStyle.fromMap(
-              data: data?['sm'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $xl: parseMap(data?['xl'])
-          ? GSStyle.fromMap(
-              data: data?['xl'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $xs: parseMap(data?['xs'])
-          ? GSStyle.fromMap(
-              data: data?['xs'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $2xl: parseMap(data?['2xl'])
-          ? GSStyle.fromMap(
-              data: data?['2xl'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $2xs: parseMap(data?['2xs'])
-          ? GSStyle.fromMap(
-              data: data?['2xs'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $3xl: parseMap(data?['3xl'])
-          ? GSStyle.fromMap(
-              data: data?['3xl'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $4xl: parseMap(data?['4xl'])
-          ? GSStyle.fromMap(
-              data: data?['4xl'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $5xl: parseMap(data?['5xl'])
-          ? GSStyle.fromMap(
-              data: data?['5xl'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $6xl: parseMap(data?['6xl'])
-          ? GSStyle.fromMap(
-              data: data?['6xl'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-      $full: parseMap(data?['full'])
-          ? GSStyle.fromMap(
-              data: data?['full'],
-              descendantStyle: descendantStyle,
-              fromVariant: true)
-          : null,
-    );
-  }
+    var variantStyles = <GSVariants, GSStyle?>{};
+    for (GSVariants enumValue in GSVariants.values) {
+      var key = enumValue.name;
+      if (data?[key] is Map<String, dynamic> && (data?.containsKey(key) ?? false)) {
+        variantStyles[enumValue] = GSStyle.fromMap(
+          data: data![key],
+          descendantStyle: descendantStyle,
+          fromVariant: true,
+        );
+      }
+    }
 
-  GSSize merge(GSSize? overrideStyle) {
-    return GSSize(
-      $2xl: $2xl?.merge(overrideStyle?.$2xl) ?? overrideStyle?.$2xl,
-      $2xs: $2xs?.merge(overrideStyle?.$2xs) ?? overrideStyle?.$2xs,
-      $3xl: $3xl?.merge(overrideStyle?.$3xl) ?? overrideStyle?.$3xl,
-      $4xl: $4xl?.merge(overrideStyle?.$2xl) ?? overrideStyle?.$4xl,
-      $5xl: $5xl?.merge(overrideStyle?.$5xl) ?? overrideStyle?.$5xl,
-      $6xl: $6xl?.merge(overrideStyle?.$6xl) ?? overrideStyle?.$6xl,
-      $lg: $lg?.merge(overrideStyle?.$lg) ?? overrideStyle?.$lg,
-      $md: $md?.merge(overrideStyle?.$md) ?? overrideStyle?.$md,
-      $sm: $sm?.merge(overrideStyle?.$sm) ?? overrideStyle?.$sm,
-      $xl: $xl?.merge(overrideStyle?.$xl) ?? overrideStyle?.$xl,
-      $xs: $xs?.merge(overrideStyle?.$2xl) ?? overrideStyle?.$xs,
-      $full: $full?.merge(overrideStyle?.$full) ?? overrideStyle?.$full,
-    );
+    return GSVariant(styles: variantStyles);
   }
 }
 
 class GSAction {
-  GSStyle? primary;
-  GSStyle? secondary;
-  GSStyle? positive;
-  GSStyle? negative;
-  GSStyle? defaultStyle;
-  GSStyle? error;
-  GSStyle? warning;
-  GSStyle? success;
-  GSStyle? info;
-  GSStyle? muted;
-  GSStyle? attention;
-  GSAction({
-    this.primary,
-    this.secondary,
-    this.positive,
-    this.negative,
-    this.defaultStyle,
-    this.error,
-    this.warning,
-    this.success,
-    this.info,
-    this.muted,
-    this.attention,
-  });
-  factory GSAction.fromMap(
-      {required Map<String, dynamic>? data,
-      List<String> descendantStyle = const []}) {
-    return GSAction(
-      primary: GSStyle.fromMap(
-          data: data?['primary'],
+  Map<GSActions, GSStyle?> styles;
+  GSAction({this.styles = const {}});
+
+  factory GSAction.fromMap({
+    required Map<String, dynamic>? data,
+    List<String> descendantStyle = const [],
+  }) {
+    var actionStyles = <GSActions, GSStyle?>{};
+    for (GSActions enumValue in GSActions.values) {
+      var key = enumValue.name;
+      if (data?[key] is Map<String, dynamic> && (data?.containsKey(key) ?? false)) {
+        actionStyles[enumValue] = GSStyle.fromMap(
+          data: data![key],
           descendantStyle: descendantStyle,
-          fromVariant: true),
-      secondary: GSStyle.fromMap(
-          data: data?['secondary'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      defaultStyle: GSStyle.fromMap(
-          data: data?['default'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      positive: GSStyle.fromMap(
-          data: data?['positive'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      negative: GSStyle.fromMap(
-          data: data?['negative'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      error: GSStyle.fromMap(
-          data: data?['error'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      warning: GSStyle.fromMap(
-          data: data?['warning'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      success: GSStyle.fromMap(
-          data: data?['success'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      info: GSStyle.fromMap(
-          data: data?['info'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      muted: GSStyle.fromMap(
-          data: data?['muted'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      attention: GSStyle.fromMap(
-          data: data?['attention'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-    );
+          fromVariant: true,
+        );
+      }
+    }
+
+    return GSAction(styles: actionStyles);
   }
 }
 
 class GSSpace {
-  GSStyle? $none;
-  GSStyle? $xs;
-  GSStyle? $sm;
-  GSStyle? $md;
-  GSStyle? $lg;
-  GSStyle? $xl;
-  GSStyle? $2xl;
-  GSStyle? $3xl;
-  GSStyle? $4xl;
+  Map<GSSpaces, GSStyle?> styles;
+  GSSpace({this.styles = const {}});
 
-  GSSpace({
-    this.$none,
-    this.$xs,
-    this.$sm,
-    this.$md,
-    this.$lg,
-    this.$xl,
-    this.$2xl,
-    this.$3xl,
-    this.$4xl,
-  });
-  factory GSSpace.fromMap({required Map<String, dynamic>? data}) {
-    return GSSpace(
-      $none: data?['none'] != null
-          ? GSStyle.fromMap(data: data?['none'], fromVariant: true)
-          : null,
-      $xs: data?['xs'] != null
-          ? GSStyle.fromMap(data: data?['xs'], fromVariant: true)
-          : null,
-      $sm: data?['sm'] != null
-          ? GSStyle.fromMap(data: data?['sm'], fromVariant: true)
-          : null,
-      $md: data?['md'] != null
-          ? GSStyle.fromMap(data: data?['md'], fromVariant: true)
-          : null,
-      $lg: data?['lg'] != null
-          ? GSStyle.fromMap(
-              data: data?['lg'],
-              fromVariant: true,
-            )
-          : null,
-      $xl: data?['xl'] != null
-          ? GSStyle.fromMap(data: data?['xl'], fromVariant: true)
-          : null,
-      $2xl: data?['2xl'] != null
-          ? GSStyle.fromMap(data: data?['2xl'], fromVariant: true)
-          : null,
-      $3xl: data?['3xl'] != null
-          ? GSStyle.fromMap(data: data?['3xl'], fromVariant: true)
-          : null,
-      $4xl: data?['4xl'] != null
-          ? GSStyle.fromMap(data: data?['4xl'], fromVariant: true)
-          : null,
-    );
+  factory GSSpace.fromMap({
+    required Map<String, dynamic>? data,
+    List<String> descendantStyle = const [],
+  }) {
+    var spaceStyles = <GSSpaces, GSStyle?>{};
+    for (GSSpaces enumValue in GSSpaces.values) {
+      //cuz of $ sign
+      var key = enumValue.name.substring(1);
+
+
+      if (data?[key] is Map<String, dynamic> && (data?.containsKey(key) ?? false)) {
+        spaceStyles[enumValue] = GSStyle.fromMap(
+          data: data![key],
+          descendantStyle: descendantStyle,
+          fromVariant: true,
+        );
+      }
+    }
+
+    return GSSpace(styles: spaceStyles);
+  }
+}
+
+class GSSize {
+  Map<GSSizes, GSStyle?> styles;
+  GSSize({this.styles = const {}});
+
+  factory GSSize.fromMap({
+    required Map<String, dynamic>? data,
+    List<String> descendantStyle = const [],
+  }) {
+    var sizeStyles = <GSSizes, GSStyle?>{};
+    for (GSSizes enumValue in GSSizes.values) {
+      //cuz of $ sign
+      var key = enumValue.name.substring(1);
+
+      if (data?[key] is Map<String, dynamic> &&( data?.containsKey(key) ?? false)) {
+        //to handle edge case where values were being list n stuff 
+
+          sizeStyles[enumValue] = GSStyle.fromMap(
+            data: data![key],
+            descendantStyle: descendantStyle,
+            fromVariant: true,
+          );
+
+      }
+    }
+    return GSSize(styles: sizeStyles);
+  }
+
+  GSSize merge(GSSize? overrideSize) {
+    var mergedStyles = Map.of(styles);
+    if (overrideSize?.styles != null) {
+      for (var entry in overrideSize!.styles.entries) {
+        mergedStyles[entry.key] = entry.value;
+      }
+    }
+
+    return GSSize(styles: mergedStyles);
   }
 }
 
@@ -532,25 +308,26 @@ class Variants {
     List<String> descendantStyle = const [],
   }) {
     return Variants(
-        size: GSSize.fromMap(
-            data: data?['size'], descendantStyle: descendantStyle),
-        variant: GSVariant.fromMap(
-            data: data?['variant'], descendantStyle: descendantStyle),
-        action: GSAction.fromMap(
-            data: data?['action'], descendantStyle: descendantStyle),
-        space: GSSpace.fromMap(
-          data: data?['space'],
-        ),
-        sub: GSStyle.fromMap(
-            data: data?['sub']?['true'],
-            descendantStyle: descendantStyle,
-            fromVariant: true),
-        highlight: GSStyle.fromMap(
-            data: data?['highlight']?['true'],
-            descendantStyle: descendantStyle,
-            fromVariant: true),
-        placements: GSPlacement.fromMap(data: data?['placement']),
-        orientation: GSOrientation.fromMap(data: data?['orientation']));
+      size:
+          GSSize.fromMap(data: data?['size'], descendantStyle: descendantStyle),
+      variant: GSVariant.fromMap(
+          data: data?['variant'], descendantStyle: descendantStyle),
+      action: GSAction.fromMap(
+          data: data?['action'], descendantStyle: descendantStyle),
+      space: GSSpace.fromMap(
+        data: data?['space'],
+      ),
+      sub: GSStyle.fromMap(
+          data: data?['sub']?['true'],
+          descendantStyle: descendantStyle,
+          fromVariant: true),
+      highlight: GSStyle.fromMap(
+          data: data?['highlight']?['true'],
+          descendantStyle: descendantStyle,
+          fromVariant: true),
+      placements: GSPlacement.fromMap(data: data?['placement']),
+      orientation: GSOrientation.fromMap(data: data?['orientation']),
+    );
   }
 }
 
@@ -893,7 +670,6 @@ class GSStyle extends BaseStyle<GSStyle> {
     List<String> descendantStyle = const [],
     bool fromVariant = false,
   }) {
-    // print(data?['_content']);
     return GSStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
       compoundVariants:
@@ -992,6 +768,8 @@ class GSStyle extends BaseStyle<GSStyle> {
             data?['_titleText']?['color'] ??
             data?['_subtitleText']?['color'] ??
             data?['_contentText']?['color'] ??
+            data?['_selectedLabelText']?['color'] ??
+            data?['_unselectedLabelText']?['color'] ??
             data?['color']),
       ),
       titleTextStyle: TextStyle(
@@ -1022,6 +800,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         color: resolveColorFromString(
             data?['_contentText']?['color'] ?? data?['color']),
       ),
+
       color: resolveColorFromString(data?['color']),
       bg: resolveColorFromString(data?['bg'] ?? data?['backgroundColor']),
       borderWidth: data?['borderWidth'] != null
@@ -1219,7 +998,9 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
       dark: GSStyle(
         iconColor: resolveColorFromString(
-          data?['_icon']?['_dark']?['color'],
+          data?['_icon']?['_dark']?['color'] ??
+              data?['_selectedIcon']?['_dark']?['color'] ??
+              data?['_unselectedIcon']?['_dark']?['color'],
         ),
         item: GSStyle(
           bg: resolveColorFromString(
@@ -1244,8 +1025,10 @@ class GSStyle extends BaseStyle<GSStyle> {
         color: resolveColorFromString((data?['_dark']?['color'])),
         textStyle: TextStyle(
           fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-          color: resolveColorFromString(
-              data?['_text']?['_dark']?['color'] ?? data?['_dark']?['color']),
+          color: resolveColorFromString(data?['_text']?['_dark']?['color'] ??
+              data?['_selectedLabelText']?['_dark']?['color'] ??
+              data?['_unselectedLabelText']?['_dark']?['color'] ??
+              data?['_dark']?['color']),
         ),
         contentTextStyle: TextStyle(
           color: resolveColorFromString(data?['_contentText']?['_dark']
@@ -1443,7 +1226,7 @@ class GSStyle extends BaseStyle<GSStyle> {
               : null
           : null,
       iconColor: resolveColorFromString(
-        data?['_icon']?['color'],
+        data?['_icon']?['color'] ?? data?['_selectedIcon']?['color'],
       ),
       shadowColor: resolveColorFromString(data?['shadowColor']),
       shadowRadius: data?['shadowRadius'] != null
@@ -1460,119 +1243,44 @@ class GSStyle extends BaseStyle<GSStyle> {
   }
 
   GSStyle? actionMap(GSActions? gsActions) {
-    if (gsActions == null) {
+    if (gsActions == null || variants?.action == null) {
       return null;
     }
-    switch (gsActions) {
-      case GSActions.primary:
-        return variants?.action?.primary;
-      case GSActions.secondary:
-        return variants?.action?.secondary;
-      case GSActions.positive:
-        return variants?.action?.positive;
-      case GSActions.negative:
-        return variants?.action?.negative;
-      case GSActions.error:
-        return variants?.action?.error;
-      case GSActions.warning:
-        return variants?.action?.warning;
-      case GSActions.success:
-        return variants?.action?.success;
-      case GSActions.info:
-        return variants?.action?.info;
-      case GSActions.muted:
-        return variants?.action?.muted;
-      case GSActions.attention:
-        return variants?.action?.attention;
-      default:
-        return null;
-    }
+
+    final Map<GSActions, GSStyle?> actionMap = variants!.action!.styles;
+
+    return actionMap[gsActions];
   }
 
   GSStyle? variantMap(GSVariants? gsVariants) {
-    if (gsVariants == null) {
+    if (gsVariants == null || variants?.variant == null) {
       return null;
     }
-    switch (gsVariants) {
-      case GSVariants.solid:
-        return variants?.variant?.solid;
-      case GSVariants.outline:
-        return variants?.variant?.outline;
-      case GSVariants.link:
-        return variants?.variant?.link;
-      case GSVariants.underlined:
-        return variants?.variant?.underlined;
-      case GSVariants.rounded:
-        return variants?.variant?.rounded;
-      case GSVariants.accent:
-        return variants?.variant?.accent;
-      case GSVariants.filled:
-        return variants?.variant?.filled;
-      case GSVariants.unfilled:
-        return variants?.variant?.unfilled;
-      default:
-        return null;
-    }
+
+    final Map<GSVariants, GSStyle?> variantMap = variants!.variant!.styles;
+
+    return variantMap[gsVariants];
   }
 
   GSStyle? sizeMap(GSSizes? gsSizes) {
-    if (gsSizes == null) {
+    if (gsSizes == null || variants?.size == null) {
       return null;
     }
-    switch (gsSizes) {
-      case GSSizes.$2xs:
-        return variants?.size?.$2xs;
-      case GSSizes.$xs:
-        return variants?.size?.$xs;
-      case GSSizes.$sm:
-        return variants?.size?.$sm;
-      case GSSizes.$md:
-        return variants?.size?.$md;
-      case GSSizes.$lg:
-        return variants?.size?.$lg;
-      case GSSizes.$xl:
-        return variants?.size?.$xl;
-      case GSSizes.$2xl:
-        return variants?.size?.$2xl;
-      case GSSizes.$3xl:
-        return variants?.size?.$3xl;
-      case GSSizes.$4xl:
-        return variants?.size?.$4xl;
-      case GSSizes.$5xl:
-        return variants?.size?.$5xl;
-      case GSSizes.$6xl:
-        return variants?.size?.$6xl;
-      case GSSizes.$full:
-        return variants?.size?.$full;
-      default:
-        return null;
-    }
+
+    final Map<GSSizes, GSStyle?> sizeMap = variants!.size!.styles;
+
+    // print(sizeMap);
+
+    return sizeMap[gsSizes];
   }
 
   GSStyle? spaceMap(GSSpaces? gsSpaces) {
-    if (gsSpaces == null) return null;
-
-    switch (gsSpaces) {
-      case GSSpaces.$none:
-        return variants?.space?.$none;
-      case GSSpaces.$xs:
-        return variants?.space?.$xs;
-      case GSSpaces.$sm:
-        return variants?.space?.$sm;
-      case GSSpaces.$md:
-        return variants?.space?.$md;
-      case GSSpaces.$lg:
-        return variants?.space?.$lg;
-      case GSSpaces.$xl:
-        return variants?.space?.$xl;
-      case GSSpaces.$2xl:
-        return variants?.space?.$2xl;
-      case GSSpaces.$3xl:
-        return variants?.space?.$3xl;
-      case GSSpaces.$4xl:
-        return variants?.space?.$4xl;
-      default:
-        return null;
+    if (gsSpaces == null || variants?.space == null) {
+      return null;
     }
+
+    final Map<GSSpaces, GSStyle?> spaceMap = variants!.space!.styles;
+
+    return spaceMap[gsSpaces];
   }
 }
