@@ -1,19 +1,7 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/token/public.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_style.dart';
-
-/// Provides predefined sizes for GS Progress widget
-enum GSProgressSizes {
-  $xs,
-  $sm,
-  $md,
-  $lg,
-  $xl,
-  $2xl,
-}
 
 /// A widget that displays a progress bar, indicating the completion of a task or
 /// the value of a process in a visually appealing manner. [GSProgress] supports

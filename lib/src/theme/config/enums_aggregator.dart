@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:collection';
 
 void main() {
   try {
@@ -10,11 +9,13 @@ void main() {
     final actionEnums = <String>{};
     final sizeEnums = <String>{}; 
     final spaceEnums = <String>{}; 
+    final placementEnums = <String>{}; 
 
     sizeEnums.addAll(extractEnums(lines, 'Sizes'));
     actionEnums.addAll(extractEnums(lines, 'Actions'));
     variantEnums.addAll(extractEnums(lines, 'Variants'));
     spaceEnums.addAll(extractEnums(lines, 'Spaces'));
+    placementEnums.addAll(extractEnums(lines, 'Placements'));
 
     final content = '''
 enum GSVariants {
@@ -31,6 +32,10 @@ enum GSSizes {
 
 enum GSSpaces {
   ${spaceEnums.join(',\n  ')}
+}
+
+enum GSPlacements {
+  ${placementEnums.join(',\n  ')}
 }
 ''';
 

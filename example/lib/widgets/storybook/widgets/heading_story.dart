@@ -21,8 +21,13 @@ final class HeadingStory extends StoryWidget {
       name: storyName,
       builder: (context) => GSHeading(
         text: 'This is an example for a Heading',
-        size: GSHeadingSizes.values[context.knobs
-            .options(label: 'Sizes', initial: 0,options: sizeOptions)],
+        size: GSHeadingSizes.values
+            .where((element) =>
+                element.name ==
+                sizeOptions[context.knobs.options(
+                        label: 'Sizes', initial: 0, options: sizeOptions)]
+                    .label)
+            .first,
         bold: context.knobs.boolean(label: "bold", initial: false),
         italic: context.knobs.boolean(label: "italic", initial: false),
         strikeThrough:

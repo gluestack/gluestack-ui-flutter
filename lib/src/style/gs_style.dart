@@ -1,67 +1,20 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/style/base_style.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 
-enum GSActions {
-  primary,
-  secondary,
-  positive,
-  negative,
-  error,
-  warning,
-  success,
-  info,
-  muted,
-  attention,
-}
+//for ease in export | No need to import from provider everywhere else.
+export 'package:gluestack_ui/src/provider/provider.dart';
 
 enum GSTextTransform { uppercase, lowercase }
 
 enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
-enum GSVariants {
-  solid,
-  outline,
-  link,
-  underlined,
-  rounded,
-  accent,
-  filled,
-  unfilled,
-}
-
-enum GSPlacements {
-  topLeft,
-  topCenter,
-  topRight,
-  bottomLeft,
-  bottomCenter,
-  bottomRight
-}
-
 enum GSTypes { single, multiple }
-
-enum GSSizes {
-  $2xs,
-  $xs,
-  $sm,
-  $md,
-  $lg,
-  $xl,
-  $2xl,
-  $3xl,
-  $4xl,
-  $5xl,
-  $6xl,
-  $full
-}
 
 enum GSOutlineStyle { solid }
 
 enum GSDirection { row, column }
-
-enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 enum GSAlignments { start, center, end, spaceBetween, flexEnd, flexStart }
 

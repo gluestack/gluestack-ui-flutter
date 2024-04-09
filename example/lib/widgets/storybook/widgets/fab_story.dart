@@ -39,8 +39,13 @@ final class FabStory extends StoryWidget {
             GSFab(
               size: GSFABSizes.values[context.knobs
                   .options(label: 'Size', initial: 1, options: sizeOptions)],
-              placement: GSFABPlacements.values[context.knobs.options(
-                  label: 'Placement', initial: 5, options: placementOptions)],
+              placement: GSFABPlacements.values
+                  .where((element) =>
+                      element.name ==
+                      placementOptions[context.knobs.options(
+                              label: 'Placements', initial: 0, options: placementOptions)]
+                          .label)
+                  .first,
               isHovered:
                   context.knobs.boolean(label: "isHovered", initial: false),
               isDisabled:

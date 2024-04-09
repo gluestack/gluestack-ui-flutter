@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 
 class GSFormProvider extends InheritedWidget {

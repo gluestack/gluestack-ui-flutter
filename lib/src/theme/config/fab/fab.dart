@@ -1,4 +1,4 @@
-const Map<String, dynamic> fabData = {
+const Map<String, dynamic> FABData = {
   'bg': '\$primary500',
   'rounded': '\$full',
   'zIndex': 20,

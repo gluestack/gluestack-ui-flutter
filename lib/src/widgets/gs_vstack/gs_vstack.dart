@@ -1,10 +1,6 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_vstack/gs_vstack_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
-
-/// Provides a consistent set of spacing values that can be applied between the children of a [GSVStack].
-enum GSVstackSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 /// A widget that arranges its children in a vertical sequence. [GSVStack] allows for
 /// flexible layout configurations and spacing between its child widgets, making it

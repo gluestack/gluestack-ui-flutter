@@ -1,29 +1,8 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-enum GSButtonGroupSizes {
-  $xs,
-  $sm,
-  $md,
-  $lg,
-  $xl,
-}
-
-enum GSButtonGroupSpaces {
-  $xs,
-  $sm,
-  $md,
-  $lg,
-  $xl,
-  $2xl,
-  $3xl,
-  $4xl,
-}
 
 class GSButtonGroup extends StatelessWidget {
   final List<GSButton>? buttons;

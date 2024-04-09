@@ -33,7 +33,8 @@ enum GSSizes {
   $5xl,
   $4xl,
   $3xl,
-  $2xs
+  $2xs,
+  $6xl
 }
 
 enum GSSpaces {
@@ -45,4 +46,13 @@ enum GSSpaces {
   $2xl,
   $3xl,
   $4xl
+}
+
+enum GSPlacements {
+  topRight,
+  topLeft,
+  bottomRight,
+  bottomLeft,
+  topCenter,
+  bottomCenter
 }

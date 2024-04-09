@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 class GSAccordionItem extends StatelessWidget {

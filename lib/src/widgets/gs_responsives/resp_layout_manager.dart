@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 // Breakpoint ref: https://getbootstrap.com/docs/5.0/layout/breakpoints/
 // Breakpoint reference from Bootstrap documentation for responsive design considerations.

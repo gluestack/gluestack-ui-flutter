@@ -1,25 +1,25 @@
-enum TabsTabSizes {
+enum GSTabsTabSizes {
 $md,
 }
 
-enum RadioSizes {
+enum GSRadioSizes {
 $lg,
 $md,
 $sm,
 }
 
-enum AccordionVariants {
+enum GSAccordionVariants {
 filled,
 unfilled,
 }
 
-enum AccordionSizes {
+enum GSAccordionSizes {
 $sm,
 $md,
 $lg,
 }
 
-enum ProgressSizes {
+enum GSProgressSizes {
 $xs,
 $sm,
 $md,
@@ -28,29 +28,27 @@ $xl,
 $2xl,
 }
 
-
-
-enum TextAreaSizes {
+enum GSTextAreaSizes {
 $xl,
 $lg,
 $md,
 $sm,
 }
 
-enum InputVariants {
+enum GSInputVariants {
 underlined,
 outline,
 rounded,
 }
 
-enum InputSizes {
+enum GSInputSizes {
 $xl,
 $lg,
 $md,
 $sm,
 }
 
-enum AlertDialogSizes {
+enum GSAlertDialogSizes {
 $xs,
 $sm,
 $md,
@@ -58,13 +56,13 @@ $lg,
 $full,
 }
 
-enum AlertVariants {
+enum GSAlertVariants {
 solid,
 outline,
 accent,
 }
 
-enum AlertActions {
+enum GSAlertActions {
 error,
 warning,
 success,
@@ -72,7 +70,7 @@ info,
 muted,
 }
 
-enum HeadingSizes {
+enum GSHeadingSizes {
 $5xl,
 $4xl,
 $3xl,
@@ -84,13 +82,13 @@ $sm,
 $xs,
 }
 
-enum ToastVariants {
+enum GSToastVariants {
 solid,
 outline,
 accent,
 }
 
-enum ToastActions {
+enum GSToastActions {
 error,
 warning,
 success,
@@ -98,43 +96,70 @@ info,
 attention,
 }
 
-enum FabSizes {
+enum GSNavigationRailSizes {
 $sm,
 $md,
 $lg,
 }
 
-enum CheckBoxSizes {
-$lg,
-$md,
-$sm,
-}
-
-enum StepperTitleTextSizes {
+enum GSNavigationRailSelectedLabelSizes {
 $sm,
 $md,
 $lg,
 }
 
-enum StepperSizes {
+enum GSNavigationRailUnselectedLabelSizes {
 $sm,
 $md,
 $lg,
 }
 
-enum StepperContentTextSizes {
+enum GSFABSizes {
 $sm,
 $md,
 $lg,
 }
 
-enum StepperSubtitleTextSizes {
+enum GSFABPlacements {
+topRight,
+topLeft,
+bottomRight,
+bottomLeft,
+topCenter,
+bottomCenter,
+}
+
+enum GSCheckBoxSizes {
+$lg,
+$md,
+$sm,
+}
+
+enum GSStepperTitleTextSizes {
 $sm,
 $md,
 $lg,
 }
 
-enum ImageSizes {
+enum GSStepperSizes {
+$sm,
+$md,
+$lg,
+}
+
+enum GSStepperContentTextSizes {
+$sm,
+$md,
+$lg,
+}
+
+enum GSStepperSubtitleTextSizes {
+$sm,
+$md,
+$lg,
+}
+
+enum GSImageSizes {
 $2xs,
 $xs,
 $sm,
@@ -145,7 +170,7 @@ $2xl,
 $full,
 }
 
-enum HstackSpaces {
+enum GSHstackSpaces {
 $xs,
 $sm,
 $md,
@@ -156,20 +181,20 @@ $3xl,
 $4xl,
 }
 
-enum ButtonVariants {
+enum GSButtonVariants {
 link,
 outline,
 solid,
 }
 
-enum ButtonActions {
+enum GSButtonActions {
 primary,
 secondary,
 positive,
 negative,
 }
 
-enum ButtonSizes {
+enum GSButtonSizes {
 $xs,
 $sm,
 $md,
@@ -177,7 +202,26 @@ $lg,
 $xl,
 }
 
-enum AvatarSizes {
+enum GSButtonGroupSizes {
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
+}
+
+enum GSButtonGroupSpaces {
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
+$2xl,
+$3xl,
+$4xl,
+}
+
+enum GSAvatarSizes {
 $xs,
 $sm,
 $md,
@@ -186,13 +230,27 @@ $xl,
 $2xl,
 }
 
-enum SwitchSizes {
+enum GSSwitchSizes {
 $sm,
 $md,
 $lg,
 }
 
-enum IconSizes {
+enum GSTextSizes {
+$2xs,
+$xs,
+$sm,
+$md,
+$lg,
+$xl,
+$2xl,
+$3xl,
+$4xl,
+$5xl,
+$6xl,
+}
+
+enum GSIconSizes {
 $2xs,
 $xs,
 $sm,
@@ -201,7 +259,7 @@ $lg,
 $xl,
 }
 
-enum VStackSpaces {
+enum GSVstackSpaces {
 $xs,
 $sm,
 $md,
@@ -212,18 +270,18 @@ $3xl,
 $4xl,
 }
 
-enum FormControlSizes {
+enum GSFormControlSizes {
 $sm,
 $md,
 $lg,
 }
 
-enum BadgeVariants {
+enum GSBadgeVariants {
 solid,
 outline,
 }
 
-enum BadgeActions {
+enum GSBadgeActions {
 error,
 warning,
 success,
@@ -231,7 +289,7 @@ info,
 muted,
 }
 
-enum BadgeSizes {
+enum GSBadgeSizes {
 $sm,
 $md,
 $lg,

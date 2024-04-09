@@ -1,23 +1,8 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
 import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-enum GSToastActions {
-  success,
-  warning,
-  error,
-  info,
-  attention,
-}
-
-enum GSToastVariants {
-  solid,
-  outline,
-  accent,
-}
 
 class GSToast extends StatelessWidget {
   final Widget? child;

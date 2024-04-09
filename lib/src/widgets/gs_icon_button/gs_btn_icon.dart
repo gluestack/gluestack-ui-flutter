@@ -1,5 +1,4 @@
 import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 /// predefined sizes for [GSIconButton], providing a consistent set of size options for icon buttons.
