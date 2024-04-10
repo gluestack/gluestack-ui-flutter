@@ -45,34 +45,34 @@ class ShadowOffset {
   }
 }
 
-class GSPlacement {
-  GSStyle? topRight;
-  GSStyle? topLeft;
-  GSStyle? bottomRight;
-  GSStyle? bottomLeft;
-  GSStyle? topCenter;
-  GSStyle? bottomCenter;
-  GSPlacement(
-      {this.bottomCenter,
-      this.bottomLeft,
-      this.bottomRight,
-      this.topCenter,
-      this.topLeft,
-      this.topRight});
-  factory GSPlacement.fromMap({required Map<String, dynamic>? data}) {
-    return GSPlacement(
-      bottomCenter:
-          GSStyle.fromMap(data: data?['bottom center'], fromVariant: true),
-      bottomLeft:
-          GSStyle.fromMap(data: data?['bottom left'], fromVariant: true),
-      bottomRight:
-          GSStyle.fromMap(data: data?['bottom right'], fromVariant: true),
-      topCenter: GSStyle.fromMap(data: data?['top center'], fromVariant: true),
-      topLeft: GSStyle.fromMap(data: data?['top left'], fromVariant: true),
-      topRight: GSStyle.fromMap(data: data?['top right'], fromVariant: true),
-    );
-  }
-}
+// class GSPlacement {
+//   GSStyle? topRight;
+//   GSStyle? topLeft;
+//   GSStyle? bottomRight;
+//   GSStyle? bottomLeft;
+//   GSStyle? topCenter;
+//   GSStyle? bottomCenter;
+//   GSPlacement(
+//       {this.bottomCenter,
+//       this.bottomLeft,
+//       this.bottomRight,
+//       this.topCenter,
+//       this.topLeft,
+//       this.topRight});
+//   factory GSPlacement.fromMap({required Map<String, dynamic>? data}) {
+//     return GSPlacement(
+//       bottomCenter:
+//           GSStyle.fromMap(data: data?['bottom center'], fromVariant: true),
+//       bottomLeft:
+//           GSStyle.fromMap(data: data?['bottom left'], fromVariant: true),
+//       bottomRight:
+//           GSStyle.fromMap(data: data?['bottom right'], fromVariant: true),
+//       topCenter: GSStyle.fromMap(data: data?['top center'], fromVariant: true),
+//       topLeft: GSStyle.fromMap(data: data?['top left'], fromVariant: true),
+//       topRight: GSStyle.fromMap(data: data?['top right'], fromVariant: true),
+//     );
+//   }
+// }
 
 class GSProps {
   GSActions? action;
@@ -132,7 +132,8 @@ class GSVariant {
     var variantStyles = <GSVariants, GSStyle?>{};
     for (GSVariants enumValue in GSVariants.values) {
       var key = enumValue.name;
-      if (data?[key] is Map<String, dynamic> && (data?.containsKey(key) ?? false)) {
+      if (data?[key] is Map<String, dynamic> &&
+          (data?.containsKey(key) ?? false)) {
         variantStyles[enumValue] = GSStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
@@ -156,7 +157,8 @@ class GSAction {
     var actionStyles = <GSActions, GSStyle?>{};
     for (GSActions enumValue in GSActions.values) {
       var key = enumValue.name;
-      if (data?[key] is Map<String, dynamic> && (data?.containsKey(key) ?? false)) {
+      if (data?[key] is Map<String, dynamic> &&
+          (data?.containsKey(key) ?? false)) {
         actionStyles[enumValue] = GSStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
@@ -166,6 +168,47 @@ class GSAction {
     }
 
     return GSAction(styles: actionStyles);
+  }
+}
+
+class GSPlacement {
+  Map<GSPlacements, GSStyle?> styles;
+  GSPlacement({this.styles = const {}});
+
+  factory GSPlacement.fromMap({
+    required Map<String, dynamic>? data,
+    List<String> descendantStyle = const [],
+  }) {
+    String convertToConfigKey(String input) {
+      List<String> words = input.split(RegExp(r"(?=[A-Z])"));
+      String result = words.map((word) {
+        if (word.isNotEmpty) {
+          return "${word[0].toUpperCase()}${word.substring(1).toLowerCase()}";
+        } else {
+          return "";
+        }
+      }).join(" ");
+      return result.toLowerCase();
+    }
+
+    var placementStyles = <GSPlacements, GSStyle?>{};
+    for (GSPlacements enumValue in GSPlacements.values) {
+      var key = enumValue.name;
+      key = convertToConfigKey(key);
+
+      if (data?[key] is Map<String, dynamic> &&
+          (data?.containsKey(key) ?? false)) {
+        // configKey = key.split('').join(' ').toLowerCase();
+
+        placementStyles[enumValue] = GSStyle.fromMap(
+          data: data![key],
+          descendantStyle: descendantStyle,
+          fromVariant: true,
+        );
+      }
+    }
+
+    return GSPlacement(styles: placementStyles);
   }
 }
 
@@ -182,8 +225,8 @@ class GSSpace {
       //cuz of $ sign
       var key = enumValue.name.substring(1);
 
-
-      if (data?[key] is Map<String, dynamic> && (data?.containsKey(key) ?? false)) {
+      if (data?[key] is Map<String, dynamic> &&
+          (data?.containsKey(key) ?? false)) {
         spaceStyles[enumValue] = GSStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
@@ -209,15 +252,15 @@ class GSSize {
       //cuz of $ sign
       var key = enumValue.name.substring(1);
 
-      if (data?[key] is Map<String, dynamic> &&( data?.containsKey(key) ?? false)) {
-        //to handle edge case where values were being list n stuff 
+      if (data?[key] is Map<String, dynamic> &&
+          (data?.containsKey(key) ?? false)) {
+        //to handle edge case where values were being list n stuff
 
-          sizeStyles[enumValue] = GSStyle.fromMap(
-            data: data![key],
-            descendantStyle: descendantStyle,
-            fromVariant: true,
-          );
-
+        sizeStyles[enumValue] = GSStyle.fromMap(
+          data: data![key],
+          descendantStyle: descendantStyle,
+          fromVariant: true,
+        );
       }
     }
     return GSSize(styles: sizeStyles);
@@ -1167,5 +1210,16 @@ class GSStyle extends BaseStyle<GSStyle> {
     final Map<GSSpaces, GSStyle?> spaceMap = variants!.space!.styles;
 
     return spaceMap[gsSpaces];
+  }
+
+  GSStyle? placementMap(GSPlacements? gsPlacements) {
+    if (gsPlacements == null || variants?.placements == null) {
+      return null;
+    }
+
+    final Map<GSPlacements, GSStyle?> placementMap =
+        variants!.placements!.styles;
+
+    return placementMap[gsPlacements];
   }
 }

@@ -4,7 +4,6 @@ import 'package:gluestack_ui/src/utils/resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-
 ///
 /// Gluestack Floating Action Button.
 ///
@@ -41,8 +40,9 @@ class GSFab extends StatelessWidget {
     final styler = resolveStyles(
       context: context,
       styles: [
-        GSFabStyle.placementVariants[fabPlacement],
-        fabStyle.sizeMap(fabSize)
+        fabStyle,
+        fabStyle.sizeMap(fabSize),
+        fabStyle.placementMap(fabPlacement),
       ],
       inlineStyle: style,
       isFirst: true,
