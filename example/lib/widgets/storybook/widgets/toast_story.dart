@@ -2,20 +2,11 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-//Need to add value according to GSActions enum order.
-List<Option<int>> actionOptions = [
-  Option<int>(value: 0, label: GSToastActions.success.name),
-  Option<int>(value: 1, label: GSToastActions.info.name),
-  Option<int>(value: 2, label: GSToastActions.error.name),
-  Option<int>(value: 3, label: GSToastActions.warning.name),
-  Option<int>(value: 4, label: GSToastActions.attention.name),
-];
-//Need to add value according to GSVariants enum order.
-List<Option<int>> variantOptions = [
-  Option<int>(value: 0, label: GSToastVariants.solid.name),
-  Option<int>(value: 1, label: GSToastVariants.outline.name),
-  Option<int>(value: 2, label: GSToastVariants.accent.name),
-];
+final List<Option<int>> actionOptions =
+    generateEnumOptions(GSToastActions.values);
+
+final List<Option<int>> variantOptions =
+    generateEnumOptions(GSToastVariants.values);
 
 final class ToastStory extends StoryWidget {
   @override
@@ -24,7 +15,7 @@ final class ToastStory extends StoryWidget {
       name: storyName,
       builder: (context) {
         final action = GSToastActions.values[context.knobs
-            .options(label: 'Action', initial: 1, options: actionOptions)];
+            .options(label: 'Action', initial: 0, options: actionOptions)];
 
         final variant = GSToastVariants.values[context.knobs
             .options(label: 'Variant', initial: 0, options: variantOptions)];

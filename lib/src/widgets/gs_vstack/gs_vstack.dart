@@ -59,7 +59,7 @@ class GSVStack extends StatelessWidget {
     List<Widget> spacedChildrenList = [];
     // Convert the [GSVstackSpaces] enum to a GSSpace spacing value.
     final vStackSpace = space?.toGSSpaces;
-    print('space: $space');
+    // print('space: $space');
     // Iterate over the children to insert spacing widgets between them, based on the
     // specified [space] value, except after the last child.
     for (var child in children) {
