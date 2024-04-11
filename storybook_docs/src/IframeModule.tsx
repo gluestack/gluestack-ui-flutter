@@ -46,7 +46,6 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
           top: "20px",
           right: "20px",
           cursor: "pointer",
-          paddingBottom: "10px",
           color: isHovered ? "#fff" : "#333",
         }}
         onMouseEnter={() => setIsHovered(true)}
