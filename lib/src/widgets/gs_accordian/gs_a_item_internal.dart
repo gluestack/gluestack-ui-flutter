@@ -1,5 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordion_content.dart';
@@ -28,6 +27,8 @@ class GSAccordionItemInternal extends StatelessWidget {
 
   final double? radius;
   final bool? isItemDisabled;
+  final Color? accordionbackground;
+  final Color? iconColor;
 
   const GSAccordionItemInternal({
     super.key,
@@ -47,17 +48,17 @@ class GSAccordionItemInternal extends StatelessWidget {
     this.radius = 0,
     this.itemPadding,
     this.isItemDisabled,
+    this.accordionbackground,
+    this.iconColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    final accGroupValue = 
-        GSAccordionProvider.of(context)?.accGrpValue ?? AccordionExpansionValue() ;
+    final accGroupValue = GSAccordionProvider.of(context)?.accGrpValue ??
+        AccordionExpansionValue();
 
-    final baseAccordionStyle =
-        GSAccordionProvider.of(context)?.baseAccordionStyle;
-
-    final isDisabled =  isItemDisabled ?? GSAccordionProvider.of(context)?.isDisabled ?? false;
+    final isDisabled =
+        isItemDisabled ?? GSAccordionProvider.of(context)?.isDisabled ?? false;
     final isCollapsible =
         GSAccordionProvider.of(context)?.isCollapsible ?? false;
 
@@ -67,20 +68,16 @@ class GSAccordionItemInternal extends StatelessWidget {
     final type =
         GSAccordionProvider.of(context)?.type ?? GSAccordionTypes.multiple;
 
-    final headerStylef = headerStyle?.merge(
-            baseAccordionStyle?.merge(accordionTriggerStyle) ??
-                accordionTriggerStyle) ??
-        baseAccordionStyle?.merge(accordionTriggerStyle) ??
-        accordionTriggerStyle;
+    final headerStylef =
+        headerStyle?.merge(accordionStyle.merge(accordionTriggerStyle)) ??
+            accordionStyle.merge(accordionTriggerStyle);
 
-    final contentStylef = contentStyle?.merge(
-            baseAccordionStyle?.merge(accordionContentStyle) ??
-                accordionContentStyle) ??
-        baseAccordionStyle?.merge(accordionContentStyle) ??
-        accordionContentStyle;
+    final contentStylef =
+        contentStyle?.merge(accordionStyle.merge(accordionContentStyle)) ??
+            accordionStyle.merge(accordionContentStyle);
 
     final defIconSize = iconStyle
-        .sizeMap(accordionIconStyle.props?.size ?? baseAccordionStyle?.iconSize)
+        .sizeMap(accordionIconStyle.props?.size ?? accordionStyle.iconSize)
         ?.width;
 
     return Opacity(
@@ -92,7 +89,8 @@ class GSAccordionItemInternal extends StatelessWidget {
           child: AnimatedContainer(
             duration: animationDuration!,
             decoration: BoxDecoration(
-              color: baseAccordionStyle?.bg ?? headerStyle?.bg,
+              color:
+                  accordionbackground ?? accordionStyle.bg ?? headerStyle?.bg,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,13 +140,19 @@ class GSAccordionItemInternal extends StatelessWidget {
                                           const EdgeInsets.only(right: 4),
                                       child: prefixIconWhenTileCollapsed)
                                   : const SizedBox.shrink(),
-                          Expanded(child: title),
+                          Expanded(
+                            child: GSAccordionTitle(
+                              text: title.text,
+                              style: headerStylef,
+                            ),
+                          ),
                           isExpanded && !isDisabled && showSuffixIcon!
                               ? suffixIconWhenTileExpanded ??
                                   RotatedBox(
                                     quarterTurns: 1,
                                     child: Icon(
                                       size: defIconSize,
+                                      color: iconColor,
                                       const IconData(0xf571,
                                           fontFamily: 'MaterialIcons',
                                           matchTextDirection: true),
@@ -160,6 +164,7 @@ class GSAccordionItemInternal extends StatelessWidget {
                                         quarterTurns: 3,
                                         child: Icon(
                                           size: defIconSize,
+                                          color: iconColor,
                                           const IconData(0xf571,
                                               fontFamily: 'MaterialIcons',
                                               matchTextDirection: true),

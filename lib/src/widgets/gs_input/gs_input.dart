@@ -300,7 +300,7 @@ class _GSInputState extends State<GSInput> {
         mouseCursor:
             isDisabled ? SystemMouseCursors.forbidden : MouseCursor.defer,
         child: Opacity(
-          opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.5 : 1,
+          opacity: isDisabled ? (styler.onDisabled?.opacity ?? 0.5) : 1,
           child: SizedBox(
             width: styler.width,
             height: styler.height,
@@ -308,10 +308,12 @@ class _GSInputState extends State<GSInput> {
               showFocusHighlight: false,
               onPressed: widget.onTap,
               onDoubleTap: () {
-                if (widget.controller!.text.isNotEmpty) {
-                  widget.controller!.selection = TextSelection(
-                      baseOffset: 0,
-                      extentOffset: widget.controller!.text.length);
+                final controller = widget.controller;
+                if (controller != null && controller.text.isNotEmpty) {
+                  controller.selection = TextSelection(
+                    baseOffset: 0,
+                    extentOffset: controller.text.length,
+                  );
                 }
               },
               child: Stack(
@@ -324,7 +326,7 @@ class _GSInputState extends State<GSInput> {
                           ? 10 + widget.prefixText!.length * 8
                           : widget.prefixIcon != null
                               ? 50
-                              : 10,
+                              : 15,
                       top: 10,
                       child: Text(widget.hintText ?? '',
                           style: widget.hintStyle ??
