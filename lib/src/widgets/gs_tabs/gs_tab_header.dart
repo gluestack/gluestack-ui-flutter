@@ -1,8 +1,5 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_tabs/gs_tab_raw.dart';
-import 'package:gluestack_ui/src/widgets/gs_tabs/gs_tabs_tab.dart';
-import 'gs_tab_indicator.dart';
 
 class GSTabHeader extends StatelessWidget {
   final PageController controller;

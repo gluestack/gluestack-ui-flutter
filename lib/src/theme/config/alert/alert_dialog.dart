@@ -1,7 +1,7 @@
 const Map<String, dynamic> alertDialogData = {
-  //TODO : what's with this width and height?
-  // 'w': '\$full',
-  // 'h': '\$full',
+
+  'w': '\$full',
+  'h': '\$full',
   'justifyContent': 'center',
   'alignItems': 'center',
   'variants': {

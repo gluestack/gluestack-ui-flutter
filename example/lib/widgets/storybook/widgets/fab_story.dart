@@ -3,21 +3,12 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-//Need to add value according to GSSizes enum order.
-final List<Option<int>> sizeOptions = [
-  Option<int>(value: 0, label: GSSizes.$sm.name),
-  Option<int>(value: 1, label: GSSizes.$md.name),
-  Option<int>(value: 2, label: GSSizes.$lg.name),
-];
 
-final List<Option<int>> placementOptions = [
-  Option<int>(value: 0, label: GSPlacements.topLeft.name),
-  Option<int>(value: 1, label: GSPlacements.topCenter.name),
-  Option<int>(value: 2, label: GSPlacements.topRight.name),
-  Option<int>(value: 3, label: GSPlacements.bottomLeft.name),
-  Option<int>(value: 4, label: GSPlacements.bottomCenter.name),
-  Option<int>(value: 5, label: GSPlacements.bottomRight.name),
-];
+final List<Option<int>> sizeOptions =
+    generateEnumOptions(GSFABSizes.values);
+
+final List<Option<int>> placementOptions =
+    generateEnumOptions(GSPlacements.values);
 
 final class FabStory extends StoryWidget {
   @override
@@ -38,9 +29,14 @@ final class FabStory extends StoryWidget {
             ),
             GSFab(
               size: GSFABSizes.values[context.knobs
-                  .options(label: 'Size', initial: 1, options: sizeOptions)],
-              placement: GSFABPlacements.values[context.knobs.options(
-                  label: 'Placement', initial: 5, options: placementOptions)],
+                  .options(label: 'Size', initial: 0, options: sizeOptions)],
+              placement: GSFABPlacements.values
+                  .where((element) =>
+                      element.name ==
+                      placementOptions[context.knobs.options(
+                              label: 'Placements', initial: 0, options: placementOptions)]
+                          .label)
+                  .first,
               isHovered:
                   context.knobs.boolean(label: "isHovered", initial: false),
               isDisabled:

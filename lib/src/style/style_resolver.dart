@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/token/screen_breakpoint.dart';
-import 'package:gluestack_ui/src/widgets/gs_app/gs_theme.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 
 bool isBaseScreen(BuildContext context) {

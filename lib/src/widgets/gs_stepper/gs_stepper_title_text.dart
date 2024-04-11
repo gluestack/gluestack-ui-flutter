@@ -1,9 +1,6 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 
-import '../gs_text/public.dart';
 import 'gs_stepper_title_text_style.dart';
 
 class GSStepperTitle extends StatelessWidget {

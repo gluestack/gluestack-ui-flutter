@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 import 'widgets/public.dart';

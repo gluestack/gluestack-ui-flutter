@@ -1,9 +1,6 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_icon_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_icon_style.dart';
 
 /// This widget represents an icon which is optional with GSBadge widget. It's used to display icons along with text in GSBadge widget.

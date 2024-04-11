@@ -1,11 +1,7 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_icon_style.dart';
 
-import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_raw.dart';
 
 class GSRadioIcon<T> extends StatelessWidget {

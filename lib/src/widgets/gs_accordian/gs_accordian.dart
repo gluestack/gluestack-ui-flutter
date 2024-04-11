@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_a_item_internal.dart';
@@ -6,11 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-/// Defines the sizes available for the GSAccordion.
-enum GSAccordionSizes { $sm, $md, $lg }
 
-/// Defines the visual variants for the GSAccordion.
-enum GSAccordionVariants { filled, unfilled }
 
 /// Defines the behavior types of the accordion: single (only one item can be expanded at a time) or multiple (multiple items can be expanded).
 enum GSAccordionTypes { single, multiple }

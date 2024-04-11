@@ -1,4 +1,4 @@
-const accordionTriggerData = {
+const Map<String, dynamic> accordionTriggerData = {
   'width': '\$full',
   'py': '\$5',
   'px': '\$5',

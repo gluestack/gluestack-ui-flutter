@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
@@ -13,8 +12,8 @@ class HStackExample extends StatefulWidget {
 }
 
 class _HStackExampleState extends State<HStackExample> {
-  final List dropdownSpaceOptions = [
-    GSHstackSpaces.$none,
+  final List<GSHstackSpaces?> dropdownSpaceOptions = [
+    null,
     GSHstackSpaces.$xs,
     GSHstackSpaces.$sm,
     GSHstackSpaces.$md,
@@ -24,7 +23,7 @@ class _HStackExampleState extends State<HStackExample> {
     GSHstackSpaces.$3xl,
     GSHstackSpaces.$4xl,
   ];
-  GSHstackSpaces selectedSpaceOption = GSHstackSpaces.$none;
+  GSHstackSpaces? selectedSpaceOption;
   void updateSpaceSelectedOption(dynamic newOption) {
     setState(() {
       selectedSpaceOption = newOption;
