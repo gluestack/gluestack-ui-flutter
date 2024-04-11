@@ -66,6 +66,7 @@ class _HomePageState extends State<HomePage> {
                   title: "GS Avatar",
                   routePath: "/example-avatar",
                 ),
+
                 const NavButton(
                   title: "GS Text",
                   routePath: "/example-text",
@@ -175,6 +176,8 @@ class _HomePageState extends State<HomePage> {
                   routePath: "/navigation-rail-preview",
                 ),
 
+                Container(),
+
                 // // ===== Internal Testing Widgets =====
                 // const NavButton(
                 //   title: "GS Color Test (Internal)",
@@ -209,3 +212,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+class TestModel {}
+
+class Test2Model {}

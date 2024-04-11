@@ -40,6 +40,9 @@ dev_dependencies:
     sdk: flutter
   flutter_test:
     sdk: flutter
+  lints: ^3.0.0
+  gluestack_lints:
+    path: ../gluestack_lints
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -49,7 +52,7 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   riverpod_generator: ^2.3.9
   build_runner: ^2.4.7
-  custom_lint: ^0.5.7
+  custom_lint: ^0.6.4
   riverpod_lint: ^2.3.7
 
 # For information on the generic Dart part of this file, see the
@@ -62,9 +65,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   fonts:
-  - family: Sono
-    fonts:
-      - asset: assets/fonts/Sono-VariableFont.ttf
+    - family: Sono
+      fonts:
+        - asset: assets/fonts/Sono-VariableFont.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
