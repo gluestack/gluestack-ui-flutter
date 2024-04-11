@@ -224,6 +224,7 @@ class GSColorsToken {
   final Color blueGray700;
   final Color blueGray800;
   final Color blueGray900;
+  final Color tertiary0;
   final Color tertiary50;
   final Color tertiary100;
   final Color tertiary200;
@@ -234,6 +235,7 @@ class GSColorsToken {
   final Color tertiary700;
   final Color tertiary800;
   final Color tertiary900;
+  final Color tertiary950;
   final Color error00;
   final Color error50;
   final Color error100;
@@ -626,16 +628,18 @@ class GSColorsToken {
     this.blueGray700 = const Color(0xFF334155),
     this.blueGray800 = const Color(0xFF1e293b),
     this.blueGray900 = const Color(0xFF0f172a),
-    this.tertiary50 = const Color(0xFFecfdf5),
-    this.tertiary100 = const Color(0xFFd1fae5),
-    this.tertiary200 = const Color(0xFFa7f3d0),
-    this.tertiary300 = const Color(0xFF6ee7b7),
-    this.tertiary400 = const Color(0xFF34d399),
-    this.tertiary500 = const Color(0xFF10b981),
-    this.tertiary600 = const Color(0xFF059669),
-    this.tertiary700 = const Color(0xFF047857),
-    this.tertiary800 = const Color(0xFF065f46),
-    this.tertiary900 = const Color(0xFF064e3b),
+    this.tertiary0 = const Color(0xffFFFAF5),
+    this.tertiary50 = const Color(0xffFFF2E5),
+    this.tertiary100 = const Color(0xffFFE9D5),
+    this.tertiary200 = const Color(0xffFED1AA),
+    this.tertiary300 = const Color(0xffFDB474),
+    this.tertiary400 = const Color(0xffFB9D4B),
+    this.tertiary500 = const Color(0xffE78128),
+    this.tertiary600 = const Color(0xffD7751F),
+    this.tertiary700 = const Color(0xffB4621A),
+    this.tertiary800 = const Color(0xff824917),
+    this.tertiary900 = const Color(0xff6C3D13),
+    this.tertiary950 = const Color(0xff543112),
     this.error00 = const Color(0xFFFEE9E9),
     this.error50 = const Color(0xFFFEE2E2),
     this.error100 = const Color(0xFFFECACA),
@@ -690,30 +694,30 @@ class GSColorsToken {
     this.light700 = const Color(0xFF44403C),
     this.light800 = const Color(0xFF292524),
     this.light900 = const Color(0xFF1C1917),
-    this.primary0 = const Color(0xFFE5F1FB),
-    this.primary50 = const Color(0xFFCCE9FF),
-    this.primary100 = const Color(0xFFADDBFF),
-    this.primary200 = const Color(0xFF7CC2FF),
-    this.primary300 = const Color(0xFF4AA9FF),
-    this.primary400 = const Color(0xFF1A91FF),
-    this.primary500 = const Color(0xFF0077E6),
-    this.primary600 = const Color(0xFF005DB4),
-    this.primary700 = const Color(0xFF004282),
-    this.primary800 = const Color(0xFF002851),
-    this.primary900 = const Color(0xFF011838),
-    this.primary950 = const Color(0xFF000711),
-    this.secondary0 = const Color(0xFFF6F6F6),
-    this.secondary50 = const Color(0xFFF3F3F3),
-    this.secondary100 = const Color(0xFFE9E9E9),
-    this.secondary200 = const Color(0xFFDADADA),
-    this.secondary300 = const Color(0xFFB0B0B0),
-    this.secondary400 = const Color(0xFF737373),
-    this.secondary500 = const Color(0xFF5F5F5F),
-    this.secondary600 = const Color(0xFF525252),
-    this.secondary700 = const Color(0xFF404040),
-    this.secondary800 = const Color(0xFF262626),
-    this.secondary900 = const Color(0xFF171717),
-    this.secondary950 = const Color(0xFF0C0C0C),
+    this.primary0 = const Color(0xFFB3B3B3),
+    this.primary50 = const Color(0xff999999),
+    this.primary100 = const Color(0xff808080),
+    this.primary200 = const Color(0xff737373),
+    this.primary300 = const Color(0xff666666),
+    this.primary400 = const Color(0xff525252),
+    this.primary500 = const Color(0xff333333),
+    this.primary600 = const Color(0xff292929),
+    this.primary700 = const Color(0xff1F1F1F),
+    this.primary800 = const Color(0xff0D0D0D),
+    this.primary900 = const Color(0xff0A0A0A),
+    this.primary950 = const Color(0xff080808),
+    this.secondary0 = const Color(0xffFEFFFF),
+    this.secondary50 = const Color(0xffF1F2F2),
+    this.secondary100 = const Color(0xffE7E8E8),
+    this.secondary200 = const Color(0xffDBDBDB),
+    this.secondary300 = const Color(0xffAFB0B0),
+    this.secondary400 = const Color(0xff727373),
+    this.secondary500 = const Color(0xff5E5F5F),
+    this.secondary600 = const Color(0xff515252),
+    this.secondary700 = const Color(0xff3F4040),
+    this.secondary800 = const Color(0xff272626),
+    this.secondary900 = const Color(0xff181717),
+    this.secondary950 = const Color(0xff0B0C0C),
     this.textLight0 = const Color(0xFFFCFCFC),
     this.textLight50 = const Color(0xFFF5F5F5),
     this.textLight100 = const Color(0xFFE5E5E5),
@@ -1023,6 +1027,7 @@ class GSColorsToken {
     Color? blueGray700,
     Color? blueGray800,
     Color? blueGray900,
+    Color? tertiary0,
     Color? tertiary50,
     Color? tertiary100,
     Color? tertiary200,
@@ -1033,6 +1038,7 @@ class GSColorsToken {
     Color? tertiary700,
     Color? tertiary800,
     Color? tertiary900,
+    Color? tertiary950,
     Color? error00,
     Color? error50,
     Color? error100,
@@ -1419,6 +1425,7 @@ class GSColorsToken {
       blueGray700: blueGray700 ?? this.blueGray700,
       blueGray800: blueGray800 ?? this.blueGray800,
       blueGray900: blueGray900 ?? this.blueGray900,
+      tertiary0: tertiary0 ?? this.tertiary0,
       tertiary50: tertiary50 ?? this.tertiary50,
       tertiary100: tertiary100 ?? this.tertiary100,
       tertiary200: tertiary200 ?? this.tertiary200,
@@ -1429,6 +1436,7 @@ class GSColorsToken {
       tertiary700: tertiary700 ?? this.tertiary700,
       tertiary800: tertiary800 ?? this.tertiary800,
       tertiary900: tertiary900 ?? this.tertiary900,
+      tertiary950: tertiary950 ?? this.tertiary950,
       error00: error00 ?? this.error00,
       error50: error50 ?? this.error50,
       error100: error100 ?? this.error100,
@@ -1824,6 +1832,7 @@ class $GSColors {
   static Color get blueGray700 => colorInstance.blueGray700;
   static Color get blueGray800 => colorInstance.blueGray800;
   static Color get blueGray900 => colorInstance.blueGray900;
+  static Color get tertiary0 => colorInstance.tertiary0;
   static Color get tertiary50 => colorInstance.tertiary50;
   static Color get tertiary100 => colorInstance.tertiary100;
   static Color get tertiary200 => colorInstance.tertiary200;
@@ -1834,6 +1843,7 @@ class $GSColors {
   static Color get tertiary700 => colorInstance.tertiary700;
   static Color get tertiary800 => colorInstance.tertiary800;
   static Color get tertiary900 => colorInstance.tertiary900;
+  static Color get tertiary950 => colorInstance.tertiary950;
   static Color get error00 => colorInstance.error00;
   static Color get error50 => colorInstance.error50;
   static Color get error100 => colorInstance.error100;
@@ -2220,6 +2230,7 @@ class $GSColors {
     "blueGray700": blueGray700,
     "blueGray800": blueGray800,
     "blueGray900": blueGray900,
+    "tertiary0": tertiary0,
     "tertiary50": tertiary50,
     "tertiary100": tertiary100,
     "tertiary200": tertiary200,
@@ -2230,6 +2241,7 @@ class $GSColors {
     "tertiary700": tertiary700,
     "tertiary800": tertiary800,
     "tertiary900": tertiary900,
+    "tertiary950": tertiary950,
     "error00": error00,
     "error50": error50,
     "error100": error100,
