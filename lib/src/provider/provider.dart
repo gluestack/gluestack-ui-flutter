@@ -76,3 +76,5 @@ export 'package:gluestack_ui/src/theme/config/navigation_rail/navigation_rail_se
 export 'package:gluestack_ui/src/theme/config/navigation_rail/navigation_rail_unselected_label_text.dart';
 export '../theme/config/stepper/stepper_content_text.dart';
 export '../theme/config/stepper/stepper_subtitle_text.dart';
+export 'package:gluestack_ui/src/theme/config/enums.dart';
+export 'package:gluestack_ui/src/theme/config/base_enums.dart';

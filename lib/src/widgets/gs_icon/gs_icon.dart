@@ -1,11 +1,7 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_icon/gs_icon_style.dart';
-
-/// Defines the sizes available for the GSIcon.
-enum GSIconSizes { $xs, $sm, $md, $lg, $xl }
 
 /// A widget for displaying icons with enhanced styling and customization capabilities.
 /// `GSIcon` supports various sizes, styles, and additional properties to adjust the

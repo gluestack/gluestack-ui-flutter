@@ -1,21 +1,8 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_badge.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_fall_back_text.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_image/gs_image.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-enum GSAvatarSizes {
-  $xs,
-  $sm,
-  $md,
-  $lg,
-  $xl,
-  $2xl,
-}
 
 enum GSAvatarRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 

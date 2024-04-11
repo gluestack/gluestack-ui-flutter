@@ -1,10 +1,6 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_hstack/gs_hstack_style.dart';
-
-///Provides a consistent set of spacing values that can be applied between the children of an [GSHStack].
-enum GSHstackSpaces { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 /// A widget that arranges its children in a horizontal sequence. [GSHStack] allows for
 /// flexible layout configurations and spacing between its child widgets, making it
@@ -46,7 +42,7 @@ class GSHStack extends StatelessWidget {
   final VerticalDirection verticalDirection;
   const GSHStack({
     super.key,
-    this.space = GSHstackSpaces.$none,
+    this.space,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.mainAxisSize = MainAxisSize.max,
@@ -61,18 +57,15 @@ class GSHStack extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> spacedChildrenList = [];
     // Convert the [GSHstackSpaces] enum to a GSSpace spacing value.
-
     final hStackSpace = space?.toGSSpaces;
+
     // Iterate over the children to insert spacing widgets between them, based on the
     // specified [space] value, except after the last child.
     for (var child in children) {
       spacedChildrenList.add(child);
-      if (child != children.last) {
+      if (child != children.last && space != null) {
         spacedChildrenList.add(
-          SizedBox(
-              width: hStackSpace == GSSpaces.$none
-                  ? null
-                  : hstackStyle.spaceMap(hStackSpace)?.gap),
+          SizedBox(width: hstackStyle.spaceMap(hStackSpace)?.gap),
         );
       }
     }

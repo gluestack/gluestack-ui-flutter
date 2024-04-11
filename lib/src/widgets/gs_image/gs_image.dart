@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
@@ -8,17 +7,6 @@ import 'package:gluestack_ui/src/widgets/gs_image/gs_image_style.dart';
 enum GSImageType {
   network,
   asset,
-}
-
-/// Predefined sizes for [GSImage].
-enum GSImageSizes {
-  $2xs,
-  $xs,
-  $sm,
-  $md,
-  $lg,
-  $xl,
-  $2xl,
 }
 
 /// Predefined radius for [GSImage].

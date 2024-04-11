@@ -1,7 +1,5 @@
-import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
-import 'package:gluestack_ui/src/token/public.dart';
 
 // GSStyleConfig for the Badge component | needed for descendantStyle
 const GSStyleConfig gsBadgeConfig = GSStyleConfig(

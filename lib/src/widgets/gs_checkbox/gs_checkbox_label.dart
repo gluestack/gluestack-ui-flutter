@@ -1,10 +1,6 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_label_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector_provider.dart';
 
 class GSCheckBoxLabel extends StatelessWidget {
   final String text;
@@ -21,7 +17,8 @@ class GSCheckBoxLabel extends StatelessWidget {
       context: context,
       styles: [
         checkBoxLabelStyle,
-        GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size]
+        checkBoxLabelStyle.sizeMap(ancestorCheckBoxStyle?.props?.size),
+        // GSCheckBoxLabelStyle.size[ancestorCheckBoxStyle?.props?.size]
       ],
       inlineStyle: style,
       isFirst: true,

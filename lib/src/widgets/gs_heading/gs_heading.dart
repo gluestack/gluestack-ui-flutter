@@ -1,20 +1,7 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_heading/gs_heading_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
-
-enum GSHeadingSizes {
-  $xs,
-  $sm,
-  $md,
-  $lg,
-  $xl,
-  $2xl,
-  $3xl,
-  $4xl,
-  $5xl,
-}
 
 /// A widget designed to display headings with customizable styles within the Gluestack UI framework.
 /// [GSHeading] supports various typographic customizations, making it suitable for titles,
