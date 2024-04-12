@@ -1,6 +1,7 @@
 import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_stepper/gs_stepper_style.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
 import 'gs_stepper_subtitle_text_style.dart';
 import 'gs_stepper_content_text_style.dart';
@@ -114,7 +115,7 @@ class GSStepper extends StatefulWidget {
   }) : assert(0 <= currentStep && currentStep < steps.length);
 
   final GSStyle? style;
-  final GSSizes? size;
+  final GSStepperSizes? size;
   final Color? circleColor;
   final Color? connectorLineColor;
   final bool? keepAllContentAlive;
@@ -569,17 +570,29 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       context: context,
       styles: [
         gsStepperStyle,
-        gsStepperStyle.sizeMap(textSize),
+        gsStepperStyle.sizeMap(textSize?.toGSSize),
       ],
-      inlineStyle: widget.style,
+      inlineStyle: gsStepperStyle.merge(widget.style),
       isFirst: true,
     );
+
+    // GSStyle styler = resolveStyles(
+    //   context: context,
+    //   styles: [
+    //     gsStepperStyle,
+    //     gsStepperStyle.sizeMap(textSize?.toGSSize),
+
+    //     //  gsStepperStyle.sizeMap(textSize?.toGSSize!),
+    //   ],
+    //   inlineStyle: widget.style,
+    //   isFirst: true,
+    // );
 
     GSStyle titleStyler = resolveStyles(
       context: context,
       styles: [
         gsStepperTitleTextStyle,
-        gsStepperTitleTextStyle.sizeMap(textSize),
+        gsStepperTitleTextStyle.sizeMap(textSize?.toGSSize),
       ],
       inlineStyle: widget.style,
       isFirst: true,
@@ -589,7 +602,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       context: context,
       styles: [
         gsStepperContentTextStyle,
-        gsStepperContentTextStyle.sizeMap(contentTextSize),
+        gsStepperContentTextStyle.sizeMap(contentTextSize?.toGSSize),
       ],
       inlineStyle: widget.style,
       isFirst: true,
@@ -599,7 +612,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       context: context,
       styles: [
         gsStepperSubtitleTextStyle,
-        gsStepperSubtitleTextStyle.sizeMap(subtitleTextSize),
+        gsStepperSubtitleTextStyle.sizeMap(subtitleTextSize?.toGSSize),
       ],
       inlineStyle: widget.style,
       isFirst: true,
