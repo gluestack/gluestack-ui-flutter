@@ -25,8 +25,7 @@ enum GSStepState {
   /// A step that is inactive .
   inactive,
 
-  /// A step that is currently having an error. e.g. the user has submitted wrong
-  /// input.
+  /// A step that is currently having an error. e.g. the user has submitted wrong input.
   error,
 }
 
