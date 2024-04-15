@@ -13,8 +13,12 @@ class NavigationRailExample extends StatefulWidget {
 }
 
 class _NavigationRailExampleState extends State<NavigationRailExample> {
-  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  final List dropdownSizeOptions = [
+    GSNavigationRailSizes.$sm,
+    GSNavigationRailSizes.$md,
+    GSNavigationRailSizes.$lg
+  ];
+  GSNavigationRailSizes selectedSizeOption = GSNavigationRailSizes.$md;
 
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {

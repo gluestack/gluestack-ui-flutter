@@ -13,7 +13,11 @@ class StepperExample extends StatefulWidget {
 }
 
 class _StepperExampleState extends State<StepperExample> {
-  final List dropdownSizeOptions = [GSSizes.$sm, GSSizes.$md, GSSizes.$lg];
+  final List dropdownSizeOptions = [
+    GSStepperSizes.$sm,
+    GSStepperSizes.$md,
+    GSStepperSizes.$lg
+  ];
 
   final List dropdownStepStateOptions = [
     GSStepState.indexed,
@@ -23,7 +27,7 @@ class _StepperExampleState extends State<StepperExample> {
     GSStepState.inactive,
     GSStepState.error
   ];
-  GSSizes selectedSizeOption = GSSizes.$md;
+  GSStepperSizes selectedSizeOption = GSStepperSizes.$md;
 
   GSStepState selectedStepStateOption = GSStepState.indexed;
 

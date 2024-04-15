@@ -3,11 +3,9 @@ import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 //Need to add value according to GSSizes enum order.
-List<Option<int>> sizeOptions = [
-  Option<int>(value: 0, label: GSSizes.$sm.name),
-  Option<int>(value: 1, label: GSSizes.$md.name),
-  Option<int>(value: 2, label: GSSizes.$lg.name),
-];
+
+final List<Option<int>> sizeOptions =
+    generateEnumOptions(GSStepperSizes.values);
 
 List<Option<int>> stateOptions = [
   Option<int>(value: 0, label: GSStepState.indexed.name),
@@ -33,8 +31,13 @@ class ___StepperStoryState extends State<_StepperStory> {
     return GSStepper(
       keepAllContentAlive: false,
       currentStep: _index,
-      size: GSSizes.values[context.knobs
-          .options(label: 'Size', initial: 1, options: sizeOptions)],
+      size: GSStepperSizes.values
+          .where((element) =>
+              element.name ==
+              sizeOptions[context.knobs.options(
+                      label: 'Sizes', initial: 0, options: sizeOptions)]
+                  .label)
+          .first,
       onStepCancel: () {
         if (_index > 0) {
           setState(() {
