@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/token/font_weight.dart';
 import 'package:gluestack_ui/src/token/line_height.dart';
@@ -64,7 +65,21 @@ Color? resolveColorFromString(String? color) {
   if (color.contains("white")) {
     return const Color(0xFFFFFFFF); // white
   }
+
+  if (color.contains('primary500')) {
+    print('Resolved: ${GSTheme.of(keyForClr.currentContext!).primary500!}');
+    return keyForClr.currentContext != null
+        ? GSTheme.of(keyForClr.currentContext!).primary500!
+        : $GSColors.colorMap[color.substring(1)];
+  }
   return $GSColors.colorMap[color.substring(1)];
+}
+
+String? resolveColorFromString2(String? color) {
+  if (color == null) {
+    return null;
+  }
+  return color.substring(1); //get rid of $
 }
 
 double? resolveRadiusFromString(String? radius) {

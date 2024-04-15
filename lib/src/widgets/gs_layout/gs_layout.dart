@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/widgets/gs_button/gs_button_text_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_layout/style_gs_layout.dart';
 
 class GSLayout extends StatelessWidget {
@@ -25,8 +26,10 @@ class GSLayout extends StatelessWidget {
       isFirst: true,
     );
 
+    final themeBG = getColorMap(context)[styler.color2];
+
     return GSBox(
-      style: styler,
+      style: styler.merge(GSStyle(bg:themeBG)),
       child: floatingActionButton != null
           ? Stack(
               fit: StackFit.expand,

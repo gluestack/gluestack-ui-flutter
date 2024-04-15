@@ -57,7 +57,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
               ),
             );
           }).toList(),
-          dropdownColor: GSTheme.of(context).brightness == Brightness.dark
+          dropdownColor: GSTheme.of(context).theme == GSThemes.dark
               ? Colors.black
               : Colors.white,
         ),

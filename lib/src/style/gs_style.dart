@@ -568,6 +568,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   EdgeInsetsGeometry? margin;
   double? opacity;
   Color? color;
+  String? color2;
   Color? bg;
   double? gap;
   Color? borderBottomColor;
@@ -703,6 +704,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.elevation,
     this.shadowOffset,
     this.textAlign,
+    this.color2,
   });
 
   @override
@@ -717,6 +719,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         borderRadius: overrideStyle?.borderRadius ?? borderRadius,
         borderWidth: overrideStyle?.borderWidth ?? borderWidth,
         color: overrideStyle?.color ?? props?.style?.color ?? color,
+        color2: overrideStyle?.color2 ?? color2,
         bg: overrideStyle?.bg ?? bg,
         margin: overrideStyle?.margin ?? margin,
         borderBottomColor:
@@ -962,6 +965,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       ),
 
       color: resolveColorFromString(data?['color']),
+      color2: resolveColorFromString2(data?['bg']),
       bg: resolveColorFromString(
         data?['bg'] ??
             data?['_item']?['backgroundColor'] ??

@@ -48,7 +48,7 @@ GSStyle? resolveStylesDeprecated(
   Map<String, GSStyle?>? descendantStyles,
   List<String> descendantStyleKeys = const [],
 }) {
-  final isDarkTheme = GSTheme.of(context).brightness == Brightness.dark;
+  final isDarkTheme = GSTheme.of(context).theme == GSThemes.dark;
 
   GSStyle? temp = variantStyle != null
       ? variantStyle.merge(inlineStyle,
@@ -159,7 +159,7 @@ GSStyle resolveStyles(
     List<GSStyle?> styles = const [],
     GSStyle? inlineStyle,
     bool isFirst = false}) {
-  final isDarkTheme = GSTheme.of(context).brightness == Brightness.dark;
+  final isDarkTheme = GSTheme.of(context).theme == GSThemes.dark;
   final isHovered = GSStyleBuilderProvider.hoverStatus(context);
   final isFocused = GSStyleBuilderProvider.focusedStatus(context);
 

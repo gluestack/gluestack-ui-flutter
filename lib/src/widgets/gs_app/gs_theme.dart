@@ -37,8 +37,10 @@ class _GSTheme extends InheritedTheme {
   final GSThemeData data;
 
   @override
-  bool updateShouldNotify(covariant _GSTheme oldWidget) =>
-      oldWidget.data != data;
+  bool updateShouldNotify(covariant _GSTheme oldWidget){
+    return  oldWidget.data != data;
+
+  }
 
   @override
   Widget wrap(BuildContext context, Widget child) {
@@ -71,51 +73,236 @@ extension BrightnessExtension on Brightness {
   Brightness get opposite => isLight ? Brightness.dark : Brightness.light;
 }
 
-const standardCurve = Curves.easeInOut;
+// const standardCurve = Curves.easeInOut;
 
-@immutable
-class GSThemeData with Diagnosticable {
-  final Brightness brightness;
+// @immutable
+// class GSThemeData with Diagnosticable {
+//   final Brightness brightness;
 
-  factory GSThemeData({
-    Brightness? brightness,
-  }) {
-    brightness ??= Brightness.light;
+//   factory GSThemeData({
+//     Brightness? brightness,
+//   }) {
+//     brightness ??= Brightness.light;
 
-    return GSThemeData.raw(
-      brightness: brightness,
-    );
-  }
+//     return GSThemeData.raw(
+//       brightness: brightness,
+//     );
+//   }
 
-  const GSThemeData.raw({
-    required this.brightness,
+//   const GSThemeData.raw({
+//     required this.brightness,
+//   });
+
+//   static GSThemeData light() {
+//     return GSThemeData(brightness: Brightness.light);
+//   }
+
+//   static GSThemeData dark() {
+//     return GSThemeData(brightness: Brightness.dark);
+//   }
+
+//   static GSThemeData lerp(GSThemeData a, GSThemeData b, double t) {
+//     return GSThemeData.raw(
+//       brightness: t < 0.5 ? a.brightness : b.brightness,
+//     );
+//   }
+
+//   GSThemeData copyWith({
+//     Brightness? brightness,
+//   }) {
+//     return GSThemeData.raw(
+//       brightness: brightness ?? this.brightness,
+//     );
+//   }
+
+//   @override
+//   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+//     super.debugFillProperties(properties);
+//     properties.add(EnumProperty('brightness', brightness));
+//   }
+// }
+
+enum GSThemes { light, dark, red, blue, green }
+
+class GSThemeData {
+ GSThemes theme;
+  Color? primary0;
+  Color? primary50;
+  Color? primary100;
+  Color? primary200;
+  Color? primary300;
+  Color? primary400;
+  Color? primary500;
+  Color? primary600;
+  Color? primary700;
+  Color? primary800;
+  Color? primary900;
+  Color? primary950;
+  Color? secondary0;
+  Color? secondary50;
+  Color? secondary100;
+  Color? secondary200;
+  Color? secondary300;
+  Color? secondary400;
+  Color? secondary500;
+  Color? secondary600;
+  Color? secondary700;
+  Color? secondary800;
+  Color? secondary900;
+  Color? secondary950;
+  GSThemeData({
+    this.theme = GSThemes.light,
+    this.primary0,
+    this.primary50,
+    this.primary100,
+    this.primary200,
+    this.primary300,
+    this.primary400,
+    this.primary500,
+    this.primary600,
+    this.primary700,
+    this.primary800,
+    this.primary900,
+    this.primary950,
+    this.secondary0,
+    this.secondary50,
+    this.secondary100,
+    this.secondary200,
+    this.secondary300,
+    this.secondary400,
+    this.secondary500,
+    this.secondary600,
+    this.secondary700,
+    this.secondary800,
+    this.secondary900,
+    this.secondary950,
   });
 
-  static GSThemeData light() {
-    return GSThemeData(brightness: Brightness.light);
-  }
 
-  static GSThemeData dark() {
-    return GSThemeData(brightness: Brightness.dark);
-  }
+  factory GSThemeData.fromTheme(GSThemes theme){
+  if (theme == GSThemes.dark) {
+    return GSThemeData(
+      theme: GSThemes.dark,
+       primary0 : const Color(0xFF828282),
+      primary50 : const Color(0xFF949494),
+      primary100 : const Color(0xFF9E9E9E),
+      primary200 : const Color(0xFFB3B3B3),
+      primary300 : const Color(0xFFC7C7C7),
+      primary400 : const Color(0xFFE6E6E6),
+      primary500 : const Color(0xFFF0F0F0),
+      primary600 : const Color(0xFFFAFAFA),
+      primary700 : const Color(0xFFFCFCFC),
+      primary800 : const Color(0xFFDFDFDF),
+      primary900 : const Color(0xFFDCFCFC),
+      primary950 : const Color(0xFFDCFCFC),
 
-  static GSThemeData lerp(GSThemeData a, GSThemeData b, double t) {
-    return GSThemeData.raw(
-      brightness: t < 0.5 ? a.brightness : b.brightness,
+      secondary0 :const Color(0xFF0B0C0C),
+      secondary50 :const Color(0xFF181717),
+      secondary100 : const Color(0xFF272626),
+      secondary200 : const Color(0xFF3F4040),
+      secondary300 : const Color(0xFF515252),
+      secondary400 : const Color(0xFF5E5F5F),
+      secondary500 : const Color(0xFF727373),
+      secondary600 : const Color(0xFFAFB0B0),
+      secondary700 : const Color(0xFFDBDBDB),
+      secondary800 : const Color(0xFFE7E8E8),
+      secondary900 : const Color(0xFFF1F2F2),
+      secondary950 : const Color(0xFFFEFFFF),
     );
-  }
+     
+    } else {
+      //else - light mode
 
-  GSThemeData copyWith({
-    Brightness? brightness,
-  }) {
-    return GSThemeData.raw(
-      brightness: brightness ?? this.brightness,
+    return GSThemeData(
+      theme: GSThemes.light,
+       primary0 : const Color(0xFFB3B3B3),
+      primary50 : const Color(0xFF999999),
+      primary100 :const Color(0xFF808080),
+      primary200 :const Color(0xFF737373),
+      primary300 :const Color(0xFF666666),
+      primary400 :const Color(0xFF525252),
+      primary500 :const Color(0xFF333333),
+      primary600 :const Color(0xFF292929),
+      primary700 :const Color(0xFF1F1F1F),
+      primary800 :const Color(0xFF0D0D0D),
+      primary900 :const Color(0xFF0A0A0A),
+      primary950 :const Color(0xFF080808),
+
+      secondary0:const Color(0xFFFEFFFF),
+      secondary50 : const Color(0xFFF1F2F2),
+      secondary100 : const Color(0xFFE7E8E8),
+      secondary200 : const Color(0xFFDBDBDB),
+      secondary300 : const Color(0xFFAFB0B0),
+      secondary400 : const Color(0xFF727373),
+      secondary500 : const Color(0xFF5E5F5F),
+      secondary600 : const Color(0xFF515252),
+      secondary700 : const Color(0xFF3F4040),
+      secondary800 : const Color(0xFF272626),
+      secondary900 : const Color(0xFF181717),
+      secondary950 : const Color(0xFF0B0C0C),
     );
+     
+    }
   }
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(EnumProperty('brightness', brightness));
-  }
+
+  // void valueRefresh(){
+  //    if (theme == GSThemes.dark) {
+  //     primary0 = const Color(0xFF828282);
+  //     primary50 = const Color(0xFF949494);
+  //     primary100 = const Color(0xFF9E9E9E);
+  //     primary200 = const Color(0xFFB3B3B3);
+  //     primary300 = const Color(0xFFC7C7C7);
+  //     primary400 = const Color(0xFFE6E6E6);
+  //     primary500 = const Color(0xFFF0F0F0);
+  //     primary600 = const Color(0xFFFAFAFA);
+  //     primary700 = const Color(0xFFFCFCFC);
+  //     primary800 = const Color(0xFFDFDFDF);
+  //     primary900 = const Color(0xFFDCFCFC);
+  //     primary950 = const Color(0xFFDCFCFC);
+
+  //     secondary0 = const Color(0xFF0B0C0C);
+  //     secondary50 = const Color(0xFF181717);
+  //     secondary100 = const Color(0xFF272626);
+  //     secondary200 = const Color(0xFF3F4040);
+  //     secondary300 = const Color(0xFF515252);
+  //     secondary400 = const Color(0xFF5E5F5F);
+  //     secondary500 = const Color(0xFF727373);
+  //     secondary600 = const Color(0xFFAFB0B0);
+  //     secondary700 = const Color(0xFFDBDBDB);
+  //     secondary800 = const Color(0xFFE7E8E8);
+  //     secondary900 = const Color(0xFFF1F2F2);
+  //     secondary950 = const Color(0xFFFEFFFF);
+  //   } else {
+  //     //else - light mode
+  //     primary0 = const Color(0xFFB3B3B3);
+  //     primary50 = const Color(0xFF999999);
+  //     primary100 = const Color(0xFF808080);
+  //     primary200 = const Color(0xFF737373);
+  //     primary300 = const Color(0xFF666666);
+  //     primary400 = const Color(0xFF525252);
+  //     primary500 = const Color(0xFF333333);
+  //     primary600 = const Color(0xFF292929);
+  //     primary700 = const Color(0xFF1F1F1F);
+  //     primary800 = const Color(0xFF0D0D0D);
+  //     primary900 = const Color(0xFF0A0A0A);
+  //     primary950 = const Color(0xFF080808);
+
+  //     secondary0 = const Color(0xFFFEFFFF);
+  //     secondary50 = const Color(0xFFF1F2F2);
+  //     secondary100 = const Color(0xFFE7E8E8);
+  //     secondary200 = const Color(0xFFDBDBDB);
+  //     secondary300 = const Color(0xFFAFB0B0);
+  //     secondary400 = const Color(0xFF727373);
+  //     secondary500 = const Color(0xFF5E5F5F);
+  //     secondary600 = const Color(0xFF515252);
+  //     secondary700 = const Color(0xFF3F4040);
+  //     secondary800 = const Color(0xFF272626);
+  //     secondary900 = const Color(0xFF181717);
+  //     secondary950 = const Color(0xFF0B0C0C);
+  //   }
+
+//     print('thehme vuild: $theme');
+// print('prim500: $primary500');
+  //}
 }

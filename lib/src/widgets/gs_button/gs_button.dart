@@ -1,8 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
+import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/token/public.dart';
+import 'package:gluestack_ui/src/widgets/gs_button/gs_button_text_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_fab/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
 import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
@@ -87,6 +90,15 @@ class GSButton extends StatelessWidget {
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
+        Stopwatch stopwatch = Stopwatch()..start();
+        // buttonStyle = GSStyle.fromMap(
+        //     data: buttonData,
+        //     descendantStyle: gsButtonConfig.descendantStyle);
+        // print(buttonStyle.variants?.variant?.solid);
+        print('timeee: ${stopwatch.elapsed.inMilliseconds} ms');
+        // print(
+        //     'from button via ctx: ${GSTheme.of(keyForClr.currentContext!).primary500!}');
+
         GSStyle styler = resolveStyles(
           context: context,
           styles: [
@@ -98,8 +110,15 @@ class GSButton extends StatelessWidget {
                 buttonAction.toString() + buttonVariant.toString()]
           ],
           inlineStyle: style,
-          isFirst: true,
+          // isFirst: true,
         );
+        // print('var bg: ${buttonStyle.variantMap(buttonVariant)?.bg}');
+        // print('act bg: ${buttonStyle.actionMap(buttonAction)?.bg}');
+        // print('siz bg: ${buttonStyle.sizeMap(buttonSize)?.bg}');
+        // print(
+        //     'comp bg: ${buttonStyle.compoundVariants?[buttonAction.toString() + buttonVariant.toString()]?.bg}');
+        // print('styl bg: ${styler.bg}');
+        // print('btn style bg: ${buttonStyle.variants?.action?.primary?.bg}');
 
         if (GSStyleBuilderProvider.of(context)?.isHovered ?? false) {
           if (onHover != null && !disabled) {
@@ -110,6 +129,9 @@ class GSButton extends StatelessWidget {
         if (GSStyleBuilderProvider.of(context)?.isActive ?? false) {
           styler.bg = styler.onActive?.bg;
         }
+
+        //color resolver
+        final themeBG = getColorMap(context)[styler.color2];
 
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
@@ -132,7 +154,7 @@ class GSButton extends StatelessWidget {
                     clipBehavior: clipBehavior,
                     padding: styler.padding,
                     decoration: BoxDecoration(
-                      color: styler.bg,
+                      color: themeBG,
                       borderRadius:
                           BorderRadius.circular(styler.borderRadius ?? 0.0),
                       border: Border.fromBorderSide(_resolveBorderSide(

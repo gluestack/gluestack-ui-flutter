@@ -7,6 +7,8 @@ enum GSThemeMode {
   dark,
 }
 
+GlobalKey<NavigatorState> keyForClr = GlobalKey<NavigatorState>();
+
 class GSApp extends StatefulWidget {
   const GSApp({
     super.key,
@@ -267,7 +269,7 @@ class _GSAppState extends State<GSApp> {
     final gsAppColor = widget.color ?? $GSColors.primary400;
     if (_usesRouter) {
       return WidgetsApp.router(
-        key: GlobalObjectKey(this),
+        key: keyForClr ?? GlobalObjectKey(this),
         routeInformationProvider: widget.routeInformationProvider,
         routeInformationParser: widget.routeInformationParser,
         routerDelegate: widget.routerDelegate,
@@ -295,7 +297,7 @@ class _GSAppState extends State<GSApp> {
 
     return WidgetsApp(
       key: widget.key,
-      navigatorKey: widget.navigatorKey,
+      navigatorKey: keyForClr ?? widget.navigatorKey,
       onGenerateRoute: widget.onGenerateRoute,
       onGenerateInitialRoutes: widget.onGenerateInitialRoutes,
       onUnknownRoute: widget.onUnknownRoute,
