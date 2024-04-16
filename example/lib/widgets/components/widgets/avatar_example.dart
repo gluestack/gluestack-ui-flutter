@@ -52,7 +52,7 @@ class _AvatarExampleState extends State<AvatarExample> {
         GSAvatar(
             radius: GSAvatarRadius.\$full,
             size: GSAvatarSizes.\$md,
-            style: GSStyle(
+            style: GlueStyle(
               bg: Colors.orange,
               textStyle: const TextStyle(color: Colors.white),
             ),
@@ -61,15 +61,15 @@ class _AvatarExampleState extends State<AvatarExample> {
 ''';
     return CustomGSLayout(
       title: "Avatar",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSAvatar(
           radius: selectedRadiusOption,
           size: selectedSizeOption,
-          style: GSStyle(
+          style: GlueStyle(
             bg: Colors.orange,
             textStyle: const TextStyle(color: Colors.white),
           ),

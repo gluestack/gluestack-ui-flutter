@@ -20,17 +20,17 @@ class HStackReversedPreview extends StatelessWidget {
               children: [
                 GSBox(
                   style:
-                      GSStyle(height: 100, width: 100, bg: $GSColors.blue300),
+                      GlueStyle(height: 100, width: 100, bg: $GSColors.blue300),
                   child: const Text('1'),
                 ),
                 GSBox(
                   style:
-                      GSStyle(height: 100, width: 100, bg: $GSColors.blue400),
+                      GlueStyle(height: 100, width: 100, bg: $GSColors.blue400),
                   child: const Text('2'),
                 ),
                 GSBox(
                   style:
-                      GSStyle(height: 100, width: 100, bg: $GSColors.blue500),
+                      GlueStyle(height: 100, width: 100, bg: $GSColors.blue500),
                   child: const Text('3'),
                 ),
               ],

@@ -1,11 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 // import 'package:gluestack_ui_example/custom_config.dart';
 // import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
-import 'package:go_router/go_router.dart';
 
 import 'providers/theme_provider/theme_provider.dart';
 
@@ -49,7 +47,7 @@ class _MyAppState extends State<MyApp> {
             child: GSApp.router(
               debugShowCheckedModeBanner: false,
               color: $GSColors.primary500,
-              routerConfig: test((GSThemes newTheme) {
+              routerConfig: ree((GSThemes newTheme) {
                 setState(() {
                   currentTheme = newTheme;
                 });
@@ -63,11 +61,4 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-}
-
-late Function updaterFunc;
-
-GoRouter test(Function input) {
-  updaterFunc = input;
-  return router;
 }

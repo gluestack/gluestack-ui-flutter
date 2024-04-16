@@ -22,13 +22,13 @@ class _SwitchWithColorSchemePreviewState
         Story(
             name: 'Switch',
             builder: (context) => GSBox(
-                  style: GSStyle(width: 150, height: 120),
+                  style: GlueStyle(width: 150, height: 120),
                   child: GSVStack(
                     children: [
                       GSSwitch(
-                        style: GSStyle(
+                        style: GlueStyle(
                             trackColorTrue: $GSColors.red500,
-                            onHover: GSStyle(
+                            onHover: GlueStyle(
                               trackColorTrue: $GSColors.red600,
                             )),
                         value: isSelected,
@@ -42,9 +42,9 @@ class _SwitchWithColorSchemePreviewState
                         height: 20,
                       ),
                       GSSwitch(
-                          style: GSStyle(
+                          style: GlueStyle(
                               trackColorTrue: $GSColors.green500,
-                              onHover: GSStyle(
+                              onHover: GlueStyle(
                                 trackColorTrue: $GSColors.green600,
                               )),
                           value: isSelectedTwo,
@@ -57,9 +57,9 @@ class _SwitchWithColorSchemePreviewState
                         height: 20,
                       ),
                       GSSwitch(
-                          style: GSStyle(
+                          style: GlueStyle(
                               trackColorTrue: $GSColors.orange400,
-                              onHover: GSStyle(
+                              onHover: GlueStyle(
                                 trackColorTrue: $GSColors.orange600,
                               )),
                           value: isSelectedThree,

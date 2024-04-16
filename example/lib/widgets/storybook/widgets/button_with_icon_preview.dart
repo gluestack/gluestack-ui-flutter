@@ -10,7 +10,7 @@ class ButtonWithIconsPreview extends StatelessWidget {
     return materialWrapper(
       context,
       GSBox(
-        style: GSStyle(
+        style: GlueStyle(
           width: 300,
           height: 100,
         ),
@@ -21,14 +21,14 @@ class ButtonWithIconsPreview extends StatelessWidget {
                 children: [
                   GSIcon(
                     icon: Icons.edit,
-                    style: GSStyle(color: $GSColors.white),
+                    style: GlueStyle(color: $GSColors.white),
                   ),
                   const SizedBox(
                     width: 5,
                   ),
                   GSButtonText(
                     text: "Left Icon",
-                    style: GSStyle(),
+                    style: GlueStyle(),
                   ),
                 ],
               ),
@@ -42,14 +42,14 @@ class ButtonWithIconsPreview extends StatelessWidget {
                 children: [
                   GSButtonText(
                     text: "Right Icon",
-                    style: GSStyle(),
+                    style: GlueStyle(),
                   ),
                   const SizedBox(
                     width: 5,
                   ),
                   GSIcon(
                     icon: Icons.add,
-                    style: GSStyle(color: $GSColors.white),
+                    style: GlueStyle(color: $GSColors.white),
                   ),
                 ],
               ),

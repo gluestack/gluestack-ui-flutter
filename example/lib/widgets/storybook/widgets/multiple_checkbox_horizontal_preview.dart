@@ -14,14 +14,14 @@ class MultipleCheckboxHorizontalPreview extends StatelessWidget {
           Story(
             name: 'Checkbox',
             builder: (context) => GSBox(
-              style: GSStyle(width: 400, height: 50),
+              style: GlueStyle(width: 400, height: 50),
               child: GSHStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style:
-                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style: GlueStyle(
+                          margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "Flutter",
@@ -33,8 +33,8 @@ class MultipleCheckboxHorizontalPreview extends StatelessWidget {
                   ),
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style:
-                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style: GlueStyle(
+                          margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "React",
@@ -46,8 +46,8 @@ class MultipleCheckboxHorizontalPreview extends StatelessWidget {
                   ),
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style:
-                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style: GlueStyle(
+                          margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "React Native",

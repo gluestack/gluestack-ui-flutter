@@ -25,7 +25,7 @@ class _MultipleRadioButtonPreviewState
           Story(
             name: 'RadioButton',
             builder: (context) => GSBox(
-              style: GSStyle(width: 100, height: 150),
+              style: GlueStyle(width: 100, height: 150),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -39,7 +39,8 @@ class _MultipleRadioButtonPreviewState
                     },
                     icon: const GSRadioIcon<Value>(),
                     label: const GSRadioText<Value>(text: 'English'),
-                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style:
+                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                   ),
                   const SizedBox(
                     height: 20,
@@ -54,7 +55,8 @@ class _MultipleRadioButtonPreviewState
                     },
                     icon: const GSRadioIcon<Value>(),
                     label: const GSRadioText<Value>(text: 'French'),
-                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style:
+                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                   ),
                   const SizedBox(
                     height: 20,
@@ -69,7 +71,8 @@ class _MultipleRadioButtonPreviewState
                     },
                     icon: const GSRadioIcon<Value>(),
                     label: const GSRadioText<Value>(text: 'German'),
-                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style:
+                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                   ),
                 ],
               ),

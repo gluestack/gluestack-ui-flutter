@@ -14,7 +14,7 @@ class DividerVariantsPreview extends StatelessWidget {
           Story(
             name: 'Divider',
             builder: (context) => GSBox(
-              style: GSStyle(width: 400, height: 100),
+              style: GlueStyle(width: 400, height: 100),
               child: GSVStack(
                 children: [
                   GSHStack(
@@ -28,7 +28,7 @@ class DividerVariantsPreview extends StatelessWidget {
                       ),
                       GSDivider(
                         orientation: GSOrientations.vertical,
-                        style: GSStyle(
+                        style: GlueStyle(
                           height: 30,
                           color: $GSColors.rose300,
                         ),
@@ -44,7 +44,7 @@ class DividerVariantsPreview extends StatelessWidget {
                       ),
                       GSDivider(
                         orientation: GSOrientations.vertical,
-                        style: GSStyle(
+                        style: GlueStyle(
                           height: 30,
                           color: $GSColors.green300,
                         ),
@@ -67,7 +67,7 @@ class DividerVariantsPreview extends StatelessWidget {
                   //     ),
                   //     GSDivider(
                   //       orientation: GSOrientations.horizontal,
-                  //       style: GSStyle(height: 30),
+                  //       style: GlueStyle(height: 30),
                   //     ),
                   //     const GSText(
                   //       text: "Chrome",

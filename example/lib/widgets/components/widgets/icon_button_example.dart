@@ -31,10 +31,10 @@ class _IconButtonExampleState extends State<IconButtonExample> {
     var code = '''
       GSIconButton(
           size: GSIconButtonSizes.\$md,
-          style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
+          style: GlueStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
           icon: GSIcon(
                icon: Icons.add_a_photo,
-               style: GSStyle(color: const Color(0xffffffff)),
+               style: GlueStyle(color: const Color(0xffffffff)),
            ),
            onPressed: () {
                print('Icon Button Pressed!');
@@ -43,17 +43,17 @@ class _IconButtonExampleState extends State<IconButtonExample> {
   ''';
     return CustomGSLayout(
       title: "Icon Button",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSIconButton(
           size: selectedSizeOption,
-          style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
+          style: GlueStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
           icon: GSIcon(
             icon: Icons.add_a_photo,
-            style: GSStyle(color: const Color(0xffffffff)),
+            style: GlueStyle(color: const Color(0xffffffff)),
           ),
           onPressed: () {
             // print('Icon Button Pressed!');

@@ -9,21 +9,21 @@ class LinkExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var code = '''
           GSLink(
-              style: GSStyle(),
+              style: GlueStyle(),
               url: 'https://gluestack.io/',
               text: const GSLinkText(text: 'Go to Gluestack'),
           )
   ''';
     return CustomGSLayout(
       title: "Link",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(
           code: code,
           component: GSLink(
-            style: GSStyle(),
+            style: GlueStyle(),
             url: 'https://gluestack.io/',
             text: const GSLinkText(text: 'Go to Gluestack'),
           ),

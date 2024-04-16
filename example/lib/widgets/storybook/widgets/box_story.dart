@@ -8,7 +8,7 @@ final class BoxStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSBox(
-        style: GSStyle(
+        style: GlueStyle(
           padding: EdgeInsets.all($GSSpace.$5),
           bg: $GSColors.primary500,
         ),

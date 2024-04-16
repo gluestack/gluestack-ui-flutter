@@ -95,8 +95,8 @@ GSAccordion(
 
     return CustomGSLayout(
       title: "Accordion",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -106,7 +106,7 @@ GSAccordion(
           type: selectedTypeOption,
           isCollapsible: isCollapsible,
           isDisabled: isDisabled,
-          // style: GSStyle(bg: $GSColors.amber400),
+          // style: GlueStyle(bg: $GSColors.amber400),
           // itemPadding: EdgeInsets.all(12),
           // showSuffixIcon: false,
           // prefixIconPadding: EdgeInsets.only(right: 0),

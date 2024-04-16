@@ -14,7 +14,7 @@ class ProgressValuePreview extends StatelessWidget {
           Story(
             name: 'Progress',
             builder: (context) => GSBox(
-              style: GSStyle(width: 300, height: 100),
+              style: GlueStyle(width: 300, height: 100),
               child: const GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

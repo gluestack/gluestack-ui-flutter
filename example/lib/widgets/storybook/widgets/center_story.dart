@@ -8,7 +8,7 @@ final class CenterStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSCenter(
-        style: GSStyle(
+        style: GlueStyle(
           height: 150,
           width: 300,
           bg: $GSColors.primary500,

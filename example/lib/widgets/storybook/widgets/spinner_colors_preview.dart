@@ -14,12 +14,12 @@ class SpinnerWithColorsPreview extends StatelessWidget {
           Story(
             name: 'Spinner',
             builder: (context) => GSBox(
-              style: GSStyle(width: 300, height: 200),
+              style: GlueStyle(width: 300, height: 200),
               child: GSVStack(
                 children: [
                   GSSpinner(
                     strokeWidth: 3,
-                    style: GSStyle(
+                    style: GlueStyle(
                       bg: $GSColors.blueGray700,
                       color: $GSColors.red400,
                       width: 30,
@@ -31,7 +31,7 @@ class SpinnerWithColorsPreview extends StatelessWidget {
                   ),
                   GSSpinner(
                     strokeWidth: 3,
-                    style: GSStyle(
+                    style: GlueStyle(
                       bg: $GSColors.blueGray700,
                       color: $GSColors.orange400,
                       width: 30,
@@ -43,7 +43,7 @@ class SpinnerWithColorsPreview extends StatelessWidget {
                   ),
                   GSSpinner(
                     strokeWidth: 3,
-                    style: GSStyle(
+                    style: GlueStyle(
                       bg: $GSColors.blueGray700,
                       color: $GSColors.green400,
                       width: 30,
@@ -55,7 +55,7 @@ class SpinnerWithColorsPreview extends StatelessWidget {
                   ),
                   GSSpinner(
                     strokeWidth: 3,
-                    style: GSStyle(
+                    style: GlueStyle(
                       bg: $GSColors.blueGray700,
                       width: 30,
                       height: 30,

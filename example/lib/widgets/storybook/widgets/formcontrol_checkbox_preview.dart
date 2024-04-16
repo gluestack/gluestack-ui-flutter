@@ -14,7 +14,7 @@ class FormControlCheckboxPreview extends StatelessWidget {
           Story(
             name: 'Checkbox',
             builder: (context) => GSBox(
-              style: GSStyle(
+              style: GlueStyle(
                 width: 270,
                 height: 200,
               ),
@@ -27,8 +27,8 @@ class FormControlCheckboxPreview extends StatelessWidget {
                   ),
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style:
-                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style: GlueStyle(
+                          margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "Flutter",
@@ -40,8 +40,8 @@ class FormControlCheckboxPreview extends StatelessWidget {
                   ),
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style:
-                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style: GlueStyle(
+                          margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "React",
@@ -53,8 +53,8 @@ class FormControlCheckboxPreview extends StatelessWidget {
                   ),
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style:
-                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style: GlueStyle(
+                          margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "React Native",

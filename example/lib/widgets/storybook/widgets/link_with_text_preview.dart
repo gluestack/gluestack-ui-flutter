@@ -14,7 +14,7 @@ class LinkWithTextPreview extends StatelessWidget {
           Story(
             name: 'Link',
             builder: (context) => GSBox(
-              style: GSStyle(width: 300, height: 50),
+              style: GlueStyle(width: 300, height: 50),
               child: GSHStack(
                 children: [
                   const GSText(text: 'Design inspiration from'),
@@ -22,11 +22,12 @@ class LinkWithTextPreview extends StatelessWidget {
                     width: 10,
                   ),
                   GSLink(
-                    style: GSStyle(),
+                    style: GlueStyle(),
                     url: 'https://gluestack.io/',
                     text: GSLinkText(
                       text: 'gluestack',
-                      style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
+                      style:
+                          GlueStyle(textStyle: const TextStyle(fontSize: 18)),
                     ),
                   ),
                 ],

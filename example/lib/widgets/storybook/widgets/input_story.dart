@@ -2,11 +2,10 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-
-final List<Option<int>> variantOptions = generateEnumOptions(GSInputVariants.values);
+final List<Option<int>> variantOptions =
+    generateEnumOptions(GSInputVariants.values);
 
 final List<Option<int>> sizeOptions = generateEnumOptions(GSInputSizes.values);
-
 
 final class InputStory extends StoryWidget {
   @override
@@ -24,7 +23,7 @@ final class InputStory extends StoryWidget {
         isReadOnly: context.knobs.boolean(label: "isReadOnly", initial: false),
         hintText: "Enter text here",
         controller: textEditingController,
-        style: GSStyle(
+        style: GlueStyle(
           width: 300,
         ),
       ),

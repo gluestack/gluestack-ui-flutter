@@ -17,7 +17,7 @@ class HeaderExample extends StatelessWidget {
                 ),
               ),
               GSBox(
-                style: GSStyle(
+                style: GlueStyle(
                     margin: const EdgeInsets.all(4),
                     height: 30,
                     width: double.infinity,
@@ -25,7 +25,7 @@ class HeaderExample extends StatelessWidget {
                     borderRadius: 12),
               ),
               GSBox(
-                style: GSStyle(
+                style: GlueStyle(
                     margin: const EdgeInsets.all(4),
                     height: 30,
                     width: double.infinity,
@@ -33,7 +33,7 @@ class HeaderExample extends StatelessWidget {
                     borderRadius: 12),
               ),
               GSBox(
-                style: GSStyle(
+                style: GlueStyle(
                     margin: const EdgeInsets.all(4),
                     height: 30,
                     width: double.infinity,
@@ -61,7 +61,7 @@ class HeaderExample extends StatelessWidget {
                 // leadingWidget: Icon(Icons.architecture),
               ),
               GSBox(
-                style: GSStyle(
+                style: GlueStyle(
                     margin: const EdgeInsets.all(4),
                     height: 30,
                     width: double.infinity,
@@ -69,7 +69,7 @@ class HeaderExample extends StatelessWidget {
                     borderRadius: 12),
               ),
               GSBox(
-                style: GSStyle(
+                style: GlueStyle(
                     margin: const EdgeInsets.all(4),
                     height: 30,
                     width: double.infinity,
@@ -77,7 +77,7 @@ class HeaderExample extends StatelessWidget {
                     borderRadius: 12),
               ),
               GSBox(
-                style: GSStyle(
+                style: GlueStyle(
                     margin: const EdgeInsets.all(4),
                     height: 30,
                     width: double.infinity,

@@ -14,7 +14,7 @@ class InputWithFormcontrolPreview extends StatelessWidget {
           Story(
             name: 'Input',
             builder: (context) => GSBox(
-              style: GSStyle(
+              style: GlueStyle(
                   width: 250,
                   height: 300,
                   borderRadius: 8,
@@ -30,7 +30,7 @@ class InputWithFormcontrolPreview extends StatelessWidget {
                   ),
                   const GSText(text: 'Email'),
                   GSInput(
-                    style: GSStyle(
+                    style: GlueStyle(
                       width: 300,
                     ),
                   ),
@@ -40,7 +40,7 @@ class InputWithFormcontrolPreview extends StatelessWidget {
                   const GSText(text: 'Password'),
                   GSInput(
                     obscureText: true,
-                    style: GSStyle(
+                    style: GlueStyle(
                       width: 300,
                     ),
                   ),
@@ -48,7 +48,7 @@ class InputWithFormcontrolPreview extends StatelessWidget {
                     height: 20,
                   ),
                   GSButton(
-                    style: GSStyle(),
+                    style: GlueStyle(),
                     onPressed: () {},
                     child: const GSButtonText(text: "Save"),
                   ),

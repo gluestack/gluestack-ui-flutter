@@ -9,27 +9,27 @@ final class FlexStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSFlex(
-        style: GSStyle(
+        style: GlueStyle(
           direction: Axis.vertical,
-          lg: GSStyle(direction: Axis.horizontal),
+          lg: GlueStyle(direction: Axis.horizontal),
         ),
         children: [
           GSBox(
-            style: GSStyle(
+            style: GlueStyle(
               height: 150,
               width: 150,
               bg: Colors.red,
             ),
           ),
           GSBox(
-            style: GSStyle(
+            style: GlueStyle(
               height: 150,
               width: 150,
               bg: Colors.green,
             ),
           ),
           GSBox(
-            style: GSStyle(
+            style: GlueStyle(
               height: 150,
               width: 150,
               bg: Colors.blue,

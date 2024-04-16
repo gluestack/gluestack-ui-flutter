@@ -14,10 +14,10 @@ final class IconButtonStory extends StoryWidget {
       builder: (context) => GSIconButton(
         size: GSIconButtonSizes.values[context.knobs
             .options(label: 'Size', initial: 0, options: sizeOptions)],
-        style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
+        style: GlueStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
         icon: GSIcon(
           icon: Icons.add_a_photo,
-          style: GSStyle(color: const Color(0xffffffff)),
+          style: GlueStyle(color: const Color(0xffffffff)),
         ),
         onPressed: () {
           // print('Icon Button Pressed!');

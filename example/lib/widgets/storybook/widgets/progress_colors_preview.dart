@@ -14,34 +14,34 @@ class ProgressColorsPreview extends StatelessWidget {
           Story(
             name: 'Progress',
             builder: (context) => GSBox(
-              style: GSStyle(width: 300, height: 200),
+              style: GlueStyle(width: 300, height: 200),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GSProgress(
                     value: 0.55,
-                    style: GSStyle(progressValueColor: $GSColors.rose400),
+                    style: GlueStyle(progressValueColor: $GSColors.rose400),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   GSProgress(
                     value: 0.55,
-                    style: GSStyle(progressValueColor: $GSColors.blue500),
+                    style: GlueStyle(progressValueColor: $GSColors.blue500),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   GSProgress(
                     value: 0.55,
-                    style: GSStyle(progressValueColor: $GSColors.green500),
+                    style: GlueStyle(progressValueColor: $GSColors.green500),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   GSProgress(
                     value: 0.55,
-                    style: GSStyle(progressValueColor: $GSColors.orange500),
+                    style: GlueStyle(progressValueColor: $GSColors.orange500),
                   ),
                 ],
               ),

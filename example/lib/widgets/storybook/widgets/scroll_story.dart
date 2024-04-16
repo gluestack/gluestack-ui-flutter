@@ -8,7 +8,7 @@ final class ScrollStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSBox(
-        style: GSStyle(
+        style: GlueStyle(
             height: 250, borderColor: $GSColors.blue400, borderWidth: 2),
         child: GSScrollView(
           children: [

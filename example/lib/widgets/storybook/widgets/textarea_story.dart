@@ -2,8 +2,8 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-
-final List<Option<int>> sizeOptions = generateEnumOptions(GSTextAreaSizes.values);
+final List<Option<int>> sizeOptions =
+    generateEnumOptions(GSTextAreaSizes.values);
 
 final class TextareaStory extends StoryWidget {
   @override
@@ -17,7 +17,7 @@ final class TextareaStory extends StoryWidget {
         isInvalid: context.knobs.boolean(label: "isInvalid", initial: false),
         isReadOnly: context.knobs.boolean(label: "isReadOnly", initial: false),
         hintText: "Enter text here",
-        style: GSStyle(
+        style: GlueStyle(
           width: 300,
         ),
       ),

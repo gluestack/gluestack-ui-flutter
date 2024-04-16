@@ -10,27 +10,27 @@ class FlexExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var code = '''
         GSFlex(
-            style: GSStyle(
+            style: GlueStyle(
               direction: Axis.vertical,
-              md: GSStyle(direction: Axis.horizontal),
+              md: GlueStyle(direction: Axis.horizontal),
             ),
             children: [
               GSBox(
-                style: GSStyle(
+                style: GlueStyle(
                   height: 150,
                   width: 150,
                   bg: Colors.red,
                 ),
               ),
               GSBox(
-                style: GSStyle(
+                style: GlueStyle(
                   height: 150,
                   width: 150,
                   bg: Colors.green,
                 ),
               ),
               GSBox(
-                style: GSStyle(
+                style: GlueStyle(
                   height: 150,
                   width: 150,
                   bg: Colors.blue,
@@ -41,33 +41,33 @@ class FlexExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Flex",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSFlex(
-          style: GSStyle(
+          style: GlueStyle(
             direction: Axis.vertical,
-            md: GSStyle(direction: Axis.horizontal),
+            md: GlueStyle(direction: Axis.horizontal),
           ),
           children: [
             GSBox(
-              style: GSStyle(
+              style: GlueStyle(
                 height: 150,
                 width: 150,
                 bg: Colors.red,
               ),
             ),
             GSBox(
-              style: GSStyle(
+              style: GlueStyle(
                 height: 150,
                 width: 150,
                 bg: Colors.green,
               ),
             ),
             GSBox(
-              style: GSStyle(
+              style: GlueStyle(
                 height: 150,
                 width: 150,
                 bg: Colors.blue,

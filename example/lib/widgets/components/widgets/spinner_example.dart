@@ -10,7 +10,7 @@ class SpinnerExample extends StatelessWidget {
     var code = '''
           GSSpinner(
               size: GSSpinnerSizes.large,
-              style: GSStyle(
+              style: GlueStyle(
                   color: \$GSColors.amber400,
                   bg: \$GSColors.amber200,
               ),
@@ -19,15 +19,15 @@ class SpinnerExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Spinner",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(
           code: code,
           component: GSSpinner(
             size: GSSpinnerSizes.large,
-            style: GSStyle(
+            style: GlueStyle(
               color: $GSColors.amber400,
               bg: $GSColors.amber200,
             ),

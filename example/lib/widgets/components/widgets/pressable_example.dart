@@ -11,10 +11,10 @@ class PressableExample extends StatelessWidget {
     var code = '''
             GSPressable(
                 hitSlop: 10,
-                style: GSStyle(
+                style: GlueStyle(
                   bg: Colors.yellow,
-                  onHover: GSStyle(bg: Colors.green),
-                  onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
+                  onHover: GlueStyle(bg: Colors.green),
+                  onFocus: GlueStyle(borderColor: Colors.red, borderWidth: 10),
                 ),
                 onPress: () {
                   print('Pressed!');
@@ -26,7 +26,7 @@ class PressableExample extends StatelessWidget {
                 child: GSText(
                   text: 'Press Me',
                   underline: true,
-                  style: GSStyle(
+                  style: GlueStyle(
                       color: Colors.blue,
                       textStyle:
                           const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg)),
@@ -35,17 +35,17 @@ class PressableExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Pressable",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSPressable(
           hitSlop: 10,
-          style: GSStyle(
+          style: GlueStyle(
             bg: Colors.yellow,
-            onHover: GSStyle(bg: Colors.green),
-            onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
+            onHover: GlueStyle(bg: Colors.green),
+            onFocus: GlueStyle(borderColor: Colors.red, borderWidth: 10),
           ),
           onPress: () {
             // print('Pressed!');
@@ -56,7 +56,7 @@ class PressableExample extends StatelessWidget {
           child: GSText(
             text: 'Press Me',
             underline: true,
-            style: GSStyle(
+            style: GlueStyle(
                 color: Colors.blue,
                 textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
           ),

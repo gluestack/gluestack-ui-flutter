@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 
 class GSTheme extends StatelessWidget {
   const GSTheme({
@@ -311,6 +312,8 @@ Map themeColorMap({required BuildContext context}) {
     'secondary800': GSTheme.of(context).secondary800,
     'secondary900': GSTheme.of(context).secondary900,
     'secondary950': GSTheme.of(context).secondary950,
+    ...$GSColors.colorMap,
   };
+
   return mapp;
 }

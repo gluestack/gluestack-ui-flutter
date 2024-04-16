@@ -44,7 +44,7 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
     var code = '''
           GSCheckBox(
               icon: GSCheckBoxIndicator(
-                  style: GSStyle(margin: const EdgeInsets.only(right: \$GSSpace.\$2)),
+                  style: GlueStyle(margin: const EdgeInsets.only(right: \$GSSpace.\$2)),
                   child: const GSCheckBoxIcon(),
               ),
               value: "value 1",
@@ -57,14 +57,14 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
   ''';
     return CustomGSLayout(
       title: "Checkbox",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSCheckBox(
           icon: GSCheckBoxIndicator(
-            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            style: GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
             child: const GSCheckBoxIcon(),
           ),
           value: "value 1",

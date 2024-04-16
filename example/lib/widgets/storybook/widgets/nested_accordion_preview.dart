@@ -10,7 +10,7 @@ class NestedAccordionPreview extends StatelessWidget {
     return materialWrapper(
       context,
       GSBox(
-        style: GSStyle(width: 500, height: 380),
+        style: GlueStyle(width: 500, height: 380),
         child: const GSAccordion(
           size: GSAccordionSizes.$md,
           type: GSAccordionTypes.multiple,

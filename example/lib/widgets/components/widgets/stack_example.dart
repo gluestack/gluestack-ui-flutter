@@ -27,8 +27,8 @@ class StackExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Stack",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(

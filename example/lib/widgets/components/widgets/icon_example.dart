@@ -38,8 +38,8 @@ class _IconExampleState extends State<IconExample> {
   ''';
     return CustomGSLayout(
       title: "Icon",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(

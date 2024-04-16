@@ -14,7 +14,7 @@ class ProgressCustomPreview extends StatelessWidget {
           Story(
             name: 'Progress',
             builder: (context) => GSBox(
-              style: GSStyle(width: 300, height: 100),
+              style: GlueStyle(width: 300, height: 100),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -24,7 +24,7 @@ class ProgressCustomPreview extends StatelessWidget {
                   ),
                   GSProgress(
                     value: 0.55,
-                    style: GSStyle(
+                    style: GlueStyle(
                         progressValueColor: $GSColors.green500,
                         bg: $GSColors.green50),
                   ),

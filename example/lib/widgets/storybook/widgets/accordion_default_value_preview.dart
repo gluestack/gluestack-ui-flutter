@@ -10,7 +10,7 @@ class AccordionDefaultValuePreview extends StatelessWidget {
     return materialWrapper(
       context,
       GSBox(
-        style: GSStyle(width: 400, height: 350),
+        style: GlueStyle(width: 400, height: 350),
         child: GSAccordion(
           size: GSAccordionSizes.$md,
           type: GSAccordionTypes.multiple,
@@ -19,7 +19,7 @@ class AccordionDefaultValuePreview extends StatelessWidget {
           isCollapsible: true,
           suffixIconWhenTileExpanded: const GSAccordionIcon(icon: Icons.remove),
           suffixIconWhenTileCollapsed: const GSAccordionIcon(icon: Icons.add),
-          // style: GSStyle(bg: $GSColors.amber400),
+          // style: GlueStyle(bg: $GSColors.amber400),
           itemPadding: const EdgeInsets.all(5),
           initialValues: const [false, false, true],
 

@@ -16,9 +16,9 @@ class LinkButtonPreview extends StatelessWidget {
             name: 'Button',
             builder: (context) => GSButton(
               variant: GSButtonVariants.link,
-              style: GSStyle(
+              style: GlueStyle(
                   color: Colors.transparent,
-                  onHover: GSStyle(bg: Colors.transparent)),
+                  onHover: GlueStyle(bg: Colors.transparent)),
               child: const GSText(text: 'Back to top'),
               onPressed: () {},
             ),

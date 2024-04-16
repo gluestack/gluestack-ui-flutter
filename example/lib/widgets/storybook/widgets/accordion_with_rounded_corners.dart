@@ -10,7 +10,7 @@ class AccordionWithRoundedCornersPreview extends StatelessWidget {
     return materialWrapper(
       context,
       GSBox(
-        style: GSStyle(width: 400, height: 350),
+        style: GlueStyle(width: 400, height: 350),
         child: const GSAccordion(
           size: GSAccordionSizes.$md,
           type: GSAccordionTypes.multiple,
@@ -19,7 +19,7 @@ class AccordionWithRoundedCornersPreview extends StatelessWidget {
           isCollapsible: true,
           prefixIconWhenTileExapanded: GSAccordionIcon(icon: Icons.remove),
           prefixIconWhenTileCollapsed: GSAccordionIcon(icon: Icons.add),
-          // style: GSStyle(bg: $GSColors.amber400),
+          // style: GlueStyle(bg: $GSColors.amber400),
           itemPadding: EdgeInsets.all(12),
 
           children: [

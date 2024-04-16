@@ -72,15 +72,15 @@ class _InputExampleState extends State<InputExample> {
           isDisabled: false,
           isInvalid: false,
           readOnly: false,
-          style: GSStyle(
+          style: GlueStyle(
                 width: 300,
           ),
        )
   ''';
     return CustomGSLayout(
       title: "Input",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -92,7 +92,7 @@ class _InputExampleState extends State<InputExample> {
           isInvalid: isInvalid,
           controller: textEditingController,
           isReadOnly: isReadOnly,
-          style: GSStyle(
+          style: GlueStyle(
             width: 300,
           ),
         ),

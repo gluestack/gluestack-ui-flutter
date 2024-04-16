@@ -4,7 +4,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 class CustomGSLayout extends StatelessWidget {
   final Widget body;
   final Widget? floatingActionButton;
-  final GSStyle? style;
+  final GlueStyle? style;
   final String title;
   final bool? hideBackButton;
   const CustomGSLayout(
@@ -19,8 +19,8 @@ class CustomGSLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: GSLayout(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
+          style: GlueStyle(
+            dark: GlueStyle(bg: $GSColors.black),
           ),
           floatingActionButton: floatingActionButton,
           body: GSVStack(
@@ -49,9 +49,9 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GSBox(
-      style: GSStyle(
+      style: GlueStyle(
         height: 56.0,
-        dark: GSStyle(bg: $GSColors.trueGray800),
+        dark: GlueStyle(bg: $GSColors.trueGray800),
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
       ),
       child: GSHStack(
@@ -60,7 +60,7 @@ class CustomAppBar extends StatelessWidget {
           !hideBackButton
               ? IconButton(
                   icon: const Icon(Icons.arrow_back),
-                  color: GSTheme.of(context).brightness == Brightness.dark
+                  color: GSTheme.of(context).theme == GSThemes.dark
                       ? $GSColors.white
                       : null,
                   onPressed: () {

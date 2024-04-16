@@ -10,30 +10,31 @@ class CenterExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var code = '''
         GSCenter(
-              style: GSStyle(
+              style: GlueStyle(
                 alignItems: GSAlignments.end,
                 justifyContent: GSAlignments.start,
                 height: 150,
                 bg: Colors.pink,
-                md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
+                md: GlueStyle(bg: Colors.yellow, dark: GlueStyle(bg: Colors.orange)),
               ),
               child: const GSCenter(child: Text('Testing Center Widget')),
          )
   ''';
     return CustomGSLayout(
       title: "Center",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSCenter(
-          style: GSStyle(
+          style: GlueStyle(
             alignItems: GSAlignments.end,
             justifyContent: GSAlignments.start,
             height: 150,
             bg: Colors.pink,
-            md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
+            md: GlueStyle(
+                bg: Colors.yellow, dark: GlueStyle(bg: Colors.orange)),
           ),
           child: const GSCenter(child: Text('Testing Center Widget')),
         ),

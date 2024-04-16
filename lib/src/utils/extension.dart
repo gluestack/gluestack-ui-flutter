@@ -12,14 +12,29 @@ extension GSExtensions on Object {
 
 extension ColorExtension on String {
   Color getColor(BuildContext context) {
-    final Color? resolvedColor;
+    Color? resolvedColor;
 
-    if (isNotEmpty) {
-      return themeColorMap(context: context)[this];
-    } else {
-      //default color is transparent if unresolved!
-      resolvedColor = const Color.fromARGB(0, 0, 0, 0);
+    Color parseColor(String colorString) {
+      colorString = colorString.substring(6, colorString.length - 1);
+      if (colorString.startsWith("0x")) {
+        colorString = colorString.substring(2);
+      }
+      //main stuff
+      int value = int.parse(colorString, radix: 16);
+
+      return Color(value);
     }
+
+    if (contains('0xff') && isNotEmpty) {
+      //i.e. color from token most likely or smthin
+      resolvedColor = parseColor(this);
+    } else {
+      //theme clr
+      resolvedColor = themeColorMap(context: context)[this];
+    }
+
+    //default color is transparent if unresolved!
+    resolvedColor ??= const Color.fromARGB(0, 0, 0, 0);
 
     return resolvedColor;
   }

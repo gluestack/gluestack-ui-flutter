@@ -88,8 +88,8 @@ class _ButtonExampleState extends State<ButtonExample> {
   ''';
     return CustomGSLayout(
       title: "Button",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -108,17 +108,17 @@ class _ButtonExampleState extends State<ButtonExample> {
           onDoubleTap: () {
             // print('double press');
           },
-          // style: GSStyle(
-          //   web: GSStyle(
+          // style: GlueStyle(
+          //   web: GlueStyle(
           //     bg: $GSColors.amber600,
           //   ),
-          //   ios: GSStyle(
+          //   ios: GlueStyle(
           //     bg: $GSColors.pink600,
           //   ),
-          //   onHover: GSStyle(
+          //   onHover: GlueStyle(
           //     bg: $GSColors.green400,
           //   ),
-          //   md: GSStyle(
+          //   md: GlueStyle(
           //     bg: $GSColors.pink400,
           //   ),
           // ),

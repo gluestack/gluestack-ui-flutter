@@ -37,7 +37,7 @@ class _CustomInputState extends State<CustomInput> {
           onChanged: (value) {
             widget.onChanged(widget.controller1.text, widget.controller2.text);
           },
-          style: GSStyle(
+          style: GlueStyle(
             width: 200,
           ),
         ),
@@ -53,7 +53,7 @@ class _CustomInputState extends State<CustomInput> {
           onChanged: (value) {
             widget.onChanged(widget.controller1.text, widget.controller2.text);
           },
-          style: GSStyle(
+          style: GlueStyle(
             width: 200,
           ),
         ),

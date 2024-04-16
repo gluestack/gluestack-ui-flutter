@@ -101,8 +101,7 @@ class GSBox extends StatelessWidget {
               style != null ? style!.borderRadius ?? 0 : 0),
           border: Border.all(
               color: style != null
-                  ? style!.borderColor ??
-                      const Color(0x00000000)
+                  ? style!.borderColor ?? const Color(0x00000000)
                   : const Color(0x00000000),
               width: style != null ? style!.borderWidth ?? 0 : 0),
           gradient: gradient,

@@ -18,7 +18,7 @@ class LoadingButtonPreview extends StatelessWidget {
                   children: [
                     GSSpinner(
                       strokeWidth: 2,
-                      style: GSStyle(
+                      style: GlueStyle(
                         color: $GSColors.white,
                         bg: $GSColors.blueGray300,
                         width: 20,
@@ -30,7 +30,7 @@ class LoadingButtonPreview extends StatelessWidget {
                     ),
                     GSButtonText(
                       text: "Please wait",
-                      style: GSStyle(),
+                      style: GlueStyle(),
                     ),
                   ],
                 ),

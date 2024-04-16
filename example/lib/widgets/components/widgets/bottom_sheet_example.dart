@@ -71,8 +71,8 @@ class _BottomModalSheetExampleState extends State<BottomModalSheetExample> {
 ''';
     return CustomGSLayout(
       title: "Modal Bottom Sheet",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

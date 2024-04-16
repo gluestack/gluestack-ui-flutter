@@ -11,7 +11,7 @@ final class TextStory extends StoryWidget {
         text: 'This is an example of a simple text.',
         // bold: true,
         // underline: true,
-        style: GSStyle(
+        style: GlueStyle(
           textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
         ),
       ),
@@ -41,7 +41,7 @@ class TextPreview extends StatelessWidget {
               text: 'test 1',
               bold: true,
               underline: true,
-              style: GSStyle(
+              style: GlueStyle(
                 textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
               ),
             ),

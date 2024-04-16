@@ -182,7 +182,7 @@ void main() {
     await tester.pumpWidget(
       testFrame(
         GSButton(
-          style: GSStyle(bg: Colors.red),
+          style: GlueStyle(bg: Colors.red),
           onPressed: () {},
           child: const GSText(
             text: 'GSButton',

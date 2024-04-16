@@ -10,15 +10,15 @@ class TextExample extends StatelessWidget {
     var code = '''
           GSText(
               text: 'This is an example of a simple text.',
-              style: GSStyle(
+              style: GlueStyle(
                 textStyle: const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg),
               ),
            )
   ''';
     return CustomGSLayout(
       title: "Text",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(
@@ -27,7 +27,7 @@ class TextExample extends StatelessWidget {
             text: 'This is an example of a simple text.',
             // bold: true,
             // underline: true,
-            style: GSStyle(
+            style: GlueStyle(
               textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
             ),
           ),

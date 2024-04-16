@@ -16,17 +16,17 @@ final List<Option<int>> spaceOption = [
   Option<int>(value: 8, label: GSSpaces.$4xl.name),
 ];
 
-  final List<GSVstackSpaces?> dropdownSpaceOptions = [
-    null,
-    GSVstackSpaces.$xs,
-    GSVstackSpaces.$sm,
-    GSVstackSpaces.$md,
-    GSVstackSpaces.$lg,
-    GSVstackSpaces.$xl,
-    GSVstackSpaces.$2xl,
-    GSVstackSpaces.$3xl,
-    GSVstackSpaces.$4xl,
-  ];
+final List<GSVstackSpaces?> dropdownSpaceOptions = [
+  null,
+  GSVstackSpaces.$xs,
+  GSVstackSpaces.$sm,
+  GSVstackSpaces.$md,
+  GSVstackSpaces.$lg,
+  GSVstackSpaces.$xl,
+  GSVstackSpaces.$2xl,
+  GSVstackSpaces.$3xl,
+  GSVstackSpaces.$4xl,
+];
 
 final class VStackStory extends StoryWidget {
   @override
@@ -40,15 +40,15 @@ final class VStackStory extends StoryWidget {
         isReversed: context.knobs.boolean(label: "isReversed", initial: false),
         children: [
           GSBox(
-            style: GSStyle(height: 100, width: 100, bg: $GSColors.blue300),
+            style: GlueStyle(height: 100, width: 100, bg: $GSColors.blue300),
             child: const Text('1'),
           ),
           GSBox(
-            style: GSStyle(height: 100, width: 100, bg: $GSColors.blue400),
+            style: GlueStyle(height: 100, width: 100, bg: $GSColors.blue400),
             child: const Text('2'),
           ),
           GSBox(
-            style: GSStyle(height: 100, width: 100, bg: $GSColors.blue500),
+            style: GlueStyle(height: 100, width: 100, bg: $GSColors.blue500),
             child: const Text('3'),
           ),
         ],

@@ -118,8 +118,8 @@ GSStepper(
   ''';
     return CustomGSLayout(
       title: "Stepper",
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
+      style: GlueStyle(
+        dark: GlueStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(

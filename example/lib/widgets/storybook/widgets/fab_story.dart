@@ -3,9 +3,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-
-final List<Option<int>> sizeOptions =
-    generateEnumOptions(GSFABSizes.values);
+final List<Option<int>> sizeOptions = generateEnumOptions(GSFABSizes.values);
 
 final List<Option<int>> placementOptions =
     generateEnumOptions(GSPlacements.values);
@@ -19,12 +17,12 @@ final class FabStory extends StoryWidget {
         child: Stack(
           children: [
             GSBox(
-              style: GSStyle(
+              style: GlueStyle(
                 height: 360,
                 width: 320,
                 borderRadius: $GSRadii.$md,
                 bg: $GSColors.backgroundLight50,
-                dark: GSStyle(color: $GSColors.backgroundDark900),
+                dark: GlueStyle(color: $GSColors.backgroundDark900),
               ),
             ),
             GSFab(
@@ -34,7 +32,9 @@ final class FabStory extends StoryWidget {
                   .where((element) =>
                       element.name ==
                       placementOptions[context.knobs.options(
-                              label: 'Placements', initial: 0, options: placementOptions)]
+                              label: 'Placements',
+                              initial: 0,
+                              options: placementOptions)]
                           .label)
                   .first,
               isHovered:

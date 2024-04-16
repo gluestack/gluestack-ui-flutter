@@ -31,7 +31,7 @@ class _RadioButtonExampleState extends State<_RadioButtonExample> {
       },
       icon: const GSRadioIcon<Value>(),
       label: const GSRadioText<Value>(text: 'text'),
-      style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+      style: GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
     );
   }
 }

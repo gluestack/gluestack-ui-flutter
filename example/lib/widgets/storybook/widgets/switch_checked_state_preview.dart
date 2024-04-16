@@ -19,7 +19,7 @@ class _SwitchCheckedStatePreviewState extends State<SwitchCheckedStatePreview> {
         Story(
             name: 'Switch',
             builder: (context) => GSBox(
-                  style: GSStyle(width: 200, height: 100),
+                  style: GlueStyle(width: 200, height: 100),
                   child: GSHStack(
                     children: [
                       GSSwitch(

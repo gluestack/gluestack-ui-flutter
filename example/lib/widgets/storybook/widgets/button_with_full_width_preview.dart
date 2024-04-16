@@ -9,7 +9,7 @@ class ButtonWithFullWidthPreview extends StatelessWidget {
     return materialWrapper(
       context,
       GSBox(
-        style: GSStyle(
+        style: GlueStyle(
           borderColor: $GSColors.warmGray500,
           width: 320,
           height: 350,
@@ -62,7 +62,7 @@ class ButtonWithFullWidthPreview extends StatelessWidget {
               // ),
             ),
             GSBox(
-              style: GSStyle(
+              style: GlueStyle(
                 width: double.maxFinite,
               ),
               child: GSButton(

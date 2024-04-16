@@ -13,11 +13,15 @@ final class AvatarStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSAvatar(
-        size: GSAvatarSizes.values[context.knobs
-            .options(label: 'Size', initial:  GSAvatarSizes.values.length-1, options: sizeOptions)],
+        size: GSAvatarSizes.values[context.knobs.options(
+            label: 'Size',
+            initial: GSAvatarSizes.values.length - 1,
+            options: sizeOptions)],
         radius: GSAvatarRadius.values[context.knobs.options(
-            label: 'Border Radius', initial: GSAvatarRadius.values.length-1, options: borderRadiusOptions)],
-        style: GSStyle(
+            label: 'Border Radius',
+            initial: GSAvatarRadius.values.length - 1,
+            options: borderRadiusOptions)],
+        style: GlueStyle(
           bg: Colors.orange,
           textStyle: const TextStyle(color: Colors.white),
         ),
