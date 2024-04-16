@@ -1,22 +1,12 @@
 import 'dart:ui' as ui;
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
-
 import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
-
-enum GSTextAreaSizes {
-  $sm,
-  $md,
-  $lg,
-  $xl,
-}
 
 // TODO : Work on descendant styles (_input)
 

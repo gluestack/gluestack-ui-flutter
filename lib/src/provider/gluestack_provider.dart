@@ -317,7 +317,7 @@ class GluestackCustomConfig {
     accordionItem = mergeConfigs(accordionItemData, accordionItem);
 
     //vstack
-    vstack = mergeConfigs(vStackData, vstack);
+    vstack = mergeConfigs(vstackData, vstack);
 
     //toast
     toastDescriptionText =
@@ -394,7 +394,7 @@ class GluestackCustomConfig {
     //fab
     fabIcon = mergeConfigs(fabIconData, fabIcon);
     fabLabel = mergeConfigs(fabLabelData, fabLabel);
-    fab = mergeConfigs(fabData, fab);
+    fab = mergeConfigs(FABData, fab);
 
     //form
     formErrorText = mergeConfigs(formControlErrorTextData, formErrorText);

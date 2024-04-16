@@ -1,4 +1,4 @@
-const accordionIconData = {
+const Map<String, dynamic> accordionIconData = {
   'props': {
     'size': 'md',
   },

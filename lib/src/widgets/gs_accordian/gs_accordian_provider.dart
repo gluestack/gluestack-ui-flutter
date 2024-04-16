@@ -1,5 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian.dart';
+import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_group_value.dart';
 
 class GSAccordionProvider extends InheritedWidget {

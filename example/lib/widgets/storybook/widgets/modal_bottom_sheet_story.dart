@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';

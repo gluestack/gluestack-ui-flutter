@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';

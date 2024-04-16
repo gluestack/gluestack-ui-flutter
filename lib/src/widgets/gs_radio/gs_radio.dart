@@ -1,10 +1,6 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-
+import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
@@ -26,11 +22,6 @@ what is pending
     3) passing props to children
 
 */
-enum GSRadioSizes {
-  $sm,
-  $md,
-  $lg,
-}
 
 class GSRadio<T> extends StatelessWidget {
   final GSRadioSizes? size;
@@ -74,11 +65,16 @@ class GSRadio<T> extends StatelessWidget {
         ? isRadioInvalid = formProps?.isInvalid ?? false
         : null;
 
-//TODO: Check this
-    // return GSAncestor(
-    //   decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize],
-      // child:
-      return GSStyleBuilder(
+    final styler = resolveStyles(
+        context: context,
+        styles: [
+          radioStyle,
+        ],
+        inlineStyle: style);
+
+    return GSAncestor(
+      decedentStyles: styler.descendantStyles,
+      child: GSStyleBuilder(
         child: MouseRegion(
           cursor: isRadioDisabled
               ? SystemMouseCursors.forbidden
@@ -106,6 +102,6 @@ class GSRadio<T> extends StatelessWidget {
           ),
         ),
       // ),
-    );
+    ));
   }
 }

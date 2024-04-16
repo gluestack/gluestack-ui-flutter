@@ -7,34 +7,3 @@ GSStyleConfig fabConfig = const GSStyleConfig(
 GSStyleInt fabStyle = GSStyleInt.fromMap(
     data: getIt<GluestackCustomConfig>().fab,
     descendantStyle: fabConfig.descendantStyle);
-
-GSStyleInt baseFabStyle = GSStyleInt(
-    bg: fabStyle.bg,
-    borderRadius: fabStyle.borderRadius,
-    onHover: fabStyle.onHover,
-    onActive: fabStyle.onActive,
-    onDisabled: fabStyle.onDisabled,
-    props: fabStyle.props,
-    flexDirection: fabStyle.flexDirection,
-    alignItems: fabStyle.alignItems,
-    onFocus: fabStyle.onFocus,
-    justifyContent: fabStyle.justifyContent,
-    dark: fabStyle.dark,
-    descendantStyles: fabStyle.descendantStyles);
-
-class GSFabStyle {
-  static Map<GSPlacements, GSStyleInt?> placementVariants = {
-    GSPlacements.topLeft:
-        baseFabStyle.merge(fabStyle.variants?.placements?.topLeft),
-    GSPlacements.topRight:
-        baseFabStyle.merge(fabStyle.variants?.placements?.topRight),
-    GSPlacements.bottomRight:
-        baseFabStyle.merge(fabStyle.variants?.placements?.bottomRight),
-    GSPlacements.bottomLeft:
-        baseFabStyle.merge(fabStyle.variants?.placements?.bottomLeft),
-    GSPlacements.topCenter:
-        baseFabStyle.merge(fabStyle.variants?.placements?.topCenter),
-    GSPlacements.bottomCenter:
-        baseFabStyle.merge(fabStyle.variants?.placements?.bottomCenter),
-  };
-}

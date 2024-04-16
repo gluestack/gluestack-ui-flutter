@@ -1,13 +1,10 @@
 import 'dart:ui';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_navigation_rail/gs_navigation_rail_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_navigation_rail/gs_navigation_rail_unselected_textstyle.dart';
-
 import 'gs_navigation_rail_selected_textstyle.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
 const double _kCircularIndicatorDiameter = 60;
 const double _kIndicatorHeight = 32;
@@ -73,7 +70,7 @@ class GSNavigationRail extends StatefulWidget {
 
   final Color? backgroundColor;
   final GSStyle? style;
-  final GSSizes? size;
+  final GSNavigationRailSizes? size;
   final bool extended;
   final Widget? leading;
   final Widget? trailing;
@@ -175,7 +172,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       context: context,
       styles: [
         gsNavigationRailStyle,
-        gsNavigationRailStyle.sizeMap(textSize),
+        gsNavigationRailStyle.sizeMap(textSize?.toGSSize),
       ],
       inlineStyle: widget.style,
       isFirst: true,
@@ -185,7 +182,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       context: context,
       styles: [
         gsNavigationRailSelectedLabelTextStyle,
-        gsNavigationRailSelectedLabelTextStyle.sizeMap(textSize),
+        gsNavigationRailSelectedLabelTextStyle.sizeMap(textSize?.toGSSize),
       ],
       inlineStyle: widget.style,
       isFirst: true,
@@ -195,7 +192,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       context: context,
       styles: [
         gsNavigationRailUnselectedLabelTextStyle,
-        gsNavigationRailUnselectedLabelTextStyle.sizeMap(textSize),
+        gsNavigationRailUnselectedLabelTextStyle.sizeMap(textSize?.toGSSize),
       ],
       inlineStyle: widget.style,
       isFirst: true,

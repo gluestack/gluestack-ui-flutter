@@ -46,7 +46,7 @@ final List<StoryWidget> kStories = [
   IconButtonStory(),
   FlexStory(),
   ButtonStory(),
-  GSMButtonStory(),
+  // GSMButtonStory(),
   CenterStory(),
   CheckboxStory(),
   DividerStory(),

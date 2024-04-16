@@ -6,13 +6,13 @@ GSStyleConfig gsfabIconConfig =
 
 GSStyleInt fabIconStyle = GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().fabIcon);
 
-class GSFabIconStyle {
-  static Map<GSSizes, GSStyleInt?> size = {
-    GSSizes.$2xs: fabIconStyle.variants?.size?.$2xs,
-    GSSizes.$xs: fabIconStyle.variants?.size?.$xs,
-    GSSizes.$sm: fabIconStyle.variants?.size?.$sm,
-    GSSizes.$md: fabIconStyle.variants?.size?.$md,
-    GSSizes.$lg: fabIconStyle.variants?.size?.$lg,
-    GSSizes.$xl: fabIconStyle.variants?.size?.$xl,
-  };
-}
+// class GSFabIconStyle {
+//   static Map<GSSizes, GSStyle?> size = {
+//     GSSizes.$2xs: fabIconStyle.variants?.size?.$2xs,
+//     GSSizes.$xs: fabIconStyle.variants?.size?.$xs,
+//     GSSizes.$sm: fabIconStyle.variants?.size?.$sm,
+//     GSSizes.$md: fabIconStyle.variants?.size?.$md,
+//     GSSizes.$lg: fabIconStyle.variants?.size?.$lg,
+//     GSSizes.$xl: fabIconStyle.variants?.size?.$xl,
+//   };
+// }

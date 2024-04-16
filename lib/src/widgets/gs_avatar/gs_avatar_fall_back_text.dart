@@ -1,6 +1,4 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_fall_back_text_style.dart';
 
 /// A widget specifically designed for displaying fallback text within a [GSAvatar].

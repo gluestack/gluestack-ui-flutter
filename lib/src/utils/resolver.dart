@@ -1,9 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/token/font_weight.dart';
-import 'package:gluestack_ui/src/token/line_height.dart';
-import 'package:gluestack_ui/src/token/public.dart';
 
 bool parseMap(Map<dynamic, dynamic>? data) {
   return data?.isNotEmpty ?? false;

@@ -1,8 +1,5 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
-import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_tabs/gs_tabs_tab_style.dart';
 
 import '../../style/style_resolver.dart';

@@ -3,13 +3,8 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-//Need to add value according to GSSizes enum order.
-final List<Option<int>> sizeOptions = [
-  Option<int>(value: 0, label: GSIconButtonSizes.$xs.name),
-  Option<int>(value: 1, label: GSIconButtonSizes.$sm.name),
-  Option<int>(value: 2, label: GSIconButtonSizes.$md.name),
-  Option<int>(value: 3, label: GSIconButtonSizes.$lg.name),
-];
+final List<Option<int>> sizeOptions =
+    generateEnumOptions(GSIconButtonSizes.values);
 
 final class IconButtonStory extends StoryWidget {
   @override
@@ -18,7 +13,7 @@ final class IconButtonStory extends StoryWidget {
       name: storyName,
       builder: (context) => GSIconButton(
         size: GSIconButtonSizes.values[context.knobs
-            .options(label: 'Size', initial: 3, options: sizeOptions)],
+            .options(label: 'Size', initial: 0, options: sizeOptions)],
         style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
         icon: GSIcon(
           icon: Icons.add_a_photo,

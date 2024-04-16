@@ -1,40 +1,10 @@
 import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/token/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_text_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_fab/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
-
-enum GSButtonActions {
-  primary,
-  secondary,
-  positive,
-  negative,
-}
-
-enum GSButtonVariants {
-  solid,
-  outline,
-  link,
-}
-
-enum GSButtonSizes {
-  $xs,
-  $sm,
-  $md,
-  $lg,
-}
 
 class GSButton extends StatelessWidget {
   final GSButtonActions? action;

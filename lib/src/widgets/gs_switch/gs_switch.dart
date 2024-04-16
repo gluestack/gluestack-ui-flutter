@@ -1,20 +1,9 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/token/color.dart';
-import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_switch/gs_switch_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
-
-/// predefined sizes for [GSSwitch]
-enum GSSwitchSizes {
-  $sm,
-  $md,
-  $lg,
-}
 
 /// A customizable switch widget designed for the Gluestack UI framework. [GSSwitch]
 /// provides an interactive toggle with customizable styles, sizes, and states.

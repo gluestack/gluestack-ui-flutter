@@ -1,4 +1,4 @@
-const accordionData = {
+const Map<String, dynamic> accordionData = {
   "width": "\$full",
   "_icon": {
     "color": "\$textLight900",
