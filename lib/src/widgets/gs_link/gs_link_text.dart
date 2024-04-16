@@ -21,7 +21,10 @@ class GSLinkText extends StatelessWidget {
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
-      styles: [linkTextStyle.merge(ancestorTextStyles)],
+      styles: [linkTextStyle 
+      //todo: check this
+      // .merge(ancestorTextStyles)
+      ],
       inlineStyle: style,
       isFirst: true,
     );

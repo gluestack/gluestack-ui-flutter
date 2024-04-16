@@ -5,12 +5,12 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 const GSStyleConfig checkboxIconConfig =
     GSStyleConfig(componentName: 'CheckboxIcon', ancestorStyle: ['_icon']);
 
-GSStyle checkboxIconStyle = GSStyle.fromMap(
-        data: getIt<GluestackCustomConfig>().icon)
-    .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().checkboxIcon));
+GSStyleInt checkboxIconStyle =
+
+        GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().checkboxIcon);
 
 class GSCheckBoxIconStyle {
-  static Map<GSSizes, GSStyle?> size = {
+  static Map<GSSizes, GSStyleInt?> size = {
     GSSizes.$2xs: checkboxIconStyle.variants?.size?.$2xs,
     GSSizes.$xs: checkboxIconStyle.variants?.size?.$xs,
     GSSizes.$sm: checkboxIconStyle.variants?.size?.$sm,

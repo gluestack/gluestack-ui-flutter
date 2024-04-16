@@ -21,7 +21,11 @@ class GSFabIcon extends StatelessWidget {
 
     GSStyle styler = resolveStyles(
       context: context,
-      styles: [fabIconStyle.merge(ancestorStyles), size],
+      styles: [fabIconStyle
+      //todo: check this
+      // .merge(ancestorStyles)
+      ,
+       size],
       inlineStyle: style,
       isFirst: true,
     );

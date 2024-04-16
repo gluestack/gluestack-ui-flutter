@@ -91,7 +91,7 @@ class GSButton extends StatelessWidget {
       isFocused: focused,
       child: Builder(builder: (context) {
         Stopwatch stopwatch = Stopwatch()..start();
-        // buttonStyle = GSStyle.fromMap(
+        // buttonStyle = GSStyleInt.fromMap(
         //     data: buttonData,
         //     descendantStyle: gsButtonConfig.descendantStyle);
         // print(buttonStyle.variants?.variant?.solid);
@@ -130,8 +130,6 @@ class GSButton extends StatelessWidget {
           styler.bg = styler.onActive?.bg;
         }
 
-        //color resolver
-        final themeBG = getColorMap(context)[styler.color2];
 
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
@@ -154,7 +152,7 @@ class GSButton extends StatelessWidget {
                     clipBehavior: clipBehavior,
                     padding: styler.padding,
                     decoration: BoxDecoration(
-                      color: themeBG,
+                      color: styler.bg,
                       borderRadius:
                           BorderRadius.circular(styler.borderRadius ?? 0.0),
                       border: Border.fromBorderSide(_resolveBorderSide(

@@ -4,12 +4,10 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 GSStyleConfig gsfabIconConfig =
     const GSStyleConfig(componentName: 'FabIcon', ancestorStyle: ['_icon']);
 
-GSStyle fabIconStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().icon)
-        .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().fabIcon));
+GSStyleInt fabIconStyle = GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().fabIcon);
 
 class GSFabIconStyle {
-  static Map<GSSizes, GSStyle?> size = {
+  static Map<GSSizes, GSStyleInt?> size = {
     GSSizes.$2xs: fabIconStyle.variants?.size?.$2xs,
     GSSizes.$xs: fabIconStyle.variants?.size?.$xs,
     GSSizes.$sm: fabIconStyle.variants?.size?.$sm,

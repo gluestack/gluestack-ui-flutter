@@ -1,7 +1,7 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 
-final GSStyle gsModalBottomSheetStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().modalBottomSheet);
+ GSStyleInt gsModalBottomSheetStyle =
+    GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().modalBottomSheet);
 
 class GSModalBottomSheetStyle {
   //border radius

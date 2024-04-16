@@ -135,7 +135,7 @@ class GSHeading extends StatelessWidget {
         highlight ? headingStyle.variants?.highlight : null,
         headingStyle.sizeMap(textSize?.toGSSize),
       ],
-      inlineStyle: headingStyle.merge(style),
+      inlineStyle: style,
       isFirst: true,
     );
 

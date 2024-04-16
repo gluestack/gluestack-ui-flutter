@@ -7,6 +7,6 @@ const GSStyleConfig gsProgressConfig = GSStyleConfig(
   descendantStyle: ['_filledTrack'],
 );
 
-GSStyle progressStyle = GSStyle.fromMap(
+GSStyleInt progressStyle = GSStyleInt.fromMap(
     data: getIt<GluestackCustomConfig>().progress,
     descendantStyle: gsProgressConfig.descendantStyle);

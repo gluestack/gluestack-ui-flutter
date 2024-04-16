@@ -8,7 +8,7 @@ const GSStyleConfig gsAvatarConfig = GSStyleConfig(
   ancestorStyle: ['_avatar'],
 );
 
-GSStyle avatarStyle = GSStyle.fromMap(
+GSStyleInt avatarStyle = GSStyleInt.fromMap(
     data: getIt<GluestackCustomConfig>().avatar,
     descendantStyle: gsAvatarConfig.descendantStyle);
 

@@ -304,9 +304,10 @@ class _GSTextAreaState extends State<GSTextArea> {
                       text: widget.hintText ?? '',
                       style: GSStyle(
                           textStyle: TextStyle(
-                        fontSize: styler
-                            .descendantStyles?['_input']?.textStyle?.fontSize,
-                      )),
+                        // fontSize: styler
+                        //     .descendantStyles?['_input']?.textStyle?.fontSize,
+                      ),
+                      ),
                     ),
                   ),
                 Container(
@@ -399,8 +400,9 @@ class _GSTextAreaState extends State<GSTextArea> {
                             style: widget.style?.textStyle ??
                                 TextStyle(
                                     color: styler.textStyle?.color,
-                                    fontSize: styler.descendantStyles?['_input']
-                                        ?.textStyle?.fontSize),
+                                    // fontSize: styler.descendantStyles?['_input']
+                                    //     ?.textStyle?.fontSize,
+                                        ),
                             textAlign: widget.textAlign,
                             textCapitalization: widget.textCapitalization,
                             textDirection: widget.textDirection,

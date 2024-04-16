@@ -68,13 +68,15 @@ class GSAccordionItemInternal extends StatelessWidget {
     final type =
         GSAccordionProvider.of(context)?.type ?? GSAccordionTypes.multiple;
 
+//todo: check this
     final headerStylef =
-        headerStyle?.merge(accordionStyle.merge(accordionTriggerStyle)) ??
-            accordionStyle.merge(accordionTriggerStyle);
+        // headerStyle?.merge(accordionStyle.merge(accordionTriggerStyle)) ??
+        accordionStyle.merge(accordionTriggerStyle);
 
+//todo: check this
     final contentStylef =
-        contentStyle?.merge(accordionStyle.merge(accordionContentStyle)) ??
-            accordionStyle.merge(accordionContentStyle);
+        // contentStyle?.merge(accordionStyle.merge(accordionContentStyle)) ??
+        accordionStyle.merge(accordionContentStyle);
 
     final defIconSize = iconStyle
         .sizeMap(accordionIconStyle.props?.size ?? accordionStyle.iconSize)
@@ -89,8 +91,11 @@ class GSAccordionItemInternal extends StatelessWidget {
           child: AnimatedContainer(
             duration: animationDuration!,
             decoration: BoxDecoration(
-              color:
-                  accordionbackground ?? accordionStyle.bg ?? headerStyle?.bg,
+              color: accordionbackground
+              //todo: check this
+                  // ?? accordionStyle.bg
+                  ??
+                  headerStyle?.bg,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,7 +148,8 @@ class GSAccordionItemInternal extends StatelessWidget {
                           Expanded(
                             child: GSAccordionTitle(
                               text: title.text,
-                              style: headerStylef,
+                              //todo: check this
+                              style: GSStyle.fromGSStyleInt(headerStylef, context),
                             ),
                           ),
                           isExpanded && !isDisabled && showSuffixIcon!

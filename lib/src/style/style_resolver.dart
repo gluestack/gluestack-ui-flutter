@@ -40,123 +40,123 @@ bool isScreenLargerThan(double size, BuildContext context) {
   return screenWidth >= size;
 }
 
-GSStyle? resolveStylesDeprecated(
-  BuildContext context, {
-  GSStyle? variantStyle,
-  GSStyle? size,
-  GSStyle? inlineStyle,
-  Map<String, GSStyle?>? descendantStyles,
-  List<String> descendantStyleKeys = const [],
-}) {
-  final isDarkTheme = GSTheme.of(context).theme == GSThemes.dark;
+// GSStyle? resolveStylesDeprecated(
+//   BuildContext context, {
+//   GSStyle? variantStyle,
+//   GSStyle? size,
+//   GSStyle? inlineStyle,
+//   Map<String, GSStyle?>? descendantStyles,
+//   List<String> descendantStyleKeys = const [],
+// }) {
+//   final isDarkTheme = GSTheme.of(context).theme == GSThemes.dark;
 
-  GSStyle? temp = variantStyle != null
-      ? variantStyle.merge(inlineStyle,
-          descendantStyleKeys: descendantStyleKeys)
-      : inlineStyle;
+//   GSStyle? temp = variantStyle != null
+//       ? variantStyle.merge(inlineStyle,
+//           descendantStyleKeys: descendantStyleKeys)
+//       : inlineStyle;
 
-  temp = GSStyle(descendantStyles: descendantStyles)
-      .merge(temp, descendantStyleKeys: descendantStyleKeys);
+//   // temp = GSStyle(descendantStyles: descendantStyles)
+//   //     .merge(temp, descendantStyleKeys: descendantStyleKeys);
 
-  GSStyle? currentGSStyle = size != null
-      ? size.merge(temp, descendantStyleKeys: descendantStyleKeys)
-      : temp;
+//   GSStyle? currentGSStyle = size != null
+//       ? size.merge(temp, descendantStyleKeys: descendantStyleKeys)
+//       : temp;
 
-  if (inlineStyle == null) {
-    if (isDarkTheme) {
-      return currentGSStyle.merge(variantStyle?.dark,
-          descendantStyleKeys: descendantStyleKeys);
-    }
-  }
-  inlineStyle?.contextStyles.forEach((key, value) {
-    if (value != null) {
-      if (key == 'dark' && isDarkTheme) {
-        currentGSStyle = currentGSStyle?.merge(value,
-            descendantStyleKeys: descendantStyleKeys);
+//   if (inlineStyle == null) {
+//     if (isDarkTheme) {
+//       return currentGSStyle.merge(variantStyle?.dark,
+//           descendantStyleKeys: descendantStyleKeys);
+//     }
+//   }
+//   inlineStyle?.contextStyles.forEach((key, value) {
+//     if (value != null) {
+//       if (key == 'dark' && isDarkTheme) {
+//         currentGSStyle = currentGSStyle?.merge(value,
+//             descendantStyleKeys: descendantStyleKeys);
 
-        GSStyle? nestedStyle = resolveStylesDeprecated(context,
-            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+//         GSStyle? nestedStyle = resolveStylesDeprecated(context,
+//             inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
 
-        currentGSStyle = currentGSStyle?.merge(nestedStyle,
-            descendantStyleKeys: descendantStyleKeys);
-      }
-      if (key == 'md' && isMediumScreen(context)) {
-        currentGSStyle = currentGSStyle?.merge(value,
-            descendantStyleKeys: descendantStyleKeys);
+//         currentGSStyle = currentGSStyle?.merge(nestedStyle,
+//             descendantStyleKeys: descendantStyleKeys);
+//       }
+//       if (key == 'md' && isMediumScreen(context)) {
+//         currentGSStyle = currentGSStyle?.merge(value,
+//             descendantStyleKeys: descendantStyleKeys);
 
-        GSStyle? nestedStyle = resolveStylesDeprecated(context,
-            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle,
-            descendantStyleKeys: descendantStyleKeys);
-      }
-      if (key == 'lg' && isLargeScreen(context)) {
-        currentGSStyle = currentGSStyle?.merge(value,
-            descendantStyleKeys: descendantStyleKeys);
-        GSStyle? nestedStyle = resolveStylesDeprecated(context,
-            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle,
-            descendantStyleKeys: descendantStyleKeys);
-      }
-      if (key == 'sm' && isSmallScreen(context)) {
-        currentGSStyle = currentGSStyle?.merge(value,
-            descendantStyleKeys: descendantStyleKeys);
+//         GSStyle? nestedStyle = resolveStylesDeprecated(context,
+//             inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+//         currentGSStyle = currentGSStyle?.merge(nestedStyle,
+//             descendantStyleKeys: descendantStyleKeys);
+//       }
+//       if (key == 'lg' && isLargeScreen(context)) {
+//         currentGSStyle = currentGSStyle?.merge(value,
+//             descendantStyleKeys: descendantStyleKeys);
+//         GSStyle? nestedStyle = resolveStylesDeprecated(context,
+//             inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+//         currentGSStyle = currentGSStyle?.merge(nestedStyle,
+//             descendantStyleKeys: descendantStyleKeys);
+//       }
+//       if (key == 'sm' && isSmallScreen(context)) {
+//         currentGSStyle = currentGSStyle?.merge(value,
+//             descendantStyleKeys: descendantStyleKeys);
 
-        GSStyle? nestedStyle = resolveStylesDeprecated(context,
-            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle,
-            descendantStyleKeys: descendantStyleKeys);
-      }
-      if (key == 'xs' && isBaseScreen(context)) {
-        currentGSStyle = currentGSStyle?.merge(value,
-            descendantStyleKeys: descendantStyleKeys);
-        GSStyle? nestedStyle = resolveStylesDeprecated(context,
-            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle,
-            descendantStyleKeys: descendantStyleKeys);
-      }
-      if (key == 'xxl' && isExtraLargeScreen(context)) {
-        currentGSStyle = currentGSStyle?.merge(value,
-            descendantStyleKeys: descendantStyleKeys);
-        GSStyle? nestedStyle = resolveStylesDeprecated(context,
-            inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle,
-            descendantStyleKeys: descendantStyleKeys);
-      }
+//         GSStyle? nestedStyle = resolveStylesDeprecated(context,
+//             inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+//         currentGSStyle = currentGSStyle?.merge(nestedStyle,
+//             descendantStyleKeys: descendantStyleKeys);
+//       }
+//       if (key == 'xs' && isBaseScreen(context)) {
+//         currentGSStyle = currentGSStyle?.merge(value,
+//             descendantStyleKeys: descendantStyleKeys);
+//         GSStyle? nestedStyle = resolveStylesDeprecated(context,
+//             inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+//         currentGSStyle = currentGSStyle?.merge(nestedStyle,
+//             descendantStyleKeys: descendantStyleKeys);
+//       }
+//       if (key == 'xxl' && isExtraLargeScreen(context)) {
+//         currentGSStyle = currentGSStyle?.merge(value,
+//             descendantStyleKeys: descendantStyleKeys);
+//         GSStyle? nestedStyle = resolveStylesDeprecated(context,
+//             inlineStyle: value, descendantStyleKeys: descendantStyleKeys);
+//         currentGSStyle = currentGSStyle?.merge(nestedStyle,
+//             descendantStyleKeys: descendantStyleKeys);
+//       }
 
-      if (key == 'web' && kIsWeb) {
-        currentGSStyle = currentGSStyle?.merge(value,
-            descendantStyleKeys: descendantStyleKeys);
-        GSStyle? nestedStyle =
-            resolveStylesDeprecated(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle,
-            descendantStyleKeys: descendantStyleKeys);
-      }
-      if (key == 'ios' && defaultTargetPlatform == TargetPlatform.iOS) {
-        currentGSStyle = currentGSStyle?.merge(value,
-            descendantStyleKeys: descendantStyleKeys);
-        GSStyle? nestedStyle =
-            resolveStylesDeprecated(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle,
-            descendantStyleKeys: descendantStyleKeys);
-      }
-      if (key == 'android' && defaultTargetPlatform == TargetPlatform.android) {
-        currentGSStyle = currentGSStyle?.merge(value,
-            descendantStyleKeys: descendantStyleKeys);
-        GSStyle? nestedStyle =
-            resolveStylesDeprecated(context, inlineStyle: value);
-        currentGSStyle = currentGSStyle?.merge(nestedStyle,
-            descendantStyleKeys: descendantStyleKeys);
-      }
-    }
-  });
+//       if (key == 'web' && kIsWeb) {
+//         currentGSStyle = currentGSStyle?.merge(value,
+//             descendantStyleKeys: descendantStyleKeys);
+//         GSStyle? nestedStyle =
+//             resolveStylesDeprecated(context, inlineStyle: value);
+//         currentGSStyle = currentGSStyle?.merge(nestedStyle,
+//             descendantStyleKeys: descendantStyleKeys);
+//       }
+//       if (key == 'ios' && defaultTargetPlatform == TargetPlatform.iOS) {
+//         currentGSStyle = currentGSStyle?.merge(value,
+//             descendantStyleKeys: descendantStyleKeys);
+//         GSStyle? nestedStyle =
+//             resolveStylesDeprecated(context, inlineStyle: value);
+//         currentGSStyle = currentGSStyle?.merge(nestedStyle,
+//             descendantStyleKeys: descendantStyleKeys);
+//       }
+//       if (key == 'android' && defaultTargetPlatform == TargetPlatform.android) {
+//         currentGSStyle = currentGSStyle?.merge(value,
+//             descendantStyleKeys: descendantStyleKeys);
+//         GSStyle? nestedStyle =
+//             resolveStylesDeprecated(context, inlineStyle: value);
+//         currentGSStyle = currentGSStyle?.merge(nestedStyle,
+//             descendantStyleKeys: descendantStyleKeys);
+//       }
+//     }
+//   });
 
-  return currentGSStyle;
-}
+//   return currentGSStyle;
+// }
 
 //Refactored style, replace the above with this
 GSStyle resolveStyles(
     {required BuildContext context,
-    List<GSStyle?> styles = const [],
+    List styles = const [],
     GSStyle? inlineStyle,
     bool isFirst = false}) {
   final isDarkTheme = GSTheme.of(context).theme == GSThemes.dark;
@@ -167,7 +167,12 @@ GSStyle resolveStyles(
   final isDisabled = GSStyleBuilderProvider.disabledStatus(context);
   GSStyle? currentGSStyle = GSStyle();
   for (var style in styles) {
-    currentGSStyle = currentGSStyle?.merge(style);
+    if (style is GSStyleInt) {
+      currentGSStyle =
+          currentGSStyle?.merge(GSStyle.fromGSStyleInt(style, context));
+    } else {
+      currentGSStyle = currentGSStyle?.merge(style);
+    }
   }
 
   // addded this so that all the default values will be unpacked like hover ,focus etc

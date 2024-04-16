@@ -7,6 +7,6 @@ const GSStyleConfig gsButtonConfig = GSStyleConfig(
     descendantStyle: ['_text', '_spinner', '_icon'],
     ancestorStyle: ['_button']);
 
-GSStyle buttonStyle = GSStyle.fromMap(
+GSStyleInt buttonStyle = GSStyleInt.fromMap(
     data: getIt<GluestackCustomConfig>().button,
     descendantStyle: gsButtonConfig.descendantStyle);

@@ -7,5 +7,5 @@ const GSStyleConfig gsAlertDialogContentConfig = GSStyleConfig(
   ancestorStyle: ['_content'],
 );
 
-GSStyle alertDialogContentStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().alertDialogContent);
+GSStyleInt alertDialogContentStyle =
+    GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().alertDialogContent);

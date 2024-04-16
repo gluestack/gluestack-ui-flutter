@@ -7,6 +7,6 @@ const GSStyleConfig gsLinkConfig = GSStyleConfig(
   descendantStyle: ['_text'],
 );
 
-GSStyle linkStyle = GSStyle.fromMap(
+GSStyleInt linkStyle = GSStyleInt.fromMap(
     data: getIt<GluestackCustomConfig>().link,
     descendantStyle: gsLinkConfig.descendantStyle);

@@ -4,11 +4,11 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 GSStyleConfig fabConfig = const GSStyleConfig(
     componentName: 'Fab', descendantStyle: ['_text', '_icon']);
 
-GSStyle fabStyle = GSStyle.fromMap(
+GSStyleInt fabStyle = GSStyleInt.fromMap(
     data: getIt<GluestackCustomConfig>().fab,
     descendantStyle: fabConfig.descendantStyle);
 
-GSStyle baseFabStyle = GSStyle(
+GSStyleInt baseFabStyle = GSStyleInt(
     bg: fabStyle.bg,
     borderRadius: fabStyle.borderRadius,
     onHover: fabStyle.onHover,
@@ -23,7 +23,7 @@ GSStyle baseFabStyle = GSStyle(
     descendantStyles: fabStyle.descendantStyles);
 
 class GSFabStyle {
-  static Map<GSPlacements, GSStyle?> placementVariants = {
+  static Map<GSPlacements, GSStyleInt?> placementVariants = {
     GSPlacements.topLeft:
         baseFabStyle.merge(fabStyle.variants?.placements?.topLeft),
     GSPlacements.topRight:

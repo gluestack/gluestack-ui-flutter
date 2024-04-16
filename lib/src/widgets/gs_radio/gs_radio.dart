@@ -74,9 +74,11 @@ class GSRadio<T> extends StatelessWidget {
         ? isRadioInvalid = formProps?.isInvalid ?? false
         : null;
 
-    return GSAncestor(
-      decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize],
-      child: GSStyleBuilder(
+//TODO: Check this
+    // return GSAncestor(
+    //   decedentStyles: GSRadioStyles.radioDescendantStyles[radioSize],
+      // child:
+      return GSStyleBuilder(
         child: MouseRegion(
           cursor: isRadioDisabled
               ? SystemMouseCursors.forbidden
@@ -103,7 +105,7 @@ class GSRadio<T> extends StatelessWidget {
                 )),
           ),
         ),
-      ),
+      // ),
     );
   }
 }

@@ -32,9 +32,9 @@ class GSButtonGroup extends StatelessWidget {
     final buttonList = reversed! ? buttons!.reversed : buttons!;
     final buttonGroupSize = size ?? buttonGroupStyle.props?.size;
     final buttonGroupSpace = space ?? buttonGroupStyle.props?.space;
-    GSStyle styler = resolveStylesDeprecated(
-      variantStyle: buttonGroupStyle,
-      context,
+    GSStyle styler = resolveStyles(
+      context: context,
+      styles: [buttonGroupStyle],
       inlineStyle: style,
     )!;
     List<Widget> spacedButtonList = [];

@@ -7,6 +7,5 @@ const GSStyleConfig gsRadioTextConfig = GSStyleConfig(
   ancestorStyle: ['_text'],
 );
 
-final GSStyle radioLabelStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().text)
-        .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().radioText));
+GSStyleInt radioLabelStyle = 
+GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().radioText);

@@ -20,7 +20,7 @@ class GSToastDescription extends StatelessWidget {
     final color = toastDescriptionStyle.color;
 
     var defaultTextStyle = ancestorTextStyles?.textStyle
-        ?.merge(TextStyle(color: color, fontSize: fontSize));
+        ?.merge(TextStyle(color: getColorMap(context)[color], fontSize: fontSize));
 
     final mergedStyle = defaultTextStyle?.merge(style?.textStyle);
     return Text(

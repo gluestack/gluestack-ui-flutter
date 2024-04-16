@@ -7,7 +7,7 @@ const GSStyleConfig gsAccordianConfig = GSStyleConfig(
     ancestorStyle: ['_accordian']);
 
 // GSStyle representing the base style for the Accordion
-final GSStyle accordionStyle = GSStyle.fromMap(
+GSStyleInt accordionStyle = GSStyleInt.fromMap(
   data: getIt<GluestackCustomConfig>().accordion,
   descendantStyle: gsAccordianConfig.descendantStyle,
 );

@@ -5,9 +5,9 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 const GSStyleConfig gsRadioIconConfig =
     GSStyleConfig(componentName: 'RadioIcon', ancestorStyle: ['_icon']);
 
-final GSStyle radioIconStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().icon)
-        .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().radioIcon));
+ GSStyleInt radioIconStyle = 
 
-final GSStyle radioIndicatorStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().radioIndicator);
+GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().radioIcon);
+
+ GSStyleInt radioIndicatorStyle =
+    GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().radioIndicator);

@@ -18,7 +18,7 @@ class GSFabLabel extends StatelessWidget {
         ?.decedentStyles?[fabLabelConfig.ancestorStyle.first];
 
     var defaultTextStyle = TextStyle(
-        color: ancestorStyles?.color,
+        // color: ancestorStyles?.color,
         fontWeight: ancestorStyles?.textStyle?.fontWeight,
         fontSize: ancestorStyles?.textStyle?.fontSize);
 

@@ -6,5 +6,5 @@ const GSStyleConfig gstoastTitleConfig = GSStyleConfig(
   componentName: 'ToastTitle',
   ancestorStyle: ['_title'],
 );
-GSStyle toastTitleStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().toastTitle);
+GSStyleInt toastTitleStyle =
+    GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().toastTitle);

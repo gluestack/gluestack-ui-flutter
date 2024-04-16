@@ -6,7 +6,7 @@ const GSStyleConfig gstoastDescriptionConfig = GSStyleConfig(
   componentName: 'ToastDescription',
   ancestorStyle: ['_description'],
 );
-GSStyle toastDescriptionStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().text).merge(
-        GSStyle.fromMap(
-            data: getIt<GluestackCustomConfig>().toastDescriptionText));
+GSStyleInt toastDescriptionStyle =
+
+        GSStyleInt.fromMap(
+            data: getIt<GluestackCustomConfig>().toastDescriptionText);

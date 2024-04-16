@@ -82,7 +82,7 @@ class _GSProgressState extends State<GSProgress> {
       isFirst: true,
     );
 
-    final progressColor = styler.bg ?? progressStyle.bg;
+
     final valueColor = styler.progressValueColor ?? $GSColors.primary500;
     final borderRadius = styler.borderRadius ?? progressStyle.borderRadius;
 
@@ -97,7 +97,7 @@ class _GSProgressState extends State<GSProgress> {
             Container(
               key: widgetKey,
               decoration: BoxDecoration(
-                color: progressColor,
+                color: styler.bg,
                 borderRadius: BorderRadius.circular(borderRadius!),
               ),
               height: styler.height,

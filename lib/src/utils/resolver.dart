@@ -23,7 +23,27 @@ bool parseMap(Map<dynamic, dynamic>? data) {
 //   return mergedStyleMap;
 // }
 
-Map<String, GSStyle?> mergeStyledMaps({
+Map<String, GSStyleInt?> mergeStyledMaps({
+  required Map<String, GSStyleInt?>? styleMap,
+  required Map<String, GSStyleInt?>? overrideStyleMap,
+  required List<String> keys,
+}) {
+  Map<String, GSStyleInt?> mergedStyleMap = {};
+  styleMap?.forEach((key, value) {
+    mergedStyleMap[key] = value;
+  });
+  overrideStyleMap?.forEach((key, value) {
+    if (mergedStyleMap.containsKey(key) && value != null) {
+      mergedStyleMap[key] = mergedStyleMap[key]?.merge(value) ?? value;
+    } else {
+      mergedStyleMap[key] = value;
+    }
+  });
+
+  return mergedStyleMap;
+}
+
+Map<String, GSStyle?> mergeStyledMaps0({
   required Map<String, GSStyle?>? styleMap,
   required Map<String, GSStyle?>? overrideStyleMap,
   required List<String> keys,
@@ -43,14 +63,14 @@ Map<String, GSStyle?> mergeStyledMaps({
   return mergedStyleMap;
 }
 
-Map<String, GSStyle>? resolvedescendantStylesFromMap(
+Map<String, GSStyleInt>? resolvedescendantStylesFromMap(
     Map<String, dynamic>? data, List<String> descendantStyles) {
   if (descendantStyles.isEmpty || data == null) {
     return null;
   }
-  Map<String, GSStyle> descendantStylesMap = {};
+  Map<String, GSStyleInt> descendantStylesMap = {};
   for (var element in descendantStyles) {
-    descendantStylesMap[element] = GSStyle.fromMap(data: data[element]);
+    descendantStylesMap[element] = GSStyleInt.fromMap(data: data[element]);
   }
   return descendantStylesMap;
 }
@@ -448,16 +468,16 @@ GSPlacements? resolvePlacementFromString(String? placement) {
   return placement != null ? placementMap[placement] : null;
 }
 
-Map<String, GSStyle>? resolveCompoundVariants(
+Map<String, GSStyleInt>? resolveCompoundVariants(
     {required List<Map<String, dynamic>>? compoundVariants}) {
   if (compoundVariants == null || compoundVariants.isEmpty) {
     return null;
   }
-  final Map<String, GSStyle> resolvedCompoundVariants = {};
+  final Map<String, GSStyleInt> resolvedCompoundVariants = {};
   for (var element in compoundVariants) {
     final keyName = resolveActionFromString(element['action']).toString() +
         resolveVariantFromString(element['variant']).toString();
-    resolvedCompoundVariants[keyName] = GSStyle.fromMap(data: element['value']);
+    resolvedCompoundVariants[keyName] = GSStyleInt.fromMap(data: element['value']);
   }
   return resolvedCompoundVariants;
 }

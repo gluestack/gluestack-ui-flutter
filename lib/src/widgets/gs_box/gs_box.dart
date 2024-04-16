@@ -68,9 +68,8 @@ class GSBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStylesDeprecated(
-      context,
-      variantStyle: GSStyle(),
+    GSStyle styler = resolveStyles(
+     context: context,
       inlineStyle: style,
     )!;
 
