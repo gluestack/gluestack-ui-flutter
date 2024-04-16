@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_icon_style.dart';
 
 class GSFabIcon extends StatelessWidget {
   final IconData icon;
-  final GSStyle? style;
+  final GlueStyle? style;
   const GSFabIcon({
     super.key,
     required this.icon,
@@ -16,17 +16,19 @@ class GSFabIcon extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsfabIconConfig.ancestorStyle.first];
 
-
     GSStyle styler = resolveStyles(
       context: context,
-      styles: [fabIconStyle.merge(ancestorStyles), fabIconStyle.sizeMap(ancestorStyles?.props?.size)],
+      styles: [
+        fabIconStyle.merge(ancestorStyles),
+        fabIconStyle.sizeMap(ancestorStyles?.props?.size)
+      ],
       inlineStyle: style,
       isFirst: true,
     );
 
     return Icon(
       icon,
-      color: styler.color,
+      color: styler.color?.getColor(context),
       size: styler.height,
     );
   }

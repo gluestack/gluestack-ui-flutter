@@ -3,7 +3,7 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_badge_style.dart';
 
 class GSAvatarBadge extends StatelessWidget {
-  final GSStyle? style;
+  final GlueStyle? style;
   final double? left;
   final double? right;
   final double? top;
@@ -27,10 +27,11 @@ class GSAvatarBadge extends StatelessWidget {
       height: style?.height ?? ancestorStyles?.height ?? styler.height,
       width: style?.width ?? ancestorStyles?.height ?? styler.width,
       decoration: BoxDecoration(
-        color: styler.bg,
+        color: styler.bg?.getColor(context),
         shape: BoxShape.circle,
         border: Border.all(
-            color: styler.borderColor ?? const Color(0xFFFFFFFF),
+            color: styler.borderColor?.getColor(context) ??
+                const Color(0xFFFFFFFF),
             width: styler.borderWidth ?? 2),
       ),
     );

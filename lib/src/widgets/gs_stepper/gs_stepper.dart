@@ -113,7 +113,7 @@ class GSStepper extends StatefulWidget {
     this.keepAllContentAlive = false,
   }) : assert(0 <= currentStep && currentStep < steps.length);
 
-  final GSStyle? style;
+  final GlueStyle? style;
   final GSStepperSizes? size;
   final Color? circleColor;
   final Color? connectorLineColor;
@@ -210,12 +210,12 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       case GSStepState.disabled:
         return GSText(
           text: '${index + 1}',
-          style: GSStyle(textStyle: TextStyle(color: iconColor)),
+          style: GlueStyle(textStyle: TextStyle(color: iconColor)),
         );
 
       case GSStepState.editing:
         return GSIcon(
-          style: GSStyle(color: iconColor),
+          style: GlueStyle(color: iconColor),
           icon: const IconData(
             0x270E,
           ),
@@ -223,7 +223,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
 
       case GSStepState.complete:
         return GSIcon(
-            style: GSStyle(color: iconColor),
+            style: GlueStyle(color: iconColor),
             icon: const IconData(
               0xe5cb,
             ));
@@ -231,7 +231,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       case GSStepState.error:
         return GSText(
           text: '!',
-          style: GSStyle(textStyle: TextStyle(color: iconColor)),
+          style: GlueStyle(textStyle: TextStyle(color: iconColor)),
         );
     }
   }
@@ -571,7 +571,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
         gsStepperStyle,
         gsStepperStyle.sizeMap(textSize?.toGSSize),
       ],
-      inlineStyle: gsStepperStyle.merge(widget.style),
+      inlineStyle: widget.style,
       isFirst: true,
     );
 
@@ -617,9 +617,9 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       isFirst: true,
     );
 
-    final circleColor = widget.circleColor ?? styler.color;
-    final iconColor = styler.iconColor;
-    final connectorLineColor = widget.connectorLineColor ?? styler.bg;
+    final circleColor = widget.circleColor ?? styler.color?.getColor(context);
+    final iconColor = styler.iconColor?.getColor(context);
+    final connectorLineColor = widget.connectorLineColor ?? styler.bg?.getColor(context);
     final inactiveCircleColor = generateInactiveColor(circleColor!);
 
     return GSAncestor(

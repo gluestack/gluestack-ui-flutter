@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_tabs/gs_tabs_tab_style.dart';
 import '../../style/style_resolver.dart';
 
 class GSRawTab extends StatelessWidget {
-  final GSStyle? style;
+  final GlueStyle? style;
   final Widget child;
   final Alignment? alignment;
   final Function() callback;
@@ -33,7 +33,7 @@ class GSRawTab extends StatelessWidget {
           onPressed: callback,
           child: Container(
             decoration: BoxDecoration(
-              color: styler.bg,
+              color: styler.bg?.getColor(context),
             ),
             alignment: alignment,
             child: Padding(

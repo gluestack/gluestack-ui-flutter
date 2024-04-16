@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_icon_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_spinner_style.dart';
 
 class GSButtonSpinner extends StatelessWidget {
-  final GSStyle? style;
+  final GlueStyle? style;
   final Color? backgroundColor;
   final Color? color;
   final String? semanticsLabel;
@@ -49,7 +49,7 @@ class GSButtonSpinner extends StatelessWidget {
         strokeWidth: strokeWidth,
         strokeCap: strokeCap,
         valueColor: AlwaysStoppedAnimation<Color>(
-            styler.props?.color ?? $GSColors.primary500),
+            styler.props?.color?.getColor(context) ?? $GSColors.primary500),
       ),
     );
   }

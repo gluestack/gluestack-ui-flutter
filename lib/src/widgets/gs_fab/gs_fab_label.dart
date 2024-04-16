@@ -3,7 +3,7 @@ import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_label_style.dart';
 
 class GSFabLabel extends StatelessWidget {
   final String text;
-  final GSStyle? style;
+  final GlueStyle? style;
 
   const GSFabLabel({
     super.key,
@@ -17,7 +17,7 @@ class GSFabLabel extends StatelessWidget {
         ?.decedentStyles?[fabLabelConfig.ancestorStyle.first];
 
     var defaultTextStyle = TextStyle(
-        color: ancestorStyles?.color,
+        color: ancestorStyles?.color?.getColor(context),
         fontWeight: ancestorStyles?.textStyle?.fontWeight,
         fontSize: ancestorStyles?.textStyle?.fontSize);
 

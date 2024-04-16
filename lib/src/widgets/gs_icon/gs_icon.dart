@@ -3,7 +3,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_icon/gs_icon_style.dart';
 
-
 /// A widget for displaying icons with enhanced styling and customization capabilities.
 /// `GSIcon` supports various sizes, styles, and additional properties to adjust the
 /// icon's appearance.
@@ -17,7 +16,7 @@ class GSIcon extends StatelessWidget {
 
   /// Custom [GSStyle] to apply to the icon. This allows for further customization
   /// of the icon's appearance.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The fill level for icons that support variable fill states. This is typically
   /// used for custom icons designed to visually represent fill levels (e.g., battery
@@ -76,7 +75,7 @@ class GSIcon extends StatelessWidget {
     return Icon(
       icon,
       size: styler.width ?? styler.height,
-      color: styler.color,
+      color: styler.color?.getColor(context),
       fill: fill,
       grade: grade,
       opticalSize: opticalSize,

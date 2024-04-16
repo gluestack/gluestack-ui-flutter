@@ -28,7 +28,7 @@ class GSRadioText<T> extends StatelessWidget {
 
     final currentTextStyle = TextStyle(
       fontSize: textStyle?.fontSize ?? fontSize,
-      color: styler.color,
+      color: styler.color?.getColor(context),
     );
 
     return Opacity(

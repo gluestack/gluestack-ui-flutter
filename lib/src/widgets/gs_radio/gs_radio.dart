@@ -31,7 +31,7 @@ class GSRadio<T> extends StatelessWidget {
   final T groupValue;
   final bool? isDisabled;
   final bool? isInvalid;
-  final GSStyle? style;
+  final GlueStyle? style;
   final void Function(T? value)? onChanged;
 
   const GSRadio(

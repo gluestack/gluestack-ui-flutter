@@ -89,8 +89,9 @@ class GSAccordionItemInternal extends StatelessWidget {
           child: AnimatedContainer(
             duration: animationDuration!,
             decoration: BoxDecoration(
-              color:
-                  accordionbackground ?? accordionStyle.bg ?? headerStyle?.bg,
+              color: accordionbackground ??
+                  accordionStyle.bg?.getColor(context) ??
+                  headerStyle?.bg?.getColor(context),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,7 +144,8 @@ class GSAccordionItemInternal extends StatelessWidget {
                           Expanded(
                             child: GSAccordionTitle(
                               text: title.text,
-                              style: headerStylef,
+                              style:
+                                  GlueStyle.fromGSStyle(headerStylef, context),
                             ),
                           ),
                           isExpanded && !isDisabled && showSuffixIcon!
@@ -187,7 +189,7 @@ class GSAccordionItemInternal extends StatelessWidget {
                       width: double.maxFinite,
                       height: isExpanded && !isDisabled ? null : 0,
                       decoration: BoxDecoration(
-                        color: contentStyle?.bg,
+                        color: contentStyle?.bg?.getColor(context),
                       ),
                       child: content!,
                     ),

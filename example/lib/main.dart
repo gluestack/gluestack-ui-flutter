@@ -5,6 +5,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 // import 'package:gluestack_ui_example/custom_config.dart';
 // import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
+import 'package:go_router/go_router.dart';
 
 import 'providers/theme_provider/theme_provider.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  GSThemes currentTheme = GSThemes.light;
   @override
   Widget build(BuildContext context) {
     return GluestackProvider(
@@ -40,19 +42,32 @@ class _MyAppState extends State<MyApp> {
       child: Consumer(
         builder: (context, ref, child) {
           final GSThemeMode? currentThemeMode = ref.watch(toggleThemeProvider);
+          // MaterialApp(darkTheme: ThemeData,)
 
-          return GSApp.router(
-            debugShowCheckedModeBanner: false,
-            color: $GSColors.primary500,
-            routerConfig: router,
-            themeMode: currentThemeMode,
-            darkTheme: GSThemeData(
-              brightness: Brightness.dark,
+          return GSTheme(
+            data: GSThemeData.fromTheme(GSThemes.light),
+            child: GSApp.router(
+              debugShowCheckedModeBanner: false,
+              color: $GSColors.primary500,
+              routerConfig: test((GSThemes newTheme) {
+                setState(() {
+                  currentTheme = newTheme;
+                });
+              }),
+              theme: GSThemeData.fromTheme(currentTheme),
+              // darkTheme: GSThemeData.fromTheme(GSThemes.dark),
+              // themeMode: GSThemeMode.system,
             ),
-            theme: GSThemeData(),
           );
         },
       ),
     );
   }
+}
+
+late Function updaterFunc;
+
+GoRouter test(Function input) {
+  updaterFunc = input;
+  return router;
 }

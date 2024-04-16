@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_footer_
 
 class GSAlertDialogFooter extends StatelessWidget {
   final Widget? child;
-  final GSStyle? style;
+  final GlueStyle? style;
   const GSAlertDialogFooter({super.key, this.child, this.style});
 
   @override
@@ -20,7 +20,7 @@ class GSAlertDialogFooter extends StatelessWidget {
       final x = resolveAlignment(styler.justifyContent);
       final alignment = resolveAlignmentFromNum(x);
       return Container(
-        color: styler.bg,
+        color: styler.bg?.getColor(context),
         padding: styler.padding,
         height: styler.height,
         width: styler.width,

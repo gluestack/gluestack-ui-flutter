@@ -11,7 +11,7 @@ enum GSSpinnerSizes { small, large }
 class GSSpinner extends StatefulWidget {
   /// Custom [GSStyle] to apply to the spinner, enabling detailed customization of its appearance,
   /// including color and dimensions.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The size of the spinner, affecting its overall dimensions. This can be set to one of
   /// the predefined [GSSpinnerSizes] values, altering the spinner's size.
@@ -91,7 +91,7 @@ class GSSpinnerState extends State<GSSpinner>
               painter: SpinnerPainter(
                 arcLength: 10,
                 progress: 1,
-                color: styler.bg ?? $GSColors.primary300,
+                color: styler.bg?.getColor(context) ?? $GSColors.primary300,
                 strokeWidth: widget.strokeWidth,
               ),
               size: size,
@@ -100,8 +100,8 @@ class GSSpinnerState extends State<GSSpinner>
               painter: SpinnerPainter(
                 arcLength: widget.arcLength,
                 progress: _controller.value,
-                color: styler.color ??
-                    spinnerStyle.props?.color ??
+                color: styler.color?.getColor(context) ??
+                    spinnerStyle.props?.color?.getColor(context) ??
                     $GSColors.primary600,
                 strokeWidth: widget.strokeWidth,
               ),

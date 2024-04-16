@@ -18,7 +18,7 @@ class GSSwitch extends StatefulWidget {
 
   /// Custom [GSStyle] to apply to the switch, enabling detailed customization of its
   /// appearance, including colors and dimensions.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The size of the switch, affecting its overall dimensions. This can be set to one of
   /// the predefined [GSSwitchSizes] values.
@@ -117,10 +117,12 @@ class GSCustomSwitchState extends State<GSSwitch> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(99),
                         color: _value
-                            ? styler.checked?.trackColorTrue ??
-                                styler.trackColorTrue ??
+                            ? styler.checked?.trackColorTrue
+                                    ?.getColor(context) ??
+                                styler.trackColorTrue?.getColor(context) ??
                                 $GSColors.primary600
-                            : styler.trackColorFalse ?? $GSColors.blueGray400,
+                            : styler.trackColorFalse?.getColor(context) ??
+                                $GSColors.blueGray400,
                       ),
                     ),
                     AnimatedPositioned(
@@ -136,10 +138,12 @@ class GSCustomSwitchState extends State<GSSwitch> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: _value
-                              ? styler.checked?.activeThumbColor ??
-                                  styler.activeThumbColor ??
+                              ? styler.checked?.activeThumbColor
+                                      ?.getColor(context) ??
+                                  styler.activeThumbColor?.getColor(context) ??
                                   $GSColors.primary400
-                              : styler.thumbColor ?? $GSColors.blueGray400,
+                              : styler.thumbColor?.getColor(context) ??
+                                  $GSColors.blueGray400,
                           boxShadow: [
                             BoxShadow(
                               color: $GSColors.black.withOpacity(0.1),

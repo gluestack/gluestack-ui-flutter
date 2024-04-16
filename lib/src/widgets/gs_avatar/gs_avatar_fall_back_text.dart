@@ -3,12 +3,12 @@ import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_fall_back_text_styl
 
 /// A widget specifically designed for displaying fallback text within a [GSAvatar].
 class GSAvatarFallBackText extends StatelessWidget {
-   /// The text to be displayed as fallback content within the [GSAvatar]. This is
+  /// The text to be displayed as fallback content within the [GSAvatar]. This is
   /// typically used when an image cannot be loaded or is not provided.
   final String text;
 
   /// Style for the [GSAvatar] text. Can be customized using [GSStyle].
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// Determines if the text should be truncated with an ellipsis when it overflows the
   /// available space. Defaults to `false`, allowing text to wrap by default.

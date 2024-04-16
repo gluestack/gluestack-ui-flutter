@@ -7,7 +7,7 @@ class GSBox extends StatelessWidget {
 
   /// Custom [GSStyle] that defines the appearance and layout parameters for this widget.
   /// This includes colors, padding and more.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The way that the child should be clipped. Defaults to [Clip.none], meaning the
   /// child won't be clipped. [Clip.hardEdge], [Clip.antiAlias], and [Clip.antiAliasWithSaveLayer]
@@ -67,11 +67,10 @@ class GSBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStylesDeprecated(
-      context,
-      variantStyle: GSStyle(),
+    GSStyle styler = resolveStyles(
+      context: context,
       inlineStyle: style,
-    )!;
+    );
 
     return Visibility(
       visible: styler.isVisible ?? true,
@@ -96,12 +95,14 @@ class GSBox extends StatelessWidget {
         //         const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
         //     : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
         decoration: BoxDecoration(
-          color: styler.bg ?? styler.color,
+          color:
+              styler.bg?.getColor(context) ?? styler.color?.getColor(context),
           borderRadius: BorderRadius.circular(
               style != null ? style!.borderRadius ?? 0 : 0),
           border: Border.all(
               color: style != null
-                  ? style!.borderColor ?? const Color(0x00000000)
+                  ? style!.borderColor ??
+                      const Color(0x00000000)
                   : const Color(0x00000000),
               width: style != null ? style!.borderWidth ?? 0 : 0),
           gradient: gradient,

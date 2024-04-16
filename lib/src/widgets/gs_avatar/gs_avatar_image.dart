@@ -2,7 +2,7 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 
 class GSAvatarImage extends StatelessWidget {
   final String imageUrl;
-  final GSStyle? style;
+  final GlueStyle? style;
 
   const GSAvatarImage({
     super.key,

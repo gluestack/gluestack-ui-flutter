@@ -18,7 +18,7 @@ class GSCheckBox extends StatefulWidget {
   final bool isFocusVisible;
   final bool? isInvalid;
   final bool isHovered;
-  final GSStyle? style;
+  final GlueStyle? style;
   final void Function(bool? value)? onChanged;
   const GSCheckBox({
     super.key,

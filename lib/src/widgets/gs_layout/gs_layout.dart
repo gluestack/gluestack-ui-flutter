@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_layout/style_gs_layout.dart';
 
 class GSLayout extends StatelessWidget {
   final Widget body;
-  final GSStyle? style;
+  final GlueStyle? style;
   final Widget? floatingActionButton;
   final AlignmentGeometry floatingActionButtonLocation;
   const GSLayout({
@@ -25,7 +25,7 @@ class GSLayout extends StatelessWidget {
     );
 
     return GSBox(
-      style: styler,
+      style: GlueStyle.fromGSStyle(styler, context),
       child: floatingActionButton != null
           ? Stack(
               fit: StackFit.expand,

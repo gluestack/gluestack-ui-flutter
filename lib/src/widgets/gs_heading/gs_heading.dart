@@ -16,7 +16,7 @@ class GSHeading extends StatelessWidget {
 
   /// Custom [GSStyle] to apply to the heading, enabling detailed customization
   /// of text appearance, including font, color, size, and more.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// Determines if the heading should be truncated with an ellipsis when it overflows
   /// the available space. Defaults to `false`, allowing text to wrap by default.
@@ -122,12 +122,12 @@ class GSHeading extends StatelessWidget {
         highlight ? headingStyle.variants?.highlight : null,
         headingStyle.sizeMap(textSize?.toGSSize),
       ],
-      inlineStyle: headingStyle.merge(style),
+      inlineStyle: style,
       isFirst: true,
     );
 
     final currentTextStyle = styler.textStyle?.copyWith(
-      color: styler.color,
+      color: styler.color?.getColor(context),
       fontWeight: bold ? FontWeight.w900 : styler.textStyle?.fontWeight,
       fontStyle: italic ? FontStyle.italic : styler.textStyle?.fontStyle,
       fontSize: sub ? subFontSize : styler.textStyle?.fontSize,
@@ -136,8 +136,9 @@ class GSHeading extends StatelessWidget {
         if (strikeThrough) TextDecoration.lineThrough,
         if (underline) TextDecoration.underline,
       ]),
-      backgroundColor:
-          highlight ? styler.bg : styler.textStyle?.backgroundColor,
+      backgroundColor: highlight
+          ? styler.bg?.getColor(context)
+          : styler.textStyle?.backgroundColor,
       overflow:
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
     );

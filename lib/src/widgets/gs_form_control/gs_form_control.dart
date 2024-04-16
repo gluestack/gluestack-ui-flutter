@@ -22,7 +22,7 @@ class GSFormControl extends StatefulWidget {
   final AutovalidateMode autovalidateMode;
   final bool? canPop;
   final GSFormControlSizes? size;
-  final GSStyle? style;
+  final GlueStyle? style;
 
   //H O P
   final bool? isDisabled;

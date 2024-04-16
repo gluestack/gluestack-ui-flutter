@@ -3,7 +3,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-
 class GSButtonGroup extends StatelessWidget {
   final List<GSButton>? buttons;
   final GSDirection? direction;
@@ -12,7 +11,7 @@ class GSButtonGroup extends StatelessWidget {
   final bool? isDisabled;
   final bool? reversed;
   final bool? isAttached;
-  final GSStyle? style;
+  final GlueStyle? style;
 
   const GSButtonGroup({
     super.key,
@@ -68,7 +67,7 @@ class GSButtonGroup extends StatelessWidget {
       size: buttonGroupSize?.toGSSize ?? buttonGroupStyle.props!.size!,
       isAttached: isAttached!,
       child: Container(
-        color: styler.bg,
+        color: styler.bg?.getColor(context),
         height: styler.height,
         width: styler.width,
         child: Flex(

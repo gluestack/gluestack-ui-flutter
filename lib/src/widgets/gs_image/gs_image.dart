@@ -38,7 +38,7 @@ class GSImage extends StatelessWidget {
   final GSImageType imageType;
 
   /// Custom [GSStyle] to apply to the image, allowing for further customization.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The alignment of the image within its container.
   final AlignmentGeometry alignment;

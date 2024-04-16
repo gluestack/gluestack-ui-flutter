@@ -13,7 +13,7 @@ class GSMaterialButton extends StatelessWidget {
   final bool? isFocusVisible;
   final Widget child;
   final VoidCallback onPressed;
-  final GSStyle? style;
+  final GlueStyle? style;
   final VoidCallback? onLongPress;
   final Function(bool)? onHover;
   final Function(bool)? onFocusChange;
@@ -38,17 +38,37 @@ class GSMaterialButton extends StatelessWidget {
     this.autoFocus = false,
     this.clipBehavior = Clip.none,
     this.statesController,
-  })  ;
+  });
 
   @override
   Widget build(BuildContext context) {
     final value = GSButtonGroupProvider.of(context);
-     final buttonAction = action?.toGSAction ?? buttonStyle.props?.action;
+    final buttonAction = action?.toGSAction ?? buttonStyle.props?.action;
     final buttonVariant = variant?.toGSVariant ?? buttonStyle.props?.variant;
     final buttonSize = size?.toGSSize ?? value?.size ?? buttonStyle.props?.size;
     final disabled = isDisabled ?? value?.isDisabled ?? false;
     final focused = isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;
+
+    BorderSide resolveBorderSide(
+        GSVariants variant, GSStyle styler, bool isAttached) {
+      if (isAttached) {
+        return BorderSide.none;
+      }
+      if (variant == GSVariants.link) {
+        return BorderSide.none;
+      }
+      if (isFocusVisible!) {
+        return BorderSide(color: $GSColors.primary500, width: 2.0);
+      }
+      return styler.borderWidth != null || styler.outlineWidth != null
+          ? BorderSide(
+              color: styler.borderColor?.getColor(context) ??
+                  styler.outlineColor?.getColor(context) ??
+                  Colors.transparent,
+              width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
+          : BorderSide.none;
+    }
 
     return GSStyleBuilder(
       isDisabled: disabled,
@@ -90,13 +110,14 @@ class GSMaterialButton extends StatelessWidget {
                     elevation: MaterialStateProperty.all<double?>(0),
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
                         styler.padding),
-                    backgroundColor: MaterialStatePropertyAll(styler.bg),
+                    backgroundColor:
+                        MaterialStatePropertyAll(styler.bg?.getColor(context)),
                     shape: MaterialStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius:
                             BorderRadius.circular(styler.borderRadius ?? 0.0),
                         // side: resolveBorderSide(currentState),
-                        side: _resolveBorderSide(
+                        side: resolveBorderSide(
                             buttonVariant, styler, isAttached),
                       ),
                     ),
@@ -114,24 +135,5 @@ class GSMaterialButton extends StatelessWidget {
         );
       }),
     );
-  }
-
-  BorderSide _resolveBorderSide(
-      GSVariants variant, GSStyle styler, bool isAttached) {
-    if (isAttached) {
-      return BorderSide.none;
-    }
-    if (variant == GSVariants.link) {
-      return BorderSide.none;
-    }
-    if (isFocusVisible!) {
-      return BorderSide(color: $GSColors.primary500, width: 2.0);
-    }
-    return styler.borderWidth != null || styler.outlineWidth != null
-        ? BorderSide(
-            color:
-                styler.borderColor ?? styler.outlineColor ?? Colors.transparent,
-            width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
-        : BorderSide.none;
   }
 }

@@ -15,7 +15,7 @@ import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
 ///
 class GSTextArea extends StatefulWidget {
   final GSTextAreaSizes? size;
-  final GSStyle? style;
+  final GlueStyle? style;
   final bool? isDisabled;
   final bool? isInvalid;
   final bool? isReadOnly;
@@ -215,16 +215,19 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     Color? resolveBorderColor() {
       if (isInvalid) {
-        return styler.onInvalid?.borderColor ?? styler.borderColor;
+        return styler.onInvalid?.borderColor?.getColor(context) ??
+            styler.borderColor?.getColor(context);
       }
       if (_isHovered) {
-        return styler.onHover?.borderColor ?? styler.borderColor;
+        return styler.onHover?.borderColor?.getColor(context) ??
+            styler.borderColor?.getColor(context);
       }
       if (isDisabled) {
-        return styler.onDisabled?.borderColor ?? styler.borderColor;
+        return styler.onDisabled?.borderColor?.getColor(context) ??
+            styler.borderColor?.getColor(context);
       }
 
-      return styler.borderColor;
+      return styler.borderColor?.getColor(context);
     }
 
     double? resolveBorderWidth() {
@@ -243,10 +246,11 @@ class _GSTextAreaState extends State<GSTextArea> {
 
     Color? resolveFocusBorderColor() {
       if (isInvalid) {
-        return styler.onInvalid?.borderColor ?? styler.borderColor;
+        return styler.onInvalid?.borderColor?.getColor(context) ??
+            styler.borderColor?.getColor(context);
       }
 
-      return styler.onFocus?.borderColor;
+      return styler.onFocus?.borderColor?.getColor(context);
     }
 
     final borderColor = resolveBorderColor();
@@ -292,7 +296,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                     top: 10,
                     child: GSText(
                       text: widget.hintText ?? '',
-                      style: GSStyle(
+                      style: GlueStyle(
                           textStyle: TextStyle(
                         fontSize: styler
                             .descendantStyles?['_input']?.textStyle?.fontSize,
@@ -311,7 +315,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                                 const Color(0xFF2196F3)
                             : borderColor!,
                         width: borderWidth!),
-                    color: styler.bg,
+                    color: styler.bg?.getColor(context),
                     borderRadius:
                         BorderRadius.circular(styler.borderRadius ?? 0.0),
                   ),
@@ -418,7 +422,7 @@ class _GSTextAreaState extends State<GSTextArea> {
       return Row(
         children: [
           GSText(
-            style: GSStyle(
+            style: GlueStyle(
               textStyle: widget.prefixStyle,
             ),
             text: widget.prefixText!,

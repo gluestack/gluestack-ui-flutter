@@ -56,14 +56,14 @@ class GSRadioIcon<T> extends StatelessWidget {
               focusNode: focusNode,
               toggleable: toggleable,
               fillColor: value.isInvalid
-                  ? styler.onInvalid!.borderColor!
+                  ? styler.onInvalid!.borderColor!.getColor(context)
                   : isHovered
                       ? isChecked
-                          ? styler.checked!.onHover!.color!
-                          : styler.onHover!.borderColor!
+                          ? styler.checked!.onHover!.color!.getColor(context)
+                          : styler.onHover!.borderColor!.getColor(context)
                       : isChecked
-                          ? styler.checked!.color!
-                          : styler.borderColor!,
+                          ? styler.checked!.color!.getColor(context)
+                          : styler.borderColor!.getColor(context),
               value: value.value,
               groupValue: value.groupValue,
               onChanged: value.onChanged),

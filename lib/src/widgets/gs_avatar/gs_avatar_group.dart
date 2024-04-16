@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_group_style.dart';
 
 class GSAvatarGroup extends StatelessWidget {
   final List<GSAvatar> children;
-  final GSStyle? style;
+  final GlueStyle? style;
   final bool? reversed;
   final GSDirection? direction;
 

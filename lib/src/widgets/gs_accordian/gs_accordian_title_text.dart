@@ -12,7 +12,7 @@ class GSAccordionTitle extends StatelessWidget {
 
   /// Custom [GSStyle] to apply to the text. This allows for further customization
   /// of text appearance, specify using textStyle inside [GSStyle].
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// Determines if the text should be truncated with an ellipsis when it overflows.
   /// Defaults to `false`, meaning text will wrap by default.
@@ -119,7 +119,7 @@ class GSAccordionTitle extends StatelessWidget {
     return GSText(
       text: text,
       size: size.toGSSize,
-      style: styler,
+      style: GlueStyle.fromGSStyle(styler, context),
       locale: locale,
       maxLines: maxLines,
       overflow: overflow,

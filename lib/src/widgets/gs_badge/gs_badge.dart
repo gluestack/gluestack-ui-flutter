@@ -3,7 +3,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-
 enum GSBadgeRadius {
   $none,
   $xs,
@@ -31,7 +30,7 @@ class GSBadge extends StatelessWidget {
   final GSBadgeVariants? variant;
 
   /// The custom style for the badge.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The child widget to be displayed inside the badge.
   final Widget? child;
@@ -83,15 +82,17 @@ class GSBadge extends StatelessWidget {
         iconSize: styler.iconSize,
         child: Container(
           decoration: BoxDecoration(
-            color: style == null ? styler.bg : style!.bg ?? styler.bg,
+            color: style == null
+                ? styler.bg?.getColor(context)
+                : style!.bg ?? styler.bg?.getColor(context),
             borderRadius: BorderRadius.circular(
                 GSBadgeStyle.radius[radius] ?? styler.borderRadius ?? 0),
             border: Border.all(
                 style: badgeVariant == GSVariants.outline
                     ? BorderStyle.solid
                     : BorderStyle.none,
-                color: styler.borderColor ??
-                    styler.outlineColor ??
+                color: styler.borderColor?.getColor(context) ??
+                    styler.outlineColor?.getColor(context) ??
                     const Color(0x00000000) //transparent
                 ),
           ),

@@ -2,10 +2,9 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_title_style.dart';
 
-
 class GSToastTitle extends StatelessWidget {
   final String title;
-  final GSStyle? style;
+  final GlueStyle? style;
   const GSToastTitle({super.key, required this.title, this.style});
 
   @override
@@ -24,7 +23,7 @@ class GSToastTitle extends StatelessWidget {
 
     return GSText(
       text: title,
-      style: styler,
+      style: GlueStyle.fromGSStyle(styler, context),
     );
   }
 }

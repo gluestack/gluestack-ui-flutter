@@ -8,7 +8,7 @@ class GSLink extends StatelessWidget {
   final String url;
 
   /// Custom [GSStyle] to apply to the link, enabling detailed customization of its appearance.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The widget that displays the link's text or content. This can be any widget, but typically
   /// it is a text widget that users recognize as a clickable link.

@@ -3,7 +3,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-
 enum GSAvatarRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
 /// A customizable avatar widget designed to display user or entity pictures in a visually
@@ -22,7 +21,7 @@ class GSAvatar extends StatelessWidget {
 
   /// Custom [GSStyle] to apply to the avatar, enabling detailed customization of its appearance.
   /// This style can include border, padding, margin, and more.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// Text to display within the avatar as a fallback when no image is provided or in case
   /// of an error loading the image. Useful for displaying user initials or default text.
@@ -84,7 +83,7 @@ class GSAvatar extends StatelessWidget {
               shape: avatarRadius == GSBorderRadius.$full
                   ? BoxShape.circle
                   : BoxShape.rectangle,
-              color: styler.bg,
+              color: styler.bg?.getColor(context),
               image: backgroundImage != null
                   ? DecorationImage(
                       image: backgroundImage!,
@@ -101,7 +100,7 @@ class GSAvatar extends StatelessWidget {
             ),
             foregroundDecoration: foregroundImage != null
                 ? BoxDecoration(
-                    color: styler.color,
+                    color: styler.color?.getColor(context),
                     image: DecorationImage(
                       image: foregroundImage!,
                       onError: onForegroundImageError,
@@ -113,7 +112,7 @@ class GSAvatar extends StatelessWidget {
                             50),
                   )
                 : BoxDecoration(
-                    color: styler.color,
+                    color: styler.color?.getColor(context),
                     image: switch (avatarImage?.imageType) {
                       GSImageType.network => DecorationImage(
                           image: NetworkImage(avatarImage!.path),

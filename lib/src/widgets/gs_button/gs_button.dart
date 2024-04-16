@@ -14,7 +14,7 @@ class GSButton extends StatelessWidget {
   final bool? isDisabled;
   final bool? isFocusVisible;
   final Widget child;
-  final GSStyle? style;
+  final GlueStyle? style;
   final Function? onHover;
   final Function(bool)? onFocusChange;
   final FocusNode? focusNode;
@@ -84,6 +84,26 @@ class GSButton extends StatelessWidget {
           styler.bg = styler.onActive?.bg;
         }
 
+        BorderSide _resolveBorderSide(
+            GSVariants variant, GSStyle styler, bool isAttached) {
+          if (isAttached) {
+            return BorderSide.none;
+          }
+          if (variant == GSVariants.link) {
+            return BorderSide.none;
+          }
+          if (isFocusVisible!) {
+            return BorderSide(color: $GSColors.primary500, width: 2.0);
+          }
+          return styler.borderWidth != null || styler.outlineWidth != null
+              ? BorderSide(
+                  color: styler.borderColor?.getColor(context) ??
+                      styler.outlineColor?.getColor(context) ??
+                      const Color.fromARGB(0, 0, 0, 0),
+                  width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
+              : BorderSide.none;
+        }
+
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(
@@ -105,7 +125,7 @@ class GSButton extends StatelessWidget {
                     clipBehavior: clipBehavior,
                     padding: styler.padding,
                     decoration: BoxDecoration(
-                      color: styler.bg,
+                      color: styler.bg?.getColor(context),
                       borderRadius:
                           BorderRadius.circular(styler.borderRadius ?? 0.0),
                       border: Border.fromBorderSide(_resolveBorderSide(
@@ -127,25 +147,5 @@ class GSButton extends StatelessWidget {
         );
       }),
     );
-  }
-
-  BorderSide _resolveBorderSide(
-      GSVariants variant, GSStyle styler, bool isAttached) {
-    if (isAttached) {
-      return BorderSide.none;
-    }
-    if (variant == GSVariants.link) {
-      return BorderSide.none;
-    }
-    if (isFocusVisible!) {
-      return BorderSide(color: $GSColors.primary500, width: 2.0);
-    }
-    return styler.borderWidth != null || styler.outlineWidth != null
-        ? BorderSide(
-            color: styler.borderColor ??
-                styler.outlineColor ??
-                const Color.fromARGB(0, 0, 0, 0),
-            width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
-        : BorderSide.none;
   }
 }

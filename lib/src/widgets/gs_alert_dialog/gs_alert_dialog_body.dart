@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_body_st
 
 class GSAlertDialogBody extends StatelessWidget {
   final Widget? child;
-  final GSStyle? style;
+  final GlueStyle? style;
   const GSAlertDialogBody({super.key, this.child, this.style});
 
   @override
@@ -16,7 +16,7 @@ class GSAlertDialogBody extends StatelessWidget {
       isFirst: true,
     );
     return Container(
-      color: styler.bg,
+      color: styler.bg?.getColor(context),
       padding: styler.padding,
       height: styler.height,
       width: styler.width ?? double.infinity,

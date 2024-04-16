@@ -13,7 +13,7 @@ class GSText extends StatelessWidget {
 
   /// Custom [GSStyle] to apply to the text, enabling detailed customization of text appearance,
   /// including font, color, and more, beyond the default styling.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// Determines if the text should be truncated with an ellipsis when it overflows the available
   /// space. Defaults to `false`, allowing text to wrap by default.
@@ -132,8 +132,9 @@ class GSText extends StatelessWidget {
         if (strikeThrough) TextDecoration.lineThrough,
         if (underline) TextDecoration.underline,
       ]),
-      backgroundColor:
-          highlight ? styler.bg : styler.textStyle?.backgroundColor,
+      backgroundColor: highlight
+          ? styler.bg?.getColor(context)
+          : styler.textStyle?.backgroundColor,
       overflow:
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
       color: styler.textStyle?.color ?? gstextStyle.textStyle?.color,

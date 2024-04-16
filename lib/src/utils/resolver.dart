@@ -475,3 +475,17 @@ String? resolveFontFamilyTokenFromString(String? fontFamilyToken) {
   }
   return $GSFontFamily.fontFamilyMap[fontFamilyToken];
 }
+
+String? resolveColorTokenFromString(String? color) {
+  if (color == null) {
+    return null;
+  }
+    if (color.contains("transparent")) {
+    return 'transparent'; //transparent
+  }
+  if (color.contains("white")) {
+    return 'white'; // white
+  }
+
+  return color.substring(1); //get rid of $
+}

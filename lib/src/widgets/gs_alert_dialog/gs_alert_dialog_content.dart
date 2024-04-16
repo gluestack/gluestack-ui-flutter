@@ -6,7 +6,7 @@ class GSAlertDialogContent extends StatelessWidget {
   final GSAlertDialogHeader? header;
   final GSAlertDialogBody? body;
   final GSAlertDialogFooter? footer;
-  final GSStyle? style;
+  final GlueStyle? style;
   const GSAlertDialogContent(
       {super.key, this.header, this.body, this.footer, this.style});
 
@@ -19,7 +19,7 @@ class GSAlertDialogContent extends StatelessWidget {
       isFirst: true,
     );
     return Container(
-      color: styler.bg,
+      color: styler.bg?.getColor(context),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

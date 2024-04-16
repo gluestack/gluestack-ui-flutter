@@ -66,7 +66,7 @@ class GSModalBottomSheet {
       barrierLabel: barrierLabel ?? " ",
       backgroundColor: backgroundColor,
       shape: shape,
-      style: style,
+      style: style != null ? GlueStyle.fromGSStyle(style,context) : null,
       borderRadius: borderRadius,
       boxShadow: boxShadow,
       clipBehavior: clipBehavior,
@@ -112,7 +112,7 @@ class GSModalBottomSheetRoute<T> extends PopupRoute<T> {
 
   final WidgetBuilder builder;
   final CapturedThemes? capturedThemes;
-  final GSStyle? style;
+  final GlueStyle? style;
   final bool isScrollControlled;
   final double scrollControlDisabledMaxHeightRatio;
   final Color? backgroundColor;
@@ -488,7 +488,7 @@ class _ModalBottomSheet<T> extends StatefulWidget {
   });
 
   final GSModalBottomSheetRoute<T> route;
-  final GSStyle? style;
+  final GlueStyle? style;
   final bool isScrollControlled;
   final double scrollControlDisabledMaxHeightRatio;
   final Color? backgroundColor;
@@ -615,7 +615,7 @@ class BottomSheet extends StatefulWidget {
   });
 
   final AnimationController? animationController;
-  final GSStyle? style;
+  final GlueStyle? style;
   final VoidCallback onClosing;
   final WidgetBuilder builder;
   final bool enableDrag;
@@ -755,7 +755,7 @@ class _BottomSheetState extends State<BottomSheet> {
     );
 
     final BoxConstraints? constraints = widget.constraints;
-    final Color? color = widget.backgroundColor ?? styler.bg;
+    final Color? color = widget.backgroundColor ?? styler.bg?.getColor(context);
     final BoxShape shape = widget.shape ?? BoxShape.rectangle;
 
     final borderRadius =

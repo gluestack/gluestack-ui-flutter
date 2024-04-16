@@ -12,7 +12,7 @@ import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
 class GSInput extends StatefulWidget {
   final GSInputVariants? variant;
   final GSInputSizes? size;
-  final GSStyle? style;
+  final GlueStyle? style;
   final bool? isDisabled;
   final bool? isInvalid;
   final bool? isReadOnly;
@@ -219,18 +219,21 @@ class _GSInputState extends State<GSInput> {
     Color? resolveBorderColor() {
       if (isInvalid) {
         if (inputVariant == GSVariants.underlined) {
-          return styler.onInvalid?.borderBottomColor;
+          return styler.onInvalid?.borderBottomColor?.getColor(context);
         }
-        return styler.onInvalid?.borderColor ?? styler.borderColor;
+        return styler.onInvalid?.borderColor?.getColor(context) ??
+            styler.borderColor?.getColor(context);
       }
       if (_isHovered) {
-        return styler.onHover?.borderColor ?? styler.borderColor;
+        return styler.onHover?.borderColor?.getColor(context) ??
+            styler.borderColor?.getColor(context);
       }
       if (isDisabled) {
-        return styler.onDisabled?.borderColor ?? styler.borderColor;
+        return styler.onDisabled?.borderColor?.getColor(context) ??
+            styler.borderColor?.getColor(context);
       }
 
-      return styler.borderColor;
+      return styler.borderColor?.getColor(context);
     }
 
     double? resolveBorderWidth() {
@@ -264,12 +267,13 @@ class _GSInputState extends State<GSInput> {
     Color? resolveFocusBorderColor() {
       if (isInvalid) {
         if (inputVariant == GSVariants.underlined) {
-          return styler.onInvalid?.borderBottomColor;
+          return styler.onInvalid?.borderBottomColor?.getColor(context);
         }
-        return styler.onInvalid?.borderColor ?? styler.borderColor;
+        return styler.onInvalid?.borderColor?.getColor(context) ??
+            styler.borderColor?.getColor(context);
       }
 
-      return styler.onFocus?.borderColor;
+      return styler.onFocus?.borderColor?.getColor(context);
     }
 
     final borderColor = resolveBorderColor();
@@ -343,7 +347,7 @@ class _GSInputState extends State<GSInput> {
                                       const Color(0xFF2196F3)
                                   : borderColor!,
                               width: borderWidth!),
-                      color: styler.bg,
+                      color: styler.bg?.getColor(context),
                       borderRadius:
                           BorderRadius.circular(styler.borderRadius ?? 0.0),
                     ),

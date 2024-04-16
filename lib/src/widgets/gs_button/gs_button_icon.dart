@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_icon_style.dart';
 class GSButtonIcon extends StatelessWidget {
   final IconData icon;
   final GSSizes? iconSize;
-  final GSStyle? style;
+  final GlueStyle? style;
 
   const GSButtonIcon({
     super.key,
@@ -33,7 +33,7 @@ class GSButtonIcon extends StatelessWidget {
 
     return Icon(
       icon,
-      color: styler.color,
+      color: styler.color?.getColor(context),
       size: size,
     );
   }

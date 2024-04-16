@@ -69,7 +69,7 @@ class GSNavigationRail extends StatefulWidget {
             (labelType == null || labelType == GSNavigationRailLabelType.none));
 
   final Color? backgroundColor;
-  final GSStyle? style;
+  final GlueStyle? style;
   final GSNavigationRailSizes? size;
   final bool extended;
   final Widget? leading;
@@ -198,8 +198,10 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       isFirst: true,
     );
 
-    final Color? backgroundColor = widget.backgroundColor ?? styler.bg;
-    Color? indicatorColor = widget.indicatorColor ?? styler.color;
+    final Color? backgroundColor =
+        widget.backgroundColor ?? styler.bg?.getColor(context);
+    Color? indicatorColor =
+        widget.indicatorColor ?? styler.color?.getColor(context);
 
     final double minWidth = widget.minWidth ?? 100;
     final double minExtendedWidth = widget.minExtendedWidth ?? 30;
@@ -210,11 +212,11 @@ class _GSNavigationRailState extends State<GSNavigationRail>
         widget.selectedLabelTextStyle ?? selectedLabelStyler.textStyle;
     final IconThemeData unselectedIconTheme = widget.unselectedIconTheme ??
         IconThemeData(
-          color: styler.iconColor,
+          color: styler.iconColor?.getColor(context),
         );
     final IconThemeData selectedIconTheme = widget.selectedIconTheme ??
         IconThemeData(
-          color: styler.iconColor,
+          color: styler.iconColor?.getColor(context),
         );
     final double groupAlignment = widget.groupAlignment ?? 0.0;
     final GSNavigationRailLabelType labelType =

@@ -3,7 +3,7 @@ import 'package:gluestack_ui/src/widgets/gs_tabs/gs_tab_raw.dart';
 
 class GSTabHeader extends StatelessWidget {
   final PageController controller;
-  final GSStyle? style;
+  final GlueStyle? style;
   final bool? isDisabled;
   final List<GSTab> tabs;
 

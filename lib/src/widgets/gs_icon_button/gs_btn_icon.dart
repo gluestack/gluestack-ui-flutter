@@ -32,7 +32,7 @@ class GSIconButton extends StatelessWidget {
   final GSIconButtonSizes? size;
 
   /// Custom [GSStyle] to apply to the button, enabling detailed customization of its appearance.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   ///Constructor for [GSIconButton]
   const GSIconButton({

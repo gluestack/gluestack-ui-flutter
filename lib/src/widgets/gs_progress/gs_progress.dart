@@ -9,7 +9,7 @@ import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_style.dart';
 class GSProgress extends StatefulWidget {
   /// Custom [GSStyle] to apply to the progress bar, enabling detailed customization
   /// of its appearance, including colors and other properties.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The size of the progress bar, affecting its overall dimensions. This can be set
   /// to one of the predefined [GSProgressSizes] values.
@@ -71,7 +71,8 @@ class _GSProgressState extends State<GSProgress> {
     );
 
     final progressColor = styler.bg ?? progressStyle.bg;
-    final valueColor = styler.progressValueColor ?? $GSColors.primary500;
+    final valueColor =
+        styler.progressValueColor?.getColor(context) ?? $GSColors.primary500;
     final borderRadius = styler.borderRadius ?? progressStyle.borderRadius;
 
     return Semantics(
@@ -85,7 +86,7 @@ class _GSProgressState extends State<GSProgress> {
             Container(
               key: widgetKey,
               decoration: BoxDecoration(
-                color: progressColor,
+                color: progressColor?.getColor(context),
                 borderRadius: BorderRadius.circular(borderRadius!),
               ),
               height: styler.height,

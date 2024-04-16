@@ -8,7 +8,7 @@ import 'package:gluestack_ui/src/widgets/gs_divider/gs_divider_style.dart';
 class GSDivider extends StatelessWidget {
   /// Custom [GSStyle] to apply to the divider, enabling detailed customization
   /// of its appearance, including color, width, height, etc.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The orientation of the divider, either [GSOrientations.horizontal] or [GSOrientations.vertical].
   /// This determines how the divider is displayed within its parent container.
@@ -55,7 +55,9 @@ class GSDivider extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border(
                 bottom: createBorderSide(context,
-                    color: styler.bg ?? styler.color ?? const Color(0xaaaaaaaa),
+                    color: styler.bg?.getColor(context) ??
+                        styler.color?.getColor(context) ??
+                        const Color(0xaaaaaaaa),
                     width: styler.height ?? 1), //thickness
               ),
             ),
@@ -74,7 +76,9 @@ class GSDivider extends StatelessWidget {
               border: Border(
                 left: createBorderSide(
                   context,
-                  color: styler.bg ?? styler.color ?? const Color(0xaaaaaaaa),
+                  color: styler.bg?.getColor(context) ??
+                      styler.color?.getColor(context) ??
+                      const Color(0xaaaaaaaa),
                   width: styler.width ?? 1, //thickness),
                 ),
               ),

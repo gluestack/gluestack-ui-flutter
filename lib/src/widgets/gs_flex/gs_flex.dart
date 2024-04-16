@@ -40,7 +40,7 @@ class GSFlex extends StatelessWidget {
 
   /// Custom [GSStyle] to apply to the flex container, enabling the specification of
   /// direction
-  final GSStyle? style;
+  final GlueStyle? style;
 
   const GSFlex({
     super.key,

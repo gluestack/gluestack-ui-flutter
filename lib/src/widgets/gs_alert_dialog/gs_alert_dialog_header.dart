@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_header_
 
 class GSAlertDialogHeader extends StatelessWidget {
   final Widget? child;
-  final GSStyle? style;
+  final GlueStyle? style;
   const GSAlertDialogHeader({super.key, this.child, this.style});
 
   @override
@@ -19,7 +19,7 @@ class GSAlertDialogHeader extends StatelessWidget {
     final y = resolveAlignment(styler.alignItems),
         x = resolveAlignment(styler.justifyContent);
     return Container(
-      color: styler.bg,
+      color: styler.bg?.getColor(context),
       alignment: Alignment(x, y),
       padding: styler.padding,
       height: styler.height,

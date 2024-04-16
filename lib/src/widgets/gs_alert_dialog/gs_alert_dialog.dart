@@ -6,11 +6,10 @@ import 'package:gluestack_ui/src/utils/extension.dart';
 
 import 'gs_show_alert_dailog.dart';
 
-
 class GSAlertDialog extends StatefulWidget {
   final GSAlertDialogContent content;
   final GSAlertDialogSizes? size;
-  final GSStyle? style;
+  final GlueStyle? style;
   final AlignmentGeometry? alignment;
   final Clip? clipBehavior;
   final EdgeInsets? insetPadding;
@@ -43,7 +42,7 @@ class GSAlertDialog extends StatefulWidget {
     BuildContext context, {
     GSAlertDialogContent? content,
     bool? showBackdrop = true,
-    GSStyle? style,
+    GlueStyle? style,
     final AlignmentGeometry? alignment,
     final Clip? clipBehavior = Clip.none,
     final EdgeInsets? insetPadding =

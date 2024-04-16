@@ -14,7 +14,7 @@ class GSAccordionIcon extends StatelessWidget {
 
   /// Custom [GSStyle] to apply to the icon. This allows for further customization
   /// of the icon's appearance.
-  final GSStyle? style;
+  final GlueStyle? style;
 
   /// The fill level for icons that support variable fill states. This is typically
   /// used for custom icons designed to visually represent fill levels (e.g., battery
@@ -83,7 +83,7 @@ class GSAccordionIcon extends StatelessWidget {
     return GSIcon(
       icon: icon,
       size: conv(styler.iconSize ?? styler.props?.size) ?? size,
-      style: styler,
+      style: GlueStyle.fromGSStyle(styler, context),
       fill: fill,
       grade: grade,
       opticalSize: opticalSize,
