@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
                   currentTheme = newTheme;
                 });
               }),
-              theme: GSThemeData.fromTheme(currentTheme),
+              theme: GSThemeData.fromTheme(GSThemes.light),
               // darkTheme: GSThemeData.fromTheme(GSThemes.dark),
               // themeMode: GSThemeMode.system,
             ),
