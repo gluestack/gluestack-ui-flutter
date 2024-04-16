@@ -96,6 +96,13 @@ String? resolveColorFromString2(String? color) {
   if (color == null) {
     return null;
   }
+    if (color.contains("transparent")) {
+    return 'transparent'; //transparent
+  }
+  if (color.contains("white")) {
+    return 'white'; // white
+  }
+
   return color.substring(1); //get rid of $
 }
 

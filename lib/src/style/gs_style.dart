@@ -767,7 +767,8 @@ class GSStyleInt extends BaseStyle<GSStyleInt> {
         bg: resolveColorFromString2(data?[':checked']?['bg']),
         borderColor: resolveColorFromString2(data?[':checked']?['borderColor']),
         onHover: GSStyleInt(
-          color: resolveColorFromString2(data?[':checked']?[':hover']?['color']),
+          color:
+              resolveColorFromString2(data?[':checked']?[':hover']?['color']),
         ),
       ),
       onHover: GSStyleInt(
@@ -817,15 +818,16 @@ class GSStyleInt extends BaseStyle<GSStyleInt> {
           borderColor: resolveColorFromString2(data?[':hover']?[':checked']
                   ?['borderColor'] ??
               data?[':hover']?['borderColor']),
-          color: resolveColorFromString2(data?[':hover']?[':checked']?['color']),
+          color:
+              resolveColorFromString2(data?[':hover']?[':checked']?['color']),
           onDisabled: GSStyleInt(
             bg: resolveColorFromString2(
                 data?[':hover']?[':checked']?[':disabled']?['bg']),
             borderColor: resolveColorFromString2(
                 data?[':hover']?[':checked']?[':disabled']?['borderColor']),
             onInvalid: GSStyleInt(
-                borderColor: resolveColorFromString2(data?[':hover']?[':checked']
-                    ?[':disabled']?['invalid']?['borderColor'])),
+                borderColor: resolveColorFromString2(data?[':hover']
+                    ?[':checked']?[':disabled']?['invalid']?['borderColor'])),
           ),
         ),
       ),
@@ -914,8 +916,8 @@ class GSStyleInt extends BaseStyle<GSStyleInt> {
         ),
         trackColorTrue:
             resolveColorFromString2(data?[':disabled']?['trackColor']?['true']),
-        trackColorFalse:
-            resolveColorFromString2(data?[':disabled']?['trackColor']?['false']),
+        trackColorFalse: resolveColorFromString2(
+            data?[':disabled']?['trackColor']?['false']),
         iosBackgroundColor:
             resolveColorFromString2(data?[':disabled']?['ios_backgroundColor']),
         borderColor: data?[':disabled']?['borderColor'],
@@ -1069,8 +1071,8 @@ class GSStyleInt extends BaseStyle<GSStyleInt> {
                 data?['_dark']?[':disabled']?[':hover']?['borderColor']),
             trackColorTrue: resolveColorFromString2(data?['_dark']?[':disabled']
                 ?[':hover']?[':props']?['trackColor']?['true']),
-            trackColorFalse: resolveColorFromString2(data?['_dark']?[':disabled']
-                ?[':hover']?[':props']?['trackColor']?['false']),
+            trackColorFalse: resolveColorFromString2(data?['_dark']
+                ?[':disabled']?[':hover']?[':props']?['trackColor']?['false']),
           ),
         ),
         onInvalid: GSStyleInt(
@@ -1168,7 +1170,7 @@ class GSStyleInt extends BaseStyle<GSStyleInt> {
     );
   }
 
-   GSStyleInt? actionMap(GSActions? gsActions) {
+  GSStyleInt? actionMap(GSActions? gsActions) {
     if (gsActions == null || variants?.action == null) {
       return null;
     }
@@ -1634,7 +1636,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     return null;
   }
 
-   factory GSStyle.fromMap({
+  factory GSStyle.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
     bool fromVariant = false,
@@ -2845,7 +2847,33 @@ class GSStyle extends BaseStyle<GSStyle> {
 
 Map getColorMap(BuildContext context) {
   final mapp = {
+    'transparent': const Color.fromARGB(0, 0, 0, 0),
+    'white': const Color(0xffffffff),
+    'black': const Color(0xff000000),
+    'primary0': GSTheme.of(context).primary0,
+    'primary50': GSTheme.of(context).primary50,
+    'primary100': GSTheme.of(context).primary100,
+    'primary200': GSTheme.of(context).primary200,
+    'primary300': GSTheme.of(context).primary300,
+    'primary400': GSTheme.of(context).primary400,
     'primary500': GSTheme.of(context).primary500,
+    'primary600': GSTheme.of(context).primary600,
+    'primary700': GSTheme.of(context).primary700,
+    'primary800': GSTheme.of(context).primary800,
+    'primary900': GSTheme.of(context).primary900,
+    'primary950': GSTheme.of(context).primary950,
+    'secondary0': GSTheme.of(context).secondary0,
+    'secondary50': GSTheme.of(context).secondary50,
+    'secondary100': GSTheme.of(context).secondary100,
+    'secondary200': GSTheme.of(context).secondary200,
+    'secondary300': GSTheme.of(context).secondary300,
+    'secondary400': GSTheme.of(context).secondary400,
+    'secondary500': GSTheme.of(context).secondary500,
+    'secondary600': GSTheme.of(context).secondary600,
+    'secondary700': GSTheme.of(context).secondary700,
+    'secondary800': GSTheme.of(context).secondary800,
+    'secondary900': GSTheme.of(context).secondary900,
+    'secondary950': GSTheme.of(context).secondary950,
   };
   return mapp;
 }
