@@ -394,7 +394,7 @@ class GluestackCustomConfig {
     //fab
     fabIcon = mergeConfigs(fabIconData, fabIcon);
     fabLabel = mergeConfigs(fabLabelData, fabLabel);
-    fab = mergeConfigs(FABData, fab);
+    fab = mergeConfigs(fabData, fab);
 
     //form
     formErrorText = mergeConfigs(formControlErrorTextData, formErrorText);

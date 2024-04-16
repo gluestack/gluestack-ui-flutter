@@ -114,7 +114,7 @@ GSStepper(
   ],
 );
 
-          
+
   ''';
     return CustomGSLayout(
       title: "Stepper",
@@ -204,7 +204,7 @@ GSStepper(
                 title2: "Step Content",
                 controller1: _titleController,
                 controller2: _contentController,
-                onChanged: (String, dynamic) {
+                onChanged: (_, dynamic) {
                   setState(() {});
                 },
               ),

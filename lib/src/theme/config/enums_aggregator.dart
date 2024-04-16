@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 void main() {
   try {
     final file = File('enums.dart');
@@ -7,9 +9,9 @@ void main() {
 
     final variantEnums = <String>{};
     final actionEnums = <String>{};
-    final sizeEnums = <String>{}; 
-    final spaceEnums = <String>{}; 
-    final placementEnums = <String>{}; 
+    final sizeEnums = <String>{};
+    final spaceEnums = <String>{};
+    final placementEnums = <String>{};
 
     sizeEnums.addAll(extractEnums(lines, 'Sizes'));
     actionEnums.addAll(extractEnums(lines, 'Actions'));
@@ -41,9 +43,13 @@ enum GSPlacements {
 
     File('base_enums.dart').writeAsStringSync(content);
 
-    print('Enums merged and saved to base_enums.dart successfully!');
+    if (kDebugMode) {
+      print('Enums merged and saved to base_enums.dart successfully!');
+    }
   } catch (e) {
-    print('Error: $e');
+    if (kDebugMode) {
+      print('Error: $e');
+    }
   }
 }
 

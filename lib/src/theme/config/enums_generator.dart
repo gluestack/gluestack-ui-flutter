@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 StringBuffer finalOutput = StringBuffer();
 
 void main() {
@@ -55,11 +57,15 @@ void readFile(File file) {
           generateEnum(mapName ?? 'DebugErrorValue-CheckScript', variants);
         }
       } else {
-        print('No Variants exist for: $mapName');
+        if (kDebugMode) {
+          print('No Variants exist for: $mapName');
+        }
       }
     }
   } catch (e) {
-    print('Error parsing file ${file.path}: $e');
+    if (kDebugMode) {
+      print('Error parsing file ${file.path}: $e');
+    }
   }
 }
 
@@ -184,7 +190,12 @@ void writeToFile(String filePath, String data) {
       .then((_) => {
             // print('Data has been written to $filePath'),
           })
-      .catchError((error) => print('Error writing to file: $error'));
+      .catchError((error) {
+    if (kDebugMode) {
+      print('Error writing to file: $error');
+    }
+    return {};
+  });
 }
 
 String formatGSEnumName(String input) {
@@ -195,7 +206,8 @@ String formatGSEnumName(String input) {
 String capitalizeAndJoin(String input) {
   List<String> words = input.split(" ");
   String firstWord = words[0];
-  String capitalizedWords = words.skip(1).map((word) => word.capitalize()).join();
+  String capitalizedWords =
+      words.skip(1).map((word) => word.capitalize()).join();
   return "$firstWord$capitalizedWords";
 }
 
