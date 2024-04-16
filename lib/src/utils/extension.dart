@@ -15,12 +15,10 @@ extension ColorExtension on String {
     Color? resolvedColor;
 
     Color parseColor(String colorString) {
-      colorString = colorString.substring(6, colorString.length - 1);
-      if (colorString.startsWith("0x")) {
-        colorString = colorString.substring(2);
-      }
+      String hexColor = colorString.split('(0x')[1].split(')')[0];
+
       //main stuff
-      int value = int.parse(colorString, radix: 16);
+      int value = int.parse(hexColor, radix: 16);
 
       return Color(value);
     }
