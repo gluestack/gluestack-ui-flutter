@@ -1,5 +1,6 @@
 
 import 'package:gluestack_ui/gluestack_ui.dart';
 
-GSStyle layoutStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().layout);
+GSStyleInt layoutStyle =
+    GSStyleInt.fromMap(data: getIt<GluestackCustomConfig>().layout);
+ 

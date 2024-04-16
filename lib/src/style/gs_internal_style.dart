@@ -1,361 +1,29 @@
 import 'package:flutter/foundation.dart';
-import 'package:gluestack_ui/src/provider/provider.dart';
+import 'package:flutter/widgets.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/base_style.dart';
-import 'package:gluestack_ui/src/style/gs_internal_style.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 
-//for ease in export | No need to import from provider everywhere else.
-export 'package:gluestack_ui/src/provider/provider.dart';
-export 'gs_internal_style.dart';
-
-enum GSTextTransform { uppercase, lowercase }
-
-enum GSBorderRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
-
-enum GSTypes { single, multiple }
-
-enum GSOutlineStyle { solid }
-
-enum GSDirection { row, column }
-
-enum GSAlignments { start, center, end, spaceBetween, flexEnd, flexStart }
-
-enum GSOrientations { horizontal, vertical }
-
-enum GSFlexDirections { row, column }
-
-enum GSCursors { pointer, notAllowed }
-
-class ShadowOffset {
-  final double? height;
-  final double? width;
-
-  const ShadowOffset({
-    this.height,
-    this.width,
-  });
-
-  factory ShadowOffset.fromJson({required Map<String, dynamic>? data}) {
-    return ShadowOffset(
-      height: data?['height'] != null
-          ? double.tryParse((data?['height']).toString())
-          : null,
-      width: data?['width'] != null
-          ? double.tryParse((data?['width']).toString())
-          : null,
-    );
-  }
-}
-
-// class GSPlacement {
-//   GSStyle? topRight;
-//   GSStyle? topLeft;
-//   GSStyle? bottomRight;
-//   GSStyle? bottomLeft;
-//   GSStyle? topCenter;
-//   GSStyle? bottomCenter;
-//   GSPlacement(
-//       {this.bottomCenter,
-//       this.bottomLeft,
-//       this.bottomRight,
-//       this.topCenter,
-//       this.topLeft,
-//       this.topRight});
-//   factory GSPlacement.fromMap({required Map<String, dynamic>? data}) {
-//     return GSPlacement(
-//       bottomCenter:
-//           GSStyle.fromMap(data: data?['bottom center'], fromVariant: true),
-//       bottomLeft:
-//           GSStyle.fromMap(data: data?['bottom left'], fromVariant: true),
-//       bottomRight:
-//           GSStyle.fromMap(data: data?['bottom right'], fromVariant: true),
-//       topCenter: GSStyle.fromMap(data: data?['top center'], fromVariant: true),
-//       topLeft: GSStyle.fromMap(data: data?['top left'], fromVariant: true),
-//       topRight: GSStyle.fromMap(data: data?['top right'], fromVariant: true),
-//     );
-//   }
-// }
-
-class GSProps {
-  GSActions? action;
-  GSVariants? variant;
-  GSSizes? size;
-  GSSpaces? space;
-  GSStyleInt? style;
-  GSPlacements? placement;
-  GSOrientations? orientation;
-  Color? color;
-//TODO: add theme default prop - context: accordion theme config, do after theming is taken care of without material
-  GSProps({
-    this.action,
-    this.variant,
-    this.size,
-    this.space,
-    this.style,
-    this.orientation,
-    this.placement,
-    this.color,
-  });
-  factory GSProps.fromMap({required Map<String, dynamic>? data}) {
-    return GSProps(
-        action: resolveActionFromString(data?['action']),
-        variant: resolveVariantFromString(data?['variant']),
-        size: resolveSizesFromString(data?['size']),
-        space: resolveSpacesFromString(data?['space']),
-        style: GSStyleInt.fromMap(data: data, fromVariant: true),
-        color: resolveColorFromString(data?['color']),
-        placement: resolvePlacementFromString(data?['placement']),
-        orientation: resolveOrientationsFromString(
-          data?['orientation'],
-        ));
-  }
-}
-
-class GSOrientation {
-  GSStyleInt? vertical;
-  GSStyleInt? horizontal;
-  GSOrientation({this.horizontal, this.vertical});
-  factory GSOrientation.fromMap({required Map<String, dynamic>? data}) {
-    return GSOrientation(
-      vertical: GSStyleInt.fromMap(data: data?['vertical'], fromVariant: true),
-      horizontal:
-          GSStyleInt.fromMap(data: data?['horizontal'], fromVariant: true),
-    );
-  }
-}
-
-class GSVariant {
-  Map<GSVariants, GSStyleInt?> styles;
-  GSVariant({this.styles = const {}});
-
-  factory GSVariant.fromMap({
-    required Map<String, dynamic>? data,
-    List<String> descendantStyle = const [],
-  }) {
-    var variantStyles = <GSVariants, GSStyleInt?>{};
-    for (GSVariants enumValue in GSVariants.values) {
-      var key = enumValue.name;
-      if (data?[key] is Map<String, dynamic> &&
-          (data?.containsKey(key) ?? false)) {
-        variantStyles[enumValue] = GSStyleInt.fromMap(
-          data: data![key],
-          descendantStyle: descendantStyle,
-          fromVariant: true,
-        );
-      }
-    }
-
-    return GSVariant(styles: variantStyles);
-  }
-}
-
-class GSAction {
-  Map<GSActions, GSStyleInt?> styles;
-  GSAction({this.styles = const {}});
-
-  factory GSAction.fromMap({
-    required Map<String, dynamic>? data,
-    List<String> descendantStyle = const [],
-  }) {
-    var actionStyles = <GSActions, GSStyleInt?>{};
-    for (GSActions enumValue in GSActions.values) {
-      var key = enumValue.name;
-      if (data?[key] is Map<String, dynamic> &&
-          (data?.containsKey(key) ?? false)) {
-        actionStyles[enumValue] = GSStyleInt.fromMap(
-          data: data![key],
-          descendantStyle: descendantStyle,
-          fromVariant: true,
-        );
-      }
-    }
-
-    return GSAction(styles: actionStyles);
-  }
-}
-
-class GSPlacement {
-  Map<GSPlacements, GSStyleInt?> styles;
-  GSPlacement({this.styles = const {}});
-
-  factory GSPlacement.fromMap({
-    required Map<String, dynamic>? data,
-    List<String> descendantStyle = const [],
-  }) {
-    String convertToConfigKey(String input) {
-      List<String> words = input.split(RegExp(r"(?=[A-Z])"));
-      String result = words.map((word) {
-        if (word.isNotEmpty) {
-          return "${word[0].toUpperCase()}${word.substring(1).toLowerCase()}";
-        } else {
-          return "";
-        }
-      }).join(" ");
-      return result.toLowerCase();
-    }
-
-    var placementStyles = <GSPlacements, GSStyleInt?>{};
-    for (GSPlacements enumValue in GSPlacements.values) {
-      var key = enumValue.name;
-      key = convertToConfigKey(key);
-
-      if (data?[key] is Map<String, dynamic> &&
-          (data?.containsKey(key) ?? false)) {
-        // configKey = key.split('').join(' ').toLowerCase();
-
-        placementStyles[enumValue] = GSStyleInt.fromMap(
-          data: data![key],
-          descendantStyle: descendantStyle,
-          fromVariant: true,
-        );
-      }
-    }
-
-    return GSPlacement(styles: placementStyles);
-  }
-}
-
-class GSSpace {
-  Map<GSSpaces, GSStyleInt?> styles;
-  GSSpace({this.styles = const {}});
-
-  factory GSSpace.fromMap({
-    required Map<String, dynamic>? data,
-    List<String> descendantStyle = const [],
-  }) {
-    var spaceStyles = <GSSpaces, GSStyleInt?>{};
-    for (GSSpaces enumValue in GSSpaces.values) {
-      //cuz of $ sign
-      var key = enumValue.name.substring(1);
-
-      if (data?[key] is Map<String, dynamic> &&
-          (data?.containsKey(key) ?? false)) {
-        spaceStyles[enumValue] = GSStyleInt.fromMap(
-          data: data![key],
-          descendantStyle: descendantStyle,
-          fromVariant: true,
-        );
-      }
-    }
-
-    return GSSpace(styles: spaceStyles);
-  }
-}
-
-class GSSize {
-  Map<GSSizes, GSStyleInt?> styles;
-  GSSize({this.styles = const {}});
-
-  factory GSSize.fromMap({
-    required Map<String, dynamic>? data,
-    List<String> descendantStyle = const [],
-  }) {
-    var sizeStyles = <GSSizes, GSStyleInt?>{};
-    for (GSSizes enumValue in GSSizes.values) {
-      //cuz of $ sign
-      var key = enumValue.name.substring(1);
-
-      if (data?[key] is Map<String, dynamic> &&
-          (data?.containsKey(key) ?? false)) {
-        //to handle edge case where values were being list n stuff
-
-        sizeStyles[enumValue] = GSStyleInt.fromMap(
-          data: data![key],
-          descendantStyle: descendantStyle,
-          fromVariant: true,
-        );
-      }
-    }
-    return GSSize(styles: sizeStyles);
-  }
-
-  GSSize merge(GSSize? overrideSize) {
-    var mergedStyles = Map.of(styles);
-    if (overrideSize?.styles != null) {
-      for (var entry in overrideSize!.styles.entries) {
-        mergedStyles[entry.key] = entry.value;
-      }
-    }
-
-    return GSSize(styles: mergedStyles);
-  }
-}
-
-class Variants {
-  GSVariant? variant;
-  GSSize? size;
-  GSAction? action;
-  GSSpace? space;
-  //try to make these properties of heading into a single class
-  GSStyleInt? highlight;
-  GSStyleInt? sub;
-  GSOrientation? orientation;
-  GSPlacement? placements;
-  Variants({
-    this.variant,
-    this.size,
-    this.action,
-    this.space,
-    this.sub,
-    this.highlight,
-    this.placements,
-    this.orientation,
-  });
-
-  factory Variants.fromMap({
-    required Map<String, dynamic>? data,
-    List<String> descendantStyle = const [],
-  }) {
-    return Variants(
-      size:
-          GSSize.fromMap(data: data?['size'], descendantStyle: descendantStyle),
-      variant: GSVariant.fromMap(
-          data: data?['variant'], descendantStyle: descendantStyle),
-      action: GSAction.fromMap(
-          data: data?['action'], descendantStyle: descendantStyle),
-      space: GSSpace.fromMap(
-        data: data?['space'],
-      ),
-      sub: GSStyleInt.fromMap(
-          data: data?['sub']?['true'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      highlight: GSStyleInt.fromMap(
-          data: data?['highlight']?['true'],
-          descendantStyle: descendantStyle,
-          fromVariant: true),
-      placements: GSPlacement.fromMap(data: data?['placement']),
-      orientation: GSOrientation.fromMap(data: data?['orientation']),
-    );
-  }
-}
-
-/*
-
-after adding decdent style check need for textStyle
-
-*/
-//TODO: add font family support later on, context accordion theme config
-class GSStyle extends BaseStyle<GSStyle> {
+class GSStyleInt extends BaseStyle<GSStyleInt> {
   double? borderWidth;
-  Color? borderColor;
+  String? borderColor;
   double? borderRadius;
   EdgeInsetsGeometry? padding;
   EdgeInsetsGeometry? margin;
   double? opacity;
-  Color? color;
-  Color? bg;
+  String? color;
+  String? bg;
   double? gap;
-  Color? borderBottomColor;
+  String? borderBottomColor;
   double? height;
   double? width;
   double? borderBottomWidth;
   double? borderLeftWidth;
   TextStyle? textStyle;
-  GSStyle? checked;
+  GSStyleInt? checked;
   Variants? variants;
   GSProps? props;
-  Map<String, GSStyle?>? descendantStyles;
+  Map<String, GSStyleInt?>? descendantStyles;
   GSFlexDirections? flexDirection;
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
@@ -367,20 +35,20 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? right;
   double? left;
 
-  Color? progressValueColor;
+  String? progressValueColor;
   //for splash n highlight for pressable
-  // Color? highlightColor;
-  // Color? splashColor;
+  // String? highlightColor;
+  // String? splashColor;
   GSStyleInt? badge;
   GSTextTransform? textTransform;
   GSSizes? iconSize;
 
   //switch props
-  Color? trackColorTrue;
-  Color? trackColorFalse;
-  Color? thumbColor;
-  Color? activeThumbColor;
-  Color? iosBackgroundColor;
+  String? trackColorTrue;
+  String? trackColorFalse;
+  String? thumbColor;
+  String? activeThumbColor;
+  String? iosBackgroundColor;
   double? scale;
   GSCursors? cursors;
   GSPlacement? placement;
@@ -388,24 +56,24 @@ class GSStyle extends BaseStyle<GSStyle> {
   bool? isVisible;
   Axis? direction;
   double? outlineWidth;
-  Color? outlineColor;
+  String? outlineColor;
   GSOutlineStyle? outlineStyle;
-  Map<String, GSStyle>? compoundVariants;
+  Map<String, GSStyleInt>? compoundVariants;
 
   double indent;
   double endIndent;
 
   //Accordion
-  Color? iconColor;
+  String? iconColor;
   GSStyleInt? item;
-  Color? shadowColor;
+  String? shadowColor;
   double? shadowRadius;
   double? shadowOpacity;
   double? elevation;
   ShadowOffset? shadowOffset;
   TextAlign? textAlign;
 
-  GSStyle({
+  GSStyleInt({
     this.borderWidth,
     this.borderColor,
     this.borderRadius,
@@ -482,17 +150,12 @@ class GSStyle extends BaseStyle<GSStyle> {
   });
 
   @override
-  copy() {
-    return this;
-  }
-
-  @override
   merge(overrideStyle, {List<String> descendantStyleKeys = const []}) {
-    return GSStyle(
+    return GSStyleInt(
         borderColor: overrideStyle?.borderColor ?? borderColor,
         borderRadius: overrideStyle?.borderRadius ?? borderRadius,
         borderWidth: overrideStyle?.borderWidth ?? borderWidth,
-        color: overrideStyle?.color ?? color,
+        color: overrideStyle?.color ?? props?.style?.color.toString() ?? color,
         bg: overrideStyle?.bg ?? bg,
         margin: overrideStyle?.margin ?? margin,
         borderBottomColor:
@@ -512,7 +175,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         //         styleMap: descendantStyles,
         //         overrideStyleMap: overrideStyle?.descendantStyles,
         //         keys: descendantStyleKeys),
-        descendantStyles: mergeStyledMaps(
+        descendantStyles: mergeStyledMapsForInternalStyle(
           styleMap: descendantStyles,
           overrideStyleMap: overrideStyle?.descendantStyles,
           keys: descendantStyleKeys,
@@ -628,157 +291,16 @@ class GSStyle extends BaseStyle<GSStyle> {
         ));
   }
 
-
-  factory GSStyle.fromGSStyleInt(GSStyleInt styleInt, BuildContext context) {
-    return GSStyle(
-      borderWidth: styleInt.borderWidth,
-      borderColor: _convertStringToColor(styleInt.borderColor, context),
-      borderRadius: styleInt.borderRadius,
-      padding: styleInt.padding,
-      margin: styleInt.margin,
-      opacity: styleInt.opacity,
-      color: _convertStringToColor(styleInt.color, context),
-      bg: _convertStringToColor(styleInt.bg, context),
-      gap: styleInt.gap,
-      borderBottomColor:
-          _convertStringToColor(styleInt.borderBottomColor, context),
-      height: styleInt.height,
-      width: styleInt.width,
-      borderBottomWidth: styleInt.borderBottomWidth,
-      borderLeftWidth: styleInt.borderLeftWidth,
-      textStyle: styleInt.textStyle,
-      checked: styleInt.checked != null
-          ? GSStyle.fromGSStyleInt(styleInt.checked!, context)
-          : null,
-      variants: styleInt.variants,
-      props: styleInt.props,
-      flexDirection: styleInt.flexDirection,
-      alignItems: styleInt.alignItems,
-      justifyContent: styleInt.justifyContent,
-      maxWidth: styleInt.maxWidth,
-      alignment: styleInt.alignment,
-      top: styleInt.top,
-      bottom: styleInt.bottom,
-      right: styleInt.right,
-      left: styleInt.left,
-      progressValueColor:
-          _convertStringToColor(styleInt.progressValueColor, context),
-      badge: styleInt.badge ,
-      textTransform: styleInt.textTransform,
-      iconSize: styleInt.iconSize,
-      trackColorTrue: _convertStringToColor(styleInt.trackColorTrue, context),
-      trackColorFalse: _convertStringToColor(styleInt.trackColorFalse, context),
-      thumbColor: _convertStringToColor(styleInt.thumbColor, context),
-      activeThumbColor:
-          _convertStringToColor(styleInt.activeThumbColor, context),
-      iosBackgroundColor:
-          _convertStringToColor(styleInt.iosBackgroundColor, context),
-      scale: styleInt.scale,
-      cursors: styleInt.cursors,
-      placement: styleInt.placement,
-      isVisible: styleInt.isVisible,
-      direction: styleInt.direction,
-      outlineWidth: styleInt.outlineWidth,
-      outlineColor: _convertStringToColor(styleInt.outlineColor, context),
-      outlineStyle: styleInt.outlineStyle,
-      indent: styleInt.indent,
-      endIndent: styleInt.endIndent,
-      iconColor: _convertStringToColor(styleInt.iconColor, context),
-      item: styleInt.item,
-      shadowColor: _convertStringToColor(styleInt.shadowColor, context),
-      shadowRadius: styleInt.shadowRadius,
-      shadowOpacity: styleInt.shadowOpacity,
-      elevation: styleInt.elevation,
-      shadowOffset: styleInt.shadowOffset,
-      textAlign: styleInt.textAlign,
-      android: styleInt.android != null
-          ? GSStyle.fromGSStyleInt(styleInt.android!, context)
-          : null,
-      dark: styleInt.dark != null
-          ? GSStyle.fromGSStyleInt(styleInt.dark!, context)
-          : null,
-      icon: styleInt.icon != null
-          ? GSStyle.fromGSStyleInt(styleInt.icon!, context)
-          : null,
-      input: styleInt.input != null
-          ? GSStyle.fromGSStyleInt(styleInt.input!, context)
-          : null,
-      ios: styleInt.ios != null
-          ? GSStyle.fromGSStyleInt(styleInt.ios!, context)
-          : null,
-      lg: styleInt.lg != null
-          ? GSStyle.fromGSStyleInt(styleInt.lg!, context)
-          : null,
-      md: styleInt.md != null
-          ? GSStyle.fromGSStyleInt(styleInt.md!, context)
-          : null,
-      onActive: styleInt.onActive != null
-          ? GSStyle.fromGSStyleInt(styleInt.onActive!, context)
-          : null,
-      onDisabled: styleInt.onDisabled != null
-          ? GSStyle.fromGSStyleInt(styleInt.onDisabled!, context)
-          : null,
-      onFocus: styleInt.onFocus != null
-          ? GSStyle.fromGSStyleInt(styleInt.onFocus!, context)
-          : null,
-      onHover: styleInt.onHover != null
-          ? GSStyle.fromGSStyleInt(styleInt.onHover!, context)
-          : null,
-      onInvalid: styleInt.onInvalid != null
-          ? GSStyle.fromGSStyleInt(styleInt.onInvalid!, context)
-          : null,
-      sm: styleInt.sm != null
-          ? GSStyle.fromGSStyleInt(styleInt.sm!, context)
-          : null,
-      web: styleInt.web != null
-          ? GSStyle.fromGSStyleInt(styleInt.web!, context)
-          : null,
-      xs: styleInt.xs != null
-          ? GSStyle.fromGSStyleInt(styleInt.xs!, context)
-          : null,
-    );
-  }
-
-  static Color? _convertStringToColor(
-      String? inputColor, BuildContext context) {
-     Color? resolvedColor;
-
-     if(inputColor==null){
-      return null;
-     }
-
-    Color parseColor(String colorString) {
-      String hexColor = colorString.split('(0x')[1].split(')')[0];
-
-      //main stuff
-      int value = int.parse(hexColor, radix: 16);
-
-      return Color(value);
-    }
-
-    if (inputColor.contains('0xff')) {
-      //i.e. color from token most likely or smthin
-      resolvedColor = parseColor(inputColor);
-    } else {
-    // theme clr
-    resolvedColor = getColorMap(context)[inputColor];
-    }
-
-    //default color is transparent if unresolved!
-    resolvedColor ??= const Color.fromARGB(0, 255, 0, 0);
-
-    return resolvedColor;
-  }
-
-  factory GSStyle.fromMap({
+  factory GSStyleInt.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
     bool fromVariant = false,
   }) {
-    return GSStyle(
-      descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
+    // print(data?['_content']);
+    return GSStyleInt(
+      descendantStyles: resolvedescendantStylesFromMapForInternalStyle(data, descendantStyle),
       compoundVariants:
-          resolveCompoundVariants(compoundVariants: data?['compoundVariants']),
+          resolveCompoundVariantsForInteralStyle(compoundVariants: data?['compoundVariants']),
       flexDirection: resolveFlexDirectionFromString(data?['flexDirection']),
       height: data?['h'] is int
           ? double.parse('${data?['h']}.0')
@@ -792,15 +314,13 @@ class GSStyle extends BaseStyle<GSStyle> {
                   ? double.tryParse(data['w']?.replaceAll('%', ''))! / 100
                   : resolveSpaceFromString(data['w'] ?? data['width'])
           : resolveSpaceFromString(data?['w'] ?? data?['width']),
-      badge: GSStyleInt.fromMap(
-        data: {
-          'height': resolveSpaceFromString(
-            data?['_badge']?['h'],
-          ),
-          'width': resolveSpaceFromString(
-            data?['_badge']?['w'],
-          ),
-        },
+      badge: GSStyleInt(
+        height: resolveSpaceFromString(
+          data?['_badge']?['h'],
+        ),
+        width: resolveSpaceFromString(
+          data?['_badge']?['w'],
+        ),
       ),
       textTransform: resolveTextTransformFromString(data?['textTransform']),
       maxWidth: data?['maxWidth'] != null
@@ -880,8 +400,8 @@ class GSStyle extends BaseStyle<GSStyle> {
             data?['color']),
       ),
 
-      color: resolveColorFromString(data?['color']),
-      bg: resolveColorFromString(
+      color: resolveColorFromString2(data?['color']),
+      bg: resolveColorFromString2(
         data?['bg'] ??
             data?['_item']?['backgroundColor'] ??
             data?['backgroundColor'],
@@ -892,7 +412,7 @@ class GSStyle extends BaseStyle<GSStyle> {
           : null,
       gap: resolveSpaceFromString(
           data?['gap'] ?? data?['_avatar']?['ml'].toString()),
-      borderColor: resolveColorFromString(data?['borderColor']),
+      borderColor: resolveColorFromString2(data?['borderColor']),
       borderRadius: data?['borderRadius'] != null
           ? double.tryParse(data!['borderRadius'].toString()) ??
               resolveRadiusFromString(data['borderRadius'].toString())
@@ -905,24 +425,23 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderLeftWidth: data?['borderLeftWidth'] != null
           ? resolveBorderWidthFromString(data?['borderLeftWidth'].toString())
           : null,
-      item: GSStyleInt.fromMap(
-        data: {
-          'bg': resolveColorFromString(data?['_item']?['backgroundColor']),
-        },
+      item: GSStyleInt(
+        bg: resolveColorFromString2(data?['_item']?['backgroundColor']),
       ),
       shadowOffset: ShadowOffset.fromJson(data: data?['shadowOffset']),
-      checked: GSStyle(
+      checked: GSStyleInt(
         thumbColor:
-            resolveColorFromString(data?[':checked']?['props']?['thumbColor']),
-        color: resolveColorFromString(data?[':checked']?['color']),
-        bg: resolveColorFromString(data?[':checked']?['bg']),
-        borderColor: resolveColorFromString(data?[':checked']?['borderColor']),
-        onHover: GSStyle(
-          color: resolveColorFromString(data?[':checked']?[':hover']?['color']),
+            resolveColorFromString2(data?[':checked']?['props']?['thumbColor']),
+        color: resolveColorFromString2(data?[':checked']?['color']),
+        bg: resolveColorFromString2(data?[':checked']?['bg']),
+        borderColor: resolveColorFromString2(data?[':checked']?['borderColor']),
+        onHover: GSStyleInt(
+          color:
+              resolveColorFromString2(data?[':checked']?[':hover']?['color']),
         ),
       ),
-      onHover: GSStyle(
-        color: resolveColorFromString(data?[':hover']?['color']),
+      onHover: GSStyleInt(
+        color: resolveColorFromString2(data?[':hover']?['color']),
         textStyle: TextStyle(
           decoration: resolveTextDecorationFromString(
               data?[':hover']?['textDecorationLine']),
@@ -930,171 +449,172 @@ class GSStyle extends BaseStyle<GSStyle> {
         // checked: GSStyle(
         //     color:
         //         resolveColorFromString(data?[':hover']?[':checked']?['color'])),
-        bg: resolveColorFromString(data?[':hover']?['bg']),
-        borderColor: resolveColorFromString(data?[':hover']?['borderColor']),
+        bg: resolveColorFromString2(data?[':hover']?['bg']),
+        borderColor: resolveColorFromString2(data?[':hover']?['borderColor']),
         borderBottomColor:
-            resolveColorFromString(data?[':hover']?['borderColor']),
-        trackColorTrue: resolveColorFromString(
+            resolveColorFromString2(data?[':hover']?['borderColor']),
+        trackColorTrue: resolveColorFromString2(
             data?[':hover']?['props']?['trackColor']?['true']),
-        trackColorFalse: resolveColorFromString(
+        trackColorFalse: resolveColorFromString2(
             data?[':hover']?['props']?['trackColor']?['false']),
 
-        iosBackgroundColor: resolveColorFromString(
+        iosBackgroundColor: resolveColorFromString2(
             data?[':hover']?['props']?['ios_backgroundColor']),
-        onInvalid: GSStyle(
-          borderColor: resolveColorFromString(
+        onInvalid: GSStyleInt(
+          borderColor: resolveColorFromString2(
               data?[':hover']?['invalid']?['borderColor']),
-          trackColorTrue: resolveColorFromString(
+          trackColorTrue: resolveColorFromString2(
               data?[':hover']?[':invalid']?['props']?['trackColor']?['true']),
-          trackColorFalse: resolveColorFromString(
+          trackColorFalse: resolveColorFromString2(
               data?[':hover']?[':invalid']?['props']?['trackColor']?['false']),
         ),
-        onDisabled: GSStyle(
-          bg: resolveColorFromString(data?[':hover']?[':disabled']?['bg']),
-          onInvalid: GSStyle(
-            borderColor: resolveColorFromString(
+        onDisabled: GSStyleInt(
+          bg: resolveColorFromString2(data?[':hover']?[':disabled']?['bg']),
+          onInvalid: GSStyleInt(
+            borderColor: resolveColorFromString2(
               data?[':hover']?[':disabled']?[':invalid']?['borderColor'],
             ),
           ),
         ),
-        checked: GSStyle(
-          onHover: GSStyle(
-            color: resolveColorFromString(data?[':checked']?[':hover']
+        checked: GSStyleInt(
+          onHover: GSStyleInt(
+            color: resolveColorFromString2(data?[':checked']?[':hover']
                     ?['color'] ??
                 data?[':hover']?[':checked']?['color']),
           ),
-          bg: resolveColorFromString(
+          bg: resolveColorFromString2(
               data?[':hover']?[':checked']?['bg'] ?? data?[':hover']?['bg']),
-          borderColor: resolveColorFromString(data?[':hover']?[':checked']
+          borderColor: resolveColorFromString2(data?[':hover']?[':checked']
                   ?['borderColor'] ??
               data?[':hover']?['borderColor']),
-          color: resolveColorFromString(data?[':hover']?[':checked']?['color']),
-          onDisabled: GSStyle(
-            bg: resolveColorFromString(
+          color:
+              resolveColorFromString2(data?[':hover']?[':checked']?['color']),
+          onDisabled: GSStyleInt(
+            bg: resolveColorFromString2(
                 data?[':hover']?[':checked']?[':disabled']?['bg']),
-            borderColor: resolveColorFromString(
+            borderColor: resolveColorFromString2(
                 data?[':hover']?[':checked']?[':disabled']?['borderColor']),
-            onInvalid: GSStyle(
-                borderColor: resolveColorFromString(data?[':hover']?[':checked']
-                    ?[':disabled']?['invalid']?['borderColor'])),
+            onInvalid: GSStyleInt(
+                borderColor: resolveColorFromString2(data?[':hover']
+                    ?[':checked']?[':disabled']?['invalid']?['borderColor'])),
           ),
         ),
       ),
-      onFocus: GSStyle(
+      onFocus: GSStyleInt(
         borderColor: kIsWeb
-            ? resolveColorFromString(data?['_web']?[':focusVisible']
+            ? resolveColorFromString2(data?['_web']?[':focusVisible']
                     ?['outlineColor'] ??
                 data?[':focus']?['borderColor'])
-            : resolveColorFromString(data?[':focus']?['borderColor']),
+            : resolveColorFromString2(data?[':focus']?['borderColor']),
         borderWidth: kIsWeb
             ? resolveSpaceFromString(
                 data?['_web']?[':focusVisible']?['outlineWidth'].toString())
             : null,
-        bg: resolveColorFromString(data?[':focus']?['bg']),
+        bg: resolveColorFromString2(data?[':focus']?['bg']),
         borderBottomColor:
-            resolveColorFromString(data?[':focus']?['borderBottomColor']),
-        onHover: GSStyle(
-          borderBottomColor: resolveColorFromString(
+            resolveColorFromString2(data?[':focus']?['borderBottomColor']),
+        onHover: GSStyleInt(
+          borderBottomColor: resolveColorFromString2(
             data?[':focus']?[':hover']?['borderColor'],
           ),
         ),
       ),
-      onActive: GSStyle(
-        color: resolveColorFromString(data?[':active']?['color']),
-        bg: resolveColorFromString(data?[':active']?['bg']),
-        borderColor: resolveColorFromString(data?[':active']?['borderColor']),
+      onActive: GSStyleInt(
+        color: resolveColorFromString2(data?[':active']?['color']),
+        bg: resolveColorFromString2(data?[':active']?['bg']),
+        borderColor: resolveColorFromString2(data?[':active']?['borderColor']),
         borderBottomColor:
-            resolveColorFromString(data?[':active']?['borderBottomColor']),
-        checked: GSStyle(
-          bg: resolveColorFromString(data?[':active']?[":checked"]?['bg']),
-          borderColor: resolveColorFromString(
+            resolveColorFromString2(data?[':active']?['borderBottomColor']),
+        checked: GSStyleInt(
+          bg: resolveColorFromString2(data?[':active']?[":checked"]?['bg']),
+          borderColor: resolveColorFromString2(
               data?[':active']?[":checked"]?['borderColor']),
         ),
-        onInvalid: GSStyle(
-          borderColor: resolveColorFromString(
+        onInvalid: GSStyleInt(
+          borderColor: resolveColorFromString2(
               data?[':active']?[":invalid"]?['borderColor']),
         ),
       ),
-      onInvalid: GSStyle(
+      onInvalid: GSStyleInt(
         textStyle: TextStyle(
           color: resolveColorFromString(data?[':invalid']?['color']),
         ),
-        bg: resolveColorFromString(data?[':invalid']?['bg']),
-        borderColor: resolveColorFromString(data?['variants']?['variant']
+        bg: resolveColorFromString2(data?[':invalid']?['bg']),
+        borderColor: resolveColorFromString2(data?['variants']?['variant']
                 ?['default']?[':invalid']?['borderColor'] ??
             data?[':invalid']?['borderColor']),
         borderBottomColor:
-            resolveColorFromString(data?[':invalid']?['borderBottomColor']),
+            resolveColorFromString2(data?[':invalid']?['borderBottomColor']),
         borderRadius: data?[':invalid']?['borderRadius'] != null
             ? double.tryParse(data![':invalid']!['borderRadius']!.toString())
             : null,
         borderWidth: data?[':invalid']?['borderWidth'] != null
             ? double.tryParse(data![':invalid']!['borderWidth']!.toString())
             : null,
-        onHover: GSStyle(
-          borderColor: resolveColorFromString(
+        onHover: GSStyleInt(
+          borderColor: resolveColorFromString2(
               data?[':invalid']?[':hover']?['borderColor']),
-          borderBottomColor: resolveColorFromString(
+          borderBottomColor: resolveColorFromString2(
               data?[':invalid']?[':hover']?['borderBottomColor']),
         ),
-        onFocus: GSStyle(
-          borderColor: resolveColorFromString(
+        onFocus: GSStyleInt(
+          borderColor: resolveColorFromString2(
               data?[':invalid']?[':focus']?['borderColor']),
-          borderBottomColor: resolveColorFromString(
+          borderBottomColor: resolveColorFromString2(
               data?[':invalid']?[':focus']?['borderBottomColor']),
         ),
-        onDisabled: GSStyle(
-          borderColor: resolveColorFromString(
+        onDisabled: GSStyleInt(
+          borderColor: resolveColorFromString2(
               data?[':invalid']?[':disabled']?[':hover']?['borderColor']),
-          borderBottomColor: resolveColorFromString(
+          borderBottomColor: resolveColorFromString2(
               data?[':invalid']?[':disabled']?[':hover']?['borderBottomColor']),
         ),
       ),
-      onDisabled: GSStyle(
+      onDisabled: GSStyleInt(
         opacity: data?[':disabled']?['opacity'],
         textStyle: TextStyle(
           color: resolveColorFromString(data?[':disabled']?['color']),
         ),
-        web: GSStyle(
+        web: GSStyleInt(
           cursors:
               resolveCursorFromString(data?[':disabled']?['_web']?['cursor']),
-          onDisabled: GSStyle(
+          onDisabled: GSStyleInt(
             cursors: resolveCursorFromString(
                 data?[':disabled']?['_web']?[':disabled']?['cursor']),
           ),
         ),
         trackColorTrue:
-            resolveColorFromString(data?[':disabled']?['trackColor']?['true']),
-        trackColorFalse:
-            resolveColorFromString(data?[':disabled']?['trackColor']?['false']),
+            resolveColorFromString2(data?[':disabled']?['trackColor']?['true']),
+        trackColorFalse: resolveColorFromString2(
+            data?[':disabled']?['trackColor']?['false']),
         iosBackgroundColor:
-            resolveColorFromString(data?[':disabled']?['ios_backgroundColor']),
+            resolveColorFromString2(data?[':disabled']?['ios_backgroundColor']),
         borderColor: data?[':disabled']?['borderColor'],
-        onInvalid: GSStyle(
+        onInvalid: GSStyleInt(
             borderColor: data?[':disabled']?['invalid']?['borderColor']),
-        onHover: GSStyle(
-          borderColor: resolveColorFromString(
+        onHover: GSStyleInt(
+          borderColor: resolveColorFromString2(
             data?[':disabled']?[':hover']?['borderColor'],
           ),
-          trackColorTrue: resolveColorFromString(
+          trackColorTrue: resolveColorFromString2(
               data?[':disabled']?[':hover']?['props']?['trackColor']?['true']),
-          trackColorFalse: resolveColorFromString(
+          trackColorFalse: resolveColorFromString2(
               data?[':disabled']?[':hover']?['props']?['trackColor']['false']),
         ),
       ),
-      dark: GSStyle(
-        iconColor: resolveColorFromString(
+      dark: GSStyleInt(
+        iconColor: resolveColorFromString2(
           data?['_icon']?['_dark']?['color'] ??
               data?['_selectedIcon']?['_dark']?['color'] ??
               data?['_unselectedIcon']?['_dark']?['color'],
         ),
-        item: GSStyleInt.fromMap(data: {
-          'bg': resolveColorFromString(
+        item: GSStyleInt(
+          bg: resolveColorFromString2(
               data?['_dark']?['_item']?['backgroundColor']),
-        }),
-        web: GSStyle(
-          onFocus: GSStyle(
-            outlineColor: resolveColorFromString(
+        ),
+        web: GSStyleInt(
+          onFocus: GSStyleInt(
+            outlineColor: resolveColorFromString2(
                 data?['_web']?[':focus']?['_dark']?['outlineColor']),
             outlineWidth:
                 data?['_web']?[':focus']?['_dark']?['outlineWidth'] != null
@@ -1108,7 +628,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                 outlineStyle: data?['outlineStyle']),
           ),
         ),
-        color: resolveColorFromString((data?['_dark']?['color'])),
+        color: resolveColorFromString2((data?['_dark']?['color'])),
         textStyle: TextStyle(
           fontWeight: resolveFontWeightFromString(data?['fontWeight']),
           color: resolveColorFromString(data?['_text']?['_dark']?['color'] ??
@@ -1116,146 +636,146 @@ class GSStyle extends BaseStyle<GSStyle> {
               data?['_unselectedLabelText']?['_dark']?['color'] ??
               data?['_dark']?['color']),
         ),
-        borderColor: resolveColorFromString(data?['_dark']?['borderColor']),
-        bg: resolveColorFromString(data?['_dark']?['bg'] ??
+        borderColor: resolveColorFromString2(data?['_dark']?['borderColor']),
+        bg: resolveColorFromString2(data?['_dark']?['bg'] ??
             data?['_dark']?['_item']?['backgroundColor'] ??
             data?['_dark']?['backgroundColor']),
-        onActive: GSStyle(
-          bg: resolveColorFromString(data?['_dark']?[':active']?['bg']),
-          borderColor: resolveColorFromString(
+        onActive: GSStyleInt(
+          bg: resolveColorFromString2(data?['_dark']?[':active']?['bg']),
+          borderColor: resolveColorFromString2(
               data?['_dark']?[':active']?['borderColor']),
-          borderBottomColor: resolveColorFromString(
+          borderBottomColor: resolveColorFromString2(
               data?['_dark']?[':active']?['borderBottomColor']),
-          checked: GSStyle(
-            bg: resolveColorFromString(
+          checked: GSStyleInt(
+            bg: resolveColorFromString2(
                 data?['_dark']?[':active']?[":checked"]?['bg']),
-            borderColor: resolveColorFromString(
+            borderColor: resolveColorFromString2(
                 data?['_dark']?[':active']?[":checked"]?['borderColor']),
           ),
-          onInvalid: GSStyle(
-            borderColor: resolveColorFromString(
+          onInvalid: GSStyleInt(
+            borderColor: resolveColorFromString2(
                 data?['_dark']?[':active']?[":invalid"]?['borderColor']),
           ),
         ),
-        checked: GSStyle(
+        checked: GSStyleInt(
             color:
-                resolveColorFromString(data?['_dark']?[':checked']?['color']),
-            onHover: GSStyle(
-                color: resolveColorFromString(
+                resolveColorFromString2(data?['_dark']?[':checked']?['color']),
+            onHover: GSStyleInt(
+                color: resolveColorFromString2(
                     data?['_dark']?[':checked']?[':hover']?['color']))),
-        onHover: GSStyle(
-            color: resolveColorFromString(data?['_dark']?[':hover']?['color']),
-            trackColorTrue: resolveColorFromString(
+        onHover: GSStyleInt(
+            color: resolveColorFromString2(data?['_dark']?[':hover']?['color']),
+            trackColorTrue: resolveColorFromString2(
                 data?['_dark']?[':hover']?['props']?['trackColor']?['true']),
-            trackColorFalse: resolveColorFromString(
+            trackColorFalse: resolveColorFromString2(
                 data?['_dark']?[':hover']?['props']?['trackColor']?['false']),
-            iosBackgroundColor: resolveColorFromString(
+            iosBackgroundColor: resolveColorFromString2(
                 data?['_dark']?[':hover']?['props']?['ios_backgroundColor']),
-            checked: GSStyle(
-              color: resolveColorFromString(
+            checked: GSStyleInt(
+              color: resolveColorFromString2(
                   data?['_dark']?[':hover']?[':checked']?['color']),
-              bg: resolveColorFromString(
+              bg: resolveColorFromString2(
                   data?['_dark']?[':hover']?[':checked']?['bg']),
-              borderColor: resolveColorFromString(
+              borderColor: resolveColorFromString2(
                   data?['_dark']?[':hover']?[':checked']?['borderColor']),
-              onDisabled: GSStyle(
-                bg: resolveColorFromString(data?['_dark']?[':hover']
+              onDisabled: GSStyleInt(
+                bg: resolveColorFromString2(data?['_dark']?[':hover']
                     ?[':checked']?[':disabled']?['bg']),
-                borderColor: resolveColorFromString(data?['_dark']?[':hover']
+                borderColor: resolveColorFromString2(data?['_dark']?[':hover']
                     ?[':checked']?[':disabled']?['borderColor']),
-                onInvalid: GSStyle(
-                  borderColor: resolveColorFromString(data?['_dark']?[':hover']
+                onInvalid: GSStyleInt(
+                  borderColor: resolveColorFromString2(data?['_dark']?[':hover']
                       ?[':checked']?[':disabled']?['borderColor']),
                 ),
               ),
             ),
-            borderColor: resolveColorFromString(
+            borderColor: resolveColorFromString2(
                 data?['_dark']?[':hover']?['borderColor']),
-            bg: resolveColorFromString(data?['_dark']?[':hover']?['bg']),
-            onInvalid: GSStyle(
-              trackColorTrue: resolveColorFromString(data?['_dark']?[':hover']
+            bg: resolveColorFromString2(data?['_dark']?[':hover']?['bg']),
+            onInvalid: GSStyleInt(
+              trackColorTrue: resolveColorFromString2(data?['_dark']?[':hover']
                   ?[':invalid']?['props']?['trackColor']?['true']),
-              trackColorFalse: resolveColorFromString(data?['_dark']?[':hover']
+              trackColorFalse: resolveColorFromString2(data?['_dark']?[':hover']
                   ?[':invalid']?['props']?['trackColor']?['false']),
             )),
-        onFocus: GSStyle(
+        onFocus: GSStyleInt(
           borderColor: kIsWeb
-              ? resolveColorFromString(
+              ? resolveColorFromString2(
                   data?['_web']?[':focusVisible']?['_dark']?['outlineColor'])
-              : resolveColorFromString(
+              : resolveColorFromString2(
                   data?['_dark']?[':focus']?['borderColor']),
           borderWidth: kIsWeb
               ? resolveSpaceFromString(
                   data?['_web']?[':focusVisible']?['outlineWidth'].toString())
               : null,
-          onHover: GSStyle(
-            borderColor: resolveColorFromString(
+          onHover: GSStyleInt(
+            borderColor: resolveColorFromString2(
                 data?['_dark']?[':focus']?[':hover']?['borderColor']),
           ),
         ),
-        onDisabled: GSStyle(
-          borderColor: resolveColorFromString(
+        onDisabled: GSStyleInt(
+          borderColor: resolveColorFromString2(
               data?['_dark']?[':disabled']?['borderColor']),
-          trackColorTrue: resolveColorFromString(
+          trackColorTrue: resolveColorFromString2(
               data?['_dark']?[':disabled']?['trackColor']?['true']),
-          trackColorFalse: resolveColorFromString(
+          trackColorFalse: resolveColorFromString2(
               data?['_dark']?[':disabled']?['trackColor']?['false']),
-          iosBackgroundColor: resolveColorFromString(
+          iosBackgroundColor: resolveColorFromString2(
               data?['_dark']?[':disabled']?['ios_backgroundColor']),
           opacity: data?['_dark']?[':disabled']?['opacity'],
           textStyle: TextStyle(
             color:
                 resolveColorFromString(data?[':disabled']?['_dark']?['color']),
           ),
-          web: GSStyle(
+          web: GSStyleInt(
             cursors: resolveCursorFromString(
                 data?['_dark']?[':disabled']?['_web']?['cursor']),
-            onDisabled: GSStyle(
+            onDisabled: GSStyleInt(
               cursors: resolveCursorFromString(data?['_dark']?[':disabled']
                   ?['_web']?[':disabled']?['cursor']),
             ),
           ),
-          onHover: GSStyle(
-            borderColor: resolveColorFromString(
+          onHover: GSStyleInt(
+            borderColor: resolveColorFromString2(
                 data?['_dark']?[':disabled']?[':hover']?['borderColor']),
-            trackColorTrue: resolveColorFromString(data?['_dark']?[':disabled']
+            trackColorTrue: resolveColorFromString2(data?['_dark']?[':disabled']
                 ?[':hover']?[':props']?['trackColor']?['true']),
-            trackColorFalse: resolveColorFromString(data?['_dark']?[':disabled']
-                ?[':hover']?[':props']?['trackColor']?['false']),
+            trackColorFalse: resolveColorFromString2(data?['_dark']
+                ?[':disabled']?[':hover']?[':props']?['trackColor']?['false']),
           ),
         ),
-        onInvalid: GSStyle(
+        onInvalid: GSStyleInt(
           textStyle: TextStyle(
             color:
                 resolveColorFromString(data?[':invalid']?['_dark']?['color']),
           ),
-          bg: resolveColorFromString(data?['_dark']?[':invalid']?['bg']),
+          bg: resolveColorFromString2(data?['_dark']?[':invalid']?['bg']),
           borderRadius: data?['_dark']?[':invalid']?['borderRadius'] != null
               ? double.tryParse(data![':invalid']!['borderRadius']!.toString())
               : null,
           borderWidth: data?['_dark']?[':invalid']?['borderWidth'] != null
               ? double.tryParse(data![':invalid']!['borderWidth']!.toString())
               : null,
-          borderColor: resolveColorFromString(
+          borderColor: resolveColorFromString2(
               data?['_dark']?[':invalid']?['borderColor']),
-          borderBottomColor: resolveColorFromString(
+          borderBottomColor: resolveColorFromString2(
               data?['_dark']?[':invalid']?['borderBottomColor']),
-          onHover: GSStyle(
-            borderColor: resolveColorFromString(
+          onHover: GSStyleInt(
+            borderColor: resolveColorFromString2(
                 data?['_dark']?[':invalid']?[':hover']?['borderColor']),
-            borderBottomColor: resolveColorFromString(
+            borderBottomColor: resolveColorFromString2(
                 data?['_dark']?[':invalid']?[':hover']?['borderBottomColor']),
           ),
-          onFocus: GSStyle(
-            borderColor: resolveColorFromString(
+          onFocus: GSStyleInt(
+            borderColor: resolveColorFromString2(
                 data?['_dark']?[':invalid']?[':focus']?['borderColor']),
-            borderBottomColor: resolveColorFromString(
+            borderBottomColor: resolveColorFromString2(
                 data?['_dark']?[':invalid']?[':focus']?['borderBottomColor']),
           ),
-          onDisabled: GSStyle(
-            borderColor: resolveColorFromString(data?['_dark']?[':invalid']
+          onDisabled: GSStyleInt(
+            borderColor: resolveColorFromString2(data?['_dark']?[':invalid']
                 ?[':disabled']?[':hover']?['borderColor']),
-            borderBottomColor: resolveColorFromString(data?['_dark']
+            borderBottomColor: resolveColorFromString2(data?['_dark']
                 ?[':invalid']?[':disabled']?[':hover']?['borderBottomColor']),
           ),
         ),
@@ -1279,33 +799,33 @@ class GSStyle extends BaseStyle<GSStyle> {
       ///aaa
       trackColorTrue:
           data?['props'] != null && data?['props']?['trackColor'] != null
-              ? resolveColorFromString(data?['props']?['trackColor']?['true'])
+              ? resolveColorFromString2(data?['props']?['trackColor']?['true'])
               : null,
       trackColorFalse:
           data?['props'] != null && data?['props']?['trackColor'] != null
-              ? resolveColorFromString(data?['props']?['trackColor']?['false'])
+              ? resolveColorFromString2(data?['props']?['trackColor']?['false'])
               : null,
       thumbColor:
           data?['props'] != null && data?['props']?['thumbColor'] != null
-              ? resolveColorFromString(data?['props']?['thumbColor'])
+              ? resolveColorFromString2(data?['props']?['thumbColor'])
               : null,
       activeThumbColor:
           data?['props'] != null && data?['props']?['activeThumbColor'] != null
-              ? resolveColorFromString(data?['props']?['activeThumbColor'])
+              ? resolveColorFromString2(data?['props']?['activeThumbColor'])
               : null,
       iosBackgroundColor: data?['props'] != null &&
               data?['props']?['ios_backgroundColor'] != null
-          ? resolveColorFromString(data?['props']?['ios_backgroundColor'])
+          ? resolveColorFromString2(data?['props']?['ios_backgroundColor'])
           : null,
       scale: data?['transform'] != null
           ? (data?['transform'].first as Map).isNotEmpty
               ? (data?['transform'].first as Map)['scale']
               : null
           : null,
-      iconColor: resolveColorFromString(
+      iconColor: resolveColorFromString2(
         data?['_icon']?['color'] ?? data?['_selectedIcon']?['color'],
       ),
-      shadowColor: resolveColorFromString(data?['shadowColor']),
+      shadowColor: resolveColorFromString2(data?['shadowColor']),
       shadowRadius: data?['shadowRadius'] != null
           ? double.tryParse(data!['shadowRadius'].toString())
           : null,
@@ -1370,5 +890,11 @@ class GSStyle extends BaseStyle<GSStyle> {
         variants!.placements!.styles;
 
     return placementMap[gsPlacements];
+  }
+
+  @override
+  GSStyleInt copy() {
+    // TODO: implement copy
+    throw UnimplementedError();
   }
 }

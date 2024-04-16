@@ -15,12 +15,19 @@ import 'package:go_router/go_router.dart';
 import '../widgets/components/widgets/public.dart';
 import '../widgets/storybook/widgets/public.dart';
 
+late Function updaterFunc;
+
+GoRouter ree(Function input) {
+  updaterFunc = input;
+  return router;
+}
+
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const HomePage();
+        return HomePage(updaterFunc: updaterFunc);
       },
       routes: <RouteBase>[
         GoRoute(

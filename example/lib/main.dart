@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
@@ -20,6 +19,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  GSThemes currentTheme = GSThemes.light;
   @override
   Widget build(BuildContext context) {
     return GluestackProvider(
@@ -40,16 +40,22 @@ class _MyAppState extends State<MyApp> {
       child: Consumer(
         builder: (context, ref, child) {
           final GSThemeMode? currentThemeMode = ref.watch(toggleThemeProvider);
+          // MaterialApp(darkTheme: ThemeData,)
 
-          return GSApp.router(
-            debugShowCheckedModeBanner: false,
-            color: $GSColors.primary500,
-            routerConfig: router,
-            themeMode: currentThemeMode,
-            darkTheme: GSThemeData(
-              brightness: Brightness.dark,
+          return GSTheme(
+            data: GSThemeData.fromTheme(GSThemes.light),
+            child: GSApp.router(
+              debugShowCheckedModeBanner: false,
+              color: $GSColors.primary500,
+              routerConfig: ree((GSThemes newTheme) {
+                setState(() {
+                  currentTheme = newTheme;
+                });
+              }),
+              theme: GSThemeData.fromTheme(currentTheme),
+              // darkTheme: GSThemeData.fromTheme(GSThemes.dark),
+              // themeMode: GSThemeMode.system,
             ),
-            theme: GSThemeData(),
           );
         },
       ),

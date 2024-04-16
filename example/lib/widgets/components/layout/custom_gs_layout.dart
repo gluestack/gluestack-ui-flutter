@@ -19,9 +19,9 @@ class CustomGSLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: GSLayout(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
-          ),
+          // style: GSStyle(
+          //   dark: GSStyle(bg: $GSColors.black),
+          // ),
           floatingActionButton: floatingActionButton,
           body: GSVStack(
             children: [
@@ -60,7 +60,7 @@ class CustomAppBar extends StatelessWidget {
           !hideBackButton
               ? IconButton(
                   icon: const Icon(Icons.arrow_back),
-                  color: GSTheme.of(context).brightness == Brightness.dark
+                  color: GSTheme.of(context).theme == GSThemes.light
                       ? $GSColors.white
                       : null,
                   onPressed: () {

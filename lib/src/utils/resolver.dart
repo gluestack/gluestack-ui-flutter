@@ -1,3 +1,4 @@
+import 'package:gluestack_ui/src/style/gs_internal_style.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 
 bool parseMap(Map<dynamic, dynamic>? data) {
@@ -38,6 +39,26 @@ Map<String, GSStyle?> mergeStyledMaps({
   return mergedStyleMap;
 }
 
+Map<String, GSStyleInt?> mergeStyledMapsForInternalStyle({
+  required Map<String, GSStyleInt?>? styleMap,
+  required Map<String, GSStyleInt?>? overrideStyleMap,
+  required List<String> keys,
+}) {
+  Map<String, GSStyleInt?> mergedStyleMap = {};
+  styleMap?.forEach((key, value) {
+    mergedStyleMap[key] = value;
+  });
+  overrideStyleMap?.forEach((key, value) {
+    if (mergedStyleMap.containsKey(key) && value != null) {
+      mergedStyleMap[key] = mergedStyleMap[key]?.merge(value) ?? value;
+    } else {
+      mergedStyleMap[key] = value;
+    }
+  });
+
+  return mergedStyleMap;
+}
+
 Map<String, GSStyle>? resolvedescendantStylesFromMap(
     Map<String, dynamic>? data, List<String> descendantStyles) {
   if (descendantStyles.isEmpty || data == null) {
@@ -46,6 +67,19 @@ Map<String, GSStyle>? resolvedescendantStylesFromMap(
   Map<String, GSStyle> descendantStylesMap = {};
   for (var element in descendantStyles) {
     descendantStylesMap[element] = GSStyle.fromMap(data: data[element]);
+  }
+  return descendantStylesMap;
+}
+
+
+Map<String, GSStyleInt>? resolvedescendantStylesFromMapForInternalStyle(
+    Map<String, dynamic>? data, List<String> descendantStyles) {
+  if (descendantStyles.isEmpty || data == null) {
+    return null;
+  }
+  Map<String, GSStyleInt> descendantStylesMap = {};
+  for (var element in descendantStyles) {
+    descendantStylesMap[element] = GSStyleInt.fromMap(data: data[element]);
   }
   return descendantStylesMap;
 }
@@ -61,6 +95,20 @@ Color? resolveColorFromString(String? color) {
     return const Color(0xFFFFFFFF); // white
   }
   return $GSColors.colorMap[color.substring(1)];
+}
+
+String? resolveColorFromString2(String? color) {
+  if (color == null) {
+    return null;
+  }
+    if (color.contains("transparent")) {
+    return 'transparent'; //transparent
+  }
+  if (color.contains("white")) {
+    return 'white'; // white
+  }
+
+  return color.substring(1); //get rid of $
 }
 
 double? resolveRadiusFromString(String? radius) {
@@ -439,6 +487,20 @@ Map<String, GSStyle>? resolveCompoundVariants(
     final keyName = resolveActionFromString(element['action']).toString() +
         resolveVariantFromString(element['variant']).toString();
     resolvedCompoundVariants[keyName] = GSStyle.fromMap(data: element['value']);
+  }
+  return resolvedCompoundVariants;
+}
+
+Map<String, GSStyleInt>? resolveCompoundVariantsForInteralStyle(
+    {required List<Map<String, dynamic>>? compoundVariants}) {
+  if (compoundVariants == null || compoundVariants.isEmpty) {
+    return null;
+  }
+  final Map<String, GSStyleInt> resolvedCompoundVariants = {};
+  for (var element in compoundVariants) {
+    final keyName = resolveActionFromString(element['action']).toString() +
+        resolveVariantFromString(element['variant']).toString();
+    resolvedCompoundVariants[keyName] = GSStyleInt.fromMap(data: element['value']);
   }
   return resolvedCompoundVariants;
 }

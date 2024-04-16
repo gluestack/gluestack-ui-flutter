@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/provider/provider.dart';
+import 'package:gluestack_ui/src/style/gs_internal_style.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 
@@ -47,7 +48,7 @@ GSStyle? resolveStylesDeprecated(
   Map<String, GSStyle?>? descendantStyles,
   List<String> descendantStyleKeys = const [],
 }) {
-  final isDarkTheme = GSTheme.of(context).brightness == Brightness.dark;
+  final isDarkTheme = GSTheme.of(context).theme == GSThemes.dark;
 
   GSStyle? temp = variantStyle != null
       ? variantStyle.merge(inlineStyle,
@@ -155,18 +156,24 @@ GSStyle? resolveStylesDeprecated(
 //Refactored style, replace the above with this
 GSStyle resolveStyles(
     {required BuildContext context,
-    List<GSStyle?> styles = const [],
+    List styles = const [],
     GSStyle? inlineStyle,
     bool isFirst = false}) {
-  final isDarkTheme = GSTheme.of(context).brightness == Brightness.dark;
+  final isDarkTheme = GSTheme.of(context).theme == GSThemes.dark;
   final isHovered = GSStyleBuilderProvider.hoverStatus(context);
   final isFocused = GSStyleBuilderProvider.focusedStatus(context);
 
   final isActive = GSStyleBuilderProvider.activeStatus(context);
   final isDisabled = GSStyleBuilderProvider.disabledStatus(context);
   GSStyle? currentGSStyle = GSStyle();
-  for (var style in styles) {
-    currentGSStyle = currentGSStyle?.merge(style);
+ for (var style in styles) {
+  // Checking which style object is present and merging with conversion if needed
+    if (style is GSStyleInt) {
+      currentGSStyle =
+          currentGSStyle?.merge(GSStyle.fromGSStyleInt(style, context));
+    } else {
+      currentGSStyle = currentGSStyle?.merge(style);
+    }
   }
 
   // addded this so that all the default values will be unpacked like hover ,focus etc
