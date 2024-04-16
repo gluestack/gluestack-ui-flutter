@@ -19,9 +19,9 @@ class CustomGSLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: GSLayout(
-          style: GSStyle(
-            dark: GSStyle(bg: $GSColors.black),
-          ),
+          // style: GSStyle(
+          //   dark: GSStyle(bg: $GSColors.black),
+          // ),
           floatingActionButton: floatingActionButton,
           body: GSVStack(
             children: [

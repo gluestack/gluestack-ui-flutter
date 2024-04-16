@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
@@ -21,9 +23,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return CustomGSLayout(
       title: 'Gluestack UI examples',
-      style: GSStyle(
-        dark: GSStyle(bg: $GSColors.black),
-      ),
+      // style: GSStyle(
+      //   dark: GSStyle(bg: $GSColors.black),
+      // ),
       hideBackButton: true,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -212,11 +214,9 @@ class _HomePageState extends State<HomePage> {
           return FloatingActionButton(
             onPressed: () {
               // ref.read(toggleThemeProvider.notifier).toggleThemeMode;
-              if (GSTheme.of(context).theme == GSThemes.dark) {
-                updaterFunc(GSThemes.light);
-              } else {
-                updaterFunc(GSThemes.dark);
-              }
+
+              updaterFunc(GSThemes.values[Random().nextInt(5)]);
+
               print('c t: ${GSTheme.of(context).theme}');
               print('p 500: ${GSTheme.of(context).primary500}');
             },
