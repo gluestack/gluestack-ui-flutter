@@ -282,9 +282,9 @@ class GSThemeData {
   }
 }
 
-
-Map themeColorMap({required BuildContext context}) {
+Map themeColorMap(context) {
   final mapp = {
+    ...$GSColors.colorMap,
     'transparent': const Color.fromARGB(0, 0, 0, 0),
     'white': const Color(0xffffffff),
     'black': const Color(0xff000000),
@@ -312,7 +312,6 @@ Map themeColorMap({required BuildContext context}) {
     'secondary800': GSTheme.of(context).secondary800,
     'secondary900': GSTheme.of(context).secondary900,
     'secondary950': GSTheme.of(context).secondary950,
-    ...$GSColors.colorMap,
   };
 
   return mapp;

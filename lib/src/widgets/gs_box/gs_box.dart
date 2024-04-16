@@ -72,6 +72,8 @@ class GSBox extends StatelessWidget {
       inlineStyle: style,
     );
 
+    // print('bg box: ${styler.bg} | ${styler.bg?.getColor(context)}');
+
     return Visibility(
       visible: styler.isVisible ?? true,
       child: Container(
@@ -96,6 +98,7 @@ class GSBox extends StatelessWidget {
         //     : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
         decoration: BoxDecoration(
           color:
+              //  GSTheme.of(context).primary500 ??
               styler.bg?.getColor(context) ?? styler.color?.getColor(context),
           borderRadius: BorderRadius.circular(
               style != null ? style!.borderRadius ?? 0 : 0),
