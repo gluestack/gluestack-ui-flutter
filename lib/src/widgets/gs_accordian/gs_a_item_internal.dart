@@ -144,7 +144,8 @@ class GSAccordionItemInternal extends StatelessWidget {
                           Expanded(
                             child: GSAccordionTitle(
                               text: title.text,
-                              style: GSStyle.fromGSStyle(headerStylef, context),
+                              style: GSStyle.fromGSConfigStyle(
+                                  headerStylef, context),
                             ),
                           ),
                           isExpanded && !isDisabled && showSuffixIcon!

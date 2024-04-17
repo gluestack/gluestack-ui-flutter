@@ -97,7 +97,7 @@ class GSHeader extends StatelessWidget {
     }
 
     return GSBox(
-        style: GSStyle.fromGSStyle(styler, context),
+        style: GSStyle.fromGSConfigStyle(styler, context),
         boxShadow: boxShadow,
         child: NavigationToolbar(
           leading: Padding(padding: minPaddingForLeading!, child: leading),

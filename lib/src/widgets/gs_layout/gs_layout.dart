@@ -25,7 +25,7 @@ class GSLayout extends StatelessWidget {
     );
 
     return GSBox(
-      style: GSStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSConfigStyle(styler, context),
       child: floatingActionButton != null
           ? Stack(
               fit: StackFit.expand,

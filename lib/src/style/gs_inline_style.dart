@@ -251,7 +251,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         ));
   }
 
-  static GSStyle fromGSStyle(GSConfigStyle styler, BuildContext context) {
+  static GSStyle fromGSConfigStyle(GSConfigStyle styler, BuildContext context) {
     Color? parseColor(String? colorString) {
       return colorString?.getColor(context);
     }
@@ -306,33 +306,44 @@ class GSStyle extends BaseStyle<GSStyle> {
       elevation: styler.elevation,
       shadowOffset: styler.shadowOffset,
       textAlign: styler.textAlign,
-      dark: styler.dark != null ? fromGSStyle(styler.dark!, context) : null,
-      android:
-          styler.android != null ? fromGSStyle(styler.android!, context) : null,
-      ios: styler.ios != null ? fromGSStyle(styler.ios!, context) : null,
-      web: styler.web != null ? fromGSStyle(styler.web!, context) : null,
-      sm: styler.sm != null ? fromGSStyle(styler.sm!, context) : null,
-      md: styler.md != null ? fromGSStyle(styler.md!, context) : null,
-      lg: styler.lg != null ? fromGSStyle(styler.lg!, context) : null,
-      xs: styler.xs != null ? fromGSStyle(styler.xs!, context) : null,
-      icon: styler.icon != null ? fromGSStyle(styler.icon!, context) : null,
-      input: styler.input != null ? fromGSStyle(styler.input!, context) : null,
-      badge: styler.badge != null ? fromGSStyle(styler.badge!, context) : null,
-      item: styler.item != null ? fromGSStyle(styler.item!, context) : null,
-      checked:
-          styler.checked != null ? fromGSStyle(styler.checked!, context) : null,
-      onActive: styler.onActive != null
-          ? fromGSStyle(styler.onActive!, context)
+      dark:
+          styler.dark != null ? fromGSConfigStyle(styler.dark!, context) : null,
+      android: styler.android != null
+          ? fromGSConfigStyle(styler.android!, context)
           : null,
-      onFocus:
-          styler.onFocus != null ? fromGSStyle(styler.onFocus!, context) : null,
-      onHover:
-          styler.onHover != null ? fromGSStyle(styler.onHover!, context) : null,
+      ios: styler.ios != null ? fromGSConfigStyle(styler.ios!, context) : null,
+      web: styler.web != null ? fromGSConfigStyle(styler.web!, context) : null,
+      sm: styler.sm != null ? fromGSConfigStyle(styler.sm!, context) : null,
+      md: styler.md != null ? fromGSConfigStyle(styler.md!, context) : null,
+      lg: styler.lg != null ? fromGSConfigStyle(styler.lg!, context) : null,
+      xs: styler.xs != null ? fromGSConfigStyle(styler.xs!, context) : null,
+      icon:
+          styler.icon != null ? fromGSConfigStyle(styler.icon!, context) : null,
+      input: styler.input != null
+          ? fromGSConfigStyle(styler.input!, context)
+          : null,
+      badge: styler.badge != null
+          ? fromGSConfigStyle(styler.badge!, context)
+          : null,
+      item:
+          styler.item != null ? fromGSConfigStyle(styler.item!, context) : null,
+      checked: styler.checked != null
+          ? fromGSConfigStyle(styler.checked!, context)
+          : null,
+      onActive: styler.onActive != null
+          ? fromGSConfigStyle(styler.onActive!, context)
+          : null,
+      onFocus: styler.onFocus != null
+          ? fromGSConfigStyle(styler.onFocus!, context)
+          : null,
+      onHover: styler.onHover != null
+          ? fromGSConfigStyle(styler.onHover!, context)
+          : null,
       onInvalid: styler.onInvalid != null
-          ? fromGSStyle(styler.onInvalid!, context)
+          ? fromGSConfigStyle(styler.onInvalid!, context)
           : null,
       onDisabled: styler.onDisabled != null
-          ? fromGSStyle(styler.onDisabled!, context)
+          ? fromGSConfigStyle(styler.onDisabled!, context)
           : null,
     );
   }

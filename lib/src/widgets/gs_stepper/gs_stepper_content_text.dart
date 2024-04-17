@@ -31,7 +31,7 @@ class GSStepperContent extends StatelessWidget {
 
     return GSText(
       text: text,
-      style: GSStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSConfigStyle(styler, context),
     );
   }
 }

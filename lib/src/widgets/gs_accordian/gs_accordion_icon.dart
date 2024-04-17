@@ -83,7 +83,7 @@ class GSAccordionIcon extends StatelessWidget {
     return GSIcon(
       icon: icon,
       size: conv(styler.iconSize ?? styler.props?.size) ?? size,
-      style: GSStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSConfigStyle(styler, context),
       fill: fill,
       grade: grade,
       opticalSize: opticalSize,

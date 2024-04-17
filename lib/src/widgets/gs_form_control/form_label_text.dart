@@ -29,7 +29,7 @@ class GSFormLabelText extends StatelessWidget {
               GSText(
                 text: text,
                 size: size,
-                style: GSStyle.fromGSStyle(styler, context),
+                style: GSStyle.fromGSConfigStyle(styler, context),
               ),
               const SizedBox(width: 2),
               GSText(
@@ -42,7 +42,7 @@ class GSFormLabelText extends StatelessWidget {
           )
         : GSText(
             text: text,
-            style: GSStyle.fromGSStyle(styler, context),
+            style: GSStyle.fromGSConfigStyle(styler, context),
           );
   }
 }

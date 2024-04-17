@@ -23,7 +23,7 @@ class GSToastTitle extends StatelessWidget {
 
     return GSText(
       text: title,
-      style: GSStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSConfigStyle(styler, context),
     );
   }
 }

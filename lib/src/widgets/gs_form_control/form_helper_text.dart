@@ -20,7 +20,7 @@ class GSFormHelperText extends StatelessWidget {
     return GSText(
       text: text,
       size: size,
-      style: GSStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSConfigStyle(styler, context),
     );
   }
 }

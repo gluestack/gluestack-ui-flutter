@@ -119,7 +119,7 @@ class GSAccordionTitle extends StatelessWidget {
     return GSText(
       text: text,
       size: size.toGSSize,
-      style: GSStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSConfigStyle(styler, context),
       locale: locale,
       maxLines: maxLines,
       overflow: overflow,

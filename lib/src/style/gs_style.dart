@@ -629,110 +629,98 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
         ));
   }
 
-  factory GSConfigStyle.fromGlueStyle(GSStyle glueStyle) {
+  factory GSConfigStyle.fromGSStyle(GSStyle gsStyle) {
     return GSConfigStyle(
-      borderWidth: glueStyle.borderWidth,
-      borderColor: glueStyle.borderColor?.toString(),
-      borderRadius: glueStyle.borderRadius,
-      padding: glueStyle.padding,
-      margin: glueStyle.margin,
-      opacity: glueStyle.opacity,
-      color: glueStyle.color?.toString(),
-      bg: glueStyle.bg?.toString(),
-      gap: glueStyle.gap,
-      borderBottomColor: glueStyle.borderBottomColor?.toString(),
-      height: glueStyle.height,
-      width: glueStyle.width,
-      borderBottomWidth: glueStyle.borderBottomWidth,
-      borderLeftWidth: glueStyle.borderLeftWidth,
-      textStyle: glueStyle.textStyle,
-      flexDirection: glueStyle.flexDirection,
-      alignItems: glueStyle.alignItems,
-      justifyContent: glueStyle.justifyContent,
-      maxWidth: glueStyle.maxWidth,
-      alignment: glueStyle.alignment,
-      top: glueStyle.top,
-      bottom: glueStyle.bottom,
-      right: glueStyle.right,
-      left: glueStyle.left,
-      progressValueColor: glueStyle.progressValueColor?.toString(),
-      textTransform: glueStyle.textTransform,
-      iconSize: glueStyle.iconSize,
-      trackColorTrue: glueStyle.trackColorTrue?.toString(),
-      trackColorFalse: glueStyle.trackColorFalse?.toString(),
-      thumbColor: glueStyle.thumbColor?.toString(),
-      activeThumbColor: glueStyle.activeThumbColor?.toString(),
-      iosBackgroundColor: glueStyle.iosBackgroundColor?.toString(),
-      scale: glueStyle.scale,
-      cursors: glueStyle.cursors,
-      placement: glueStyle.placement,
-      isVisible: glueStyle.isVisible,
-      direction: glueStyle.direction,
-      outlineWidth: glueStyle.outlineWidth,
-      outlineColor: glueStyle.outlineColor?.toString(),
-      outlineStyle: glueStyle.outlineStyle,
-      indent: glueStyle.indent,
-      endIndent: glueStyle.endIndent,
-      iconColor: glueStyle.iconColor?.toString(),
-      shadowColor: glueStyle.shadowColor?.toString(),
-      shadowRadius: glueStyle.shadowRadius,
-      shadowOpacity: glueStyle.shadowOpacity,
-      elevation: glueStyle.elevation,
-      shadowOffset: glueStyle.shadowOffset,
-      textAlign: glueStyle.textAlign,
-      dark: glueStyle.dark != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.dark!)
+      borderWidth: gsStyle.borderWidth,
+      borderColor: gsStyle.borderColor?.toString(),
+      borderRadius: gsStyle.borderRadius,
+      padding: gsStyle.padding,
+      margin: gsStyle.margin,
+      opacity: gsStyle.opacity,
+      color: gsStyle.color?.toString(),
+      bg: gsStyle.bg?.toString(),
+      gap: gsStyle.gap,
+      borderBottomColor: gsStyle.borderBottomColor?.toString(),
+      height: gsStyle.height,
+      width: gsStyle.width,
+      borderBottomWidth: gsStyle.borderBottomWidth,
+      borderLeftWidth: gsStyle.borderLeftWidth,
+      textStyle: gsStyle.textStyle,
+      flexDirection: gsStyle.flexDirection,
+      alignItems: gsStyle.alignItems,
+      justifyContent: gsStyle.justifyContent,
+      maxWidth: gsStyle.maxWidth,
+      alignment: gsStyle.alignment,
+      top: gsStyle.top,
+      bottom: gsStyle.bottom,
+      right: gsStyle.right,
+      left: gsStyle.left,
+      progressValueColor: gsStyle.progressValueColor?.toString(),
+      textTransform: gsStyle.textTransform,
+      iconSize: gsStyle.iconSize,
+      trackColorTrue: gsStyle.trackColorTrue?.toString(),
+      trackColorFalse: gsStyle.trackColorFalse?.toString(),
+      thumbColor: gsStyle.thumbColor?.toString(),
+      activeThumbColor: gsStyle.activeThumbColor?.toString(),
+      iosBackgroundColor: gsStyle.iosBackgroundColor?.toString(),
+      scale: gsStyle.scale,
+      cursors: gsStyle.cursors,
+      placement: gsStyle.placement,
+      isVisible: gsStyle.isVisible,
+      direction: gsStyle.direction,
+      outlineWidth: gsStyle.outlineWidth,
+      outlineColor: gsStyle.outlineColor?.toString(),
+      outlineStyle: gsStyle.outlineStyle,
+      indent: gsStyle.indent,
+      endIndent: gsStyle.endIndent,
+      iconColor: gsStyle.iconColor?.toString(),
+      shadowColor: gsStyle.shadowColor?.toString(),
+      shadowRadius: gsStyle.shadowRadius,
+      shadowOpacity: gsStyle.shadowOpacity,
+      elevation: gsStyle.elevation,
+      shadowOffset: gsStyle.shadowOffset,
+      textAlign: gsStyle.textAlign,
+      dark: gsStyle.dark != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.dark!)
           : null,
-      android: glueStyle.android != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.android!)
+      android: gsStyle.android != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.android!)
           : null,
-      ios: glueStyle.ios != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.ios!)
+      ios: gsStyle.ios != null ? GSConfigStyle.fromGSStyle(gsStyle.ios!) : null,
+      web: gsStyle.web != null ? GSConfigStyle.fromGSStyle(gsStyle.web!) : null,
+      sm: gsStyle.sm != null ? GSConfigStyle.fromGSStyle(gsStyle.sm!) : null,
+      md: gsStyle.md != null ? GSConfigStyle.fromGSStyle(gsStyle.md!) : null,
+      lg: gsStyle.lg != null ? GSConfigStyle.fromGSStyle(gsStyle.lg!) : null,
+      xs: gsStyle.xs != null ? GSConfigStyle.fromGSStyle(gsStyle.xs!) : null,
+      icon: gsStyle.icon != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.icon!)
           : null,
-      web: glueStyle.web != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.web!)
+      input: gsStyle.input != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.input!)
           : null,
-      sm: glueStyle.sm != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.sm!)
+      badge: gsStyle.badge != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.badge!)
           : null,
-      md: glueStyle.md != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.md!)
+      item: gsStyle.item != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.item!)
           : null,
-      lg: glueStyle.lg != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.lg!)
+      checked: gsStyle.checked != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.checked!)
           : null,
-      xs: glueStyle.xs != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.xs!)
+      onActive: gsStyle.onActive != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.onActive!)
           : null,
-      icon: glueStyle.icon != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.icon!)
+      onFocus: gsStyle.onFocus != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.onFocus!)
           : null,
-      input: glueStyle.input != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.input!)
+      onHover: gsStyle.onHover != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.onHover!)
           : null,
-      badge: glueStyle.badge != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.badge!)
+      onInvalid: gsStyle.onInvalid != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.onInvalid!)
           : null,
-      item: glueStyle.item != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.item!)
-          : null,
-      checked: glueStyle.checked != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.checked!)
-          : null,
-      onActive: glueStyle.onActive != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.onActive!)
-          : null,
-      onFocus: glueStyle.onFocus != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.onFocus!)
-          : null,
-      onHover: glueStyle.onHover != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.onHover!)
-          : null,
-      onInvalid: glueStyle.onInvalid != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.onInvalid!)
-          : null,
-      onDisabled: glueStyle.onDisabled != null
-          ? GSConfigStyle.fromGlueStyle(glueStyle.onDisabled!)
+      onDisabled: gsStyle.onDisabled != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.onDisabled!)
           : null,
     );
   }

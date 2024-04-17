@@ -66,7 +66,7 @@ class GSModalBottomSheet {
       barrierLabel: barrierLabel ?? " ",
       backgroundColor: backgroundColor,
       shape: shape,
-      style: style != null ? GSStyle.fromGSStyle(style, context) : null,
+      style: style != null ? GSStyle.fromGSConfigStyle(style, context) : null,
       borderRadius: borderRadius,
       boxShadow: boxShadow,
       clipBehavior: clipBehavior,

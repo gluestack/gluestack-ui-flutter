@@ -177,7 +177,7 @@ GSConfigStyle resolveStyles(
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'md' && isMediumScreen(context)) {
@@ -185,14 +185,14 @@ GSConfigStyle resolveStyles(
 
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'lg' && isLargeScreen(context)) {
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'sm' && isSmallScreen(context)) {
@@ -200,14 +200,14 @@ GSConfigStyle resolveStyles(
 
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'xs' && isBaseScreen(context)) {
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
 
@@ -215,14 +215,14 @@ GSConfigStyle resolveStyles(
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'ios' && defaultTargetPlatform == TargetPlatform.iOS) {
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'android' &&
@@ -230,35 +230,35 @@ GSConfigStyle resolveStyles(
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'onHover' && isHovered) {
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'onFocus' && isFocused) {
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'onActive' && isActive) {
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
         if (key == 'onDisabled' && isDisabled) {
           currentGSStyle = currentGSStyle?.merge(value);
           GSConfigStyle? nestedStyle = resolveStyles(
               context: context,
-              inlineStyle: GSStyle.fromGSStyle(value, context));
+              inlineStyle: GSStyle.fromGSConfigStyle(value, context));
           currentGSStyle = currentGSStyle?.merge(nestedStyle);
         }
       }
@@ -267,20 +267,20 @@ GSConfigStyle resolveStyles(
 
   inlineStyle != null
       ? currentGSStyle =
-          currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(inlineStyle))
+          currentGSStyle?.merge(GSConfigStyle.fromGSStyle(inlineStyle))
       : null;
   inlineStyle?.contextStyles.forEach((key, value) {
     if (value != null) {
       if (key == 'dark' && isDarkTheme) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
       if (key == 'md' && isMediumScreen(context)) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
 
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
@@ -288,21 +288,21 @@ GSConfigStyle resolveStyles(
       }
       if (key == 'lg' && isLargeScreen(context)) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
       if (key == 'sm' && isSmallScreen(context)) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
       if (key == 'xs' && isBaseScreen(context)) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
@@ -310,28 +310,28 @@ GSConfigStyle resolveStyles(
 
       if (key == 'web' && kIsWeb) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
       if (key == 'ios' && defaultTargetPlatform == TargetPlatform.iOS) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
       if (key == 'android' && defaultTargetPlatform == TargetPlatform.android) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
       if (key == 'onHover' && isHovered) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
@@ -339,21 +339,21 @@ GSConfigStyle resolveStyles(
 
       if (key == 'onFocus' && isFocused) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
       if (key == 'onActive' && isActive) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
       }
       if (key == 'onDisabled' && isDisabled) {
         currentGSStyle =
-            currentGSStyle?.merge(GSConfigStyle.fromGlueStyle(value));
+            currentGSStyle?.merge(GSConfigStyle.fromGSStyle(value));
         GSConfigStyle? nestedStyle =
             resolveStyles(context: context, inlineStyle: value);
         currentGSStyle = currentGSStyle?.merge(nestedStyle);
