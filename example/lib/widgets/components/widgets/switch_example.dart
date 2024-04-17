@@ -40,8 +40,8 @@ class _SwitchExampleState extends State<SwitchExample> {
             GSSwitch(
                 size: GSSwitchSizes.\$md,
                 isDisabled: false,
-                style: GlueStyle(
-                  checked: GlueStyle(
+                style: GSStyle(
+                  checked: GSStyle(
                     thumbColor: Colors.grey,
                     activeThumbColor: Colors.blue,
                   ),

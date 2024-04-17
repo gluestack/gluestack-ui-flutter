@@ -52,7 +52,7 @@ class _AvatarExampleState extends State<AvatarExample> {
         GSAvatar(
             radius: GSAvatarRadius.\$full,
             size: GSAvatarSizes.\$md,
-            style: GlueStyle(
+            style: GSStyle(
               bg: Colors.orange,
               textStyle: const TextStyle(color: Colors.white),
             ),

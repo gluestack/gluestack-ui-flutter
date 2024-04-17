@@ -19,7 +19,7 @@ class AccordionDisabledPreview extends StatelessWidget {
           isCollapsible: true,
           suffixIconWhenTileExpanded: GSAccordionIcon(icon: Icons.remove),
           suffixIconWhenTileCollapsed: GSAccordionIcon(icon: Icons.add),
-          // style: GlueStyle(bg: $GSColors.amber400),
+          // style: GSStyle(bg: $GSColors.amber400),
           itemPadding: EdgeInsets.all(5),
 
           children: [

@@ -81,13 +81,13 @@ class _FormExampleState extends State<FormExample> {
                   GSInput(
                     initialValue: "GlueStacky",
                     hintText: 'Enter your username here... | Ex. John Doe',
-                    style: GlueStyle(height: 70),
+                    style: GSStyle(height: 70),
                   ),
                   sp2,
                   GSFormLabelText('Password'),
                   sp,
                   GSInput(
-                    style: GlueStyle(height: 80),
+                    style: GSStyle(height: 80),
                     obscureText: true,
                     hintText: 'Enter you password here...',
                     validator: (input) {
@@ -115,7 +115,7 @@ class _FormExampleState extends State<FormExample> {
                   sp,
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style: GlueStyle(
+                      style: GSStyle(
                           margin:  EdgeInsets.only(right: $GSSpace.$2)),
                       child:  GSCheckBoxIcon(),
                     ),
@@ -126,7 +126,7 @@ class _FormExampleState extends State<FormExample> {
                   sp,
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style: GlueStyle(
+                      style: GSStyle(
                           margin:  EdgeInsets.only(right: $GSSpace.$2)),
                       child:  GSCheckBoxIcon(),
                     ),
@@ -137,7 +137,7 @@ class _FormExampleState extends State<FormExample> {
                   sp,
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style: GlueStyle(
+                      style: GSStyle(
                           margin:  EdgeInsets.only(right: $GSSpace.$2)),
                       child:  GSCheckBoxIcon(),
                     ),
@@ -148,7 +148,7 @@ class _FormExampleState extends State<FormExample> {
                   sp,
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style: GlueStyle(
+                      style: GSStyle(
                           margin:  EdgeInsets.only(right: $GSSpace.$2)),
                       child:  GSCheckBoxIcon(),
                     ),
@@ -170,7 +170,7 @@ class _FormExampleState extends State<FormExample> {
                     },
                     icon:  GSRadioIcon<Value>(),
                     label:  GSRadioText<Value>(text: 'Capitalist'),
-                    style: GlueStyle(
+                    style: GSStyle(
                         margin:  EdgeInsets.only(right: $GSSpace.$2)),
                   ),
                   sp,
@@ -184,7 +184,7 @@ class _FormExampleState extends State<FormExample> {
                     },
                     icon:  GSRadioIcon<Value>(),
                     label:  GSRadioText<Value>(text: 'Communist'),
-                    style: GlueStyle(
+                    style: GSStyle(
                         margin:  EdgeInsets.only(right: $GSSpace.$2)),
                   ),
                   sp2,
@@ -240,7 +240,7 @@ class _FormExampleState extends State<FormExample> {
                 const GSInput(
                   // initialValue: "GlueStacky",
                   hintText: 'Enter your username here... | Ex. John Doe',
-                  // style: GlueStyle(height: 70),
+                  // style: GSStyle(height: 70),
                 ),
                 sp2,
                 const GSFormLabelText('Password'),

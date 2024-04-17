@@ -33,7 +33,7 @@ class NavButton extends StatelessWidget {
     );
 
     // return GSButton(
-    //   style: GlueStyle(
+    //   style: GSStyle(
     //     padding: const EdgeInsets.symmetric(horizontal: 10),
     //   ),
     //   variant: GSVariants.link,
@@ -43,7 +43,7 @@ class NavButton extends StatelessWidget {
     //   },
     //   child: GSButtonText(
     //     text: title,
-    //     style: GlueStyle(dark: GlueStyle(color: Colors.blue)),
+    //     style: GSStyle(dark: GSStyle(color: Colors.blue)),
     //   ),
     // );
   }

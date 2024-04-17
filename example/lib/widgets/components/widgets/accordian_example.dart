@@ -106,7 +106,7 @@ GSAccordion(
           type: selectedTypeOption,
           isCollapsible: isCollapsible,
           isDisabled: isDisabled,
-          // style: GlueStyle(bg: $GSColors.amber400),
+          // style: GSStyle(bg: $GSColors.amber400),
           // itemPadding: EdgeInsets.all(12),
           // showSuffixIcon: false,
           // prefixIconPadding: EdgeInsets.only(right: 0),

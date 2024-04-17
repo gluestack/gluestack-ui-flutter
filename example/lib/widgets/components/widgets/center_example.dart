@@ -10,12 +10,12 @@ class CenterExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var code = '''
         GSCenter(
-              style: GlueStyle(
+              style: GSStyle(
                 alignItems: GSAlignments.end,
                 justifyContent: GSAlignments.start,
                 height: 150,
                 bg: Colors.pink,
-                md: GlueStyle(bg: Colors.yellow, dark: GlueStyle(bg: Colors.orange)),
+                md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
               ),
               child: const GSCenter(child: Text('Testing Center Widget')),
          )

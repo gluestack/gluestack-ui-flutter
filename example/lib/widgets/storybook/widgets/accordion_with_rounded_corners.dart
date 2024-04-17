@@ -19,7 +19,7 @@ class AccordionWithRoundedCornersPreview extends StatelessWidget {
           isCollapsible: true,
           prefixIconWhenTileExapanded: GSAccordionIcon(icon: Icons.remove),
           prefixIconWhenTileCollapsed: GSAccordionIcon(icon: Icons.add),
-          // style: GlueStyle(bg: $GSColors.amber400),
+          // style: GSStyle(bg: $GSColors.amber400),
           itemPadding: EdgeInsets.all(12),
 
           children: [

@@ -11,10 +11,10 @@ class PressableExample extends StatelessWidget {
     var code = '''
             GSPressable(
                 hitSlop: 10,
-                style: GlueStyle(
+                style: GSStyle(
                   bg: Colors.yellow,
-                  onHover: GlueStyle(bg: Colors.green),
-                  onFocus: GlueStyle(borderColor: Colors.red, borderWidth: 10),
+                  onHover: GSStyle(bg: Colors.green),
+                  onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
                 ),
                 onPress: () {
                   print('Pressed!');
@@ -26,7 +26,7 @@ class PressableExample extends StatelessWidget {
                 child: GSText(
                   text: 'Press Me',
                   underline: true,
-                  style: GlueStyle(
+                  style: GSStyle(
                       color: Colors.blue,
                       textStyle:
                           const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg)),

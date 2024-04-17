@@ -67,7 +67,7 @@ class DividerVariantsPreview extends StatelessWidget {
                   //     ),
                   //     GSDivider(
                   //       orientation: GSOrientations.horizontal,
-                  //       style: GlueStyle(height: 30),
+                  //       style: GSStyle(height: 30),
                   //     ),
                   //     const GSText(
                   //       text: "Chrome",

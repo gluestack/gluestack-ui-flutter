@@ -10,27 +10,27 @@ class FlexExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var code = '''
         GSFlex(
-            style: GlueStyle(
+            style: GSStyle(
               direction: Axis.vertical,
-              md: GlueStyle(direction: Axis.horizontal),
+              md: GSStyle(direction: Axis.horizontal),
             ),
             children: [
               GSBox(
-                style: GlueStyle(
+                style: GSStyle(
                   height: 150,
                   width: 150,
                   bg: Colors.red,
                 ),
               ),
               GSBox(
-                style: GlueStyle(
+                style: GSStyle(
                   height: 150,
                   width: 150,
                   bg: Colors.green,
                 ),
               ),
               GSBox(
-                style: GlueStyle(
+                style: GSStyle(
                   height: 150,
                   width: 150,
                   bg: Colors.blue,

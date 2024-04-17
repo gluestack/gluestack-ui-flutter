@@ -10,7 +10,7 @@ class HeadingExample extends StatelessWidget {
     var code = '''
         GSHeading(
               text: 'This is an example for a Heading',
-              style: GlueStyle(textStyle: const TextStyle(letterSpacing: 2)),
+              style: GSStyle(textStyle: const TextStyle(letterSpacing: 2)),
           )
   ''';
     return CustomGSLayout(

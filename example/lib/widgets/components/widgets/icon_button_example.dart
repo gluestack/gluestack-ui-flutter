@@ -31,10 +31,10 @@ class _IconButtonExampleState extends State<IconButtonExample> {
     var code = '''
       GSIconButton(
           size: GSIconButtonSizes.\$md,
-          style: GlueStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
+          style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
           icon: GSIcon(
                icon: Icons.add_a_photo,
-               style: GlueStyle(color: const Color(0xffffffff)),
+               style: GSStyle(color: const Color(0xffffffff)),
            ),
            onPressed: () {
                print('Icon Button Pressed!');

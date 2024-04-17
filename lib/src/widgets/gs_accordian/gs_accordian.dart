@@ -14,7 +14,7 @@ class GSAccordion extends StatefulWidget {
   /// Custom style for the accordion. If null, the default style is applied.
   final GSStyle? style;
 
-  /// ThGlueStyle? style;e; to display within the accordion.
+  /// ThGSStyle? style;e; to display within the accordion.
   final List<GSAccordionItem> children;
 
   /// Optional initial expansion state for each accordion item. A value of true indicates the item should be initially expanded.

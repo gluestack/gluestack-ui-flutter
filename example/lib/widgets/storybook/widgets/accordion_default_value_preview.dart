@@ -19,7 +19,7 @@ class AccordionDefaultValuePreview extends StatelessWidget {
           isCollapsible: true,
           suffixIconWhenTileExpanded: const GSAccordionIcon(icon: Icons.remove),
           suffixIconWhenTileCollapsed: const GSAccordionIcon(icon: Icons.add),
-          // style: GlueStyle(bg: $GSColors.amber400),
+          // style: GSStyle(bg: $GSColors.amber400),
           itemPadding: const EdgeInsets.all(5),
           initialValues: const [false, false, true],
 

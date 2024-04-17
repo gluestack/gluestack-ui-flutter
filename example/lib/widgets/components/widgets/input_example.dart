@@ -72,7 +72,7 @@ class _InputExampleState extends State<InputExample> {
           isDisabled: false,
           isInvalid: false,
           readOnly: false,
-          style: GlueStyle(
+          style: GSStyle(
                 width: 300,
           ),
        )

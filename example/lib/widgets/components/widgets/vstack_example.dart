@@ -47,17 +47,17 @@ class _VStackExampleState extends State<VStackExample> {
               children: [
                 GSBox(
                   style:
-                      GlueStyle(height: 100, width: 100, color: \$GSColors.blue300),
+                      GSStyle(height: 100, width: 100, color: \$GSColors.blue300),
                   child: const Text('1'),
                 ),
                 GSBox(
                   style:
-                      GlueStyle(height: 100, width: 100, color: \$GSColors.blue400),
+                      GSStyle(height: 100, width: 100, color: \$GSColors.blue400),
                   child: const Text('2'),
                 ),
                 GSBox(
                   style:
-                      GlueStyle(height: 100, width: 100, color: \$GSColors.blue500),
+                      GSStyle(height: 100, width: 100, color: \$GSColors.blue500),
                   child: const Text('3'),
                 ),
               ],

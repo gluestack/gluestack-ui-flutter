@@ -9,7 +9,7 @@ class LinkExample extends StatelessWidget {
   Widget build(BuildContext context) {
     var code = '''
           GSLink(
-              style: GlueStyle(),
+              style: GSStyle(),
               url: 'https://gluestack.io/',
               text: const GSLinkText(text: 'Go to Gluestack'),
           )

@@ -108,17 +108,17 @@ class _ButtonExampleState extends State<ButtonExample> {
           onDoubleTap: () {
             // print('double press');
           },
-          // style: GlueStyle(
-          //   web: GlueStyle(
+          // style: GSStyle(
+          //   web: GSStyle(
           //     bg: $GSColors.amber600,
           //   ),
-          //   ios: GlueStyle(
+          //   ios: GSStyle(
           //     bg: $GSColors.pink600,
           //   ),
-          //   onHover: GlueStyle(
+          //   onHover: GSStyle(
           //     bg: $GSColors.green400,
           //   ),
-          //   md: GlueStyle(
+          //   md: GSStyle(
           //     bg: $GSColors.pink400,
           //   ),
           // ),

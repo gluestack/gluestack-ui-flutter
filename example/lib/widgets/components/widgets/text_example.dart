@@ -10,7 +10,7 @@ class TextExample extends StatelessWidget {
     var code = '''
           GSText(
               text: 'This is an example of a simple text.',
-              style: GlueStyle(
+              style: GSStyle(
                 textStyle: const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg),
               ),
            )

@@ -10,7 +10,7 @@ class SpinnerExample extends StatelessWidget {
     var code = '''
           GSSpinner(
               size: GSSpinnerSizes.large,
-              style: GlueStyle(
+              style: GSStyle(
                   color: \$GSColors.amber400,
                   bg: \$GSColors.amber200,
               ),
