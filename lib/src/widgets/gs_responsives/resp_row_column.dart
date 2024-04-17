@@ -73,7 +73,7 @@ class GSResponsiveRowColumn extends StatelessWidget {
       // Apply separator padding and wrap each child with GSBox for consistent spacing.
       children: children.map((child) {
         return GSBox(
-          style: GlueStyle(
+          style: GSStyle(
             // Adjust padding orientation based on the current layout direction.
             padding: isSmallScreen
                 ? separatorPadding ?? const EdgeInsets.symmetric(vertical: 4)

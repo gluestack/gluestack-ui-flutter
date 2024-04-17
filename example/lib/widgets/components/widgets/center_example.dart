@@ -22,19 +22,18 @@ class CenterExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Center",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSCenter(
-          style: GlueStyle(
+          style: GSStyle(
             alignItems: GSAlignments.end,
             justifyContent: GSAlignments.start,
             height: 150,
             bg: Colors.pink,
-            md: GlueStyle(
-                bg: Colors.yellow, dark: GlueStyle(bg: Colors.orange)),
+            md: GSStyle(bg: Colors.yellow, dark: GSStyle(bg: Colors.orange)),
           ),
           child: const GSCenter(child: Text('Testing Center Widget')),
         ),

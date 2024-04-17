@@ -9,7 +9,7 @@ import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provi
 /// It allows for easy customization of various press-related interactions and styles.
 class GSPressable extends StatelessWidget {
   /// The style to be applied to the GSPressable.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// The child widget to be wrapped by the GSPressable.
   final Widget child;
@@ -195,7 +195,7 @@ class GSPressable extends StatelessWidget {
     return GSStyleBuilder(
       child: Builder(builder: (context) {
         // Resolve styles using the provided context and optional style variants.
-        GSStyle styler = resolveStyles(
+        GSConfigStyle styler = resolveStyles(
           context: context,
           styles: [pressableStyle],
           inlineStyle: style,

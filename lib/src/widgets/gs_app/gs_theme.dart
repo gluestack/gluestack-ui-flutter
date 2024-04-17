@@ -627,7 +627,7 @@ class GSThemeData {
 
 Map themeColorMap(context) {
   final mapp = {
-    ...$GSColors.colorMap,
+    ...$GSColors.colorMap, //needed for switch n all to get def colors.
     'transparent': const Color.fromARGB(0, 0, 0, 0),
     'white': const Color(0xffffffff),
     'black': const Color(0xff000000),

@@ -16,14 +16,14 @@ class LinkExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Link",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(
           code: code,
           component: GSLink(
-            style: GlueStyle(),
+            style: GSStyle(),
             url: 'https://gluestack.io/',
             text: const GSLinkText(text: 'Go to Gluestack'),
           ),

@@ -58,8 +58,8 @@ class _ImageExampleState extends State<ImageExample> {
   ''';
     return CustomGSLayout(
       title: "Image",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

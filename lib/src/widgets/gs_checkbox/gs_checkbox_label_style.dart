@@ -6,9 +6,10 @@ const GSStyleConfig checkBoxLabelConfig = GSStyleConfig(
   ancestorStyle: ['_text'],
 );
 
-GSStyle checkBoxLabelStyle = GSStyle.fromMap(
-        data: getIt<GluestackCustomConfig>().text)
-    .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().checkboxLabel));
+GSConfigStyle checkBoxLabelStyle =
+    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().text).merge(
+        GSConfigStyle.fromMap(
+            data: getIt<GluestackCustomConfig>().checkboxLabel));
 
 // class GSCheckBoxLabelStyle {
 //   static Map<GSSizes, GSStyle?> size = {

@@ -5,7 +5,7 @@ const GSStyleConfig gsToastConfig = GSStyleConfig(
   componentName: 'Toast',
   descendantStyle: ['_icon', '_title', '_description'],
 );
-GSStyle toastStyle = GSStyle.fromMap(
+GSConfigStyle toastStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().toast,
     descendantStyle: gsToastConfig.descendantStyle);
 

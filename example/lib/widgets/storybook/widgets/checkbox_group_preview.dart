@@ -14,15 +14,15 @@ class CheckboxGroupPreview extends StatelessWidget {
           Story(
             name: 'Checkbox',
             builder: (context) => GSBox(
-              style: GlueStyle(width: 150, height: 100),
+              style: GSStyle(width: 150, height: 100),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GSCheckBox(
                     isDisabled: true,
                     icon: GSCheckBoxIndicator(
-                      style: GlueStyle(
-                          margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style:
+                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "Disabled",
@@ -34,8 +34,8 @@ class CheckboxGroupPreview extends StatelessWidget {
                   ),
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style: GlueStyle(
-                          margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style:
+                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "Active",

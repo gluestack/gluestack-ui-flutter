@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_text_style.dart';
 
 class GSButtonText extends StatelessWidget {
   final String text;
-  final GlueStyle? style;
+  final GSStyle? style;
 
   const GSButtonText({
     super.key,
@@ -30,7 +30,7 @@ class GSButtonText extends StatelessWidget {
 
     return GSText(
       text: text,
-      style: GlueStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSStyle(styler, context),
     );
   }
 }

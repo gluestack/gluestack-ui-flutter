@@ -61,15 +61,15 @@ class _AvatarExampleState extends State<AvatarExample> {
 ''';
     return CustomGSLayout(
       title: "Avatar",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSAvatar(
           radius: selectedRadiusOption,
           size: selectedSizeOption,
-          style: GlueStyle(
+          style: GSStyle(
             bg: Colors.orange,
             textStyle: const TextStyle(color: Colors.white),
           ),

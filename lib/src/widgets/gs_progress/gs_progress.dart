@@ -7,9 +7,9 @@ import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_style.dart';
 /// the value of a process in a visually appealing manner. [GSProgress] supports
 /// customizable styles, sizes, and progress values.
 class GSProgress extends StatefulWidget {
-  /// Custom [GSStyle] to apply to the progress bar, enabling detailed customization
+  /// Custom [GSConfigStyle] to apply to the progress bar, enabling detailed customization
   /// of its appearance, including colors and other properties.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// The size of the progress bar, affecting its overall dimensions. This can be set
   /// to one of the predefined [GSProgressSizes] values.
@@ -63,7 +63,7 @@ class _GSProgressState extends State<GSProgress> {
   Widget build(BuildContext context) {
     final progressSize = widget.size?.toGSSize ?? progressStyle.props?.size;
     // Resolve the GSStyle for the progress bar.
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [progressStyle, progressStyle.sizeMap(progressSize)],
       inlineStyle: widget.style,

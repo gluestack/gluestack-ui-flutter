@@ -21,8 +21,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return CustomGSLayout(
       title: 'Gluestack UI examples',
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       hideBackButton: true,
       body: SafeArea(
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                   url: 'https://kitchensink-23184.web.app/',
                   text: GSLinkText(
                     text: 'KitchenSink',
-                    style: GlueStyle(
+                    style: GSStyle(
                         textStyle: const TextStyle(
                       fontSize: 20,
                       color: Colors.blue,

@@ -3,7 +3,7 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_icon_style.dart';
 
 class GSCheckBoxIcon extends StatelessWidget {
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSCheckBoxIcon({super.key, this.style});
 
   @override

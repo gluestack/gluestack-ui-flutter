@@ -18,7 +18,7 @@ class _SwitchWithLabelPreviewState extends State<SwitchWithLabelPreview> {
         Story(
             name: 'Switch',
             builder: (context) => GSBox(
-                  style: GlueStyle(width: 150, height: 200),
+                  style: GSStyle(width: 150, height: 200),
                   child: GSHStack(
                     children: [
                       GSSwitch(

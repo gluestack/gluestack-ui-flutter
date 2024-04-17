@@ -10,9 +10,9 @@ class GSAccordionContent extends StatelessWidget {
   /// content of the widget and is required.
   final String text;
 
-  /// Custom [GSStyle] to apply to the text. This allows for further customization
-  /// of text appearance, specify using textStyle inside [GSStyle].
-  final GlueStyle? style;
+  /// Custom [GSConfigStyle] to apply to the text. This allows for further customization
+  /// of text appearance, specify using textStyle inside [GSConfigStyle].
+  final GSStyle? style;
 
   /// Determines if the text should be truncated with an ellipsis when it overflows.
   /// Defaults to `false`, meaning text will wrap by default.
@@ -120,7 +120,7 @@ class GSAccordionContent extends StatelessWidget {
     return GSText(
       text: text,
       size: size.toGSSize,
-      style: GlueStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSStyle(styler, context),
       locale: locale,
       maxLines: maxLines,
       overflow: overflow,

@@ -16,9 +16,9 @@ class GSSwitch extends StatefulWidget {
   /// of the switch as a parameter.
   final ValueChanged<bool>? onToggle;
 
-  /// Custom [GSStyle] to apply to the switch, enabling detailed customization of its
+  /// Custom [GSConfigStyle] to apply to the switch, enabling detailed customization of its
   /// appearance, including colors and dimensions.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// The size of the switch, affecting its overall dimensions. This can be set to one of
   /// the predefined [GSSwitchSizes] values.
@@ -83,7 +83,7 @@ class GSCustomSwitchState extends State<GSSwitch> {
       shouldIgnorePointer: widget.isDisabled!,
       child: Builder(builder: (context) {
         // Resolve styles
-        GSStyle styler = resolveStyles(
+        GSConfigStyle styler = resolveStyles(
           context: context,
           styles: [switchStyle, switchStyle.sizeMap(widget.size?.toGSSize)],
           inlineStyle: widget.style,

@@ -7,7 +7,7 @@ class GSBadgeText extends StatelessWidget {
   // The text to be displayed inside the badge.
   final String text;
   // Style for the badge text. Can be customized using GSStyle.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// Constructor for GSBadgeText widget:
   const GSBadgeText(
@@ -20,7 +20,7 @@ class GSBadgeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Access the ancestor provider to retrieve ancestor text styles.
-    final GSStyle? ancestorStyles = GSAncestorProvider.of(context)
+    final GSConfigStyle? ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsBadgeTextConfig.ancestorStyle.first];
     // Resolve the final GSStyle.
     final styler = resolveStyles(

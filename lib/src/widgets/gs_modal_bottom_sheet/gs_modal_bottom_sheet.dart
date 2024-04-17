@@ -31,7 +31,7 @@ class GSModalBottomSheet {
   static Future<T?> showModalBottomSheet<T>({
     required BuildContext context,
     required WidgetBuilder builder,
-    GSStyle? style,
+    GSConfigStyle? style,
     Color? backgroundColor,
     String? barrierLabel,
     BoxShape? shape,
@@ -66,7 +66,7 @@ class GSModalBottomSheet {
       barrierLabel: barrierLabel ?? " ",
       backgroundColor: backgroundColor,
       shape: shape,
-      style: style != null ? GlueStyle.fromGSStyle(style,context) : null,
+      style: style != null ? GSStyle.fromGSStyle(style, context) : null,
       borderRadius: borderRadius,
       boxShadow: boxShadow,
       clipBehavior: clipBehavior,
@@ -112,7 +112,7 @@ class GSModalBottomSheetRoute<T> extends PopupRoute<T> {
 
   final WidgetBuilder builder;
   final CapturedThemes? capturedThemes;
-  final GlueStyle? style;
+  final GSStyle? style;
   final bool isScrollControlled;
   final double scrollControlDisabledMaxHeightRatio;
   final Color? backgroundColor;
@@ -488,7 +488,7 @@ class _ModalBottomSheet<T> extends StatefulWidget {
   });
 
   final GSModalBottomSheetRoute<T> route;
-  final GlueStyle? style;
+  final GSStyle? style;
   final bool isScrollControlled;
   final double scrollControlDisabledMaxHeightRatio;
   final Color? backgroundColor;
@@ -615,7 +615,7 @@ class BottomSheet extends StatefulWidget {
   });
 
   final AnimationController? animationController;
-  final GlueStyle? style;
+  final GSStyle? style;
   final VoidCallback onClosing;
   final WidgetBuilder builder;
   final bool enableDrag;
@@ -745,7 +745,7 @@ class _BottomSheetState extends State<BottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gsModalBottomSheetStyle,

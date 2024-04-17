@@ -19,9 +19,9 @@ class GSAvatar extends StatelessWidget {
   /// or context.
   final GSAvatarRadius? radius;
 
-  /// Custom [GSStyle] to apply to the avatar, enabling detailed customization of its appearance.
+  /// Custom [GSConfigStyle] to apply to the avatar, enabling detailed customization of its appearance.
   /// This style can include border, padding, margin, and more.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// Text to display within the avatar as a fallback when no image is provided or in case
   /// of an error loading the image. Useful for displaying user initials or default text.
@@ -66,7 +66,7 @@ class GSAvatar extends StatelessWidget {
     final avatarSize = size?.toGSSize ?? avatarStyle.props?.size;
     final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [avatarStyle, avatarStyle.sizeMap(avatarSize)],
       inlineStyle: style,

@@ -15,13 +15,13 @@ class CheckboxWithHelpTextPreview extends StatelessWidget {
             name: 'Checkbox',
             builder: (context) => Center(
               child: GSBox(
-                style: GlueStyle(width: 400, height: 150),
+                style: GSStyle(width: 400, height: 150),
                 child: GSVStack(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     GSCheckBox(
                       icon: GSCheckBoxIndicator(
-                        style: GlueStyle(
+                        style: GSStyle(
                             margin: EdgeInsets.only(
                           right: $GSSpace.$4,
                         )),
@@ -44,7 +44,7 @@ class CheckboxWithHelpTextPreview extends StatelessWidget {
                     ),
                     GSCheckBox(
                       icon: GSCheckBoxIndicator(
-                        style: GlueStyle(
+                        style: GSStyle(
                             margin: EdgeInsets.only(
                           right: $GSSpace.$4,
                         )),

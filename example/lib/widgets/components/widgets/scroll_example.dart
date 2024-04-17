@@ -20,14 +20,14 @@ class ScrollExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Scroll",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(
           code: code,
           component: GSBox(
-            style: GlueStyle(
+            style: GSStyle(
                 height: 250, borderColor: $GSColors.blue400, borderWidth: 2),
             child: GSScrollView(
               children: [

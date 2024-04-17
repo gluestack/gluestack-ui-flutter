@@ -16,7 +16,7 @@ final class CheckboxStory extends StoryWidget {
         isInvalid: context.knobs.boolean(label: "isInvalid", initial: false),
         isDisabled: context.knobs.boolean(label: "isDisabled", initial: false),
         icon: GSCheckBoxIndicator(
-          style: GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+          style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
           child: const GSCheckBoxIcon(),
         ),
         value: "value 1",

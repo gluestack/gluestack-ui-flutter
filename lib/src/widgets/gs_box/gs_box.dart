@@ -5,9 +5,9 @@ class GSBox extends StatelessWidget {
   /// This child will be subjected to the styling and layout constraints specified in [GSBox]. Can be any widget type.
   final Widget? child;
 
-  /// Custom [GSStyle] that defines the appearance and layout parameters for this widget.
+  /// Custom [GSConfigStyle] that defines the appearance and layout parameters for this widget.
   /// This includes colors, padding and more.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// The way that the child should be clipped. Defaults to [Clip.none], meaning the
   /// child won't be clipped. [Clip.hardEdge], [Clip.antiAlias], and [Clip.antiAliasWithSaveLayer]
@@ -67,7 +67,7 @@ class GSBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       inlineStyle: style,
     );

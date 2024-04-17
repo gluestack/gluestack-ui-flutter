@@ -5,12 +5,12 @@ import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_header_
 
 class GSAlertDialogHeader extends StatelessWidget {
   final Widget? child;
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSAlertDialogHeader({super.key, this.child, this.style});
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [alertDialogHeaderStyle],
       inlineStyle: style,

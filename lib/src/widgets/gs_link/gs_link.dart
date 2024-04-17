@@ -7,8 +7,8 @@ class GSLink extends StatelessWidget {
   /// The URL that the link points to. This can be a route within the app or an external website.
   final String url;
 
-  /// Custom [GSStyle] to apply to the link, enabling detailed customization of its appearance.
-  final GlueStyle? style;
+  /// Custom [GSConfigStyle] to apply to the link, enabling detailed customization of its appearance.
+  final GSStyle? style;
 
   /// The widget that displays the link's text or content. This can be any widget, but typically
   /// it is a text widget that users recognize as a clickable link.

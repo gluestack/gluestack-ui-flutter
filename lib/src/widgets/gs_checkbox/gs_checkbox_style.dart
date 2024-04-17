@@ -5,7 +5,7 @@ const GSStyleConfig checkBoxConfig = GSStyleConfig(
     componentName: 'Checkbox',
     descendantStyle: ['_icon', '_text', '_indicator']);
 
-GSStyle checkboxStyle = GSStyle.fromMap(
+GSConfigStyle checkboxStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().checkbox,
     descendantStyle: checkBoxConfig.descendantStyle);
 

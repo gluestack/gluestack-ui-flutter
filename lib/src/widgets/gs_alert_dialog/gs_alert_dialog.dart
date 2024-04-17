@@ -9,7 +9,7 @@ import 'gs_show_alert_dailog.dart';
 class GSAlertDialog extends StatefulWidget {
   final GSAlertDialogContent content;
   final GSAlertDialogSizes? size;
-  final GlueStyle? style;
+  final GSStyle? style;
   final AlignmentGeometry? alignment;
   final Clip? clipBehavior;
   final EdgeInsets? insetPadding;
@@ -42,7 +42,7 @@ class GSAlertDialog extends StatefulWidget {
     BuildContext context, {
     GSAlertDialogContent? content,
     bool? showBackdrop = true,
-    GlueStyle? style,
+    GSStyle? style,
     final AlignmentGeometry? alignment,
     final Clip? clipBehavior = Clip.none,
     final EdgeInsets? insetPadding =
@@ -91,7 +91,7 @@ class _GSAlertDialogState extends State<GSAlertDialog> {
     final EdgeInsets effectivePadding = MediaQuery.viewInsetsOf(context) +
         (widget.insetPadding ?? EdgeInsets.zero);
     final alertSize = widget.size?.toGSSize ?? alertDialogStyle.props?.size;
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [alertDialogStyle, alertDialogStyle.sizeMap(alertSize)],
       inlineStyle: widget.style,

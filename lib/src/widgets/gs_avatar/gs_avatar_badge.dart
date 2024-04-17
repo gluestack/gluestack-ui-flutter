@@ -3,7 +3,7 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_badge_style.dart';
 
 class GSAvatarBadge extends StatelessWidget {
-  final GlueStyle? style;
+  final GSStyle? style;
   final double? left;
   final double? right;
   final double? top;
@@ -16,7 +16,7 @@ class GSAvatarBadge extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsAvatarBadgeStyle.ancestorStyle.first];
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [avatarBadgeStyle],
       inlineStyle: style,

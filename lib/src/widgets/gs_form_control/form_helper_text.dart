@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 class GSFormHelperText extends StatelessWidget {
   final String text;
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSFormHelperText(this.text, {super.key, this.style});
 
   @override
@@ -20,7 +20,7 @@ class GSFormHelperText extends StatelessWidget {
     return GSText(
       text: text,
       size: size,
-      style: GlueStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSStyle(styler, context),
     );
   }
 }

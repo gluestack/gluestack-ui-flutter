@@ -1,4 +1,4 @@
 import 'package:gluestack_ui/src/style/gs_style.dart';
 
-GSStyle avatarGroupStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().avatarGroup);
+GSConfigStyle avatarGroupStyle =
+    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().avatarGroup);

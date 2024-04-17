@@ -17,7 +17,7 @@ final class TextareaStory extends StoryWidget {
         isInvalid: context.knobs.boolean(label: "isInvalid", initial: false),
         isReadOnly: context.knobs.boolean(label: "isReadOnly", initial: false),
         hintText: "Enter text here",
-        style: GlueStyle(
+        style: GSStyle(
           width: 300,
         ),
       ),

@@ -15,7 +15,7 @@ class InputWithIconPreview extends StatelessWidget {
           Story(
             name: 'Input',
             builder: (context) => GSBox(
-              style: GlueStyle(
+              style: GSStyle(
                   width: 250,
                   height: 100,
                   padding:

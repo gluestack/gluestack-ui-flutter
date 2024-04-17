@@ -18,12 +18,12 @@ bool parseMap(Map<dynamic, dynamic>? data) {
 //   return mergedStyleMap;
 // }
 
-Map<String, GSStyle?> mergeStyledMaps({
-  required Map<String, GSStyle?>? styleMap,
-  required Map<String, GSStyle?>? overrideStyleMap,
+Map<String, GSConfigStyle?> mergeStyledMaps({
+  required Map<String, GSConfigStyle?>? styleMap,
+  required Map<String, GSConfigStyle?>? overrideStyleMap,
   required List<String> keys,
 }) {
-  Map<String, GSStyle?> mergedStyleMap = {};
+  Map<String, GSConfigStyle?> mergedStyleMap = {};
   styleMap?.forEach((key, value) {
     mergedStyleMap[key] = value;
   });
@@ -38,14 +38,14 @@ Map<String, GSStyle?> mergeStyledMaps({
   return mergedStyleMap;
 }
 
-Map<String, GSStyle>? resolvedescendantStylesFromMap(
+Map<String, GSConfigStyle>? resolvedescendantStylesFromMap(
     Map<String, dynamic>? data, List<String> descendantStyles) {
   if (descendantStyles.isEmpty || data == null) {
     return null;
   }
-  Map<String, GSStyle> descendantStylesMap = {};
+  Map<String, GSConfigStyle> descendantStylesMap = {};
   for (var element in descendantStyles) {
-    descendantStylesMap[element] = GSStyle.fromMap(data: data[element]);
+    descendantStylesMap[element] = GSConfigStyle.fromMap(data: data[element]);
   }
   return descendantStylesMap;
 }
@@ -429,16 +429,17 @@ GSPlacements? resolvePlacementFromString(String? placement) {
   return placement != null ? placementMap[placement] : null;
 }
 
-Map<String, GSStyle>? resolveCompoundVariants(
+Map<String, GSConfigStyle>? resolveCompoundVariants(
     {required List<Map<String, dynamic>>? compoundVariants}) {
   if (compoundVariants == null || compoundVariants.isEmpty) {
     return null;
   }
-  final Map<String, GSStyle> resolvedCompoundVariants = {};
+  final Map<String, GSConfigStyle> resolvedCompoundVariants = {};
   for (var element in compoundVariants) {
     final keyName = resolveActionFromString(element['action']).toString() +
         resolveVariantFromString(element['variant']).toString();
-    resolvedCompoundVariants[keyName] = GSStyle.fromMap(data: element['value']);
+    resolvedCompoundVariants[keyName] =
+        GSConfigStyle.fromMap(data: element['value']);
   }
   return resolvedCompoundVariants;
 }
@@ -480,12 +481,8 @@ String? resolveColorTokenFromString(String? color) {
   if (color == null) {
     return null;
   }
-    if (color.contains("transparent")) {
-    return 'transparent'; //transparent
+  if (color.contains(r"$")) {
+    return color.substring(1); //get rid of $
   }
-  if (color.contains("white")) {
-    return 'white'; // white
-  }
-
-  return color.substring(1); //get rid of $
+  return color;
 }

@@ -11,6 +11,6 @@ const GSStyleConfig gsNavigationRailConfig = GSStyleConfig(
   ],
 );
 
-final GSStyle gsNavigationRailStyle = GSStyle.fromMap(
+final GSConfigStyle gsNavigationRailStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().navigationRail,
     descendantStyle: gsNavigationRailConfig.descendantStyle);

@@ -14,9 +14,9 @@ class GSHeading extends StatelessWidget {
   /// This provides a consistent method for adjusting text size across different headings.
   final GSHeadingSizes? size;
 
-  /// Custom [GSStyle] to apply to the heading, enabling detailed customization
+  /// Custom [GSConfigStyle] to apply to the heading, enabling detailed customization
   /// of text appearance, including font, color, size, and more.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// Determines if the heading should be truncated with an ellipsis when it overflows
   /// the available space. Defaults to `false`, allowing text to wrap by default.
@@ -116,7 +116,7 @@ class GSHeading extends StatelessWidget {
     final subFontSize = headingStyle.variants?.sub?.textStyle?.fontSize;
     final subLineHeight = headingStyle.variants?.sub?.textStyle?.height;
     // Resolves the heading style
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         highlight ? headingStyle.variants?.highlight : null,

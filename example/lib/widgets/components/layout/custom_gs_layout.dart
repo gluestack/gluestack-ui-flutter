@@ -4,7 +4,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 class CustomGSLayout extends StatelessWidget {
   final Widget body;
   final Widget? floatingActionButton;
-  final GlueStyle? style;
+  final GSStyle? style;
   final String title;
   final bool? hideBackButton;
   const CustomGSLayout(
@@ -49,9 +49,9 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GSBox(
-      style: GlueStyle(
+      style: GSStyle(
         height: 56.0,
-        dark: GlueStyle(bg: $GSColors.trueGray800),
+        dark: GSStyle(bg: $GSColors.trueGray800),
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
       ),
       child: GSHStack(

@@ -12,8 +12,8 @@ class GSAccordionItemInternal extends StatelessWidget {
   final GSAccordionTitle title;
   final Widget? content;
   final Duration? animationDuration;
-  final GSStyle? contentStyle;
-  final GSStyle? headerStyle;
+  final GSConfigStyle? contentStyle;
+  final GSConfigStyle? headerStyle;
 
   final GSAccordionIcon? suffixIconWhenTileExpanded;
   final GSAccordionIcon? suffixIconWhenTileCollapsed;
@@ -144,8 +144,7 @@ class GSAccordionItemInternal extends StatelessWidget {
                           Expanded(
                             child: GSAccordionTitle(
                               text: title.text,
-                              style:
-                                  GlueStyle.fromGSStyle(headerStylef, context),
+                              style: GSStyle.fromGSStyle(headerStylef, context),
                             ),
                           ),
                           isExpanded && !isDisabled && showSuffixIcon!

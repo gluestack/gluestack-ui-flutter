@@ -6,7 +6,7 @@ class GSRadioProvider<T> extends InheritedWidget {
   final T groupValue;
   final void Function(T?)? onChanged;
 
-  final GlueStyle? style;
+  final GSStyle? style;
   final bool isDisabled;
   final bool isInvalid;
   const GSRadioProvider({

@@ -30,7 +30,7 @@ class GSBadge extends StatelessWidget {
   final GSBadgeVariants? variant;
 
   /// The custom style for the badge.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// The child widget to be displayed inside the badge.
   final Widget? child;
@@ -62,7 +62,7 @@ class GSBadge extends StatelessWidget {
     final radius = borderRadius?.toGSBorderRadius ?? GSBorderRadius.$none;
 
     // Resolve the style for the badge.
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         badgeStyle,

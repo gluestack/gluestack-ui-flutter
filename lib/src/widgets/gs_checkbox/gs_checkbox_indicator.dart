@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_indicator_style
 
 class GSCheckBoxIndicator extends StatelessWidget {
   final Widget child;
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSCheckBoxIndicator({super.key, required this.child, this.style});
 
   @override
@@ -14,7 +14,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
 
     //use styleResolver to resolve Color state in future
     Color? resolvebgColor(
-      GSStyle? styler, {
+      GSConfigStyle? styler, {
       bool isHovered = false,
       bool isChecked = false,
       bool isDisabled = false,
@@ -48,7 +48,7 @@ class GSCheckBoxIndicator extends StatelessWidget {
     }
 
     //use styleResolver to resolve border state in future
-    Color? resolveborderColor(GSStyle? styler,
+    Color? resolveborderColor(GSConfigStyle? styler,
         {bool isHovered = false,
         isChecked = false,
         isDisabled = false,

@@ -14,14 +14,14 @@ class UncontrolledCheckboxPreview extends StatelessWidget {
           Story(
             name: 'Checkbox',
             builder: (context) => GSBox(
-              style: GlueStyle(width: 150, height: 200),
+              style: GSStyle(width: 150, height: 200),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style: GlueStyle(
-                          margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style:
+                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "Appartments",
@@ -33,8 +33,8 @@ class UncontrolledCheckboxPreview extends StatelessWidget {
                   ),
                   GSCheckBox(
                     icon: GSCheckBoxIndicator(
-                      style: GlueStyle(
-                          margin: EdgeInsets.only(right: $GSSpace.$2)),
+                      style:
+                          GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                       child: const GSCheckBoxIcon(),
                     ),
                     value: "Residents",

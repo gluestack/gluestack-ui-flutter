@@ -26,7 +26,7 @@ class _RadioButtonWithHelpTextPreviewState
           Story(
             name: 'RadioButton',
             builder: (context) => GSBox(
-              style: GlueStyle(width: 250, height: 150),
+              style: GSStyle(width: 250, height: 150),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -47,7 +47,7 @@ class _RadioButtonWithHelpTextPreviewState
                         GSText(text: 'Extra services included')
                       ],
                     ),
-                    style: GlueStyle(
+                    style: GSStyle(
                       margin: EdgeInsets.only(
                         right: $GSSpace.$4,
                         bottom: $GSSpace.$4,
@@ -74,7 +74,7 @@ class _RadioButtonWithHelpTextPreviewState
                         GSText(text: 'Basic services')
                       ],
                     ),
-                    style: GlueStyle(
+                    style: GSStyle(
                       margin: EdgeInsets.only(
                         right: $GSSpace.$4,
                         bottom: $GSSpace.$4,

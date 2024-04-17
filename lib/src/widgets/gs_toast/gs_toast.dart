@@ -7,7 +7,7 @@ class GSToast extends StatelessWidget {
   final Widget? child;
   final GSToastActions? action;
   final GSToastVariants? variant;
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSToast({
     super.key,
     this.child,
@@ -21,7 +21,7 @@ class GSToast extends StatelessWidget {
     final toastAction = action?.toGSAction ?? toastStyle.props?.action;
     final toastVariant = variant?.toGSVariant ?? toastStyle.props?.variant;
 
-    GSStyle styler =
+    GSConfigStyle styler =
         resolveStyles(context: context, inlineStyle: style, styles: [
       toastStyle,
       toastStyle.actionMap(toastAction),

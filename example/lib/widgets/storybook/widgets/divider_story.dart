@@ -17,7 +17,7 @@ final class DividerStory extends StoryWidget {
           ),
           GSDivider(
             orientation: GSOrientations.vertical,
-            style: GlueStyle(height: 30),
+            style: GSStyle(height: 30),
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),

@@ -8,7 +8,7 @@ const GSStyleConfig gsBadgeConfig = GSStyleConfig(
 );
 
 // GSStyle representing the base style for the Badge
-final GSStyle badgeStyle = GSStyle.fromMap(
+final GSConfigStyle badgeStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().badge,
     descendantStyle: gsBadgeConfig.descendantStyle);
 

@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_description_style.dar
 
 class GSToastDescription extends StatelessWidget {
   final String description;
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSToastDescription({super.key, required this.description, this.style});
 
   @override
@@ -13,7 +13,7 @@ class GSToastDescription extends StatelessWidget {
     final ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gstoastDescriptionConfig.ancestorStyle.first];
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         toastDescriptionStyle,
@@ -23,7 +23,7 @@ class GSToastDescription extends StatelessWidget {
     );
     return GSText(
       text: description,
-      style: GlueStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSStyle(styler, context),
     );
   }
 }

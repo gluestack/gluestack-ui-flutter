@@ -23,7 +23,7 @@ final class InputStory extends StoryWidget {
         isReadOnly: context.knobs.boolean(label: "isReadOnly", initial: false),
         hintText: "Enter text here",
         controller: textEditingController,
-        style: GlueStyle(
+        style: GSStyle(
           width: 300,
         ),
       ),

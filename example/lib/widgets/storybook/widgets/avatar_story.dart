@@ -21,7 +21,7 @@ final class AvatarStory extends StoryWidget {
             label: 'Border Radius',
             initial: GSAvatarRadius.values.length - 1,
             options: borderRadiusOptions)],
-        style: GlueStyle(
+        style: GSStyle(
           bg: Colors.orange,
           textStyle: const TextStyle(color: Colors.white),
         ),

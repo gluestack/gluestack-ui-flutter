@@ -113,7 +113,7 @@ class GSStepper extends StatefulWidget {
     this.keepAllContentAlive = false,
   }) : assert(0 <= currentStep && currentStep < steps.length);
 
-  final GlueStyle? style;
+  final GSStyle? style;
   final GSStepperSizes? size;
   final Color? circleColor;
   final Color? connectorLineColor;
@@ -210,12 +210,12 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       case GSStepState.disabled:
         return GSText(
           text: '${index + 1}',
-          style: GlueStyle(textStyle: TextStyle(color: iconColor)),
+          style: GSStyle(textStyle: TextStyle(color: iconColor)),
         );
 
       case GSStepState.editing:
         return GSIcon(
-          style: GlueStyle(color: iconColor),
+          style: GSStyle(color: iconColor),
           icon: const IconData(
             0x270E,
           ),
@@ -223,7 +223,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
 
       case GSStepState.complete:
         return GSIcon(
-            style: GlueStyle(color: iconColor),
+            style: GSStyle(color: iconColor),
             icon: const IconData(
               0xe5cb,
             ));
@@ -231,7 +231,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       case GSStepState.error:
         return GSText(
           text: '!',
-          style: GlueStyle(textStyle: TextStyle(color: iconColor)),
+          style: GSStyle(textStyle: TextStyle(color: iconColor)),
         );
     }
   }
@@ -565,7 +565,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     final subtitleTextSize =
         widget.size ?? gsStepperSubtitleTextStyle.props?.size;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gsStepperStyle,
@@ -587,7 +587,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     //   isFirst: true,
     // );
 
-    GSStyle titleStyler = resolveStyles(
+    GSConfigStyle titleStyler = resolveStyles(
       context: context,
       styles: [
         gsStepperTitleTextStyle,
@@ -597,7 +597,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       isFirst: true,
     );
 
-    GSStyle contentStyler = resolveStyles(
+    GSConfigStyle contentStyler = resolveStyles(
       context: context,
       styles: [
         gsStepperContentTextStyle,
@@ -607,7 +607,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       isFirst: true,
     );
 
-    GSStyle subtitleStyler = resolveStyles(
+    GSConfigStyle subtitleStyler = resolveStyles(
       context: context,
       styles: [
         gsStepperSubtitleTextStyle,
@@ -619,7 +619,8 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
 
     final circleColor = widget.circleColor ?? styler.color?.getColor(context);
     final iconColor = styler.iconColor?.getColor(context);
-    final connectorLineColor = widget.connectorLineColor ?? styler.bg?.getColor(context);
+    final connectorLineColor =
+        widget.connectorLineColor ?? styler.bg?.getColor(context);
     final inactiveCircleColor = generateInactiveColor(circleColor!);
 
     return GSAncestor(

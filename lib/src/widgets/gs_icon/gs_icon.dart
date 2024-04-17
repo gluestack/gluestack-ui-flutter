@@ -14,9 +14,9 @@ class GSIcon extends StatelessWidget {
   /// The size of the icon. Utilizes predefined [GSIconSizes] for consistent sizing.
   final GSIconSizes? size;
 
-  /// Custom [GSStyle] to apply to the icon. This allows for further customization
+  /// Custom [GSConfigStyle] to apply to the icon. This allows for further customization
   /// of the icon's appearance.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// The fill level for icons that support variable fill states. This is typically
   /// used for custom icons designed to visually represent fill levels (e.g., battery
@@ -64,7 +64,7 @@ class GSIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconSize = size?.toGSSize ?? iconStyle.props?.size;
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
         context: context,
         styles: [
           iconStyle,

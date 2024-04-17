@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
 class GSFormLabelText extends StatelessWidget {
   final String text;
-  final GlueStyle? style;
+  final GSStyle? style;
   final bool? isRequired;
   const GSFormLabelText(this.text, {super.key, this.style, this.isRequired});
 
@@ -29,20 +29,20 @@ class GSFormLabelText extends StatelessWidget {
               GSText(
                 text: text,
                 size: size,
-                style: GlueStyle.fromGSStyle(styler, context),
+                style: GSStyle.fromGSStyle(styler, context),
               ),
               const SizedBox(width: 2),
               GSText(
                 text: '*',
                 size: size,
-                style: GlueStyle(
+                style: GSStyle(
                     textStyle: const TextStyle(color: Color(0xFFFF0000))),
               )
             ],
           )
         : GSText(
             text: text,
-            style: GlueStyle.fromGSStyle(styler, context),
+            style: GSStyle.fromGSStyle(styler, context),
           );
   }
 }

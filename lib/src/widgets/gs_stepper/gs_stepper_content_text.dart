@@ -5,7 +5,7 @@ import 'gs_stepper_content_text_style.dart';
 
 class GSStepperContent extends StatelessWidget {
   final String text;
-  final GlueStyle? style;
+  final GSStyle? style;
 
   const GSStepperContent({
     super.key,
@@ -31,7 +31,7 @@ class GSStepperContent extends StatelessWidget {
 
     return GSText(
       text: text,
-      style: GlueStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSStyle(styler, context),
     );
   }
 }

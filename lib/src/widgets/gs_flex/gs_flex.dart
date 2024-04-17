@@ -38,9 +38,9 @@ class GSFlex extends StatelessWidget {
   /// according to the flex properties specified.
   final List<Widget> children;
 
-  /// Custom [GSStyle] to apply to the flex container, enabling the specification of
+  /// Custom [GSConfigStyle] to apply to the flex container, enabling the specification of
   /// direction
-  final GlueStyle? style;
+  final GSStyle? style;
 
   const GSFlex({
     super.key,
@@ -58,7 +58,7 @@ class GSFlex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Resolve the GSStyle for the GSFlex
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       inlineStyle: style,
       isFirst: true,

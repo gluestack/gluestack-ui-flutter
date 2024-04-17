@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_title_style.dart';
 
 class GSToastTitle extends StatelessWidget {
   final String title;
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSToastTitle({super.key, required this.title, this.style});
 
   @override
@@ -12,7 +12,7 @@ class GSToastTitle extends StatelessWidget {
     final ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gstoastTitleConfig.ancestorStyle.first];
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         toastTitleStyle,
@@ -23,7 +23,7 @@ class GSToastTitle extends StatelessWidget {
 
     return GSText(
       text: title,
-      style: GlueStyle.fromGSStyle(styler, context),
+      style: GSStyle.fromGSStyle(styler, context),
     );
   }
 }

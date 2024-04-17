@@ -27,7 +27,7 @@ final class BadgeStory extends StoryWidget {
         borderRadius: GSBadgeRadius.values[context.knobs.options(
             label: 'Border Radius', initial: 0, options: borderRadiusOptions)],
         text: const GSBadgeText("New Feature"),
-        style: GlueStyle(),
+        style: GSStyle(),
       ),
     );
   }

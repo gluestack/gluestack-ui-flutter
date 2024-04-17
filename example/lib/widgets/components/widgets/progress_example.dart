@@ -37,8 +37,8 @@ class _ProgressExampleState extends State<ProgressExample> {
   ''';
     return CustomGSLayout(
       title: "Progress",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(

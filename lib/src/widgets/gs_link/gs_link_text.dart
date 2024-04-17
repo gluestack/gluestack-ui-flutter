@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_link/gs_link_text_style.dart';
 class GSLinkText extends StatelessWidget {
   final String text;
 
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSLinkText({super.key, required this.text, this.style});
 
   @override

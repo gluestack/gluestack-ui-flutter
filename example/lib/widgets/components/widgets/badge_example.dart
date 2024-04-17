@@ -90,8 +90,8 @@ class _BadgeExampleState extends State<BadgeExample> {
   ''';
     return CustomGSLayout(
       title: "Badge",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

@@ -14,14 +14,14 @@ class BadgeWithAvatarPreview extends StatelessWidget {
           Story(
             name: 'Badge',
             builder: (context) => GSBox(
-              style: GlueStyle(width: 300, height: 200),
+              style: GSStyle(width: 300, height: 200),
               child: GSHStack(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GSAvatar(
                     size: GSAvatarSizes.$md,
-                    style: GlueStyle(bg: $GSColors.backgroundLight600),
+                    style: GSStyle(bg: $GSColors.backgroundLight600),
                     avatarImage: const GSImage(
                       imageType: GSImageType.network,
                       path:

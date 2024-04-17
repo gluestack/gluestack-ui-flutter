@@ -1,7 +1,7 @@
 import 'package:gluestack_ui/src/style/gs_style.dart';
 
 class GSTab extends StatelessWidget {
-  final GlueStyle? style;
+  final GSStyle? style;
   final Widget child;
   final Alignment? alignment;
   const GSTab({

@@ -22,7 +22,7 @@ class GSFormControl extends StatefulWidget {
   final AutovalidateMode autovalidateMode;
   final bool? canPop;
   final GSFormControlSizes? size;
-  final GlueStyle? style;
+  final GSStyle? style;
 
   //H O P
   final bool? isDisabled;
@@ -67,7 +67,7 @@ class _GSFormControlState extends State<GSFormControl> {
   @override
   Widget build(BuildContext context) {
     final size = widget.size?.toGSSize;
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [formControlStyle.sizeMap(size)],
       inlineStyle: widget.style,

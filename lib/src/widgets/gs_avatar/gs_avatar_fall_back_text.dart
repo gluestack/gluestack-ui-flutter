@@ -7,8 +7,8 @@ class GSAvatarFallBackText extends StatelessWidget {
   /// typically used when an image cannot be loaded or is not provided.
   final String text;
 
-  /// Style for the [GSAvatar] text. Can be customized using [GSStyle].
-  final GlueStyle? style;
+  /// Style for the [GSAvatar] text. Can be customized using [GSConfigStyle].
+  final GSStyle? style;
 
   /// Determines if the text should be truncated with an ellipsis when it overflows the
   /// available space. Defaults to `false`, allowing text to wrap by default.

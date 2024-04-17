@@ -10,7 +10,7 @@ class AccordionDefaultValuePreview extends StatelessWidget {
     return materialWrapper(
       context,
       GSBox(
-        style: GlueStyle(width: 400, height: 350),
+        style: GSStyle(width: 400, height: 350),
         child: GSAccordion(
           size: GSAccordionSizes.$md,
           type: GSAccordionTypes.multiple,

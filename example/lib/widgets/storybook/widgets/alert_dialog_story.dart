@@ -26,7 +26,7 @@ final class AlertDialogStory extends StoryWidget {
             size: GSAlertDialogSizes.$full,
             content: GSAlertDialogContent(
               header: GSAlertDialogHeader(
-                style: GlueStyle(
+                style: GSStyle(
                   bg: Colors.pink,
                 ),
                 child: const GSText(

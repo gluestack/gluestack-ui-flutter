@@ -11,7 +11,7 @@ class GSButtonGroup extends StatelessWidget {
   final bool? isDisabled;
   final bool? reversed;
   final bool? isAttached;
-  final GlueStyle? style;
+  final GSStyle? style;
 
   const GSButtonGroup({
     super.key,
@@ -30,7 +30,7 @@ class GSButtonGroup extends StatelessWidget {
     final buttonList = reversed! ? buttons!.reversed : buttons!;
     final buttonGroupSize = size?.toGSSize ?? buttonGroupStyle.props?.size;
     final buttonGroupSpace = space?.toGSSpaces ?? buttonGroupStyle.props?.space;
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       styles: [
         buttonGroupStyle,
         buttonGroupStyle.sizeMap(buttonGroupSize),

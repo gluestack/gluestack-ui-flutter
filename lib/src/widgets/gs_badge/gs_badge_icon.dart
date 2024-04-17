@@ -11,7 +11,7 @@ class GSBadgeIcon extends StatelessWidget {
   /// The size of the icon, accepts [GSSizes].
   final GSSizes? iconSize;
   // Custom style for the icon.
-  final GlueStyle? style;
+  final GSStyle? style;
   // Fill color for the icon.
   final double? fill;
   // Grade of the icon.

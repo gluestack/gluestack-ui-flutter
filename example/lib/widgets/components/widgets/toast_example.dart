@@ -61,8 +61,8 @@ class _ToastExampleState extends State<ToastExample> {
 ''';
     return CustomGSLayout(
       title: "Toast",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

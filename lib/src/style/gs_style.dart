@@ -81,7 +81,7 @@ class GSProps {
   GSVariants? variant;
   GSSizes? size;
   GSSpaces? space;
-  GSStyle? style;
+  GSConfigStyle? style;
   GSPlacements? placement;
   GSOrientations? orientation;
   String? color;
@@ -102,7 +102,7 @@ class GSProps {
         variant: resolveVariantFromString(data?['variant']),
         size: resolveSizesFromString(data?['size']),
         space: resolveSpacesFromString(data?['space']),
-        style: GSStyle.fromMap(data: data, fromVariant: true),
+        style: GSConfigStyle.fromMap(data: data, fromVariant: true),
         color: resolveColorTokenFromString(data?['color']),
         placement: resolvePlacementFromString(data?['placement']),
         orientation: resolveOrientationsFromString(
@@ -112,31 +112,33 @@ class GSProps {
 }
 
 class GSOrientation {
-  GSStyle? vertical;
-  GSStyle? horizontal;
+  GSConfigStyle? vertical;
+  GSConfigStyle? horizontal;
   GSOrientation({this.horizontal, this.vertical});
   factory GSOrientation.fromMap({required Map<String, dynamic>? data}) {
     return GSOrientation(
-      vertical: GSStyle.fromMap(data: data?['vertical'], fromVariant: true),
-      horizontal: GSStyle.fromMap(data: data?['horizontal'], fromVariant: true),
+      vertical:
+          GSConfigStyle.fromMap(data: data?['vertical'], fromVariant: true),
+      horizontal:
+          GSConfigStyle.fromMap(data: data?['horizontal'], fromVariant: true),
     );
   }
 }
 
 class GSVariant {
-  Map<GSVariants, GSStyle?> styles;
+  Map<GSVariants, GSConfigStyle?> styles;
   GSVariant({this.styles = const {}});
 
   factory GSVariant.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
   }) {
-    var variantStyles = <GSVariants, GSStyle?>{};
+    var variantStyles = <GSVariants, GSConfigStyle?>{};
     for (GSVariants enumValue in GSVariants.values) {
       var key = enumValue.name;
       if (data?[key] is Map<String, dynamic> &&
           (data?.containsKey(key) ?? false)) {
-        variantStyles[enumValue] = GSStyle.fromMap(
+        variantStyles[enumValue] = GSConfigStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
           fromVariant: true,
@@ -149,19 +151,19 @@ class GSVariant {
 }
 
 class GSAction {
-  Map<GSActions, GSStyle?> styles;
+  Map<GSActions, GSConfigStyle?> styles;
   GSAction({this.styles = const {}});
 
   factory GSAction.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
   }) {
-    var actionStyles = <GSActions, GSStyle?>{};
+    var actionStyles = <GSActions, GSConfigStyle?>{};
     for (GSActions enumValue in GSActions.values) {
       var key = enumValue.name;
       if (data?[key] is Map<String, dynamic> &&
           (data?.containsKey(key) ?? false)) {
-        actionStyles[enumValue] = GSStyle.fromMap(
+        actionStyles[enumValue] = GSConfigStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
           fromVariant: true,
@@ -174,7 +176,7 @@ class GSAction {
 }
 
 class GSPlacement {
-  Map<GSPlacements, GSStyle?> styles;
+  Map<GSPlacements, GSConfigStyle?> styles;
   GSPlacement({this.styles = const {}});
 
   factory GSPlacement.fromMap({
@@ -193,7 +195,7 @@ class GSPlacement {
       return result.toLowerCase();
     }
 
-    var placementStyles = <GSPlacements, GSStyle?>{};
+    var placementStyles = <GSPlacements, GSConfigStyle?>{};
     for (GSPlacements enumValue in GSPlacements.values) {
       var key = enumValue.name;
       key = convertToConfigKey(key);
@@ -202,7 +204,7 @@ class GSPlacement {
           (data?.containsKey(key) ?? false)) {
         // configKey = key.split('').join(' ').toLowerCase();
 
-        placementStyles[enumValue] = GSStyle.fromMap(
+        placementStyles[enumValue] = GSConfigStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
           fromVariant: true,
@@ -215,21 +217,21 @@ class GSPlacement {
 }
 
 class GSSpace {
-  Map<GSSpaces, GSStyle?> styles;
+  Map<GSSpaces, GSConfigStyle?> styles;
   GSSpace({this.styles = const {}});
 
   factory GSSpace.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
   }) {
-    var spaceStyles = <GSSpaces, GSStyle?>{};
+    var spaceStyles = <GSSpaces, GSConfigStyle?>{};
     for (GSSpaces enumValue in GSSpaces.values) {
       //cuz of $ sign
       var key = enumValue.name.substring(1);
 
       if (data?[key] is Map<String, dynamic> &&
           (data?.containsKey(key) ?? false)) {
-        spaceStyles[enumValue] = GSStyle.fromMap(
+        spaceStyles[enumValue] = GSConfigStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
           fromVariant: true,
@@ -242,14 +244,14 @@ class GSSpace {
 }
 
 class GSSize {
-  Map<GSSizes, GSStyle?> styles;
+  Map<GSSizes, GSConfigStyle?> styles;
   GSSize({this.styles = const {}});
 
   factory GSSize.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
   }) {
-    var sizeStyles = <GSSizes, GSStyle?>{};
+    var sizeStyles = <GSSizes, GSConfigStyle?>{};
     for (GSSizes enumValue in GSSizes.values) {
       //cuz of $ sign
       var key = enumValue.name.substring(1);
@@ -258,7 +260,7 @@ class GSSize {
           (data?.containsKey(key) ?? false)) {
         //to handle edge case where values were being list n stuff
 
-        sizeStyles[enumValue] = GSStyle.fromMap(
+        sizeStyles[enumValue] = GSConfigStyle.fromMap(
           data: data![key],
           descendantStyle: descendantStyle,
           fromVariant: true,
@@ -286,8 +288,8 @@ class Variants {
   GSAction? action;
   GSSpace? space;
   //try to make these properties of heading into a single class
-  GSStyle? highlight;
-  GSStyle? sub;
+  GSConfigStyle? highlight;
+  GSConfigStyle? sub;
   GSOrientation? orientation;
   GSPlacement? placements;
   Variants({
@@ -315,11 +317,11 @@ class Variants {
       space: GSSpace.fromMap(
         data: data?['space'],
       ),
-      sub: GSStyle.fromMap(
+      sub: GSConfigStyle.fromMap(
           data: data?['sub']?['true'],
           descendantStyle: descendantStyle,
           fromVariant: true),
-      highlight: GSStyle.fromMap(
+      highlight: GSConfigStyle.fromMap(
           data: data?['highlight']?['true'],
           descendantStyle: descendantStyle,
           fromVariant: true),
@@ -335,7 +337,7 @@ after adding decdent style check need for textStyle
 
 */
 //TODO: add font family support later on, context accordion theme config
-class GSStyle extends BaseStyle<GSStyle> {
+class GSConfigStyle extends BaseStyle<GSConfigStyle> {
   double? borderWidth;
   String? borderColor;
   double? borderRadius;
@@ -351,10 +353,10 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? borderBottomWidth;
   double? borderLeftWidth;
   TextStyle? textStyle;
-  GSStyle? checked;
+  GSConfigStyle? checked;
   Variants? variants;
   GSProps? props;
-  Map<String, GSStyle?>? descendantStyles;
+  Map<String, GSConfigStyle?>? descendantStyles;
   GSFlexDirections? flexDirection;
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
@@ -370,7 +372,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   //for splash n highlight for pressable
   // String? highlightColor;
   // String? splashColor;
-  GSStyle? badge;
+  GSConfigStyle? badge;
   GSTextTransform? textTransform;
   GSSizes? iconSize;
 
@@ -389,14 +391,14 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? outlineWidth;
   String? outlineColor;
   GSOutlineStyle? outlineStyle;
-  Map<String, GSStyle>? compoundVariants;
+  Map<String, GSConfigStyle>? compoundVariants;
 
   double indent;
   double endIndent;
 
   //Accordion
   String? iconColor;
-  GSStyle? item;
+  GSConfigStyle? item;
   String? shadowColor;
   double? shadowRadius;
   double? shadowOpacity;
@@ -404,7 +406,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   ShadowOffset? shadowOffset;
   TextAlign? textAlign;
 
-  GSStyle({
+  GSConfigStyle({
     this.borderWidth,
     this.borderColor,
     this.borderRadius,
@@ -487,7 +489,7 @@ class GSStyle extends BaseStyle<GSStyle> {
 
   @override
   merge(overrideStyle, {List<String> descendantStyleKeys = const []}) {
-    return GSStyle(
+    return GSConfigStyle(
         borderColor: overrideStyle?.borderColor ?? borderColor,
         borderRadius: overrideStyle?.borderRadius ?? borderRadius,
         borderWidth: overrideStyle?.borderWidth ?? borderWidth,
@@ -627,8 +629,8 @@ class GSStyle extends BaseStyle<GSStyle> {
         ));
   }
 
-  factory GSStyle.fromGlueStyle(GlueStyle glueStyle) {
-    return GSStyle(
+  factory GSConfigStyle.fromGlueStyle(GSStyle glueStyle) {
+    return GSConfigStyle(
       borderWidth: glueStyle.borderWidth,
       borderColor: glueStyle.borderColor?.toString(),
       borderRadius: glueStyle.borderRadius,
@@ -679,56 +681,68 @@ class GSStyle extends BaseStyle<GSStyle> {
       shadowOffset: glueStyle.shadowOffset,
       textAlign: glueStyle.textAlign,
       dark: glueStyle.dark != null
-          ? GSStyle.fromGlueStyle(glueStyle.dark!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.dark!)
           : null,
       android: glueStyle.android != null
-          ? GSStyle.fromGlueStyle(glueStyle.android!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.android!)
           : null,
-      ios: glueStyle.ios != null ? GSStyle.fromGlueStyle(glueStyle.ios!) : null,
-      web: glueStyle.web != null ? GSStyle.fromGlueStyle(glueStyle.web!) : null,
-      sm: glueStyle.sm != null ? GSStyle.fromGlueStyle(glueStyle.sm!) : null,
-      md: glueStyle.md != null ? GSStyle.fromGlueStyle(glueStyle.md!) : null,
-      lg: glueStyle.lg != null ? GSStyle.fromGlueStyle(glueStyle.lg!) : null,
-      xs: glueStyle.xs != null ? GSStyle.fromGlueStyle(glueStyle.xs!) : null,
+      ios: glueStyle.ios != null
+          ? GSConfigStyle.fromGlueStyle(glueStyle.ios!)
+          : null,
+      web: glueStyle.web != null
+          ? GSConfigStyle.fromGlueStyle(glueStyle.web!)
+          : null,
+      sm: glueStyle.sm != null
+          ? GSConfigStyle.fromGlueStyle(glueStyle.sm!)
+          : null,
+      md: glueStyle.md != null
+          ? GSConfigStyle.fromGlueStyle(glueStyle.md!)
+          : null,
+      lg: glueStyle.lg != null
+          ? GSConfigStyle.fromGlueStyle(glueStyle.lg!)
+          : null,
+      xs: glueStyle.xs != null
+          ? GSConfigStyle.fromGlueStyle(glueStyle.xs!)
+          : null,
       icon: glueStyle.icon != null
-          ? GSStyle.fromGlueStyle(glueStyle.icon!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.icon!)
           : null,
       input: glueStyle.input != null
-          ? GSStyle.fromGlueStyle(glueStyle.input!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.input!)
           : null,
       badge: glueStyle.badge != null
-          ? GSStyle.fromGlueStyle(glueStyle.badge!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.badge!)
           : null,
       item: glueStyle.item != null
-          ? GSStyle.fromGlueStyle(glueStyle.item!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.item!)
           : null,
       checked: glueStyle.checked != null
-          ? GSStyle.fromGlueStyle(glueStyle.checked!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.checked!)
           : null,
       onActive: glueStyle.onActive != null
-          ? GSStyle.fromGlueStyle(glueStyle.onActive!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.onActive!)
           : null,
       onFocus: glueStyle.onFocus != null
-          ? GSStyle.fromGlueStyle(glueStyle.onFocus!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.onFocus!)
           : null,
       onHover: glueStyle.onHover != null
-          ? GSStyle.fromGlueStyle(glueStyle.onHover!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.onHover!)
           : null,
       onInvalid: glueStyle.onInvalid != null
-          ? GSStyle.fromGlueStyle(glueStyle.onInvalid!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.onInvalid!)
           : null,
       onDisabled: glueStyle.onDisabled != null
-          ? GSStyle.fromGlueStyle(glueStyle.onDisabled!)
+          ? GSConfigStyle.fromGlueStyle(glueStyle.onDisabled!)
           : null,
     );
   }
 
-  factory GSStyle.fromMap({
+  factory GSConfigStyle.fromMap({
     required Map<String, dynamic>? data,
     List<String> descendantStyle = const [],
     bool fromVariant = false,
   }) {
-    return GSStyle(
+    return GSConfigStyle(
       descendantStyles: resolvedescendantStylesFromMap(data, descendantStyle),
       compoundVariants:
           resolveCompoundVariants(compoundVariants: data?['compoundVariants']),
@@ -745,7 +759,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                   ? double.tryParse(data['w']?.replaceAll('%', ''))! / 100
                   : resolveSpaceFromString(data['w'] ?? data['width'])
           : resolveSpaceFromString(data?['w'] ?? data?['width']),
-      badge: GSStyle(
+      badge: GSConfigStyle(
         height: resolveSpaceFromString(
           data?['_badge']?['h'],
         ),
@@ -856,23 +870,23 @@ class GSStyle extends BaseStyle<GSStyle> {
       borderLeftWidth: data?['borderLeftWidth'] != null
           ? resolveBorderWidthFromString(data?['borderLeftWidth'].toString())
           : null,
-      item: GSStyle(
+      item: GSConfigStyle(
         bg: resolveColorTokenFromString(data?['_item']?['backgroundColor']),
       ),
       shadowOffset: ShadowOffset.fromJson(data: data?['shadowOffset']),
-      checked: GSStyle(
+      checked: GSConfigStyle(
         thumbColor: resolveColorTokenFromString(
             data?[':checked']?['props']?['thumbColor']),
         color: resolveColorTokenFromString(data?[':checked']?['color']),
         bg: resolveColorTokenFromString(data?[':checked']?['bg']),
         borderColor:
             resolveColorTokenFromString(data?[':checked']?['borderColor']),
-        onHover: GSStyle(
+        onHover: GSConfigStyle(
           color: resolveColorTokenFromString(
               data?[':checked']?[':hover']?['color']),
         ),
       ),
-      onHover: GSStyle(
+      onHover: GSConfigStyle(
         color: resolveColorTokenFromString(data?[':hover']?['color']),
         textStyle: TextStyle(
           decoration: resolveTextDecorationFromString(
@@ -893,7 +907,7 @@ class GSStyle extends BaseStyle<GSStyle> {
 
         iosBackgroundColor: resolveColorTokenFromString(
             data?[':hover']?['props']?['ios_backgroundColor']),
-        onInvalid: GSStyle(
+        onInvalid: GSConfigStyle(
           borderColor: resolveColorTokenFromString(
               data?[':hover']?['invalid']?['borderColor']),
           trackColorTrue: resolveColorTokenFromString(
@@ -901,16 +915,16 @@ class GSStyle extends BaseStyle<GSStyle> {
           trackColorFalse: resolveColorTokenFromString(
               data?[':hover']?[':invalid']?['props']?['trackColor']?['false']),
         ),
-        onDisabled: GSStyle(
+        onDisabled: GSConfigStyle(
           bg: resolveColorTokenFromString(data?[':hover']?[':disabled']?['bg']),
-          onInvalid: GSStyle(
+          onInvalid: GSConfigStyle(
             borderColor: resolveColorTokenFromString(
               data?[':hover']?[':disabled']?[':invalid']?['borderColor'],
             ),
           ),
         ),
-        checked: GSStyle(
-          onHover: GSStyle(
+        checked: GSConfigStyle(
+          onHover: GSConfigStyle(
             color: resolveColorTokenFromString(data?[':checked']?[':hover']
                     ?['color'] ??
                 data?[':hover']?[':checked']?['color']),
@@ -922,18 +936,18 @@ class GSStyle extends BaseStyle<GSStyle> {
               data?[':hover']?['borderColor']),
           color: resolveColorTokenFromString(
               data?[':hover']?[':checked']?['color']),
-          onDisabled: GSStyle(
+          onDisabled: GSConfigStyle(
             bg: resolveColorTokenFromString(
                 data?[':hover']?[':checked']?[':disabled']?['bg']),
             borderColor: resolveColorTokenFromString(
                 data?[':hover']?[':checked']?[':disabled']?['borderColor']),
-            onInvalid: GSStyle(
+            onInvalid: GSConfigStyle(
                 borderColor: resolveColorTokenFromString(data?[':hover']
                     ?[':checked']?[':disabled']?['invalid']?['borderColor'])),
           ),
         ),
       ),
-      onFocus: GSStyle(
+      onFocus: GSConfigStyle(
         borderColor: kIsWeb
             ? resolveColorTokenFromString(data?['_web']?[':focusVisible']
                     ?['outlineColor'] ??
@@ -946,30 +960,30 @@ class GSStyle extends BaseStyle<GSStyle> {
         bg: resolveColorTokenFromString(data?[':focus']?['bg']),
         borderBottomColor:
             resolveColorTokenFromString(data?[':focus']?['borderBottomColor']),
-        onHover: GSStyle(
+        onHover: GSConfigStyle(
           borderBottomColor: resolveColorTokenFromString(
             data?[':focus']?[':hover']?['borderColor'],
           ),
         ),
       ),
-      onActive: GSStyle(
+      onActive: GSConfigStyle(
         color: resolveColorTokenFromString(data?[':active']?['color']),
         bg: resolveColorTokenFromString(data?[':active']?['bg']),
         borderColor:
             resolveColorTokenFromString(data?[':active']?['borderColor']),
         borderBottomColor:
             resolveColorTokenFromString(data?[':active']?['borderBottomColor']),
-        checked: GSStyle(
+        checked: GSConfigStyle(
           bg: resolveColorTokenFromString(data?[':active']?[":checked"]?['bg']),
           borderColor: resolveColorTokenFromString(
               data?[':active']?[":checked"]?['borderColor']),
         ),
-        onInvalid: GSStyle(
+        onInvalid: GSConfigStyle(
           borderColor: resolveColorTokenFromString(
               data?[':active']?[":invalid"]?['borderColor']),
         ),
       ),
-      onInvalid: GSStyle(
+      onInvalid: GSConfigStyle(
         textStyle: TextStyle(
           color: resolveColorFromString(data?[':invalid']?['color']),
         ),
@@ -985,34 +999,34 @@ class GSStyle extends BaseStyle<GSStyle> {
         borderWidth: data?[':invalid']?['borderWidth'] != null
             ? double.tryParse(data![':invalid']!['borderWidth']!.toString())
             : null,
-        onHover: GSStyle(
+        onHover: GSConfigStyle(
           borderColor: resolveColorTokenFromString(
               data?[':invalid']?[':hover']?['borderColor']),
           borderBottomColor: resolveColorTokenFromString(
               data?[':invalid']?[':hover']?['borderBottomColor']),
         ),
-        onFocus: GSStyle(
+        onFocus: GSConfigStyle(
           borderColor: resolveColorTokenFromString(
               data?[':invalid']?[':focus']?['borderColor']),
           borderBottomColor: resolveColorTokenFromString(
               data?[':invalid']?[':focus']?['borderBottomColor']),
         ),
-        onDisabled: GSStyle(
+        onDisabled: GSConfigStyle(
           borderColor: resolveColorTokenFromString(
               data?[':invalid']?[':disabled']?[':hover']?['borderColor']),
           borderBottomColor: resolveColorTokenFromString(
               data?[':invalid']?[':disabled']?[':hover']?['borderBottomColor']),
         ),
       ),
-      onDisabled: GSStyle(
+      onDisabled: GSConfigStyle(
         opacity: data?[':disabled']?['opacity'],
         textStyle: TextStyle(
           color: resolveColorFromString(data?[':disabled']?['color']),
         ),
-        web: GSStyle(
+        web: GSConfigStyle(
           cursors:
               resolveCursorFromString(data?[':disabled']?['_web']?['cursor']),
-          onDisabled: GSStyle(
+          onDisabled: GSConfigStyle(
             cursors: resolveCursorFromString(
                 data?[':disabled']?['_web']?[':disabled']?['cursor']),
           ),
@@ -1024,9 +1038,9 @@ class GSStyle extends BaseStyle<GSStyle> {
         iosBackgroundColor: resolveColorTokenFromString(
             data?[':disabled']?['ios_backgroundColor']),
         borderColor: data?[':disabled']?['borderColor'],
-        onInvalid: GSStyle(
+        onInvalid: GSConfigStyle(
             borderColor: data?[':disabled']?['invalid']?['borderColor']),
-        onHover: GSStyle(
+        onHover: GSConfigStyle(
           borderColor: resolveColorTokenFromString(
             data?[':disabled']?[':hover']?['borderColor'],
           ),
@@ -1036,18 +1050,18 @@ class GSStyle extends BaseStyle<GSStyle> {
               data?[':disabled']?[':hover']?['props']?['trackColor']['false']),
         ),
       ),
-      dark: GSStyle(
+      dark: GSConfigStyle(
         iconColor: resolveColorTokenFromString(
           data?['_icon']?['_dark']?['color'] ??
               data?['_selectedIcon']?['_dark']?['color'] ??
               data?['_unselectedIcon']?['_dark']?['color'],
         ),
-        item: GSStyle(
+        item: GSConfigStyle(
           bg: resolveColorTokenFromString(
               data?['_dark']?['_item']?['backgroundColor']),
         ),
-        web: GSStyle(
-          onFocus: GSStyle(
+        web: GSConfigStyle(
+          onFocus: GSConfigStyle(
             outlineColor: resolveColorTokenFromString(
                 data?['_web']?[':focus']?['_dark']?['outlineColor']),
             outlineWidth:
@@ -1075,30 +1089,30 @@ class GSStyle extends BaseStyle<GSStyle> {
         bg: resolveColorTokenFromString(data?['_dark']?['bg'] ??
             data?['_dark']?['_item']?['backgroundColor'] ??
             data?['_dark']?['backgroundColor']),
-        onActive: GSStyle(
+        onActive: GSConfigStyle(
           bg: resolveColorTokenFromString(data?['_dark']?[':active']?['bg']),
           borderColor: resolveColorTokenFromString(
               data?['_dark']?[':active']?['borderColor']),
           borderBottomColor: resolveColorTokenFromString(
               data?['_dark']?[':active']?['borderBottomColor']),
-          checked: GSStyle(
+          checked: GSConfigStyle(
             bg: resolveColorTokenFromString(
                 data?['_dark']?[':active']?[":checked"]?['bg']),
             borderColor: resolveColorTokenFromString(
                 data?['_dark']?[':active']?[":checked"]?['borderColor']),
           ),
-          onInvalid: GSStyle(
+          onInvalid: GSConfigStyle(
             borderColor: resolveColorTokenFromString(
                 data?['_dark']?[':active']?[":invalid"]?['borderColor']),
           ),
         ),
-        checked: GSStyle(
+        checked: GSConfigStyle(
             color: resolveColorTokenFromString(
                 data?['_dark']?[':checked']?['color']),
-            onHover: GSStyle(
+            onHover: GSConfigStyle(
                 color: resolveColorTokenFromString(
                     data?['_dark']?[':checked']?[':hover']?['color']))),
-        onHover: GSStyle(
+        onHover: GSConfigStyle(
             color: resolveColorTokenFromString(
                 data?['_dark']?[':hover']?['color']),
             trackColorTrue: resolveColorTokenFromString(
@@ -1107,19 +1121,19 @@ class GSStyle extends BaseStyle<GSStyle> {
                 data?['_dark']?[':hover']?['props']?['trackColor']?['false']),
             iosBackgroundColor: resolveColorTokenFromString(
                 data?['_dark']?[':hover']?['props']?['ios_backgroundColor']),
-            checked: GSStyle(
+            checked: GSConfigStyle(
               color: resolveColorTokenFromString(
                   data?['_dark']?[':hover']?[':checked']?['color']),
               bg: resolveColorTokenFromString(
                   data?['_dark']?[':hover']?[':checked']?['bg']),
               borderColor: resolveColorTokenFromString(
                   data?['_dark']?[':hover']?[':checked']?['borderColor']),
-              onDisabled: GSStyle(
+              onDisabled: GSConfigStyle(
                 bg: resolveColorTokenFromString(data?['_dark']?[':hover']
                     ?[':checked']?[':disabled']?['bg']),
                 borderColor: resolveColorTokenFromString(data?['_dark']
                     ?[':hover']?[':checked']?[':disabled']?['borderColor']),
-                onInvalid: GSStyle(
+                onInvalid: GSConfigStyle(
                   borderColor: resolveColorTokenFromString(data?['_dark']
                       ?[':hover']?[':checked']?[':disabled']?['borderColor']),
                 ),
@@ -1128,13 +1142,13 @@ class GSStyle extends BaseStyle<GSStyle> {
             borderColor: resolveColorTokenFromString(
                 data?['_dark']?[':hover']?['borderColor']),
             bg: resolveColorTokenFromString(data?['_dark']?[':hover']?['bg']),
-            onInvalid: GSStyle(
+            onInvalid: GSConfigStyle(
               trackColorTrue: resolveColorTokenFromString(data?['_dark']
                   ?[':hover']?[':invalid']?['props']?['trackColor']?['true']),
               trackColorFalse: resolveColorTokenFromString(data?['_dark']
                   ?[':hover']?[':invalid']?['props']?['trackColor']?['false']),
             )),
-        onFocus: GSStyle(
+        onFocus: GSConfigStyle(
           borderColor: kIsWeb
               ? resolveColorTokenFromString(
                   data?['_web']?[':focusVisible']?['_dark']?['outlineColor'])
@@ -1144,12 +1158,12 @@ class GSStyle extends BaseStyle<GSStyle> {
               ? resolveSpaceFromString(
                   data?['_web']?[':focusVisible']?['outlineWidth'].toString())
               : null,
-          onHover: GSStyle(
+          onHover: GSConfigStyle(
             borderColor: resolveColorTokenFromString(
                 data?['_dark']?[':focus']?[':hover']?['borderColor']),
           ),
         ),
-        onDisabled: GSStyle(
+        onDisabled: GSConfigStyle(
           borderColor: resolveColorTokenFromString(
               data?['_dark']?[':disabled']?['borderColor']),
           trackColorTrue: resolveColorTokenFromString(
@@ -1163,15 +1177,15 @@ class GSStyle extends BaseStyle<GSStyle> {
             color:
                 resolveColorFromString(data?[':disabled']?['_dark']?['color']),
           ),
-          web: GSStyle(
+          web: GSConfigStyle(
             cursors: resolveCursorFromString(
                 data?['_dark']?[':disabled']?['_web']?['cursor']),
-            onDisabled: GSStyle(
+            onDisabled: GSConfigStyle(
               cursors: resolveCursorFromString(data?['_dark']?[':disabled']
                   ?['_web']?[':disabled']?['cursor']),
             ),
           ),
-          onHover: GSStyle(
+          onHover: GSConfigStyle(
             borderColor: resolveColorTokenFromString(
                 data?['_dark']?[':disabled']?[':hover']?['borderColor']),
             trackColorTrue: resolveColorTokenFromString(data?['_dark']
@@ -1180,7 +1194,7 @@ class GSStyle extends BaseStyle<GSStyle> {
                 ?[':disabled']?[':hover']?[':props']?['trackColor']?['false']),
           ),
         ),
-        onInvalid: GSStyle(
+        onInvalid: GSConfigStyle(
           textStyle: TextStyle(
             color:
                 resolveColorFromString(data?[':invalid']?['_dark']?['color']),
@@ -1196,19 +1210,19 @@ class GSStyle extends BaseStyle<GSStyle> {
               data?['_dark']?[':invalid']?['borderColor']),
           borderBottomColor: resolveColorTokenFromString(
               data?['_dark']?[':invalid']?['borderBottomColor']),
-          onHover: GSStyle(
+          onHover: GSConfigStyle(
             borderColor: resolveColorTokenFromString(
                 data?['_dark']?[':invalid']?[':hover']?['borderColor']),
             borderBottomColor: resolveColorTokenFromString(
                 data?['_dark']?[':invalid']?[':hover']?['borderBottomColor']),
           ),
-          onFocus: GSStyle(
+          onFocus: GSConfigStyle(
             borderColor: resolveColorTokenFromString(
                 data?['_dark']?[':invalid']?[':focus']?['borderColor']),
             borderBottomColor: resolveColorTokenFromString(
                 data?['_dark']?[':invalid']?[':focus']?['borderBottomColor']),
           ),
-          onDisabled: GSStyle(
+          onDisabled: GSConfigStyle(
             borderColor: resolveColorTokenFromString(data?['_dark']?[':invalid']
                 ?[':disabled']?[':hover']?['borderColor']),
             borderBottomColor: resolveColorTokenFromString(data?['_dark']
@@ -1275,54 +1289,55 @@ class GSStyle extends BaseStyle<GSStyle> {
     );
   }
 
-  GSStyle? actionMap(GSActions? gsActions) {
+  GSConfigStyle? actionMap(GSActions? gsActions) {
     if (gsActions == null || variants?.action == null) {
       return null;
     }
 
-    final Map<GSActions, GSStyle?> actionMap = variants!.action!.styles;
+    final Map<GSActions, GSConfigStyle?> actionMap = variants!.action!.styles;
 
     return actionMap[gsActions];
   }
 
-  GSStyle? variantMap(GSVariants? gsVariants) {
+  GSConfigStyle? variantMap(GSVariants? gsVariants) {
     if (gsVariants == null || variants?.variant == null) {
       return null;
     }
 
-    final Map<GSVariants, GSStyle?> variantMap = variants!.variant!.styles;
+    final Map<GSVariants, GSConfigStyle?> variantMap =
+        variants!.variant!.styles;
 
     return variantMap[gsVariants];
   }
 
-  GSStyle? sizeMap(GSSizes? gsSizes) {
+  GSConfigStyle? sizeMap(GSSizes? gsSizes) {
     if (gsSizes == null || variants?.size == null) {
       return null;
     }
 
-    final Map<GSSizes, GSStyle?> sizeMap = variants!.size!.styles;
+    final Map<GSSizes, GSConfigStyle?> sizeMap = variants!.size!.styles;
 
     // print(sizeMap);
 
     return sizeMap[gsSizes];
   }
 
-  GSStyle? spaceMap(GSSpaces? gsSpaces) {
+  GSConfigStyle? spaceMap(GSSpaces? gsSpaces) {
     if (gsSpaces == null || variants?.space == null) {
       return null;
     }
 
-    final Map<GSSpaces, GSStyle?> spaceMap = variants!.space!.styles;
+    final Map<GSSpaces, GSConfigStyle?> spaceMap = variants!.space!.styles;
 
     return spaceMap[gsSpaces];
   }
 
-  GSStyle? placementMap(GSPlacements? gsPlacements) {
+  GSConfigStyle? placementMap(GSPlacements? gsPlacements) {
     if (gsPlacements == null || variants?.placements == null) {
       return null;
     }
 
-    final Map<GSPlacements, GSStyle?> placementMap =
+    final Map<GSPlacements, GSConfigStyle?> placementMap =
         variants!.placements!.styles;
 
     return placementMap[gsPlacements];

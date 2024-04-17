@@ -72,8 +72,8 @@ GSNavigationRail(
   ''';
     return CustomGSLayout(
       title: "GS Side Navigation",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

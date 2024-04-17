@@ -3,9 +3,9 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 
 GSStyleConfig gsButtonIconStyle =
     const GSStyleConfig(componentName: 'ButtonIcon', ancestorStyle: ['_icon']);
-GSStyle buttonIconStyle = GSStyle.fromMap(
-        data: getIt<GluestackCustomConfig>().icon)
-    .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonIcon));
+GSConfigStyle buttonIconStyle =
+    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().icon).merge(
+        GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonIcon));
 
 class GSButtonIconStyle {
   static Map<GSSizes, double?> size = {

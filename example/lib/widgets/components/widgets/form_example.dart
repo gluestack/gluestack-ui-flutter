@@ -217,8 +217,8 @@ class _FormExampleState extends State<FormExample> {
          )""";
     return CustomGSLayout(
       title: "Form Control",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -246,7 +246,7 @@ class _FormExampleState extends State<FormExample> {
                 const GSFormLabelText('Password'),
                 sp,
                 GSInput(
-                  style: GlueStyle(height: 80),
+                  style: GSStyle(height: 80),
                   obscureText: true,
                   hintText: 'Enter you password here...',
                   // validator: (input) {
@@ -274,8 +274,7 @@ class _FormExampleState extends State<FormExample> {
                 sp,
                 GSCheckBox(
                   icon: GSCheckBoxIndicator(
-                    style:
-                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                     child: const GSCheckBoxIcon(),
                   ),
                   value: "Singing",
@@ -285,8 +284,7 @@ class _FormExampleState extends State<FormExample> {
                 sp,
                 GSCheckBox(
                   icon: GSCheckBoxIndicator(
-                    style:
-                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                     child: const GSCheckBoxIcon(),
                   ),
                   value: "Dancing",
@@ -296,8 +294,7 @@ class _FormExampleState extends State<FormExample> {
                 sp,
                 GSCheckBox(
                   icon: GSCheckBoxIndicator(
-                    style:
-                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                     child: const GSCheckBoxIcon(),
                   ),
                   value: "Sports",
@@ -307,8 +304,7 @@ class _FormExampleState extends State<FormExample> {
                 sp,
                 GSCheckBox(
                   icon: GSCheckBoxIndicator(
-                    style:
-                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                     child: const GSCheckBoxIcon(),
                   ),
                   value: "Driving",
@@ -329,7 +325,7 @@ class _FormExampleState extends State<FormExample> {
                   },
                   icon: const GSRadioIcon<Value>(),
                   label: const GSRadioText<Value>(text: 'Capitalist'),
-                  style: GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                  style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                 ),
                 sp,
                 GSRadio<Value>(
@@ -342,7 +338,7 @@ class _FormExampleState extends State<FormExample> {
                   },
                   icon: const GSRadioIcon<Value>(),
                   label: const GSRadioText<Value>(text: 'Communist'),
-                  style: GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                  style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                 ),
                 sp2,
                 sp2,
@@ -351,7 +347,7 @@ class _FormExampleState extends State<FormExample> {
                       action: GSButtonActions.positive,
                       variant: GSButtonVariants.outline,
                       size: GSButtonSizes.$lg,
-                      style: GlueStyle(width: double.infinity),
+                      style: GSStyle(width: double.infinity),
                       onPressed: () {
                         if (_formKey.currentState != null &&
                             _formKey.currentState!.validate() &&
@@ -370,7 +366,7 @@ class _FormExampleState extends State<FormExample> {
                       child: GSText(
                         text: 'Submit',
                         textAlign: TextAlign.center,
-                        style: GlueStyle(
+                        style: GSStyle(
                             textStyle: const TextStyle(color: Colors.green)),
                       )),
                 ),

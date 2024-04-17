@@ -41,33 +41,33 @@ class FlexExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Flex",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSFlex(
-          style: GlueStyle(
+          style: GSStyle(
             direction: Axis.vertical,
-            md: GlueStyle(direction: Axis.horizontal),
+            md: GSStyle(direction: Axis.horizontal),
           ),
           children: [
             GSBox(
-              style: GlueStyle(
+              style: GSStyle(
                 height: 150,
                 width: 150,
                 bg: Colors.red,
               ),
             ),
             GSBox(
-              style: GlueStyle(
+              style: GSStyle(
                 height: 150,
                 width: 150,
                 bg: Colors.green,
               ),
             ),
             GSBox(
-              style: GlueStyle(
+              style: GSStyle(
                 height: 150,
                 width: 150,
                 bg: Colors.blue,

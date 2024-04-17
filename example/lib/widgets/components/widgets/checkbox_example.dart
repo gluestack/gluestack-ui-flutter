@@ -57,14 +57,14 @@ class _CheckBoxExampleState extends State<CheckBoxExample> {
   ''';
     return CustomGSLayout(
       title: "Checkbox",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
         component: GSCheckBox(
           icon: GSCheckBoxIndicator(
-            style: GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+            style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
             child: const GSCheckBoxIcon(),
           ),
           value: "value 1",

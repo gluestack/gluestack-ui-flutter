@@ -14,7 +14,7 @@ class GSButton extends StatelessWidget {
   final bool? isDisabled;
   final bool? isFocusVisible;
   final Widget child;
-  final GlueStyle? style;
+  final GSStyle? style;
   final Function? onHover;
   final Function(bool)? onFocusChange;
   final FocusNode? focusNode;
@@ -60,7 +60,7 @@ class GSButton extends StatelessWidget {
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
-        GSStyle styler = resolveStyles(
+        GSConfigStyle styler = resolveStyles(
           context: context,
           styles: [
             buttonStyle,
@@ -85,7 +85,7 @@ class GSButton extends StatelessWidget {
         }
 
         BorderSide _resolveBorderSide(
-            GSVariants variant, GSStyle styler, bool isAttached) {
+            GSVariants variant, GSConfigStyle styler, bool isAttached) {
           if (isAttached) {
             return BorderSide.none;
           }

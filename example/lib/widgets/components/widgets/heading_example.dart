@@ -15,8 +15,8 @@ class HeadingExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Heading",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(

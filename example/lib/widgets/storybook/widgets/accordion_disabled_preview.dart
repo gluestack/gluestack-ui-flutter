@@ -10,7 +10,7 @@ class AccordionDisabledPreview extends StatelessWidget {
     return materialWrapper(
       context,
       GSBox(
-        style: GlueStyle(width: 400, height: 240),
+        style: GSStyle(width: 400, height: 240),
         child: const GSAccordion(
           size: GSAccordionSizes.$md,
           type: GSAccordionTypes.multiple,

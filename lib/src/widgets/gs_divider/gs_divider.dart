@@ -2,13 +2,13 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_divider/gs_divider_style.dart';
 
-/// A customizable divider widget that can be styled with [GSStyle] and oriented
+/// A customizable divider widget that can be styled with [GSConfigStyle] and oriented
 /// horizontally or vertically. [GSDivider] is designed to provide a visual separation
 /// between different UI elements.
 class GSDivider extends StatelessWidget {
-  /// Custom [GSStyle] to apply to the divider, enabling detailed customization
+  /// Custom [GSConfigStyle] to apply to the divider, enabling detailed customization
   /// of its appearance, including color, width, height, etc.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// The orientation of the divider, either [GSOrientations.horizontal] or [GSOrientations.vertical].
   /// This determines how the divider is displayed within its parent container.

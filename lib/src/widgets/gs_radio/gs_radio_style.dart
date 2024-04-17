@@ -6,7 +6,7 @@ const GSStyleConfig gsRadioConfig = GSStyleConfig(
     ancestorStyle: ['_radio'],
     descendantStyle: ['_icon', '_text', '_indicator']);
 
-final GSStyle radioStyle = GSStyle.fromMap(
+final GSConfigStyle radioStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().radio,
     descendantStyle: gsRadioConfig.descendantStyle);
 

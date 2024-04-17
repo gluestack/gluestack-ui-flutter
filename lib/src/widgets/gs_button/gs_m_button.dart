@@ -13,7 +13,7 @@ class GSMaterialButton extends StatelessWidget {
   final bool? isFocusVisible;
   final Widget child;
   final VoidCallback onPressed;
-  final GlueStyle? style;
+  final GSStyle? style;
   final VoidCallback? onLongPress;
   final Function(bool)? onHover;
   final Function(bool)? onFocusChange;
@@ -51,7 +51,7 @@ class GSMaterialButton extends StatelessWidget {
     final isAttached = value?.isAttached ?? false;
 
     BorderSide resolveBorderSide(
-        GSVariants variant, GSStyle styler, bool isAttached) {
+        GSVariants variant, GSConfigStyle styler, bool isAttached) {
       if (isAttached) {
         return BorderSide.none;
       }
@@ -74,7 +74,7 @@ class GSMaterialButton extends StatelessWidget {
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
-        GSStyle styler = resolveStyles(
+        GSConfigStyle styler = resolveStyles(
             context: context,
             styles: [
               buttonStyle,

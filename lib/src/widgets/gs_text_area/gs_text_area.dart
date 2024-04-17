@@ -15,7 +15,7 @@ import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
 ///
 class GSTextArea extends StatefulWidget {
   final GSTextAreaSizes? size;
-  final GlueStyle? style;
+  final GSStyle? style;
   final bool? isDisabled;
   final bool? isInvalid;
   final bool? isReadOnly;
@@ -202,7 +202,7 @@ class _GSTextAreaState extends State<GSTextArea> {
     final inputSize =
         widget.size?.toGSSize ?? formProps?.size ?? textAreaStyle.props?.size;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gstextStyle,
@@ -296,7 +296,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                     top: 10,
                     child: GSText(
                       text: widget.hintText ?? '',
-                      style: GlueStyle(
+                      style: GSStyle(
                           textStyle: TextStyle(
                         fontSize: styler
                             .descendantStyles?['_input']?.textStyle?.fontSize,
@@ -422,7 +422,7 @@ class _GSTextAreaState extends State<GSTextArea> {
       return Row(
         children: [
           GSText(
-            style: GlueStyle(
+            style: GSStyle(
               textStyle: widget.prefixStyle,
             ),
             text: widget.prefixText!,

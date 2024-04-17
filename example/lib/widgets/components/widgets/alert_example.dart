@@ -59,8 +59,8 @@ class AlertExample extends StatelessWidget {
 ''';
     return CustomGSLayout(
       title: "Alert",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -74,7 +74,7 @@ class AlertExample extends StatelessWidget {
                 size: GSAlertDialogSizes.$full,
                 content: GSAlertDialogContent(
                   header: GSAlertDialogHeader(
-                    style: GlueStyle(
+                    style: GSStyle(
                       bg: Colors.pink,
                     ),
                     child: const GSText(

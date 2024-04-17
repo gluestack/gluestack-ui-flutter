@@ -22,7 +22,7 @@ class TextareaFormControlPreview extends StatelessWidget {
                 ),
                 GSTextArea(
                   hintText: "Once upon a time...",
-                  style: GlueStyle(
+                  style: GSStyle(
                     width: 300,
                   ),
                 ),

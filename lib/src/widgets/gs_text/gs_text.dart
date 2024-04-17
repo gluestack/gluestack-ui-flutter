@@ -11,9 +11,9 @@ class GSText extends StatelessWidget {
   /// [GSSizes] values, allowing for consistent text scaling across the application.
   final GSSizes? size;
 
-  /// Custom [GSStyle] to apply to the text, enabling detailed customization of text appearance,
+  /// Custom [GSConfigStyle] to apply to the text, enabling detailed customization of text appearance,
   /// including font, color, and more, beyond the default styling.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// Determines if the text should be truncated with an ellipsis when it overflows the available
   /// space. Defaults to `false`, allowing text to wrap by default.
@@ -113,7 +113,7 @@ class GSText extends StatelessWidget {
   Widget build(BuildContext context) {
     final textSize = size ?? gstextStyle.props?.size;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gstextStyle,

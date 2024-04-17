@@ -65,8 +65,8 @@ class _VStackExampleState extends State<VStackExample> {
   ''';
     return CustomGSLayout(
       title: "VStack",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -76,15 +76,15 @@ class _VStackExampleState extends State<VStackExample> {
           space: selectedSpaceOption,
           children: [
             GSBox(
-              style: GlueStyle(height: 100, width: 100, bg: $GSColors.blue300),
+              style: GSStyle(height: 100, width: 100, bg: $GSColors.blue300),
               child: const Text('1'),
             ),
             GSBox(
-              style: GlueStyle(height: 100, width: 100, bg: $GSColors.blue400),
+              style: GSStyle(height: 100, width: 100, bg: $GSColors.blue400),
               child: const Text('2'),
             ),
             GSBox(
-              style: GlueStyle(height: 100, width: 100, bg: $GSColors.blue500),
+              style: GSStyle(height: 100, width: 100, bg: $GSColors.blue500),
               child: const Text('3'),
             ),
           ],

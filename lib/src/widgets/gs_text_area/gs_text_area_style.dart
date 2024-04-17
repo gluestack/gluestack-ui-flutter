@@ -6,6 +6,6 @@ const GSStyleConfig gsTextAreaConfig = GSStyleConfig(
   descendantStyle: ['_input'],
 );
 
-GSStyle textAreaStyle = GSStyle.fromMap(
+GSConfigStyle textAreaStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().textArea,
     descendantStyle: gsTextAreaConfig.descendantStyle);

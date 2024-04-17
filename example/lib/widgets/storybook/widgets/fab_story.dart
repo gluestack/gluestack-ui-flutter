@@ -17,12 +17,12 @@ final class FabStory extends StoryWidget {
         child: Stack(
           children: [
             GSBox(
-              style: GlueStyle(
+              style: GSStyle(
                 height: 360,
                 width: 320,
                 borderRadius: $GSRadii.$md,
                 bg: $GSColors.backgroundLight50,
-                dark: GlueStyle(color: $GSColors.backgroundDark900),
+                dark: GSStyle(color: $GSColors.backgroundDark900),
               ),
             ),
             GSFab(

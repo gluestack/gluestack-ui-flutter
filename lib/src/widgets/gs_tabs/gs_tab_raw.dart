@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_tabs/gs_tabs_tab_style.dart';
 import '../../style/style_resolver.dart';
 
 class GSRawTab extends StatelessWidget {
-  final GlueStyle? style;
+  final GSStyle? style;
   final Widget child;
   final Alignment? alignment;
   final Function() callback;

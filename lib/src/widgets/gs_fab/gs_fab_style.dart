@@ -4,6 +4,6 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 GSStyleConfig fabConfig = const GSStyleConfig(
     componentName: 'Fab', descendantStyle: ['_text', '_icon']);
 
-GSStyle fabStyle = GSStyle.fromMap(
+GSConfigStyle fabStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().fab,
     descendantStyle: fabConfig.descendantStyle);

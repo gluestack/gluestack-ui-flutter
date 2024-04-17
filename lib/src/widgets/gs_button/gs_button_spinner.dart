@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_button/gs_button_icon_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_spinner_style.dart';
 
 class GSButtonSpinner extends StatelessWidget {
-  final GlueStyle? style;
+  final GSStyle? style;
   final Color? backgroundColor;
   final Color? color;
   final String? semanticsLabel;

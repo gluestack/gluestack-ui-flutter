@@ -15,7 +15,7 @@ final class TabStory extends StoryWidget {
             body: GSVStack(
               children: [
                 GSBox(
-                  style: GlueStyle(height: 45),
+                  style: GSStyle(height: 45),
                   child: const GSCenter(
                     child: GSText(
                       text: 'Tab Example',

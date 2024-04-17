@@ -1,7 +1,7 @@
 import 'package:gluestack_ui/src/style/base_style.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 
-class GlueStyle extends BaseStyle<GlueStyle> {
+class GSStyle extends BaseStyle<GSStyle> {
   double? borderWidth;
   Color? borderColor;
   double? borderRadius;
@@ -17,7 +17,7 @@ class GlueStyle extends BaseStyle<GlueStyle> {
   double? borderBottomWidth;
   double? borderLeftWidth;
   TextStyle? textStyle;
-  GlueStyle? checked;
+  GSStyle? checked;
   GSFlexDirections? flexDirection;
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
@@ -33,7 +33,7 @@ class GlueStyle extends BaseStyle<GlueStyle> {
   //for splash n highlight for pressable
   // Color? highlightColor;
   // Color? splashColor;
-  GlueStyle? badge;
+  GSStyle? badge;
   GSTextTransform? textTransform;
   GSSizes? iconSize;
 
@@ -58,7 +58,7 @@ class GlueStyle extends BaseStyle<GlueStyle> {
 
   //Accordion
   Color? iconColor;
-  GlueStyle? item;
+  GSStyle? item;
   Color? shadowColor;
   double? shadowRadius;
   double? shadowOpacity;
@@ -66,7 +66,7 @@ class GlueStyle extends BaseStyle<GlueStyle> {
   ShadowOffset? shadowOffset;
   TextAlign? textAlign;
 
-  GlueStyle({
+  GSStyle({
     this.borderWidth,
     this.borderColor,
     this.borderRadius,
@@ -145,7 +145,7 @@ class GlueStyle extends BaseStyle<GlueStyle> {
 
   @override
   merge(overrideStyle, {List<String> descendantStyleKeys = const []}) {
-    return GlueStyle(
+    return GSStyle(
         borderColor: overrideStyle?.borderColor ?? borderColor,
         borderRadius: overrideStyle?.borderRadius ?? borderRadius,
         borderWidth: overrideStyle?.borderWidth ?? borderWidth,
@@ -251,12 +251,12 @@ class GlueStyle extends BaseStyle<GlueStyle> {
         ));
   }
 
-  static GlueStyle fromGSStyle(GSStyle styler, BuildContext context) {
+  static GSStyle fromGSStyle(GSConfigStyle styler, BuildContext context) {
     Color? parseColor(String? colorString) {
       return colorString?.getColor(context);
     }
 
-    return GlueStyle(
+    return GSStyle(
       borderWidth: styler.borderWidth,
       borderColor: parseColor(styler.borderColor),
       borderRadius: styler.borderRadius,
@@ -307,9 +307,8 @@ class GlueStyle extends BaseStyle<GlueStyle> {
       shadowOffset: styler.shadowOffset,
       textAlign: styler.textAlign,
       dark: styler.dark != null ? fromGSStyle(styler.dark!, context) : null,
-      android: styler.android != null
-          ? fromGSStyle(styler.android!, context)
-          : null,
+      android:
+          styler.android != null ? fromGSStyle(styler.android!, context) : null,
       ios: styler.ios != null ? fromGSStyle(styler.ios!, context) : null,
       web: styler.web != null ? fromGSStyle(styler.web!, context) : null,
       sm: styler.sm != null ? fromGSStyle(styler.sm!, context) : null,
@@ -317,23 +316,18 @@ class GlueStyle extends BaseStyle<GlueStyle> {
       lg: styler.lg != null ? fromGSStyle(styler.lg!, context) : null,
       xs: styler.xs != null ? fromGSStyle(styler.xs!, context) : null,
       icon: styler.icon != null ? fromGSStyle(styler.icon!, context) : null,
-      input:
-          styler.input != null ? fromGSStyle(styler.input!, context) : null,
-      badge:
-          styler.badge != null ? fromGSStyle(styler.badge!, context) : null,
+      input: styler.input != null ? fromGSStyle(styler.input!, context) : null,
+      badge: styler.badge != null ? fromGSStyle(styler.badge!, context) : null,
       item: styler.item != null ? fromGSStyle(styler.item!, context) : null,
-      checked: styler.checked != null
-          ? fromGSStyle(styler.checked!, context)
-          : null,
+      checked:
+          styler.checked != null ? fromGSStyle(styler.checked!, context) : null,
       onActive: styler.onActive != null
           ? fromGSStyle(styler.onActive!, context)
           : null,
-      onFocus: styler.onFocus != null
-          ? fromGSStyle(styler.onFocus!, context)
-          : null,
-      onHover: styler.onHover != null
-          ? fromGSStyle(styler.onHover!, context)
-          : null,
+      onFocus:
+          styler.onFocus != null ? fromGSStyle(styler.onFocus!, context) : null,
+      onHover:
+          styler.onHover != null ? fromGSStyle(styler.onHover!, context) : null,
       onInvalid: styler.onInvalid != null
           ? fromGSStyle(styler.onInvalid!, context)
           : null,

@@ -11,7 +11,7 @@ class GSHeader extends StatelessWidget {
   final EdgeInsets? minPaddingForTrailing;
   final double? minSpacingForChild;
   final double? minHeight;
-  final GlueStyle? style;
+  final GSStyle? style;
   final List<BoxShadow>? boxShadow;
   const GSHeader({
     super.key,
@@ -35,7 +35,7 @@ class GSHeader extends StatelessWidget {
     final styler = resolveStyles(
       context: context,
       styles: [
-        GSStyle(
+        GSConfigStyle(
           width: double.infinity,
           height: minHeight,
           bg: 'primary500',
@@ -65,7 +65,7 @@ class GSHeader extends StatelessWidget {
               fontFamily: 'MaterialIcons',
               matchTextDirection: true,
             ),
-            style: GlueStyle(
+            style: GSStyle(
                 color: isLightColor(styler.bg?.getColor(context))
                     ? $GSColors.black
                     : $GSColors.white),
@@ -97,7 +97,7 @@ class GSHeader extends StatelessWidget {
     }
 
     return GSBox(
-        style: GlueStyle.fromGSStyle(styler, context),
+        style: GSStyle.fromGSStyle(styler, context),
         boxShadow: boxShadow,
         child: NavigationToolbar(
           leading: Padding(padding: minPaddingForLeading!, child: leading),

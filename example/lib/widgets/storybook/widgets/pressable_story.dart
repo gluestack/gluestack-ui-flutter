@@ -10,10 +10,10 @@ final class PressableStory extends StoryWidget {
       name: storyName,
       builder: (context) => GSPressable(
         hitSlop: 10,
-        style: GlueStyle(
+        style: GSStyle(
           bg: Colors.blue,
-          onHover: GlueStyle(color: Colors.lightBlue),
-          onFocus: GlueStyle(borderColor: Colors.red, borderWidth: 10),
+          onHover: GSStyle(color: Colors.lightBlue),
+          onFocus: GSStyle(borderColor: Colors.red, borderWidth: 10),
         ),
         onPress: () {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -30,7 +30,7 @@ final class PressableStory extends StoryWidget {
         child: GSText(
           text: 'Press Me',
           underline: true,
-          style: GlueStyle(
+          style: GSStyle(
               color: Colors.blue,
               textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg)),
         ),

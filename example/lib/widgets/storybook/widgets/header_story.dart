@@ -16,7 +16,7 @@ final class HeaderStory extends StoryWidget {
             ),
           ),
           GSBox(
-            style: GlueStyle(
+            style: GSStyle(
                 margin: const EdgeInsets.all(4),
                 height: 30,
                 width: double.infinity,
@@ -24,7 +24,7 @@ final class HeaderStory extends StoryWidget {
                 borderRadius: 12),
           ),
           GSBox(
-            style: GlueStyle(
+            style: GSStyle(
                 margin: const EdgeInsets.all(4),
                 height: 30,
                 width: double.infinity,
@@ -32,7 +32,7 @@ final class HeaderStory extends StoryWidget {
                 borderRadius: 12),
           ),
           GSBox(
-            style: GlueStyle(
+            style: GSStyle(
                 margin: const EdgeInsets.all(4),
                 height: 30,
                 width: double.infinity,

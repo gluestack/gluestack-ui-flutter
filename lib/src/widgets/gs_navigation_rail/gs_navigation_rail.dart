@@ -69,7 +69,7 @@ class GSNavigationRail extends StatefulWidget {
             (labelType == null || labelType == GSNavigationRailLabelType.none));
 
   final Color? backgroundColor;
-  final GlueStyle? style;
+  final GSStyle? style;
   final GSNavigationRailSizes? size;
   final bool extended;
   final Widget? leading;
@@ -168,7 +168,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
   Widget build(BuildContext context) {
     final textSize = widget.size ?? gsNavigationRailStyle.props?.size;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gsNavigationRailStyle,
@@ -178,7 +178,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       isFirst: true,
     );
 
-    GSStyle selectedLabelStyler = resolveStyles(
+    GSConfigStyle selectedLabelStyler = resolveStyles(
       context: context,
       styles: [
         gsNavigationRailSelectedLabelTextStyle,
@@ -188,7 +188,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       isFirst: true,
     );
 
-    GSStyle unselectedLabelStyler = resolveStyles(
+    GSConfigStyle unselectedLabelStyler = resolveStyles(
       context: context,
       styles: [
         gsNavigationRailUnselectedLabelTextStyle,

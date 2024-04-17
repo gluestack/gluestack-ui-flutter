@@ -6,13 +6,13 @@ class GSAlertDialogContent extends StatelessWidget {
   final GSAlertDialogHeader? header;
   final GSAlertDialogBody? body;
   final GSAlertDialogFooter? footer;
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSAlertDialogContent(
       {super.key, this.header, this.body, this.footer, this.style});
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [alertDialogContentStyle],
       inlineStyle: style,

@@ -9,7 +9,7 @@ class ButtonGroupPreview extends StatelessWidget {
     return materialWrapper(
       context,
       GSBox(
-        style: GlueStyle(
+        style: GSStyle(
           borderColor: $GSColors.warmGray500,
           width: 600,
           height: 200,
@@ -21,7 +21,7 @@ class ButtonGroupPreview extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GSBox(
-              style: GlueStyle(width: 300),
+              style: GSStyle(width: 300),
               child: const GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +43,7 @@ class ButtonGroupPreview extends StatelessWidget {
                   action: GSButtonActions.secondary,
                   child: GSButtonText(
                     text: "No",
-                    style: GlueStyle(),
+                    style: GSStyle(),
                   ),
                   onPressed: () {},
                 ),
@@ -55,7 +55,7 @@ class ButtonGroupPreview extends StatelessWidget {
                   action: GSButtonActions.positive,
                   child: GSButtonText(
                     text: "Yes",
-                    style: GlueStyle(),
+                    style: GSStyle(),
                   ),
                   onPressed: () {},
                 ),

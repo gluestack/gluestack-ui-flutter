@@ -25,7 +25,7 @@ class _MultipleRadioButtonHorizontalPreviewState
           Story(
             name: 'RadioButton',
             builder: (context) => GSBox(
-              style: GlueStyle(width: 350, height: 50),
+              style: GSStyle(width: 350, height: 50),
               child: GSHStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -39,8 +39,7 @@ class _MultipleRadioButtonHorizontalPreviewState
                     },
                     icon: const GSRadioIcon<Value>(),
                     label: const GSRadioText<Value>(text: 'Credit Card'),
-                    style:
-                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                   ),
                   const SizedBox(
                     width: 20,
@@ -55,8 +54,7 @@ class _MultipleRadioButtonHorizontalPreviewState
                     },
                     icon: const GSRadioIcon<Value>(),
                     label: const GSRadioText<Value>(text: 'UPI'),
-                    style:
-                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                   ),
                   const SizedBox(
                     width: 20,
@@ -71,8 +69,7 @@ class _MultipleRadioButtonHorizontalPreviewState
                     },
                     icon: const GSRadioIcon<Value>(),
                     label: const GSRadioText<Value>(text: 'Cash on Delivery'),
-                    style:
-                        GlueStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
+                    style: GSStyle(margin: EdgeInsets.only(right: $GSSpace.$2)),
                   ),
                 ],
               ),

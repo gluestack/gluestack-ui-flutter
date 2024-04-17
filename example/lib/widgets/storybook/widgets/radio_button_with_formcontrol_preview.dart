@@ -26,7 +26,7 @@ class _RadioButtonWithFormControlPreviewState
           Story(
             name: 'RadioButton',
             builder: (context) => GSBox(
-              style: GlueStyle(width: 320, height: 200),
+              style: GSStyle(width: 320, height: 200),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -44,7 +44,7 @@ class _RadioButtonWithFormControlPreviewState
                     },
                     icon: const GSRadioIcon<Value>(),
                     label: const GSRadioText<Value>(text: 'Monday'),
-                    style: GlueStyle(
+                    style: GSStyle(
                       margin: EdgeInsets.only(
                         right: $GSSpace.$4,
                       ),
@@ -63,7 +63,7 @@ class _RadioButtonWithFormControlPreviewState
                     },
                     icon: const GSRadioIcon<Value>(),
                     label: const GSRadioText<Value>(text: 'Tuesday'),
-                    style: GlueStyle(
+                    style: GSStyle(
                       margin: EdgeInsets.only(
                         right: $GSSpace.$4,
                       ),
@@ -82,7 +82,7 @@ class _RadioButtonWithFormControlPreviewState
                     },
                     icon: const GSRadioIcon<Value>(),
                     label: const GSRadioText<Value>(text: 'Wednesday'),
-                    style: GlueStyle(
+                    style: GSStyle(
                       margin: EdgeInsets.only(
                         right: $GSSpace.$4,
                       ),

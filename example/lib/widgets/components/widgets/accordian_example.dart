@@ -95,8 +95,8 @@ GSAccordion(
 
     return CustomGSLayout(
       title: "Accordion",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

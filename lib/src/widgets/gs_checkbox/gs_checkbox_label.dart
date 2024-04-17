@@ -4,7 +4,7 @@ import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_label_style.dar
 
 class GSCheckBoxLabel extends StatelessWidget {
   final String text;
-  final GlueStyle? style;
+  final GSStyle? style;
   const GSCheckBoxLabel({super.key, required this.text, this.style});
 
   @override
@@ -25,7 +25,7 @@ class GSCheckBoxLabel extends StatelessWidget {
     );
 
     //resolve this with styleResolver in future
-    Color? resolveColor(GSStyle? styler,
+    Color? resolveColor(GSConfigStyle? styler,
         {bool isChecked = false,
         bool isHovered = false,
         bool isDisabled = false}) {

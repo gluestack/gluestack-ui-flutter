@@ -9,41 +9,41 @@ class DividerExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomGSLayout(
       title: "Divider",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: GSCenter(
         child: GSVStack(
           children: [
             GSDivider(
               orientation: GSOrientations.vertical,
-              style: GlueStyle(bg: Colors.black, height: 30),
+              style: GSStyle(bg: Colors.black, height: 30),
             ),
             GSDivider(
-              style: GlueStyle(
+              style: GSStyle(
                 bg: Colors.blue,
               ),
             ),
             GSDivider(
               orientation: GSOrientations.vertical,
-              style: GlueStyle(
+              style: GSStyle(
                 height: 200,
                 bg: Colors.red,
               ),
             ),
             GSDivider(
-              style: GlueStyle(
+              style: GSStyle(
                 bg: Colors.orange,
               ),
             ),
             GSBox(
-              style: GlueStyle(
+              style: GSStyle(
                 padding: const EdgeInsets.only(bottom: 2),
               ),
               child: const Text('GS Divider'),
             ),
             GSDivider(
-              style: GlueStyle(
+              style: GSStyle(
                 bg: Colors.purple,
               ),
             ),

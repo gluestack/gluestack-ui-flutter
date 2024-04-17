@@ -25,8 +25,8 @@ class _TabExampleState extends State<TabExample> {
   Widget build(BuildContext context) {
     return CustomGSLayout(
       title: "GS Tabs",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: """
@@ -67,7 +67,7 @@ class _TabExampleState extends State<TabExample> {
             mainAxisSize: MainAxisSize.min,
             children: [
               GSTabHeader(
-                style: GlueStyle(
+                style: GSStyle(
                   color: $GSColors.amber400, //sets indicator color
                   // bg: $GSColors.amber100, //sets tab header bg color
                 ),
@@ -86,9 +86,9 @@ class _TabExampleState extends State<TabExample> {
               GSTabContent(
                 controller: controller,
                 children: <Widget>[
-                  GSBox(style: GlueStyle(color: $GSColors.yellow400)),
-                  GSBox(style: GlueStyle(color: $GSColors.purple600)),
-                  GSBox(style: GlueStyle(color: $GSColors.red600)),
+                  GSBox(style: GSStyle(color: $GSColors.yellow400)),
+                  GSBox(style: GSStyle(color: $GSColors.purple600)),
+                  GSBox(style: GSStyle(color: $GSColors.red600)),
                 ],
               ),
             ],

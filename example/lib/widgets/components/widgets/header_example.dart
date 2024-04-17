@@ -61,7 +61,7 @@ class HeaderExample extends StatelessWidget {
                 // leadingWidget: Icon(Icons.architecture),
               ),
               GSBox(
-                style: GlueStyle(
+                style: GSStyle(
                     margin: const EdgeInsets.all(4),
                     height: 30,
                     width: double.infinity,
@@ -69,7 +69,7 @@ class HeaderExample extends StatelessWidget {
                     borderRadius: 12),
               ),
               GSBox(
-                style: GlueStyle(
+                style: GSStyle(
                     margin: const EdgeInsets.all(4),
                     height: 30,
                     width: double.infinity,
@@ -77,7 +77,7 @@ class HeaderExample extends StatelessWidget {
                     borderRadius: 12),
               ),
               GSBox(
-                style: GlueStyle(
+                style: GSStyle(
                     margin: const EdgeInsets.all(4),
                     height: 30,
                     width: double.infinity,

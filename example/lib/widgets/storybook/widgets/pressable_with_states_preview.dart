@@ -15,9 +15,9 @@ class PressableWithStatesPreview extends StatelessWidget {
           Story(
             name: 'Pressable',
             builder: (context) => GSPressable(
-              style: GlueStyle(
+              style: GSStyle(
                   bg: $GSColors.blue600,
-                  onHover: GlueStyle(
+                  onHover: GSStyle(
                     color: $GSColors.blue900,
                   )),
               hitSlop: 10,

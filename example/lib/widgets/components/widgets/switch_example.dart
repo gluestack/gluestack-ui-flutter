@@ -56,8 +56,8 @@ class _SwitchExampleState extends State<SwitchExample> {
 ''';
     return CustomGSLayout(
       title: "Switch",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -66,10 +66,10 @@ class _SwitchExampleState extends State<SwitchExample> {
             GSSwitch(
               isDisabled: isDisabled,
               size: selectedSizeOption,
-              style: GlueStyle(
+              style: GSStyle(
                 thumbColor: Colors.amber,
                 trackColorFalse: Colors.orange,
-                checked: GlueStyle(
+                checked: GSStyle(
                   activeThumbColor: Colors.red,
                   trackColorTrue: Colors.black,
                 ),

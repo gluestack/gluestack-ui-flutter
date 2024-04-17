@@ -12,7 +12,7 @@ enum GSAccordionTypes { single, multiple }
 /// This widget supports various sizes, types, and visual variants, and can be further customized with icons and styles.
 class GSAccordion extends StatefulWidget {
   /// Custom style for the accordion. If null, the default style is applied.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// ThGlueStyle? style;e; to display within the accordion.
   final List<GSAccordionItem> children;
@@ -97,7 +97,7 @@ class _GSAccordionState extends State<GSAccordion> {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
         context: context,
         styles: [
           accordionStyle,

@@ -17,8 +17,8 @@ class TextExample extends StatelessWidget {
   ''';
     return CustomGSLayout(
       title: "Text",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: Center(
         child: BaseLayout(
@@ -27,7 +27,7 @@ class TextExample extends StatelessWidget {
             text: 'This is an example of a simple text.',
             // bold: true,
             // underline: true,
-            style: GlueStyle(
+            style: GSStyle(
               textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
             ),
           ),

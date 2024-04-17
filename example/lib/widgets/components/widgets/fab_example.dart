@@ -77,8 +77,8 @@ class _FabExampleState extends State<FabExample> {
 """;
     return CustomGSLayout(
       title: "Fab",
-      style: GlueStyle(
-        dark: GlueStyle(bg: $GSColors.black),
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -86,12 +86,12 @@ class _FabExampleState extends State<FabExample> {
           child: GSStack(
             children: [
               GSBox(
-                style: GlueStyle(
+                style: GSStyle(
                     height: 360,
                     width: 320,
                     borderRadius: $GSRadii.$md,
                     bg: $GSColors.backgroundLight50,
-                    dark: GlueStyle(color: $GSColors.backgroundDark900)),
+                    dark: GSStyle(color: $GSColors.backgroundDark900)),
               ),
               GSFab(
                 size: selectedSizeOption,

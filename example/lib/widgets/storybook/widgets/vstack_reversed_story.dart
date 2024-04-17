@@ -13,15 +13,15 @@ final class VStackReversedStory extends StoryWidget {
         isReversed: true,
         children: [
           GSBox(
-            style: GlueStyle(height: 100, width: 100, bg: $GSColors.blue300),
+            style: GSStyle(height: 100, width: 100, bg: $GSColors.blue300),
             child: const Text('1'),
           ),
           GSBox(
-            style: GlueStyle(height: 100, width: 100, bg: $GSColors.blue400),
+            style: GSStyle(height: 100, width: 100, bg: $GSColors.blue400),
             child: const Text('2'),
           ),
           GSBox(
-            style: GlueStyle(height: 100, width: 100, bg: $GSColors.blue500),
+            style: GSStyle(height: 100, width: 100, bg: $GSColors.blue500),
             child: const Text('3'),
           ),
         ],

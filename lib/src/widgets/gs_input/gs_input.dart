@@ -12,7 +12,7 @@ import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
 class GSInput extends StatefulWidget {
   final GSInputVariants? variant;
   final GSInputSizes? size;
-  final GlueStyle? style;
+  final GSStyle? style;
   final bool? isDisabled;
   final bool? isInvalid;
   final bool? isReadOnly;
@@ -204,7 +204,7 @@ class _GSInputState extends State<GSInput> {
     final bool isInvalid = widget.isInvalid ?? formProps?.isInvalid ?? false;
     // final bool isRequired = formProps?.isRequired ?? false;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gstextStyle,

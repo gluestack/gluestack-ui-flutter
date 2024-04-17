@@ -5,5 +5,5 @@ const GSStyleConfig gsNavigationRailUnselectedLabelTextConfig = GSStyleConfig(
     componentName: 'UnselectedLabelText',
     ancestorStyle: ['_unselectedLabelText']);
 
-GSStyle gsNavigationRailUnselectedLabelTextStyle = GSStyle.fromMap(
+GSConfigStyle gsNavigationRailUnselectedLabelTextStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().navigationRailUnselectedLableText);

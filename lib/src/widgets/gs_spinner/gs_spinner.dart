@@ -9,9 +9,9 @@ enum GSSpinnerSizes { small, large }
 /// A widget that displays a circular loading spinner with customizable size, stroke width,
 /// color, and animation duration. Suitable for indicating loading states in the UI.
 class GSSpinner extends StatefulWidget {
-  /// Custom [GSStyle] to apply to the spinner, enabling detailed customization of its appearance,
+  /// Custom [GSConfigStyle] to apply to the spinner, enabling detailed customization of its appearance,
   /// including color and dimensions.
-  final GlueStyle? style;
+  final GSStyle? style;
 
   /// The size of the spinner, affecting its overall dimensions. This can be set to one of
   /// the predefined [GSSpinnerSizes] values, altering the spinner's size.
@@ -70,7 +70,7 @@ class GSSpinnerState extends State<GSSpinner>
   @override
   Widget build(BuildContext context) {
     // Resolve the GSStyle for the spinner.
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [spinnerStyle],
       inlineStyle: widget.style,

@@ -14,12 +14,12 @@ class SpinnerWithLabelPreview extends StatelessWidget {
           Story(
             name: 'Spinner',
             builder: (context) => GSBox(
-              style: GlueStyle(width: 300, height: 100),
+              style: GSStyle(width: 300, height: 100),
               child: GSHStack(
                 children: [
                   GSSpinner(
                     strokeWidth: 2,
-                    style: GlueStyle(
+                    style: GSStyle(
                       bg: $GSColors.blueGray300,
                       width: 20,
                       height: 20,
