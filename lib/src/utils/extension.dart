@@ -1,5 +1,6 @@
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/token/theme_color.dart';
 
 extension GSExtensions on Object {
   GSActions? get toGSAction => mapToGSActions(this);

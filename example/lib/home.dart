@@ -212,14 +212,14 @@ class _HomePageState extends State<HomePage> {
           return FloatingActionButton(
             onPressed: () {
               // ref.read(toggleThemeProvider.notifier).toggleThemeMode;
+              final keyList = gSThemes.keys.toList();
+              updaterFunc(keyList[Random().nextInt(keyList.length)]);
 
-              updaterFunc(GSThemes.values[Random().nextInt(5)]);
-
-              print('c t: ${GSTheme.of(context).theme}');
+              print('c t: ${GSTheme.of(context).themeId}');
               print('p 500: ${GSTheme.of(context).primary500}');
             },
             child: Icon(
-              GSTheme.of(context).theme == GSThemes.dark
+              GSTheme.of(context).themeId == 'dark_theme'
                   ? Icons.light_mode
                   : Icons.dark_mode,
             ),

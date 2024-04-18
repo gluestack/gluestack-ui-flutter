@@ -1,7 +1,4 @@
 const Map<String, dynamic> layoutData = {
-  "backgroundColor": "\$backgroundlight",
-  "_dark": {
-    "backgroundColor": "\$backgrounddark",
-  },
+  "backgroundColor": "\$background0",
   "gap": "\$4",
 };

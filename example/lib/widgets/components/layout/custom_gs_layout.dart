@@ -60,7 +60,7 @@ class CustomAppBar extends StatelessWidget {
           !hideBackButton
               ? IconButton(
                   icon: const Icon(Icons.arrow_back),
-                  color: GSTheme.of(context).theme == GSThemes.dark
+                  color: GSTheme.of(context).themeId == 'dark_theme'
                       ? $GSColors.white
                       : null,
                   onPressed: () {

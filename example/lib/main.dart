@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  GSThemes currentTheme = GSThemes.light;
+  String currentTheme = 'light_theme';
   @override
   Widget build(BuildContext context) {
     return GluestackProvider(
@@ -43,16 +43,16 @@ class _MyAppState extends State<MyApp> {
           // MaterialApp(darkTheme: ThemeData,)
 
           return GSTheme(
-            data: GSThemeData.fromTheme(GSThemes.light),
+            data: GSThemeData.fromTheme('light_theme'),
             child: GSApp.router(
               debugShowCheckedModeBanner: false,
               color: $GSColors.primary500,
-              routerConfig: ree((GSThemes newTheme) {
+              routerConfig: ree((String newTheme) {
                 setState(() {
                   currentTheme = newTheme;
                 });
               }),
-              theme: GSThemeData.fromTheme(GSThemes.light),
+              theme: GSThemeData.fromTheme(currentTheme),
               // darkTheme: GSThemeData.fromTheme(GSThemes.dark),
               // themeMode: GSThemeMode.system,
             ),
