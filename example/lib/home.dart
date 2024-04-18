@@ -218,10 +218,8 @@ class _HomePageState extends State<HomePage> {
               print('c t: ${GSTheme.of(context).themeId}');
               print('p 500: ${GSTheme.of(context).primary500}');
             },
-            child: Icon(
-              GSTheme.of(context).themeId == 'dark_theme'
-                  ? Icons.light_mode
-                  : Icons.dark_mode,
+            child: const Icon(
+              Icons.shuffle,
             ),
           );
         },
