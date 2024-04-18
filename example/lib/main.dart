@@ -120,7 +120,7 @@ const myTheme = {
         "text800": "#e5e5e5",
         "text900": "#f5f5f5",
         "text950": "#fefeff",
-        "background0": "#121212",
+        "background0": "#E0FFFF",
         "background50": "#272625",
         "background100": "#414040",
         "background200": "#535252",
@@ -196,7 +196,7 @@ const myTheme = {
         "backgroundWarning": "#412f23",
         "backgroundSuccess": "#1c2b21",
         "backgroundMuted": "#252526",
-        "backgroundInfo": "#1a282e"
+        "backgroundInfo": "#1a282e",
     }
 }
 
