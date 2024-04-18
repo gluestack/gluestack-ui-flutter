@@ -16,17 +16,17 @@ final List<Option<int>> spaceOption = [
   Option<int>(value: 8, label: GSSpaces.$4xl.name),
 ];
 
-  final List<GSVstackSpaces?> dropdownSpaceOptions = [
-    null,
-    GSVstackSpaces.$xs,
-    GSVstackSpaces.$sm,
-    GSVstackSpaces.$md,
-    GSVstackSpaces.$lg,
-    GSVstackSpaces.$xl,
-    GSVstackSpaces.$2xl,
-    GSVstackSpaces.$3xl,
-    GSVstackSpaces.$4xl,
-  ];
+final List<GSVstackSpaces?> dropdownSpaceOptions = [
+  null,
+  GSVstackSpaces.$xs,
+  GSVstackSpaces.$sm,
+  GSVstackSpaces.$md,
+  GSVstackSpaces.$lg,
+  GSVstackSpaces.$xl,
+  GSVstackSpaces.$2xl,
+  GSVstackSpaces.$3xl,
+  GSVstackSpaces.$4xl,
+];
 
 final class VStackStory extends StoryWidget {
   @override

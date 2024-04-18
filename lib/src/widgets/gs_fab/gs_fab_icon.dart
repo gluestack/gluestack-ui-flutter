@@ -16,10 +16,12 @@ class GSFabIcon extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsfabIconConfig.ancestorStyle.first];
 
-
     GSStyle styler = resolveStyles(
       context: context,
-      styles: [fabIconStyle.merge(ancestorStyles), fabIconStyle.sizeMap(ancestorStyles?.props?.size)],
+      styles: [
+        fabIconStyle.merge(ancestorStyles),
+        fabIconStyle.sizeMap(ancestorStyles?.props?.size)
+      ],
       inlineStyle: style,
       isFirst: true,
     );

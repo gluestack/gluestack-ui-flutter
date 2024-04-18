@@ -2,9 +2,12 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-final List<Option<int>> typesOptions = generateEnumOptions(GSAccordionTypes.values);
-final List<Option<int>> variantOptions = generateEnumOptions(GSAccordionVariants.values);
-final List<Option<int>> sizeOptions = generateEnumOptions(GSAccordionSizes.values);
+final List<Option<int>> typesOptions =
+    generateEnumOptions(GSAccordionTypes.values);
+final List<Option<int>> variantOptions =
+    generateEnumOptions(GSAccordionVariants.values);
+final List<Option<int>> sizeOptions =
+    generateEnumOptions(GSAccordionSizes.values);
 
 final class AccordionStory extends StoryWidget {
   @override

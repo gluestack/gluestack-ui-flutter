@@ -15,5 +15,3 @@ final GSStyle gsStepperStyle = GSStyle.fromMap(
 //   bg: gsStepperStyle.bg,
 //   dark: GSStyle(bg: gsStepperStyle.bg),
 // );
-
-

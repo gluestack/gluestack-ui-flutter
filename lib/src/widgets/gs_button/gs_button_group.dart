@@ -3,7 +3,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-
 class GSButtonGroup extends StatelessWidget {
   final List<GSButton>? buttons;
   final GSDirection? direction;

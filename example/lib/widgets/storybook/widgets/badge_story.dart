@@ -2,10 +2,13 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-final List<Option<int>> actionOptions = generateEnumOptions(GSBadgeActions.values);
-final List<Option<int>> variantOptions = generateEnumOptions(GSBadgeVariants.values);
+final List<Option<int>> actionOptions =
+    generateEnumOptions(GSBadgeActions.values);
+final List<Option<int>> variantOptions =
+    generateEnumOptions(GSBadgeVariants.values);
 final List<Option<int>> sizeOptions = generateEnumOptions(GSBadgeSizes.values);
-final List<Option<int>> borderRadiusOptions = generateEnumOptions(GSBadgeRadius.values);
+final List<Option<int>> borderRadiusOptions =
+    generateEnumOptions(GSBadgeRadius.values);
 
 final class BadgeStory extends StoryWidget {
   @override

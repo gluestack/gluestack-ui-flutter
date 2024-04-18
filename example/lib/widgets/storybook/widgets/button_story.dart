@@ -19,10 +19,14 @@ final class ButtonStory extends StoryWidget {
       builder: (context) => GSButton(
         action: GSButtonActions.values[context.knobs
             .options(label: 'Action', initial: 0, options: actionOptions)],
-        variant: GSButtonVariants.values[context.knobs
-            .options(label: 'Variant', initial: GSButtonVariants.values.length-1, options: variantOptions)],
-        size: GSButtonSizes.values[context.knobs
-            .options(label: 'Size', initial:  GSButtonSizes.values.length-1, options: sizeOptions)],
+        variant: GSButtonVariants.values[context.knobs.options(
+            label: 'Variant',
+            initial: GSButtonVariants.values.length - 1,
+            options: variantOptions)],
+        size: GSButtonSizes.values[context.knobs.options(
+            label: 'Size',
+            initial: GSButtonSizes.values.length - 1,
+            options: sizeOptions)],
         isDisabled: context.knobs.boolean(label: "isDisabled", initial: false),
         isFocusVisible:
             context.knobs.boolean(label: "isFocusVisible", initial: false),

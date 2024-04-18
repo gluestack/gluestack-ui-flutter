@@ -37,16 +37,7 @@ enum GSSizes {
   $6xl
 }
 
-enum GSSpaces {
-  $xs,
-  $sm,
-  $md,
-  $lg,
-  $xl,
-  $2xl,
-  $3xl,
-  $4xl
-}
+enum GSSpaces { $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl }
 
 enum GSPlacements {
   topRight,

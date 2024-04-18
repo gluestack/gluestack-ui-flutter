@@ -38,12 +38,12 @@ class GSMaterialButton extends StatelessWidget {
     this.autoFocus = false,
     this.clipBehavior = Clip.none,
     this.statesController,
-  })  ;
+  });
 
   @override
   Widget build(BuildContext context) {
     final value = GSButtonGroupProvider.of(context);
-     final buttonAction = action?.toGSAction ?? buttonStyle.props?.action;
+    final buttonAction = action?.toGSAction ?? buttonStyle.props?.action;
     final buttonVariant = variant?.toGSVariant ?? buttonStyle.props?.variant;
     final buttonSize = size?.toGSSize ?? value?.size ?? buttonStyle.props?.size;
     final disabled = isDisabled ?? value?.isDisabled ?? false;

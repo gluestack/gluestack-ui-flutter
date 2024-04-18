@@ -17,8 +17,10 @@ class __SwitchStoryState extends State<_SwitchStory> {
   @override
   Widget build(BuildContext context) {
     return GSSwitch(
-      size: GSSwitchSizes.values[context.knobs
-          .options(label: 'Size', initial: GSSwitchSizes.values.length-1, options: sizeOptions)],
+      size: GSSwitchSizes.values[context.knobs.options(
+          label: 'Size',
+          initial: GSSwitchSizes.values.length - 1,
+          options: sizeOptions)],
       value: isSelected,
       isDisabled: context.knobs.boolean(label: 'isDisabled'),
       onToggle: (value) {

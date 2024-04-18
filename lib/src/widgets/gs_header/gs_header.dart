@@ -24,7 +24,8 @@ class GSHeader extends StatelessWidget {
     this.minPaddingForLeading = const EdgeInsets.only(left: 4, right: 4),
     this.minSpacingForChild,
     this.minPaddingForTrailing = const EdgeInsets.only(right: 4, left: 4),
-    this.style, this.boxShadow,
+    this.style,
+    this.boxShadow,
   });
 
   @override
