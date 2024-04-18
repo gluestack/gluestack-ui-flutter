@@ -4,7 +4,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 class GSButton extends StatelessWidget {
   final GSButtonActions? action;
@@ -84,7 +83,7 @@ class GSButton extends StatelessWidget {
           styler.bg = styler.onActive?.bg;
         }
 
-        BorderSide _resolveBorderSide(
+        BorderSide resolveBorderSide(
             GSVariants variant, GSConfigStyle styler, bool isAttached) {
           if (isAttached) {
             return BorderSide.none;
@@ -128,8 +127,8 @@ class GSButton extends StatelessWidget {
                       color: styler.bg?.getColor(context),
                       borderRadius:
                           BorderRadius.circular(styler.borderRadius ?? 0.0),
-                      border: Border.fromBorderSide(_resolveBorderSide(
-                          buttonVariant, styler, isAttached)),
+                      border: Border.fromBorderSide(
+                          resolveBorderSide(buttonVariant, styler, isAttached)),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,

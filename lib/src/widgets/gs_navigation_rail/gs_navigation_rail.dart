@@ -4,7 +4,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_navigation_rail/gs_navigation_rail_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_navigation_rail/gs_navigation_rail_unselected_textstyle.dart';
 import 'gs_navigation_rail_selected_textstyle.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 const double _kCircularIndicatorDiameter = 60;
 const double _kIndicatorHeight = 32;

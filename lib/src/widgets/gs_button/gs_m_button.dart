@@ -3,7 +3,6 @@ import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 class GSMaterialButton extends StatelessWidget {
   final GSButtonActions? action;

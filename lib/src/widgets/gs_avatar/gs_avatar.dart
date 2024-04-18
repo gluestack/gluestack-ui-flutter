@@ -1,7 +1,6 @@
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 enum GSAvatarRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 

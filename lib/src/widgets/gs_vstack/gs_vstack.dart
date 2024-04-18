@@ -1,6 +1,5 @@
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_vstack/gs_vstack_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 /// A widget that arranges its children in a vertical sequence. [GSVStack] allows for
 /// flexible layout configurations and spacing between its child widgets, making it

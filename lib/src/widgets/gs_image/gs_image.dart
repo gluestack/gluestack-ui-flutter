@@ -1,6 +1,5 @@
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_image/gs_image_style.dart';
 
 /// Types of images that can be displayed by [GSImage].

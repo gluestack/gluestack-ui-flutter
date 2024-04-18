@@ -1,8 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/token/theme_color.dart';
 
 class GSTheme extends StatelessWidget {
   const GSTheme({
@@ -795,8 +791,8 @@ class GSThemeData {
           int.tryParse(color) ?? 0x00000000); //default is transparent color
     }
 
-    print(
-        "p700 from factory: ${themeId} | ${themeColorMap['primary700']} | ${getColor(themeColorMap['primary700'])}");
+    // print(
+    //     "p700 from factory: $themeId | ${themeColorMap['primary700']} | ${getColor(themeColorMap['primary700'])}");
 
     return GSThemeData(
         themeId: themeId,

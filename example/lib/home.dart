@@ -215,8 +215,8 @@ class _HomePageState extends State<HomePage> {
               final keyList = gSThemes.keys.toList();
               updaterFunc(keyList[Random().nextInt(keyList.length)]);
 
-              print('c t: ${GSTheme.of(context).themeId}');
-              print('p 500: ${GSTheme.of(context).primary500}');
+              // print('c t: ${GSTheme.of(context).themeId}');
+              // print('p 500: ${GSTheme.of(context).primary500}');
             },
             child: const Icon(
               Icons.shuffle,

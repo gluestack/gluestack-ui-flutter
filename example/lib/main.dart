@@ -1,11 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-
-// import 'package:gluestack_ui_example/custom_config.dart';
 // import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 import 'package:gluestack_ui_example/routes/router.dart';
 
-import 'providers/theme_provider/theme_provider.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -42,7 +39,7 @@ class _MyAppState extends State<MyApp> {
       ),
       child: Consumer(
         builder: (context, ref, child) {
-          final GSThemeMode? currentThemeMode = ref.watch(toggleThemeProvider);
+          // final GSThemeMode? currentThemeMode = ref.watch(toggleThemeProvider);
           // MaterialApp(darkTheme: ThemeData,)
 
           return GSTheme(

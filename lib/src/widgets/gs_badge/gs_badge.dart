@@ -1,7 +1,6 @@
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 enum GSBadgeRadius {
   $none,

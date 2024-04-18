@@ -1,7 +1,6 @@
 import 'package:gluestack_ui/src/provider/provider.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_stepper/gs_stepper_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 import 'gs_stepper_subtitle_text_style.dart';
 import 'gs_stepper_content_text_style.dart';
