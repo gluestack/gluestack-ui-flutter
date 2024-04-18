@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/src/cupertino/colors.dart';
-import 'package:flutter/src/cupertino/toggleable.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
+import 'gs_toggleable.dart';
 import 'package:gluestack_ui/src/token/color.dart';
 
 const Size _size = Size(18.0, 18.0);
