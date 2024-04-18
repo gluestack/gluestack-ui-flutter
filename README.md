@@ -174,9 +174,9 @@ After conducting a comprehensive performance benchmark, comprising an average of
 
 - **Adding New Widgets:** We are committed to implement more functional widgets in the future that would improve the user and the developer experience.
 
-## Extensions
+## Products
 
-[VSCode](https://marketplace.visualstudio.com/items?itemName=gluestack.gluestack-ui-flutter) - extends VSCode with support for the gluestack-ui-flutter library and provides tools for effectively wrapping widgets with gluestack-flutter widgets.
+VS Code Extension: Our [VS Code extension](https://marketplace.visualstudio.com/items?itemName=gluestack.gluestack-ui-flutter) is specifically designed to quicken your development process using gluestack-ui-flutter. These extensions provide GSWidgets for effectively wrapping widgets with gluestack-ui-flutter widgets.
 
 ## Contributing
 
