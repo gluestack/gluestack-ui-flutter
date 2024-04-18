@@ -1,4 +1,4 @@
-const Map<String, dynamic> FABData = {
+const Map<String, dynamic> fabData = {
   'bg': '\$primary500',
   'rounded': '\$full',
   'zIndex': 20,
@@ -133,12 +133,10 @@ const Map<String, dynamic> FABData = {
       'top center': {
         'top': '\$4',
         'alignSelf': 'center',
- 
       },
       'bottom center': {
         'bottom': '\$4',
         'alignSelf': 'center',
-
       },
     },
   },
