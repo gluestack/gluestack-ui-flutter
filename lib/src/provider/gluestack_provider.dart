@@ -446,7 +446,7 @@ class GluestackTokenConfig {
   GSColorsToken gsColorsToken;
   final GSScreenBreakpointToken gsScreenBreakpointToken;
   final GSFontFamilyToken gsFontFamilyToken;
-  final Map<String,dynamic> gsThemeToken;
+  final Map<String, dynamic> gsThemeToken;
 
   GluestackTokenConfig({
     this.gsBorderWidthToken = const GSBorderWidthToken(),
@@ -536,7 +536,7 @@ class GluestackTokenConfig {
     registerSingletonIfNotRegistered<GSScreenBreakpointToken>(
         gsScreenBreakpointToken);
     registerSingletonIfNotRegistered<GSFontFamilyToken>(gsFontFamilyToken);
-    registerSingletonIfNotRegistered<Map<String,dynamic>>(gsThemeToken);
+    registerSingletonIfNotRegistered<Map<String, dynamic>>(gsThemeToken);
   }
 }
 

@@ -795,7 +795,8 @@ class GSThemeData {
           int.tryParse(color) ?? 0x00000000); //default is transparent color
     }
 
-    print("p700 from factory: ${themeId} | ${themeColorMap['primary700']} | ${getColor(themeColorMap['primary700'])}");
+    print(
+        "p700 from factory: ${themeId} | ${themeColorMap['primary700']} | ${getColor(themeColorMap['primary700'])}");
 
     return GSThemeData(
         themeId: themeId,

@@ -1176,7 +1176,8 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           //   color:
           //       resolveColorFromString(data?[':disabled']?['_dark']?['color']),
           // ),
-          color: resolveColorTokenFromString(data?[':disabled']?['_dark']?['color']),
+          color: resolveColorTokenFromString(
+              data?[':disabled']?['_dark']?['color']),
           web: GSConfigStyle(
             cursors: resolveCursorFromString(
                 data?['_dark']?[':disabled']?['_web']?['cursor']),

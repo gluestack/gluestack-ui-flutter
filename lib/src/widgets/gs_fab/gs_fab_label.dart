@@ -27,10 +27,10 @@ class GSFabLabel extends StatelessWidget {
       inlineStyle: style,
     );
 
-
     return Text(
       text,
-      style: styler.textStyle?.merge(TextStyle(color: styler.color?.getColor(context))),
+      style: styler.textStyle
+          ?.merge(TextStyle(color: styler.color?.getColor(context))),
     );
   }
 }

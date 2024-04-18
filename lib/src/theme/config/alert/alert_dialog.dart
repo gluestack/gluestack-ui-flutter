@@ -1,5 +1,4 @@
 const Map<String, dynamic> alertDialogData = {
-
   'w': '\$full',
   'h': '\$full',
   'justifyContent': 'center',

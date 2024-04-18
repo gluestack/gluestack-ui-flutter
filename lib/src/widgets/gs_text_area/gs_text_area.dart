@@ -392,7 +392,8 @@ class _GSTextAreaState extends State<GSTextArea> {
                             strutStyle: widget.strutStyle,
                             style: widget.style?.textStyle ??
                                 TextStyle(
-                                    color: styler.textStyle?.color ?? styler.color?.getColor(context),
+                                    color: styler.textStyle?.color ??
+                                        styler.color?.getColor(context),
                                     fontSize: styler.descendantStyles?['_input']
                                         ?.textStyle?.fontSize),
                             textAlign: widget.textAlign,

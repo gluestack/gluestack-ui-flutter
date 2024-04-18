@@ -28,8 +28,8 @@ extension ColorExtension on String {
       //i.e. color from token most likely or smthin
       resolvedColor = parseColor(this);
     } else {
-    //theme clr
-    resolvedColor = themeColorMap(context)[this];
+      //theme clr
+      resolvedColor = themeColorMap(context)[this];
     }
 
     //default color is transparent if unresolved!
