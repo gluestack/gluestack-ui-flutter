@@ -6,7 +6,6 @@ import 'package:gluestack_ui/src/utils/extension.dart';
 
 import 'gs_show_alert_dailog.dart';
 
-
 class GSAlertDialog extends StatefulWidget {
   final GSAlertDialogContent content;
   final GSAlertDialogSizes? size;

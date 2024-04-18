@@ -11,8 +11,10 @@ final class IconStory extends StoryWidget {
     return Story(
       name: storyName,
       builder: (context) => GSIcon(
-        size: GSIconSizes.values[context.knobs
-            .options(label: 'Size', initial: GSIconSizes.values.length-1, options: sizeOptions)],
+        size: GSIconSizes.values[context.knobs.options(
+            label: 'Size',
+            initial: GSIconSizes.values.length - 1,
+            options: sizeOptions)],
         icon: Icons.calendar_month,
       ),
     );

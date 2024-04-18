@@ -6,7 +6,7 @@ import 'package:gluestack_ui/src/utils/resolver.dart';
 /// specified in [GSStyle]. [GSCenter] provides a simple way to center content
 /// while also allowing for additional styling options through [GSStyle].
 class GSCenter extends StatelessWidget {
- /// Custom [GSStyle] to apply to this widget. This allows for specifying
+  /// Custom [GSStyle] to apply to this widget. This allows for specifying
   /// color and alignment properties to control how
   /// the child widget is centered along with height and width.
   final GSStyle? style;

@@ -3,7 +3,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_style.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 
-
 class GSToast extends StatelessWidget {
   final Widget? child;
   final GSToastActions? action;

@@ -58,7 +58,7 @@ class GSHStack extends StatelessWidget {
     List<Widget> spacedChildrenList = [];
     // Convert the [GSHstackSpaces] enum to a GSSpace spacing value.
     final hStackSpace = space?.toGSSpaces;
-    
+
     // Iterate over the children to insert spacing widgets between them, based on the
     // specified [space] value, except after the last child.
     for (var child in children) {
