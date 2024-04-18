@@ -1,4 +1,5 @@
 import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_fall_back_text_style.dart';
 
 /// A widget specifically designed for displaying fallback text within a [GSAvatar].
@@ -114,6 +115,18 @@ class GSAvatarFallBackText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ancestorStyles = GSAncestorProvider.of(context)
+        ?.decedentStyles?[gsAvatarFallbackTextConfig.ancestorStyle.first];
+
+    GSConfigStyle styler = resolveStyles(
+      context: context,
+      styles: [
+        avatarFallBackStyle,
+        ancestorStyles,
+      ],
+      inlineStyle: style,
+    );
+
     String shortTextMaker() {
       if (text.isEmpty) {
         return '';
@@ -133,16 +146,6 @@ class GSAvatarFallBackText extends StatelessWidget {
       shortHandText.toUpperCase();
     }
 
-    final ancestorStyles = GSAncestorProvider.of(context)
-        ?.decedentStyles?[gsAvatarFallbackTextConfig.ancestorStyle.first];
-
-    // Define a base text style.
-    final baseTextStyle =
-        avatarFallBackStyle.textStyle?.merge(ancestorStyles?.textStyle);
-
-    // Merge the default text style with the provided GSStyle or custom style.
-    final mergedStyle = baseTextStyle?.merge(style?.textStyle);
-
     // Create a Text widget with the specified text and merged style.
     //TODO: handle descendent style overwrite for text transform
     return Text(
@@ -152,7 +155,8 @@ class GSAvatarFallBackText extends StatelessWidget {
                   style?.textTransform == GSTextTransform.uppercase
               ? shortHandText.toUpperCase()
               : shortHandText.toLowerCase(),
-      style: mergedStyle,
+      style: styler.textStyle
+          ?.merge(TextStyle(color: styler.color?.getColor(context))),
       locale: locale,
       maxLines: maxLines,
       overflow: overflow,

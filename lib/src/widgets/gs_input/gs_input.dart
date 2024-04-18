@@ -417,7 +417,7 @@ class _GSInputState extends State<GSInput> {
                               strutStyle: widget.strutStyle,
                               style: widget.style?.textStyle ??
                                   TextStyle(
-                                      color: styler.textStyle?.color,
+                                      color: styler.color?.getColor(context),
                                       fontSize: styler.textStyle?.fontSize),
                               textAlign: widget.textAlign,
                               textCapitalization: widget.textCapitalization,

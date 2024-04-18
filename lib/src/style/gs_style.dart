@@ -824,16 +824,22 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
             resolveTextDecorationFromString(data?['textDecorationLine']),
         letterSpacing: resolveLetterSpacingFromString(data?['letterSpacing']),
         // fontSize: resolveFontSizeFromString(data?['_text']?['props']?['size']),
-        color: resolveColorFromString(data?['_text']?['color'] ??
-            data?['_titleText']?['color'] ??
-            data?['_subtitleText']?['color'] ??
-            data?['_contentText']?['color'] ??
-            data?['_selectedLabelText']?['color'] ??
-            data?['_unselectedLabelText']?['color'] ??
-            data?['color']),
+        // color: resolveColorFromString(data?['_text']?['color'] ??
+        //     data?['_titleText']?['color'] ??
+        //     data?['_subtitleText']?['color'] ??
+        //     data?['_contentText']?['color'] ??
+        //     data?['_selectedLabelText']?['color'] ??
+        //     data?['_unselectedLabelText']?['color'] ??
+        //     data?['color']),
       ),
 
-      color: resolveColorTokenFromString(data?['color']),
+      color: resolveColorTokenFromString(data?['color'] ??
+          data?['_text']?['color'] ??
+          data?['_titleText']?['color'] ??
+          data?['_subtitleText']?['color'] ??
+          data?['_contentText']?['color'] ??
+          data?['_selectedLabelText']?['color'] ??
+          data?['_unselectedLabelText']?['color']),
       bg: resolveColorTokenFromString(
         data?['bg'] ??
             data?['_item']?['backgroundColor'] ??
@@ -972,9 +978,10 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
         ),
       ),
       onInvalid: GSConfigStyle(
-        textStyle: TextStyle(
-          color: resolveColorFromString(data?[':invalid']?['color']),
-        ),
+        // textStyle: TextStyle(
+        //   color: resolveColorFromString(data?[':invalid']?['color']),
+        // ),
+        color: resolveColorTokenFromString(data?[':invalid']?['color']),
         bg: resolveColorTokenFromString(data?[':invalid']?['bg']),
         borderColor: resolveColorTokenFromString(data?['variants']?['variant']
                 ?['default']?[':invalid']?['borderColor'] ??
@@ -1008,9 +1015,10 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       ),
       onDisabled: GSConfigStyle(
         opacity: data?[':disabled']?['opacity'],
-        textStyle: TextStyle(
-          color: resolveColorFromString(data?[':disabled']?['color']),
-        ),
+        // textStyle: TextStyle(
+        //   color: resolveColorFromString(data?[':disabled']?['color']),
+        // ),
+        color: resolveColorTokenFromString(data?[':disabled']?['color']),
         web: GSConfigStyle(
           cursors:
               resolveCursorFromString(data?[':disabled']?['_web']?['cursor']),
@@ -1064,13 +1072,16 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
                 outlineStyle: data?['outlineStyle']),
           ),
         ),
-        color: resolveColorTokenFromString((data?['_dark']?['color'])),
+        color: resolveColorTokenFromString((data?['_dark']?['color'] ??
+            data?['_text']?['_dark']?['color'] ??
+            data?['_selectedLabelText']?['_dark']?['color'] ??
+            data?['_unselectedLabelText']?['_dark']?['color'])),
         textStyle: TextStyle(
           fontWeight: resolveFontWeightFromString(data?['fontWeight']),
-          color: resolveColorFromString(data?['_text']?['_dark']?['color'] ??
-              data?['_selectedLabelText']?['_dark']?['color'] ??
-              data?['_unselectedLabelText']?['_dark']?['color'] ??
-              data?['_dark']?['color']),
+          // color: resolveColorFromString(data?['_text']?['_dark']?['color'] ??
+          //     data?['_selectedLabelText']?['_dark']?['color'] ??
+          //     data?['_unselectedLabelText']?['_dark']?['color'] ??
+          //     data?['_dark']?['color']),
         ),
         borderColor:
             resolveColorTokenFromString(data?['_dark']?['borderColor']),
@@ -1161,10 +1172,11 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           iosBackgroundColor: resolveColorTokenFromString(
               data?['_dark']?[':disabled']?['ios_backgroundColor']),
           opacity: data?['_dark']?[':disabled']?['opacity'],
-          textStyle: TextStyle(
-            color:
-                resolveColorFromString(data?[':disabled']?['_dark']?['color']),
-          ),
+          // textStyle: TextStyle(
+          //   color:
+          //       resolveColorFromString(data?[':disabled']?['_dark']?['color']),
+          // ),
+          color: resolveColorTokenFromString(data?[':disabled']?['_dark']?['color']),
           web: GSConfigStyle(
             cursors: resolveCursorFromString(
                 data?['_dark']?[':disabled']?['_web']?['cursor']),
@@ -1183,10 +1195,12 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           ),
         ),
         onInvalid: GSConfigStyle(
-          textStyle: TextStyle(
-            color:
-                resolveColorFromString(data?[':invalid']?['_dark']?['color']),
-          ),
+          // textStyle: TextStyle(
+          //   color:
+          //       resolveColorFromString(data?[':invalid']?['_dark']?['color']),
+          // ),
+          color: resolveColorTokenFromString(
+              data?[':invalid']?['_dark']?['color']),
           bg: resolveColorTokenFromString(data?['_dark']?[':invalid']?['bg']),
           borderRadius: data?['_dark']?[':invalid']?['borderRadius'] != null
               ? double.tryParse(data![':invalid']!['borderRadius']!.toString())
