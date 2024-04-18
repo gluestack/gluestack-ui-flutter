@@ -48,7 +48,7 @@ Add the package to your dependencies:
 
 ```yaml
 dependencies:
-  gluestack_ui: 0.1.0-beta.2
+  gluestack_ui: 0.2.0-beta.1
 ```
 
 OR

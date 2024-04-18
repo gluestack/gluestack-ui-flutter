@@ -1,3 +1,10 @@
+## 0.2.0-beta.1
+
+- Added VSCode extension for gluestack-ui-flutter
+- Added new widgets: GS Header, GSLayout, GSTabs, GSStepper, GSNavigation Rail, GSModal
+- Font Family Token level Support
+- Refactored Accordion
+
 ## 0.1.0-beta.2
 
 - Fixed: Images not appearing readme on pub.dev
