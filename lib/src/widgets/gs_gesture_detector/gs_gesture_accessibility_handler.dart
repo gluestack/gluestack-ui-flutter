@@ -176,16 +176,14 @@ class GSAccessibilityHandlerWidgetState extends State<GsGestureDetector> {
   Widget build(BuildContext context) {
     return Focus(
       focusNode: _focusNode,
-      onKey: (FocusNode node, RawKeyEvent event) {
-        if (event is RawKeyDownEvent &&
-                event.logicalKey == LogicalKeyboardKey.space ||
-            event is RawKeyDownEvent &&
-                event.logicalKey == LogicalKeyboardKey.enter) {
-          if (widget.onPressed != null) {
-            widget.onPressed!();
-            return KeyEventResult.handled;
-          }
-          return KeyEventResult.ignored;
+      onKeyEvent: (FocusNode node, KeyEvent event) {
+        if ((event is KeyDownEvent &&
+                    event.logicalKey == LogicalKeyboardKey.space ||
+                event is KeyDownEvent &&
+                    event.logicalKey == LogicalKeyboardKey.enter) &&
+            widget.onPressed != null) {
+          widget.onPressed!();
+          return KeyEventResult.handled;
         }
 
         return KeyEventResult.ignored;
