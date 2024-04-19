@@ -785,10 +785,17 @@ class GSThemeData {
       themeColorMap = gSThemes['light_theme']['colors'];
     }
 
-    Color getColor(String colorHex) {
-      final color = "0xff${colorHex.substring(1)}";
-      return Color(
-          int.tryParse(color) ?? 0x00000000); //default is transparent color
+    Color getColor<T>(T colorHex) {
+      if (colorHex is String) {
+        final color = "0xff${colorHex.substring(1)}";
+        return Color(
+            int.tryParse(color) ?? 0x00000000); //default is transparent color
+      } else if (colorHex is Color) {
+        return colorHex;
+      } else {
+        //default is transparent color
+        return const Color(0x00000000);
+      }
     }
 
     // print(
