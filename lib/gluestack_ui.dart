@@ -1,4 +1,4 @@
-export 'src/style/gs_style.dart';
+export 'src/style/gs_config_style_internal.dart';
 export 'src/token/public.dart';
 
 export 'src/widgets/gs_app/public.dart';

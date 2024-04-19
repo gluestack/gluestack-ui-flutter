@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/widgets/gs_hstack/gs_hstack_style.dart';
 
 /// A widget that arranges its children in a horizontal sequence. [GSHStack] allows for

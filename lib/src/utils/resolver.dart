@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 
 bool parseMap(Map<dynamic, dynamic>? data) {
   return data?.isNotEmpty ?? false;

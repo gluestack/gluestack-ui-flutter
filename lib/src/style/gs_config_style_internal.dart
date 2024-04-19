@@ -6,7 +6,7 @@ import 'package:gluestack_ui/src/utils/resolver.dart';
 //for ease in export | No need to import from provider everywhere else.
 export 'package:gluestack_ui/src/provider/provider.dart';
 export 'package:gluestack_ui/src/utils/extension.dart';
-export 'gs_inline_style.dart';
+export 'gs_style_external_inline.dart';
 
 enum GSTextTransform { uppercase, lowercase }
 
