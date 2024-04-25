@@ -1,15 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 import '../../components/widgets/public.dart';
 import 'base_story_widget.dart';
 
-//Need to add value according to GSSizes enum order.
-final List<Option<int>> sizeOptions = [
-  Option<int>(value: 0, label: GSRadioSizes.$sm.name),
-  Option<int>(value: 1, label: GSRadioSizes.$md.name),
-  Option<int>(value: 2, label: GSRadioSizes.$lg.name),
-];
+final List<Option<int>> sizeOptions = generateEnumOptions(GSRadioSizes.values);
 
 class _RadioButtonExample extends StatefulWidget {
   const _RadioButtonExample();

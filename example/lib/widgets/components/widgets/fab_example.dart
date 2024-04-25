@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import '../layout/drop_down.dart';
 import '../layout/toggle.dart';
 
@@ -62,7 +63,6 @@ class _FabExampleState extends State<FabExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     const code = """
               GSFab(
                   size: GSFABSizes.\$md,
@@ -75,14 +75,10 @@ class _FabExampleState extends State<FabExample> {
                   label: const GSFabLabel(text: 'Quick Start'),
                )
 """;
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "Fab",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "Fab",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -101,7 +97,7 @@ class _FabExampleState extends State<FabExample> {
                 size: selectedSizeOption,
                 placement: selectedPlacementOption,
                 onPressed: () {
-                  print('fab pressed!');
+                  // print('fab pressed!');
                 },
                 isDisabled: isDisabled,
                 isHovered: isHovered,

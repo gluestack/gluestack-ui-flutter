@@ -1,6 +1,4 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 
 class GSAncestor extends StatelessWidget {
   final Widget child;

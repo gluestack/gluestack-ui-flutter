@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/drop_down.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/toggle.dart';
 
@@ -92,11 +92,11 @@ GSAccordion(
           ],
 ),
   ''';
-    final theme = GSTheme.of(context);
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: const Text("Accordion"),
+
+    return CustomGSLayout(
+      title: "Accordion",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -106,8 +106,18 @@ GSAccordion(
           type: selectedTypeOption,
           isCollapsible: isCollapsible,
           isDisabled: isDisabled,
+          // style: GSStyle(bg: $GSColors.amber400),
+          // itemPadding: EdgeInsets.all(12),
+          // showSuffixIcon: false,
+          // prefixIconPadding: EdgeInsets.only(right: 0),
+          // prefixIconWhenTileCollapsed: const GSAccordionIcon(icon: Icons.abc),
+          // prefixIconWhenTileExapanded:
+          //     const GSAccordionIcon(icon: Icons.ac_unit_sharp),
+          // initialValues: [true, true],
           children: const [
             GSAccordionItem(
+              // radius: 21,
+              // isDisabled: true,
               title: GSAccordionTitle(text: 'How do I place an order?'),
               content: GSAccordionContent(
                 text:

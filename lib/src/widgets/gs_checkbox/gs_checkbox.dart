@@ -1,16 +1,9 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
-
-enum GSCheckBoxSizes {
-  $sm,
-  $md,
-  $lg,
-}
 
 class GSCheckBox extends StatefulWidget {
   final GSCheckBoxSizes? size;
@@ -76,6 +69,7 @@ class _GSCheckBoxState extends State<GSCheckBox> {
     final formProps = GSFormProvider.of(context);
     final checkBoxSize =
         widget.size?.toGSSize ?? formProps?.size ?? checkboxStyle.props?.size;
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [checkboxStyle, checkboxStyle.sizeMap(checkBoxSize)],

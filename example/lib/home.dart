@@ -1,10 +1,9 @@
-// ignore_for_file: unnecessary_const
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
 
+import 'widgets/components/layout/custom_gs_layout.dart';
 import 'widgets/components/layout/nav_button.dart';
 // import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
 
@@ -18,17 +17,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: GSTheme.of(context).brightness == Brightness.dark
-            ? const Color(0xFF262626)
-            : null,
-        title: const GSText(
-          text: 'Gluestack UI examples',
-        ),
+    return CustomGSLayout(
+      title: 'Gluestack UI examples',
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
+      hideBackButton: true,
       body: SafeArea(
         child: SingleChildScrollView(
           child: GSCenter(
@@ -40,6 +34,7 @@ class _HomePageState extends State<HomePage> {
                   title: "Storybook",
                   routePath: "/storybook",
                 ),
+
                 GSLink(
                   url: 'https://kitchensink-23184.web.app/',
                   text: GSLinkText(
@@ -50,6 +45,11 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.blue,
                     )),
                   ),
+                ),
+
+                const NavButton(
+                  title: "GS Header",
+                  routePath: "/example-header",
                 ),
                 const NavButton(
                   title: "GS Form",
@@ -166,6 +166,24 @@ class _HomePageState extends State<HomePage> {
                 const NavButton(
                   title: "GS Accordion",
                   routePath: "/example-accordion",
+                ),
+                const NavButton(
+                  title: "GS Bottom Sheet ",
+                  routePath: "/example-bottom-sheet",
+                ),
+
+                const NavButton(
+                  title: "Stepper Example",
+                  routePath: "/stepper-example",
+                ),
+
+                const NavButton(
+                  title: "GS Tabs",
+                  routePath: "/example-tabs",
+                ),
+                const NavButton(
+                  title: "GS Navigation Rail",
+                  routePath: "/navigation-rail-preview",
                 ),
 
                 // // ===== Internal Testing Widgets =====

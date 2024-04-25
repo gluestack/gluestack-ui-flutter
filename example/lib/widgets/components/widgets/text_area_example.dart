@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import '../layout/drop_down.dart';
 import '../layout/toggle.dart';
 
@@ -51,7 +51,6 @@ class _TextAreaExampleState extends State<TextAreaExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     var code = '''
           GSTextArea(
                 size: GSTextAreaSizes.\$md,
@@ -61,14 +60,10 @@ class _TextAreaExampleState extends State<TextAreaExample> {
                 readOnly: false,
            )
   ''';
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "Text Area",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "Text Area",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

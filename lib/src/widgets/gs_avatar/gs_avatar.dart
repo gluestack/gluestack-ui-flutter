@@ -1,39 +1,50 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_badge.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_fall_back_text.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_image/gs_image.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
-
-enum GSAvatarSizes {
-  $xs,
-  $sm,
-  $md,
-  $lg,
-  $xl,
-  $2xl,
-}
 
 enum GSAvatarRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
-///
-/// Gluestack Avatar.
-///
+/// A customizable avatar widget designed to display user or entity pictures in a visually
+/// appealing and flexible manner. The widget supports various sizes, border radii, and
+/// styling options, along with fallback text and badge overlays.
 class GSAvatar extends StatelessWidget {
+  /// The size of the avatar, controlling its overall dimensions. This can be set to one of
+  /// the predefined [GSAvatarSizes] values.
   final GSAvatarSizes? size;
+
+  /// The border radius of the avatar, determining the curvature of its corners. This can
+  /// be set to one of the predefined [GSAvatarRadius] values to achieve different shapes,
+  /// from square to fully rounded. If not specified, the radius defaults based on styling
+  /// or context.
   final GSAvatarRadius? radius;
+
+  /// Custom [GSStyle] to apply to the avatar, enabling detailed customization of its appearance.
+  /// This style can include border, padding, margin, and more.
   final GSStyle? style;
+
+  /// Text to display within the avatar as a fallback when no image is provided or in case
+  /// of an error loading the image. Useful for displaying user initials or default text.
   final GSAvatarFallBackText? fallBackText;
+
+  /// The primary background image of the avatar. This image appears behind any [foregroundImage]
   final ImageProvider? backgroundImage;
 
-  ///This takes precedence over [avatarImage]!
+  /// The foreground image of the avatar, displayed in front of [backgroundImage]. When set,
+  /// this takes precedence over the background image, allowing for layered image effects.
   final ImageProvider? foregroundImage;
+
+  /// Callback function to execute when an error occurs while loading [backgroundImage].
   final ImageErrorListener? onBackgroundImageError;
+
+  /// Callback function to execute when an error occurs while loading [foregroundImage].
   final ImageErrorListener? onForegroundImageError;
+
+  /// An optional GSImage widget to use as the avatar's image.
   final GSImage? avatarImage;
+
+  /// An optional badge to display on top of the avatar. This can be used to indicate status,
+  /// notifications, etc.
   final GSAvatarBadge? avatarBadge;
 
   const GSAvatar({

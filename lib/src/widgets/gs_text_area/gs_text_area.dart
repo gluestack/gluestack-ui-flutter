@@ -1,22 +1,12 @@
 import 'dart:ui' as ui;
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
-
 import 'package:gluestack_ui/src/widgets/gs_text_area/gs_text_area_style.dart';
-
-enum GSTextAreaSizes {
-  $sm,
-  $md,
-  $lg,
-  $xl,
-}
 
 // TODO : Work on descendant styles (_input)
 
@@ -259,16 +249,9 @@ class _GSTextAreaState extends State<GSTextArea> {
       return styler.onFocus?.borderColor;
     }
 
-    double? resolveFocusBorderWidth() {
-      return styler.onFocus?.borderWidth ?? styler.borderWidth;
-    }
-
     final borderColor = resolveBorderColor();
     final borderWidth = resolveBorderWidth();
     final focusedBorderColor = resolveFocusBorderColor();
-    // final focusedBorderWidth = resolveFocusBorderWidth();
-    final hintStyle =
-        widget.hintStyle ?? styler.descendantStyles?['_input']?.textStyle;
 
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
@@ -280,7 +263,7 @@ class _GSTextAreaState extends State<GSTextArea> {
       mouseCursor:
           isDisabled ? SystemMouseCursors.forbidden : MouseCursor.defer,
       child: Opacity(
-        opacity: isDisabled ? styler.onDisabled!.opacity! : 1,
+        opacity: isDisabled ? (styler.onDisabled?.opacity ?? 0.5) : 1,
         child: SizedBox(
           width: styler.width,
           height: styler.height,
@@ -288,10 +271,12 @@ class _GSTextAreaState extends State<GSTextArea> {
             showFocusHighlight: false,
             onPressed: widget.onTap,
             onDoubleTap: () {
-              if (widget.controller!.text.isNotEmpty) {
-                widget.controller!.selection = TextSelection(
-                    baseOffset: 0,
-                    extentOffset: widget.controller!.text.length);
+              final controller = widget.controller;
+              if (controller != null && controller.text.isNotEmpty) {
+                controller.selection = TextSelection(
+                  baseOffset: 0,
+                  extentOffset: controller.text.length,
+                );
               }
             },
             child: Stack(
@@ -303,7 +288,7 @@ class _GSTextAreaState extends State<GSTextArea> {
                         ? 10 + widget.prefixText!.length * 8
                         : widget.prefixIcon != null
                             ? 50
-                            : 10,
+                            : 15,
                     top: 10,
                     child: GSText(
                       text: widget.hintText ?? '',

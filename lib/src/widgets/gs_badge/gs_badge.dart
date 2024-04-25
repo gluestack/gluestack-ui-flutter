@@ -1,31 +1,7 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_icon.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_text.dart';
 import 'package:gluestack_ui/src/utils/extension.dart';
-
-enum GSBadgeActions {
-  error,
-  warning,
-  success,
-  info,
-  muted,
-}
-
-enum GSBadgeVariants {
-  solid,
-  outline,
-}
-
-enum GSBadgeSizes {
-  $sm,
-  $md,
-  $lg,
-}
 
 enum GSBadgeRadius {
   $none,

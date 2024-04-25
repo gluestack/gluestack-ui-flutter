@@ -4,17 +4,19 @@ final getIt = GetIt.instance;
 
 class GluestackProvider extends StatelessWidget {
   final Widget child;
-  GluestackTokenConfig? gluestackTokenConfig;
-  GluestackCustomConfig? gluestackCustomConfig;
-  GluestackProvider(
-      {super.key,
-      required this.child,
-      this.gluestackTokenConfig,
-      this.gluestackCustomConfig}) {
-    gluestackTokenConfig ??= GluestackTokenConfig();
-    gluestackCustomConfig ??= GluestackCustomConfig();
+  final GluestackTokenConfig gluestackTokenConfig;
+  final GluestackCustomConfig gluestackCustomConfig;
+  GluestackProvider({
+    super.key,
+    required this.child,
+    GluestackTokenConfig? gluestackTokenConfig,
+    GluestackCustomConfig? gluestackCustomConfig,
+  })  : gluestackTokenConfig = gluestackTokenConfig ?? GluestackTokenConfig(),
+        gluestackCustomConfig =
+            gluestackCustomConfig ?? GluestackCustomConfig() {
     if (!getIt.isRegistered<GluestackCustomConfig>()) {
-      getIt.registerSingleton<GluestackCustomConfig>(gluestackCustomConfig!);
+      getIt
+          .registerSingleton<GluestackCustomConfig>(this.gluestackCustomConfig);
     }
   }
 
@@ -119,7 +121,40 @@ class GluestackCustomConfig {
   Map<String, dynamic>? accordionIcon;
   Map<String, dynamic>? accordionItem;
 
+  Map<String, dynamic>? modalBottomSheet;
+  Map<String, dynamic>? navigationRail;
+  Map<String, dynamic>? navigationRailSelectedLableText;
+  Map<String, dynamic>? navigationRailUnselectedLableText;
+// stepper
+  Map<String, dynamic>? stepper;
+  Map<String, dynamic>? stepperTitleText;
+  Map<String, dynamic>? stepperSubtitleText;
+  Map<String, dynamic>? stepperContentText;
+  //tabs
+  Map<String, dynamic>? tabs;
+  Map<String, dynamic>? tabsTab;
+  Map<String, dynamic>? tabTabIcon;
+  Map<String, dynamic>? tabTabList;
+  Map<String, dynamic>? tabTabPanel;
+  Map<String, dynamic>? tabTabPanels;
+  Map<String, dynamic>? tabTabTile;
+
+  //GS Layout
+  Map<String, dynamic>? layout;
+
   GluestackCustomConfig({
+    //tabs
+    this.tabs,
+    this.tabsTab,
+    this.tabTabIcon,
+    this.tabTabList,
+    this.tabTabPanel,
+    this.tabTabPanels,
+    this.tabTabTile,
+
+    //GS Layout
+    this.layout,
+
     //accordion
     this.accordion,
     this.accordionHeader,
@@ -224,6 +259,16 @@ class GluestackCustomConfig {
 
     //input
     this.input,
+    this.modalBottomSheet,
+    this.navigationRail,
+    this.navigationRailSelectedLableText,
+    this.navigationRailUnselectedLableText,
+
+    //stepper
+    this.stepper,
+    this.stepperTitleText,
+    this.stepperSubtitleText,
+    this.stepperContentText,
 //     getIt<GluestackCustomConfig>().buttonText
   }) {
     Map<String, dynamic> mergeConfigs(
@@ -247,6 +292,18 @@ class GluestackCustomConfig {
       return mergedMap;
     }
 
+//layout
+    layout = mergeConfigs(layoutData, layout);
+
+    //tabs
+    tabs = mergeConfigs(tabsData, tabs);
+    tabsTab = mergeConfigs(tabsTabData, tabsTab);
+    tabTabIcon = mergeConfigs(tabsTabIconData, tabTabIcon);
+    tabTabList = mergeConfigs(tabsTabListData, tabTabList);
+    tabTabPanel = mergeConfigs(tabsTabPanelData, tabTabPanel);
+    tabTabPanels = mergeConfigs(tabsTabPanelsData, tabTabPanels);
+    tabTabTile = mergeConfigs(tabsTitleData, tabTabTile);
+
     //accordion
     accordion = mergeConfigs(accordionData, accordion);
     accordionHeader = mergeConfigs(accordionHeaderData, accordionHeader);
@@ -260,7 +317,7 @@ class GluestackCustomConfig {
     accordionItem = mergeConfigs(accordionItemData, accordionItem);
 
     //vstack
-    vstack = mergeConfigs(vStackData, vstack);
+    vstack = mergeConfigs(vstackData, vstack);
 
     //toast
     toastDescriptionText =
@@ -356,6 +413,25 @@ class GluestackCustomConfig {
 
     //input
     input = mergeConfigs(inputData, input);
+
+    //modalbottomsheet
+
+    modalBottomSheet = mergeConfigs(modalBottomSheetData, modalBottomSheet);
+    //navigation rail
+
+    navigationRail = mergeConfigs(navigationRailData, navigationRail);
+    navigationRailSelectedLableText = mergeConfigs(
+        navigationRailSelectedLabelData, navigationRailSelectedLableText);
+
+    navigationRailUnselectedLableText = mergeConfigs(
+        navigationRailUnselectedLabelData, navigationRailUnselectedLableText);
+    //stepper
+    stepper = mergeConfigs(stepperData, stepper);
+    stepperTitleText = mergeConfigs(stepperTitleTextData, stepperTitleText);
+    stepperSubtitleText =
+        mergeConfigs(stepperSubtitleTextData, stepperSubtitleText);
+    stepperContentText =
+        mergeConfigs(stepperContentTextData, stepperContentText);
   }
 }
 
@@ -369,6 +445,7 @@ class GluestackTokenConfig {
   final GSSpaceToken gsSpaceToken;
   GSColorsToken gsColorsToken;
   final GSScreenBreakpointToken gsScreenBreakpointToken;
+  final GSFontFamilyToken gsFontFamilyToken;
 
   GluestackTokenConfig({
     this.gsBorderWidthToken = const GSBorderWidthToken(),
@@ -380,6 +457,7 @@ class GluestackTokenConfig {
     this.gsSpaceToken = const GSSpaceToken(),
     this.gsColorsToken = const GSColorsToken(),
     this.gsScreenBreakpointToken = const GSScreenBreakpointToken(),
+    this.gsFontFamilyToken = const GSFontFamilyToken(),
   }) {
     if (gsColorsToken.primaryColorsFromBase != null) {
       gsColorsToken = gsColorsToken.copyWith(
@@ -455,6 +533,7 @@ class GluestackTokenConfig {
     registerSingletonIfNotRegistered<GSColorsToken>(gsColorsToken);
     registerSingletonIfNotRegistered<GSScreenBreakpointToken>(
         gsScreenBreakpointToken);
+    registerSingletonIfNotRegistered<GSFontFamilyToken>(gsFontFamilyToken);
   }
 }
 

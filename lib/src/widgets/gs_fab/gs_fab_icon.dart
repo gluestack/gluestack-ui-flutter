@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_icon_style.dart';
@@ -17,11 +16,12 @@ class GSFabIcon extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsfabIconConfig.ancestorStyle.first];
 
-    final size = GSFabIconStyle.size[ancestorStyles?.props?.size];
-
     GSStyle styler = resolveStyles(
       context: context,
-      styles: [fabIconStyle.merge(ancestorStyles), size],
+      styles: [
+        fabIconStyle.merge(ancestorStyles),
+        fabIconStyle.sizeMap(ancestorStyles?.props?.size)
+      ],
       inlineStyle: style,
       isFirst: true,
     );

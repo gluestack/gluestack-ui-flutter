@@ -5,3 +5,4 @@ export 'border_width.dart';
 export 'font_size.dart';
 export 'letter_spacing.dart';
 export 'screen_breakpoint.dart';
+export 'font_family.dart';

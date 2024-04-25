@@ -1,8 +1,4 @@
-import 'package:flutter/widgets.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/token/font_weight.dart';
-import 'package:gluestack_ui/src/token/line_height.dart';
-import 'package:gluestack_ui/src/token/public.dart';
 
 bool parseMap(Map<dynamic, dynamic>? data) {
   return data?.isNotEmpty ?? false;
@@ -470,8 +466,12 @@ TextAlign? resolveTextAlignmentFromString(String? textAlign) {
   return textAlign != null ? textAlignmentMap[textAlign] : null;
 }
 
-//For debug; TODO: remove in prod
-Color? out(String? a) {
-  print('out: $a');
-  return null;
+String? resolveFontFamilyTokenFromString(String? fontFamilyToken) {
+  if (fontFamilyToken == null) {
+    return null;
+  }
+  if (fontFamilyToken.contains('\$')) {
+    return $GSFontFamily.fontFamilyMap[fontFamilyToken.substring(1)]!;
+  }
+  return $GSFontFamily.fontFamilyMap[fontFamilyToken];
 }

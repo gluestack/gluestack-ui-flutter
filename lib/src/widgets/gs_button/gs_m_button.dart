@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_style.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/token/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
+import 'package:gluestack_ui/src/utils/extension.dart';
 
 class GSMaterialButton extends StatelessWidget {
-  final GSActions? action;
-  final GSVariants? variant;
-  final GSSizes? size;
+  final GSButtonActions? action;
+  final GSButtonVariants? variant;
+  final GSButtonSizes? size;
   final bool? isDisabled;
   final bool? isFocusVisible;
   final Widget child;
@@ -28,9 +25,9 @@ class GSMaterialButton extends StatelessWidget {
     super.key,
     required this.child,
     required this.onPressed,
-    this.action = GSActions.primary,
-    this.variant = GSVariants.solid,
-    this.size = GSSizes.$md,
+    this.action = GSButtonActions.primary,
+    this.variant = GSButtonVariants.solid,
+    this.size = GSButtonSizes.$md,
     this.isDisabled,
     this.isFocusVisible = false,
     this.style,
@@ -41,39 +38,14 @@ class GSMaterialButton extends StatelessWidget {
     this.autoFocus = false,
     this.clipBehavior = Clip.none,
     this.statesController,
-  })  : assert(
-          size == null ||
-              size == GSSizes.$xs ||
-              size == GSSizes.$sm ||
-              size == GSSizes.$md ||
-              size == GSSizes.$lg,
-          'GS Button can only have the sizes: \$lg, \$md \$sm and \$xs\n'
-          'To resolve this error, ensure only the above mentioned GSSizes is specified!',
-        ),
-        assert(
-          variant == null ||
-              variant == GSVariants.outline ||
-              variant == GSVariants.solid ||
-              variant == GSVariants.link,
-          'GS Button can only have the vairants: solid, outline and link\n'
-          'To resolve this error, ensure only the above mentioned GSVariants is specified.',
-        ),
-        assert(
-          action == null ||
-              action == GSActions.primary ||
-              action == GSActions.secondary ||
-              action == GSActions.positive ||
-              action == GSActions.negative,
-          'GS Button can only have the actions: primary, secondary, positive and negative\n'
-          'To resolve this error, ensure only the above mentioned GSActions is specified.',
-        );
+  });
 
   @override
   Widget build(BuildContext context) {
     final value = GSButtonGroupProvider.of(context);
-    final buttonAction = action ?? buttonStyle.props?.action;
-    final buttonVariant = variant ?? buttonStyle.props?.variant;
-    final buttonSize = size ?? value?.size ?? buttonStyle.props?.size;
+    final buttonAction = action?.toGSAction ?? buttonStyle.props?.action;
+    final buttonVariant = variant?.toGSVariant ?? buttonStyle.props?.variant;
+    final buttonSize = size?.toGSSize ?? value?.size ?? buttonStyle.props?.size;
     final disabled = isDisabled ?? value?.isDisabled ?? false;
     final focused = isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;
