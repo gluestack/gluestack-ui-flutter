@@ -1,5 +1,6 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/widgets/gs_link/gs_link_style.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 /// A widget for creating clickable links within the application.
@@ -35,6 +36,7 @@ class GSLink extends StatelessWidget {
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
+      styles: [linkStyle],
       inlineStyle: style,
       isFirst: true,
     );
