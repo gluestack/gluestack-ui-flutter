@@ -28,7 +28,7 @@ class GSProgressFilledTrack extends StatelessWidget {
 
     return AnimatedContainer(
       duration: animationDuration!,
-      width: value,
+      width: parentWidth * value,
       height: styler.height,
       decoration: BoxDecoration(
         color:

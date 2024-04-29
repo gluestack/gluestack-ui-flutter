@@ -44,7 +44,7 @@ class _ProgressExampleState extends State<ProgressExample> {
         child: BaseLayout(
           code: code,
           component: GSProgress(
-            value: 18,
+            value: 0.4,
             size: selectedSizeOption,
             // style: GSStyle(
             //   borderRadius: 0,
