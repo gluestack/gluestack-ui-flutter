@@ -1,6 +1,6 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_progress/gs_progressFilledTrack_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_filled_track_style.dart';
 
 class GSProgressFilledTrack extends StatelessWidget {
   final double parentWidth;

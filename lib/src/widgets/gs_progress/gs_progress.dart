@@ -1,6 +1,6 @@
 import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_filledTrack.dart';
+import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_filled_track.dart';
 import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_style.dart';
 
 /// A widget that displays a progress bar, indicating the completion of a task or
