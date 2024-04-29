@@ -1,6 +1,5 @@
 import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_link/gs_link_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_link/gs_link_text_style.dart';
 
 class GSLinkText extends StatelessWidget {
@@ -19,7 +18,7 @@ class GSLinkText extends StatelessWidget {
     // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
-      styles: [ linkTextStyle.merge(ancestorTextStyles),ancestorTextStyles],
+      styles: [linkTextStyle.merge(ancestorTextStyles), ancestorTextStyles],
       inlineStyle: style,
       isFirst: true,
     );
