@@ -368,7 +368,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
   double? right;
   double? left;
 
-  String? progressValueColor;
+  // String? progressValueColor;
   //for splash n highlight for pressable
   // String? highlightColor;
   // String? splashColor;
@@ -449,7 +449,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
     this.justifyContent,
     this.alignment,
     this.maxWidth,
-    this.progressValueColor,
+    // this.progressValueColor,
     this.badge,
     // this.highlightColor,
     // this.splashColor,
@@ -601,8 +601,8 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
         justifyContent: overrideStyle?.justifyContent ?? justifyContent,
         maxWidth: overrideStyle?.maxWidth ?? maxWidth,
         alignment: overrideStyle?.alignment ?? alignment,
-        progressValueColor:
-            overrideStyle?.progressValueColor ?? progressValueColor,
+        // progressValueColor:
+        //     overrideStyle?.progressValueColor ?? progressValueColor,
         // highlightColor: overrideStyle?.highlightColor ?? highlightColor,
         // splashColor: overrideStyle?.splashColor ?? splashColor,
         textTransform: overrideStyle?.textTransform ?? textTransform,
@@ -655,7 +655,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       bottom: gsStyle.bottom,
       right: gsStyle.right,
       left: gsStyle.left,
-      progressValueColor: gsStyle.progressValueColor?.toString(),
+      // progressValueColor: gsStyle.progressValueColor?.toString(),
       textTransform: gsStyle.textTransform,
       iconSize: gsStyle.iconSize,
       trackColorTrue: gsStyle.trackColorTrue?.toString(),
