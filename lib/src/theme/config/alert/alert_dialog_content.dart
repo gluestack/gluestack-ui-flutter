@@ -23,10 +23,7 @@ const Map<String, dynamic> alertDialogContentData = {
       'duration': 250,
     },
   },
-  '_dark': {
-    'bg': '\$backgroundDark900',
-  },
-  'props': {
+  'defaultProps': {
     'softShadow': '3',
   },
 };

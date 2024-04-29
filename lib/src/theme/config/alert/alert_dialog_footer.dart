@@ -4,8 +4,5 @@ const Map<String, dynamic> alertDialogFooterData = {
   'justifyContent': 'flex-end',
   'alignItems': 'center',
   'flexWrap': 'wrap',
-  'borderColor': '\$borderLight300',
-  '_dark': {
-    'borderColor': '\$borderDark700',
-  },
+  'borderColor': '\$border300',
 };
