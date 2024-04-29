@@ -23,15 +23,19 @@ extension ColorExtension on String {
       return Color(value);
     }
 
-    if (contains('0xff') && isNotEmpty) {
-      //i.e. color from token most likely or smthin
-      resolvedColor = parseColor(this);
-    } else {
-      //theme clr
-      resolvedColor = themeColorMap(context)[this];
+    if (isNotEmpty) {
+      if (contains('transparent')) {
+        resolvedColor = const Color(0x00000000);
+      } else if (contains('0xff')) {
+        //i.e. color from token most likely or smthin
+        resolvedColor = parseColor(this);
+      } else {
+        //theme clr
+        resolvedColor = themeColorMap(context)[this];
+      }
     }
 
-    //default color is transparent if unresolved!
+    //default color is transparent ish red if unresolved!
     resolvedColor ??= const Color.fromARGB(0, 255, 0, 0);
 
     return resolvedColor;
