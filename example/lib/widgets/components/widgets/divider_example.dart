@@ -17,7 +17,7 @@ class DividerExample extends StatelessWidget {
           children: [
             GSDivider(
               orientation: GSOrientations.vertical,
-              style: GSStyle(bg: Colors.black, height: 30),
+              style: GSStyle(height: 30),
             ),
             GSDivider(
               style: GSStyle(
