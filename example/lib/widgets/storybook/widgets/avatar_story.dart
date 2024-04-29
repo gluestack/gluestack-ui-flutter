@@ -21,10 +21,10 @@ final class AvatarStory extends StoryWidget {
             label: 'Border Radius',
             initial: GSAvatarRadius.values.length - 1,
             options: borderRadiusOptions)],
-        style: GSStyle(
-          bg: Colors.orange,
-          textStyle: const TextStyle(color: Colors.white),
-        ),
+        // style: GSStyle(
+        //   bg: Colors.orange,
+        //   textStyle: const TextStyle(color: Colors.white),
+        // ),
         fallBackText: const GSAvatarFallBackText('Geeky Stack'),
       ),
     );

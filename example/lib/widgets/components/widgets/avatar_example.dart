@@ -52,10 +52,6 @@ class _AvatarExampleState extends State<AvatarExample> {
         GSAvatar(
             radius: GSAvatarRadius.\$full,
             size: GSAvatarSizes.\$md,
-            style: GSStyle(
-              bg: Colors.orange,
-              textStyle: const TextStyle(color: Colors.white),
-            ),
             fallBackText: const GSAvatarFallBackText('Geeky Stack'),
          )
 ''';
@@ -69,10 +65,10 @@ class _AvatarExampleState extends State<AvatarExample> {
         component: GSAvatar(
           radius: selectedRadiusOption,
           size: selectedSizeOption,
-          style: GSStyle(
-            bg: Colors.orange,
-            textStyle: const TextStyle(color: Colors.white),
-          ),
+          // style: GSStyle(
+          //   bg: Colors.orange,
+          //   textStyle: const TextStyle(color: Colors.white),
+          // ),
           fallBackText: const GSAvatarFallBackText('Geeky Stack'),
         ),
         controls: Column(
