@@ -66,14 +66,14 @@ class _SwitchExampleState extends State<SwitchExample> {
             GSSwitch(
               isDisabled: isDisabled,
               size: selectedSizeOption,
-              style: GSStyle(
-                thumbColor: Colors.amber,
-                trackColorFalse: Colors.orange,
-                checked: GSStyle(
-                  activeThumbColor: Colors.red,
-                  trackColorTrue: Colors.black,
-                ),
-              ),
+              // style: GSStyle(
+              //   thumbColor: Colors.amber,
+              //   trackColorFalse: Colors.orange,
+              //   checked: GSStyle(
+              //     activeThumbColor: Colors.red,
+              //     trackColorTrue: Colors.black,
+              //   ),
+              // ),
               value: val1,
               onToggle: (bool a) {
                 // print('switch value: $a');
