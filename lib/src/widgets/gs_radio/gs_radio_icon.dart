@@ -30,8 +30,7 @@ class GSRadioIcon<T> extends StatelessWidget {
     final bool isChecked = value!.value == value.groupValue;
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
-    final radioSize =
-        radioIconStyle.sizeMap(size ?? ancestorStyles?.props?.size);
+    final radioSize = radioIconStyle.sizeMap(size ?? value.size);
 
     GSConfigStyle styler = resolveStyles(
       context: context,
