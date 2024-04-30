@@ -118,6 +118,7 @@ class GSHeading extends StatelessWidget {
     GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
+        headingStyle,
         highlight ? headingStyle.variants?.highlight : null,
         headingStyle.sizeMap(textSize?.toGSSize),
       ],
