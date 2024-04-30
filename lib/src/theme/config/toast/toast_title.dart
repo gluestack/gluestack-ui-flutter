@@ -3,8 +3,5 @@ const Map<String, dynamic> toastTitleData = {
   'props': {
     'size': 'md',
   },
-  'color': '\$textLight900',
-  '_dark': {
-    'color': '\$textDark50',
-  },
+  'color': '\$text900',
 };
