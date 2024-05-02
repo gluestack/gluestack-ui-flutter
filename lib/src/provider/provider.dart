@@ -38,6 +38,7 @@ export 'package:gluestack_ui/src/theme/config/link/link.dart';
 export 'package:gluestack_ui/src/theme/config/link/link_text.dart';
 export 'package:gluestack_ui/src/theme/config/pressable/pressable.dart';
 export 'package:gluestack_ui/src/theme/config/progress/progress.dart';
+export 'package:gluestack_ui/src/theme/config/progress/progress_filled_track.dart';
 export 'package:gluestack_ui/src/theme/config/radio/radio.dart';
 export 'package:gluestack_ui/src/theme/config/radio/radio_icon.dart';
 export 'package:gluestack_ui/src/theme/config/radio/radio_indicator.dart';
