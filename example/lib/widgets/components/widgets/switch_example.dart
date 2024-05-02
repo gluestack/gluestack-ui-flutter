@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
@@ -65,14 +66,16 @@ class _SwitchExampleState extends State<SwitchExample> {
             GSSwitch(
               isDisabled: isDisabled,
               size: selectedSizeOption,
-              // style: GSStyle(
-              //   thumbColor: Colors.amber,
-              //   trackColorFalse: Colors.orange,
-              //   checked: GSStyle(
-              //     activeThumbColor: Colors.red,
-              //     trackColorTrue: Colors.black,
-              //   ),
-              // ),
+              style: GSStyle(
+                dark: GSStyle(
+                  thumbColor: Colors.grey.shade50,
+                  trackColorFalse: Colors.grey.shade300,
+                  checked: GSStyle(
+                    activeThumbColor: Colors.grey.shade50,
+                    trackColorTrue: Colors.grey.shade600,
+                  ),
+                ),
+              ),
               value: val1,
               onToggle: (bool a) {
                 // print('switch value: $a');
