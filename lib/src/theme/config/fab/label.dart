@@ -1,3 +1,3 @@
 const Map<String, dynamic> fabLabelData = {
-  "color": '\$textLight50',
+  "color": '\$text50',
 };
