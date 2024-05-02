@@ -46,11 +46,6 @@ class _ProgressExampleState extends State<ProgressExample> {
           component: GSProgress(
             value: 0.4,
             size: selectedSizeOption,
-            // style: GSStyle(
-            //   borderRadius: 0,
-            //   color: Color(0xffff0000),
-            //   bg: Color.fromARGB(255, 0, 170, 0),
-            // ),
           ),
           controls: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

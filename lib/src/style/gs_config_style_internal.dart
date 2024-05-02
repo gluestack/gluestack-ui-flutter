@@ -47,35 +47,6 @@ class ShadowOffset {
   }
 }
 
-// class GSPlacement {
-//   GSStyle? topRight;
-//   GSStyle? topLeft;
-//   GSStyle? bottomRight;
-//   GSStyle? bottomLeft;
-//   GSStyle? topCenter;
-//   GSStyle? bottomCenter;
-//   GSPlacement(
-//       {this.bottomCenter,
-//       this.bottomLeft,
-//       this.bottomRight,
-//       this.topCenter,
-//       this.topLeft,
-//       this.topRight});
-//   factory GSPlacement.fromMap({required Map<String, dynamic>? data}) {
-//     return GSPlacement(
-//       bottomCenter:
-//           GSStyle.fromMap(data: data?['bottom center'], fromVariant: true),
-//       bottomLeft:
-//           GSStyle.fromMap(data: data?['bottom left'], fromVariant: true),
-//       bottomRight:
-//           GSStyle.fromMap(data: data?['bottom right'], fromVariant: true),
-//       topCenter: GSStyle.fromMap(data: data?['top center'], fromVariant: true),
-//       topLeft: GSStyle.fromMap(data: data?['top left'], fromVariant: true),
-//       topRight: GSStyle.fromMap(data: data?['top right'], fromVariant: true),
-//     );
-//   }
-// }
-
 class GSProps {
   GSActions? action;
   GSVariants? variant;
@@ -368,7 +339,6 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
   double? right;
   double? left;
 
-  // String? progressValueColor;
   //for splash n highlight for pressable
   // String? highlightColor;
   // String? splashColor;
@@ -449,7 +419,6 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
     this.justifyContent,
     this.alignment,
     this.maxWidth,
-    // this.progressValueColor,
     this.badge,
     // this.highlightColor,
     // this.splashColor,
@@ -601,8 +570,6 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
         justifyContent: overrideStyle?.justifyContent ?? justifyContent,
         maxWidth: overrideStyle?.maxWidth ?? maxWidth,
         alignment: overrideStyle?.alignment ?? alignment,
-        // progressValueColor:
-        //     overrideStyle?.progressValueColor ?? progressValueColor,
         // highlightColor: overrideStyle?.highlightColor ?? highlightColor,
         // splashColor: overrideStyle?.splashColor ?? splashColor,
         textTransform: overrideStyle?.textTransform ?? textTransform,
@@ -655,7 +622,6 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       bottom: gsStyle.bottom,
       right: gsStyle.right,
       left: gsStyle.left,
-      // progressValueColor: gsStyle.progressValueColor?.toString(),
       textTransform: gsStyle.textTransform,
       iconSize: gsStyle.iconSize,
       trackColorTrue: gsStyle.trackColorTrue?.toString(),
