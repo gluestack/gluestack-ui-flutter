@@ -574,18 +574,6 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
       isFirst: true,
     );
 
-    // GSStyle styler = resolveStyles(
-    //   context: context,
-    //   styles: [
-    //     gsStepperStyle,
-    //     gsStepperStyle.sizeMap(textSize?.toGSSize),
-
-    //     //  gsStepperStyle.sizeMap(textSize?.toGSSize!),
-    //   ],
-    //   inlineStyle: widget.style,
-    //   isFirst: true,
-    // );
-
     GSConfigStyle titleStyler = resolveStyles(
       context: context,
       styles: [
@@ -660,7 +648,7 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
                                 inactiveCircleColor: inactiveCircleColor,
                                 iconColor: iconColor!,
                                 errorColor:
-                                    styler.onInvalid!.textStyle!.color!),
+                                    styler.onInvalid!.color!.getColor(context)),
                             _buildLine(!_isLast(i), widget.steps[i].isActive,
                                 connectorLineColor),
                           ],
@@ -671,12 +659,16 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
                                 const EdgeInsetsDirectional.only(start: 12.0),
                             child: _buildHeaderText(
                               index: i,
-                              titleTextStyle: titleStyler.textStyle,
-                              subtitleTextStyle: subtitleStyler.textStyle,
+                              titleTextStyle: titleStyler.textStyle?.copyWith(
+                                  color: titleStyler.color?.getColor(context)),
+                              subtitleTextStyle: subtitleStyler.textStyle
+                                  ?.copyWith(
+                                      color: subtitleStyler.color
+                                          ?.getColor(context)),
                               disabledTextColor:
-                                  styler.onDisabled?.textStyle?.color,
+                                  styler.onDisabled?.color?.getColor(context),
                               errorTextColor:
-                                  styler.onInvalid?.textStyle?.color,
+                                  styler.onInvalid?.color?.getColor(context),
                             ),
                           ),
                         ),
@@ -688,10 +680,12 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
                 //Vertical Body
                 _buildVerticalBody(
                   i,
-                  contentStyler.textStyle,
+                  contentStyler.textStyle?.copyWith(
+                    color: subtitleStyler.color?.getColor(context),
+                  ),
                   connectorLineColor,
-                  styler.onDisabled?.textStyle?.color,
-                  styler.onInvalid?.textStyle?.color,
+                  styler.onDisabled?.color?.getColor(context),
+                  styler.onInvalid?.color?.getColor(context),
                 ),
               ],
             ),

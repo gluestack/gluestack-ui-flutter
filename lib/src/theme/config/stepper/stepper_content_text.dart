@@ -1,13 +1,10 @@
 const Map<String, dynamic> stepperContentTextData = {
-  "color": "\$textLight700",
-  "_dark": {"color": "\$textDark50"},
+  "color": "\$text700",
   ':disabled': {
     "color": "\$trueGray200",
-    "_dark": {"color": "\$trueGray800"},
   },
   ':invalid': {
     "color": "\$red600",
-    "_dark": {"color": "\$red700"},
   },
   "variants": {
     "size": {
