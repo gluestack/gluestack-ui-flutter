@@ -67,11 +67,13 @@ class _SwitchExampleState extends State<SwitchExample> {
               isDisabled: isDisabled,
               size: selectedSizeOption,
               style: GSStyle(
-                thumbColor: Colors.amber,
-                trackColorFalse: Colors.orange,
-                checked: GSStyle(
-                  activeThumbColor: Colors.red,
-                  trackColorTrue: Colors.black,
+                dark: GSStyle(
+                  thumbColor: Colors.grey.shade50,
+                  trackColorFalse: Colors.grey.shade300,
+                  checked: GSStyle(
+                    activeThumbColor: Colors.grey.shade50,
+                    trackColorTrue: Colors.grey.shade600,
+                  ),
                 ),
               ),
               value: val1,
