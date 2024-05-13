@@ -13,7 +13,6 @@ class GSRadioText<T> extends StatelessWidget {
     final value = GSRadioProvider.of<T>(context);
     // final ancestorTextStyles = GSAncestorProvider.of(context)
     //     ?.decedentStyles?[gsRadioTextConfig.ancestorStyle.first];
-
     final fontSize = radioLabelStyle.sizeMap(value?.size)?.textStyle?.fontSize;
 
     GSConfigStyle styler = resolveStyles(
