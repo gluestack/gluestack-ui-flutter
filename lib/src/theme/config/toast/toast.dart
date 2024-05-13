@@ -45,7 +45,7 @@ const Map<String, dynamic> toastData = {
       'solid': {},
       'outline': {
         'borderWidth': '\$1',
-        'bg': '\$white',
+        //'bg': '\$white',
       },
       'accent': {
         'borderLeftWidth': '\$4',
