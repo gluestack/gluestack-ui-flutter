@@ -1,51 +1,34 @@
 const Map<String, dynamic> progressData = {
-  'bg': '\$backgroundLight300',
-  'borderRadius': '\$full',
-  'w': '100%',
-  'variants': {
-    'size': {
-      'xs': {
-        'h': '\$1',
-        '_filledTrack': {
-          'h': '\$1',
-        },
+  "bg": "\$background300",
+  "borderRadius": "\$full",
+  "w": "100%",
+  "variants": {
+    "size": {
+      "xs": {
+        "h": "\$1",
+        "_filledTrack": {"h": "\$1"}
       },
-      'sm': {
-        'h': '\$2',
-        '_filledTrack': {
-          'h': '\$2',
-        },
+      "sm": {
+        "h": "\$2",
+        "_filledTrack": {"h": "\$2"}
       },
-      'md': {
-        'h': '\$3',
-        '_filledTrack': {
-          'h': '\$3',
-        },
+      "md": {
+        "h": "\$3",
+        "_filledTrack": {"h": "\$3"}
       },
-      'lg': {
-        'h': '\$4',
-        '_filledTrack': {
-          'h': '\$4',
-        },
+      "lg": {
+        "h": "\$4",
+        "_filledTrack": {"h": "\$4"}
       },
-      'xl': {
-        'h': '\$5',
-        '_filledTrack': {
-          'h': '\$5',
-        },
+      "xl": {
+        "h": "\$5",
+        "_filledTrack": {"h": "\$5"}
       },
-      '2xl': {
-        'h': '\$6',
-        '_filledTrack': {
-          'h': '\$6',
-        },
-      },
-    },
+      "2xl": {
+        "h": "\$6",
+        "_filledTrack": {"h": "\$6"}
+      }
+    }
   },
-  '_dark': {
-    'bg': '\$backgroundDark700',
-  },
-  'props': {
-    'size': 'md',
-  },
+  "defaultProps": {"size": "md"}
 };
