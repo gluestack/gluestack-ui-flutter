@@ -37,13 +37,15 @@ class GSDivider extends StatelessWidget {
     // Resolve the GSStyle for the divider
     // Resolve the final GSStyle.
     final styler = resolveStyles(
-        context: context,
-        styles: [
-          dividerOrientation == GSOrientations.horizontal
-              ? dividerStyle.variants?.orientation?.horizontal
-              : dividerStyle.variants?.orientation?.vertical,
-        ],
-        inlineStyle: style);
+      context: context,
+      styles: [
+        dividerStyle,
+        dividerOrientation == GSOrientations.horizontal
+            ? dividerStyle.variants?.orientation?.horizontal
+            : dividerStyle.variants?.orientation?.vertical,
+      ],
+      inlineStyle: style,
+    );
 
     if (dividerOrientation == GSOrientations.horizontal) {
       return Center(

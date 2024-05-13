@@ -1,9 +1,9 @@
 const Map<String, dynamic> switchData = {
   "props": {
-    "trackColor": {"false": "\$backgroundLight300", "true": "\$primary600"},
-    "thumbColor": "\$backgroundLight0",
-    "activeThumbColor": "\$backgroundLight0",
-    "ios_backgroundColor": "\$backgroundLight300"
+    "trackColor": {"false": "\$background300", "true": "\$primary600"},
+    "thumbColor": "\$background0",
+    "activeThumbColor": "\$background0",
+    "ios_backgroundColor": "\$background300"
   },
   "borderRadius": "\$full",
   "variants": {
@@ -26,11 +26,6 @@ const Map<String, dynamic> switchData = {
       "outlineWidth": 0,
       "outlineColor": "\$primary700",
       "outlineStyle": "solid",
-      "_dark": {
-        "outlineColor": "\$primary600",
-        "outlineWidth": 0,
-        "outlineStyle": "solid"
-      }
     }
   },
   "defaultProps": {"size": "md"},
@@ -40,11 +35,11 @@ const Map<String, dynamic> switchData = {
       ":disabled": {"cursor": "not-allowed"}
     },
     "opacity": 0.4,
-    "trackColor": {"false": "\$backgroundLight300", "true": "\$primary600"},
-    "ios_backgroundColor": "\$backgroundLight300",
+    "trackColor": {"false": "\$background300", "true": "\$primary600"},
+    "ios_backgroundColor": "\$background300",
     ":hover": {
       "props": {
-        "trackColor": {"false": "\$backgroundLight300", "true": "\$primary600"}
+        "trackColor": {"false": "\$background300", "true": "\$primary600"}
       }
     }
   },
@@ -55,53 +50,16 @@ const Map<String, dynamic> switchData = {
   },
   ":hover": {
     "props": {
-      "trackColor": {"false": "\$backgroundLight400", "true": "\$primary700"},
-      "ios_backgroundColor": "\$backgroundLight400"
+      "trackColor": {"false": "\$background400", "true": "\$primary700"},
+      "ios_backgroundColor": "\$background400"
     },
     ":invalid": {
       "props": {
-        "trackColor": {"false": "\$backgroundLight300", "true": "\$primary700"}
+        "trackColor": {"false": "\$background300", "true": "\$primary700"}
       }
     }
   },
   ":checked": {
-    "props": {"thumbColor": "\$backgroundLight0"}
+    "props": {"thumbColor": "\$background0"}
   },
-  "_dark": {
-    "props": {
-      "trackColor": {"false": "\$backgroundDark700", "true": "\$primary500"},
-      "thumbColor": "\$backgroundDark0",
-      "activeThumbColor": "\$backgroundDark0"
-    },
-    ":invalid": {
-      "borderColor": "\$error400",
-      "borderRadius": 12,
-      "borderWidth": 2
-    },
-    ":hover": {
-      "props": {
-        "trackColor": {"false": "\$backgroundDark600", "true": "\$primary600"},
-        "ios_backgroundColor": "\$backgroundLight400"
-      },
-      ":invalid": {
-        "props": {
-          "trackColor": {"false": "\$backgroundDark700", "true": "\$primary600"}
-        }
-      }
-    },
-    ":disabled": {
-      "_web": {
-        "cursor": "pointer",
-        ":disabled": {"cursor": "not-allowed"}
-      },
-      "opacity": 0.4,
-      "trackColor": {"false": "\$backgroundLight300", "true": "\$primary500"},
-      "ios_backgroundColor": "\$backgroundLight300",
-      ":hover": {
-        "props": {
-          "trackColor": {"false": "\$backgroundDark700", "true": "\$primary500"}
-        }
-      }
-    }
-  }
 };

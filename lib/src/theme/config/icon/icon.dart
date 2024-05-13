@@ -1,11 +1,8 @@
 const Map<String, dynamic> iconData = {
-  'color': '\$backgroundLight800',
+  'color': '\$background800',
   'props': {
     'size': 'md',
     'fill': 'none',
-  },
-  '_dark': {
-    'color': '\$backgroundDark400',
   },
   'variants': {
     'size': {

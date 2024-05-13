@@ -1,6 +1,7 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
+import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_style.dart';
 
 ///
@@ -56,35 +57,35 @@ class GSFab extends StatelessWidget {
             ? styler
             : styler.merge(styler.onHover);
 
-    final widget = GSAncestor(
-      decedentStyles: styler.descendantStyles,
-      child: Opacity(
-        opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
-        child: GSButton(
-          isDisabled: isDisabled,
-          style: GSStyle.fromGSConfigStyle(fabStyler, context),
-          onPressed: onPressed ?? () {},
-          onLongPress: isDisabled ? null : onLongPress,
-          child: resolveFlexWidget(
-            flexDirection: styler.flexDirection,
-            mainAxisAlignment: styler.justifyContent,
-            crossAxisAlignment: styler.alignItems,
-            children: [if (icon != null) icon!, if (label != null) label!],
-          ),
+    final widget = Opacity(
+      opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
+      child: GSButton(
+        isDisabled: isDisabled,
+        style: GSStyle.fromGSConfigStyle(fabStyler, context),
+        onPressed: onPressed ?? () {},
+        onLongPress: isDisabled ? null : onLongPress,
+        child: resolveFlexWidget(
+          flexDirection: styler.flexDirection,
+          mainAxisAlignment: styler.justifyContent,
+          crossAxisAlignment: styler.alignItems,
+          children: [if (icon != null) icon!, if (label != null) label!],
         ),
       ),
     );
 
-    return Positioned.fill(
-        bottom: styler.bottom,
-        top: styler.top,
-        left: isCentered ? styler.left ?? 0.0 : styler.left,
-        right: isCentered ? styler.right ?? 0.0 : styler.right,
-        child: isCentered
-            ? Align(
-                alignment: Alignment.center,
-                child: widget,
-              )
-            : widget);
+    return GSFabProvider(
+      descendantStyles: styler.descendantStyles,
+      child: Positioned.fill(
+          bottom: styler.bottom,
+          top: styler.top,
+          left: isCentered ? styler.left ?? 0.0 : styler.left,
+          right: isCentered ? styler.right ?? 0.0 : styler.right,
+          child: isCentered
+              ? Align(
+                  alignment: Alignment.center,
+                  child: widget,
+                )
+              : widget),
+    );
   }
 }

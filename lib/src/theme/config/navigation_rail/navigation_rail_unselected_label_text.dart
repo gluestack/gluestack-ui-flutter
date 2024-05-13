@@ -1,8 +1,5 @@
 const Map<String, dynamic> navigationRailUnselectedLabelData = {
-  "color": "\$textLight900",
-  "_dark": {
-    "color": "\$textDark50",
-  },
+  "color": "\$text900",
   "variants": {
     "size": {
       "sm": {
