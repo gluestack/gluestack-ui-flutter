@@ -50,6 +50,7 @@ class GSRadioIcon<T> extends StatelessWidget {
               : SystemMouseCursors.click,
           child: GSRawRadio(
               activeColor: activeColor,
+              radioSize: radioSize?.height,
               autofocus: autofocus,
               focusColor: focusColor,
               focusNode: focusNode,
