@@ -490,7 +490,7 @@ Map<String, dynamic> gSThemes = {
 
 Map themeColorMap(context) {
   final mapp = {
-    //...$GSColors.colorMap, //needed for switch n all to get def colors.
+    ...$GSColors.colorMap, //needed for switch n all to get def colors.
     'primary0': GSTheme.of(context).primary0,
     'primary50': GSTheme.of(context).primary50,
     'primary100': GSTheme.of(context).primary100,
