@@ -92,6 +92,7 @@ class GluestackCustomConfig {
   Map<String, dynamic>? pressable;
   //progress
   Map<String, dynamic>? progress;
+  Map<String, dynamic>? progressFilledTrack;
   //radio
   Map<String, dynamic>? radioIcon;
   Map<String, dynamic>? radioIndicator;
@@ -190,6 +191,7 @@ class GluestackCustomConfig {
 
     //progress
     this.progress,
+    this.progressFilledTrack,
 
     //pressable
     this.pressable,
@@ -342,6 +344,7 @@ class GluestackCustomConfig {
 
     //progress
     progress = mergeConfigs(progressData, progress);
+    progressFilledTrack = mergeConfigs(progressFilledTrackData, progressFilledTrack);
 
     //pressable
     pressable = mergeConfigs(pressableData, pressable);

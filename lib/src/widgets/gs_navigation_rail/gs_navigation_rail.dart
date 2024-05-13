@@ -204,11 +204,15 @@ class _GSNavigationRailState extends State<GSNavigationRail>
 
     final double minWidth = widget.minWidth ?? 100;
     final double minExtendedWidth = widget.minExtendedWidth ?? 30;
-    final TextStyle? unselectedLabelTextStyle =
-        widget.unselectedLabelTextStyle ?? unselectedLabelStyler.textStyle;
+    final TextStyle unselectedLabelTextStyle = widget
+            .unselectedLabelTextStyle ??
+        unselectedLabelStyler.textStyle!
+            .copyWith(color: unselectedLabelStyler.color?.getColor(context));
 
-    final TextStyle? selectedLabelTextStyle =
-        widget.selectedLabelTextStyle ?? selectedLabelStyler.textStyle;
+    final TextStyle selectedLabelTextStyle = widget.selectedLabelTextStyle ??
+        selectedLabelStyler.textStyle!
+            .copyWith(color: selectedLabelStyler.color?.getColor(context));
+
     final IconThemeData unselectedIconTheme = widget.unselectedIconTheme ??
         IconThemeData(
           color: styler.iconColor?.getColor(context),
@@ -264,8 +268,8 @@ class _GSNavigationRailState extends State<GSNavigationRail>
                                 ? selectedIconTheme
                                 : unselectedIconTheme,
                             labelTextStyle: widget.selectedIndex == i
-                                ? selectedLabelTextStyle!
-                                : unselectedLabelTextStyle!,
+                                ? selectedLabelTextStyle
+                                : unselectedLabelTextStyle,
                             padding: widget.destinations[i].padding,
                             useIndicator: useIndicator,
                             indicatorColor:
