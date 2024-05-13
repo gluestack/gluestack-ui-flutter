@@ -205,6 +205,12 @@ class _GSStepperState extends State<GSStepper> with TickerProviderStateMixin {
     }
     switch (state) {
       case GSStepState.indexed:
+        return GSText(
+          text: '${index + 1}',
+          style: GSStyle(
+            color: iconColor,
+          ),
+        );
       case GSStepState.inactive:
       case GSStepState.disabled:
         return GSText(
