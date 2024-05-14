@@ -19,7 +19,7 @@ class GSMaterialButton extends StatelessWidget {
   final FocusNode? focusNode;
   final bool autoFocus;
   final Clip clipBehavior;
-  final MaterialStatesController? statesController;
+  final WidgetStatesController? statesController;
   const GSMaterialButton({
     super.key,
     required this.child,
@@ -106,12 +106,12 @@ class GSMaterialButton extends StatelessWidget {
                   clipBehavior: clipBehavior,
                   statesController: statesController,
                   style: ButtonStyle(
-                    elevation: MaterialStateProperty.all<double?>(0),
-                    padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
+                    elevation: WidgetStateProperty.all<double?>(0),
+                    padding: WidgetStateProperty.all<EdgeInsetsGeometry?>(
                         styler.padding),
                     backgroundColor:
-                        MaterialStatePropertyAll(styler.bg?.getColor(context)),
-                    shape: MaterialStatePropertyAll(
+                        WidgetStatePropertyAll(styler.bg?.getColor(context)),
+                    shape: WidgetStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius:
                             BorderRadius.circular(styler.borderRadius ?? 0.0),
