@@ -1,57 +1,23 @@
 const Map<String, dynamic> checkBoxLabelData = {
-  'color': '\$textLight600',
-  ':checked': {
-    'color': '\$textLight900',
+  "color": "\$text600",
+  ":checked": {"color": "\$text900"},
+  ":hover": {
+    "color": "\$text900",
+    ":checked": {
+      "color": "\$text900",
+      ":disabled": {"color": "\$text900"}
+    },
+    ":disabled": {"color": "\$text600"}
   },
-  ':hover': {
-    'color': '\$textLight900',
-    ':checked': {
-      'color': '\$textLight900',
-      ':disabled': {
-        'color': '\$textLight900',
-      },
-    },
-    ':disabled': {
-      'color': '\$textLight600',
-    },
+  ":active": {
+    "color": "\$text900",
+    ":checked": {"color": "\$text900"}
   },
-  ':active': {
-    'color': '\$textLight900',
-    ':checked': {
-      'color': '\$textLight900',
-    },
-  },
-  ':disabled': {
-    'opacity': 0.4,
-  },
-  '_web': {
-    'MozUserSelect': 'none',
-    'WebkitUserSelect': 'none',
-    'msUserSelect': 'none',
-  },
-  'userSelect': 'none',
-  '_dark': {
-    'color': '\$textDark400',
-    ':checked': {
-      'color': '\$textDark100',
-    },
-    ':hover': {
-      'color': '\$textDark100',
-      ':checked': {
-        'color': '\$textDark100',
-        ':disabled': {
-          'color': '\$textDark100',
-        },
-      },
-    },
-    ':disabled': {
-      'color': '\$textDark100',
-    },
-    ':active': {
-      'color': '\$textDark100',
-      ':checked': {
-        'color': '\$textDark100',
-      },
-    },
-  },
+  ":disabled": {"opacity": 0.4},
+  "_web": {
+    "MozUserSelect": "none",
+    "WebkitUserSelect": "none",
+    "msUserSelect": "none",
+    "userSelect": "none"
+  }
 };

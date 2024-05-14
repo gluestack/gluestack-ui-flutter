@@ -28,10 +28,9 @@ class GSRadioIcon<T> extends StatelessWidget {
     final value = GSRadioProvider.of<T>(context);
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final bool isChecked = value!.value == value.groupValue;
-    final ancestorStyles = GSAncestorProvider.of(context)
-        ?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
-    final radioSize =
-        radioIconStyle.sizeMap(size ?? ancestorStyles?.props?.size);
+    // final ancestorStyles = GSAncestorProvider.of(context)
+    //     ?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
+    final radioSize = radioIconStyle.sizeMap(size ?? value.size);
 
     GSConfigStyle styler = resolveStyles(
       context: context,
@@ -51,6 +50,7 @@ class GSRadioIcon<T> extends StatelessWidget {
               : SystemMouseCursors.click,
           child: GSRawRadio(
               activeColor: activeColor,
+              radioSize: radioSize?.height,
               autofocus: autofocus,
               focusColor: focusColor,
               focusNode: focusNode,
