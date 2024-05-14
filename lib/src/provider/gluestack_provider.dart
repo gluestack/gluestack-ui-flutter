@@ -344,7 +344,8 @@ class GluestackCustomConfig {
 
     //progress
     progress = mergeConfigs(progressData, progress);
-    progressFilledTrack = mergeConfigs(progressFilledTrackData, progressFilledTrack);
+    progressFilledTrack =
+        mergeConfigs(progressFilledTrackData, progressFilledTrack);
 
     //pressable
     pressable = mergeConfigs(pressableData, pressable);

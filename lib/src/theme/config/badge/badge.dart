@@ -9,7 +9,6 @@ const Map<String, dynamic> badgeData = {
         "borderColor": "\$error300",
         "_icon": {"color": "\$error600"},
         "_text": {"color": "\$error600"},
-       
       },
       "warning": {
         "bg": "\$backgroundWarning",

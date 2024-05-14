@@ -38,9 +38,6 @@ class _MyAppState extends State<MyApp> {
       ),
       child: Consumer(
         builder: (context, ref, child) {
-          // final GSThemeMode? currentThemeMode = ref.watch(toggleThemeProvider);
-          // MaterialApp(darkTheme: ThemeData,)
-
           return GSTheme(
             data: GSThemeData.fromTheme('light_theme'),
             child: GSApp.router(
@@ -52,8 +49,6 @@ class _MyAppState extends State<MyApp> {
                 });
               }),
               theme: GSThemeData.fromTheme(currentTheme),
-              // darkTheme: GSThemeData.fromTheme(GSThemes.dark),
-              // themeMode: GSThemeMode.system,
             ),
           );
         },

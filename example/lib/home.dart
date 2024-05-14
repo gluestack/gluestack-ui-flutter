@@ -211,12 +211,8 @@ class _HomePageState extends State<HomePage> {
         builder: (context, ref, child) {
           return FloatingActionButton(
             onPressed: () {
-              // ref.read(toggleThemeProvider.notifier).toggleThemeMode;
               final keyList = gSThemes.keys.toList();
               updaterFunc(keyList[Random().nextInt(keyList.length)]);
-
-              // print('c t: ${GSTheme.of(context).themeId}');
-              // print('p 500: ${GSTheme.of(context).primary500}');
             },
             child: const Icon(
               Icons.shuffle,
