@@ -775,6 +775,8 @@ class GSThemeData {
   factory GSThemeData.fromTheme(String themeId) {
     late Map<String, dynamic> themeColorMap;
 
+
+//Incase user forgets to enter some colors, use light theme as base
     if (themeId != 'light_theme') {
       //overwrite white theme with current theme
       themeColorMap = {

@@ -5,6 +5,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 Map<String, dynamic> userTheme = getIt<Map<String, dynamic>>();
 
 Map<String, dynamic> gSThemes = {
+  ...userTheme,
   "dark_theme": {
     "colors": {
       "primary0": "#828282",
@@ -131,7 +132,8 @@ Map<String, dynamic> gSThemes = {
       "backgroundWarning": "#412F23",
       "backgroundSuccess": "#1C2B21",
       "backgroundMuted": "#252526",
-      "backgroundInfo": "#1A282E"
+      "backgroundInfo": "#1A282E",
+      ...(userTheme['dark_theme']?['colors'] as Map<String, dynamic>? ?? {}),
     }
   },
   "light_theme": {
@@ -482,10 +484,10 @@ Map<String, dynamic> gSThemes = {
       "blueGray600": "#475569",
       "blueGray700": "#334155",
       "blueGray800": "#1e293b",
-      "blueGray900": "#0f172a"
+      "blueGray900": "#0f172a",
+      ...(userTheme['light_theme']?['colors'] as Map<String, dynamic>? ?? {}),
     }
   },
-  ...userTheme,
 };
 
 Map themeColorMap(context) {
