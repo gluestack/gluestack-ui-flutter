@@ -15,6 +15,7 @@ Here are few helpful links to give you an idea of what gluestack-ui-flutter is c
 - Widget Examples (Storybook): https://gluestack-ui-example.web.app/#/storybook
 - Getting Started Example: https://github.com/gluestack/flutter-examples
 - KitchenSink (An example layout made with Gluestack): https://kitchensink-23184.web.app/
+- Token Configurator: https://token-configurator.web.app/
 
 To keep track of latest developments in gluestack-ui-flutter you can refer to this link: https://github.com/gluestack/gluestack-ui-flutter/tree/feature/core-widgets.
 
