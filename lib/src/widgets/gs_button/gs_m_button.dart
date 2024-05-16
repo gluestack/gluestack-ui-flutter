@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 class GSMaterialButton extends StatelessWidget {
   final GSButtonActions? action;
@@ -20,7 +19,7 @@ class GSMaterialButton extends StatelessWidget {
   final FocusNode? focusNode;
   final bool autoFocus;
   final Clip clipBehavior;
-  final MaterialStatesController? statesController;
+  final WidgetStatesController? statesController;
   const GSMaterialButton({
     super.key,
     required this.child,
@@ -50,11 +49,31 @@ class GSMaterialButton extends StatelessWidget {
     final focused = isFocusVisible ?? false;
     final isAttached = value?.isAttached ?? false;
 
+    BorderSide resolveBorderSide(
+        GSVariants variant, GSConfigStyle styler, bool isAttached) {
+      if (isAttached) {
+        return BorderSide.none;
+      }
+      if (variant == GSVariants.link) {
+        return BorderSide.none;
+      }
+      if (isFocusVisible!) {
+        return BorderSide(color: $GSColors.primary500, width: 2.0);
+      }
+      return styler.borderWidth != null || styler.outlineWidth != null
+          ? BorderSide(
+              color: styler.borderColor?.getColor(context) ??
+                  styler.outlineColor?.getColor(context) ??
+                  Colors.transparent,
+              width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
+          : BorderSide.none;
+    }
+
     return GSStyleBuilder(
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
-        GSStyle styler = resolveStyles(
+        GSConfigStyle styler = resolveStyles(
             context: context,
             styles: [
               buttonStyle,
@@ -87,16 +106,17 @@ class GSMaterialButton extends StatelessWidget {
                   clipBehavior: clipBehavior,
                   statesController: statesController,
                   style: ButtonStyle(
-                    elevation: MaterialStateProperty.all<double?>(0),
-                    padding: MaterialStateProperty.all<EdgeInsetsGeometry?>(
+                    elevation: WidgetStateProperty.all<double?>(0),
+                    padding: WidgetStateProperty.all<EdgeInsetsGeometry?>(
                         styler.padding),
-                    backgroundColor: MaterialStatePropertyAll(styler.bg),
-                    shape: MaterialStatePropertyAll(
+                    backgroundColor:
+                        WidgetStatePropertyAll(styler.bg?.getColor(context)),
+                    shape: WidgetStatePropertyAll(
                       RoundedRectangleBorder(
                         borderRadius:
                             BorderRadius.circular(styler.borderRadius ?? 0.0),
                         // side: resolveBorderSide(currentState),
-                        side: _resolveBorderSide(
+                        side: resolveBorderSide(
                             buttonVariant, styler, isAttached),
                       ),
                     ),
@@ -114,24 +134,5 @@ class GSMaterialButton extends StatelessWidget {
         );
       }),
     );
-  }
-
-  BorderSide _resolveBorderSide(
-      GSVariants variant, GSStyle styler, bool isAttached) {
-    if (isAttached) {
-      return BorderSide.none;
-    }
-    if (variant == GSVariants.link) {
-      return BorderSide.none;
-    }
-    if (isFocusVisible!) {
-      return BorderSide(color: $GSColors.primary500, width: 2.0);
-    }
-    return styler.borderWidth != null || styler.outlineWidth != null
-        ? BorderSide(
-            color:
-                styler.borderColor ?? styler.outlineColor ?? Colors.transparent,
-            width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
-        : BorderSide.none;
   }
 }

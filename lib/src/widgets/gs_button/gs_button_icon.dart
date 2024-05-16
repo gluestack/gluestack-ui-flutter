@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_icon_style.dart';
 
@@ -33,7 +33,7 @@ class GSButtonIcon extends StatelessWidget {
 
     return Icon(
       icon,
-      color: styler.color,
+      color: styler.color?.getColor(context),
       size: size,
     );
   }

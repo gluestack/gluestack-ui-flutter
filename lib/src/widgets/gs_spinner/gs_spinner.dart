@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_spinner/gs_spinner_painter.dart';
 import 'package:gluestack_ui/src/widgets/gs_spinner/gs_spinner_style.dart';
@@ -9,7 +9,7 @@ enum GSSpinnerSizes { small, large }
 /// A widget that displays a circular loading spinner with customizable size, stroke width,
 /// color, and animation duration. Suitable for indicating loading states in the UI.
 class GSSpinner extends StatefulWidget {
-  /// Custom [GSStyle] to apply to the spinner, enabling detailed customization of its appearance,
+  /// Custom [GSConfigStyle] to apply to the spinner, enabling detailed customization of its appearance,
   /// including color and dimensions.
   final GSStyle? style;
 
@@ -70,7 +70,7 @@ class GSSpinnerState extends State<GSSpinner>
   @override
   Widget build(BuildContext context) {
     // Resolve the GSStyle for the spinner.
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [spinnerStyle],
       inlineStyle: widget.style,
@@ -91,7 +91,7 @@ class GSSpinnerState extends State<GSSpinner>
               painter: SpinnerPainter(
                 arcLength: 10,
                 progress: 1,
-                color: styler.bg ?? $GSColors.primary300,
+                color: styler.bg?.getColor(context) ?? $GSColors.primary300,
                 strokeWidth: widget.strokeWidth,
               ),
               size: size,
@@ -100,8 +100,8 @@ class GSSpinnerState extends State<GSSpinner>
               painter: SpinnerPainter(
                 arcLength: widget.arcLength,
                 progress: _controller.value,
-                color: styler.color ??
-                    spinnerStyle.props?.color ??
+                color: styler.color?.getColor(context) ??
+                    spinnerStyle.props?.color?.getColor(context) ??
                     $GSColors.primary600,
                 strokeWidth: widget.strokeWidth,
               ),

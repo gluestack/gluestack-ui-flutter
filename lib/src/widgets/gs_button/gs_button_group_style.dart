@@ -1,7 +1,7 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 
-GSStyle buttonGroupStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonGroup);
+GSConfigStyle buttonGroupStyle =
+    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().buttonGroup);
 
 class GSButtonGroupStyle {
   //This code is not used anywhere? TODO: Fix or remove this dead code

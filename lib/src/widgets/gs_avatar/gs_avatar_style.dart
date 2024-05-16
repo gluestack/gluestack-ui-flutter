@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 
 const GSStyleConfig gsAvatarConfig = GSStyleConfig(
@@ -7,7 +7,7 @@ const GSStyleConfig gsAvatarConfig = GSStyleConfig(
   ancestorStyle: ['_avatar'],
 );
 
-GSStyle avatarStyle = GSStyle.fromMap(
+GSConfigStyle avatarStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().avatar,
     descendantStyle: gsAvatarConfig.descendantStyle);
 

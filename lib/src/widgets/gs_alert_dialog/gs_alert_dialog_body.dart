@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_body_style.dart';
 
@@ -9,14 +9,14 @@ class GSAlertDialogBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [alertDialogBodyStyle],
       inlineStyle: style,
       isFirst: true,
     );
     return Container(
-      color: styler.bg,
+      color: styler.bg?.getColor(context),
       padding: styler.padding,
       height: styler.height,
       width: styler.width ?? double.infinity,

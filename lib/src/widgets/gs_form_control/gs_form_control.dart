@@ -1,6 +1,5 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_control_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
 
@@ -67,7 +66,7 @@ class _GSFormControlState extends State<GSFormControl> {
   @override
   Widget build(BuildContext context) {
     final size = widget.size?.toGSSize;
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [formControlStyle.sizeMap(size)],
       inlineStyle: widget.style,

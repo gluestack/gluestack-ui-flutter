@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_text/gs_text_style.dart';
 
@@ -11,7 +11,7 @@ class GSText extends StatelessWidget {
   /// [GSSizes] values, allowing for consistent text scaling across the application.
   final GSSizes? size;
 
-  /// Custom [GSStyle] to apply to the text, enabling detailed customization of text appearance,
+  /// Custom [GSConfigStyle] to apply to the text, enabling detailed customization of text appearance,
   /// including font, color, and more, beyond the default styling.
   final GSStyle? style;
 
@@ -113,7 +113,7 @@ class GSText extends StatelessWidget {
   Widget build(BuildContext context) {
     final textSize = size ?? gstextStyle.props?.size;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gstextStyle,
@@ -132,11 +132,13 @@ class GSText extends StatelessWidget {
         if (strikeThrough) TextDecoration.lineThrough,
         if (underline) TextDecoration.underline,
       ]),
-      backgroundColor:
-          highlight ? styler.bg : styler.textStyle?.backgroundColor,
+      backgroundColor: highlight
+          ? styler.bg?.getColor(context)
+          : styler.textStyle?.backgroundColor,
       overflow:
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
-      color: styler.textStyle?.color ?? gstextStyle.textStyle?.color,
+      color: styler.color?.getColor(context) ??
+          gstextStyle.color?.getColor(context),
     );
 
     return Text(

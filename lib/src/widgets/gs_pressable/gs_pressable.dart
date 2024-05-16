@@ -195,7 +195,7 @@ class GSPressable extends StatelessWidget {
     return GSStyleBuilder(
       child: Builder(builder: (context) {
         // Resolve styles using the provided context and optional style variants.
-        GSStyle styler = resolveStyles(
+        GSConfigStyle styler = resolveStyles(
           context: context,
           styles: [pressableStyle],
           inlineStyle: style,
@@ -279,14 +279,16 @@ class GSPressable extends StatelessWidget {
               // highlightColor: styler.highlightColor,
               child: Container(
                 decoration: BoxDecoration(
-                  color: styler.bg ?? const Color.fromARGB(0, 0, 0, 0),
+                  color: styler.bg?.getColor(context) ??
+                      const Color.fromARGB(0, 0, 0, 0),
                   borderRadius: borderRadius,
                   border: GSStyleBuilderProvider.of(context)?.isFocused ?? false
                       ? Border.all(
-                          color: styler.onFocus?.borderColor ??
-                              styler.borderColor ??
-                              styler.outlineColor ??
-                              $GSColors.primary300,
+                          color:
+                              styler.onFocus?.borderColor?.getColor(context) ??
+                                  styler.borderColor?.getColor(context) ??
+                                  styler.outlineColor?.getColor(context) ??
+                                  $GSColors.primary300,
                           width: styler.onFocus?.borderWidth ?? 1)
                       : null,
                 ),

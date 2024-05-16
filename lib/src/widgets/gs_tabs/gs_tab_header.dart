@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/widgets/gs_tabs/gs_tab_raw.dart';
 
 class GSTabHeader extends StatelessWidget {

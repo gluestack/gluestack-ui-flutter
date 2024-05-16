@@ -17,7 +17,7 @@ class GSLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [layoutStyle],
       inlineStyle: style,
@@ -25,7 +25,7 @@ class GSLayout extends StatelessWidget {
     );
 
     return GSBox(
-      style: styler,
+      style: GSStyle.fromGSConfigStyle(styler, context),
       child: floatingActionButton != null
           ? Stack(
               fit: StackFit.expand,

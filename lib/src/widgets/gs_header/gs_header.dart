@@ -35,10 +35,10 @@ class GSHeader extends StatelessWidget {
     final styler = resolveStyles(
       context: context,
       styles: [
-        GSStyle(
+        GSConfigStyle(
           width: double.infinity,
           height: minHeight,
-          bg: $GSColors.primary500,
+          bg: 'primary500',
         ),
       ],
       inlineStyle: style,
@@ -66,7 +66,7 @@ class GSHeader extends StatelessWidget {
               matchTextDirection: true,
             ),
             style: GSStyle(
-                color: isLightColor(styler.bg)
+                color: isLightColor(styler.bg?.getColor(context))
                     ? $GSColors.black
                     : $GSColors.white),
           ),
@@ -97,7 +97,7 @@ class GSHeader extends StatelessWidget {
     }
 
     return GSBox(
-        style: styler,
+        style: GSStyle.fromGSConfigStyle(styler, context),
         boxShadow: boxShadow,
         child: NavigationToolbar(
           leading: Padding(padding: minPaddingForLeading!, child: leading),

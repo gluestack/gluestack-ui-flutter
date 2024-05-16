@@ -4,7 +4,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_navigation_rail/gs_navigation_rail_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_navigation_rail/gs_navigation_rail_unselected_textstyle.dart';
 import 'gs_navigation_rail_selected_textstyle.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 const double _kCircularIndicatorDiameter = 60;
 const double _kIndicatorHeight = 32;
@@ -168,7 +167,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
   Widget build(BuildContext context) {
     final textSize = widget.size ?? gsNavigationRailStyle.props?.size;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gsNavigationRailStyle,
@@ -178,7 +177,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       isFirst: true,
     );
 
-    GSStyle selectedLabelStyler = resolveStyles(
+    GSConfigStyle selectedLabelStyler = resolveStyles(
       context: context,
       styles: [
         gsNavigationRailSelectedLabelTextStyle,
@@ -188,7 +187,7 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       isFirst: true,
     );
 
-    GSStyle unselectedLabelStyler = resolveStyles(
+    GSConfigStyle unselectedLabelStyler = resolveStyles(
       context: context,
       styles: [
         gsNavigationRailUnselectedLabelTextStyle,
@@ -198,23 +197,29 @@ class _GSNavigationRailState extends State<GSNavigationRail>
       isFirst: true,
     );
 
-    final Color? backgroundColor = widget.backgroundColor ?? styler.bg;
-    Color? indicatorColor = widget.indicatorColor ?? styler.color;
+    final Color? backgroundColor =
+        widget.backgroundColor ?? styler.bg?.getColor(context);
+    Color? indicatorColor =
+        widget.indicatorColor ?? styler.color?.getColor(context);
 
     final double minWidth = widget.minWidth ?? 100;
     final double minExtendedWidth = widget.minExtendedWidth ?? 30;
-    final TextStyle? unselectedLabelTextStyle =
-        widget.unselectedLabelTextStyle ?? unselectedLabelStyler.textStyle;
+    final TextStyle unselectedLabelTextStyle = widget
+            .unselectedLabelTextStyle ??
+        unselectedLabelStyler.textStyle!
+            .copyWith(color: unselectedLabelStyler.color?.getColor(context));
 
-    final TextStyle? selectedLabelTextStyle =
-        widget.selectedLabelTextStyle ?? selectedLabelStyler.textStyle;
+    final TextStyle selectedLabelTextStyle = widget.selectedLabelTextStyle ??
+        selectedLabelStyler.textStyle!
+            .copyWith(color: selectedLabelStyler.color?.getColor(context));
+
     final IconThemeData unselectedIconTheme = widget.unselectedIconTheme ??
         IconThemeData(
-          color: styler.iconColor,
+          color: styler.iconColor?.getColor(context),
         );
     final IconThemeData selectedIconTheme = widget.selectedIconTheme ??
         IconThemeData(
-          color: styler.iconColor,
+          color: styler.iconColor?.getColor(context),
         );
     final double groupAlignment = widget.groupAlignment ?? 0.0;
     final GSNavigationRailLabelType labelType =
@@ -263,8 +268,8 @@ class _GSNavigationRailState extends State<GSNavigationRail>
                                 ? selectedIconTheme
                                 : unselectedIconTheme,
                             labelTextStyle: widget.selectedIndex == i
-                                ? selectedLabelTextStyle!
-                                : unselectedLabelTextStyle!,
+                                ? selectedLabelTextStyle
+                                : unselectedLabelTextStyle,
                             padding: widget.destinations[i].padding,
                             useIndicator: useIndicator,
                             indicatorColor:

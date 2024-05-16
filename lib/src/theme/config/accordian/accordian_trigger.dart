@@ -15,11 +15,6 @@ const Map<String, dynamic> accordionTriggerData = {
     },
   },
   ':focusVisible': {
-    '_light': {
-      'bg': '\$backgroundLight50',
-    },
-    '_dark': {
-      'bg': '\$backgroundDark900',
-    },
+    'bg': '\$background50',
   },
 };

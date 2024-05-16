@@ -1,11 +1,11 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 
 class GSBox extends StatelessWidget {
   /// This child will be subjected to the styling and layout constraints specified in [GSBox]. Can be any widget type.
   final Widget? child;
 
-  /// Custom [GSStyle] that defines the appearance and layout parameters for this widget.
+  /// Custom [GSConfigStyle] that defines the appearance and layout parameters for this widget.
   /// This includes colors, padding and more.
   final GSStyle? style;
 
@@ -67,11 +67,12 @@ class GSBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStylesDeprecated(
-      context,
-      variantStyle: GSStyle(),
+    GSConfigStyle styler = resolveStyles(
+      context: context,
       inlineStyle: style,
-    )!;
+    );
+
+    // print('bg box: ${styler.bg} | ${styler.bg?.getColor(context)}');
 
     return Visibility(
       visible: styler.isVisible ?? true,
@@ -96,7 +97,9 @@ class GSBox extends StatelessWidget {
         //         const EdgeInsets.symmetric(vertical: 0, horizontal: 0)
         //     : const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
         decoration: BoxDecoration(
-          color: styler.bg ?? styler.color,
+          color:
+              //  GSTheme.of(context).primary500 ??
+              styler.bg?.getColor(context) ?? styler.color?.getColor(context),
           borderRadius: BorderRadius.circular(
               style != null ? style!.borderRadius ?? 0 : 0),
           border: Border.all(

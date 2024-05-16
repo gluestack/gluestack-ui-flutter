@@ -33,7 +33,7 @@ class GSRawTab extends StatelessWidget {
           onPressed: callback,
           child: Container(
             decoration: BoxDecoration(
-              color: styler.bg,
+              color: styler.bg?.getColor(context),
             ),
             alignment: alignment,
             child: Padding(

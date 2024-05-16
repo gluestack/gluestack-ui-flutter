@@ -1,13 +1,13 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
+import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_filled_track.dart';
 import 'package:gluestack_ui/src/widgets/gs_progress/gs_progress_style.dart';
 
 /// A widget that displays a progress bar, indicating the completion of a task or
 /// the value of a process in a visually appealing manner. [GSProgress] supports
 /// customizable styles, sizes, and progress values.
 class GSProgress extends StatefulWidget {
-  /// Custom [GSStyle] to apply to the progress bar, enabling detailed customization
+  /// Custom [GSConfigStyle] to apply to the progress bar, enabling detailed customization
   /// of its appearance, including colors and other properties.
   final GSStyle? style;
 
@@ -17,7 +17,7 @@ class GSProgress extends StatefulWidget {
 
   /// The current value of the progress bar, expressed as a fraction between 0 and 1,
   /// where 1 indicates 100% completion.
-  final double? value;
+  final double value;
 
   /// An optional semantic label for the progress bar, providing accessibility support
   /// by describing what the progress bar represents.
@@ -30,7 +30,7 @@ class GSProgress extends StatefulWidget {
     super.key,
     this.style,
     this.size,
-    this.value = 0,
+    required this.value,
     this.semanticsLabel,
     this.semanticsValue,
   });
@@ -63,7 +63,7 @@ class _GSProgressState extends State<GSProgress> {
   Widget build(BuildContext context) {
     final progressSize = widget.size?.toGSSize ?? progressStyle.props?.size;
     // Resolve the GSStyle for the progress bar.
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [progressStyle, progressStyle.sizeMap(progressSize)],
       inlineStyle: widget.style,
@@ -71,39 +71,35 @@ class _GSProgressState extends State<GSProgress> {
     );
 
     final progressColor = styler.bg ?? progressStyle.bg;
-    final valueColor = styler.progressValueColor ?? $GSColors.primary500;
-    final borderRadius = styler.borderRadius ?? progressStyle.borderRadius;
+    final borderRadius = styler.borderRadius;
 
-    return Semantics(
-      label: widget.semanticsLabel,
-      value: widget.semanticsValue,
-      child: SizedBox(
-        width: styler.width ?? fallBackValue,
-        child: Stack(
-          children: [
-            // Background container.
-            Container(
-              key: widgetKey,
-              decoration: BoxDecoration(
-                color: progressColor,
-                borderRadius: BorderRadius.circular(borderRadius!),
+    return GSAncestorProvider(
+      decedentStyles: styler.descendantStyles,
+      child: Semantics(
+        label: widget.semanticsLabel,
+        value: widget.semanticsValue,
+        child: SizedBox(
+          width: styler.width ?? fallBackValue,
+          child: Stack(
+            children: [
+              // Background container.
+              Container(
+                key: widgetKey,
+                decoration: BoxDecoration(
+                  color: progressColor?.getColor(context),
+                  borderRadius: BorderRadius.circular(borderRadius ?? 0),
+                ),
+                height: styler.height,
+                width: styler.width ?? fallBackValue,
               ),
-              height: styler.height,
-              width: styler.width ?? fallBackValue,
-            ),
-            // Animated foreground container showing progress.
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              width: styler.width != double.infinity && styler.width != null
-                  ? styler.width! * widget.value!
-                  : parentWidth * widget.value!,
-              height: styler.height,
-              decoration: BoxDecoration(
-                color: valueColor,
-                borderRadius: BorderRadius.circular(borderRadius),
+              // Animated foreground container showing progress.
+              GSProgressFilledTrack(
+                baseStyle: widget.style,
+                parentWidth: parentWidth,
+                value: widget.value,
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );
