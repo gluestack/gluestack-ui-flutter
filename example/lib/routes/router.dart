@@ -51,7 +51,6 @@ import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_disable
 import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_with_rounded_corners.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/nested_accordion_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/stepper_example.dart';
-import 'package:go_router/go_router.dart';
 
 import '../widgets/components/widgets/public.dart';
 import '../widgets/storybook/widgets/avatar_with_label_preview.dart';
