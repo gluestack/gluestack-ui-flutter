@@ -1,3 +1,11 @@
+## 0.2.0-beta.2
+
+- Updated theme colors to be algined with a more grayscale look
+- Implemented a dyanmic theming system which also supports user addressable themes
+- Fixed: GS Radio's size not being updated
+- Updated the links to the all new Token Congigurator
+- Bug Fixes
+
 ## 0.2.0-beta.1
 
 - Added VSCode extension for gluestack-ui-flutter

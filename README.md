@@ -166,6 +166,7 @@ GluestackProvider(
 You can add customize your app theme with help of `gsThemeToken` parameter under `GluestackProvider` inside of `gluestackTokenConfig`.
 gluestack-ui for flutter comes with 2 deafult themes, light and dark, named 'light_theme' and 'dark_theme' respectively.
 To modify certain specific colors of the base theme, simply create a Map like so:
+
 ```
 const myTheme = {
   "light_theme": {
@@ -179,7 +180,9 @@ const myTheme = {
   },
 }
 ```
+
 and provide this value to the `gsThemeToken`, as shown below:
+
 ```
     return GluestackProvider(
       gluestackTokenConfig: GluestackTokenConfig(
@@ -190,11 +193,15 @@ and provide this value to the `gsThemeToken`, as shown below:
       ),
     )
 ```
+
 To dyamically toggle theme application wide, you can provide theme present in the above example like so, here `currentTheme` is a state varaible, value of which can be 'light_theme' or 'dark_theme' or your custom theme name.
+
 ```
         theme: GSThemeData.fromTheme(currentTheme),
 ```
+
 To create a new theme entirely, you can create the `myTheme` variable present in the above examples as shown below:
+
 ```
 const myTheme = {
   "cyan_theme": {
@@ -228,12 +235,18 @@ const myTheme = {
   },
 }
 ```
+
 To check for current theme being used by the application, you can access `GSTheme.of(context).themeId`. Show below is an example of how we can conditionally use values of colors depending on current app theme.
+
 ```
   GSTheme.of(context).themeId == 'dark_theme'
           ? const Color(0xFF262626)
           : null,
 ```
+
+Alternatively, you can try our very own Token Configurator tool which can help you to generate code for theming. This interactive tool not only provides a visual representation of your currently configured theme but also demonstrates how theme and token adjustments can impact your UI/UX. [Click here to see it in action!](https://token-configurator.web.app/)
+
+![Gluestack Token Configurator](assets/token_config_ss.png)
 
 ## Performance
 
