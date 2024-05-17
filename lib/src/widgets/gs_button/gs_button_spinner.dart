@@ -27,6 +27,7 @@ class GSButtonSpinner extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsButtonSpinnerConfig.ancestorStyle.first];
 
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [
@@ -48,7 +49,7 @@ class GSButtonSpinner extends StatelessWidget {
         strokeWidth: strokeWidth,
         strokeCap: strokeCap,
         valueColor: AlwaysStoppedAnimation<Color>(
-            styler.props?.color ?? $GSColors.primary500),
+            styler.props?.color?.getColor(context) ?? $GSColors.primary500),
       ),
     );
   }

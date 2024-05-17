@@ -1,37 +1,9 @@
 import 'package:flutter/gestures.dart';
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/token/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_fab/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_gesture_detector/public.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
-
-enum GSButtonActions {
-  primary,
-  secondary,
-  positive,
-  negative,
-}
-
-enum GSButtonVariants {
-  solid,
-  outline,
-  link,
-}
-
-enum GSButtonSizes {
-  $xs,
-  $sm,
-  $md,
-  $lg,
-}
 
 class GSButton extends StatelessWidget {
   final GSButtonActions? action;
@@ -87,7 +59,7 @@ class GSButton extends StatelessWidget {
       isDisabled: disabled,
       isFocused: focused,
       child: Builder(builder: (context) {
-        GSStyle styler = resolveStyles(
+        GSConfigStyle styler = resolveStyles(
           context: context,
           styles: [
             buttonStyle,
@@ -111,6 +83,26 @@ class GSButton extends StatelessWidget {
           styler.bg = styler.onActive?.bg;
         }
 
+        BorderSide resolveBorderSide(
+            GSVariants variant, GSConfigStyle styler, bool isAttached) {
+          if (isAttached) {
+            return BorderSide.none;
+          }
+          if (variant == GSVariants.link) {
+            return BorderSide.none;
+          }
+          if (isFocusVisible!) {
+            return BorderSide(color: $GSColors.primary500, width: 2.0);
+          }
+          return styler.borderWidth != null || styler.outlineWidth != null
+              ? BorderSide(
+                  color: styler.borderColor?.getColor(context) ??
+                      styler.outlineColor?.getColor(context) ??
+                      const Color.fromARGB(0, 0, 0, 0),
+                  width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
+              : BorderSide.none;
+        }
+
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: GSButtonProvider(
@@ -132,11 +124,11 @@ class GSButton extends StatelessWidget {
                     clipBehavior: clipBehavior,
                     padding: styler.padding,
                     decoration: BoxDecoration(
-                      color: styler.bg,
+                      color: styler.bg?.getColor(context),
                       borderRadius:
                           BorderRadius.circular(styler.borderRadius ?? 0.0),
-                      border: Border.fromBorderSide(_resolveBorderSide(
-                          buttonVariant, styler, isAttached)),
+                      border: Border.fromBorderSide(
+                          resolveBorderSide(buttonVariant, styler, isAttached)),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -154,25 +146,5 @@ class GSButton extends StatelessWidget {
         );
       }),
     );
-  }
-
-  BorderSide _resolveBorderSide(
-      GSVariants variant, GSStyle styler, bool isAttached) {
-    if (isAttached) {
-      return BorderSide.none;
-    }
-    if (variant == GSVariants.link) {
-      return BorderSide.none;
-    }
-    if (isFocusVisible!) {
-      return BorderSide(color: $GSColors.primary500, width: 2.0);
-    }
-    return styler.borderWidth != null || styler.outlineWidth != null
-        ? BorderSide(
-            color: styler.borderColor ??
-                styler.outlineColor ??
-                const Color.fromARGB(0, 0, 0, 0),
-            width: styler.borderWidth ?? styler.outlineWidth ?? 0.0)
-        : BorderSide.none;
   }
 }

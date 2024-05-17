@@ -1,9 +1,6 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_icon_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_icon_style.dart';
 
 /// This widget represents an icon which is optional with GSBadge widget. It's used to display icons along with text in GSBadge widget.
@@ -52,6 +49,7 @@ class GSBadgeIcon extends StatelessWidget {
     final size = GSButtonIconStyle
         .size[iconSize ?? GSBadgeProvider.of(context)?.iconSize];
     // Resolve styles for the icon using the context and provided styles.
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
       styles: [
@@ -65,7 +63,7 @@ class GSBadgeIcon extends StatelessWidget {
     // Create an Icon widget with the given icon data, color, font size, etc.
     return Icon(
       iconData,
-      color: styler.color,
+      color: styler.color?.getColor(context),
       size: size,
       fill: fill,
       grade: grade,

@@ -1,21 +1,10 @@
 const Map<String, dynamic> dividerData = {
-  'bg': '\$backgroundLight200',
-  '_dark': {
-    'bg': '\$backgroundLight800',
+  "bg": "\$background200",
+  "variants": {
+    "orientation": {
+      "vertical": {"width": "\$px", "height": "\$full"},
+      "horizontal": {"height": "\$px", "width": "\$full"}
+    }
   },
-  'variants': {
-    'orientation': {
-      'vertical': {
-        'width': '\$px',
-        'height': '\$full',
-      },
-      'horizontal': {
-        'height': '\$px',
-        'width': '\$full',
-      },
-    },
-  },
-  'defaultProps': {
-    'orientation': 'horizontal',
-  },
+  "defaultProps": {"orientation": "horizontal"}
 };

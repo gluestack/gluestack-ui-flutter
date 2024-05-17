@@ -42,12 +42,15 @@ import 'package:gluestack_ui_example/widgets/storybook/widgets/vstack_reversed_p
 import 'package:go_router/go_router.dart';
 
 import 'package:gluestack_ui_example/widgets/components/widgets/accordian_example.dart';
+import 'package:gluestack_ui_example/widgets/components/widgets/bottom_sheet_example.dart';
+import 'package:gluestack_ui_example/widgets/components/widgets/navigation_rail_example.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook_wrapper.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_default_value_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_disabled_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_with_rounded_corners.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/nested_accordion_preview.dart';
+import 'package:gluestack_ui_example/widgets/storybook/widgets/stepper_example.dart';
 import 'package:go_router/go_router.dart';
 
 import '../widgets/components/widgets/public.dart';
@@ -56,12 +59,19 @@ import '../widgets/storybook/widgets/multiple_radio_button_horizontal_preview.da
 import '../widgets/storybook/widgets/public.dart';
 import '../widgets/storybook/widgets/switch_with_label_preview.dart';
 
+late Function updaterFunc;
+
+GoRouter ree(Function input) {
+  updaterFunc = input;
+  return router;
+}
+
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const HomePage();
+        return HomePage(updaterFunc: updaterFunc);
       },
       routes: <RouteBase>[
         GoRoute(
@@ -369,6 +379,10 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const AccordionExample(),
         ),
         GoRoute(
+          path: "example-tabs",
+          builder: (context, state) => const TabExample(),
+        ),
+        GoRoute(
           path: "accordion-with-rounded-corners",
           builder: (context, state) =>
               const AccordionWithRoundedCornersPreview(),
@@ -384,6 +398,22 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "nested-accordion-preview",
           builder: (context, state) => const NestedAccordionPreview(),
+        ),
+        GoRoute(
+          path: "example-header",
+          builder: (context, state) => const HeaderExample(),
+        ),
+        GoRoute(
+          path: "example-bottom-sheet",
+          builder: (context, state) => const BottomModalSheetExample(),
+        ),
+        GoRoute(
+          path: "stepper-example",
+          builder: (context, state) => const StepperExample(),
+        ),
+        GoRoute(
+          path: "navigation-rail-preview",
+          builder: (context, state) => const NavigationRailExample(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.

@@ -1,5 +1,4 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 
 class GSRadioProvider<T> extends InheritedWidget {
   final GSSizes size;

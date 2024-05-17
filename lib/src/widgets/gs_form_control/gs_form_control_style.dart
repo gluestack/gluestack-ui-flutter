@@ -6,6 +6,6 @@ const GSStyleConfig gsFromControlConfig = GSStyleConfig(
   descendantStyle: ['_labelText', '_helperText', '_errorText', '_labelAstrick'],
 );
 
-final formControlStyle = GSStyle.fromMap(
+final formControlStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().form,
     descendantStyle: gsFromControlConfig.descendantStyle);

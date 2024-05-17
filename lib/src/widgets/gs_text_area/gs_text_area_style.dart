@@ -1,5 +1,4 @@
-import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 
 const GSStyleConfig gsTextAreaConfig = GSStyleConfig(
@@ -7,6 +6,6 @@ const GSStyleConfig gsTextAreaConfig = GSStyleConfig(
   descendantStyle: ['_input'],
 );
 
-GSStyle textAreaStyle = GSStyle.fromMap(
+GSConfigStyle textAreaStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().textArea,
     descendantStyle: gsTextAreaConfig.descendantStyle);

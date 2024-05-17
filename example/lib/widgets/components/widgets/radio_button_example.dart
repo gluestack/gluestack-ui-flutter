@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import '../layout/drop_down.dart';
 import '../layout/toggle.dart';
 
@@ -45,7 +45,6 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     var code = '''
           GSRadio<Value>(
               size: GSRadioSizes.\$md,
@@ -63,14 +62,10 @@ class _RadioButtonExampleState extends State<RadioButtonExample> {
               style: GSStyle(margin: const EdgeInsets.only(right: $GSSpace.\$2)),
           )
   ''';
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "Radio Button",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "Radio Button",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/drop_down.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/toggle.dart';
 
@@ -92,11 +92,11 @@ GSAccordion(
           ],
 ),
   ''';
-    final theme = GSTheme.of(context);
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: const Text("Accordion"),
+
+    return CustomGSLayout(
+      title: "Accordion",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

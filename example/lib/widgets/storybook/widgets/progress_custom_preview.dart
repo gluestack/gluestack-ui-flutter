@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
@@ -30,8 +29,7 @@ class ProgressCustomPreview extends StatelessWidget {
                   GSProgress(
                     value: 0.55,
                     style: GSStyle(
-                        progressValueColor: $GSColors.green500,
-                        bg: $GSColors.green50),
+                        color: $GSColors.green500, bg: $GSColors.green50),
                   ),
                   const SizedBox(
                     height: 5,

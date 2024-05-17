@@ -1,5 +1,4 @@
-import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 
-GSStyle alertDialogHeaderStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().alertDialogHeader);
+GSConfigStyle alertDialogHeaderStyle = GSConfigStyle.fromMap(
+    data: getIt<GluestackCustomConfig>().alertDialogHeader);

@@ -1,9 +1,6 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_icon_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_button/gs_button_provider.dart';
 
 class GSButtonIcon extends StatelessWidget {
   final IconData icon;
@@ -24,6 +21,7 @@ class GSButtonIcon extends StatelessWidget {
     final value = GSButtonProvider.of(context);
     final size = GSButtonIconStyle.size[iconSize ?? value?.size];
 
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
         context: context,
         styles: [
@@ -35,7 +33,7 @@ class GSButtonIcon extends StatelessWidget {
 
     return Icon(
       icon,
-      color: styler.color,
+      color: styler.color?.getColor(context),
       size: size,
     );
   }

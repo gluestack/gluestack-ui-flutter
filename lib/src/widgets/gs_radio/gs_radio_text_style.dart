@@ -1,5 +1,4 @@
-import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 
 const GSStyleConfig gsRadioTextConfig = GSStyleConfig(
@@ -7,6 +6,6 @@ const GSStyleConfig gsRadioTextConfig = GSStyleConfig(
   ancestorStyle: ['_text'],
 );
 
-final GSStyle radioLabelStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().text)
-        .merge(GSStyle.fromMap(data: getIt<GluestackCustomConfig>().radioText));
+final GSConfigStyle radioLabelStyle =
+    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().text).merge(
+        GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().radioText));

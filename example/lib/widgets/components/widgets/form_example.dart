@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 
 import '../layout/drop_down.dart';
 import '../layout/toggle.dart';
@@ -62,7 +63,6 @@ class _FormExampleState extends State<FormExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     var code = r"""
         GSFormControl(
             formKey: _formKey,
@@ -215,14 +215,10 @@ class _FormExampleState extends State<FormExample> {
               ),
             ),
          )""";
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "Form Control",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "Form Control",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,
@@ -249,8 +245,8 @@ class _FormExampleState extends State<FormExample> {
                 sp2,
                 const GSFormLabelText('Password'),
                 sp,
-                GSInput(
-                  style: GSStyle(height: 80),
+                const GSInput(
+                  //  style: GSStyle(height: 80),
                   obscureText: true,
                   hintText: 'Enter you password here...',
                   // validator: (input) {
@@ -356,13 +352,13 @@ class _FormExampleState extends State<FormExample> {
                         if (_formKey.currentState != null &&
                             _formKey.currentState!.validate() &&
                             !isDisabled) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Submitting data...',
-                                style: TextStyle(color: Colors.white),
+                          showToast(
+                            context,
+                            child: const GSToast(
+                              action: GSToastActions.success,
+                              child: GSToastTitle(
+                                title: "Form Submitted..",
                               ),
-                              backgroundColor: Colors.green,
                             ),
                           );
                         }

@@ -29,8 +29,8 @@ class AccordionExpansionValue extends ChangeNotifier {
         accGroupValues.value.add(false);
       }
     }
-    print('---- init: ----');
-    print(accGroupValues.toString());
+    // print('---- init: ----');
+    // print(accGroupValues.toString());
     notifyListeners();
   }
 

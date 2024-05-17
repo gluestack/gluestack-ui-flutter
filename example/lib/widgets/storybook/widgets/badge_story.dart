@@ -2,38 +2,13 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-//Need to add value according to GSActions enum order.
-final List<Option<int>> actionOptions = [
-  Option<int>(value: 0, label: GSBadgeActions.error.name),
-  Option<int>(value: 1, label: GSBadgeActions.warning.name),
-  Option<int>(value: 2, label: GSBadgeActions.success.name),
-  Option<int>(value: 3, label: GSBadgeActions.info.name),
-  Option<int>(value: 4, label: GSBadgeActions.muted.name),
-];
-//Need to add value according to GSVariants enum order.
-final List<Option<int>> variantOptions = [
-  Option<int>(value: 0, label: GSBadgeVariants.solid.name),
-  Option<int>(value: 1, label: GSBadgeVariants.outline.name),
-];
-//Need to add value according to GSSizes enum order.
-final List<Option<int>> sizeOptions = [
-  Option<int>(value: 0, label: GSBadgeSizes.$sm.name),
-  Option<int>(value: 1, label: GSBadgeSizes.$md.name),
-  Option<int>(value: 2, label: GSBadgeSizes.$lg.name),
-];
-
-//Need to add value according to GSSizes enum order.
-final List<Option<int>> borderRadiusOptions = [
-  Option<int>(value: 0, label: GSBadgeRadius.$none.name),
-  Option<int>(value: 1, label: GSBadgeRadius.$xs.name),
-  Option<int>(value: 2, label: GSBadgeRadius.$sm.name),
-  Option<int>(value: 3, label: GSBadgeRadius.$md.name),
-  Option<int>(value: 4, label: GSBadgeRadius.$lg.name),
-  Option<int>(value: 5, label: GSBadgeRadius.$xl.name),
-  Option<int>(value: 6, label: GSBadgeRadius.$2xl.name),
-  Option<int>(value: 7, label: GSBadgeRadius.$3xl.name),
-  Option<int>(value: 8, label: GSBadgeRadius.$full.name),
-];
+final List<Option<int>> actionOptions =
+    generateEnumOptions(GSBadgeActions.values);
+final List<Option<int>> variantOptions =
+    generateEnumOptions(GSBadgeVariants.values);
+final List<Option<int>> sizeOptions = generateEnumOptions(GSBadgeSizes.values);
+final List<Option<int>> borderRadiusOptions =
+    generateEnumOptions(GSBadgeRadius.values);
 
 final class BadgeStory extends StoryWidget {
   @override
@@ -44,11 +19,11 @@ final class BadgeStory extends StoryWidget {
       //     'The badge component lets you quickly and easily add status indicators to your interface for improved usability.',
       builder: (context) => GSBadge(
         action: GSBadgeActions.values[context.knobs
-            .options(label: 'Action', initial: 3, options: actionOptions)],
+            .options(label: 'Action', initial: 0, options: actionOptions)],
         variant: GSBadgeVariants.values[context.knobs
             .options(label: 'Variant', initial: 0, options: variantOptions)],
         size: GSBadgeSizes.values[context.knobs
-            .options(label: 'Size', initial: 1, options: sizeOptions)],
+            .options(label: 'Size', initial: 0, options: sizeOptions)],
         borderRadius: GSBadgeRadius.values[context.knobs.options(
             label: 'Border Radius', initial: 0, options: borderRadiusOptions)],
         text: const GSBadgeText("New Feature"),

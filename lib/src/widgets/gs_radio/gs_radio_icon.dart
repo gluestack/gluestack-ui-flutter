@@ -1,11 +1,7 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_icon_style.dart';
 
-import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_radio/gs_radio_raw.dart';
 
 class GSRadioIcon<T> extends StatelessWidget {
@@ -32,12 +28,11 @@ class GSRadioIcon<T> extends StatelessWidget {
     final value = GSRadioProvider.of<T>(context);
     final isHovered = GSFocusableActionDetectorProvider.isHovered(context);
     final bool isChecked = value!.value == value.groupValue;
-    final ancestorStyles = GSAncestorProvider.of(context)
-        ?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
-    final radioSize =
-        radioIconStyle.sizeMap(size ?? ancestorStyles?.props?.size);
+    // final ancestorStyles = GSAncestorProvider.of(context)
+    //     ?.decedentStyles?[gsRadioIconConfig.ancestorStyle.first];
+    final radioSize = radioIconStyle.sizeMap(size ?? value.size);
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [radioIconStyle.merge(radioIndicatorStyle)],
       inlineStyle: value.style,
@@ -55,19 +50,20 @@ class GSRadioIcon<T> extends StatelessWidget {
               : SystemMouseCursors.click,
           child: GSRawRadio(
               activeColor: activeColor,
+              radioSize: radioSize?.height,
               autofocus: autofocus,
               focusColor: focusColor,
               focusNode: focusNode,
               toggleable: toggleable,
               fillColor: value.isInvalid
-                  ? styler.onInvalid!.borderColor!
+                  ? styler.onInvalid!.borderColor!.getColor(context)
                   : isHovered
                       ? isChecked
-                          ? styler.checked!.onHover!.color!
-                          : styler.onHover!.borderColor!
+                          ? styler.checked!.onHover!.color!.getColor(context)
+                          : styler.onHover!.borderColor!.getColor(context)
                       : isChecked
-                          ? styler.checked!.color!
-                          : styler.borderColor!,
+                          ? styler.checked!.color!.getColor(context)
+                          : styler.borderColor!.getColor(context),
               value: value.value,
               groupValue: value.groupValue,
               onChanged: value.onChanged),

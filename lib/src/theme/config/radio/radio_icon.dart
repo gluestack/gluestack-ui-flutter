@@ -9,18 +9,4 @@ const Map<String, dynamic> radioIconData = {
       },
     },
   },
-  '_dark': {
-    ':checked': {
-      'color': '\$primary500',
-      ':disabled': {
-        'color': '\$primary500',
-      },
-      ':hover': {
-        ':disabled': {
-          'color': '\$primary500',
-        },
-        'color': '\$primary400',
-      },
-    },
-  },
 };

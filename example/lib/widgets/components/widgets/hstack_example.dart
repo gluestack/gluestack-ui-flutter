@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import '../layout/drop_down.dart';
 import '../layout/toggle.dart';
 
@@ -12,8 +12,8 @@ class HStackExample extends StatefulWidget {
 }
 
 class _HStackExampleState extends State<HStackExample> {
-  final List dropdownSpaceOptions = [
-    GSHstackSpaces.$none,
+  final List<GSHstackSpaces?> dropdownSpaceOptions = [
+    null,
     GSHstackSpaces.$xs,
     GSHstackSpaces.$sm,
     GSHstackSpaces.$md,
@@ -23,7 +23,7 @@ class _HStackExampleState extends State<HStackExample> {
     GSHstackSpaces.$3xl,
     GSHstackSpaces.$4xl,
   ];
-  GSHstackSpaces selectedSpaceOption = GSHstackSpaces.$none;
+  GSHstackSpaces? selectedSpaceOption;
   void updateSpaceSelectedOption(dynamic newOption) {
     setState(() {
       selectedSpaceOption = newOption;
@@ -39,7 +39,6 @@ class _HStackExampleState extends State<HStackExample> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = GSTheme.of(context);
     var code = '''
         GSHStack(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -61,14 +60,10 @@ class _HStackExampleState extends State<HStackExample> {
             ],
          )
   ''';
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.menuColor,
-        title: const GSText(
-          text: "HStack",
-          size: GSSizes.$xl,
-        ),
+    return CustomGSLayout(
+      title: "HStack",
+      style: GSStyle(
+        dark: GSStyle(bg: $GSColors.black),
       ),
       body: BaseLayout(
         code: code,

@@ -1,10 +1,9 @@
-import 'package:gluestack_ui/src/provider/gluestack_provider.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 
-final GSStyle dividerStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().divider);
+final GSConfigStyle dividerStyle =
+    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().divider);
 
-GSStyle baseStyle = GSStyle(
+GSConfigStyle baseStyle = GSConfigStyle(
   bg: dividerStyle.bg,
-  dark: GSStyle(bg: dividerStyle.bg),
+  dark: GSConfigStyle(bg: dividerStyle.bg),
 );

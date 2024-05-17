@@ -1,7 +1,5 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_group_style.dart';
 
 class GSAvatarGroup extends StatelessWidget {
@@ -20,7 +18,7 @@ class GSAvatarGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [avatarGroupStyle],
       inlineStyle: style,

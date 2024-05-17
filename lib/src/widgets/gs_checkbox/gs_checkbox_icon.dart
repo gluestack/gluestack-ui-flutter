@@ -1,9 +1,6 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_icon_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_provider.dart';
 
 class GSCheckBoxIcon extends StatelessWidget {
   final GSStyle? style;
@@ -19,9 +16,13 @@ class GSCheckBoxIcon extends StatelessWidget {
     final isDisabled = value?.isDisabled ?? true;
 
     final iconSize = ancestorCheckBoxStyle?.props?.size;
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
-      styles: [checkboxIconStyle, GSCheckBoxIconStyle.size[iconSize]],
+      styles: [
+        checkboxIconStyle,
+        checkboxIconStyle.sizeMap(iconSize),
+      ],
       inlineStyle: style,
       isFirst: true,
     );
@@ -30,7 +31,7 @@ class GSCheckBoxIcon extends StatelessWidget {
       opacity: isDisabled ? styler.onDisabled?.opacity ?? 0.0 : 1,
       child: Icon(
         const IconData(0xe156, fontFamily: 'MaterialIcons'),
-        color: color,
+        color: color?.getColor(context),
         size: styler.height,
       ),
     );

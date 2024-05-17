@@ -1,8 +1,7 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 
 class GSAncestorProvider extends InheritedWidget {
-  final Map<String, GSStyle?>? decedentStyles;
+  final Map<String, GSConfigStyle?>? decedentStyles;
   const GSAncestorProvider(
       {super.key, required this.decedentStyles, required super.child});
   @override

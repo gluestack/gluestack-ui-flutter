@@ -1,4 +1,4 @@
 const Map<String, dynamic> buttonTextData = {
-  'color': '\$textLight0',
+  'color': '\$text0',
   'userSelect': 'none',
 };

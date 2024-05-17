@@ -1,10 +1,8 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 
 class GSAncestor extends StatelessWidget {
   final Widget child;
-  final Map<String, GSStyle?>? decedentStyles;
+  final Map<String, GSConfigStyle?>? decedentStyles;
   const GSAncestor(
       {super.key, required this.child, required this.decedentStyles});
 

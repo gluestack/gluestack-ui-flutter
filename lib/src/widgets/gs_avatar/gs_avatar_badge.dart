@@ -1,7 +1,5 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_badge_style.dart';
 
 class GSAvatarBadge extends StatelessWidget {
@@ -18,7 +16,7 @@ class GSAvatarBadge extends StatelessWidget {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsAvatarBadgeStyle.ancestorStyle.first];
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [avatarBadgeStyle],
       inlineStyle: style,
@@ -29,10 +27,11 @@ class GSAvatarBadge extends StatelessWidget {
       height: style?.height ?? ancestorStyles?.height ?? styler.height,
       width: style?.width ?? ancestorStyles?.height ?? styler.width,
       decoration: BoxDecoration(
-        color: styler.bg,
+        color: styler.bg?.getColor(context),
         shape: BoxShape.circle,
         border: Border.all(
-            color: styler.borderColor ?? const Color(0xFFFFFFFF),
+            color: styler.borderColor?.getColor(context) ??
+                const Color(0xFFFFFFFF),
             width: styler.borderWidth ?? 2),
       ),
     );

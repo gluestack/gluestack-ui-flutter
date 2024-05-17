@@ -1,8 +1,5 @@
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/widgets/gs_ancestor/gs_ancestor_provider.dart';
-import 'package:gluestack_ui/src/widgets/gs_focusableActionDetector/gs_focusable_action_detector_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_link/gs_link_text_style.dart';
 
 class GSLinkText extends StatelessWidget {
@@ -18,18 +15,19 @@ class GSLinkText extends StatelessWidget {
     final ancestorTextStyles =
         GSAncestorProvider.of(context)?.decedentStyles?['_text'];
 
+    // Resolve the final GSStyle.
     final styler = resolveStyles(
       context: context,
-      styles: [linkTextStyle.merge(ancestorTextStyles)],
+      styles: [linkTextStyle.merge(ancestorTextStyles), ancestorTextStyles],
       inlineStyle: style,
       isFirst: true,
     );
 
     final color = isActive
-        ? styler.onActive?.color
+        ? styler.onActive?.color?.getColor(context)
         : isHovered
-            ? styler.onHover?.color
-            : styler.textStyle?.color ?? styler.color;
+            ? styler.onHover?.color?.getColor(context)
+            : styler.textStyle?.color ?? styler.color?.getColor(context);
     final TextDecoration? decoration = isActive
         ? styler.onActive?.textStyle?.decoration
         : isHovered

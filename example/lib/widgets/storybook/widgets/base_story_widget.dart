@@ -27,3 +27,12 @@ abstract class StoryWidget {
   ///
   Story createStoryWidget();
 }
+
+List<Option<int>> generateEnumOptions(List<dynamic> enumValues) {
+  return enumValues
+      .asMap()
+      .entries
+      .map((entry) => Option<int>(
+          value: entry.key, label: entry.value.toString().split('.')[1]))
+      .toList();
+}
