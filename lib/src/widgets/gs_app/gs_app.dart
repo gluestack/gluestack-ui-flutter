@@ -8,7 +8,7 @@ enum GSThemeMode {
 }
 
 class GSApp extends StatefulWidget {
-  GSApp({
+  const GSApp({
     super.key,
     this.navigatorKey,
     this.onGenerateRoute,
@@ -48,9 +48,7 @@ class GSApp extends StatefulWidget {
         routeInformationParser = null,
         routerDelegate = null,
         backButtonDispatcher = null,
-        routerConfig = null {
-    theme ??= GSThemeData.fromTheme('light_theme');
-  }
+        routerConfig = null;
 
   GSApp.router({
     super.key,
@@ -172,7 +170,7 @@ class GSApp extends StatefulWidget {
   final Map<Type, Action<Intent>>? actions;
 
   /// Custom theme data for the app.
-  GSThemeData? theme;
+  final GSThemeData? theme;
   final GSThemeData? darkTheme;
 
   /// Controls the theme mode for the app.
@@ -240,9 +238,11 @@ class _GSAppState extends State<GSApp> {
     final data = () {
       late GSThemeData result;
       if (usedarkStyle) {
-        result = widget.darkTheme ?? widget.theme ?? GSThemeData();
+        result = widget.darkTheme ??
+            widget.theme ??
+            GSThemeData.fromTheme('light_theme');
       } else {
-        result = widget.theme ?? GSThemeData();
+        result = widget.theme ?? GSThemeData.fromTheme('light_theme');
       }
       return result;
     }();
