@@ -775,6 +775,10 @@ class GSThemeData {
   factory GSThemeData.fromTheme(String themeId) {
     late Map<String, dynamic> themeColorMap;
 
+    if (!gSThemes.keys.contains(themeId)) {
+      assert(false,
+          "Theme not found... Ensure that theme name is present in gsThemeToken!");
+    }
 
 //Incase user forgets to enter some colors, use light theme as base
     if (themeId != 'light_theme') {
