@@ -88,10 +88,7 @@ class GSMaterialButton extends StatelessWidget {
 
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
-          child: GSButtonProvider(
-            action: buttonAction!,
-            variant: buttonVariant!,
-            size: buttonSize!,
+ 
             child: Opacity(
               opacity: disabled ? styler.opacity ?? 0.5 : 1,
               child: SizedBox(
@@ -117,7 +114,7 @@ class GSMaterialButton extends StatelessWidget {
                             BorderRadius.circular(styler.borderRadius ?? 0.0),
                         // side: resolveBorderSide(currentState),
                         side: resolveBorderSide(
-                            buttonVariant, styler, isAttached),
+                            buttonVariant!, styler, isAttached),
                       ),
                     ),
                   ),
@@ -130,7 +127,6 @@ class GSMaterialButton extends StatelessWidget {
                 ),
               ),
             ),
-          ),
         );
       }),
     );
