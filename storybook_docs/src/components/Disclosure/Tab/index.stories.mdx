@@ -87,29 +87,19 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 GSTab can be used with help of 2 widgets, GSTabHeader & GSTabContent. Remember to ensure that parent widget is Stateful widget as we need to make use of GSTabController, to handle tab pages.
 GSTabController is built on top of Flutter's [PageController](https://api.flutter.dev/flutter/widgets/PageController-class.html).
 
+
 ### GSTabHeader
 
 The `GSTabHeader` widget is responsible for displaying the header of a tab layout.
 
 #### Parameters:
 
-1. `controller`:
-- Type: `PageController`
-- Description: The controller that manages the state of the tabs.
+- **controller (`PageController`)**: Controls the page displayed in the tab content.
+- **style (`GSStyle?`)**: Style configuration for the tab header.
+- **isDisabled (`bool?`)**: Indicates if the tab header is disabled.
+- **tabs (`List<GSTab>`)**: List of tabs to display in the header.
 
-2. `tabs`:
-- Type: `List<GSTab>`
-- Description: A list of `GSTab` widgets representing individual tabs within the header.
-
-3. `style`:
-- Type: `GSStyle`
-- Description: Optional styling for the tab header, including indicator color and background color.
-
-4. `isDisabled`:
-- Type: `bool`
-- Description: Indicates whether the tab header is disabled. When disabled, interaction with the tabs is not allowed.
-
-#### Usage:
+##### Usage:
 The `GSTabHeader` widget is typically used in conjunction with a `PageController` and a list of `GSTab` widgets to create a tabbed interface. It provides a visually appealing header that allows users to navigate between different tabs.
 
 ### GSTabContent
@@ -118,23 +108,12 @@ The `GSTabContent` widget is responsible for displaying the content correspondin
 
 #### Parameters:
 
-1. `controller`:
-- Type: `PageController`
-- Description: The controller that manages the state of the tabs.
+- **controller (`PageController`)**: Controls the page displayed in the tab content.
+- **children (`List<Widget>`)**: List of widgets representing the content of each tab.
+- **physics (`ScrollPhysics`)**: Physics for the scrolling behavior of the tab content.
+- **pageSnapping (`bool`)**: Whether the page view should snap to each page.
 
-2. `children`:
-- Type: `List<Widget>`
-- Description: A list of widgets representing the content of each tab.
-
-3. `physics`:
-- Type: `ScrollPhysics`
-- Description: Optional physics for the scrolling behavior of the tab content.
-
-4. `pageSnapping`:
-- Type: `bool`
-- Description: Indicates whether page snapping behavior should be enabled when scrolling through the tab content.
-
-#### Usage:
+##### Usage:
 The `GSTabContent` widget is typically used as the body of a tabbed interface. It contains a list of widgets, each representing the content of a single tab. The `controller` prop is used to synchronize the tab content with the selected tab in the header.
 
 ### GSTabController
@@ -143,17 +122,10 @@ The `GSTabController` class is a subclass of `PageController` specifically desig
 
 #### Parameters:
 
-1. `initialPage`:
-- Type: `int`
-- Description: The index of the initial tab to be displayed.
 
-2. `keepPage`:
-- Type: `bool`
-- Description: Indicates whether the current page should be preserved when changing tabs.
+- **initialPage (`int?`)**: The page to show when first creating the controller.
+- **keepPage (`bool?`)**: Whether to remember the current page when the widget is removed from the tree and later inserted back in.
+- **viewportFraction (`double?`)**: The fraction of the viewport that each page should occupy.
 
-3. `viewportFraction`:
-- Type: `double`
-- Description: The fraction of the viewport width each page should occupy. This is used to control the width of each tab.
-
-#### Usage:
+##### Usage:
 The `GSTabController` class is used to manage tab navigation within a tabbed interface. It provides methods for changing tabs programmatically and properties for controlling the behavior of the tab view, such as preserving the current page and setting the width of each tab.
