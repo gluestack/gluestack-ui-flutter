@@ -1,0 +1,109 @@
+---
+title: GSHeader | gluestack-ui | Installation, Usage, and API
+
+description: The GSHeader widget is a customizable and flexible replacement for the standard AppBar in Flutter applications. It is designed to offer enhanced styling options and additional functionality, suitable for a variety of use cases.
+
+pageTitle: GSHeader
+
+pageDescription: The GSHeader widget is a customizable and flexible replacement for the standard AppBar in Flutter applications. It is designed to offer enhanced styling options and additional functionality, suitable for a variety of use cases.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+import { useRef, useEffect, useState } from "react";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
+
+<Meta title="Components/Layout/Header" />
+
+This is an illustration of a **Themed GSHeader** widget with default configuration.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "header-preview"}
+  title="Example"
+  height="591px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+    //...
+    GSVStack(
+        children: [
+          const GSHeader(
+            centerChild: true,
+            child: GSText(
+              text: 'GS Header Sample',
+            ),
+          ),
+          GSBox(
+            style: GSStyle(
+                margin: const EdgeInsets.all(4),
+                height: 30,
+                width: double.infinity,
+                color: \$GSColors.amber400,
+                borderRadius: 12),
+          ),
+          GSBox(
+            style: GSStyle(
+                margin: const EdgeInsets.all(4),
+                height: 30,
+                width: double.infinity,
+                color: \$GSColors.red400,
+                borderRadius: 12),
+          ),
+          GSBox(
+            style: GSStyle(
+                margin: const EdgeInsets.all(4),
+                height: 30,
+                width: double.infinity,
+                color: \$GSColors.green400,
+                borderRadius: 12),
+          ),
+        ],
+      ),
+`}
+/>
+
+<br />
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Parameters
+
+- **child**: `Widget?`
+- The primary content of the header, typically a `Text` widget for the title.
+
+- **leadingWidget**: `Widget?`
+- A widget to display before the `child`. Typically an icon or a back button.
+
+- **trailingWidget**: `Widget?`
+- A widget to display after the `child`. Can be an icon, button, or a row of widgets.
+
+- **automaticallyImplyLeading**: `bool`
+- Whether to imply the leading widget automatically if `leadingWidget` is not provided. Defaults to `true`.
+
+- **centerChild**: `bool`
+- Whether to center the `child` widget. Defaults to `false`.
+
+- **minPaddingForLeading**: `EdgeInsets?`
+- Minimum padding for the leading widget. Defaults to `EdgeInsets.only(left: 4, right: 4)`.
+
+- **minPaddingForTrailing**: `EdgeInsets?`
+- Minimum padding for the trailing widget. Defaults to `EdgeInsets.only(right: 4, left: 4)`.
+
+- **minSpacingForChild**: `double?`
+- Minimum spacing for the `child` widget. Defaults to `NavigationToolbar.kMiddleSpacing`.
+
+- **minHeight**: `double?`
+- Minimum height of the header. Defaults to `45`.
+
+- **style**: `GSStyle?`
+- Custom style for the header, allowing for background color, width, height, etc.
+
+- **boxShadow**: `List<BoxShadow>?`
+- List of box shadows to apply to the header.
