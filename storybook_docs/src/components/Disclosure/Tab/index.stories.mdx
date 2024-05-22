@@ -1,0 +1,130 @@
+---
+title: GSTab | gluestack-ui | Installation, Usage, and API
+
+description: Revamp your content organization with the GSTab widget! Use it to visually separate different sections of your app.
+
+pageTitle: GSTab
+
+pageDescription: Revamp your content organization with the GSTab widget! Use it to visually separate different sections of your app.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from "@gluestack/design-system";
+
+<Meta title="Components/Layout/Tabs" />
+
+This is an illustration of a **Themed GSTab** widget with default configuration.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "tab-preview"}
+  title="Example"
+  height="712px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    final controller = GSTabController();
+
+    GSVStack(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        GSTabHeader(
+          style: GSStyle(
+            color: $GSColors.amber400, //sets indicator color
+            // bg: $GSColors.amber100, //sets tab header bg color
+          ),
+          controller: controller,
+          tabs: const [
+            GSTab(
+                child: GSText(text: 'Hey', textAlign: TextAlign.center)),
+            GSTab(
+                child:
+                    GSText(text: 'Hi :)', textAlign: TextAlign.center)),
+            GSTab(
+                child:
+                    GSText(text: 'Hello', textAlign: TextAlign.center)),
+          ],
+      ),
+      GSTabContent(
+          controller: controller,
+          children: <Widget>[
+            GSBox(style: GSStyle(color: $GSColors.yellow400)),
+            GSBox(style: GSStyle(color: $GSColors.purple600)),
+            GSBox(style: GSStyle(color: $GSColors.red600)),
+          ],
+      ),
+    ],
+  ),
+
+`}
+/>
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+#### GSTab
+
+GSTab can be used with help of 2 widgets, GSTabHeader & GSTabContent. Remember to ensure that parent widget is Stateful widget as we need to make use of GSTabController, to handle tab pages.
+GSTabController is built on top of Flutter's [PageController](https://api.flutter.dev/flutter/widgets/PageController-class.html).
+
+#### GSDivider
+
+<AppProvider>
+  <TableContainer>
+    <Table>
+      <Table.THead>
+        <Table.TR>
+          <Table.TH>
+            <Table.TText>Name</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Value</Table.TText>
+          </Table.TH>
+          <Table.TH>
+            <Table.TText>Default</Table.TText>
+          </Table.TH>
+        </Table.TR>
+      </Table.THead>
+      <Table.TBody>
+        <Table.TR>
+          <Table.TD>
+            <Table.TText>
+              <InlineCode>orientation</InlineCode>
+            </Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>vertical | horizontal</Table.TText>
+          </Table.TD>
+          <Table.TD>
+            <Table.TText>horizontal</Table.TText>
+          </Table.TD>
+        </Table.TR>
+      </Table.TBody>
+    </Table>
+  </TableContainer>
+</AppProvider>
+
+> Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these properties may not be available.

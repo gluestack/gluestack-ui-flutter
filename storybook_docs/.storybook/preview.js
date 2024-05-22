@@ -25,7 +25,12 @@ export const parameters = {
         "Theme Configuration",
         [
           "Theme",
-          ["Default Tokens", "Default Components", "Customizing Theme"],
+          [
+            "Default Tokens",
+            "Default Components",
+            "Customizing Theme",
+            "Customizing Tokens",
+          ],
         ],
         "Styling",
         ["Overview", "Utility", "Responsiveness", "Platform Specific"],
@@ -54,6 +59,8 @@ export const parameters = {
           ["AlertDialog"],
           "Media And Icons",
           ["Avatar", "Icon", "Image"],
+          "Disclosure",
+          ["Tabs"],
           "Others",
           ["Fab", "Accordion"],
         ],

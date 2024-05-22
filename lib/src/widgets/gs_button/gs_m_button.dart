@@ -88,45 +88,44 @@ class GSMaterialButton extends StatelessWidget {
 
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
- 
-            child: Opacity(
-              opacity: disabled ? styler.opacity ?? 0.5 : 1,
-              child: SizedBox(
-                height: styler.height,
-                child: ElevatedButton(
-                  onPressed: disabled ? null : onPressed,
-                  onLongPress: disabled ? null : onLongPress,
-                  onHover: onHover,
-                  onFocusChange: onFocusChange,
-                  focusNode: focusNode,
-                  autofocus: autoFocus,
-                  clipBehavior: clipBehavior,
-                  statesController: statesController,
-                  style: ButtonStyle(
-                    elevation: WidgetStateProperty.all<double?>(0),
-                    padding: WidgetStateProperty.all<EdgeInsetsGeometry?>(
-                        styler.padding),
-                    backgroundColor:
-                        WidgetStatePropertyAll(styler.bg?.getColor(context)),
-                    shape: WidgetStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(styler.borderRadius ?? 0.0),
-                        // side: resolveBorderSide(currentState),
-                        side: resolveBorderSide(
-                            buttonVariant!, styler, isAttached),
-                      ),
+          child: Opacity(
+            opacity: disabled ? styler.opacity ?? 0.5 : 1,
+            child: SizedBox(
+              height: styler.height,
+              child: ElevatedButton(
+                onPressed: disabled ? null : onPressed,
+                onLongPress: disabled ? null : onLongPress,
+                onHover: onHover,
+                onFocusChange: onFocusChange,
+                focusNode: focusNode,
+                autofocus: autoFocus,
+                clipBehavior: clipBehavior,
+                statesController: statesController,
+                style: ButtonStyle(
+                  elevation: WidgetStateProperty.all<double?>(0),
+                  padding: WidgetStateProperty.all<EdgeInsetsGeometry?>(
+                      styler.padding),
+                  backgroundColor:
+                      WidgetStatePropertyAll(styler.bg?.getColor(context)),
+                  shape: WidgetStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(styler.borderRadius ?? 0.0),
+                      // side: resolveBorderSide(currentState),
+                      side:
+                          resolveBorderSide(buttonVariant!, styler, isAttached),
                     ),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      child,
-                    ],
-                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    child,
+                  ],
                 ),
               ),
             ),
+          ),
         );
       }),
     );
