@@ -14,10 +14,10 @@ class GluestackProvider extends StatelessWidget {
   })  : gluestackTokenConfig = gluestackTokenConfig ?? GluestackTokenConfig(),
         gluestackCustomConfig =
             gluestackCustomConfig ?? GluestackCustomConfig() {
-    if (!getIt.isRegistered<GluestackCustomConfig>()) {
-      getIt
-          .registerSingleton<GluestackCustomConfig>(this.gluestackCustomConfig);
-    }
+    registerSingletonIfNotRegistered<GluestackCustomConfig>(
+        this.gluestackCustomConfig);
+    registerSingletonIfNotRegistered<GluestackTokenConfig>(
+        this.gluestackTokenConfig);
   }
 
   @override

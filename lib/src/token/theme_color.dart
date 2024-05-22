@@ -2,7 +2,15 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 //this entire thing is to be reassigned by the user
 
-Map<String, dynamic> userTheme = getIt<Map<String, dynamic>>();
+Map<String, dynamic> userTheme = getUserTheme();
+
+Map<String, dynamic> getUserTheme() {
+  try {
+    return getIt<Map<String, dynamic>>();
+  } catch (e) {
+    return {};
+  }
+}
 
 Map<String, dynamic> gSThemes = {
   ...userTheme,
