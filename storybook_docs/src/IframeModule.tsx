@@ -37,7 +37,7 @@ const IframeModule: React.FC<IframeProps> = ({ src, title, height, code }) => {
         src={src}
         title={title}
         width="100%"
-        height="400"
+        height={height ?? "400"}
         style={{ border: "none", padding: "none", marginBottom: "-20px" }}
       ></iframe>
       <div
