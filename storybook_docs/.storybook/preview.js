@@ -62,7 +62,7 @@ export const parameters = {
           "Disclosure",
           ["Tabs"],
           "Others",
-          ["Fab", "Accordion"],
+          ["Fab", "Accordion", "Stepper"],
         ],
       ],
     },
