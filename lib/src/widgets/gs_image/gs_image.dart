@@ -1,6 +1,5 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_image/gs_image_style.dart';
 
 /// Types of images that can be displayed by [GSImage].
@@ -37,7 +36,7 @@ class GSImage extends StatelessWidget {
   /// The type of image, specifying whether it's a network or asset image.
   final GSImageType imageType;
 
-  /// Custom [GSStyle] to apply to the image, allowing for further customization.
+  /// Custom [GSConfigStyle] to apply to the image, allowing for further customization.
   final GSStyle? style;
 
   /// The alignment of the image within its container.
@@ -131,7 +130,7 @@ class GSImage extends StatelessWidget {
     final imageSize = size?.toGSSize ?? imageStyle.props?.size;
     final imageRadius = borderRadius?.toGSBorderRadius ?? GSBorderRadius.$none;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
         context: context,
         styles: [
           imageStyle,
@@ -156,7 +155,7 @@ class GSImage extends StatelessWidget {
                     _resolveImageType(imageType, styler, boxFit: BoxFit.cover));
   }
 
-  Widget _resolveImageType(GSImageType imageType, GSStyle styler,
+  Widget _resolveImageType(GSImageType imageType, GSConfigStyle styler,
       {BoxFit? boxFit}) {
     switch (imageType) {
       case GSImageType.network:

@@ -31,7 +31,7 @@ class GSIconButton extends StatelessWidget {
   /// The size of the icon button, affecting its overall dimensions.
   final GSIconButtonSizes? size;
 
-  /// Custom [GSStyle] to apply to the button, enabling detailed customization of its appearance.
+  /// Custom [GSConfigStyle] to apply to the button, enabling detailed customization of its appearance.
   final GSStyle? style;
 
   ///Constructor for [GSIconButton]

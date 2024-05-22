@@ -1,8 +1,6 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_avatar/gs_avatar_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
-
 
 enum GSAvatarRadius { $none, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $full }
 
@@ -20,7 +18,7 @@ class GSAvatar extends StatelessWidget {
   /// or context.
   final GSAvatarRadius? radius;
 
-  /// Custom [GSStyle] to apply to the avatar, enabling detailed customization of its appearance.
+  /// Custom [GSConfigStyle] to apply to the avatar, enabling detailed customization of its appearance.
   /// This style can include border, padding, margin, and more.
   final GSStyle? style;
 
@@ -67,7 +65,7 @@ class GSAvatar extends StatelessWidget {
     final avatarSize = size?.toGSSize ?? avatarStyle.props?.size;
     final avatarRadius = radius?.toGSBorderRadius ?? GSBorderRadius.$full;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [avatarStyle, avatarStyle.sizeMap(avatarSize)],
       inlineStyle: style,
@@ -84,7 +82,7 @@ class GSAvatar extends StatelessWidget {
               shape: avatarRadius == GSBorderRadius.$full
                   ? BoxShape.circle
                   : BoxShape.rectangle,
-              color: styler.bg,
+              color: styler.bg?.getColor(context),
               image: backgroundImage != null
                   ? DecorationImage(
                       image: backgroundImage!,
@@ -101,7 +99,7 @@ class GSAvatar extends StatelessWidget {
             ),
             foregroundDecoration: foregroundImage != null
                 ? BoxDecoration(
-                    color: styler.color,
+                    color: styler.color?.getColor(context),
                     image: DecorationImage(
                       image: foregroundImage!,
                       onError: onForegroundImageError,
@@ -113,7 +111,7 @@ class GSAvatar extends StatelessWidget {
                             50),
                   )
                 : BoxDecoration(
-                    color: styler.color,
+                    color: styler.color?.getColor(context),
                     image: switch (avatarImage?.imageType) {
                       GSImageType.network => DecorationImage(
                           image: NetworkImage(avatarImage!.path),

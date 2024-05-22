@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_badge/gs_badge_icon_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_icon_style.dart';
@@ -63,7 +63,7 @@ class GSBadgeIcon extends StatelessWidget {
     // Create an Icon widget with the given icon data, color, font size, etc.
     return Icon(
       iconData,
-      color: styler.color,
+      color: styler.color?.getColor(context),
       size: size,
       fill: fill,
       grade: grade,

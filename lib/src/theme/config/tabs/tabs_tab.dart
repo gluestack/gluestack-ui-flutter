@@ -10,24 +10,20 @@ const Map<String, dynamic> tabsTabData = {
       }
     }
   },
-  "defaultProps": {"size": "md"},
+  "defaultProps": {
+    "size": "md",
+  },
   ":hover": {
-    "bg": '\$backgroundDark500',
-    "borderRadius": "\$full"
+    // "bg": '\$backgroundDark500',
+    "borderRadius": "\$full",
   },
   ":active": {
-    "bg": '\$backgroundDark400',
-    "borderRadius": "\$full"
+    //"bg": '\$backgroundDark400',
+    "borderRadius": "\$full",
   },
   ":focus": {
-    "bg": '\$backgroundDark400',
-    "borderRadius": "\$full"
+    //"bg": '\$backgroundDark400',
+    "borderRadius": "\$full",
   },
   ":disabled": {"opacity": 0.5},
-  "_dark": {
-    ":hover": {"bg": "\$backgroundLight500", "borderRadius": "\$full"},
-    ":active": {"bg": "\$backgroundLight400", "borderRadius": "\$full"},
-    ":focus": {"bg": "\$backgroundLight400", "borderRadius": "\$full"},
-    ":disabled": {"opacity": 0.5}
-  }
 };

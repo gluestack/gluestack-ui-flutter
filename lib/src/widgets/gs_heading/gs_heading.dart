@@ -1,7 +1,6 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_heading/gs_heading_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 /// A widget designed to display headings with customizable styles within the Gluestack UI framework.
 /// [GSHeading] supports various typographic customizations, making it suitable for titles,
@@ -14,7 +13,7 @@ class GSHeading extends StatelessWidget {
   /// This provides a consistent method for adjusting text size across different headings.
   final GSHeadingSizes? size;
 
-  /// Custom [GSStyle] to apply to the heading, enabling detailed customization
+  /// Custom [GSConfigStyle] to apply to the heading, enabling detailed customization
   /// of text appearance, including font, color, size, and more.
   final GSStyle? style;
 
@@ -116,18 +115,19 @@ class GSHeading extends StatelessWidget {
     final subFontSize = headingStyle.variants?.sub?.textStyle?.fontSize;
     final subLineHeight = headingStyle.variants?.sub?.textStyle?.height;
     // Resolves the heading style
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
+        headingStyle,
         highlight ? headingStyle.variants?.highlight : null,
         headingStyle.sizeMap(textSize?.toGSSize),
       ],
-      inlineStyle: headingStyle.merge(style),
+      inlineStyle: style,
       isFirst: true,
     );
 
     final currentTextStyle = styler.textStyle?.copyWith(
-      color: styler.color,
+      color: styler.color?.getColor(context),
       fontWeight: bold ? FontWeight.w900 : styler.textStyle?.fontWeight,
       fontStyle: italic ? FontStyle.italic : styler.textStyle?.fontStyle,
       fontSize: sub ? subFontSize : styler.textStyle?.fontSize,
@@ -136,8 +136,9 @@ class GSHeading extends StatelessWidget {
         if (strikeThrough) TextDecoration.lineThrough,
         if (underline) TextDecoration.underline,
       ]),
-      backgroundColor:
-          highlight ? styler.bg : styler.textStyle?.backgroundColor,
+      backgroundColor: highlight
+          ? styler.bg?.getColor(context)
+          : styler.textStyle?.backgroundColor,
       overflow:
           isTruncated ? TextOverflow.ellipsis : styler.textStyle?.overflow,
     );

@@ -14,7 +14,7 @@ class GSAccordion extends StatefulWidget {
   /// Custom style for the accordion. If null, the default style is applied.
   final GSStyle? style;
 
-  /// The list of items to display within the accordion.
+  /// ThGSStyle? style;e; to display within the accordion.
   final List<GSAccordionItem> children;
 
   /// Optional initial expansion state for each accordion item. A value of true indicates the item should be initially expanded.
@@ -97,7 +97,7 @@ class _GSAccordionState extends State<GSAccordion> {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
         context: context,
         styles: [
           accordionStyle,
@@ -131,7 +131,8 @@ class _GSAccordionState extends State<GSAccordion> {
               BoxShadow(
                 blurRadius: styler.shadowRadius ?? 0,
                 color: styler.shadowColor
-                        ?.withOpacity(styler.shadowOpacity ?? 0) ??
+                        ?.getColor(context)
+                        .withOpacity(styler.shadowOpacity ?? 0) ??
                     $GSColors.backgroundDark100,
                 offset: Offset(styler.shadowOffset?.width ?? 0,
                     styler.shadowOffset?.height ?? 0),
@@ -165,8 +166,8 @@ class _GSAccordionState extends State<GSAccordion> {
                       radius: widget.children[i].radius,
                       itemPadding: widget.itemPadding,
                       isItemDisabled: widget.children[i].isDisabled,
-                      accordionbackground: styler.bg,
-                      iconColor: styler.iconColor,
+                      accordionbackground: styler.bg?.getColor(context),
+                      iconColor: styler.iconColor?.getColor(context),
                     ),
                 ],
               );

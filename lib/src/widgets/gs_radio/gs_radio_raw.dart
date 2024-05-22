@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/src/cupertino/colors.dart';
-import 'package:flutter/src/cupertino/toggleable.dart';
-import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/src/token/color.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
+import 'gs_toggleable.dart';
 
 const Size _size = Size(18.0, 18.0);
 const double _kOuterRadius = 8.0;
@@ -26,6 +25,7 @@ class GSRawRadio<T> extends StatefulWidget {
     this.focusNode,
     this.autofocus = false,
     this.useCheckmarkStyle = false,
+    this.radioSize,
   });
 
   final T value;
@@ -50,6 +50,8 @@ class GSRawRadio<T> extends StatefulWidget {
 
   final bool autofocus;
 
+  final double? radioSize;
+
   bool get _selected => value == groupValue;
 
   @override
@@ -58,8 +60,6 @@ class GSRawRadio<T> extends StatefulWidget {
 
 class _GSRawRadioState<T> extends State<GSRawRadio<T>>
     with TickerProviderStateMixin, ToggleableStateMixin {
-  final _RadioPainter _painter = _RadioPainter();
-
   bool focused = false;
 
   void _handleChanged(bool? selected) {
@@ -74,7 +74,7 @@ class _GSRawRadioState<T> extends State<GSRawRadio<T>>
 
   @override
   void dispose() {
-    _painter.dispose();
+    // _painter.dispose();
     super.dispose();
   }
 
@@ -134,7 +134,7 @@ class _GSRawRadioState<T> extends State<GSRawRadio<T>>
         autofocus: widget.autofocus,
         onFocusChange: onFocusChange,
         size: _size,
-        painter: _painter
+        painter: _RadioPainter(radioSize: widget.radioSize)
           ..focusColor = effectiveFocusOverlayColor
           ..downPosition = downPosition
           ..isFocused = focused
@@ -151,6 +151,11 @@ class _GSRawRadioState<T> extends State<GSRawRadio<T>>
 }
 
 class _RadioPainter extends ToggleablePainter {
+  final double? radioSize;
+
+  _RadioPainter({
+    this.radioSize,
+  });
   bool? get value => _value;
   bool? _value;
   set value(bool? value) {
@@ -181,6 +186,24 @@ class _RadioPainter extends ToggleablePainter {
     notifyListeners();
   }
 
+  double get _adjustedOuterRadius {
+    if (radioSize == 16) {
+      return _kOuterRadius - 1.2;
+    } else if (radioSize == 20) {
+      return _kOuterRadius + 1.2;
+    }
+    return _kOuterRadius;
+  }
+
+  double get _adjustedInnerRadius {
+    if (radioSize == 16) {
+      return _kInnerRadius - 1.2;
+    } else if (radioSize == 20) {
+      return _kInnerRadius + 1.2;
+    }
+    return _kInnerRadius;
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
     final Offset center = (Offset.zero & size).center;
@@ -190,27 +213,27 @@ class _RadioPainter extends ToggleablePainter {
       ..style = PaintingStyle.fill
       ..strokeWidth = 0.1;
 
-    canvas.drawCircle(center, _kOuterRadius, paint);
+    canvas.drawCircle(center, _adjustedOuterRadius, paint);
 
     paint.style = PaintingStyle.stroke;
     paint.color = CupertinoColors.inactiveGray;
-    canvas.drawCircle(center, _kOuterRadius, paint);
+    canvas.drawCircle(center, _adjustedOuterRadius, paint);
 
     if (value ?? false) {
       paint.style = PaintingStyle.fill;
       paint.color = fillColor;
-      canvas.drawCircle(center, _kOuterRadius, paint);
+      canvas.drawCircle(center, _adjustedOuterRadius, paint);
       paint.color = activeColor;
-      canvas.drawCircle(center, _kOuterRadius - 2, paint);
+      canvas.drawCircle(center, _adjustedOuterRadius - 2, paint);
       paint.color = fillColor;
-      canvas.drawCircle(center, _kInnerRadius + 0.5, paint);
+      canvas.drawCircle(center, _adjustedInnerRadius + 0.5, paint);
     }
 
     if (isFocused) {
       paint.style = PaintingStyle.stroke;
       paint.color = focusColor;
       paint.strokeWidth = 3.0;
-      canvas.drawCircle(center, _kOuterRadius + 1.5, paint);
+      canvas.drawCircle(center, _adjustedOuterRadius + 1.5, paint);
     }
   }
 }

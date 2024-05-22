@@ -4,5 +4,5 @@ import 'package:gluestack_ui/src/style/gs_style_config.dart';
 const GSStyleConfig gsAccordionTitleTextConfig = GSStyleConfig(
     componentName: 'AccordianTitleText', ancestorStyle: ['_titleText']);
 
-GSStyle accordionTitleTextStyle =
-    GSStyle.fromMap(data: getIt<GluestackCustomConfig>().accordionTitleText);
+GSConfigStyle accordionTitleTextStyle = GSConfigStyle.fromMap(
+    data: getIt<GluestackCustomConfig>().accordionTitleText);

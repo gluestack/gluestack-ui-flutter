@@ -245,8 +245,8 @@ class _FormExampleState extends State<FormExample> {
                 sp2,
                 const GSFormLabelText('Password'),
                 sp,
-                GSInput(
-                  style: GSStyle(height: 80),
+                const GSInput(
+                  //  style: GSStyle(height: 80),
                   obscureText: true,
                   hintText: 'Enter you password here...',
                   // validator: (input) {

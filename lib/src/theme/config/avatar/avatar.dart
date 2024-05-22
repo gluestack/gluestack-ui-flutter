@@ -10,6 +10,10 @@ const Map<String, dynamic> avatarData = {
         "w": "\$6",
         "h": "\$6",
         "_badge": {"w": "\$2", "h": "\$2"},
+        "_image": {
+          "w": "\$full",
+          "h": "\$full",
+        },
         "_text": {
           "props": {"size": "2xs"}
         }
@@ -18,6 +22,10 @@ const Map<String, dynamic> avatarData = {
         "w": "\$8",
         "h": "\$8",
         "_badge": {"w": "\$2", "h": "\$2"},
+        "_image": {
+          "w": "\$full",
+          "h": "\$full",
+        },
         "_text": {
           "props": {"size": "xs"}
         }
@@ -26,6 +34,10 @@ const Map<String, dynamic> avatarData = {
         "w": "\$12",
         "h": "\$12",
         "_badge": {"w": "\$3", "h": "\$3"},
+        "_image": {
+          "w": "\$full",
+          "h": "\$full",
+        },
         "_text": {
           "props": {"size": "md"}
         }
@@ -34,6 +46,10 @@ const Map<String, dynamic> avatarData = {
         "w": "\$16",
         "h": "\$16",
         "_badge": {"w": "\$4", "h": "\$4"},
+        "_image": {
+          "w": "\$full",
+          "h": "\$full",
+        },
         "_text": {
           "props": {"size": "xl"}
         }
@@ -42,6 +58,10 @@ const Map<String, dynamic> avatarData = {
         "w": "\$24",
         "h": "\$24",
         "_badge": {"w": "\$6", "h": "\$6"},
+        "_image": {
+          "w": "\$full",
+          "h": "\$full",
+        },
         "_text": {
           "props": {"size": "3xl"}
         }
@@ -50,6 +70,10 @@ const Map<String, dynamic> avatarData = {
         "w": "\$32",
         "h": "\$32",
         "_badge": {"w": "\$8", "h": "\$8"},
+        "_image": {
+          "w": "\$full",
+          "h": "\$full",
+        },
         "_text": {
           "props": {"size": "5xl"}
         }

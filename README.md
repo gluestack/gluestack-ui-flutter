@@ -15,6 +15,7 @@ Here are few helpful links to give you an idea of what gluestack-ui-flutter is c
 - Widget Examples (Storybook): https://gluestack-ui-example.web.app/#/storybook
 - Getting Started Example: https://github.com/gluestack/flutter-examples
 - KitchenSink (An example layout made with Gluestack): https://kitchensink-23184.web.app/
+- Token Configurator: https://token-configurator.web.app/
 
 To keep track of latest developments in gluestack-ui-flutter you can refer to this link: https://github.com/gluestack/gluestack-ui-flutter/tree/feature/core-widgets.
 
@@ -48,7 +49,7 @@ Add the package to your dependencies:
 
 ```yaml
 dependencies:
-  gluestack_ui: 0.1.0-beta.2
+  gluestack_ui: 0.2.0-beta.1
 ```
 
 OR
@@ -160,6 +161,93 @@ GluestackProvider(
 )
 ```
 
+## Theming
+
+You can add customize your app theme with help of `gsThemeToken` parameter under `GluestackProvider` inside of `gluestackTokenConfig`.
+gluestack-ui for flutter comes with 2 deafult themes, light and dark, named 'light_theme' and 'dark_theme' respectively.
+To modify certain specific colors of the base theme, simply create a Map like so:
+
+```
+const myTheme = {
+  "light_theme": {
+    "colors": {
+      'primary300': Color(0xffE11D48),
+      'primary400': Color(0xffE11D48),
+      'primary600': Color(0xffE11D48),
+      'primary700': Color(0xffE11D48),
+      'success500': Color(0xffE11D48),
+    }
+  },
+}
+```
+
+and provide this value to the `gsThemeToken`, as shown below:
+
+```
+    return GluestackProvider(
+      gluestackTokenConfig: GluestackTokenConfig(
+        gsThemeToken: myTheme,
+      ),
+      child: GSApp(
+        theme: GSThemeData.fromTheme('light_theme'),
+      ),
+    )
+```
+
+To dyamically toggle theme application wide, you can provide theme present in the above example like so, here `currentTheme` is a state varaible, value of which can be 'light_theme' or 'dark_theme' or your custom theme name.
+
+```
+        theme: GSThemeData.fromTheme(currentTheme),
+```
+
+To create a new theme entirely, you can create the `myTheme` variable present in the above examples as shown below:
+
+```
+const myTheme = {
+  "cyan_theme": {
+    "colors": {
+      "primary0": Color(0xFFB2EBF2),
+      "primary50": Color(0xFF80DEEA),
+      "primary100": Color(0xFF4DD0E1),
+      "primary200": Color(0xFF26C6DA),
+      "primary300": Color(0xFF00BCD4),
+      "primary400": Color(0xFF00ACC1),
+      "primary500": Color(0xFF0097A7),
+      "primary600": Color(0xFF00838F),
+      "primary700": Color(0xFF006064),
+      "primary800": Color(0xFF004D40),
+      "primary900": Color(0xFF00332A),
+      "primary950": Color(0xFF00251A),
+      "secondary0": Color(0xFFB2EBF2),
+      "secondary50": Color(0xFF80DEEA),
+      "secondary100": Color(0xFF4DD0E1),
+      "secondary200": Color(0xFF26C6DA),
+      "secondary300": Color(0xFF00BCD4),
+      "secondary400": Color(0xFF00ACC1),
+      "secondary500": Color(0xFF0097A7),
+      "secondary600": Color(0xFF00838F),
+      "secondary700": Color(0xFF006064),
+      "secondary800": Color(0xFF004D40),
+      "secondary900": Color(0xFF00332A),
+      "secondary950": Color(0xFF00251A),
+      //... Other theme colors ...
+    },
+  },
+}
+```
+
+To check for current theme being used by the application, you can access `GSTheme.of(context).themeId`. Show below is an example of how we can conditionally use values of colors depending on current app theme.
+
+```
+  GSTheme.of(context).themeId == 'dark_theme'
+          ? const Color(0xFF262626)
+          : null,
+```
+
+Alternatively, you can try our very own Token Configurator tool which can help you to generate code for theming. This interactive tool not only provides a visual representation of your currently configured theme but also demonstrates how theme and token adjustments can impact your UI/UX. [Click here to see it in action!](https://token-configurator.web.app/)
+
+![Gluestack Token Configurator](assets/token_config_ss.png)
+
 ## Performance
 
 After conducting a comprehensive performance benchmark, comprising an average of 10 samples obtained from our [KitchenSink app](https://kitchensink-23184.web.app/) utilizing both gluestack-ui-flutter with Material and gluestack-ui-flutter with Non-Material widgets, we are pleased to present the ensuing results for your review.
@@ -173,6 +261,10 @@ After conducting a comprehensive performance benchmark, comprising an average of
 - **Configurable Token System:** Design the token system to be scalable and customizable. Users should be able to add new tokens or modify existing ones to suit their project needs.
 
 - **Adding New Widgets:** We are committed to implement more functional widgets in the future that would improve the user and the developer experience.
+
+## Products
+
+VS Code Extension: Our [VS Code extension](https://marketplace.visualstudio.com/items?itemName=gluestack.gluestack-ui-flutter) is specifically designed to quicken your development process using gluestack-ui-flutter. These extensions provide GSWidgets for effectively wrapping widgets with gluestack-ui-flutter widgets.
 
 ## Contributing
 

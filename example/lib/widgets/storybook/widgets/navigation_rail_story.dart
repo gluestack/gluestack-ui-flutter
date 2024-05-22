@@ -29,7 +29,7 @@ class ___NavigationRailStoryState extends State<_NavigationRailStory> {
       child: Row(
         children: <Widget>[
           GSNavigationRail(
-            size: GSSizes.values[context.knobs
+            size: GSNavigationRailSizes.values[context.knobs
                 .options(label: 'Size', initial: 1, options: sizeOptions)],
             indicatorWidth: 100,
             minWidth: 200,

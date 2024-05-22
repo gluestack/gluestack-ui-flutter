@@ -1,5 +1,5 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_description_style.dart';
 
@@ -13,7 +13,7 @@ class GSToastDescription extends StatelessWidget {
     final ancestorTextStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gstoastDescriptionConfig.ancestorStyle.first];
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         toastDescriptionStyle,
@@ -23,7 +23,7 @@ class GSToastDescription extends StatelessWidget {
     );
     return GSText(
       text: description,
-      style: styler,
+      style: GSStyle.fromGSConfigStyle(styler, context),
     );
   }
 }

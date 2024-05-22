@@ -1,24 +1,24 @@
 const Map<String, dynamic> radioLabelData = {
-  'color': '\$textLight600',
+  'color': '\$text600',
   ':checked': {
-    'color': '\$textLight900',
+    'color': '\$text900',
   },
   ':hover': {
-    'color': '\$textLight900',
+    'color': '\$text900',
     ':checked': {
-      'color': '\$textLight900',
+      'color': '\$text900',
     },
     ':disabled': {
-      'color': '\$textLight600',
+      'color': '\$text600',
       ':checked': {
-        'color': '\$textLight900',
+        'color': '\$text900',
       },
     },
   },
   ':active': {
-    'color': '\$textLight900',
+    'color': '\$text900',
     ':checked': {
-      'color': '\$textLight900',
+      'color': '\$text900',
     },
   },
   ':disabled': {
@@ -28,30 +28,6 @@ const Map<String, dynamic> radioLabelData = {
     'MozUserSelect': 'none',
     'WebkitUserSelect': 'none',
     'msUserSelect': 'none',
-  },
-  'userSelect': 'none',
-  '_dark': {
-    'color': '\$textDark400',
-    ':checked': {
-      'color': '\$textDark100',
-    },
-    ':hover': {
-      'color': '\$textDark100',
-      ':checked': {
-        'color': '\$textDark100',
-      },
-      ':disabled': {
-        'color': '\$textDark400',
-        ':checked': {
-          'color': '\$textDark100',
-        },
-      },
-    },
-    ':active': {
-      'color': '\$textDark100',
-      ':checked': {
-        'color': '\$textDark100',
-      },
-    },
+    'userSelect': 'none',
   },
 };

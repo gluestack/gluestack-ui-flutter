@@ -1,8 +1,6 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_group_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
-
 
 class GSButtonGroup extends StatelessWidget {
   final List<GSButton>? buttons;
@@ -31,7 +29,7 @@ class GSButtonGroup extends StatelessWidget {
     final buttonList = reversed! ? buttons!.reversed : buttons!;
     final buttonGroupSize = size?.toGSSize ?? buttonGroupStyle.props?.size;
     final buttonGroupSpace = space?.toGSSpaces ?? buttonGroupStyle.props?.space;
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       styles: [
         buttonGroupStyle,
         buttonGroupStyle.sizeMap(buttonGroupSize),
@@ -68,7 +66,7 @@ class GSButtonGroup extends StatelessWidget {
       size: buttonGroupSize?.toGSSize ?? buttonGroupStyle.props!.size!,
       isAttached: isAttached!,
       child: Container(
-        color: styler.bg,
+        color: styler.bg?.getColor(context),
         height: styler.height,
         width: styler.width,
         child: Flex(

@@ -1,6 +1,5 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/gs_accordian_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_accordian/style_accordian_title_text.dart';
 
@@ -10,8 +9,8 @@ class GSAccordionTitle extends StatelessWidget {
   /// accordion's collapsible content.
   final String text;
 
-  /// Custom [GSStyle] to apply to the text. This allows for further customization
-  /// of text appearance, specify using textStyle inside [GSStyle].
+  /// Custom [GSConfigStyle] to apply to the text. This allows for further customization
+  /// of text appearance, specify using textStyle inside [GSConfigStyle].
   final GSStyle? style;
 
   /// Determines if the text should be truncated with an ellipsis when it overflows.
@@ -119,7 +118,7 @@ class GSAccordionTitle extends StatelessWidget {
     return GSText(
       text: text,
       size: size.toGSSize,
-      style: styler,
+      style: GSStyle.fromGSConfigStyle(styler, context),
       locale: locale,
       maxLines: maxLines,
       overflow: overflow,

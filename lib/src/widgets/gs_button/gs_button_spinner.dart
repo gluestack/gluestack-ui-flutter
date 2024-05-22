@@ -49,7 +49,7 @@ class GSButtonSpinner extends StatelessWidget {
         strokeWidth: strokeWidth,
         strokeCap: strokeCap,
         valueColor: AlwaysStoppedAnimation<Color>(
-            styler.props?.color ?? $GSColors.primary500),
+            styler.props?.color?.getColor(context) ?? $GSColors.primary500),
       ),
     );
   }

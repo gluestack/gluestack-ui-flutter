@@ -12,7 +12,7 @@ class GSAccordionIcon extends StatelessWidget {
   /// for consistency across the application.
   final GSIconSizes? size;
 
-  /// Custom [GSStyle] to apply to the icon. This allows for further customization
+  /// Custom [GSConfigStyle] to apply to the icon. This allows for further customization
   /// of the icon's appearance.
   final GSStyle? style;
 
@@ -83,7 +83,7 @@ class GSAccordionIcon extends StatelessWidget {
     return GSIcon(
       icon: icon,
       size: conv(styler.iconSize ?? styler.props?.size) ?? size,
-      style: styler,
+      style: GSStyle.fromGSConfigStyle(styler, context),
       fill: fill,
       grade: grade,
       opticalSize: opticalSize,

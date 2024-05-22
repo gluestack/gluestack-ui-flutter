@@ -1,8 +1,6 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_toast/gs_toast_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
-
 
 class GSToast extends StatelessWidget {
   final Widget? child;
@@ -22,7 +20,7 @@ class GSToast extends StatelessWidget {
     final toastAction = action?.toGSAction ?? toastStyle.props?.action;
     final toastVariant = variant?.toGSVariant ?? toastStyle.props?.variant;
 
-    GSStyle styler =
+    GSConfigStyle styler =
         resolveStyles(context: context, inlineStyle: style, styles: [
       toastStyle,
       toastStyle.actionMap(toastAction),
@@ -32,23 +30,23 @@ class GSToast extends StatelessWidget {
     ]);
 
     final border = toastVariant == GSVariants.outline
-        ? Border.all(color: styler.borderColor!)
+        ? Border.all(color: styler.borderColor!.getColor(context))
         : toastVariant == GSVariants.accent
             ? Border(
                 left: BorderSide(
-                  color: styler.borderColor!,
+                  color: styler.borderColor!.getColor(context),
                   width: styler.borderLeftWidth!,
                 ),
                 right: BorderSide(
-                  color: styler.borderColor!,
+                  color: styler.borderColor!.getColor(context),
                   width: 0.01,
                 ),
                 top: BorderSide(
-                  color: styler.borderColor!,
+                  color: styler.borderColor!.getColor(context),
                   width: 0.01,
                 ),
                 bottom: BorderSide(
-                  color: styler.borderColor!,
+                  color: styler.borderColor!.getColor(context),
                   width: 0.01,
                 ),
               )
@@ -59,7 +57,7 @@ class GSToast extends StatelessWidget {
       child: Container(
         padding: styler.padding,
         decoration: BoxDecoration(
-          color: styler.bg,
+          color: styler.bg?.getColor(context),
           border: border,
           borderRadius: BorderRadius.circular(styler.borderRadius!),
         ),

@@ -51,7 +51,6 @@ import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_disable
 import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_with_rounded_corners.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/nested_accordion_preview.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/stepper_example.dart';
-import 'package:go_router/go_router.dart';
 
 import '../widgets/components/widgets/public.dart';
 import '../widgets/storybook/widgets/avatar_with_label_preview.dart';
@@ -59,12 +58,19 @@ import '../widgets/storybook/widgets/multiple_radio_button_horizontal_preview.da
 import '../widgets/storybook/widgets/public.dart';
 import '../widgets/storybook/widgets/switch_with_label_preview.dart';
 
+late Function updaterFunc;
+
+GoRouter ree(Function input) {
+  updaterFunc = input;
+  return router;
+}
+
 final GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return const HomePage();
+        return HomePage(updaterFunc: updaterFunc);
       },
       routes: <RouteBase>[
         GoRoute(

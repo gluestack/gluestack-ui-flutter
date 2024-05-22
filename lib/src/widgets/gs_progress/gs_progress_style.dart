@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/gs_style_config.dart';
 
 const GSStyleConfig gsProgressConfig = GSStyleConfig(
@@ -6,6 +6,7 @@ const GSStyleConfig gsProgressConfig = GSStyleConfig(
   descendantStyle: ['_filledTrack'],
 );
 
-GSStyle progressStyle = GSStyle.fromMap(
-    data: getIt<GluestackCustomConfig>().progress,
-    descendantStyle: gsProgressConfig.descendantStyle);
+GSConfigStyle progressStyle = GSConfigStyle.fromMap(
+  data: getIt<GluestackCustomConfig>().progress,
+  descendantStyle: gsProgressConfig.descendantStyle,
+);

@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 
 import '../../style/gs_style_config.dart';
 
@@ -7,7 +7,7 @@ const GSStyleConfig gsStepperConfig = GSStyleConfig(
   descendantStyle: ['_titleText', '_subtitleText', '_contentText', '_icon'],
 );
 
-final GSStyle gsStepperStyle = GSStyle.fromMap(
+final GSConfigStyle gsStepperStyle = GSConfigStyle.fromMap(
     data: getIt<GluestackCustomConfig>().stepper,
     descendantStyle: gsStepperConfig.descendantStyle);
 
@@ -15,5 +15,3 @@ final GSStyle gsStepperStyle = GSStyle.fromMap(
 //   bg: gsStepperStyle.bg,
 //   dark: GSStyle(bg: gsStepperStyle.bg),
 // );
-
-

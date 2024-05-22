@@ -1,11 +1,9 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_content_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_alert_dialog/gs_alert_dialog_style.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 import 'gs_show_alert_dailog.dart';
-
 
 class GSAlertDialog extends StatefulWidget {
   final GSAlertDialogContent content;
@@ -92,7 +90,7 @@ class _GSAlertDialogState extends State<GSAlertDialog> {
     final EdgeInsets effectivePadding = MediaQuery.viewInsetsOf(context) +
         (widget.insetPadding ?? EdgeInsets.zero);
     final alertSize = widget.size?.toGSSize ?? alertDialogStyle.props?.size;
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [alertDialogStyle, alertDialogStyle.sizeMap(alertSize)],
       inlineStyle: widget.style,

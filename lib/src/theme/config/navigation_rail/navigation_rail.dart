@@ -1,33 +1,17 @@
 const Map<String, dynamic> navigationRailData = {
   'color': '\$purple300',
-  'bg': '\$backgroundLight0',
-  '_dark': {
-    'bg': '\$backgroundLight800',
-    'color': '\$purple300',
-  },
+  'bg': '\$background0',
   "_selectedIcon": {
-    "color": "\$textLight900",
-    "_dark": {
-      "color": "\$textLight900",
-    }
+    "color": "\$text900",
   },
   "_unselectedIcon": {
-    "color": "\$textLight900",
-    "_dark": {
-      "color": "\$textDark50",
-    }
+    "color": "\$text900",
   },
   "_selectedLabelText": {
     "color": "\$purple300",
-    "_dark": {
-      "color": "\$purple300",
-    }
   },
   "_unselectedLabelText": {
-    "color": "\$textLight900",
-    "_dark": {
-      "color": "\$textDark50",
-    }
+    "color": "\$text900",
   },
   "variants": {
     "size": {

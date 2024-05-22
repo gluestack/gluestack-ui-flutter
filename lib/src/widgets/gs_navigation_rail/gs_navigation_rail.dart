@@ -70,7 +70,7 @@ class GSNavigationRail extends StatefulWidget {
 
   final Color? backgroundColor;
   final GSStyle? style;
-  final GSSizes? size;
+  final GSNavigationRailSizes? size;
   final bool extended;
   final Widget? leading;
   final Widget? trailing;
@@ -168,53 +168,59 @@ class _GSNavigationRailState extends State<GSNavigationRail>
   Widget build(BuildContext context) {
     final textSize = widget.size ?? gsNavigationRailStyle.props?.size;
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gsNavigationRailStyle,
-        gsNavigationRailStyle.sizeMap(textSize),
+        gsNavigationRailStyle.sizeMap(textSize?.toGSSize),
       ],
       inlineStyle: widget.style,
       isFirst: true,
     );
 
-    GSStyle selectedLabelStyler = resolveStyles(
+    GSConfigStyle selectedLabelStyler = resolveStyles(
       context: context,
       styles: [
         gsNavigationRailSelectedLabelTextStyle,
-        gsNavigationRailSelectedLabelTextStyle.sizeMap(textSize),
+        gsNavigationRailSelectedLabelTextStyle.sizeMap(textSize?.toGSSize),
       ],
       inlineStyle: widget.style,
       isFirst: true,
     );
 
-    GSStyle unselectedLabelStyler = resolveStyles(
+    GSConfigStyle unselectedLabelStyler = resolveStyles(
       context: context,
       styles: [
         gsNavigationRailUnselectedLabelTextStyle,
-        gsNavigationRailUnselectedLabelTextStyle.sizeMap(textSize),
+        gsNavigationRailUnselectedLabelTextStyle.sizeMap(textSize?.toGSSize),
       ],
       inlineStyle: widget.style,
       isFirst: true,
     );
 
-    final Color? backgroundColor = widget.backgroundColor ?? styler.bg;
-    Color? indicatorColor = widget.indicatorColor ?? styler.color;
+    final Color? backgroundColor =
+        widget.backgroundColor ?? styler.bg?.getColor(context);
+    Color? indicatorColor =
+        widget.indicatorColor ?? styler.color?.getColor(context);
 
     final double minWidth = widget.minWidth ?? 100;
     final double minExtendedWidth = widget.minExtendedWidth ?? 30;
-    final TextStyle? unselectedLabelTextStyle =
-        widget.unselectedLabelTextStyle ?? unselectedLabelStyler.textStyle;
+    final TextStyle unselectedLabelTextStyle = widget
+            .unselectedLabelTextStyle ??
+        unselectedLabelStyler.textStyle!
+            .copyWith(color: unselectedLabelStyler.color?.getColor(context));
 
-    final TextStyle? selectedLabelTextStyle =
-        widget.selectedLabelTextStyle ?? selectedLabelStyler.textStyle;
+    final TextStyle selectedLabelTextStyle = widget.selectedLabelTextStyle ??
+        selectedLabelStyler.textStyle!
+            .copyWith(color: selectedLabelStyler.color?.getColor(context));
+
     final IconThemeData unselectedIconTheme = widget.unselectedIconTheme ??
         IconThemeData(
-          color: styler.iconColor,
+          color: styler.iconColor?.getColor(context),
         );
     final IconThemeData selectedIconTheme = widget.selectedIconTheme ??
         IconThemeData(
-          color: styler.iconColor,
+          color: styler.iconColor?.getColor(context),
         );
     final double groupAlignment = widget.groupAlignment ?? 0.0;
     final GSNavigationRailLabelType labelType =
@@ -263,8 +269,8 @@ class _GSNavigationRailState extends State<GSNavigationRail>
                                 ? selectedIconTheme
                                 : unselectedIconTheme,
                             labelTextStyle: widget.selectedIndex == i
-                                ? selectedLabelTextStyle!
-                                : unselectedLabelTextStyle!,
+                                ? selectedLabelTextStyle
+                                : unselectedLabelTextStyle,
                             padding: widget.destinations[i].padding,
                             useIndicator: useIndicator,
                             indicatorColor:
@@ -849,6 +855,7 @@ class _StatusTransitionWidgetBuilder extends StatusTransitionWidget {
   const _StatusTransitionWidgetBuilder({
     required super.animation,
     required this.builder,
+    // ignore: unused_element
     this.child,
   });
 

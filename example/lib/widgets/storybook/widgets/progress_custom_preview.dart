@@ -29,8 +29,7 @@ class ProgressCustomPreview extends StatelessWidget {
                   GSProgress(
                     value: 0.55,
                     style: GSStyle(
-                        progressValueColor: $GSColors.green500,
-                        bg: $GSColors.green50),
+                        color: $GSColors.green500, bg: $GSColors.green50),
                   ),
                   const SizedBox(
                     height: 5,
