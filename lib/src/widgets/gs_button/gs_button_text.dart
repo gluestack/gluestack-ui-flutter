@@ -1,4 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_button/gs_button_text_style.dart';
 
@@ -30,7 +30,7 @@ class GSButtonText extends StatelessWidget {
 
     return GSText(
       text: text,
-      style: styler,
+      style: GSStyle.fromGSConfigStyle(styler, context),
     );
   }
 }

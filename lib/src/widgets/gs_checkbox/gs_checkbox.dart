@@ -3,7 +3,6 @@ import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/utils/resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_checkbox/gs_checkbox_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_form_control/gs_form_provider.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 
 class GSCheckBox extends StatefulWidget {
   final GSCheckBoxSizes? size;

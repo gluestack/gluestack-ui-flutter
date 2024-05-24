@@ -5,7 +5,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_modal_bottom_sheet/gs_modal_bottom_sheet_style.dart';
 
 const double _defaultScrollControlDisabledMaxHeightRatio = 9.0 / 16.0;
@@ -31,7 +30,7 @@ class GSModalBottomSheet {
   static Future<T?> showModalBottomSheet<T>({
     required BuildContext context,
     required WidgetBuilder builder,
-    GSStyle? style,
+    GSConfigStyle? style,
     Color? backgroundColor,
     String? barrierLabel,
     BoxShape? shape,
@@ -66,7 +65,7 @@ class GSModalBottomSheet {
       barrierLabel: barrierLabel ?? " ",
       backgroundColor: backgroundColor,
       shape: shape,
-      style: style,
+      style: style != null ? GSStyle.fromGSConfigStyle(style, context) : null,
       borderRadius: borderRadius,
       boxShadow: boxShadow,
       clipBehavior: clipBehavior,
@@ -745,7 +744,7 @@ class _BottomSheetState extends State<BottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
         gsModalBottomSheetStyle,
@@ -755,7 +754,7 @@ class _BottomSheetState extends State<BottomSheet> {
     );
 
     final BoxConstraints? constraints = widget.constraints;
-    final Color? color = widget.backgroundColor ?? styler.bg;
+    final Color? color = widget.backgroundColor ?? styler.bg?.getColor(context);
     final BoxShape shape = widget.shape ?? BoxShape.rectangle;
 
     final borderRadius =

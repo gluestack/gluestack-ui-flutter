@@ -1,6 +1,7 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_icon_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_fab/gs_fab_provider.dart';
 
 class GSFabIcon extends StatelessWidget {
   final IconData icon;
@@ -13,22 +14,22 @@ class GSFabIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ancestorStyles = GSAncestorProvider.of(context)
-        ?.decedentStyles?[gsfabIconConfig.ancestorStyle.first];
+    final ancestorStyles = GSFabProvider.of(context)
+        ?.descendantStyles?[gsfabIconConfig.ancestorStyle.first];
 
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [
-        fabIconStyle.merge(ancestorStyles),
-        fabIconStyle.sizeMap(ancestorStyles?.props?.size)
+        fabIconStyle,
+        fabIconStyle.sizeMap(ancestorStyles?.props?.size),
+        ancestorStyles,
       ],
       inlineStyle: style,
-      isFirst: true,
     );
 
     return Icon(
       icon,
-      color: styler.color,
+      color: styler.color?.getColor(context),
       size: styler.height,
     );
   }

@@ -1,3 +1,4 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 
-final iconStyle = GSStyle.fromMap(data: getIt<GluestackCustomConfig>().icon);
+final iconStyle =
+    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().icon);

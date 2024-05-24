@@ -1,14 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'package:gluestack_ui_example/providers/theme_provider/theme_provider.dart';
-
+import 'package:gluestack_ui_example/routes/router.dart';
 import 'widgets/components/layout/custom_gs_layout.dart';
 import 'widgets/components/layout/nav_button.dart';
 // import 'package:gluestack_ui_example/widgets/storybook_widgets/public.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final Function updaterFunc;
+  const HomePage({super.key, required this.updaterFunc});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -208,11 +210,12 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Consumer(
         builder: (context, ref, child) {
           return FloatingActionButton(
-            onPressed: ref.read(toggleThemeProvider.notifier).toggleThemeMode,
-            child: Icon(
-              GSTheme.of(context).brightness == Brightness.dark
-                  ? Icons.light_mode
-                  : Icons.dark_mode,
+            onPressed: () {
+              final keyList = gSThemes.keys.toList();
+              updaterFunc(keyList[Random().nextInt(keyList.length)]);
+            },
+            child: const Icon(
+              Icons.shuffle,
             ),
           );
         },

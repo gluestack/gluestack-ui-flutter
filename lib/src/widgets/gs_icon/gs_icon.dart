@@ -1,6 +1,5 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_icon/gs_icon_style.dart';
 
 /// A widget for displaying icons with enhanced styling and customization capabilities.
@@ -14,7 +13,7 @@ class GSIcon extends StatelessWidget {
   /// The size of the icon. Utilizes predefined [GSIconSizes] for consistent sizing.
   final GSIconSizes? size;
 
-  /// Custom [GSStyle] to apply to the icon. This allows for further customization
+  /// Custom [GSConfigStyle] to apply to the icon. This allows for further customization
   /// of the icon's appearance.
   final GSStyle? style;
 
@@ -64,7 +63,7 @@ class GSIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final iconSize = size?.toGSSize ?? iconStyle.props?.size;
-    GSStyle styler = resolveStyles(
+    GSConfigStyle styler = resolveStyles(
         context: context,
         styles: [
           iconStyle,
@@ -75,7 +74,7 @@ class GSIcon extends StatelessWidget {
     return Icon(
       icon,
       size: styler.width ?? styler.height,
-      color: styler.color,
+      color: styler.color?.getColor(context),
       fill: fill,
       grade: grade,
       opticalSize: opticalSize,

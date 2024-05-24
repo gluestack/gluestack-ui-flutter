@@ -14,10 +14,10 @@ class GluestackProvider extends StatelessWidget {
   })  : gluestackTokenConfig = gluestackTokenConfig ?? GluestackTokenConfig(),
         gluestackCustomConfig =
             gluestackCustomConfig ?? GluestackCustomConfig() {
-    if (!getIt.isRegistered<GluestackCustomConfig>()) {
-      getIt
-          .registerSingleton<GluestackCustomConfig>(this.gluestackCustomConfig);
-    }
+    registerSingletonIfNotRegistered<GluestackCustomConfig>(
+        this.gluestackCustomConfig);
+    registerSingletonIfNotRegistered<GluestackTokenConfig>(
+        this.gluestackTokenConfig);
   }
 
   @override
@@ -92,6 +92,7 @@ class GluestackCustomConfig {
   Map<String, dynamic>? pressable;
   //progress
   Map<String, dynamic>? progress;
+  Map<String, dynamic>? progressFilledTrack;
   //radio
   Map<String, dynamic>? radioIcon;
   Map<String, dynamic>? radioIndicator;
@@ -190,6 +191,7 @@ class GluestackCustomConfig {
 
     //progress
     this.progress,
+    this.progressFilledTrack,
 
     //pressable
     this.pressable,
@@ -342,6 +344,8 @@ class GluestackCustomConfig {
 
     //progress
     progress = mergeConfigs(progressData, progress);
+    progressFilledTrack =
+        mergeConfigs(progressFilledTrackData, progressFilledTrack);
 
     //pressable
     pressable = mergeConfigs(pressableData, pressable);
@@ -446,6 +450,7 @@ class GluestackTokenConfig {
   GSColorsToken gsColorsToken;
   final GSScreenBreakpointToken gsScreenBreakpointToken;
   final GSFontFamilyToken gsFontFamilyToken;
+  final Map<String, dynamic> gsThemeToken;
 
   GluestackTokenConfig({
     this.gsBorderWidthToken = const GSBorderWidthToken(),
@@ -458,6 +463,7 @@ class GluestackTokenConfig {
     this.gsColorsToken = const GSColorsToken(),
     this.gsScreenBreakpointToken = const GSScreenBreakpointToken(),
     this.gsFontFamilyToken = const GSFontFamilyToken(),
+    this.gsThemeToken = const {},
   }) {
     if (gsColorsToken.primaryColorsFromBase != null) {
       gsColorsToken = gsColorsToken.copyWith(
@@ -534,6 +540,7 @@ class GluestackTokenConfig {
     registerSingletonIfNotRegistered<GSScreenBreakpointToken>(
         gsScreenBreakpointToken);
     registerSingletonIfNotRegistered<GSFontFamilyToken>(gsFontFamilyToken);
+    registerSingletonIfNotRegistered<Map<String, dynamic>>(gsThemeToken);
   }
 }
 

@@ -1,6 +1,5 @@
-import 'package:gluestack_ui/src/style/gs_style.dart';
+import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
-import 'package:gluestack_ui/src/utils/extension.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_switch/gs_switch_style.dart';
@@ -16,7 +15,7 @@ class GSSwitch extends StatefulWidget {
   /// of the switch as a parameter.
   final ValueChanged<bool>? onToggle;
 
-  /// Custom [GSStyle] to apply to the switch, enabling detailed customization of its
+  /// Custom [GSConfigStyle] to apply to the switch, enabling detailed customization of its
   /// appearance, including colors and dimensions.
   final GSStyle? style;
 
@@ -83,7 +82,7 @@ class GSCustomSwitchState extends State<GSSwitch> {
       shouldIgnorePointer: widget.isDisabled!,
       child: Builder(builder: (context) {
         // Resolve styles
-        GSStyle styler = resolveStyles(
+        GSConfigStyle styler = resolveStyles(
           context: context,
           styles: [switchStyle, switchStyle.sizeMap(widget.size?.toGSSize)],
           inlineStyle: widget.style,
@@ -117,10 +116,12 @@ class GSCustomSwitchState extends State<GSSwitch> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(99),
                         color: _value
-                            ? styler.checked?.trackColorTrue ??
-                                styler.trackColorTrue ??
+                            ? styler.checked?.trackColorTrue
+                                    ?.getColor(context) ??
+                                styler.trackColorTrue?.getColor(context) ??
                                 $GSColors.primary600
-                            : styler.trackColorFalse ?? $GSColors.blueGray400,
+                            : styler.trackColorFalse?.getColor(context) ??
+                                $GSColors.blueGray400,
                       ),
                     ),
                     AnimatedPositioned(
@@ -136,10 +137,12 @@ class GSCustomSwitchState extends State<GSSwitch> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: _value
-                              ? styler.checked?.activeThumbColor ??
-                                  styler.activeThumbColor ??
+                              ? styler.checked?.activeThumbColor
+                                      ?.getColor(context) ??
+                                  styler.activeThumbColor?.getColor(context) ??
                                   $GSColors.primary400
-                              : styler.thumbColor ?? $GSColors.blueGray400,
+                              : styler.thumbColor?.getColor(context) ??
+                                  $GSColors.blueGray400,
                           boxShadow: [
                             BoxShadow(
                               color: $GSColors.black.withOpacity(0.1),

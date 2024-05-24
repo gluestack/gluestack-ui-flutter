@@ -238,9 +238,11 @@ class _GSAppState extends State<GSApp> {
     final data = () {
       late GSThemeData result;
       if (usedarkStyle) {
-        result = widget.darkTheme ?? widget.theme ?? GSThemeData();
+        result = widget.darkTheme ??
+            widget.theme ??
+            GSThemeData.fromTheme('light_theme');
       } else {
-        result = widget.theme ?? GSThemeData();
+        result = widget.theme ?? GSThemeData.fromTheme('light_theme');
       }
       return result;
     }();
