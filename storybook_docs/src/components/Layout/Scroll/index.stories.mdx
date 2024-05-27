@@ -1,11 +1,11 @@
 ---
 title: GSScrollView | gluestack-ui | Installation, Usage, and API
 
-description: The `GSScrollView` widget is a scrollable list of widgets arranged linearly, extending the `BoxScrollView` class. It offers flexibility in creating various types of list layouts, such as fixed or variable item extents, or layouts based on a prototype item's size.
+description: The GSScrollView widget is a scrollable list of widgets arranged linearly, extending the BoxScrollView class. It offers flexibility in creating various types of list layouts, such as fixed or variable item extents, or layouts based on a prototype item's size.
 
 pageTitle: GSScrollView
 
-pageDescription: The `GSScrollView` widget is a scrollable list of widgets arranged linearly, extending the `BoxScrollView` class. It offers flexibility in creating various types of list layouts, such as fixed or variable item extents, or layouts based on a prototype item's size.
+pageDescription: The GSScrollView widget is a scrollable list of widgets arranged linearly, extending the BoxScrollView class. It offers flexibility in creating various types of list layouts, such as fixed or variable item extents, or layouts based on a prototype item's size.
 
 showHeader: true
 ---
@@ -108,21 +108,21 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 - **clipBehavior**: `Clip`
   - How to clip the contents of the scroll view. Defaults to `Clip.hardEdge`.
 
-### Item Sizing Strategies
+## Item Sizing Strategies
 
-#### Fixed Extent
+### Fixed Extent
 
 Use the `itemExtent` parameter to create a list where each item has a fixed height or width.
 
-#### Varied Extent
+### Varied Extent
 
 Use the `itemExtentBuilder` parameter to create a list where each item can have a different height or width.
 
-#### Prototype Item
+### Prototype Item
 
 Use the `prototypeItem` parameter to create a list where item sizes are estimated based on a prototype item's size.
 
-#### Default
+### Default
 
 If none of the above strategies are provided, the list defaults to using `SliverList`.
 
