@@ -1,0 +1,116 @@
+---
+title: GSIconButton | gluestack-ui  | Installation, Usage, and API
+
+description: The `GSIconButton` widget is a versatile icon button component in the `gluestack_ui` package. It allows the creation of buttons with icon content, supporting various interactions such as taps, long presses, and double taps. This widget provides a customizable and accessible button that can be used in various parts of a Flutter application.
+
+pageTitle: GSIconButton
+
+pageDescription: The `GSIconButton` widget is a versatile icon button component in the `gluestack_ui` package. It allows the creation of buttons with icon content, supporting various interactions such as taps, long presses, and double taps. This widget provides a customizable and accessible button that can be used in various parts of a Flutter application.
+
+showHeader: true
+---
+
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { env } from "process";
+
+import IframeModule from "../../../IframeModule";
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from "@gluestack/design-system";
+
+<Meta title="Components/Forms/IconButton" />
+
+This is an illustration of a **Themed IconButton** widget with default configuration.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "icon-button-preview"}
+  title="Example"
+  height="667px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSIconButton(
+        size: GSIconButtonSizes.\$md,
+        style: GSStyle(borderRadius: 99, bg: const Color(0xff00aaff)),
+        icon: GSIcon(
+              icon: Icons.add_a_photo,
+              style: GSStyle(color: const Color(0xffffffff)),
+          ),
+          onPressed: () {
+              print('Icon Button Pressed!');
+          },
+      ),
+
+`}
+/>
+
+<br />
+
+## Features
+
+- **Icon Display**: Easily integrate any icon within the button.
+- **Multiple Interaction Support**: Handle taps, long presses, and double taps with dedicated callbacks.
+- **Accessibility**: Provide semantic labels for screen readers to improve accessibility.
+- **Customizable Appearance**: Use the `GSStyle` parameter to customize the button's appearance.
+- **Predefined Sizes**: Choose from a set of predefined sizes for consistent button dimensions.
+
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+This section provides a comprehensive reference list for the widget parameters, detailing descriptions, properties, types, and default behavior for easy project integration.
+
+- **icon**: `GSIcon` (required)
+  - The icon to display within the button.
+- **onPressed**: `VoidCallback` (required)
+  - The callback that is called when the button is tapped.
+- **onLongPress**: `VoidCallback?`
+  - The callback that is called when the button is long-pressed.
+- **onDoubleTap**: `GestureDoubleTapCallback?`
+  - The callback that is called when the button is double-tapped.
+- **semanticsLabel**: `String?`
+  - An optional semantic label for the button, used by screen readers.
+- **size**: `GSIconButtonSizes?`
+  - The size of the icon button, affecting its overall dimensions. Default is `GSIconButtonSizes.$md`.
+- **style**: `GSStyle?`
+  - Custom `GSConfigStyle` to apply to the button, enabling detailed customization of its appearance.
+
+
+#### Predefined Sizes
+
+The `GSIconButtonSizes` enum provides a set of predefined sizes for the icon button:
+
+- `$xs`
+- `$sm`
+- `$md`
+- `$lg`
+
+These sizes ensure a consistent set of dimensions for the icon buttons across the application.
+
+#### Accessibility
+
+We have outlined the various features that ensure the GSIconButton widget is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards.Adheres to the [WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/).
+
+#### Keyboard
+
+- `Tab`: Moves focus to the next focusable widget.
+- `Shift + Tab`: Moves focus to the previous focusable widget.
+- `Enter` or `Space`: Triggers the button's action.
+
+#### Screen Reader
+
+- VoiceOver: When the button is focused, the screen reader will announce the button's label and its current state.

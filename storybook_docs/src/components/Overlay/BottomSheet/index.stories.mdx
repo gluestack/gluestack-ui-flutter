@@ -1,0 +1,131 @@
+---
+title: GSModalBottomSheet | gluestack-ui | Installation, Usage, and API
+
+description: `GSModalBottomSheet` presents a modal bottom sheet which slides up from the bottom of the screen to display content that requires user interaction or additional information. It offers a variety of customization options and is commonly used for tasks such as displaying contextual actions, filtering options, or user input forms.
+
+pageTitle: GSModalBottomSheet
+
+pageDescription: `GSModalBottomSheet` presents a modal bottom sheet which slides up from the bottom of the screen to display content that requires user interaction or additional information. It offers a variety of customization options and is commonly used for tasks such as displaying contextual actions, filtering options, or user input forms.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from "@gluestack/design-system";
+
+<Meta title="Components/Overlay/BottomSheet" />
+
+This is an illustration of a **Themed GSModalBottomSheet** widget with default configuration.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "modal_bottom_sheet-preview"}
+  title="Example"
+  height="1087px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSButton(
+      size: GSButtonSizes.\$lg,
+      child: const GSButtonText(text: "Open Bottom Sheet"),
+      onPressed: () {
+        GSModalBottomSheet.showModalBottomSheet<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return SizedBox(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const GSText(text: "MODAL BOTTOM SHEET"),
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    GSButton(
+                      variant: GSButtonVariants.outline,
+                      size: GSButtonSizes.\$md,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const GSButtonText(text: "Close"),
+                    )
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    ),
+
+`}
+/>
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+##API
+
+- `showModalBottomSheet`: This static method is used to show the modal bottom sheet. It requires a `BuildContext` and a `WidgetBuilder` which returns the content to be displayed within the bottom sheet. It also accepts various optional parameters for customization such as style, background color, shape, clip behavior, constraints, and more.
+
+### Widget Parameters
+
+- `context`: A required parameter of type `BuildContext` which is used to access the context within which the bottom sheet is displayed.
+
+- `builder`: A required parameter of type `WidgetBuilder` which is a callback function responsible for building the content of the bottom sheet.
+
+- `style`: An optional parameter of type `GSConfigStyle` which allows you to define custom styles for the bottom sheet, such as text color, font size, etc.
+
+- `backgroundColor`: An optional parameter of type `Color` which defines the background color of the bottom sheet.
+
+- `barrierLabel`: An optional parameter of type `String` which provides a description for the modal barrier, used for accessibility purposes.
+
+- `shape`: An optional parameter of type `BoxShape` which defines the shape of the bottom sheet, such as rounded corners or a circular shape.
+
+- `borderRadius`: An optional parameter of type `GSBorderRadius` which defines the border radius of the bottom sheet, allowing you to customize the roundedness of the corners.
+
+- `boxShadow`: An optional parameter of type `List<BoxShadow>` which allows you to add drop shadows to the bottom sheet for visual depth.
+
+- `clipBehavior`: An optional parameter of type `Clip` which defines how the content of the bottom sheet is clipped, such as whether it should be clipped to its bounding box.
+
+- `constraints`: An optional parameter of type `BoxConstraints` which allows you to define constraints for the size of the bottom sheet.
+
+- `barrierColor`: An optional parameter of type `Color` which defines the color of the modal barrier behind the bottom sheet.
+
+- `isScrollControlled`: An optional parameter of type `bool` which specifies whether the bottom sheet should be scrollable when its content exceeds the available space.
+
+- `scrollControlDisabledMaxHeightRatio`: An optional parameter of type `double` which defines the maximum height ratio at which scrolling is disabled for the bottom sheet.
+
+- `useRootNavigator`: An optional parameter of type `bool` which specifies whether to use the root navigator when showing the bottom sheet.
+
+- `isDismissible`: An optional parameter of type `bool` which specifies whether the bottom sheet can be dismissed by tapping on the modal barrier.
+
+- `enableDrag`: An optional parameter of type `bool` which specifies whether the bottom sheet can be dragged up and down by the user.
+
+- `showDragHandle`: An optional parameter of type `bool` which specifies whether to display a drag handle for the bottom sheet, allowing users to easily drag it.
+
+- `useSafeArea`: An optional parameter of type `bool` which specifies whether to use the safe area of the screen for displaying the bottom sheet, ensuring it is not obscured by system UI elements.
+
+- `routeSettings`: An optional parameter of type `RouteSettings` which allows you to specify additional settings for the bottom sheet route, such as the name and arguments.
+
+- `transitionAnimationController`: An optional parameter of type `AnimationController` which allows you to specify a custom animation controller for controlling the transition animation of the bottom sheet.
+
+- `anchorPoint`: An optional parameter of type `Offset` which allows you to specify the anchor point for the bottom sheet, determining the point from which it slides up.

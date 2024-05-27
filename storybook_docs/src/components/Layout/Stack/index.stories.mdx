@@ -1,0 +1,107 @@
+---
+title: GSStack | gluestack-ui | Installation, Usage, and API
+
+description: The `GSStack` widget  allows for layering and positioning its children relative to the edges of its box. It provides control over how the children are aligned, sized, and clipped, making it ideal for creating complex layouts with overlapping elements.
+
+pageTitle: GSStack
+
+pageDescription: The `GSStack` widget  allows for layering and positioning its children relative to the edges of its box. It provides control over how the children are aligned, sized, and clipped, making it ideal for creating complex layouts with overlapping elements.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from "@gluestack/design-system";
+
+<Meta title="Components/Layout/Stack" />
+
+This is an illustration of a **GSStack** widget with default configuration.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "stack-preview"}
+  title="Example"
+  height="749px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSStack(
+        alignment: Alignment.center,
+        children: [
+            Container(
+              width: 150,
+              height: 150,
+              color: Colors.red,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.blue,
+            ),
+        ],
+    )
+
+`}
+/>
+
+<br />
+
+## Features
+
+- **Flexible Alignment**: Align children relative to each other and to the stack using various alignment options.
+- **Text Direction Support**: Control the directionality of the text and `AlignmentDirectional` alignments within the stack.
+- **Size Control**: Determine how the children should be sized relative to the stack.
+- **Clipping Behavior**: Define how to handle children that overflow the stack's bounds.
+- **Layered Layouts**: Layer widgets on top of each other, allowing for complex and dynamic UI designs.
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Parameters
+
+- **alignment**: `AlignmentGeometry`
+  - How the children are aligned relative to each other and to the `GSStack`. Defaults to `AlignmentDirectional.topStart`.
+- **textDirection**: `TextDirection?`
+  - The directionality of the text and `AlignmentDirectional` alignments within the stack. If not provided, the ambient `Directionality` is used.
+- **fit**: `StackFit`
+  - How the children should be sized relative to the `GSStack`. Defaults to `StackFit.loose`, allowing children to render to their intrinsic size.
+- **clipBehavior**: `Clip`
+  - The way to handle children that overflow the stack's bounds. Defaults to `Clip.hardEdge`, clipping children to the stack's bounding box.
+- **children**: `List<Widget>` (required)
+  - The list of widgets to lay out within the stack. These widgets are layered in the order they appear in the list, with the first widget at the bottom and the last widget at the top.
+
+## Alignment Options
+
+- **AlignmentDirectional.topStart**: Aligns children to the top start corner of the stack.
+- **Alignment.center**: Aligns children to the center of the stack.
+- **Alignment.bottomEnd**: Aligns children to the bottom end corner of the stack.
+
+## Size Control Options
+
+- **StackFit.loose**: Children are allowed to render to their intrinsic size.
+- **StackFit.expand**: Children are forced to fill the stack.
+- **StackFit.passthrough**: Children are given unlimited constraints.
+
+## Clipping Behavior Options
+
+- **Clip.none**: No clipping is applied to the children.
+- **Clip.hardEdge**: Children are clipped to the stack's bounding box.
+- **Clip.antiAlias**: Children are clipped with anti-aliasing.
+- **Clip.antiAliasWithSaveLayer**: Children are clipped with anti-aliasing and layers are saved for better rendering quality.
+
+Refer to flutter's [Stack widget](https://api.flutter.dev/flutter/widgets/Stack-class.html) for further information.
