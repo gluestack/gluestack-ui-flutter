@@ -41,6 +41,7 @@ class _MyAppState extends State<MyApp> {
           return GSTheme(
             data: GSThemeData.fromTheme('light_theme'),
             child: GSApp.router(
+              title: 'Gluestack-ui Flutter Examples',
               debugShowCheckedModeBanner: false,
               color: $GSColors.primary500,
               routerConfig: ree((String newTheme) {
