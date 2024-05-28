@@ -11,6 +11,7 @@ class PressableWithStatesPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Pressable',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Pressable',

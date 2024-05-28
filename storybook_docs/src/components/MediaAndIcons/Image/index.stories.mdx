@@ -10,7 +10,9 @@ pageDescription: With the GSImage widget, you can enhance the look and feel of y
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -19,30 +21,28 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Media And Icons/Image" />
 
 This is an illustration of a **Themed GSImage** widget with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/imagePreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "image-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  height="574px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSImage(
+      size: GSImageSizes.$md,
+      borderRadius: GSImageRadius.$full,
+      path: 'https://plus.unsplash.com/premium_photo-1697211174198-18da849f87c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTI2NTM4Mg&ixlib=rb-4.0.3&q=80&w=1080',
+      imageType: GSImageType.network,
+    )
 
-GSImage(
-  size: GSSizes.$md,
-  borderRadius: GSBorderRadius.$full,
-  path:
-      'https://plus.unsplash.com/premium_photo-1697211174198-18da849f87c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5OTI2NTM4Mg&ixlib=rb-4.0.3&q=80&w=1080',
-  imageType: GSImageType.network,
-)
-```
+`}
+/>
 
 <br />
 
@@ -52,7 +52,7 @@ GSImage(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -63,10 +63,6 @@ This section provides a comprehensive reference list for the widget parameters, 
 #### GSImage
 
 It inherits all the properties of Flutter's [Image](https://api.flutter.dev/flutter/widgets/Image-class.html) widget.
-
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
 
 ### Parameters
 
@@ -99,7 +95,7 @@ GSImage widget is created using Image widget from flutter. It extends all the pr
           </Table.TD>
           <Table.TD>
             <Table.TText>
-              {'2xs | xs | sm | md | lg | xl | 2xl | full'}
+              {"2xs | xs | sm | md | lg | xl | 2xl | full"}
             </Table.TText>
           </Table.TD>
           <Table.TD>

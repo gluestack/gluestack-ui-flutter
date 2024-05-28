@@ -10,34 +10,34 @@ pageDescription: If you're looking for a flexible widget to help with low-level 
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
-import { useRef, useEffect, useState } from 'react';
+import { Meta } from "@storybook/addon-docs";
+import { useRef, useEffect, useState } from "react";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 <Meta title="Components/Layout/Box" />
 
 This is an illustration of a **Themed GSBox** widget with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/boxPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "box-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  height="591px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSBox(
+      style: GSStyle(
+        padding: EdgeInsets.all($GSSpace.$5),
+        bg: $GSColors.primary500,
+      ),
+      child: const GSText(
+        text: 'This is the Box',
+      ),
+    )
 
-GSBox(
-  style: GSStyle(
-    padding: EdgeInsets.all($GSSpace.$5),
-    bg: $GSColors.primary500,
-  ),
-  child: const GSText(
-    text: 'This is the Box',
-  ),
-),
-
-```
+`}
+/>
 
 <br />
 
@@ -45,7 +45,7 @@ GSBox(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -57,6 +57,4 @@ This section provides a comprehensive reference list for the widget parameters, 
 
 It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
 
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
+<br />

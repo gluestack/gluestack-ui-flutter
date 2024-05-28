@@ -11,6 +11,7 @@ final class LinkStory extends StoryWidget {
         style: GSStyle(),
         url: 'https://www.gluestack.io/',
         text: const GSLinkText(text: 'Go to Gluestack'),
+        isExternal: true,
       ),
     );
   }

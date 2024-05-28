@@ -11,7 +11,7 @@ class ButtonGroupPreview extends StatelessWidget {
       GSBox(
         style: GSStyle(
           borderColor: $GSColors.warmGray500,
-          width: 600,
+          width: 400,
           height: 200,
           borderRadius: 8,
           borderWidth: 1.2,
@@ -21,7 +21,7 @@ class ButtonGroupPreview extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             GSBox(
-              style: GSStyle(width: 300),
+              style: GSStyle(width: 170),
               child: const GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,

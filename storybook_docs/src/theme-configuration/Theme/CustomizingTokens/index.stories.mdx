@@ -1,0 +1,155 @@
+---
+title: Customizing Tokens
+description: Customizing the Tokens in gluestack-ui-flutter involves defining a theme configuration and applying it using GluestackProvider, enabling you to style your application's visual elements according to your design preferences.
+showHeader: true
+---
+
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { AppProvider, CodePreview, Text } from "@gluestack/design-system";
+
+<Meta title="Theme Configuration/Theme/Customizing Tokens" />
+
+`gluestack-ui-flutter` is intentionally designed as an optionally styled library, providing you with the flexibility to style your widgets as you prefer. For users looking for a seamless integration experience, we offer the `@gluestack-ui-flutter/lib/src/theme/config`, which comes with pre-configured theme that can easily be integrated within your app for a convenient styling solution.
+
+## Customizing Tokens
+
+Customizing tokens allows you to tailor the core design elements of the `gluestack-ui-flutter` library to match your project's unique visual identity. To customize tokens, follow these steps:
+
+1. **Installation**: Run following command to install `gluestack-ui-flutter`.
+
+```
+flutter pub add gluestack_ui
+```
+
+**OR**
+
+Add the package to your dependencies:
+
+```
+dependencies:
+  gluestack_ui: ^0.1.0-beta.2
+
+```
+
+2. **Update Tokens**: go to `main.dart` file. Update the tokens as per your requirements.
+
+```
+
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+GluestackProvider(
+  gluestackTokenConfig: GluestackTokenConfig(
+    gsColorsToken: const GSColorsToken(
+
+    ),
+    // More token configurations....
+  ),
+  child: GSApp.router(
+    // ....
+  ),
+)
+
+
+```
+
+3. **Apply Config**: Apply the config to the `GluestackProvider` as shown below for `gsColorToken`.
+
+```
+
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+void main() {
+  runApp(
+    GluestackProvider(
+    gluestackTokenConfig: GluestackTokenConfig(
+      gsColorsToken: const GSColorsToken(
+        primary0: 'Colors.yellow',
+        primary50: 'Colors.red',
+        primary100: 'Colors.orange',
+        primary200: 'Colors.blue',
+        primary300: 'Colors.green',
+        primary400: 'Colors.purple',
+        primary500: 'Colors.red',
+        primary600: 'Colors.orange',
+        primary700: Colors.pink,
+
+      ),
+      // More token configurations....
+    ),
+    child: GSApp.router(
+      {/* Your app code */}
+      // ...
+    ),
+  ),
+  );
+}
+
+
+```
+
+You can customize all the tokens of the theme in `GluestackTokenConfig`. For a complete list of tokens and default values, please check [default Tokens](https://github.com/gluestack/gluestack-ui-flutter/tree/main/lib/src/token).
+
+By utilizing this approach, you can seamlessly modify the primary color tokens of the theme while maintaining the overall theme configuration intact.
+
+## Customizing Widgets
+
+Customizing widgets allows you to fine-tune the appearance and behavior of individual UI widget within the `gluestack-ui-flutter`. To customize widgets, follow these steps:
+
+1. **Installation**: Run following command to install `gluestack-ui-flutter`.
+
+```
+flutter pub add gluestack_ui
+```
+
+**OR**
+
+Add the package to your dependencies:
+
+```
+dependencies:
+  gluestack_ui: ^0.1.0-beta.2
+
+```
+
+2. **Update Tokens**: We have build the widgets from Figma config file. In case you want to customise the default values provided by the package for individual widgets, you can specify your own configuration for the widgets.
+
+   > NOTE: Format of the configuration must be same as the own used by Gluestack internally. For example, for button please refer to the default config file for GSButton.
+
+3. **Apply Config**: Apply the config to the `GluestackUIProvider`Below example provides custom configuration for GSButton widget..
+
+```
+
+// Example of button configuration.
+
+
+const Map<String, dynamic> customButtonConfig = {
+  ...
+  '_dark': {
+    'bg': '\$primary400',
+    'borderColor': '\$primary700',
+    ':hover': {
+      'bg': '\$error300',
+      'borderColor': '\$primary400',
+    }
+  }
+  ...
+};
+
+
+GluestackProvider(
+  gluestackCustomConfig: GluestackCustomConfig(
+    button: customButtonConfig,
+    buttonText: customButtonTextConfig,
+    ...
+  ),
+  gluestackTokenConfig: GluestackTokenConfig(...),
+  child: GSApp.router(
+    ...
+  ),
+)
+
+
+```
+
+Feel free to explore this [article here](https://geekyants.com/en-gb/blog/introducing-gluestack-ui-for-flutter) in order to get a better understanding of working with gluestack-ui for flutter.

@@ -10,11 +10,15 @@ class ProgressColorsPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Progress',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Progress',
             builder: (context) => GSBox(
-              style: GSStyle(width: 300, height: 200),
+              style: GSStyle(
+                width: 200,
+                height: 120,
+              ),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

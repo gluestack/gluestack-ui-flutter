@@ -1,0 +1,143 @@
+---
+title: GSStepper | gluestack-ui | Installation, Usage, and API
+
+description: The GSStepper widget is a customizable step indicator for Flutter, enabling users to guide through a series of steps in a structured manner. This widget can be used to create step-based forms, processes, or tutorials with various styles and configurations.
+
+pageTitle: GSStepper
+
+pageDescription: The GSStepper widget is a customizable step indicator for Flutter, enabling users to guide through a series of steps in a structured manner. This widget can be used to create step-based forms, processes, or tutorials with various styles and configurations.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from "@gluestack/design-system";
+
+<Meta title="Components/Others/Stepper" />
+
+This is an illustration of a **Themed GSStepper** widget with default configuration.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "stepper-preview"}
+  title="Example"
+  height="851px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+    
+    //...
+    GSStepper(
+      currentStep: _index,
+      size: GSSizes.values[context.knobs
+          .options(label: 'Size', initial: 1, options: sizeOptions)],
+      onStepCancel: () {
+        if (_index > 0) {
+          setState(() {
+            _index -= 1;
+          });
+        }
+      },
+      onStepContinue: () {
+        if (_index <= 0) {
+          setState(() {
+            _index += 1;
+          });
+        }
+      },
+      onStepTapped: (int index) {
+        setState(() {
+          _index = index;
+        });
+      },
+      steps: <GSStep>[
+        GSStep(
+          title: const Text('Onboarding'),
+          content: Container(
+            alignment: Alignment.centerLeft,
+            child: const Text('Welcome!!'),
+          ),
+        ),
+        GSStep(
+          title: const Text('Project Setup'),
+          content: Container(
+            alignment: Alignment.centerLeft,
+            child: const Text('Setup the base project.'),
+          ),
+        ),
+        GSStep(
+          title: const Text('Code'),
+          content: Container(
+            alignment: Alignment.centerLeft,
+            child: const Text('Start your coding journey.'),
+          ),
+        ),
+      ],
+    );
+
+`}
+/>
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+
+### Properties
+
+- **steps**: `List<GSStep>` - The list of steps to be displayed.
+- **currentStep**: `int` - The index of the currently active step.
+- **onStepTapped**: `ValueChanged<int>?` - Callback when a step is tapped.
+- **onStepContinue**: `VoidCallback?` - Callback when the continue button is tapped.
+- **onStepCancel**: `VoidCallback?` - Callback when the cancel button is tapped.
+- **style**: `GSStyle?` - Custom style for the stepper.
+- **controller**: `ScrollController?` - Controller for the stepper scroll.
+- **physics**: `ScrollPhysics?` - Scroll physics for the stepper.
+- **controlsBuilder**: `ControlsStepperWidgetBuilder?` - Custom builder for control buttons.
+- **margin**: `EdgeInsetsGeometry?` - Custom margin for the stepper.
+- **connectorThickness**: `double?` - Thickness of the connector lines between steps.
+- **stepIconBuilder**: `StepIconBuilder?` - Builder for custom step icons.
+- **size**: `GSStepperSizes?` - Size configuration for the stepper.
+- **circleColor**: `Color?` - Color of the step circles.
+- **connectorLineColor**: `Color?` - Color of the connector lines.
+- **keepAllContentAlive**: `bool?` - Whether to keep all step contents alive or not.
+
+### GSStep Properties
+
+- **title**: `Widget` - The title of the step.
+- **subtitle**: `Widget?` - The subtitle of the step.
+- **content**: `Widget` - The content of the step.
+- **state**: `GSStepState` - The state of the step (indexed, editing, complete, disabled, inactive, error).
+- **isActive**: `bool` - Whether the step is active or not.
+- **label**: `Widget?` - Custom label for the step.
+
+### GSStepState Enum
+
+- **indexed**: Displays the step index.
+- **editing**: Displays a pencil icon.
+- **complete**: Displays a check mark.
+- **disabled**: Step is disabled.
+- **inactive**: Step is inactive.
+- **error**: Step has an error state.
+
+### ControlsStepperDetails
+
+- **currentStep**: `int` - The index of the currently active step.
+- **stepIndex**: `int` - The index of the step.
+- **onStepContinue**: `VoidCallback?` - Callback for the continue button.
+- **onStepCancel**: `VoidCallback?` - Callback for the cancel button.

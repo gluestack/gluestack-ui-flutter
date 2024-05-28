@@ -10,7 +10,9 @@ pageDescription: The Floating Action Button (FAB) is a dynamic button that stays
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -18,54 +20,47 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Others/Fab" />
 
 This is an illustration of a **Themed GSFab** widget with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/fabPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "fab-preview"}
   title="Example"
-  width="1000"
-  height="500"
-></iframe>
+  height="851px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSCenter(
+      child: Stack(
+        children: [
+          GSBox(
+            style: GSStyle(
+              height: 360,
+              width: 320,
+              borderRadius: $GSRadii.$md,
+              bg: $GSColors.backgroundLight50,
+              dark: GSStyle(color: $GSColors.backgroundDark900),
+            ),
+          ),
+          GSFab(
+            size: GSFABSizes.$md,
+            placement: GSFABPlacements.bottomRight,
+            onPressed: () {},
+            isDisabled: false,
+            isHovered: false,
+            isPressed: false,
+            icon: const GSFabIcon(icon: Icons.add),
+            label: const GSFabLabel(text: 'Quick Start'),
+          ),
+        ],
+      ),
+    )
 
-GSCenter(
-  child: Stack(
-    children: [
-      GSBox(
-        style: GSStyle(
-            height: 360,
-            width: 320,
-            borderRadius: $GSRadii.$md,
-            bg: $GSColors.backgroundLight50,
-            dark: GSStyle(color: $GSColors.backgroundDark900)),
-      ),
-      GSFab(
-        size: GSSizes.values[context.knobs.options(
-            label: 'Size', initial: 3, options: sizeOptions)],
-        placement: GSPlacements.values[context.knobs.options(
-            label: 'Placement',
-            initial: 5,
-            options: placementOptions)],
-        isHovered:
-            context.knobs.boolean(label: "isHovered", initial: false),
-        isDisabled: context.knobs
-            .boolean(label: "isDisabled", initial: false),
-        isPressed:
-            context.knobs.boolean(label: "isPressed", initial: false),
-        onPressed: () {},
-        icon: const GSFabIcon(icon: Icons.add),
-        label: const GSFabLabel(text: 'Quick Start'),
-      ),
-    ],
-  ),
-),
-```
+`}
+/>
 
 <br />
 
@@ -75,7 +70,7 @@ GSCenter(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -209,7 +204,7 @@ We have outlined the various features that ensure the GSFab widget is accessible
 
 - VoiceOver: When the fab is focused, the screen reader will announce the fab's label and its current state.
 
-### Props
+### Parameters
 
 GSFab widget is created using ElevatedButton widget from flutter. It extends all the properties supported by [Flutter ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html) and additionally the properties mentioned below.
 
@@ -276,10 +271,364 @@ The Examples section provides visual representations of the different variants o
 
 A GSFab widget with an icon adds a visually striking and easily recognizable button that triggers a specific action or function within a user interface.
 
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "fab-with-icon-preview"}
+  title="Example"
+  height="2103px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSCenter(
+      child: Stack(
+        children: [
+          GSBox(
+            style: GSStyle(
+              height: 360,
+              width: 320,
+              borderRadius: $GSRadii.$md,
+              bg: $GSColors.trueGray800,
+              padding: const EdgeInsets.all(20),
+            ),
+            child: GSVStack(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GSHStack(
+                  children: [
+                    GSAvatar(
+                      avatarImage: const GSImage(
+                        path: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+                        imageType: GSImageType.network,
+                      ),
+                      style: GSStyle(
+                        bg: Colors.orange,
+                        textStyle: const TextStyle(color: Colors.white),
+                      ),
+                      fallBackText: const GSAvatarFallBackText('Kevin James'),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const GSVStack(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GSHeading(text: 'Kevin James'),
+                        GSText(text: 'Tech Lead'),
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                GSHStack(
+                  children: [
+                    GSAvatar(
+                      avatarImage: const GSImage(
+                        path: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
+                        imageType: GSImageType.network,
+                      ),
+                      style: GSStyle(
+                        bg: Colors.orange,
+                        textStyle: const TextStyle(color: Colors.white),
+                      ),
+                      fallBackText: const GSAvatarFallBackText('Jacob Jones'),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const GSVStack(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GSHeading(text: 'Jacob Jones'),
+                        GSText(text: 'Manager'),
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                GSHStack(
+                  children: [
+                    GSAvatar(
+                      avatarImage: const GSImage(
+                        path: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
+                        imageType: GSImageType.network,
+                      ),
+                      style: GSStyle(
+                        bg: Colors.orange,
+                        textStyle: const TextStyle(color: Colors.white),
+                      ),
+                      fallBackText: const GSAvatarFallBackText('Albert Flores'),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const GSVStack(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GSHeading(text: 'Albert Flores'),
+                        GSText(text: 'HR'),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+          GSFab(
+            onPressed: () {},
+            icon: GSFabIcon(
+              icon: Icons.edit_square,
+              style: GSStyle(color: $GSColors.white),
+            ),
+          ),
+        ],
+      ),
+    )
+
+`}
+/>
+
 #### GSFab with Icon and Text
 
 A GSFab widget with an icon and text combines a visual icon with accompanying text to create a prominent and descriptive button that triggers a specific action or function within a user interface.
 
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "fab-with-icon-and-text-preview"}
+  title="Example"
+  height="2103px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSCenter(
+      child: Stack(
+        children: [
+          GSBox(
+            style: GSStyle(
+              height: 360,
+              width: 320,
+              borderRadius: $GSRadii.$md,
+              bg: $GSColors.trueGray800,
+              padding: const EdgeInsets.all(20),
+            ),
+            child: GSVStack(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GSHStack(
+                  children: [
+                    GSAvatar(
+                      avatarImage: const GSImage(
+                        path: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60',
+                        imageType: GSImageType.network,
+                      ),
+                      style: GSStyle(
+                        bg: Colors.orange,
+                        textStyle: const TextStyle(color: Colors.white),
+                      ),
+                      fallBackText: const GSAvatarFallBackText('Kevin James'),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const GSVStack(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GSHeading(text: 'Kevin James'),
+                        GSText(text: 'Tech Lead'),
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                GSHStack(
+                  children: [
+                    GSAvatar(
+                      avatarImage: const GSImage(
+                        path: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80',
+                        imageType: GSImageType.network,
+                      ),
+                      style: GSStyle(
+                        bg: Colors.orange,
+                        textStyle: const TextStyle(color: Colors.white),
+                      ),
+                      fallBackText: const GSAvatarFallBackText('Jacob Jones'),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const GSVStack(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GSHeading(text: 'Jacob Jones'),
+                        GSText(text: 'Manager'),
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                GSHStack(
+                  children: [
+                    GSAvatar(
+                      avatarImage: const GSImage(
+                        path: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
+                        imageType: GSImageType.network,
+                      ),
+                      style: GSStyle(
+                        bg: Colors.orange,
+                        textStyle: const TextStyle(color: Colors.white),
+                      ),
+                      fallBackText: const GSAvatarFallBackText('Albert Flores'),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const GSVStack(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GSHeading(text: 'Albert Flores'),
+                        GSText(text: 'HR'),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+          GSFab(
+            onPressed: () {},
+            icon: GSFabIcon(
+              icon: Icons.edit_square,
+              style: GSStyle(color: $GSColors.white),
+            ),
+          ),
+        ],
+      ),
+    )
+
+`}
+/>
+
 #### Placement
 
 A GSFab widget with placement options allows for flexible positioning of the button within a user interface, enabling convenient and intuitive access to key actions or functionalities in various locations.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "fab-placement-preview"}
+  title="Example"
+  height="2022px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSCenter(
+      child: Stack(
+        children: [
+          GSBox(
+            style: GSStyle(
+              height: 300,
+              width: 450,
+              borderRadius: $GSRadii.$md,
+              bg: $GSColors.trueGray800,
+              padding: const EdgeInsets.all(20),
+            ),
+            child: GSVStack(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GSCheckBox(
+                  icon: GSCheckBoxIndicator(
+                    style: GSStyle(
+                      margin: EdgeInsets.only(
+                        right: $GSSpace.$4,
+                        bottom: $GSSpace.$4,
+                      ),
+                    ),
+                    child: const GSCheckBoxIcon(),
+                  ),
+                  value: "Design",
+                  onChanged: (value) {},
+                  label: const GSVStack(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GSCheckBoxLabel(text: "Design"),
+                      GSText(
+                        text: 'Subscribe to updates from the Design Feed',
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                GSCheckBox(
+                  icon: GSCheckBoxIndicator(
+                    style: GSStyle(
+                      margin: EdgeInsets.only(
+                        right: $GSSpace.$4,
+                        bottom: $GSSpace.$4,
+                      ),
+                    ),
+                    child: const GSCheckBoxIcon(),
+                  ),
+                  value: "Marketing",
+                  onChanged: (value) {},
+                  label: const GSVStack(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GSCheckBoxLabel(text: "Marketing"),
+                      GSText(
+                        text: 'Subscribe to updates from the Marketing Feed',
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                GSCheckBox(
+                  icon: GSCheckBoxIndicator(
+                    style: GSStyle(
+                      margin: EdgeInsets.only(
+                        right: $GSSpace.$4,
+                        bottom: $GSSpace.$4,
+                      ),
+                    ),
+                    child: const GSCheckBoxIcon(),
+                  ),
+                  value: "Engineering",
+                  onChanged: (value) {},
+                  label: const GSVStack(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GSCheckBoxLabel(text: "Engineering"),
+                      GSText(
+                        text: 'Subscribe to updates from the Engineering Feed',
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          GSFab(
+            placement: GSPlacements.bottomCenter,
+            onPressed: () {},
+            icon: GSFabIcon(
+              icon: Icons.add,
+              style: GSStyle(color: $GSColors.white),
+            ),
+          ),
+        ],
+      ),
+    )
+
+`}
+/>
+
+<br />
