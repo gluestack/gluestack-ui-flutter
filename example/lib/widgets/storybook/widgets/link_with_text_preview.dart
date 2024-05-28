@@ -32,6 +32,7 @@ class LinkWithTextPreview extends StatelessWidget {
                       text: 'gluestack',
                       style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
                     ),
+                    isExternal: true,
                   ),
                 ],
               ),

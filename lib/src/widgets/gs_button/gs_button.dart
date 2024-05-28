@@ -105,39 +105,34 @@ class GSButton extends StatelessWidget {
 
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
-          child: GSButtonProvider(
-            action: buttonAction!,
-            variant: buttonVariant!,
-            size: buttonSize!,
-            child: Opacity(
-              opacity: disabled ? styler.opacity ?? 0.5 : 1,
-              child: Semantics(
-                label: semanticsLabel ?? 'Button',
-                button: true,
-                child: GsGestureDetector(
-                  onPressed: disabled ? null : onPressed,
-                  onDoubleTap: disabled ? null : onDoubleTap,
-                  onLongPress: disabled ? null : onLongPress,
-                  child: Container(
-                    height: freeSize ? null : styler.height,
-                    width: freeSize ? null : styler.width,
-                    clipBehavior: clipBehavior,
-                    padding: styler.padding,
-                    decoration: BoxDecoration(
-                      color: styler.bg?.getColor(context),
-                      borderRadius:
-                          BorderRadius.circular(styler.borderRadius ?? 0.0),
-                      border: Border.fromBorderSide(
-                          resolveBorderSide(buttonVariant, styler, isAttached)),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment
-                          .center, //TODO: give more control to end user
-                      children: [
-                        child,
-                      ],
-                    ),
+          child: Opacity(
+            opacity: disabled ? styler.opacity ?? 0.5 : 1,
+            child: Semantics(
+              label: semanticsLabel ?? 'Button',
+              button: true,
+              child: GsGestureDetector(
+                onPressed: disabled ? null : onPressed,
+                onDoubleTap: disabled ? null : onDoubleTap,
+                onLongPress: disabled ? null : onLongPress,
+                child: Container(
+                  height: freeSize ? null : styler.height,
+                  width: freeSize ? null : styler.width,
+                  clipBehavior: clipBehavior,
+                  padding: styler.padding,
+                  decoration: BoxDecoration(
+                    color: styler.bg?.getColor(context),
+                    borderRadius:
+                        BorderRadius.circular(styler.borderRadius ?? 0.0),
+                    border: Border.fromBorderSide(
+                        resolveBorderSide(buttonVariant!, styler, isAttached)),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment
+                        .center, //TODO: give more control to end user
+                    children: [
+                      child,
+                    ],
                   ),
                 ),
               ),

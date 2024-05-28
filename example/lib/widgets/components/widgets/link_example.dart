@@ -26,6 +26,7 @@ class LinkExample extends StatelessWidget {
             style: GSStyle(),
             url: 'https://gluestack.io/',
             text: const GSLinkText(text: 'Go to Gluestack'),
+            isExternal: true,
           ),
         ),
       ),

@@ -5,7 +5,7 @@ const Map<String, dynamic> badgeData = {
   "variants": {
     "action": {
       "error": {
-        "bg": "\$backgroundLightError",
+        "bg": "\$backgroundError",
         "borderColor": "\$error300",
         "_icon": {"color": "\$error600"},
         "_text": {"color": "\$error600"},

@@ -18,8 +18,6 @@ class GSButtonIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final ancestorStyles = GSAncestorProvider.of(context)
         ?.decedentStyles?[gsButtonIconStyle.ancestorStyle.first];
-    final value = GSButtonProvider.of(context);
-    final size = GSButtonIconStyle.size[iconSize ?? value?.size];
 
     // Resolve the final GSStyle.
     final styler = resolveStyles(
@@ -34,7 +32,7 @@ class GSButtonIcon extends StatelessWidget {
     return Icon(
       icon,
       color: styler.color?.getColor(context),
-      size: size,
+      size: styler.height,
     );
   }
 }
