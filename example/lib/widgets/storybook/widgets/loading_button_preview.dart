@@ -10,6 +10,7 @@ class LoadingButtonPreview extends StatelessWidget {
         context,
         Storybook(
           initialStory: 'Button',
+          initialLayout: Layout.compact,
           stories: [
             Story(
               name: 'Button',

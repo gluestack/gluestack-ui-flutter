@@ -10,11 +10,15 @@ class ProgressCustomPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Progress',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Progress',
             builder: (context) => GSBox(
-              style: GSStyle(width: 300, height: 100),
+              style: GSStyle(
+                width: 200,
+                height: 90,
+              ),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

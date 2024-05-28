@@ -10,6 +10,7 @@ class InputWithFormcontrolPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Input',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Input',
@@ -30,6 +31,7 @@ class InputWithFormcontrolPreview extends StatelessWidget {
                   ),
                   const GSText(text: 'Email'),
                   GSInput(
+                    hintText: "Enter email",
                     style: GSStyle(
                       width: 300,
                     ),
@@ -39,6 +41,7 @@ class InputWithFormcontrolPreview extends StatelessWidget {
                   ),
                   const GSText(text: 'Password'),
                   GSInput(
+                    hintText: "Enter password",
                     obscureText: true,
                     style: GSStyle(
                       width: 300,

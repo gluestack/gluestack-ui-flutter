@@ -1,0 +1,131 @@
+---
+title: GSTab | gluestack-ui | Installation, Usage, and API
+
+description: Revamp your content organization with the GSTab widget! Use it to visually separate different sections of your app.
+
+pageTitle: GSTab
+
+pageDescription: Revamp your content organization with the GSTab widget! Use it to visually separate different sections of your app.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from "@gluestack/design-system";
+
+<Meta title="Components/Disclosure/Tabs" />
+
+This is an illustration of a **Themed GSTab** widget with default configuration.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "tab-preview"}
+  title="Example"
+  height="712px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    final controller = GSTabController();
+
+    GSVStack(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        GSTabHeader(
+          style: GSStyle(
+            color: $GSColors.amber400, //sets indicator color
+            // bg: $GSColors.amber100, //sets tab header bg color
+          ),
+          controller: controller,
+          tabs: const [
+            GSTab(
+                child: GSText(text: 'Hey', textAlign: TextAlign.center)),
+            GSTab(
+                child:
+                    GSText(text: 'Hi :)', textAlign: TextAlign.center)),
+            GSTab(
+                child:
+                    GSText(text: 'Hello', textAlign: TextAlign.center)),
+          ],
+      ),
+      GSTabContent(
+          controller: controller,
+          children: <Widget>[
+            GSBox(style: GSStyle(color: $GSColors.yellow400)),
+            GSBox(style: GSStyle(color: $GSColors.purple600)),
+            GSBox(style: GSStyle(color: $GSColors.red600)),
+          ],
+      ),
+    ],
+
+),
+
+`}
+/>
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this component in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+#### GSTab
+
+GSTab can be used with help of 2 widgets, GSTabHeader & GSTabContent. Remember to ensure that parent widget is Stateful widget as we need to make use of GSTabController, to handle tab pages.
+GSTabController is built on top of Flutter's [PageController](https://api.flutter.dev/flutter/widgets/PageController-class.html).
+
+
+### GSTabHeader
+
+The `GSTabHeader` widget is responsible for displaying the header of a tab layout.
+
+#### Parameters:
+
+- **controller (`PageController`)**: Controls the page displayed in the tab content.
+- **style (`GSStyle?`)**: Style configuration for the tab header.
+- **isDisabled (`bool?`)**: Indicates if the tab header is disabled.
+- **tabs (`List<GSTab>`)**: List of tabs to display in the header.
+
+##### Usage:
+The `GSTabHeader` widget is typically used in conjunction with a `PageController` and a list of `GSTab` widgets to create a tabbed interface. It provides a visually appealing header that allows users to navigate between different tabs.
+
+### GSTabContent
+
+The `GSTabContent` widget is responsible for displaying the content corresponding to each tab.
+
+#### Parameters:
+
+- **controller (`PageController`)**: Controls the page displayed in the tab content.
+- **children (`List<Widget>`)**: List of widgets representing the content of each tab.
+- **physics (`ScrollPhysics`)**: Physics for the scrolling behavior of the tab content.
+- **pageSnapping (`bool`)**: Whether the page view should snap to each page.
+
+##### Usage:
+The `GSTabContent` widget is typically used as the body of a tabbed interface. It contains a list of widgets, each representing the content of a single tab. The `controller` prop is used to synchronize the tab content with the selected tab in the header.
+
+### GSTabController
+
+The `GSTabController` class is a subclass of `PageController` specifically designed for controlling tabs.
+
+#### Parameters:
+
+
+- **initialPage (`int?`)**: The page to show when first creating the controller.
+- **keepPage (`bool?`)**: Whether to remember the current page when the widget is removed from the tree and later inserted back in.
+- **viewportFraction (`double?`)**: The fraction of the viewport that each page should occupy.
+
+##### Usage:
+The `GSTabController` class is used to manage tab navigation within a tabbed interface. It provides methods for changing tabs programmatically and properties for controlling the behavior of the tab view, such as preserving the current page and setting the width of each tab.

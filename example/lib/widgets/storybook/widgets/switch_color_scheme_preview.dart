@@ -18,60 +18,63 @@ class _SwitchWithColorSchemePreviewState
   Widget build(BuildContext context) {
     return materialWrapper(
       context,
-      Storybook(initialStory: 'Switch', stories: [
-        Story(
-            name: 'Switch',
-            builder: (context) => GSBox(
-                  style: GSStyle(width: 150, height: 120),
-                  child: GSVStack(
-                    children: [
-                      GSSwitch(
-                        style: GSStyle(
-                            trackColorTrue: $GSColors.red500,
-                            onHover: GSStyle(
-                              trackColorTrue: $GSColors.red600,
-                            )),
-                        value: isSelected,
-                        onToggle: (value) {
-                          setState(() {
-                            isSelected = value;
-                          });
-                        },
+      Storybook(
+          initialStory: 'Switch',
+          initialLayout: Layout.compact,
+          stories: [
+            Story(
+                name: 'Switch',
+                builder: (context) => GSBox(
+                      style: GSStyle(width: 150, height: 120),
+                      child: GSVStack(
+                        children: [
+                          GSSwitch(
+                            style: GSStyle(
+                                trackColorTrue: $GSColors.red500,
+                                onHover: GSStyle(
+                                  trackColorTrue: $GSColors.red600,
+                                )),
+                            value: isSelected,
+                            onToggle: (value) {
+                              setState(() {
+                                isSelected = value;
+                              });
+                            },
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          GSSwitch(
+                              style: GSStyle(
+                                  trackColorTrue: $GSColors.green500,
+                                  onHover: GSStyle(
+                                    trackColorTrue: $GSColors.green600,
+                                  )),
+                              value: isSelectedTwo,
+                              onToggle: (value) {
+                                setState(() {
+                                  isSelectedTwo = value;
+                                });
+                              }),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          GSSwitch(
+                              style: GSStyle(
+                                  trackColorTrue: $GSColors.orange400,
+                                  onHover: GSStyle(
+                                    trackColorTrue: $GSColors.orange600,
+                                  )),
+                              value: isSelectedThree,
+                              onToggle: (value) {
+                                setState(() {
+                                  isSelectedThree = value;
+                                });
+                              }),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      GSSwitch(
-                          style: GSStyle(
-                              trackColorTrue: $GSColors.green500,
-                              onHover: GSStyle(
-                                trackColorTrue: $GSColors.green600,
-                              )),
-                          value: isSelectedTwo,
-                          onToggle: (value) {
-                            setState(() {
-                              isSelectedTwo = value;
-                            });
-                          }),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      GSSwitch(
-                          style: GSStyle(
-                              trackColorTrue: $GSColors.orange400,
-                              onHover: GSStyle(
-                                trackColorTrue: $GSColors.orange600,
-                              )),
-                          value: isSelectedThree,
-                          onToggle: (value) {
-                            setState(() {
-                              isSelectedThree = value;
-                            });
-                          }),
-                    ],
-                  ),
-                ))
-      ]),
+                    ))
+          ]),
     );
   }
 }

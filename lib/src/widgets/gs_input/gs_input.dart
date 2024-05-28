@@ -317,7 +317,7 @@ class _GSInputState extends State<GSInput> {
                               ? 50
                               : 15,
                       top: 10,
-                      child: Text(widget.hintText!,
+                      child: Text(widget.hintText ?? '',
                           style: widget.hintStyle ??
                               TextStyle(
                                   color: borderColor,

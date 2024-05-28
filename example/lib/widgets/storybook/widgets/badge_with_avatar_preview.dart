@@ -9,6 +9,7 @@ class BadgeWithAvatarPreview extends StatelessWidget {
     return materialWrapper(
       context,
       Storybook(
+        initialLayout: Layout.compact,
         initialStory: 'Badge',
         stories: [
           Story(

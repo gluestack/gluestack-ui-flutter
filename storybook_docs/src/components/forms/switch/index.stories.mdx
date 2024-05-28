@@ -10,7 +10,9 @@ pageDescription: The GSSwitch widget offers a stylish alternative to the GSCheck
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -18,43 +20,38 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 This is an illustration of a **Themed GSSwitch** widget with default configuration.
 
 <Meta title="Components/Forms/Switch" />
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/switchPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "switch-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="717px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSSwitch(
+      size: GSSwitchSizes.$md,
+      isDisabled: false,
+      style: GSStyle(
+        checked: GSStyle(
+          thumbColor: Colors.grey,
+          activeThumbColor: Colors.blue,
+        ),
+      ),
+      value: val1,
+      onToggle: (bool value) {
+        setState(() {
+          val1 = value;
+        });
+      },
+    )
 
-GSSwitch(
-  size: GSSizes.$md,
-  isDisabled: false,
-  style: GSStyle
-  (
-    checked: GSStyle
-    (
-      thumbColor: Colors.grey,
-      activeThumbColor: Colors.blue,
-    ),
-  ),
-  value: val1,
-  onToggle: (bool value)
-  {
-    setState(()
-    {
-      val1 = value;
-    });
-  },
-  )
-```
+`}
+/>
 
 <br />
 
@@ -64,7 +61,7 @@ GSSwitch(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -182,10 +179,6 @@ It inherits all the properties of Flutter's [Switch](https://api.flutter.dev/flu
   </TableContainer>
 </AppProvider>
 
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
-
 ### Parameters
 
 GSSwitch widget is created using Switch widget from flutter. It extends all the props supported by [Flutter Switch](https://api.flutter.dev/flutter/material/Switch-class.html) and additionally the properties mentioned below.
@@ -237,142 +230,137 @@ The Examples section provides visual representations of the different variants o
 
 An example of a switch widget with a label, which includes another switch widget for toggling additional options.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/switchWithLabelPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "switch-with-label-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="747px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    bool isSelected = false;
 
-bool isSelected = false;
+    GSHStack(
+      children: [
+        GSSwitch(
+          value: isSelected,
+          onToggle: (value) {
+            setState(() {
+              isSelected = value;
+            });
+          },
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const GSText(text: 'Allow notifications'),
+      ],
+    )
 
-GSHStack(
-  children: [
-    GSSwitch(
-      value: isSelected,
-      onToggle: (value) {
-        setState(() {
-          isSelected = value;
-        });
-      },
-    ),
-    const SizedBox(
-      width: 10,
-    ),
-    const GSText(text: 'Allow notifications'),
-  ],
-)
-
-```
+`}
+/>
 
 #### Checked State
 
 An example of a switch widget used within a checked state widget to represent a pre-selected or activated option.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/switchCheckedStatePreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "switch-checked-state-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
-
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-bool isSelected = true;
-
-GSHStack(
-  children: [
-    GSSwitch(
-      value: isSelected,
-      onToggle: (value) {
-        setState(() {
-          isSelected = value;
-        });
-      },
-    ),
-    const SizedBox(
-      width: 10,
-    ),
-    const GSText(text: 'Public profile'),
-  ],
-),
-
-```
+  height="761px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+    
+    
+    bool isSelected = true;
+    
+    GSHStack(
+      children: [
+        GSSwitch(
+          value: isSelected,
+          onToggle: (value) {
+            setState(() {
+              isSelected = value;
+            });
+          },   
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        const GSText(text: 'Public profile'),
+      ],
+    )
+  `}
+/>
 
 #### Color scheme
 
 An example of a switch widget being used with a different color scheme.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/switchWithColorSchemePreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "switch-with-color-scheme-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="1317px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    bool isSelected = false;
+    bool isSelectedTwo = false;
+    bool isSelectedThree = false;
 
-bool isSelected = false;
-bool isSelectedTwo = false;
-bool isSelectedThree = false;
-
-
-GSVStack(
-  children: [
-    GSSwitch(
-      style: GSStyle(
-        trackColorTrue: $GSColors.red500,
-        onHover: GSStyle(
-          trackColorTrue: $GSColors.red600,
+    GSVStack(
+      children: [
+        GSSwitch(
+          style: GSStyle(
+            trackColorTrue: $GSColors.red500,
+            onHover: GSStyle(
+              trackColorTrue: $GSColors.red600,
+            ),
+          ),
+          value: isSelected,
+          onToggle: (value) {
+            setState(() {
+              isSelected = value;
+            });
+          },
         ),
-      ),
-      value: isSelected,
-      onToggle: (value) {
-        setState(() {
-          isSelected = value;
-        });
-      },
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSSwitch(
-      style: GSStyle(
-        trackColorTrue: $GSColors.green500,
-        onHover: GSStyle(
-          trackColorTrue: $GSColors.green600,
+        const SizedBox(
+          height: 20,
         ),
-      ),
-      value: isSelectedTwo,
-      onToggle: (value) {
-        setState(() {
-          isSelectedTwo = value;
-        });
-      },
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSSwitch(
-      style: GSStyle(
-        trackColorTrue: $GSColors.orange400,
-        onHover: GSStyle(
-          trackColorTrue: $GSColors.orange600,
+        GSSwitch(
+          style: GSStyle(
+            trackColorTrue: $GSColors.green500,
+            onHover: GSStyle(
+              trackColorTrue: $GSColors.green600,
+            ),
+          ),
+          value: isSelectedTwo,
+          onToggle: (value) {
+            setState(() {
+              isSelectedTwo = value;
+            });
+          },
         ),
-      ),
-      value: isSelectedThree,
-      onToggle: (value) {
-        setState(() {
-          isSelectedThree = value;
-        });
-      },
-    ),
-  ],
-)
+        const SizedBox(
+          height: 20,
+        ),
+        GSSwitch(
+          style: GSStyle(
+            trackColorTrue: $GSColors.orange400,
+            onHover: GSStyle(
+              trackColorTrue: $GSColors.orange600,
+            ),
+          ),
+          value: isSelectedThree,
+          onToggle: (value) {
+            setState(() {
+              isSelectedThree = value;
+            });
+          },
+        ),
+      ],
+    )
 
-```
+`}
+/>
+
+<br />
