@@ -294,3 +294,14 @@ enum GSBadgeSizes {
   $md,
   $lg,
 }
+
+enum GSSliderSizes {
+  $sm,
+  $md,
+  $lg,
+}
+
+enum GSSliderOrientation {
+  $horizontal,
+  $vertical,
+}

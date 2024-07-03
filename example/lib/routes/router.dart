@@ -3,6 +3,7 @@ import 'package:gluestack_ui_example/home.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/accordian_example.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/bottom_sheet_example.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/navigation_rail_example.dart';
+import 'package:gluestack_ui_example/widgets/components/widgets/slider_example.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook_wrapper.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/accordion_default_value_preview.dart';
@@ -192,6 +193,10 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "navigation-rail-preview",
           builder: (context, state) => const NavigationRailExample(),
+        ),
+        GoRoute(
+          path: "slider-example",
+          builder: (context, state) => const SliderExample(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.

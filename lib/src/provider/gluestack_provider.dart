@@ -1,3 +1,5 @@
+import 'package:gluestack_ui/src/theme/config/slider/slider.dart';
+
 import 'provider.dart';
 
 final getIt = GetIt.instance;
@@ -140,10 +142,22 @@ class GluestackCustomConfig {
   Map<String, dynamic>? tabTabPanels;
   Map<String, dynamic>? tabTabTile;
 
+  // slider
+  Map<String, dynamic>? slider;
+  Map<String, dynamic>? sliderTrack;
+  Map<String, dynamic>? sliderThumb;
+  Map<String, dynamic>? sliderFilledTrack;
+
   //GS Layout
   Map<String, dynamic>? layout;
 
   GluestackCustomConfig({
+    // slider
+
+    this.slider,
+    this.sliderTrack,
+    this.sliderThumb,
+    this.sliderFilledTrack,
     //tabs
     this.tabs,
     this.tabsTab,
@@ -296,6 +310,13 @@ class GluestackCustomConfig {
 
 //layout
     layout = mergeConfigs(layoutData, layout);
+
+    //slider
+
+    slider = mergeConfigs(sliderData, slider);
+    sliderTrack = mergeConfigs(sliderTrackData, sliderTrack);
+    sliderThumb = mergeConfigs(sliderThumbData, sliderThumb);
+    sliderFilledTrack = mergeConfigs(sliderFilledTrackData, sliderFilledTrack);
 
     //tabs
     tabs = mergeConfigs(tabsData, tabs);
