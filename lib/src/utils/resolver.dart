@@ -429,18 +429,50 @@ GSPlacements? resolvePlacementFromString(String? placement) {
   return placement != null ? placementMap[placement] : null;
 }
 
+// Map<String, GSConfigStyle>? resolveCompoundVariants(
+//     {required List<Map<String, dynamic>>? compoundVariants}) {
+//   if (compoundVariants == null || compoundVariants.isEmpty) {
+//     return null;
+//   }
+//   final Map<String, GSConfigStyle> resolvedCompoundVariants = {};
+//   for (var element in compoundVariants) {
+//     // final keyName = resolveActionFromString(element['orientation']).toString() +
+//     //     resolveVariantFromString(element['size']).toString();
+//     final keyName =
+//         resolveOrientationsFromString(element['orientation']).toString() +
+//             resolveSizesFromString(element['size']).toString();
+
+//     resolvedCompoundVariants[keyName] =
+//         GSConfigStyle.fromMap(data: element['value']);
+//   }
+//   return resolvedCompoundVariants;
+// }
+
 Map<String, GSConfigStyle>? resolveCompoundVariants(
     {required List<Map<String, dynamic>>? compoundVariants}) {
   if (compoundVariants == null || compoundVariants.isEmpty) {
     return null;
   }
+
   final Map<String, GSConfigStyle> resolvedCompoundVariants = {};
+
   for (var element in compoundVariants) {
-    final keyName = resolveActionFromString(element['action']).toString() +
-        resolveVariantFromString(element['variant']).toString();
+    String keyName = '';
+
+    if (element.containsKey('action') && element.containsKey('variant')) {
+      keyName = resolveActionFromString(element['action']).toString() +
+          resolveVariantFromString(element['variant']).toString();
+    } else if (element.containsKey('orientation') &&
+        element.containsKey('size')) {
+      keyName =
+          resolveOrientationsFromString(element['orientation']).toString() +
+              resolveSizesFromString(element['size']).toString();
+    }
+
     resolvedCompoundVariants[keyName] =
         GSConfigStyle.fromMap(data: element['value']);
   }
+
   return resolvedCompoundVariants;
 }
 
