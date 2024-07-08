@@ -10,14 +10,18 @@ class GSSlider extends StatefulWidget {
   final bool isReversed;
   final bool isDisabled;
   double value;
+  double max;
+  double min;
   final GSSliderSizes? size;
-  final GSSliderOrientation? orientation;
+  final GSOrientations? orientation;
   final GSStyle? style;
   final ValueChanged<double>? onChanged;
   GSSlider(
       {super.key,
       this.style,
       this.size,
+      this.min = 0,
+      this.max = 10,
       this.isReversed = false,
       this.isDisabled = false,
       this.orientation,
@@ -39,7 +43,8 @@ class _GSSliderState extends State<GSSlider> {
   @override
   Widget build(BuildContext context) {
     final sliderSize = widget.size?.toGSSize ?? sliderStyle.props?.size;
-    final sliderOrientation = widget.orientation ?? sliderStyle.props?.orientation;
+    final sliderOrientation =
+        widget.orientation ?? sliderStyle.props?.orientation;
 
     GSConfigStyle styler = resolveStyles(
       context: context,
@@ -51,19 +56,12 @@ class _GSSliderState extends State<GSSlider> {
       ],
       inlineStyle: widget.style,
     );
-    print("----");
-    print(sliderStyle.compoundVariants?[
-        sliderOrientation.toString() + sliderSize.toString()]);
-    print("----");
-    print(sliderOrientation.toString());
-    print(sliderSize.toString());
-    print(styler.compoundVariants);
 
     GSConfigStyle thumbStyler = resolveStyles(
-      context: context,
-      styles: [sliderThumbStyle],
-      inlineStyle: widget.style,
-    );
+        context: context,
+        styles: [sliderThumbStyle],
+        inlineStyle: widget.style,
+        isFirst: true);
 
     GSConfigStyle trackStyler = resolveStyles(
       context: context,
@@ -77,26 +75,19 @@ class _GSSliderState extends State<GSSlider> {
       inlineStyle: widget.style,
     );
     int quarterTurns;
-    if (widget.orientation == GSSliderOrientation.$horizontal) {
+    if (widget.orientation == GSOrientations.horizontal) {
       quarterTurns = 0;
     } else {
       quarterTurns = widget.isReversed ? 1 : 3;
     }
 
-    print(
-        Variants.fromMap(data: sliderData['variants']).orientation?.horizontal);
-    print(sliderStyle.variants?.orientation?.horizontal?.width);
-    print(sliderStyle.variants?.orientation);
-    print(styler.variants?.orientation?.horizontal?.width);
-    print(styler.height);
-
     return GSAncestor(
       decedentStyles: styler.descendantStyles,
       child: Directionality(
-        textDirection: widget.isReversed &&
-                widget.orientation == GSSliderOrientation.$horizontal
-            ? TextDirection.rtl
-            : TextDirection.ltr,
+        textDirection:
+            widget.isReversed && widget.orientation == GSOrientations.horizontal
+                ? TextDirection.rtl
+                : TextDirection.ltr,
         child: RotatedBox(
           quarterTurns: quarterTurns,
           child: SliderTheme(
@@ -104,22 +95,25 @@ class _GSSliderState extends State<GSSlider> {
               thumbColor: widget.isDisabled
                   ? thumbStyler.bg?.getColor(context).withOpacity(0.4)
                   : thumbStyler.bg?.getColor(context),
-              trackHeight: trackStyler.height?.toDouble() ?? 10,
+              trackHeight: widget.orientation == GSOrientations.horizontal
+                  ? styler.trackHeight
+                  : styler.trackWidth ?? 10,
               trackShape: const RoundedRectSliderTrackShape(),
-              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 20),
-              overlayShape: RoundSliderOverlayShape(overlayRadius: 20),
+              thumbShape: RoundSliderThumbShape(
+                  enabledThumbRadius: (styler.thumbHeight ?? 40) / 2),
+              overlayShape: RoundSliderOverlayShape(
+                  overlayRadius: (styler.thumbHeight ?? 40) / 2),
             ),
             child: Slider(
-              activeColor: 
-              widget.isDisabled
+              activeColor: widget.isDisabled
                   ? filledTrackStyler.bg?.getColor(context).withOpacity(0.4)
                   : filledTrackStyler.bg?.getColor(context),
               inactiveColor: widget.isDisabled
                   ? trackStyler.bg?.getColor(context).withOpacity(0.4)
                   : trackStyler.bg?.getColor(context),
               value: _sliderValue,
-              min: 0,
-              max: 10,
+              min: widget.min,
+              max: widget.max,
               label: _sliderValue.round().toString(),
               onChanged: widget.isDisabled
                   ? null

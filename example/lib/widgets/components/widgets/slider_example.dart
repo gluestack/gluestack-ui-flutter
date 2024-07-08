@@ -20,11 +20,10 @@ class _SliderExampleState extends State<SliderExample> {
   GSSliderSizes selectedSizeOption = GSSliderSizes.$md;
 
   final List dropdownOrientationOptions = [
-    GSSliderOrientation.$vertical,
-    GSSliderOrientation.$horizontal,
+    GSOrientations.vertical,
+    GSOrientations.horizontal,
   ];
-  GSSliderOrientation selectedOrientationOption =
-      GSSliderOrientation.$horizontal;
+  GSOrientations selectedOrientationOption = GSOrientations.horizontal;
 
   final List dropdownVariantOptions = [
     GSAccordionVariants.filled,
@@ -34,6 +33,7 @@ class _SliderExampleState extends State<SliderExample> {
 
   bool isDisabled = false;
   bool isReversed = false;
+  double currentValue = 5;
 
   void updateSizeSelectedOption(dynamic newOption) {
     setState(() {
@@ -63,6 +63,16 @@ class _SliderExampleState extends State<SliderExample> {
   Widget build(BuildContext context) {
     var code = '''
 GSSlider(
+  size: $selectedSizeOption,
+  isDisabled: $isDisabled,
+  isReversed: $isReversed,
+  orientation: $selectedOrientationOption,
+  onChanged: (value) {
+    setState(() {
+      currentValue = value;
+    });
+  },
+  value: currentValue,
           
 ),
   ''';
@@ -84,9 +94,7 @@ GSSlider(
               print(value);
             });
           },
-          // min: 1,
-          // max: 10,
-          value: 2,
+          value: currentValue,
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -43,6 +43,10 @@ class GSStyle extends BaseStyle<GSStyle> {
   Color? activeThumbColor;
   Color? iosBackgroundColor;
   double? scale;
+  double? trackHeight;
+  double? trackWidth;
+  double? thumbHeight;
+  double? thumbWidth;
   GSCursors? cursors;
   GSPlacement? placement;
 
@@ -115,6 +119,10 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.activeThumbColor,
     this.iosBackgroundColor,
     this.scale,
+    this.trackHeight,
+    this.trackWidth,
+    this.thumbHeight,
+    this.thumbWidth,
     this.outlineColor,
     this.cursors,
     this.iconSize,
@@ -229,6 +237,10 @@ class GSStyle extends BaseStyle<GSStyle> {
         thumbColor: overrideStyle?.thumbColor ?? thumbColor,
         activeThumbColor: overrideStyle?.activeThumbColor ?? activeThumbColor,
         scale: overrideStyle?.scale ?? scale,
+        trackHeight: overrideStyle?.trackHeight ?? trackHeight,
+        trackWidth: overrideStyle?.trackWidth ?? trackWidth,
+        thumbHeight: overrideStyle?.thumbHeight ?? thumbHeight,
+        thumbWidth: overrideStyle?.thumbWidth ?? thumbWidth,
         cursors: overrideStyle?.cursors ?? cursors,
         isVisible: overrideStyle?.isVisible ?? isVisible,
         direction: overrideStyle?.direction ?? direction,
@@ -285,6 +297,10 @@ class GSStyle extends BaseStyle<GSStyle> {
       activeThumbColor: parseColor(styler.activeThumbColor),
       iosBackgroundColor: parseColor(styler.iosBackgroundColor),
       scale: styler.scale,
+      trackHeight: styler.trackHeight,
+      trackWidth: styler.trackWidth,
+      thumbHeight: styler.thumbHeight,
+      thumbWidth: styler.thumbWidth,
       cursors: styler.cursors,
       placement: styler.placement,
       isVisible: styler.isVisible,

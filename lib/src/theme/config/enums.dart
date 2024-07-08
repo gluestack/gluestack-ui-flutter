@@ -300,8 +300,3 @@ enum GSSliderSizes {
   $md,
   $lg,
 }
-
-enum GSSliderOrientation {
-  $horizontal,
-  $vertical,
-}

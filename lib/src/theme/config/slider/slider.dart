@@ -49,128 +49,128 @@ const Map<String, dynamic> sliderData = {
   },
   "compoundVariants": [
     {
-      "orientation": "horizontal",
-      "size": "sm",
+      "orientation": 'horizontal',
+      "size": 'sm',
       "value": {
         "_track": {
-          "height": "\$1",
-          "flexDirection": "row",
+          "height": '\$1',
+          "flexDirection": 'row',
         },
       },
     },
     {
-      "orientation": "horizontal",
-      "size": "sm",
+      "orientation": 'horizontal',
+      "size": 'sm',
       "isReversed": true,
       "value": {
         "_track": {
-          "height": "\$1",
-          "flexDirection": "row-reverse",
+          "height": '\$1',
+          "flexDirection": 'row-reverse',
         },
       },
     },
     {
-      "orientation": "horizontal",
-      "size": "md",
+      "orientation": 'horizontal',
+      "size": 'md',
       "value": {
         "_track": {
           "height": 5,
-          "flexDirection": "row",
+          "flexDirection": 'row',
         },
       },
     },
     {
-      "orientation": "horizontal",
-      "size": "md",
+      "orientation": 'horizontal',
+      "size": 'md',
       "isReversed": true,
       "value": {
         "_track": {
           "height": 5,
-          "flexDirection": "row-reverse",
+          "flexDirection": 'row-reverse',
         },
       },
     },
     {
-      "orientation": "horizontal",
-      "size": "lg",
+      "orientation": 'horizontal',
+      "size": 'lg',
       "value": {
         "_track": {
-          "height": "\$1.5",
-          "flexDirection": "row",
+          "height": '\$1.5',
+          "flexDirection": 'row',
         },
       },
     },
     {
-      "orientation": "horizontal",
-      "size": "lg",
+      "orientation": 'horizontal',
+      "size": 'lg',
       "isReversed": true,
       "value": {
         "_track": {
-          "height": "\$1.5",
-          "flexDirection": "row-reverse",
+          "height": '\$1.5',
+          "flexDirection": 'row-reverse',
         },
       },
     },
     {
-      "orientation": "vertical",
-      "size": "sm",
+      "orientation": 'vertical',
+      "size": 'sm',
       "value": {
         "_track": {
-          "w": "\$1",
-          "flexDirection": "column-reverse",
+          "width": '\$1',
+          "flexDirection": 'column-reverse',
         },
       },
     },
     {
-      "orientation": "vertical",
-      "size": "sm",
+      "orientation": 'vertical',
+      "size": 'sm',
       "isReversed": true,
       "value": {
         "_track": {
-          "width": "\$1",
-          "flexDirection": "column",
+          "width": '\$1',
+          "flexDirection": 'column',
         },
       },
     },
     {
-      "orientation": "vertical",
-      "size": "md",
+      "orientation": 'vertical',
+      "size": 'md',
       "value": {
         "_track": {
           "width": 5,
-          "flexDirection": "column-reverse",
+          "flexDirection": 'column-reverse',
         },
       },
     },
     {
-      "orientation": "vertical",
-      "size": "md",
+      "orientation": 'vertical',
+      "size": 'md',
       "isReversed": true,
       "value": {
         "_track": {
           "width": 5,
-          "flexDirection": "column",
+          "flexDirection": 'column',
         },
       },
     },
     {
-      "orientation": "vertical",
-      "size": "lg",
+      "orientation": 'vertical',
+      "size": 'lg',
       "value": {
         "_track": {
-          "width": "\$1.5",
-          "flexDirection": "column-reverse",
+          "width": '\$1.5',
+          "flexDirection": 'column-reverse',
         },
       },
     },
     {
-      "orientation": "vertical",
-      "size": "lg",
+      "orientation": 'vertical',
+      "size": 'lg',
       "isReversed": true,
       "value": {
         "_track": {
-          "width": "\$1.5",
-          "flexDirection": "column",
+          "width": '\$1.5',
+          "flexDirection": 'column',
         },
       },
     },
