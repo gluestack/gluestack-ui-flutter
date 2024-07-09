@@ -91,7 +91,6 @@ GSSlider(
           orientation: selectedOrientationOption,
           onChanged: (value) {
             setState(() {
-              print(value);
             });
           },
           value: currentValue,
