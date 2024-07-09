@@ -1,5 +1,3 @@
-import 'package:gluestack_ui/src/theme/config/slider/slider.dart';
-
 import 'provider.dart';
 
 final getIt = GetIt.instance;
