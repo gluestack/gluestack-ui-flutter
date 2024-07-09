@@ -16,7 +16,7 @@ class GSSlider extends StatefulWidget {
   final GSOrientations? orientation;
   final GSStyle? style;
   final ValueChanged<double>? onChanged;
-  GSSlider(
+ const GSSlider(
       {super.key,
       this.style,
       this.size,
