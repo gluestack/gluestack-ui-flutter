@@ -289,11 +289,11 @@ class Variants {
         data: data?['space'],
       ),
       sub: GSConfigStyle.fromMap(
-          data: data?['sub']?['true'],
+          data: data?['sub']?["true"] ?? data?['sub']?[true],
           descendantStyle: descendantStyle,
           fromVariant: true),
       highlight: GSConfigStyle.fromMap(
-          data: data?['highlight']?['true'],
+          data: data?['highlight']?["true"] ?? data?['highlight']?[true],
           descendantStyle: descendantStyle,
           fromVariant: true),
       placements: GSPlacement.fromMap(data: data?['placement']),
@@ -720,16 +720,14 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       flexDirection: resolveFlexDirectionFromString(data?['flexDirection']),
       height: data?['h'] is int
           ? double.parse('${data?['h']}.0')
-          : resolveSpaceFromString(
-              data?['h'].toString() ?? data?['height'].toString(),
-            ),
+          : resolveSpaceFromString((data?['h'] ?? data?["height"]).toString()),
       width: data?['w'] != null
           ? data!['w']?.contains('100%')
               ? double.infinity
               : data['w']?.contains('%')
                   ? double.tryParse(data['w']?.replaceAll('%', ''))! / 100
                   : resolveSpaceFromString(data['w'] ?? data['width'])
-          : resolveSpaceFromString(data?['w'] ?? data?['width']),
+          : resolveSpaceFromString((data?['w'] ?? data?['width']).toString()),
       badge: GSConfigStyle(
         height: resolveSpaceFromString(
           data?['_badge']?['h'],
@@ -1258,7 +1256,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
               ? (data?['transform'].first as Map)['scale']
               : null
           : null,
-           trackHeight: data?['_track'] != null
+      trackHeight: data?['_track'] != null
           ? (data?['_track']['height'] is int
               ? double.parse('${data?['_track']['height']}.0')
               : resolveSpaceFromString(

@@ -191,6 +191,10 @@ class _HomePageState extends State<HomePage> {
                   title: "GS Slider",
                   routePath: "/slider-example",
                 ),
+                 const NavButton(
+                  title: "GS ToolTip",
+                  routePath: "/toolTip-example",
+                ),
 
                 // // ===== Internal Testing Widgets =====
                 // const NavButton(
