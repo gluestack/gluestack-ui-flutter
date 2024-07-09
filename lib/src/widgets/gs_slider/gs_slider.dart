@@ -65,7 +65,6 @@ class _GSSliderState extends State<GSSlider> {
               context: context,
               styles: [sliderThumbStyle],
               inlineStyle: widget.style);
-              print(thumbStyler.bg);
 
           GSConfigStyle trackStyler = resolveStyles(
             context: context,
@@ -82,7 +81,6 @@ class _GSSliderState extends State<GSSlider> {
           if (widget.orientation == GSOrientations.horizontal) {
             quarterTurns = 0;
           } else {
-           
             quarterTurns = widget.isReversed ? 1 : 3;
           }
           return GSAncestor(
