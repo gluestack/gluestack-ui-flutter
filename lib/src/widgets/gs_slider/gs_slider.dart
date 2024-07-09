@@ -10,9 +10,8 @@ import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart'
 class GSSlider extends StatefulWidget {
   final bool isReversed;
   final bool isDisabled;
-  double value;
-  double max;
-  double min;
+  final double max;
+  final double min;
   final GSSliderSizes? size;
   final GSOrientations? orientation;
   final GSStyle? style;
@@ -26,7 +25,6 @@ class GSSlider extends StatefulWidget {
       this.isReversed = false,
       this.isDisabled = false,
       this.orientation,
-      required this.value,
       this.onChanged});
 
   @override
@@ -38,7 +36,7 @@ class _GSSliderState extends State<GSSlider> {
   @override
   void initState() {
     super.initState();
-    _sliderValue = widget.value;
+    _sliderValue = widget.min;
   }
 
   @override

@@ -71,9 +71,7 @@ GSSlider(
     setState(() {
       currentValue = value;
     });
-  },
-  value: currentValue,
-          
+  },    
 ),
   ''';
 
@@ -93,7 +91,6 @@ GSSlider(
             setState(() {
             });
           },
-          value: currentValue,
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
