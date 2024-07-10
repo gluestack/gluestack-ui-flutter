@@ -71,9 +71,7 @@ GSSlider(
     setState(() {
       currentValue = value;
     });
-  },
-  value: currentValue,
-          
+  },    
 ),
   ''';
 
@@ -91,10 +89,8 @@ GSSlider(
           orientation: selectedOrientationOption,
           onChanged: (value) {
             setState(() {
-              print(value);
             });
           },
-          value: currentValue,
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

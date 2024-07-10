@@ -996,6 +996,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       ),
       onDisabled: GSConfigStyle(
         opacity: data?[':disabled']?['opacity'],
+        bg :  resolveColorTokenFromString(data?[':disabled']?['bg']),
         // textStyle: TextStyle(
         //   color: resolveColorFromString(data?[':disabled']?['color']),
         // ),
@@ -1144,6 +1145,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           ),
         ),
         onDisabled: GSConfigStyle(
+          bg :   resolveColorTokenFromString(data?[':disabled']?['bg']),
           borderColor: resolveColorTokenFromString(
               data?['_dark']?[':disabled']?['borderColor']),
           trackColorTrue: resolveColorTokenFromString(
