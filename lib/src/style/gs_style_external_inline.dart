@@ -22,6 +22,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
   double? maxWidth;
+  double? maxHeight;
   AlignmentGeometry? alignment;
 
   double? top;
@@ -109,6 +110,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.justifyContent,
     this.alignment,
     this.maxWidth,
+    this.maxHeight,
     this.badge,
     // this.highlightColor,
     // this.splashColor,
@@ -228,6 +230,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         alignItems: overrideStyle?.alignItems ?? alignItems,
         justifyContent: overrideStyle?.justifyContent ?? justifyContent,
         maxWidth: overrideStyle?.maxWidth ?? maxWidth,
+        maxHeight: overrideStyle?.maxHeight ?? maxHeight,
         alignment: overrideStyle?.alignment ?? alignment,
         // highlightColor: overrideStyle?.highlightColor ?? highlightColor,
         // splashColor: overrideStyle?.splashColor ?? splashColor,
@@ -284,6 +287,7 @@ class GSStyle extends BaseStyle<GSStyle> {
       alignItems: styler.alignItems,
       justifyContent: styler.justifyContent,
       maxWidth: styler.maxWidth,
+      maxHeight: styler.maxHeight,
       alignment: styler.alignment,
       top: styler.top,
       bottom: styler.bottom,

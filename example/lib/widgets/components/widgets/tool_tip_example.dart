@@ -2,6 +2,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/toggle.dart';
 
 class ToolTipExample extends StatefulWidget {
   const ToolTipExample({super.key});
@@ -11,6 +12,7 @@ class ToolTipExample extends StatefulWidget {
 }
 
 class _ToolTipExampleState extends State<ToolTipExample> {
+  bool enableNotch = false;
   final List dropdownPlacementOptions = [
     GSToolTipPlacements.topLeft,
     GSToolTipPlacements.top,
@@ -25,21 +27,36 @@ class _ToolTipExampleState extends State<ToolTipExample> {
     GSToolTipPlacements.right,
     GSToolTipPlacements.rightBottom
   ];
-  GSToolTipPlacements selectedPlacementOption = GSToolTipPlacements.top;
+  GSToolTipPlacements selectedPlacementOption = GSToolTipPlacements.topLeft;
   void updatePlacementSelectedOption(dynamic newOption) {
     setState(() {
       selectedPlacementOption = newOption;
     });
   }
 
-  var code = '''
-GSToolTip(
+  void updateEnableNotch(bool value) {
+    setState(() {
+      enableNotch = value;
+    });
+  }
 
-          
-),
-  ''';
   @override
   Widget build(BuildContext context) {
+    var code = '''
+GSToolTip(
+  message: "Tooltip",
+  style: GSStyle(
+    bg: \$GSColors.backgroundDark100,
+    height: 40,
+    width: 100,
+  ),
+  placement: $selectedPlacementOption,
+  child: const GSBadge(
+     size: GSBadgeSizes.\$lg,
+     text: GSBadgeText("Hover"),
+  ),
+),
+    ''';
     return GSCenter(
       child: CustomGSLayout(
         title: "ToolTip",
@@ -48,22 +65,22 @@ GSToolTip(
         ),
         body: BaseLayout(
           code: code,
-          component: GSToolTip(
-            isTruncated: true,
-            italic: true,
-            highlight: true,
-            strikeThrough: true,
-            sub: true,
-            bold: true,
-            placement: selectedPlacementOption,
-            child: GSButton(
-              size: GSButtonSizes.$lg,
-              onPressed: () {},
-              child: const GSText(
-                size: GSSizes.$2xl,
-                text: 'Hover',
-              ),
-            ),
+          component: Column(
+            children: [
+              GSToolTip(
+                  showArrow: enableNotch,
+                  distance: 1,
+                  message: "Tooltip",
+                  style: GSStyle(
+                      bg: GSTheme.of(context).background100,
+                      height: 40,
+                      width: 100),
+                  placement: selectedPlacementOption,
+                  child: const GSBadge(
+                    size: GSBadgeSizes.$lg,
+                    text: GSBadgeText("Hover Me"),
+                  )),
+            ],
           ),
           controls: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -75,6 +92,12 @@ GSToolTip(
                 selectedOption: selectedPlacementOption,
                 onChanged: updatePlacementSelectedOption,
               ),
+              const SizedBox(height: 20),
+              CustomToggle(
+                title: "Enable Notch",
+                value: enableNotch,
+                onToggle: updateEnableNotch,
+              )
             ],
           ),
         ),

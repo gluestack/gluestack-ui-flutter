@@ -5,3 +5,10 @@ const GSStyleConfig gsToolTipTextConfig =
     GSStyleConfig(componentName: 'ToolTipText', descendantStyle: ['_text']);
 final GSConfigStyle toolTipTextStyle =
     GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().toolTipText);
+
+  class TooltipStyleClass {
+  final GSConfigStyle styler;
+  final GSConfigStyle toolTipTextStyler;
+
+  TooltipStyleClass({required this.styler, required this.toolTipTextStyler});
+}

@@ -332,6 +332,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
   double? maxWidth;
+  double? maxHeight;
   AlignmentGeometry? alignment;
 
   double? top;
@@ -424,6 +425,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
     this.justifyContent,
     this.alignment,
     this.maxWidth,
+    this.maxHeight,
     this.badge,
     // this.highlightColor,
     // this.splashColor,
@@ -578,6 +580,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
         alignItems: overrideStyle?.alignItems ?? alignItems,
         justifyContent: overrideStyle?.justifyContent ?? justifyContent,
         maxWidth: overrideStyle?.maxWidth ?? maxWidth,
+        maxHeight: overrideStyle?.maxHeight ?? maxHeight,
         alignment: overrideStyle?.alignment ?? alignment,
         // highlightColor: overrideStyle?.highlightColor ?? highlightColor,
         // splashColor: overrideStyle?.splashColor ?? splashColor,
@@ -630,6 +633,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       alignItems: gsStyle.alignItems,
       justifyContent: gsStyle.justifyContent,
       maxWidth: gsStyle.maxWidth,
+      maxHeight: gsStyle.maxHeight,
       alignment: gsStyle.alignment,
       top: gsStyle.top,
       bottom: gsStyle.bottom,
@@ -739,6 +743,9 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       textTransform: resolveTextTransformFromString(data?['textTransform']),
       maxWidth: data?['maxWidth'] != null
           ? double.tryParse(data?['maxWidth']?.toString() ?? "")
+          : null,
+          maxHeight: data?['maxHeight'] != null
+          ? double.tryParse(data?['maxHeight']?.toString() ?? "")
           : null,
       padding: data?['p'] != null
           ? resolvePaddingFromString(data?['p'].toString(), 'all')
