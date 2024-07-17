@@ -16,7 +16,7 @@ class GSSlider extends StatefulWidget {
   final GSOrientations? orientation;
   final GSStyle? style;
   final ValueChanged<double>? onChanged;
- const GSSlider(
+  const GSSlider(
       {super.key,
       this.style,
       this.size,
@@ -90,43 +90,39 @@ class _GSSliderState extends State<GSSlider> {
                   : TextDirection.ltr,
               child: RotatedBox(
                 quarterTurns: quarterTurns,
-                child: SliderTheme(
-                  data: SliderTheme.of(context).copyWith(
-                    thumbColor: widget.isDisabled
-                        ? thumbStyler.bg?.getColor(context).withOpacity(0.4)
-                        : thumbStyler.bg?.getColor(context),
-                    trackHeight: widget.orientation == GSOrientations.horizontal
-                        ? styler.trackHeight
-                        : styler.trackWidth ?? 10,
-                    trackShape: const RoundedRectSliderTrackShape(),
-                    thumbShape: RoundSliderThumbShape(
-                        enabledThumbRadius: (styler.thumbHeight ?? 40) / 2),
-                    overlayShape: RoundSliderOverlayShape(
-                        overlayRadius: (styler.thumbHeight ?? 40) / 2),
-                  ),
-                  child: Slider(
-                    activeColor: widget.isDisabled
-                        ? filledTrackStyler.bg
-                            ?.getColor(context)
-                            .withOpacity(0.4)
-                        : filledTrackStyler.bg?.getColor(context),
-                    inactiveColor: widget.isDisabled
-                        ? trackStyler.bg?.getColor(context).withOpacity(0.4)
-                        : trackStyler.bg?.getColor(context),
-                    value: _sliderValue,
-                    min: widget.min,
-                    max: widget.max,
-                    label: _sliderValue.round().toString(),
-                    onChanged: widget.isDisabled
-                        ? null
-                        : (double value) {
-                            setState(() {
-                              _sliderValue = value;
-                            });
-                            if (widget.onChanged != null) {
-                              widget.onChanged!(value);
-                            }
-                          },
+                child: Opacity(
+                  opacity: widget.isDisabled ? 0.6 : 1,
+                  child: SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: filledTrackStyler.bg?.getColor(context),
+                      inactiveTrackColor: trackStyler.bg?.getColor(context),
+                      thumbColor: thumbStyler.bg?.getColor(context),
+                      trackHeight:
+                          widget.orientation == GSOrientations.horizontal
+                              ? styler.trackHeight
+                              : styler.trackWidth ?? 10,
+                      trackShape: const RoundedRectSliderTrackShape(),
+                      thumbShape: RoundSliderThumbShape(
+                          enabledThumbRadius: (styler.thumbHeight ?? 40) / 2),
+                      overlayShape: RoundSliderOverlayShape(
+                          overlayRadius: (styler.thumbHeight ?? 40) / 2),
+                    ),
+                    child: Slider(
+                      value: _sliderValue,
+                      min: widget.min,
+                      max: widget.max,
+                      label: _sliderValue.round().toString(),
+                      onChanged: widget.isDisabled
+                          ? (value) {}
+                          : (double value) {
+                              setState(() {
+                                _sliderValue = value;
+                              });
+                              if (widget.onChanged != null) {
+                                widget.onChanged!(value);
+                              }
+                            },
+                    ),
                   ),
                 ),
               ),
