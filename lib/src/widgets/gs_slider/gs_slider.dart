@@ -16,7 +16,7 @@ class GSSlider extends StatefulWidget {
   final GSOrientations? orientation;
   final GSStyle? style;
   final ValueChanged<double>? onChanged;
- const GSSlider(
+  const GSSlider(
       {super.key,
       this.style,
       this.size,
@@ -92,9 +92,16 @@ class _GSSliderState extends State<GSSlider> {
                 quarterTurns: quarterTurns,
                 child: SliderTheme(
                   data: SliderTheme.of(context).copyWith(
-                    thumbColor: widget.isDisabled
-                        ? thumbStyler.bg?.getColor(context).withOpacity(0.4)
-                        : thumbStyler.bg?.getColor(context),
+                    disabledActiveTrackColor: filledTrackStyler.bg
+                        ?.getColor(context)
+                        .withOpacity(0.7),
+                    disabledInactiveTrackColor:
+                        trackStyler.bg?.getColor(context).withOpacity(0.7),
+                    disabledThumbColor:
+                        thumbStyler.bg?.getColor(context).withOpacity(0.9),
+                    activeTrackColor: filledTrackStyler.bg?.getColor(context),
+                    inactiveTrackColor: trackStyler.bg?.getColor(context),
+                    thumbColor: thumbStyler.bg?.getColor(context),
                     trackHeight: widget.orientation == GSOrientations.horizontal
                         ? styler.trackHeight
                         : styler.trackWidth ?? 10,
@@ -105,14 +112,6 @@ class _GSSliderState extends State<GSSlider> {
                         overlayRadius: (styler.thumbHeight ?? 40) / 2),
                   ),
                   child: Slider(
-                    activeColor: widget.isDisabled
-                        ? filledTrackStyler.bg
-                            ?.getColor(context)
-                            .withOpacity(0.4)
-                        : filledTrackStyler.bg?.getColor(context),
-                    inactiveColor: widget.isDisabled
-                        ? trackStyler.bg?.getColor(context).withOpacity(0.4)
-                        : trackStyler.bg?.getColor(context),
                     value: _sliderValue,
                     min: widget.min,
                     max: widget.max,
