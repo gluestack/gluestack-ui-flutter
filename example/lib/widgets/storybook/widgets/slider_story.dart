@@ -21,10 +21,10 @@ final class SliderStory extends StoryWidget {
                   options: orientationOptions)],
               isDisabled:
                   context.knobs.boolean(label: "isDisabled", initial: false),
-             
+
               isReversed:
                   context.knobs.boolean(label: "isReversed", initial: false),
-                  //  style: GSStyle(width: 30),
+              //  style: GSStyle(width: 30),
             ));
   }
 

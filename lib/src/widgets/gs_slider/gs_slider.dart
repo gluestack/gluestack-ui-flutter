@@ -90,42 +90,39 @@ class _GSSliderState extends State<GSSlider> {
                   : TextDirection.ltr,
               child: RotatedBox(
                 quarterTurns: quarterTurns,
-                child: SliderTheme(
-                  data: SliderTheme.of(context).copyWith(
-                    disabledActiveTrackColor: filledTrackStyler.bg
-                        ?.getColor(context)
-                        .withOpacity(0.7),
-                    disabledInactiveTrackColor:
-                        trackStyler.bg?.getColor(context).withOpacity(0.7),
-                    disabledThumbColor:
-                        thumbStyler.bg?.getColor(context).withOpacity(0.9),
-                    activeTrackColor: filledTrackStyler.bg?.getColor(context),
-                    inactiveTrackColor: trackStyler.bg?.getColor(context),
-                    thumbColor: thumbStyler.bg?.getColor(context),
-                    trackHeight: widget.orientation == GSOrientations.horizontal
-                        ? styler.trackHeight
-                        : styler.trackWidth ?? 10,
-                    trackShape: const RoundedRectSliderTrackShape(),
-                    thumbShape: RoundSliderThumbShape(
-                        enabledThumbRadius: (styler.thumbHeight ?? 40) / 2),
-                    overlayShape: RoundSliderOverlayShape(
-                        overlayRadius: (styler.thumbHeight ?? 40) / 2),
-                  ),
-                  child: Slider(
-                    value: _sliderValue,
-                    min: widget.min,
-                    max: widget.max,
-                    label: _sliderValue.round().toString(),
-                    onChanged: widget.isDisabled
-                        ? null
-                        : (double value) {
-                            setState(() {
-                              _sliderValue = value;
-                            });
-                            if (widget.onChanged != null) {
-                              widget.onChanged!(value);
-                            }
-                          },
+                child: Opacity(
+                  opacity: widget.isDisabled ? 0.6 : 1,
+                  child: SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: filledTrackStyler.bg?.getColor(context),
+                      inactiveTrackColor: trackStyler.bg?.getColor(context),
+                      thumbColor: thumbStyler.bg?.getColor(context),
+                      trackHeight:
+                          widget.orientation == GSOrientations.horizontal
+                              ? styler.trackHeight
+                              : styler.trackWidth ?? 10,
+                      trackShape: const RoundedRectSliderTrackShape(),
+                      thumbShape: RoundSliderThumbShape(
+                          enabledThumbRadius: (styler.thumbHeight ?? 40) / 2),
+                      overlayShape: RoundSliderOverlayShape(
+                          overlayRadius: (styler.thumbHeight ?? 40) / 2),
+                    ),
+                    child: Slider(
+                      value: _sliderValue,
+                      min: widget.min,
+                      max: widget.max,
+                      label: _sliderValue.round().toString(),
+                      onChanged: widget.isDisabled
+                          ? (value) {}
+                          : (double value) {
+                              setState(() {
+                                _sliderValue = value;
+                              });
+                              if (widget.onChanged != null) {
+                                widget.onChanged!(value);
+                              }
+                            },
+                    ),
                   ),
                 ),
               ),
