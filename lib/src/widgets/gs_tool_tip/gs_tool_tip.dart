@@ -75,7 +75,7 @@ class GSToolTip extends StatefulWidget {
   /// [controller] Controller that allows to show or hide the tooltip
   final GSTooltipController? controller;
 
-  final bool showArrow;
+  final bool enableNotch;
 
   const GSToolTip({
     super.key,
@@ -92,7 +92,7 @@ class GSToolTip extends StatefulWidget {
     this.sub = false,
     this.underline = false,
     this.distance = 10.0,
-    this.showArrow = true,
+    this.enableNotch = true,
     this.appearAnimationDuration = const Duration(milliseconds: 250),
     this.disappearAnimationDuration = const Duration(milliseconds: 250),
     this.controller,
@@ -269,7 +269,7 @@ class _GSToolTipState extends State<GSToolTip> with WidgetsBindingObserver {
           hideOverlay: _hideOverlay,
           triggerBox: _triggerBox,
           showChildAboveOverlay: true,
-          showArrow: widget.showArrow,
+          enableNotch: widget.enableNotch,
           showModal: true,
           appearAnimationDuration: widget.appearAnimationDuration,
           disappearAnimationDuration: widget.disappearAnimationDuration,
@@ -358,6 +358,7 @@ class _GSToolTipState extends State<GSToolTip> with WidgetsBindingObserver {
     widget.controller?.attach(show: _showOverlay, hide: _hideOverlay);
 
     return MouseRegion(
+        hitTestBehavior: HitTestBehavior.deferToChild,
         onEnter: (_) {
           _toggleOverlay(context, tooltipStyle);
         },

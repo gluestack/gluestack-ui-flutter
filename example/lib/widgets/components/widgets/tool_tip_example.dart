@@ -68,7 +68,7 @@ GSToolTip(
           component: Column(
             children: [
               GSToolTip(
-                  showArrow: enableNotch,
+                  enableNotch: enableNotch,
                   distance: 1,
                   message: "Tooltip",
                   style: GSStyle(

@@ -18,7 +18,6 @@ class GSTooltipOverlay extends StatefulWidget {
     this.tooltipStyle,
     required this.arrowBox,
     required this.enableNotch,
-    // required this.child,
   });
   final String message;
   final bool showModal;
@@ -31,7 +30,6 @@ class GSTooltipOverlay extends StatefulWidget {
   final Duration appearAnimationDuration;
   final Duration disappearAnimationDuration;
   final TooltipStyleClass? tooltipStyle;
-  // final Widget? child;
 
   @override
   State<GSTooltipOverlay> createState() => GSTooltipOverlayState();
@@ -74,20 +72,15 @@ class GSTooltipOverlayState extends State<GSTooltipOverlay> {
         children: [
           if (widget.showModal)
             MouseRegion(
+                hitTestBehavior : HitTestBehavior.deferToChild,
               onExit: (_) {
                 widget.hideOverlay();
               },
               child: Container(
-                // color: Colors.white10,
                 color: Colors.transparent,
-                width: double.infinity / 2,
-                height: double.infinity / 2,
+                width: double.infinity/2,
+                height: double.infinity/2,
               ),
-              // Container(
-              //   color: Colors.transparent,
-              //   width: double.infinity/2,
-              //   height: double.infinity/2,
-              // ),
             ),
           Positioned(
             top: widget.toolTipElementsDisplay.bubble.y,
@@ -122,6 +115,7 @@ class GSTooltipOverlayState extends State<GSTooltipOverlay> {
               top: widget.triggerBox.y,
               left: widget.triggerBox.x,
               child: MouseRegion(
+                hitTestBehavior : HitTestBehavior.deferToChild,
                 onExit: (_) {
                   widget.hideOverlay();
                 },
@@ -129,7 +123,6 @@ class GSTooltipOverlayState extends State<GSTooltipOverlay> {
                   width: widget.triggerBox.w,
                   height: widget.triggerBox.h,
                   color: Colors.transparent,
-                  // child: widget.child,
                 ),
               ),
             ),
