@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/widgets/gs_tool_tip/arrow.dart';
 import 'package:gluestack_ui/src/widgets/gs_tool_tip/bubble.dart';
@@ -18,19 +17,21 @@ class GSTooltipOverlay extends StatefulWidget {
     required this.disappearAnimationDuration,
     this.tooltipStyle,
     required this.arrowBox,
-    required this.showArrow,
+    required this.enableNotch,
+    // required this.child,
   });
   final String message;
   final bool showModal;
   final ElementBox arrowBox;
   final bool showChildAboveOverlay;
-  final bool showArrow;
+  final bool enableNotch;
   final ToolTipElementsDisplay toolTipElementsDisplay;
   final VoidCallback hideOverlay;
   final ElementBox triggerBox;
   final Duration appearAnimationDuration;
   final Duration disappearAnimationDuration;
   final TooltipStyleClass? tooltipStyle;
+  // final Widget? child;
 
   @override
   State<GSTooltipOverlay> createState() => GSTooltipOverlayState();
@@ -77,10 +78,16 @@ class GSTooltipOverlayState extends State<GSTooltipOverlay> {
                 widget.hideOverlay();
               },
               child: Container(
+                // color: Colors.white10,
                 color: Colors.transparent,
-                width: double.infinity,
-                height: double.infinity,
+                width: double.infinity / 2,
+                height: double.infinity / 2,
               ),
+              // Container(
+              //   color: Colors.transparent,
+              //   width: double.infinity/2,
+              //   height: double.infinity/2,
+              // ),
             ),
           Positioned(
             top: widget.toolTipElementsDisplay.bubble.y,
@@ -98,14 +105,14 @@ class GSTooltipOverlayState extends State<GSTooltipOverlay> {
               ),
             ),
           ),
-          if (widget.showArrow)
+          if (widget.enableNotch)
             Positioned(
               top: widget.toolTipElementsDisplay.arrow.y,
               left: widget.toolTipElementsDisplay.arrow.x,
               child: Arrow(
                 context: context,
                 tooltipStyle: widget.tooltipStyle,
-                position: widget.toolTipElementsDisplay.position ,
+                position: widget.toolTipElementsDisplay.position,
                 width: widget.arrowBox.w,
                 height: widget.arrowBox.h,
               ),
@@ -122,6 +129,7 @@ class GSTooltipOverlayState extends State<GSTooltipOverlay> {
                   width: widget.triggerBox.w,
                   height: widget.triggerBox.h,
                   color: Colors.transparent,
+                  // child: widget.child,
                 ),
               ),
             ),

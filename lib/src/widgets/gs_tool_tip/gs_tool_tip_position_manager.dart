@@ -75,44 +75,20 @@ class PositionManager {
     );
   }
 
-  // ToolTipElementsDisplay _topEnd() {
-  //   return ToolTipElementsDisplay(
-  //     arrow: ElementBox(
-  //      w: arrowBox.w,
-  //     h: arrowBox.h,
-  //     x: (triggerBox.x + triggerBox.w - _half(arrowBox.w)).floorToDouble(),
-  //     y: (triggerBox.y - distance - arrowBox.h).floorToDouble(),
-  //     ),
-  //     bubble: ElementBox(
-  //       w: overlayBox.w,
-  //       h: overlayBox.h,
-  //       x: triggerBox.x - overlayBox.w + _half(triggerBox.w),
-  //       y: triggerBox.y - overlayBox.h - distance - arrowBox.h,
-  //     ),
-  //     position: GSTooltipPosition.topEnd,
-  //     radius: BorderRadius.only(
-  //       topLeft: radius,
-  //       topRight: radius,
-  //       bottomLeft: radius,
-  //       bottomRight: Radius.zero,
-  //     ),
-  //   );
-  // }
-
   ToolTipElementsDisplay _topEnd() {
     return ToolTipElementsDisplay(
       arrow: ElementBox(
         w: arrowBox.w,
         h: arrowBox.h,
-        x: (triggerBox.x + - overlayBox.w + triggerBox.w - arrowBox.w - _half(arrowBox.w))
-            .floorToDouble(), // Adjusted position to align the arrow properly
+        x: (triggerBox.x + _half(triggerBox.w) - arrowBox.w),
         y: (triggerBox.y - distance - arrowBox.h).floorToDouble(),
       ),
       bubble: ElementBox(
         w: overlayBox.w,
         h: overlayBox.h,
-        x: triggerBox.x - overlayBox.w + _half(triggerBox.w),
-        y: triggerBox.y - overlayBox.h - distance - arrowBox.h,
+        x: triggerBox.x + _half(triggerBox.w) - overlayBox.w,
+        y: (triggerBox.y - overlayBox.h - distance - arrowBox.h)
+            .floorToDouble(),
       ),
       position: GSTooltipPosition.topEnd,
       radius: BorderRadius.only(
@@ -451,3 +427,34 @@ class ToolTipElementsDisplay {
     this.radius,
   });
 }
+
+// Further adjustment for proper alignment
+// x: (triggerBox.x +
+//     triggerBox.w -
+//     overlayBox.w +
+//     _half(
+//         overlayBox.w)),
+
+// ToolTipElementsDisplay _topEnd() {
+//   return ToolTipElementsDisplay(
+//     arrow: ElementBox(
+//      w: arrowBox.w,
+//     h: arrowBox.h,
+//     x: (triggerBox.x + triggerBox.w - _half(arrowBox.w)).floorToDouble(),
+//     y: (triggerBox.y - distance - arrowBox.h).floorToDouble(),
+//     ),
+//     bubble: ElementBox(
+//       w: overlayBox.w,
+//       h: overlayBox.h,
+//       x: triggerBox.x - overlayBox.w + _half(triggerBox.w),
+//       y: triggerBox.y - overlayBox.h - distance - arrowBox.h,
+//     ),
+//     position: GSTooltipPosition.topEnd,
+//     radius: BorderRadius.only(
+//       topLeft: radius,
+//       topRight: radius,
+//       bottomLeft: radius,
+//       bottomRight: Radius.zero,
+//     ),
+//   );
+// }
