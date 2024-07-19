@@ -24,7 +24,7 @@ class GSToolTipExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 300, height: 300,
       // style: GSStyle(width: 300, height: 300, color: $GSColors.borderDark100),
       child: GSToolTip(
@@ -36,10 +36,7 @@ class GSToolTipExample extends StatelessWidget {
         enableNotch:
             context.knobs.boolean(label: "Enable Notch", initial: false),
         message: 'Tooltip',
-        child: Container(
-            width: 150,
-            height: 100,
-            color: $GSColors.error200),
+        child: Container(width: 150, height: 100, color: $GSColors.error200),
       ),
     );
   }
