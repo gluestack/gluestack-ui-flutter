@@ -188,10 +188,6 @@ class _HomePageState extends State<HomePage> {
                   routePath: "/navigation-rail-preview",
                 ),
                  const NavButton(
-                  title: "GS Slider",
-                  routePath: "/slider-example",
-                ),
-                 const NavButton(
                   title: "GS ToolTip",
                   routePath: "/toolTip-example",
                 ),

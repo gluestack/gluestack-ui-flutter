@@ -358,8 +358,8 @@ class _GSToolTipState extends State<GSToolTip> with WidgetsBindingObserver {
     widget.controller?.attach(show: _showOverlay, hide: _hideOverlay);
 
     return MouseRegion(
-        hitTestBehavior: HitTestBehavior.deferToChild,
         onEnter: (_) {
+          // print("hi");
           _toggleOverlay(context, tooltipStyle);
         },
         child: widget.child);

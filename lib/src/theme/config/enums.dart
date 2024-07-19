@@ -309,12 +309,6 @@ enum GSBadgeSizes {
   $lg,
 }
 
-enum GSSliderSizes {
-  $sm,
-  $md,
-  $lg,
-}
-
 enum GSToolTipPlacements {
   topLeft,
   top,

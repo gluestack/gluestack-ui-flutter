@@ -1,5 +1,4 @@
 import 'package:gluestack_ui_example/widgets/storybook/widgets/header_story.dart';
-import 'package:gluestack_ui_example/widgets/storybook/widgets/slider_story.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/tab_story.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/tooltip_story.dart';
 import 'alert_dialog_story.dart';
@@ -60,7 +59,6 @@ final List<StoryWidget> kStories = [
   ProgressStory(),
   RadioButtonStory(),
   ScrollStory(),
-  SliderStory(),
   SpinnerStory(),
   StackStory(),
   SwitchStory(),
