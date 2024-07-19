@@ -1,6 +1,3 @@
-import 'package:el_tooltip/el_tooltip.dart';
-import 'package:flutter/material.dart';
-import 'package:super_tooltip/super_tooltip.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
@@ -40,7 +37,6 @@ class GSToolTipExample extends StatelessWidget {
             context.knobs.boolean(label: "Enable Notch", initial: false),
         message: 'Tooltip',
         child: Container(
-            // key: _childWidgetKey,
             width: 150,
             height: 100,
             color: $GSColors.error200),
