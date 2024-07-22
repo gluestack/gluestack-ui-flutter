@@ -6,7 +6,7 @@ import 'package:gluestack_ui/src/widgets/gs_tool_tip/triangle.dart';
 /// Loads the arrow from the paint code and applies the correct transformations
 /// color, rotation and mirroring
 class Arrow extends StatelessWidget {
-  final GSTooltipPosition position;
+  final TooltipPosition position;
   final double width;
   final double height;
   final BuildContext context;
@@ -39,45 +39,45 @@ class Arrow extends StatelessWidget {
     int quarterTurns = 0;
 
     switch (position) {
-      case GSTooltipPosition.topStart:
+      case TooltipPosition.topStart:
         break;
-      case GSTooltipPosition.topCenter:
+      case TooltipPosition.topCenter:
         quarterTurns = 0;
         isArrow = true;
         break;
-      case GSTooltipPosition.topEnd:
+      case TooltipPosition.topEnd:
         scaleX = -1;
         break;
-      case GSTooltipPosition.bottomStart:
+      case TooltipPosition.bottomStart:
         scaleY = -1;
         break;
-      case GSTooltipPosition.bottomCenter:
+      case TooltipPosition.bottomCenter:
         quarterTurns = 2;
         isArrow = true;
         break;
-      case GSTooltipPosition.bottomEnd:
+      case TooltipPosition.bottomEnd:
         scaleX = -1;
         scaleY = -1;
         break;
-      case GSTooltipPosition.leftStart:
+      case TooltipPosition.leftStart:
         scaleY = -1;
         quarterTurns = 3;
         break;
-      case GSTooltipPosition.leftCenter:
+      case TooltipPosition.leftCenter:
         quarterTurns = 3;
         isArrow = true;
         break;
-      case GSTooltipPosition.leftEnd:
+      case TooltipPosition.leftEnd:
         quarterTurns = 3;
         break;
-      case GSTooltipPosition.rightStart:
+      case TooltipPosition.rightStart:
         quarterTurns = 1;
         break;
-      case GSTooltipPosition.rightCenter:
+      case TooltipPosition.rightCenter:
         quarterTurns = 1;
         isArrow = true;
         break;
-      case GSTooltipPosition.rightEnd:
+      case TooltipPosition.rightEnd:
         quarterTurns = 1;
         scaleY = -1;
         break;

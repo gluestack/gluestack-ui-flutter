@@ -45,7 +45,7 @@ class PositionManager {
         x: (triggerBox.x + _half(triggerBox.w)).floorToDouble(),
         y: triggerBox.y - overlayBox.h - distance - arrowBox.h,
       ),
-      position: GSTooltipPosition.topStart,
+      position: TooltipPosition.topStart,
       radius: BorderRadius.only(
         topLeft: radius,
         topRight: radius,
@@ -70,7 +70,7 @@ class PositionManager {
         x: triggerBox.x + _half(triggerBox.w) - _half(overlayBox.w),
         y: triggerBox.y - overlayBox.h - distance - arrowBox.h,
       ),
-      position: GSTooltipPosition.topCenter,
+      position: TooltipPosition.topCenter,
       radius: BorderRadius.all(radius),
     );
   }
@@ -90,7 +90,7 @@ class PositionManager {
         y: (triggerBox.y - overlayBox.h - distance - arrowBox.h)
             .floorToDouble(),
       ),
-      position: GSTooltipPosition.topEnd,
+      position: TooltipPosition.topEnd,
       radius: BorderRadius.only(
         topLeft: radius,
         topRight: radius,
@@ -114,7 +114,7 @@ class PositionManager {
         x: (triggerBox.x + _half(triggerBox.w)).ceilToDouble(),
         y: triggerBox.y + triggerBox.h + distance + arrowBox.h,
       ),
-      position: GSTooltipPosition.bottomStart,
+      position: TooltipPosition.bottomStart,
       radius: BorderRadius.only(
         topLeft: Radius.zero,
         topRight: radius,
@@ -140,7 +140,7 @@ class PositionManager {
             .ceilToDouble(),
         y: triggerBox.y + triggerBox.h + distance + arrowBox.h,
       ),
-      position: GSTooltipPosition.bottomCenter,
+      position: TooltipPosition.bottomCenter,
       radius: BorderRadius.all(radius),
     );
   }
@@ -159,7 +159,7 @@ class PositionManager {
         x: triggerBox.x + _half(triggerBox.w) - overlayBox.w,
         y: triggerBox.y + triggerBox.h + distance + arrowBox.h,
       ),
-      position: GSTooltipPosition.bottomEnd,
+      position: TooltipPosition.bottomEnd,
       radius: BorderRadius.only(
         topLeft: radius,
         topRight: Radius.zero,
@@ -184,7 +184,7 @@ class PositionManager {
         x: triggerBox.x - overlayBox.x - overlayBox.w - distance - arrowBox.h,
         y: (triggerBox.y + _half(triggerBox.h)).floorToDouble(),
       ),
-      position: GSTooltipPosition.leftStart,
+      position: TooltipPosition.leftStart,
       radius: BorderRadius.only(
         topLeft: radius,
         topRight: Radius.zero,
@@ -210,7 +210,7 @@ class PositionManager {
         x: triggerBox.x - overlayBox.x - overlayBox.w - distance - arrowBox.h,
         y: triggerBox.y + _half(triggerBox.h) - _half(overlayBox.h),
       ),
-      position: GSTooltipPosition.leftCenter,
+      position: TooltipPosition.leftCenter,
       radius: BorderRadius.all(radius),
     );
   }
@@ -230,7 +230,7 @@ class PositionManager {
         x: triggerBox.x - overlayBox.x - overlayBox.w - distance - arrowBox.h,
         y: (triggerBox.y + _half(triggerBox.h) - overlayBox.h).floorToDouble(),
       ),
-      position: GSTooltipPosition.leftEnd,
+      position: TooltipPosition.leftEnd,
       radius: BorderRadius.only(
         topLeft: radius,
         topRight: radius,
@@ -255,7 +255,7 @@ class PositionManager {
             .floorToDouble(),
         y: (triggerBox.y + _half(triggerBox.h)).floorToDouble(),
       ),
-      position: GSTooltipPosition.rightStart,
+      position: TooltipPosition.rightStart,
       radius: BorderRadius.only(
         topLeft: Radius.zero,
         topRight: radius,
@@ -281,7 +281,7 @@ class PositionManager {
             .floorToDouble(),
         y: triggerBox.y + _half(triggerBox.h) - _half(overlayBox.h),
       ),
-      position: GSTooltipPosition.rightCenter,
+      position: TooltipPosition.rightCenter,
       radius: BorderRadius.all(radius),
     );
   }
@@ -300,7 +300,7 @@ class PositionManager {
           x: (triggerBox.x + triggerBox.w + distance + arrowBox.h)
               .floorToDouble(),
           y: (triggerBox.y + _half(triggerBox.h) - overlayBox.h)),
-      position: GSTooltipPosition.rightEnd,
+      position: TooltipPosition.rightEnd,
       radius: BorderRadius.only(
         topLeft: radius,
         topRight: radius,
@@ -347,44 +347,44 @@ class PositionManager {
   }
 
   /// Load the calculated tooltip position
-  ToolTipElementsDisplay load({GSTooltipPosition? preferredPosition}) {
+  ToolTipElementsDisplay load({TooltipPosition? preferredPosition}) {
     ToolTipElementsDisplay elementPosition;
 
     switch (preferredPosition) {
-      case GSTooltipPosition.topStart:
+      case TooltipPosition.topStart:
         elementPosition = _topStart();
         break;
-      case GSTooltipPosition.topCenter:
+      case TooltipPosition.topCenter:
         elementPosition = _topCenter();
         break;
-      case GSTooltipPosition.topEnd:
+      case TooltipPosition.topEnd:
         elementPosition = _topEnd();
         break;
-      case GSTooltipPosition.bottomStart:
+      case TooltipPosition.bottomStart:
         elementPosition = _bottomStart();
         break;
-      case GSTooltipPosition.bottomCenter:
+      case TooltipPosition.bottomCenter:
         elementPosition = _bottomCenter();
         break;
-      case GSTooltipPosition.bottomEnd:
+      case TooltipPosition.bottomEnd:
         elementPosition = _bottomEnd();
         break;
-      case GSTooltipPosition.leftStart:
+      case TooltipPosition.leftStart:
         elementPosition = _leftStart();
         break;
-      case GSTooltipPosition.leftCenter:
+      case TooltipPosition.leftCenter:
         elementPosition = _leftCenter();
         break;
-      case GSTooltipPosition.leftEnd:
+      case TooltipPosition.leftEnd:
         elementPosition = _leftEnd();
         break;
-      case GSTooltipPosition.rightStart:
+      case TooltipPosition.rightStart:
         elementPosition = _rightStart();
         break;
-      case GSTooltipPosition.rightCenter:
+      case TooltipPosition.rightCenter:
         elementPosition = _rightCenter();
         break;
-      case GSTooltipPosition.rightEnd:
+      case TooltipPosition.rightEnd:
         elementPosition = _rightEnd();
         break;
       default:
@@ -417,7 +417,7 @@ class ElementBox {
 class ToolTipElementsDisplay {
   final ElementBox bubble;
   final ElementBox arrow;
-  final GSTooltipPosition position;
+  final TooltipPosition position;
   final BorderRadiusGeometry? radius;
 
   ToolTipElementsDisplay({
@@ -449,7 +449,7 @@ class ToolTipElementsDisplay {
 //       x: triggerBox.x - overlayBox.w + _half(triggerBox.w),
 //       y: triggerBox.y - overlayBox.h - distance - arrowBox.h,
 //     ),
-//     position: GSTooltipPosition.topEnd,
+//     position: TooltipPosition.topEnd,
 //     radius: BorderRadius.only(
 //       topLeft: radius,
 //       topRight: radius,

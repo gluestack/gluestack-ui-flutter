@@ -309,7 +309,7 @@ enum GSBadgeSizes {
   $lg,
 }
 
-enum GSToolTipPlacements {
+enum ToolTipPlacements {
   topLeft,
   top,
   topRight,
@@ -322,4 +322,11 @@ enum GSToolTipPlacements {
   rightTop,
   right,
   rightBottom
+}
+
+enum GSToolTipPlacements {
+  top,
+  left,
+  bottom,
+  right,
 }

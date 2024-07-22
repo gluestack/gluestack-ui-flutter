@@ -7,7 +7,7 @@ import 'package:gluestack_ui/src/widgets/gs_tool_tip/gs_tool_tip_position_manage
 import 'package:gluestack_ui/src/widgets/gs_tool_tip/gs_tool_tip_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_tool_tip/gs_tool_tip_text_style.dart';
 
-enum GSTooltipPosition {
+enum TooltipPosition {
   topStart,
   topCenter,
   topEnd,
@@ -32,7 +32,7 @@ class GSToolTip extends StatefulWidget {
   final GSStyle? style;
 
   /// The preferred placement of the tooltip relative to the target widget.
-  final GSToolTipPlacements placement;
+  final ToolTipPlacements placement;
 
   /// If true, the text will be truncated with an ellipsis if it overflows.
   final bool isTruncated;
@@ -80,7 +80,7 @@ class GSToolTip extends StatefulWidget {
   const GSToolTip({
     super.key,
     required this.child,
-    this.placement = GSToolTipPlacements.topLeft,
+    this.placement = ToolTipPlacements.topLeft,
     this.style,
     this.size,
     required this.message,
@@ -103,9 +103,10 @@ class GSToolTip extends StatefulWidget {
 }
 
 class _GSToolTipState extends State<GSToolTip> with WidgetsBindingObserver {
+  
   final ElementBox _arrowBox = ElementBox(h: 10.0, w: 16.0);
   ElementBox _overlayBox = ElementBox(h: 0.0, w: 0.0);
-  late GSTooltipPosition? position;
+  late TooltipPosition? position;
   Duration timeout = Duration.zero;
   OverlayEntry? _overlayEntry;
   OverlayEntry? _overlayEntryHidden;
@@ -130,46 +131,46 @@ class _GSToolTipState extends State<GSToolTip> with WidgetsBindingObserver {
     setState(() {});
   }
 
-  void preferredPositionMapping(GSToolTipPlacements placement) {
+  void preferredPositionMapping(ToolTipPlacements placement) {
     switch (placement) {
-      case GSToolTipPlacements.topRight:
-        position = GSTooltipPosition.topStart;
+      case ToolTipPlacements.topRight:
+        position = TooltipPosition.topStart;
         break;
-      case GSToolTipPlacements.top:
-        position = GSTooltipPosition.topCenter;
+      case ToolTipPlacements.top:
+        position = TooltipPosition.topCenter;
         break;
-      case GSToolTipPlacements.topLeft:
-        position = GSTooltipPosition.topEnd;
+      case ToolTipPlacements.topLeft:
+        position = TooltipPosition.topEnd;
         break;
-      case GSToolTipPlacements.bottomRight:
-        position = GSTooltipPosition.bottomStart;
+      case ToolTipPlacements.bottomRight:
+        position = TooltipPosition.bottomStart;
         break;
-      case GSToolTipPlacements.bottom:
-        position = GSTooltipPosition.bottomCenter;
+      case ToolTipPlacements.bottom:
+        position = TooltipPosition.bottomCenter;
         break;
-      case GSToolTipPlacements.bottomLeft:
-        position = GSTooltipPosition.bottomEnd;
+      case ToolTipPlacements.bottomLeft:
+        position = TooltipPosition.bottomEnd;
         break;
-      case GSToolTipPlacements.leftBottom:
-        position = GSTooltipPosition.leftStart;
+      case ToolTipPlacements.leftBottom:
+        position = TooltipPosition.leftStart;
         break;
-      case GSToolTipPlacements.left:
-        position = GSTooltipPosition.leftCenter;
+      case ToolTipPlacements.left:
+        position = TooltipPosition.leftCenter;
         break;
-      case GSToolTipPlacements.leftTop:
-        position = GSTooltipPosition.leftEnd;
+      case ToolTipPlacements.leftTop:
+        position = TooltipPosition.leftEnd;
         break;
-      case GSToolTipPlacements.rightBottom:
-        position = GSTooltipPosition.rightStart;
+      case ToolTipPlacements.rightBottom:
+        position = TooltipPosition.rightStart;
         break;
-      case GSToolTipPlacements.right:
-        position = GSTooltipPosition.rightCenter;
+      case ToolTipPlacements.right:
+        position = TooltipPosition.rightCenter;
         break;
-      case GSToolTipPlacements.rightTop:
-        position = GSTooltipPosition.rightEnd;
+      case ToolTipPlacements.rightTop:
+        position = TooltipPosition.rightEnd;
         break;
       default:
-        position = GSTooltipPosition.topCenter;
+        position = TooltipPosition.topCenter;
         break;
     }
   }
@@ -301,6 +302,8 @@ class _GSToolTipState extends State<GSToolTip> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+
+
     preferredPositionMapping(widget.placement);
 
     final textSize = widget.size ?? toolTipTextStyle.props?.size;

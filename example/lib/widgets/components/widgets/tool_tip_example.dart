@@ -14,20 +14,20 @@ class ToolTipExample extends StatefulWidget {
 class _ToolTipExampleState extends State<ToolTipExample> {
   bool enableNotch = false;
   final List dropdownPlacementOptions = [
-    GSToolTipPlacements.topLeft,
-    GSToolTipPlacements.top,
-    GSToolTipPlacements.topRight,
-    GSToolTipPlacements.leftTop,
-    GSToolTipPlacements.left,
-    GSToolTipPlacements.leftBottom,
-    GSToolTipPlacements.bottomLeft,
-    GSToolTipPlacements.bottom,
-    GSToolTipPlacements.bottomRight,
-    GSToolTipPlacements.rightTop,
-    GSToolTipPlacements.right,
-    GSToolTipPlacements.rightBottom
+    ToolTipPlacements.topLeft,
+    ToolTipPlacements.top,
+    ToolTipPlacements.topRight,
+    ToolTipPlacements.leftTop,
+    ToolTipPlacements.left,
+    ToolTipPlacements.leftBottom,
+    ToolTipPlacements.bottomLeft,
+    ToolTipPlacements.bottom,
+    ToolTipPlacements.bottomRight,
+    ToolTipPlacements.rightTop,
+    ToolTipPlacements.right,
+    ToolTipPlacements.rightBottom
   ];
-  GSToolTipPlacements selectedPlacementOption = GSToolTipPlacements.topLeft;
+  ToolTipPlacements selectedPlacementOption = ToolTipPlacements.topLeft;
   void updatePlacementSelectedOption(dynamic newOption) {
     setState(() {
       selectedPlacementOption = newOption;

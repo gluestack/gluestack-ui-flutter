@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
@@ -24,19 +25,16 @@ class GSToolTipExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 300, height: 300,
-      // style: GSStyle(width: 300, height: 300, color: $GSColors.borderDark100),
-      child: GSToolTip(
-        placement: GSToolTipPlacements.values[context.knobs.options(
-            label: 'Placement', initial: 1, options: placementsOptions)],
-        distance: 6,
-        style: GSStyle(
-            bg: GSTheme.of(context).background100, height: 40, width: 100),
-        enableNotch:
-            context.knobs.boolean(label: "Enable Notch", initial: false),
-        message: 'Tooltip',
-        child: Container(width: 150, height: 100, color: $GSColors.error200),
+    return SuperTooltip(
+      distance: 50,
+      backgroundColor : Colors.green,
+      toggleOnTap: true,
+      content: "tooltip gjhfgddxzc khjyftdgfxdcv khjyfhtdfcgvhmbnhyutfjh \n leshfl \n kjsebvjkb lksnfkl \n kjsbvkjnw",
+      popupDirection: GSTooltipPosition.values[context.knobs
+          .options(label: 'Placement', initial: 0, options: placementsOptions)],
+      child: Container(
+        color: Colors.indigo,
+        child: const Text("Hover"),
       ),
     );
   }
