@@ -294,3 +294,9 @@ enum GSBadgeSizes {
   $md,
   $lg,
 }
+
+enum GSSliderSizes {
+  $sm,
+  $md,
+  $lg,
+}

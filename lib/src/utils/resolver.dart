@@ -434,13 +434,26 @@ Map<String, GSConfigStyle>? resolveCompoundVariants(
   if (compoundVariants == null || compoundVariants.isEmpty) {
     return null;
   }
+
   final Map<String, GSConfigStyle> resolvedCompoundVariants = {};
+
   for (var element in compoundVariants) {
-    final keyName = resolveActionFromString(element['action']).toString() +
-        resolveVariantFromString(element['variant']).toString();
+    String keyName = '';
+
+    if (element.containsKey('action') && element.containsKey('variant')) {
+      keyName = resolveActionFromString(element['action']).toString() +
+          resolveVariantFromString(element['variant']).toString();
+    } else if (element.containsKey('orientation') &&
+        element.containsKey('size')) {
+      keyName =
+          resolveOrientationsFromString(element['orientation']).toString() +
+              resolveSizesFromString(element['size']).toString();
+    }
+
     resolvedCompoundVariants[keyName] =
         GSConfigStyle.fromMap(data: element['value']);
   }
+
   return resolvedCompoundVariants;
 }
 

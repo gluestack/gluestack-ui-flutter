@@ -353,6 +353,11 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
   String? activeThumbColor;
   String? iosBackgroundColor;
   double? scale;
+  double? trackHeight;
+  double? trackWidth;
+  double? thumbHeight;
+  double? thumbWidth;
+
   GSCursors? cursors;
   GSPlacement? placement;
 
@@ -429,6 +434,10 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
     this.activeThumbColor,
     this.iosBackgroundColor,
     this.scale,
+    this.trackHeight,
+    this.trackWidth,
+    this.thumbHeight,
+    this.thumbWidth,
     this.outlineColor,
     this.cursors,
     this.iconSize,
@@ -578,6 +587,10 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
         thumbColor: overrideStyle?.thumbColor ?? thumbColor,
         activeThumbColor: overrideStyle?.activeThumbColor ?? activeThumbColor,
         scale: overrideStyle?.scale ?? scale,
+        trackHeight: overrideStyle?.trackHeight ?? trackHeight,
+        trackWidth: overrideStyle?.trackWidth ?? trackWidth,
+        thumbHeight: overrideStyle?.thumbHeight ?? thumbHeight,
+        thumbWidth: overrideStyle?.thumbWidth ?? thumbWidth,
         cursors: overrideStyle?.cursors ?? cursors,
         isVisible: overrideStyle?.isVisible ?? isVisible,
         direction: overrideStyle?.direction ?? direction,
@@ -630,6 +643,10 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       activeThumbColor: gsStyle.activeThumbColor?.toString(),
       iosBackgroundColor: gsStyle.iosBackgroundColor?.toString(),
       scale: gsStyle.scale,
+      trackHeight: gsStyle.trackHeight,
+      trackWidth: gsStyle.trackWidth,
+      thumbHeight: gsStyle.thumbHeight,
+      thumbWidth: gsStyle.thumbWidth,
       cursors: gsStyle.cursors,
       placement: gsStyle.placement,
       isVisible: gsStyle.isVisible,
@@ -981,6 +998,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       ),
       onDisabled: GSConfigStyle(
         opacity: data?[':disabled']?['opacity'],
+        bg :  resolveColorTokenFromString(data?[':disabled']?['bg']),
         // textStyle: TextStyle(
         //   color: resolveColorFromString(data?[':disabled']?['color']),
         // ),
@@ -1129,6 +1147,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           ),
         ),
         onDisabled: GSConfigStyle(
+          bg :   resolveColorTokenFromString(data?[':disabled']?['bg']),
           borderColor: resolveColorTokenFromString(
               data?['_dark']?[':disabled']?['borderColor']),
           trackColorTrue: resolveColorTokenFromString(
@@ -1240,6 +1259,38 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           ? (data?['transform'].first as Map).isNotEmpty
               ? (data?['transform'].first as Map)['scale']
               : null
+          : null,
+           trackHeight: data?['_track'] != null
+          ? (data?['_track']['height'] is int
+              ? double.parse('${data?['_track']['height']}.0')
+              : resolveSpaceFromString(
+                  data?['_track']['height'].toString() ??
+                      data?['_track']['height'].toString(),
+                ))
+          : null,
+             trackWidth: data?['_track'] != null
+          ? (data?['_track']['width'] is int
+              ? double.parse('${data?['_track']['width']}.0')
+              : resolveSpaceFromString(
+                  data?['_track']['width'].toString() ??
+                      data?['_track']['width'].toString(),
+                ))
+          : null,
+      thumbHeight: data?['_thumb'] != null
+          ? (data?['_thumb']['h'] is int
+              ? double.parse('${data?['_thumb']['h']}.0')
+              : resolveSpaceFromString(
+                  data?['_thumb']['h'].toString() ??
+                      data?['_thumb']['h'].toString(),
+                ))
+          : null,
+      thumbWidth: data?['_thumb'] != null
+          ? (data?['_thumb']['w'] is int
+              ? double.parse('${data?['_thumb']['w']}.0')
+              : resolveSpaceFromString(
+                  data?['_thumb']['w'].toString() ??
+                      data?['_thumb']['w'].toString(),
+                ))
           : null,
       iconColor: resolveColorTokenFromString(
         data?['_icon']?['color'] ?? data?['_selectedIcon']?['color'],
