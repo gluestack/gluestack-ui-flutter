@@ -82,6 +82,20 @@ enum GSHeadingSizes {
   $xs,
 }
 
+enum GSToolTipSizes {
+  $6xl,
+  $5xl,
+  $4xl,
+  $3xl,
+  $2xl,
+  $xl,
+  $lg,
+  $md,
+  $sm,
+  $xs,
+  $2xs
+}
+
 enum GSToastVariants {
   solid,
   outline,
@@ -295,8 +309,24 @@ enum GSBadgeSizes {
   $lg,
 }
 
-enum GSSliderSizes {
-  $sm,
-  $md,
-  $lg,
+enum ToolTipPlacements {
+  topLeft,
+  top,
+  topRight,
+  leftTop,
+  left,
+  leftBottom,
+  bottomLeft,
+  bottom,
+  bottomRight,
+  rightTop,
+  right,
+  rightBottom
+}
+
+enum GSToolTipPlacements {
+  top,
+  left,
+  bottom,
+  right,
 }

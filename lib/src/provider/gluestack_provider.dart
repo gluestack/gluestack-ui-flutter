@@ -140,22 +140,20 @@ class GluestackCustomConfig {
   Map<String, dynamic>? tabTabPanels;
   Map<String, dynamic>? tabTabTile;
 
-  // slider
-  Map<String, dynamic>? slider;
-  Map<String, dynamic>? sliderTrack;
-  Map<String, dynamic>? sliderThumb;
-  Map<String, dynamic>? sliderFilledTrack;
+
+  // toolTip
+  Map<String, dynamic>? toolTip;
+  Map<String, dynamic>? toolTipText;
+  Map<String, dynamic>? toolTipContent;
 
   //GS Layout
   Map<String, dynamic>? layout;
 
   GluestackCustomConfig({
-    // slider
-
-    this.slider,
-    this.sliderTrack,
-    this.sliderThumb,
-    this.sliderFilledTrack,
+    // toolTip
+    this.toolTip,
+    this.toolTipContent,
+    this.toolTipText,
     //tabs
     this.tabs,
     this.tabsTab,
@@ -309,12 +307,12 @@ class GluestackCustomConfig {
 //layout
     layout = mergeConfigs(layoutData, layout);
 
-    //slider
 
-    slider = mergeConfigs(sliderData, slider);
-    sliderTrack = mergeConfigs(sliderTrackData, sliderTrack);
-    sliderThumb = mergeConfigs(sliderThumbData, sliderThumb);
-    sliderFilledTrack = mergeConfigs(sliderFilledTrackData, sliderFilledTrack);
+    // toolTip
+
+    toolTip = mergeConfigs(toolTipData, toolTip);
+    toolTipContent = mergeConfigs(toolTipContentData, toolTipContent);
+    toolTipText = mergeConfigs(toolTipTextData, toolTipText);
 
     //tabs
     tabs = mergeConfigs(tabsData, tabs);

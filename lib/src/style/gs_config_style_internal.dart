@@ -289,11 +289,11 @@ class Variants {
         data: data?['space'],
       ),
       sub: GSConfigStyle.fromMap(
-          data: data?['sub']?['true'],
+          data: data?['sub']?["true"] ?? data?['sub']?[true],
           descendantStyle: descendantStyle,
           fromVariant: true),
       highlight: GSConfigStyle.fromMap(
-          data: data?['highlight']?['true'],
+          data: data?['highlight']?["true"] ?? data?['highlight']?[true],
           descendantStyle: descendantStyle,
           fromVariant: true),
       placements: GSPlacement.fromMap(data: data?['placement']),
@@ -332,6 +332,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
   GSAlignments? alignItems;
   GSAlignments? justifyContent;
   double? maxWidth;
+  double? maxHeight;
   AlignmentGeometry? alignment;
 
   double? top;
@@ -424,6 +425,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
     this.justifyContent,
     this.alignment,
     this.maxWidth,
+    this.maxHeight,
     this.badge,
     // this.highlightColor,
     // this.splashColor,
@@ -578,6 +580,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
         alignItems: overrideStyle?.alignItems ?? alignItems,
         justifyContent: overrideStyle?.justifyContent ?? justifyContent,
         maxWidth: overrideStyle?.maxWidth ?? maxWidth,
+        maxHeight: overrideStyle?.maxHeight ?? maxHeight,
         alignment: overrideStyle?.alignment ?? alignment,
         // highlightColor: overrideStyle?.highlightColor ?? highlightColor,
         // splashColor: overrideStyle?.splashColor ?? splashColor,
@@ -630,6 +633,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       alignItems: gsStyle.alignItems,
       justifyContent: gsStyle.justifyContent,
       maxWidth: gsStyle.maxWidth,
+      maxHeight: gsStyle.maxHeight,
       alignment: gsStyle.alignment,
       top: gsStyle.top,
       bottom: gsStyle.bottom,
@@ -720,16 +724,14 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       flexDirection: resolveFlexDirectionFromString(data?['flexDirection']),
       height: data?['h'] is int
           ? double.parse('${data?['h']}.0')
-          : resolveSpaceFromString(
-              data?['h'].toString() ?? data?['height'].toString(),
-            ),
+          : resolveSpaceFromString((data?['h'] ?? data?["height"]).toString()),
       width: data?['w'] != null
           ? data!['w']?.contains('100%')
               ? double.infinity
               : data['w']?.contains('%')
                   ? double.tryParse(data['w']?.replaceAll('%', ''))! / 100
                   : resolveSpaceFromString(data['w'] ?? data['width'])
-          : resolveSpaceFromString(data?['w'] ?? data?['width']),
+          : resolveSpaceFromString((data?['w'] ?? data?['width']).toString()),
       badge: GSConfigStyle(
         height: resolveSpaceFromString(
           data?['_badge']?['h'],
@@ -741,6 +743,9 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       textTransform: resolveTextTransformFromString(data?['textTransform']),
       maxWidth: data?['maxWidth'] != null
           ? double.tryParse(data?['maxWidth']?.toString() ?? "")
+          : null,
+          maxHeight: data?['maxHeight'] != null
+          ? double.tryParse(data?['maxHeight']?.toString() ?? "")
           : null,
       padding: data?['p'] != null
           ? resolvePaddingFromString(data?['p'].toString(), 'all')
@@ -1260,7 +1265,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
               ? (data?['transform'].first as Map)['scale']
               : null
           : null,
-           trackHeight: data?['_track'] != null
+      trackHeight: data?['_track'] != null
           ? (data?['_track']['height'] is int
               ? double.parse('${data?['_track']['height']}.0')
               : resolveSpaceFromString(
