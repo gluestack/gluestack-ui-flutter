@@ -14,20 +14,12 @@ class ToolTipExample extends StatefulWidget {
 class _ToolTipExampleState extends State<ToolTipExample> {
   bool enableNotch = false;
   final List dropdownPlacementOptions = [
-    ToolTipPlacements.topLeft,
-    ToolTipPlacements.top,
-    ToolTipPlacements.topRight,
-    ToolTipPlacements.leftTop,
-    ToolTipPlacements.left,
-    ToolTipPlacements.leftBottom,
-    ToolTipPlacements.bottomLeft,
-    ToolTipPlacements.bottom,
-    ToolTipPlacements.bottomRight,
-    ToolTipPlacements.rightTop,
-    ToolTipPlacements.right,
-    ToolTipPlacements.rightBottom
+    GSTooltipPosition.top,
+    GSTooltipPosition.left,
+    GSTooltipPosition.right,
+    GSTooltipPosition.bottom
   ];
-  ToolTipPlacements selectedPlacementOption = ToolTipPlacements.topLeft;
+  GSTooltipPosition selectedPlacementOption = GSTooltipPosition.top;
   void updatePlacementSelectedOption(dynamic newOption) {
     setState(() {
       selectedPlacementOption = newOption;
@@ -44,11 +36,10 @@ class _ToolTipExampleState extends State<ToolTipExample> {
   Widget build(BuildContext context) {
     var code = '''
 GSToolTip(
-  message: "Tooltip",
+  content: "Tooltip",
+  distance: 10,
   style: GSStyle(
-    bg: \$GSColors.backgroundDark100,
-    height: 40,
-    width: 100,
+    bg: \$GSColors.backgroundDark100
   ),
   placement: $selectedPlacementOption,
   child: const GSBadge(
@@ -69,13 +60,10 @@ GSToolTip(
             children: [
               GSToolTip(
                   enableNotch: enableNotch,
-                  distance: 1,
-                  message: "Tooltip",
-                  style: GSStyle(
-                      bg: GSTheme.of(context).background100,
-                      height: 40,
-                      width: 100),
+                  distance: 10,
                   placement: selectedPlacementOption,
+                  style: GSStyle(bg: GSTheme.of(context).background100),
+                  content: 'Tooltip',
                   child: const GSBadge(
                     size: GSBadgeSizes.$lg,
                     text: GSBadgeText("Hover Me"),

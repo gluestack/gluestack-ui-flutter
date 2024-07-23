@@ -2,16 +2,13 @@ import 'dart:async';
 import 'dart:math';
 import 'package:gluestack_ui/gluestack_ui.dart';
 
-class SuperUtils {
+class GSUtils {
   static EdgeInsets getTooltipMargin({
-    // required CloseButtonType? closeButtonType,
-    // required double? closeButtonSize,
     required double distance,
-    required double arrowLength,
+    double arrowLength = 10,
     required GSTooltipPosition preferredDirection,
   }) {
     const top = 0.0;
-        
 
     switch (preferredDirection) {
       case GSTooltipPosition.bottom:
@@ -47,36 +44,26 @@ class SuperUtils {
   static double leftMostXtoTarget({
     required double? left,
     required double? right,
-    required double margin,
+    double margin = 0,
     required Size size,
     required Size childSize,
     required Offset target,
+    required Size childTargetSize,
   }) {
     double leftMostXtoTarget;
 
     if (left != null) {
       leftMostXtoTarget = left;
     } else if (right != null) {
-      // leftMostXtoTarget
-      //               ________________________
-      //               |                      |
-      //               |   childSize.width    |
-      //               ________________________
-      //
-      //    topLeft -> |  |                             |  | <- topRight
-      //               |  |                             |  |
-      //               |  |                             |  |
-      //                ^                                ^
-      //          margin                 margin
       leftMostXtoTarget = max(
         size.topLeft(Offset.zero).dx + margin,
         size.topRight(Offset.zero).dx - margin - childSize.width - right,
       );
     } else {
       leftMostXtoTarget = max(
-        margin,
+        target.dx - childSize.width / 2 + childTargetSize.width / 2,
         min(
-          target.dx - childSize.width / 2,
+          target.dx - childSize.width / 2 + childTargetSize.width / 2,
           size.topRight(Offset.zero).dx - margin - childSize.width,
         ),
       );
@@ -88,10 +75,11 @@ class SuperUtils {
   static double topMostYtoTarget({
     required double? top,
     required double? bottom,
-    required double margin,
+    double margin = 0,
     required Offset target,
     required Size size,
     required Size childSize,
+    required Size childTargetSize,
   }) {
     double topmostYtoTarget;
 
@@ -104,9 +92,9 @@ class SuperUtils {
       );
     } else {
       topmostYtoTarget = max(
-        margin,
+        target.dy - childSize.height / 2 + childTargetSize.height / 2,
         min(
-          target.dy - childSize.height / 2,
+          target.dy - childSize.height / 2 + childTargetSize.height / 2,
           size.bottomRight(Offset.zero).dy - margin - childSize.height,
         ),
       );
@@ -121,7 +109,7 @@ class SuperUtils {
     required double? bottom,
     required double? right,
     required double? left,
-    required double margin,
+    double margin = 0,
     required bool isRight,
     required Offset target,
   }) {
@@ -149,7 +137,7 @@ class SuperUtils {
       if (right != null) {
         minWidth = maxWidth = maxWidth - right - target.dx;
       } else {
-        maxWidth = min(maxWidth, maxWidth - target.dx) - margin;
+        maxWidth = min(maxWidth, target.dx) - margin;
       }
     } else {
       if (left != null) {
@@ -168,7 +156,7 @@ class SuperUtils {
 
   static BoxConstraints verticalConstraints({
     required BoxConstraints constraints,
-    required double margin,
+    double margin = 0,
     required bool isUp,
     required double? top,
     required double? left,
@@ -184,7 +172,6 @@ class SuperUtils {
       maxWidth = maxWidth - (left + right);
     } else if ((left != null && right == null) ||
         (left == null && right != null)) {
-      // make sure that the sum of left, right + maxwidth isn't bigger than the screen width.
       final sideDelta = (left ?? 0.0) + (right ?? 0.0) + margin;
 
       if (maxWidth > maxWidth - sideDelta) {
@@ -220,7 +207,7 @@ class SuperUtils {
   }
 }
 
-class SuperTooltipController extends ChangeNotifier {
+class GSTooltipController extends ChangeNotifier {
   late Completer _completer;
   bool _isVisible = false;
   bool get isVisible => _isVisible;

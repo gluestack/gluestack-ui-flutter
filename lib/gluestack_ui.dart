@@ -47,4 +47,3 @@ export 'src/widgets/gs_tabs/public.dart';
 export 'src/widgets/gs_layout/public.dart';
 export 'src/widgets/gs_header/public.dart';
 export 'src/widgets/gs_tool_tip/public.dart';
-export 'src/widgets/gss_tooltip/public.dart';

@@ -1,1 +1,1 @@
-export 'gs_tool_tip.dart';
+export 'gs_tooltip.dart';
