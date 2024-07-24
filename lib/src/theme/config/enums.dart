@@ -48,6 +48,19 @@ enum GSInputSizes {
   $sm,
 }
 
+enum GSSelectVariants {
+  underlined,
+  outline,
+  rounded,
+}
+
+enum GSSelectSizes {
+  $xl,
+  $lg,
+  $md,
+  $sm,
+}
+
 enum GSAlertDialogSizes {
   $xs,
   $sm,
