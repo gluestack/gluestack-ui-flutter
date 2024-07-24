@@ -88,12 +88,25 @@ enum GSToastVariants {
   accent,
 }
 
+enum GSAlertBoxVariants {
+  solid,
+  outline,
+}
+
 enum GSToastActions {
   error,
   warning,
   success,
   info,
   attention,
+}
+
+enum GSAlertBoxActions {
+  error,
+  warning,
+  success,
+  info,
+  muted,
 }
 
 enum GSNavigationRailSizes {

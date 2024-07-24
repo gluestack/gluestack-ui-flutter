@@ -1,3 +1,7 @@
+import 'package:gluestack_ui/src/theme/config/alert_box/alert_box.dart';
+import 'package:gluestack_ui/src/theme/config/alert_box/alert_box_icon.dart';
+import 'package:gluestack_ui/src/theme/config/alert_box/alert_box_text.dart';
+
 import 'provider.dart';
 
 final getIt = GetIt.instance;
@@ -146,6 +150,11 @@ class GluestackCustomConfig {
   Map<String, dynamic>? sliderThumb;
   Map<String, dynamic>? sliderFilledTrack;
 
+  // AlertBox
+  Map<String, dynamic>? alert;
+  Map<String, dynamic>? alertIcon;
+  Map<String, dynamic>? alertText;
+
   //GS Layout
   Map<String, dynamic>? layout;
 
@@ -156,6 +165,12 @@ class GluestackCustomConfig {
     this.sliderTrack,
     this.sliderThumb,
     this.sliderFilledTrack,
+
+    // alertBox
+
+    this.alert,
+    this.alertIcon,
+    this.alertText,
     //tabs
     this.tabs,
     this.tabsTab,
@@ -315,6 +330,12 @@ class GluestackCustomConfig {
     sliderTrack = mergeConfigs(sliderTrackData, sliderTrack);
     sliderThumb = mergeConfigs(sliderThumbData, sliderThumb);
     sliderFilledTrack = mergeConfigs(sliderFilledTrackData, sliderFilledTrack);
+
+    // alert box
+
+    alert = mergeConfigs(alertBoxData, alert);
+    alertText = mergeConfigs(alertBoxTextData, alertText);
+    alertIcon = mergeConfigs(alertBoxIconData, alertIcon);
 
     //tabs
     tabs = mergeConfigs(tabsData, tabs);
