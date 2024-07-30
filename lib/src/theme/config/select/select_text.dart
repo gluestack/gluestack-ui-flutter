@@ -49,12 +49,3 @@ const Map<String, dynamic> selectTextData = {
   },
   "defaultProps": {"size": "md"}
 };
-
-
-
-
-   
-  
-  // {
-  //   ancestorStyle: ['_text'],
-  // }

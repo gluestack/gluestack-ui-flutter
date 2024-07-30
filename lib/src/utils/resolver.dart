@@ -146,9 +146,10 @@ EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
     return EdgeInsets.all(resolveSpaceFromString(padding)!);
   }
   if (type == 'symmetric') {
+    print(resolveSpaceFromString(paddingy));
     return EdgeInsets.symmetric(
         horizontal: resolveSpaceFromString(padding)!,
-        vertical: resolveSpaceFromString(paddingy)!);
+        vertical: resolveSpaceFromString(paddingy) ?? 0.0);
   }
   if (type == 'horizontal') {
     return EdgeInsets.symmetric(horizontal: resolveSpaceFromString(padding)!);

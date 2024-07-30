@@ -6,4 +6,5 @@ const GSStyleConfig gsSelectItemConfig = GSStyleConfig(
   descendantStyle: ['_text', '_icon']
 );
 final GSConfigStyle selectItemStyle =
-    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().selectItem);
+    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().selectItem,
+     descendantStyle: gsSelectItemConfig.descendantStyle);

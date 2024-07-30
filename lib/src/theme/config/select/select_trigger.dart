@@ -1,5 +1,5 @@
 const Map<String, dynamic> selectTriggerData = {
-  "borderWidth": "1",
+  "borderWidth": 1,
   "borderColor": "\$background300",
   "borderRadius": "\$sm",
   "flexDirection": "row",
@@ -8,7 +8,7 @@ const Map<String, dynamic> selectTriggerData = {
   ":hover": {"borderColor": "\$border400"},
   ":focus": {"borderColor": "\$primary700"},
   ":disabled": {
-    "opacity": "0.4",
+    "opacity": 0.4,
     ":hover": {"borderColor": "\$background300"}
   },
   "_input": {"py": "auto", "px": "\$3"},
@@ -141,9 +141,3 @@ const Map<String, dynamic> selectTriggerData = {
   },
   "defaultProps": {"size": "md", "variant": "outline"}
 };
-
-    
-
-  // {
-  //   descendantStyle: ['_input', '_icon'],
-  // }

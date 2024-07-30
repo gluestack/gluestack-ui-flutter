@@ -6,4 +6,6 @@ const GSStyleConfig gsSelectTriggerConfig = GSStyleConfig(
   descendantStyle: ['_input', '_icon'],
 );
 final GSConfigStyle selectTriggerStyle =
-    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().selectTrigger);
+    GSConfigStyle.fromMap(data: getIt<GluestackCustomConfig>().selectTrigger,
+     descendantStyle: gsSelectTriggerConfig.descendantStyle
+    );

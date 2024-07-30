@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
@@ -52,15 +53,27 @@ class _SelectExampleState extends State<SelectExample> {
       body: BaseLayout(
         code: code,
         component: GSSelect(
-            size: selectedSizeOption,
-            variant: selectedVariantOption,
-            options: const [
-              'UX Research',
-              'Web Development',
-              'Cross Platform Development Process',
-              'UI Designing',
-              'Backend Development'
-            ], ),
+          hintText: GSSelectHeaderText("Select option"),
+          style: GSStyle(
+            width: 300,
+          ),
+          icon: const GSSelectIcon(
+            iconData: Icons.arrow_drop_down_outlined,
+          ),
+          size: selectedSizeOption,
+          variant: selectedVariantOption,
+          options: const [
+            'UX Research',
+            'Web Development',
+            'Cross Platform Development Process',
+            'UI Designing',
+            'Backend Development'
+          ],
+          disabledOptions: [
+            'Cross Platform Development Process',
+            'UI Designing',
+          ],
+        ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
