@@ -5,7 +5,6 @@ import 'package:gluestack_ui/src/widgets/gs_select/gs_select_content_style.dart'
 import 'package:gluestack_ui/src/widgets/gs_select/gs_select_icon_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_select/gs_select_item_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_select/gs_select_selected_input_style.dart';
-import 'package:gluestack_ui/src/widgets/gs_select/gs_select_selection_header_text.dart';
 import 'package:gluestack_ui/src/widgets/gs_select/gs_select_selection_header_text_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_select/gs_select_text_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_select/gs_select_trigger_style.dart';
@@ -40,21 +39,26 @@ class _GSSelectState extends State<GSSelect> {
   String? selectedOption;
   bool _isHovered = false;
   int? hoveredIndex;
-  String? selectedValue;
   OverlayEntry? overlayEntry;
   final LayerLink _layerLink = LayerLink();
   final GlobalKey _key = GlobalKey();
-  static _GSSelectState? instance;
 
   @override
   void initState() {
     super.initState();
-    instance = this;
   }
 
   void _removeOverlay() {
     overlayEntry?.remove();
     overlayEntry = null;
+    hoveredIndex = null;
+  }
+
+  void _selectOption(String option) {
+    setState(() {
+      selectedOption = option;
+      _removeOverlay();
+    });
   }
 
   @override
@@ -164,7 +168,7 @@ class _GSSelectState extends State<GSSelect> {
               gstextStyle.color?.getColor(context),
         );
 
-        void _toggleDropdown() {
+        void toggleDropdown() {
           if (overlayEntry == null) {
             final renderBox =
                 _key.currentContext!.findRenderObject() as RenderBox;
@@ -178,7 +182,7 @@ class _GSSelectState extends State<GSSelect> {
                     onTap: _removeOverlay,
                     behavior: HitTestBehavior.translucent,
                     child: Container(
-                      color: Color.fromARGB(0, 151, 27, 27),
+                      color: const Color.fromARGB(0, 151, 27, 27),
                     ),
                   ),
                   Positioned(
@@ -190,7 +194,7 @@ class _GSSelectState extends State<GSSelect> {
                       showWhenUnlinked: false,
                       child: Container(
                         color: contentStyler.bg?.getColor(context) ??
-                            Color(0xFFE0E0E0),
+                            const Color(0xFFE0E0E0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -202,20 +206,18 @@ class _GSSelectState extends State<GSSelect> {
                                     const Color(0xFFE0E0E0),
                                 child: Row(
                                   children: [
-                                    if (selectedValue == null)
+                                    if (selectedOption == null)
                                       Icon(
                                         CupertinoIcons.check_mark,
                                         size: iconStyler.height,
                                         color:
                                             textStyler.color?.getColor(context),
                                       ),
-                                    if (selectedValue != null)
+                                    if (selectedOption != null)
                                       Icon(
                                         CupertinoIcons.check_mark,
                                         size: iconStyler.height,
-                                        color: contentStyler.bg
-                                                ?.getColor(context) ??
-                                            const Color(0xFFE0E0E0),
+                                        color: const Color.fromARGB(0, 0, 0, 0),
                                       ),
                                     const SizedBox(width: 8.0),
                                     Text(widget.hintText.text,
@@ -239,46 +241,41 @@ class _GSSelectState extends State<GSSelect> {
                                   builder: (context, setState) {
                                 return FocusableActionDetector(
                                   onShowHoverHighlight: (value) {
-                                    setState(() {
-                                      hoveredIndex = value ? index : null;
-                                    });
+                                    if (!isDisabled) {
+                                      setState(() {
+                                        hoveredIndex = value ? index : null;
+                                      });
+                                    }
                                   },
-                                  child: GestureDetector(
-                                    onTap: () {
+                                  child: GsGestureDetector(
+                                    onPressed: () {
                                       if (!isDisabled) {
-                                        setState(() {
-                                          selectedValue = option;
-                                          _removeOverlay();
-                                        });
+                                        _selectOption(option);
                                       }
                                     },
                                     child: Container(
                                       padding: const EdgeInsets.all(8.0),
-                                      color: selectedValue == option
-                                          ? itemStyler.onActive?.bg
+                                      color: hoveredIndex == index
+                                          ? itemStyler.onHover?.bg
                                               ?.getColor(context)
-                                          : hoveredIndex == index
-                                              ? Color.fromARGB(255, 156, 158,
-                                                  158) // Green color for hover
-                                              : contentStyler.bg
-                                                      ?.getColor(context) ??
-                                                  Color(0xFFE0E0E0),
+                                          : contentStyler.bg
+                                                  ?.getColor(context) ??
+                                              const Color(0xFFE0E0E0),
                                       child: Row(
                                         children: [
-                                          if (selectedValue == option)
+                                          if (selectedOption == option)
                                             Icon(
                                               CupertinoIcons.check_mark,
                                               size: iconStyler.height,
                                               color: textStyler.color
                                                   ?.getColor(context),
                                             ),
-                                          if (selectedValue != option)
+                                          if (selectedOption != option)
                                             Icon(
                                               CupertinoIcons.check_mark,
                                               size: iconStyler.height,
-                                              color: contentStyler.bg
-                                                      ?.getColor(context) ??
-                                                  Color(0xFFE0E0E0),
+                                              color: const Color.fromARGB(
+                                                  0, 0, 0, 0),
                                             ),
                                           const SizedBox(width: 8.0),
                                           Expanded(
@@ -308,7 +305,7 @@ class _GSSelectState extends State<GSSelect> {
                                   ),
                                 );
                               });
-                            }).toList(),
+                            }),
                           ],
                         ),
                       ),
@@ -337,11 +334,12 @@ class _GSSelectState extends State<GSSelect> {
                 },
                 child: CompositedTransformTarget(
                   link: _layerLink,
-                  child: GestureDetector(
+                  child: GsGestureDetector(
                     key: _key,
-                    onTap: _toggleDropdown,
+                    onPressed: toggleDropdown,
                     child: Container(
-                      padding: const EdgeInsets.all(6),
+                      padding: triggerStyler.padding ??
+                          const EdgeInsets.symmetric(horizontal: 15),
                       height: triggerStyler.height,
                       width: triggerStyler.width,
                       decoration: BoxDecoration(
@@ -369,20 +367,21 @@ class _GSSelectState extends State<GSSelect> {
                             triggerStyler.borderRadius ?? 0),
                       ),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          if (selectedValue != null)
+                          if (selectedOption != null)
                             Expanded(
                               child: Text(
-                                selectedValue!,
-                                overflow: TextOverflow.ellipsis,
+                                selectedOption!,
+                                overflow: TextOverflow.fade,
+                                softWrap: false,
                                 style: currentTextStyle,
                               ),
                             )
                           else
                             widget.hintText,
-                          const Spacer(),
-                          widget.icon as Widget
+                          widget.icon
                         ],
                       ),
                     ),
@@ -393,37 +392,6 @@ class _GSSelectState extends State<GSSelect> {
           ),
         );
       }),
-    );
-  }
-}
-
-class CustomScaffold extends StatelessWidget {
-  final Widget child;
-
-  const CustomScaffold({super.key, required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onTap: () {
-              final context = _GSSelectState.instance?.context;
-              if (context != null) {
-                _GSSelectState.instance?._removeOverlay();
-              }
-            },
-            child: Container(
-              color: Color.fromARGB(255, 145, 33, 33),
-            ),
-          ),
-        ),
-        Positioned.fill(
-          child: child,
-        ),
-      ],
     );
   }
 }

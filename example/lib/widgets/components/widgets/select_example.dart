@@ -69,10 +69,7 @@ class _SelectExampleState extends State<SelectExample> {
             'UI Designing',
             'Backend Development'
           ],
-          disabledOptions: [
-            'Cross Platform Development Process',
-            'UI Designing',
-          ],
+          disabledOptions: ['UI Designing', 'Backend Development'],
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
