@@ -53,7 +53,7 @@ class _SelectExampleState extends State<SelectExample> {
       body: BaseLayout(
         code: code,
         component: GSSelect(
-          hintText: GSSelectHeaderText("Select option"),
+          hintText: const GSSelectHeaderText("Select option"),
           style: GSStyle(
             width: 300,
           ),
@@ -69,7 +69,7 @@ class _SelectExampleState extends State<SelectExample> {
             'UI Designing',
             'Backend Development'
           ],
-          disabledOptions: ['UI Designing', 'Backend Development'],
+          disabledOptions: const ['UI Designing', 'Backend Development'],
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

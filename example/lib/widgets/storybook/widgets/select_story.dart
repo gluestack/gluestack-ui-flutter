@@ -17,7 +17,7 @@ final class SelectStory extends StoryWidget {
         style: GSStyle(
           width: 300,
         ),
-        hintText: GSSelectHeaderText("Select option"),
+        hintText: const GSSelectHeaderText("Select option"),
         icon: const GSSelectIcon(
           iconData: Icons.arrow_drop_down_outlined,
         ),
@@ -31,7 +31,7 @@ final class SelectStory extends StoryWidget {
             'Cross Platform Development Process',
             'UI Designing',
             'Backend Development'
-          ], disabledOptions: [
+          ], disabledOptions: const [
              'Cross Platform Development Process',
             'UI Designing',
           ],
