@@ -129,13 +129,13 @@ class _GSSelectState extends State<GSSelect> {
           inlineStyle: widget.style,
         );
 
-        final selectSelectionHeaderTextSStyler = resolveStyles(
-          context: context,
-          styles: [
-            selectSelectionHeaderTextStyle,
-          ],
-          inlineStyle: widget.style,
-        );
+        // final selectSelectionHeaderTextSStyler = resolveStyles(
+        //   context: context,
+        //   styles: [
+        //     selectSelectionHeaderTextStyle,
+        //   ],
+        //   inlineStyle: widget.style,
+        // );
 
         Color? resolveBorderColor() {
           if (_isHovered) {
