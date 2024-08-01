@@ -1,3 +1,137 @@
+// import 'package:flutter/material.dart';
+// import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
+// import 'package:gluestack_ui/src/style/style_resolver.dart';
+// import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_filled_track_style.dart';
+// import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_style.dart';
+// import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_thumb_style.dart';
+// import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_track_style.dart';
+// import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
+
+// class GSSlider extends StatefulWidget {
+//   final bool isReversed;
+//   final bool isDisabled;
+//   final double max;
+//   final double min;
+//   final GSSliderSizes? size;
+//   final GSOrientations? orientation;
+//   final GSStyle? style;
+//   final ValueChanged<double>? onChanged;
+//   const GSSlider(
+//       {super.key,
+//       this.style,
+//       this.size,
+//       this.min = 0,
+//       this.max = 10,
+//       this.isReversed = false,
+//       this.isDisabled = false,
+//       this.orientation,
+//       this.onChanged});
+
+//   @override
+//   State<GSSlider> createState() => _GSSliderState();
+// }
+
+// class _GSSliderState extends State<GSSlider> {
+//   late double _sliderValue;
+//   @override
+//   void initState() {
+//     super.initState();
+//     _sliderValue = widget.min;
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final sliderSize = widget.size?.toGSSize ?? sliderStyle.props?.size;
+//     final sliderOrientation =
+//         widget.orientation ?? sliderStyle.props?.orientation;
+
+//     return GSStyleBuilder(
+//         isDisabled: widget.isDisabled,
+//         child: Builder(builder: (context) {
+//           GSConfigStyle styler = resolveStyles(
+//             context: context,
+//             styles: [
+//               sliderStyle,
+//               sliderStyle.sizeMap(sliderSize),
+//               sliderStyle.compoundVariants?[
+//                   sliderOrientation.toString() + sliderSize.toString()]
+//             ],
+//             inlineStyle: widget.style,
+//           );
+
+//           GSConfigStyle thumbStyler = resolveStyles(
+//               context: context,
+//               styles: [sliderThumbStyle],
+//               inlineStyle: widget.style);
+
+//           GSConfigStyle trackStyler = resolveStyles(
+//             context: context,
+//             styles: [sliderTrackStyle],
+//             inlineStyle: widget.style,
+//           );
+
+//           GSConfigStyle filledTrackStyler = resolveStyles(
+//             context: context,
+//             styles: [sliderFilledTrackStyle],
+//             inlineStyle: widget.style,
+//           );
+//           int quarterTurns;
+//           if (widget.orientation == GSOrientations.horizontal) {
+//             quarterTurns = 0;
+//           } else {
+//             quarterTurns = widget.isReversed ? 1 : 3;
+//           }
+//           return GSAncestor(
+//             decedentStyles: styler.descendantStyles,
+//             child: Directionality(
+//               textDirection: widget.isReversed &&
+//                       widget.orientation == GSOrientations.horizontal
+//                   ? TextDirection.rtl
+//                   : TextDirection.ltr,
+//               child: RotatedBox(
+//                 quarterTurns: quarterTurns,
+//                 child: Opacity(
+//                   opacity: widget.isDisabled ? 0.6 : 1,
+//                   child: SliderTheme(
+//                     data: SliderTheme.of(context).copyWith(
+//                       activeTrackColor: filledTrackStyler.bg?.getColor(context),
+//                       inactiveTrackColor: trackStyler.bg?.getColor(context),
+//                       thumbColor: thumbStyler.bg?.getColor(context),
+//                       trackHeight:
+//                           widget.orientation == GSOrientations.horizontal
+//                               ? styler.trackHeight
+//                               : styler.trackWidth ?? 10,
+//                       trackShape: const RoundedRectSliderTrackShape(),
+//                       thumbShape: RoundSliderThumbShape(
+//                           enabledThumbRadius: (styler.thumbHeight ?? 40) / 2),
+//                       overlayShape: RoundSliderOverlayShape(
+//                           overlayRadius: (styler.thumbHeight ?? 40) / 2),
+//                     ),
+//                     child: Slider(
+//                       value: _sliderValue,
+//                       min: widget.min,
+//                       max: widget.max,
+//                       label: _sliderValue.round().toString(),
+//                       onChanged: widget.isDisabled
+//                           ? (value) {}
+//                           : (double value) {
+//                               setState(() {
+//                                 _sliderValue = value;
+//                               });
+//                               if (widget.onChanged != null) {
+//                                 widget.onChanged!(value);
+//                               }
+//                             },
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           );
+//         }));
+//   }
+// }
+
 import 'package:flutter/material.dart';
 import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
@@ -16,16 +150,18 @@ class GSSlider extends StatefulWidget {
   final GSOrientations? orientation;
   final GSStyle? style;
   final ValueChanged<double>? onChanged;
-  const GSSlider(
-      {super.key,
-      this.style,
-      this.size,
-      this.min = 0,
-      this.max = 10,
-      this.isReversed = false,
-      this.isDisabled = false,
-      this.orientation,
-      this.onChanged});
+
+  const GSSlider({
+    super.key,
+    this.style,
+    this.size,
+    this.min = 0,
+    this.max = 100,
+    this.isReversed = false,
+    this.isDisabled = false,
+    this.orientation,
+    this.onChanged,
+  });
 
   @override
   State<GSSlider> createState() => _GSSliderState();
@@ -33,6 +169,7 @@ class GSSlider extends StatefulWidget {
 
 class _GSSliderState extends State<GSSlider> {
   late double _sliderValue;
+
   @override
   void initState() {
     super.initState();
@@ -46,8 +183,9 @@ class _GSSliderState extends State<GSSlider> {
         widget.orientation ?? sliderStyle.props?.orientation;
 
     return GSStyleBuilder(
-        isDisabled: widget.isDisabled,
-        child: Builder(builder: (context) {
+      isDisabled: widget.isDisabled,
+      child: Builder(
+        builder: (context) {
           GSConfigStyle styler = resolveStyles(
             context: context,
             styles: [
@@ -60,9 +198,10 @@ class _GSSliderState extends State<GSSlider> {
           );
 
           GSConfigStyle thumbStyler = resolveStyles(
-              context: context,
-              styles: [sliderThumbStyle],
-              inlineStyle: widget.style);
+            context: context,
+            styles: [sliderThumbStyle],
+            inlineStyle: widget.style,
+          );
 
           GSConfigStyle trackStyler = resolveStyles(
             context: context,
@@ -75,59 +214,137 @@ class _GSSliderState extends State<GSSlider> {
             styles: [sliderFilledTrackStyle],
             inlineStyle: widget.style,
           );
+
           int quarterTurns;
           if (widget.orientation == GSOrientations.horizontal) {
             quarterTurns = 0;
           } else {
             quarterTurns = widget.isReversed ? 1 : 3;
           }
+
+          void _updateSliderValue(Offset localPosition, double width) {
+            double thumbRadius =
+                styler.thumbHeight ?? 20 / 2; // Assuming the thumb radius is 10
+            double adjustedWidth = width - thumbRadius * 2;
+            double newSliderValue = widget.min +
+                (localPosition.dx / adjustedWidth) * (widget.max - widget.min);
+
+            // Clamp the newSliderValue to be within the min and max range
+            newSliderValue = newSliderValue.clamp(widget.min, widget.max);
+            print("slider ${_sliderValue}");
+            print("new ${newSliderValue}");
+
+            setState(() {
+              _sliderValue = newSliderValue;
+            });
+
+            print("slider 2  ${_sliderValue}");
+
+            if (widget.onChanged != null) {
+              widget.onChanged!(newSliderValue);
+            }
+          }
+
           return GSAncestor(
             decedentStyles: styler.descendantStyles,
-            child: Directionality(
-              textDirection: widget.isReversed &&
-                      widget.orientation == GSOrientations.horizontal
-                  ? TextDirection.rtl
-                  : TextDirection.ltr,
+            child: Opacity(
+              opacity: widget.isDisabled ? 0.6 : 1,
               child: RotatedBox(
                 quarterTurns: quarterTurns,
-                child: Opacity(
-                  opacity: widget.isDisabled ? 0.6 : 1,
-                  child: SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      activeTrackColor: filledTrackStyler.bg?.getColor(context),
-                      inactiveTrackColor: trackStyler.bg?.getColor(context),
-                      thumbColor: thumbStyler.bg?.getColor(context),
-                      trackHeight:
-                          widget.orientation == GSOrientations.horizontal
-                              ? styler.trackHeight
-                              : styler.trackWidth ?? 10,
-                      trackShape: const RoundedRectSliderTrackShape(),
-                      thumbShape: RoundSliderThumbShape(
-                          enabledThumbRadius: (styler.thumbHeight ?? 40) / 2),
-                      overlayShape: RoundSliderOverlayShape(
-                          overlayRadius: (styler.thumbHeight ?? 40) / 2),
-                    ),
-                    child: Slider(
-                      value: _sliderValue,
-                      min: widget.min,
-                      max: widget.max,
-                      label: _sliderValue.round().toString(),
-                      onChanged: widget.isDisabled
-                          ? (value) {}
-                          : (double value) {
-                              setState(() {
-                                _sliderValue = value;
-                              });
-                              if (widget.onChanged != null) {
-                                widget.onChanged!(value);
-                              }
-                            },
-                    ),
-                  ),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    double thumbRadius = (styler.thumbHeight ?? 20) / 2;
+                    double trackLength =
+                        (widget.orientation == GSOrientations.horizontal
+                                ? styler.trackWidth
+                                : styler.trackHeight) ??
+                            200;
+
+                    double thumbPosition = (_sliderValue - widget.min) /
+                            (widget.max - widget.min) *
+                            (trackLength - thumbRadius * 2) +
+                        thumbRadius;
+
+                    return GestureDetector(
+                      onPanUpdate: (details) {
+                        if (!widget.isDisabled) {
+                          _updateSliderValue(
+                              details.localPosition, trackLength);
+                        }
+                      },
+                      onTapDown: (details) {
+                        if (!widget.isDisabled) {
+                          _updateSliderValue(
+                              details.localPosition,
+                              (widget.orientation == GSOrientations.horizontal
+                                      ? styler.trackWidth
+                                      : styler.trackHeight) ??
+                                  200
+                              //  constraints.maxWidth
+                              );
+                        }
+                      },
+                      child: Container(
+                        height: thumbRadius * 2,
+                        width: widget.orientation == GSOrientations.horizontal
+                            ? styler.trackWidth
+                            : styler.trackHeight ?? 200,
+                        // width: 200,
+                        color: Colors.transparent,
+                        child: Stack(
+                          alignment: Alignment.centerLeft,
+                          children: [
+                            Container(
+                              width: widget.orientation ==
+                                      GSOrientations.horizontal
+                                  ? styler.trackWidth
+                                  : styler.trackHeight ?? 200,
+                              height: widget.orientation ==
+                                      GSOrientations.horizontal
+                                  ? styler.trackHeight
+                                  : styler.trackWidth ?? 200,
+                              decoration: BoxDecoration(
+                                color: trackStyler.bg?.getColor(context),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            FractionallySizedBox(
+                              widthFactor: (_sliderValue - widget.min) /
+                                  (widget.max - widget.min),
+                              child: Container(
+                                height: widget.orientation ==
+                                        GSOrientations.horizontal
+                                    ? styler.trackHeight
+                                    : styler.trackWidth ?? 200,
+                                decoration: BoxDecoration(
+                                  color:
+                                      filledTrackStyler.bg?.getColor(context),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              left: thumbPosition - thumbRadius,
+                              child: Container(
+                                width: thumbRadius * 2,
+                                height: thumbRadius * 2,
+                                decoration: BoxDecoration(
+                                  color: thumbStyler.bg?.getColor(context),
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
           );
-        }));
+        },
+      ),
+    );
   }
 }
