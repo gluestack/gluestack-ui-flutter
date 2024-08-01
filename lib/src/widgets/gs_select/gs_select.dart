@@ -19,6 +19,7 @@ class GSSelect extends StatefulWidget {
   final GSSelectHeaderText hintText;
   final GSSelectIcon icon;
   final GSSelectContent content;
+  final ValueChanged<String>? onChanged;
 
   const GSSelect({
     super.key,
@@ -29,6 +30,7 @@ class GSSelect extends StatefulWidget {
     required this.icon,
     required this.hintText,
     this.style,
+    this.onChanged,
     required this.content,
   });
 
@@ -282,6 +284,9 @@ class _GSSelectState extends State<GSSelect> {
                                           onPressed: () {
                                             if (!isDisabled) {
                                               _selectOption(option);
+                                              if (widget.onChanged != null) {
+                                                widget.onChanged!(option);
+                                              }
                                             }
                                           },
                                           // select options
