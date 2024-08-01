@@ -7,6 +7,8 @@ class GSSelectProvider extends InheritedWidget {
   // Icon size for the badge icon.
   final GSSizes? iconSize;
   final GSSizes? headerFontSize;
+  final GSVariants? selectVariant;
+  final GSSizes? textSize;
 
   /// Constructor for GSSelectProvider:
   const GSSelectProvider({
@@ -15,6 +17,8 @@ class GSSelectProvider extends InheritedWidget {
     required this.iconSize,
     required super.child,
     required this.headerFontSize,
+    this.selectVariant,
+    this.textSize,
   });
 
   /// Overrides the method to determine whether an update notification is needed.
@@ -22,7 +26,9 @@ class GSSelectProvider extends InheritedWidget {
   bool updateShouldNotify(GSSelectProvider oldWidget) {
     return fontSize != oldWidget.fontSize ||
         iconSize != oldWidget.iconSize ||
-        headerFontSize != oldWidget.headerFontSize;
+        headerFontSize != oldWidget.headerFontSize ||
+        selectVariant != oldWidget.selectVariant ||
+        textSize != oldWidget.textSize;
   }
 
   /// Static method to obtain the GSSelectProvider instance from the given context.

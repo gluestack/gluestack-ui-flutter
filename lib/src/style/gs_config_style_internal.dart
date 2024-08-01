@@ -729,8 +729,8 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       flexDirection: resolveFlexDirectionFromString(data?['flexDirection']),
       height: data?['h'] is int
           ? double.parse('${data?['h']}.0')
-          : resolveSpaceFromString(
-              data?['h'].toString() ?? data?['height'].toString(),
+          : resolveSpaceFromString((
+              data?['h'] ?? data?['height']).toString(),
             ),
       width: data?['w'] != null
           ? data!['w']?.contains('100%')

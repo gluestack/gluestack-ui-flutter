@@ -19,9 +19,6 @@ class GSSelectHeaderText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Access the ancestor provider to retrieve ancestor text styles.
-
-    // Resolve the final GSStyle.
     final value = GSSelectProvider.of(context);
 
     final styler = resolveStyles(
@@ -34,7 +31,6 @@ class GSSelectHeaderText extends StatelessWidget {
       inlineStyle: style,
     );
 
-    // Create a Text widget with the specified text and merged style.
     return Text(
       text,
       style: styler.textStyle

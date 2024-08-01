@@ -55,10 +55,10 @@ enum GSSelectVariants {
 }
 
 enum GSSelectSizes {
-  $xl,
-  $lg,
-  $md,
   $sm,
+  $md,
+  $lg,
+  $xl,
 }
 
 enum GSAlertDialogSizes {

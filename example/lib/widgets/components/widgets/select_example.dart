@@ -42,7 +42,32 @@ class _SelectExampleState extends State<SelectExample> {
   @override
   Widget build(BuildContext context) {
     var code = '''
-
+GSSelect(
+  content: GSSelectContent(
+    style: GSStyle(
+      width: 300,
+      height: 200,
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+    ),
+  ),
+  hintText: const GSSelectHeaderText("Select option"),
+  style: GSStyle(
+    width: 300,
+  ),
+  icon: const GSSelectIcon(
+    iconData: Icons.arrow_drop_down_outlined,
+  ),
+  size: $selectedSizeOption,
+  variant: $selectedVariantOption,
+  options: const [
+    'UX Research',
+    'Web Development',
+    'Cross Platform Development Process',
+    'UI Designing',
+    'Backend Development'
+  ],
+  disabledOptions: const ['UI Designing', 'Backend Development'],
+),
   ''';
 
     return CustomGSLayout(
@@ -53,6 +78,13 @@ class _SelectExampleState extends State<SelectExample> {
       body: BaseLayout(
         code: code,
         component: GSSelect(
+          content: GSSelectContent(
+            style: GSStyle(
+              width: 300,
+              height: 200,
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+            ),
+          ),
           hintText: const GSSelectHeaderText("Select option"),
           style: GSStyle(
             width: 300,

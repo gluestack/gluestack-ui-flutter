@@ -19,6 +19,7 @@ class GSSelect extends StatefulWidget {
   final GSStyle? style;
   final GSSelectHeaderText hintText;
   final GSSelectIcon icon;
+  final GSSelectContent content;
 
   const GSSelect({
     super.key,
@@ -29,6 +30,7 @@ class GSSelect extends StatefulWidget {
     required this.icon,
     required this.hintText,
     this.style,
+    required this.content,
   });
 
   @override
@@ -42,6 +44,8 @@ class _GSSelectState extends State<GSSelect> {
   OverlayEntry? overlayEntry;
   final LayerLink _layerLink = LayerLink();
   final GlobalKey _key = GlobalKey();
+  final ScrollController _scrollController = ScrollController();
+  final Map<String, GlobalKey> _itemKeys = {};
 
   @override
   void initState() {
@@ -59,6 +63,17 @@ class _GSSelectState extends State<GSSelect> {
       selectedOption = option;
       _removeOverlay();
     });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  int? _getSelectedOptionIndex() {
+    if (selectedOption == null) return null;
+    return widget.options.indexOf(selectedOption!);
   }
 
   @override
@@ -129,14 +144,6 @@ class _GSSelectState extends State<GSSelect> {
           inlineStyle: widget.style,
         );
 
-        // final selectSelectionHeaderTextSStyler = resolveStyles(
-        //   context: context,
-        //   styles: [
-        //     selectSelectionHeaderTextStyle,
-        //   ],
-        //   inlineStyle: widget.style,
-        // );
-
         Color? resolveBorderColor() {
           if (_isHovered) {
             return triggerStyler.onHover?.borderColor?.getColor(context) ??
@@ -159,6 +166,7 @@ class _GSSelectState extends State<GSSelect> {
         final borderWidth = resolveBorderWidth();
 
         final currentTextStyle = textStyler.textStyle?.copyWith(
+          decoration: textStyler.textStyle?.decoration ?? TextDecoration.none,
           fontFamily: textStyler.textStyle?.fontFamily,
           fontWeight: textStyler.textStyle?.fontWeight,
           fontStyle: textStyler.textStyle?.fontStyle,
@@ -182,7 +190,7 @@ class _GSSelectState extends State<GSSelect> {
                     onTap: _removeOverlay,
                     behavior: HitTestBehavior.translucent,
                     child: Container(
-                      color: const Color.fromARGB(0, 151, 27, 27),
+                      color: const Color.fromARGB(0, 228, 9, 9),
                     ),
                   ),
                   Positioned(
@@ -192,128 +200,204 @@ class _GSSelectState extends State<GSSelect> {
                     child: CompositedTransformFollower(
                       link: _layerLink,
                       showWhenUnlinked: false,
-                      child: Container(
-                        color: contentStyler.bg?.getColor(context) ??
-                            const Color(0xFFE0E0E0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            GestureDetector(
-                              onTap: _removeOverlay,
-                              child: Container(
-                                padding: const EdgeInsets.all(8.0),
-                                color: contentStyler.bg?.getColor(context) ??
-                                    const Color(0xFFE0E0E0),
-                                child: Row(
-                                  children: [
-                                    if (selectedOption == null)
-                                      Icon(
-                                        CupertinoIcons.check_mark,
-                                        size: iconStyler.height,
-                                        color:
-                                            textStyler.color?.getColor(context),
+                      // main dropdown container
+                      child: GSSelectContent.withChild(
+                        style: GSStyle(
+                            height: widget.content.style?.height,
+                            width: widget.content.style?.width,
+                            borderColor: widget.content.style?.borderColor,
+                            borderRadius: widget.content.style?.borderRadius,
+                            borderWidth: widget.content.style?.borderWidth),
+                        child: ScrollConfiguration(
+                          behavior: ScrollConfiguration.of(context)
+                              .copyWith(scrollbars: false),
+                          child: SingleChildScrollView(
+                            controller: _scrollController,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                GestureDetector(
+                                  onTap: _removeOverlay,
+                                  // dropdown select option
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 8, horizontal: 5),
+                                    decoration: BoxDecoration(
+                                      color:
+                                          const Color.fromARGB(0, 178, 20, 20),
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(widget
+                                                .content.style?.borderRadius ??
+                                            6),
+                                        topRight: Radius.circular(widget
+                                                .content.style?.borderRadius ??
+                                            6),
                                       ),
-                                    if (selectedOption != null)
-                                      Icon(
-                                        CupertinoIcons.check_mark,
-                                        size: iconStyler.height,
-                                        color: const Color.fromARGB(0, 0, 0, 0),
-                                      ),
-                                    const SizedBox(width: 8.0),
-                                    Text(widget.hintText.text,
-                                        style: currentTextStyle?.copyWith(
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        if (selectedOption == null)
+                                          Icon(
+                                            CupertinoIcons.check_mark,
+                                            size: iconStyler.height,
+                                            color: textStyler.color
+                                                ?.getColor(context),
+                                          ),
+                                        if (selectedOption != null)
+                                          Icon(
+                                            CupertinoIcons.check_mark,
+                                            size: iconStyler.height,
+                                            color: const Color.fromARGB(
+                                                0, 0, 0, 0),
+                                          ),
+                                        const SizedBox(width: 6.0),
+                                        Text(
+                                          widget.hintText.text,
+                                          style: currentTextStyle?.copyWith(
                                             color: textStyler.color
                                                 ?.getColor(context)
-                                                .withOpacity(selectedInputStyler
-                                                        .onDisabled?.opacity ??
-                                                    0.4))),
-                                  ],
+                                                .withOpacity(
+                                                  selectedInputStyler.onDisabled
+                                                          ?.opacity ??
+                                                      0.4,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            ...widget.options.asMap().entries.map((entry) {
-                              int index = entry.key;
-                              String option = entry.value;
-                              final isDisabled =
-                                  widget.disabledOptions?.contains(option) ??
+                                ...widget.options.asMap().entries.map((entry) {
+                                  int index = entry.key;
+                                  String option = entry.value;
+                                  final isDisabled = widget.disabledOptions
+                                          ?.contains(option) ??
                                       false;
-                              return StatefulBuilder(
-                                  builder: (context, setState) {
-                                return FocusableActionDetector(
-                                  onShowHoverHighlight: (value) {
-                                    if (!isDisabled) {
-                                      setState(() {
-                                        hoveredIndex = value ? index : null;
-                                      });
-                                    }
-                                  },
-                                  child: GsGestureDetector(
-                                    onPressed: () {
-                                      if (!isDisabled) {
-                                        _selectOption(option);
-                                      }
-                                    },
-                                    child: Container(
-                                      padding: const EdgeInsets.all(8.0),
-                                      color: hoveredIndex == index
-                                          ? itemStyler.onHover?.bg
-                                              ?.getColor(context)
-                                          : contentStyler.bg
-                                                  ?.getColor(context) ??
-                                              const Color(0xFFE0E0E0),
-                                      child: Row(
-                                        children: [
-                                          if (selectedOption == option)
-                                            Icon(
-                                              CupertinoIcons.check_mark,
-                                              size: iconStyler.height,
-                                              color: textStyler.color
-                                                  ?.getColor(context),
-                                            ),
-                                          if (selectedOption != option)
-                                            Icon(
-                                              CupertinoIcons.check_mark,
-                                              size: iconStyler.height,
-                                              color: const Color.fromARGB(
-                                                  0, 0, 0, 0),
-                                            ),
-                                          const SizedBox(width: 8.0),
-                                          Expanded(
-                                            child: Text(
-                                              option,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: currentTextStyle?.copyWith(
-                                                color: isDisabled
-                                                    ? textStyler.color
+                                  _itemKeys[option] = GlobalKey();
+
+                                  return StatefulBuilder(
+                                    key: _itemKeys[option],
+                                    builder: (context, setState) {
+                                      return FocusableActionDetector(
+                                        onShowHoverHighlight: (value) {
+                                          if (!isDisabled) {
+                                            setState(() {
+                                              hoveredIndex =
+                                                  value ? index : null;
+                                            });
+                                          }
+                                        },
+                                        child: GsGestureDetector(
+                                          onPressed: () {
+                                            if (!isDisabled) {
+                                              _selectOption(option);
+                                            }
+                                          },
+                                          // select options
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 2),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                // Background color for selected option
+                                                color: selectedOption == option
+                                                    ? itemStyler.onActive?.bg
                                                         ?.getColor(context)
-                                                        .withOpacity(
-                                                            selectedInputStyler
-                                                                    .onDisabled
-                                                                    ?.opacity ??
-                                                                0.4)
-                                                    : textStyler.color
-                                                            ?.getColor(
-                                                                context) ??
-                                                        gstextStyle.color
-                                                            ?.getColor(context),
+                                                    : (hoveredIndex == index
+                                                        ? itemStyler.onHover?.bg
+                                                            ?.getColor(context)
+                                                        : const Color.fromARGB(
+                                                            0, 0, 0, 0)),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(widget
+                                                            .content
+                                                            .style
+                                                            ?.borderRadius ??
+                                                        5)),
+                                              ),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5,
+                                                      horizontal: 5),
+                                              child: Row(
+                                                children: [
+                                                  if (selectedOption == option)
+                                                    Icon(
+                                                      CupertinoIcons.check_mark,
+                                                      size: iconStyler.height,
+                                                      color: textStyler.color
+                                                          ?.getColor(context),
+                                                    ),
+                                                  if (selectedOption != option)
+                                                    Icon(
+                                                      CupertinoIcons.check_mark,
+                                                      size: iconStyler.height,
+                                                      color:
+                                                          const Color.fromARGB(
+                                                              0, 0, 0, 0),
+                                                    ),
+                                                  const SizedBox(width: 6.0),
+                                                  Expanded(
+                                                    child: Text(
+                                                      option,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: currentTextStyle
+                                                          ?.copyWith(
+                                                        color: isDisabled
+                                                            ? textStyler.color
+                                                                ?.getColor(
+                                                                    context)
+                                                                .withOpacity(
+                                                                  selectedInputStyler
+                                                                          .onDisabled
+                                                                          ?.opacity ??
+                                                                      0.4,
+                                                                )
+                                                            : textStyler.color
+                                                                    ?.getColor(
+                                                                        context) ??
+                                                                gstextStyle
+                                                                    .color
+                                                                    ?.getColor(
+                                                                        context),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              });
-                            }),
-                          ],
+                                        ),
+                                      );
+                                    },
+                                  );
+                                }),
+                              ],
+                            ),
+                          ),
                         ),
+                        context: context,
                       ),
                     ),
                   ),
                 ],
               ),
             );
+
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (_scrollController.hasClients) {
+                int? selectedIndex = _getSelectedOptionIndex();
+                if (selectedIndex != null && selectedIndex > 0) {
+                  final selectedKey = _itemKeys[widget.options[selectedIndex]];
+                  if (selectedKey?.currentContext != null) {
+                    Scrollable.ensureVisible(selectedKey!.currentContext!,
+                        alignment: 0.5,
+                        duration: const Duration(milliseconds: 300));
+                  }
+                }
+              }
+            });
 
             Overlay.of(context).insert(overlayEntry!);
           } else {
@@ -326,7 +410,9 @@ class _GSSelectState extends State<GSSelect> {
           child: GSSelectProvider(
             fontSize: triggerStyler.textStyle?.fontSize,
             iconSize: iconSize,
+            selectVariant: selectVariant,
             headerFontSize: headerFontSize,
+            textSize: textSize,
             child: IntrinsicWidth(
               child: FocusableActionDetector(
                 onShowHoverHighlight: (value) {
@@ -337,13 +423,16 @@ class _GSSelectState extends State<GSSelect> {
                   child: GsGestureDetector(
                     key: _key,
                     onPressed: toggleDropdown,
+                    // select box
                     child: Container(
-                      padding: triggerStyler.padding ??
+                      padding: widget.style?.padding ??
+                          triggerStyler.padding ??
                           const EdgeInsets.symmetric(horizontal: 15),
                       height: triggerStyler.height,
                       width: triggerStyler.width,
                       decoration: BoxDecoration(
-                        color: triggerStyler.bg?.getColor(context),
+                        color: const Color.fromARGB(0, 0, 0, 0),
+                        // triggerStyler.bg?.getColor(context),
                         border: widget.variant == GSSelectVariants.underlined
                             ? Border(
                                 bottom: BorderSide(
