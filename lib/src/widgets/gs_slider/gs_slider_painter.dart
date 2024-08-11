@@ -41,14 +41,7 @@ class SliderPainter extends CustomPainter {
       required this.unfilledTrackColor});
 
   @override
-  bool shouldRepaint(SliderPainter oldDelegate) {
-    return oldDelegate.reverse != reverse ||
-        oldDelegate.orientation != orientation ||
-        oldDelegate.value != value;
-  }
-
-  //  @override
-  // bool shouldRepaint(CustomPainter oldDelegate) => true;
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 
   @override
   void paint(Canvas canvas, Size size) {
