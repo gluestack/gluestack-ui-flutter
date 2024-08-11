@@ -1,7 +1,4 @@
-// import 'dart:math' as math;
-// import 'package:flutter/widgets.dart';
-import 'package:gluestack_ui/gluestack_ui.dart';
-
+import 'package:flutter/widgets.dart';
 
 class SliderPainter extends CustomPainter {
   final double value;
@@ -11,57 +8,65 @@ class SliderPainter extends CustomPainter {
   final bool reverse;
   final double length;
   final double thickness;
-  final GSOrientations orientation;
-  final GSConfigStyle? filledTrackStyler;
-  final GSConfigStyle? trackStyler;
+  final String orientation;
+  final double? trackWidth;
+  final double? thumbHeight;
+  // final GSConfigStyle? filledTrackStyler;
+  // final GSConfigStyle? trackStyler;
   final BuildContext context;
-  final GSConfigStyle? thumbStyler;
-  final GSConfigStyle styler;
+  // final GSConfigStyle? thumbStyler;
+  // final GSConfigStyle styler;
+  final Color filledTrackColor;
+  final Color unfilledTrackColor;
+  final Color thumbColor;
 
-  SliderPainter({
-    required this.value,
-    required this.min,
-    required this.max,
-    this.divisions,
-    required this.reverse,
-    required this.length,
-    required this.thickness,
-    required this.orientation,
-    this.filledTrackStyler,
-    required this.context,
-    this.trackStyler,
-    this.thumbStyler,
-    required this.styler,
-  });
+  SliderPainter(
+      {required this.value,
+      required this.min,
+      required this.max,
+      this.divisions,
+      required this.reverse,
+      required this.length,
+      required this.thickness,
+      required this.orientation,
+      required this.trackWidth,
+      // this.filledTrackStyler,
+      required this.context,
+      // this.trackStyler,
+      // this.thumbStyler,
+      // required this.styler,
+      required this.thumbHeight,
+      required this.thumbColor,
+      required this.filledTrackColor,
+      required this.unfilledTrackColor});
 
   @override
   void paint(Canvas canvas, Size size) {
-    double? trackWidth = orientation == GSOrientations.horizontal
-        ? styler.trackHeight
-        : styler.trackWidth ?? 5;
-
     final Paint filledTrackPaint = Paint()
-      ..color = (styler.trackColorTrue?.getColor(context) ??
-          filledTrackStyler?.bg?.getColor(context) ??
-          GSTheme.of(context).background100)!
+      ..color = filledTrackColor
+      // (styler.trackColorTrue?.getColor(context) ??
+      //     filledTrackStyler?.bg?.getColor(context) ??
+      //     GSTheme.of(context).background100)!
       ..strokeWidth = trackWidth ?? 5.0
       ..strokeCap = StrokeCap.round;
 
     final Paint unfilledTrackPaint = Paint()
-      ..color = styler.trackColorFalse?.getColor(context) ??
-          trackStyler?.bg?.getColor(context) ??
-          GSTheme.of(context).background100!
+      ..color = unfilledTrackColor
+      // styler.trackColorFalse?.getColor(context) ??
+      //     trackStyler?.bg?.getColor(context) ??
+      //     GSTheme.of(context).background100!
       ..strokeWidth = trackWidth ?? 5.0
       ..strokeCap = StrokeCap.round;
 
     final Paint thumbPaint = Paint()
-      ..color = styler.thumbColor?.getColor(context) ??
-          thumbStyler?.bg?.getColor(context) ??
-          GSTheme.of(context).background600!
+      ..color = thumbColor
+      //  styler.thumbColor?.getColor(context) ??
+      //     thumbStyler?.bg?.getColor(context) ??
+      //     GSTheme.of(context).background600!
       ..style = PaintingStyle.fill;
 
     // Calculate thumb radius
-    final double thumbRadius = (styler.thumbHeight ?? 20.0) / 2;
+    final double thumbRadius = (thumbHeight ?? 20.0) / 2;
 
     // Adjust trackStart and trackEnd to accommodate the thumb radius
     final double trackStart = thumbRadius;
@@ -75,7 +80,7 @@ class SliderPainter extends CustomPainter {
     final double adjustedThumbPos =
         reverse ? trackEnd - (thumbPos - trackStart) : thumbPos;
 
-    if (orientation == GSOrientations.horizontal) {
+    if (orientation == "horizontal") {
       if (reverse) {
         // Draw the filled track
         canvas.drawLine(

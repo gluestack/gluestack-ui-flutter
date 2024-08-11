@@ -202,20 +202,35 @@ class _GSSliderState extends State<GSSlider> {
                               ? Size(length, thickness)
                               : Size(thickness, length),
                           painter: SliderPainter(
-                            context: context,
-                            styler: styler,
-                            filledTrackStyler: filledTrackStyler,
-                            trackStyler: trackStyler,
-                            thumbStyler: thumbStyler,
-                            value: _currentValue,
-                            min: widget.min,
-                            max: widget.max,
-                            divisions: widget.divisions,
-                            reverse: widget.isReversed,
-                            length: length,
-                            thickness: thickness,
-                            orientation: widget.orientation!,
-                          ),
+                              thumbHeight: styler.thumbHeight,
+                              context: context,
+                              value: _currentValue,
+                              min: widget.min,
+                              max: widget.max,
+                              trackWidth: widget.orientation ==
+                                      GSOrientations.horizontal
+                                  ? styler.trackHeight
+                                  : styler.trackWidth ?? 5,
+                              divisions: widget.divisions,
+                              reverse: widget.isReversed,
+                              length: length,
+                              thickness: thickness,
+                              orientation: widget.orientation! ==
+                                      GSOrientations.horizontal
+                                  ? "horizontal"
+                                  : "vertical",
+                              thumbColor:
+                                  styler.thumbColor?.getColor(context) ??
+                                      thumbStyler.bg?.getColor(context) ??
+                                      GSTheme.of(context).background600!,
+                              filledTrackColor:
+                                  (styler.trackColorTrue?.getColor(context) ??
+                                      filledTrackStyler.bg?.getColor(context) ??
+                                      GSTheme.of(context).background100)!,
+                              unfilledTrackColor:
+                                  styler.trackColorFalse?.getColor(context) ??
+                                      trackStyler.bg?.getColor(context) ??
+                                      GSTheme.of(context).background100!),
                         ),
                       ),
                     );
