@@ -109,8 +109,8 @@ class _GSSliderState extends State<GSSlider> {
             });
           }
 
-          void handleKeyEvent(RawKeyEvent event) {
-            if (event is RawKeyDownEvent) {
+          void handleKeyEvent(KeyEvent event) {
+            if (event is KeyDownEvent) {
               final double step = widget.divisions != null
                   ? (widget.max - widget.min) / widget.divisions!
                   : (widget.max - widget.min) / 100;
@@ -171,7 +171,7 @@ class _GSSliderState extends State<GSSlider> {
                     final double thickness = styler.thumbHeight ?? 20.00;
                     return Focus(
                       focusNode: _focusNode,
-                      onKey: (FocusNode node, RawKeyEvent event) {
+                      onKeyEvent: (FocusNode node, KeyEvent event) {
                         handleKeyEvent(event);
                         return KeyEventResult.handled;
                       },
