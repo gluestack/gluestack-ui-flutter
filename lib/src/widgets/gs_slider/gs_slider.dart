@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_filled_track_style.dart';
@@ -109,18 +110,18 @@ class _GSSliderState extends State<GSSlider> {
           }
 
           void handleKeyEvent(KeyEvent event) {
-            // if (event is KeyDownEvent) {
-            //   final double step = widget.divisions != null
-            //       ? (widget.max - widget.min) / widget.divisions!
-            //       : (widget.max - widget.min) / 100;
-            //   if (event.logicalKey == LogicalKeyboardKey.arrowRight ||
-            //       event.logicalKey == LogicalKeyboardKey.arrowUp) {
-            //     updateValue(_currentValue + (widget.isReversed ? -step : step));
-            //   } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft ||
-            //       event.logicalKey == LogicalKeyboardKey.arrowDown) {
-            //     updateValue(_currentValue + (widget.isReversed ? step : -step));
-            //   }
-            // }
+            if (event is KeyDownEvent) {
+              final double step = widget.divisions != null
+                  ? (widget.max - widget.min) / widget.divisions!
+                  : (widget.max - widget.min) / 100;
+              if (event.logicalKey == LogicalKeyboardKey.arrowRight ||
+                  event.logicalKey == LogicalKeyboardKey.arrowUp) {
+                updateValue(_currentValue + (widget.isReversed ? -step : step));
+              } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft ||
+                  event.logicalKey == LogicalKeyboardKey.arrowDown) {
+                updateValue(_currentValue + (widget.isReversed ? step : -step));
+              }
+            }
           }
 
           void handleDragUpdate(DragUpdateDetails details, double length) {
