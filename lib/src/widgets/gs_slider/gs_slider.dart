@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/widgets/gs_radio/gs_toggleable.dart';
 import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_filled_track_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_thumb_style.dart';
@@ -229,7 +230,7 @@ class _GSSliderState extends State<GSSlider> {
   }
 }
 
-class _SliderPainter extends CustomPainter {
+class _SliderPainter extends ToggleablePainter {
   final double value;
   final double min;
   final double max;
