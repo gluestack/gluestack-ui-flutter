@@ -1,4 +1,3 @@
-
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
@@ -52,12 +51,13 @@ GSSlider(
         component: GSModal(
             size: selectedSizeOption,
             content: GSModalContent(
-              header: const GSModalHeader(
-                // style: GSStyle(
-                //   bg: Colors.pink,
-                // ),
+              header: GSModalHeader(
                 child: GSText(
                   text: "Invite your team",
+                  style: GSStyle(
+                      textStyle: TextStyle(
+                          color: GSTheme.of(context).background900,
+                          fontWeight: FontWeight.bold)),
                 ),
               ),
               body: const GSModalBody(
@@ -70,22 +70,22 @@ GSSlider(
                 child: GSButtonGroup(
                   buttons: [
                     GSButton(
-                        action: GSButtonActions.positive,
+                        action: GSButtonActions.primary,
                         variant: GSButtonVariants.outline,
                         child: const GSText(
                           text: "Cancel",
                         ),
                         onPressed: () {
-                          context.pop();
+                          // context.pop();
                         }),
                     GSButton(
-                        action: GSButtonActions.negative,
-                        variant: GSButtonVariants.outline,
+                        action: GSButtonActions.primary,
+                        variant: GSButtonVariants.solid,
                         child: const GSText(
                           text: "Explore",
                         ),
                         onPressed: () {
-                          context.pop();
+                          // context.pop();
                         }),
                   ],
                 ),

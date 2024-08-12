@@ -1,4 +1,3 @@
-
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
@@ -14,37 +13,44 @@ final class ModalStory extends StoryWidget {
             size: GSModalSizes.values[context.knobs
                 .options(label: 'Size', initial: 0, options: sizeOptions)],
             content: GSModalContent(
-              header: const GSModalHeader(
-                // style: GSStyle(
-                //   bg: Colors.pink,
-                // ),
+              header:  GSModalHeader(
+                style: GSStyle(
+                textStyle: TextStyle(
+                   color: GSTheme.of(context).background900,
+                   fontWeight: FontWeight.bold
+                )
+                ),
                 child: GSText(
-                  text: "Header",
+                  text: "Invite your team",
                 ),
               ),
               body: const GSModalBody(
                 child: GSText(
                   text:
-                      "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone.",
+                      "Elevate user interactions with our versatile modals. Seamlessly integrate notifications, forms, and media displays. Make an impact effortlessly.",
                 ),
               ),
               footer: GSModalFooter(
                 child: GSButtonGroup(
                   buttons: [
                     GSButton(
-                        action: GSButtonActions.positive,
+                        action: GSButtonActions.primary,
                         variant: GSButtonVariants.outline,
                         child: const GSText(
-                          text: "Yes",
+                          text: "Cancel",
                         ),
-                        onPressed: () {}),
+                        onPressed: () {
+                          // context.pop();
+                        }),
                     GSButton(
-                        action: GSButtonActions.negative,
-                        variant: GSButtonVariants.outline,
+                        action: GSButtonActions.primary,
+                        variant: GSButtonVariants.solid,
                         child: const GSText(
-                          text: "No",
+                          text: "Explore",
                         ),
-                        onPressed: () {}),
+                        onPressed: () {
+                          // context.pop();
+                        }),
                   ],
                 ),
               ),
