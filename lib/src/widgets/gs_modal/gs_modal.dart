@@ -1,5 +1,6 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
+import 'package:gluestack_ui/src/widgets/gs_modal/gs_modal_backdrop_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_modal/gs_modal_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 
@@ -62,6 +63,14 @@ void showCustomModal(
           inlineStyle: style,
         );
 
+        GSConfigStyle backdropStyler = resolveStyles(
+          context: context,
+          styles: [
+            gsModalBackdropStyle,
+          ],
+          inlineStyle: style,
+        );
+
         return GSAncestor(
           decedentStyles: styler.descendantStyles,
           child: Stack(
@@ -70,11 +79,15 @@ void showCustomModal(
                 cursor: SystemMouseCursors.basic,
                 child: GestureDetector(
                   onTap: () {
-                    overlayEntry
-                        .remove(); // Remove the overlay when tapping outside the content
+                    if (barrierDismissible == true) {
+                      overlayEntry
+                          .remove(); // Remove the overlay when tapping outside the content
+                    }
                   },
                   child: Container(
-                    color: const Color.fromRGBO(0, 0, 0, 0.5),
+                    color:
+                        backdropStyler.bg?.getColor(context).withOpacity(0.5) ??
+                            const Color.fromRGBO(0, 0, 0, 0.5),
                   ),
                 ),
               ),
