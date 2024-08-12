@@ -16,7 +16,7 @@ Form Control Compatible Components:
 class GSFormControl extends StatefulWidget {
   final GlobalKey<FormState> formKey;
   final Widget child;
-  final PopInvokedCallback? onPopInvoked;
+  // final PopInvokedCallback? onPopInvoked;
   final VoidCallback? onChanged;
   final AutovalidateMode autovalidateMode;
   final bool? canPop;
@@ -32,7 +32,7 @@ class GSFormControl extends StatefulWidget {
   const GSFormControl({
     super.key,
     required this.child,
-    this.onPopInvoked,
+    // this.onPopInvoked,
     this.onChanged,
     this.autovalidateMode = AutovalidateMode.disabled,
     this.canPop,
@@ -84,7 +84,7 @@ class _GSFormControlState extends State<GSFormControl> {
           key: widget.formKey,
           canPop: widget.canPop,
           onChanged: widget.onChanged,
-          onPopInvoked: widget.onPopInvoked,
+          // onPopInvoked: widget.onPopInvoked,
           autovalidateMode: widget.autovalidateMode,
           child: widget.child,
         ),
