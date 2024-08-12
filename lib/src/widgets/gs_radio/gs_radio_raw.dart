@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'gs_toggleable.dart';
+import 'gs_toggleable.dart' as custom_toggleable;
 
 const Size _size = Size(18.0, 18.0);
 const double _kOuterRadius = 8.0;
@@ -59,7 +59,7 @@ class GSRawRadio<T> extends StatefulWidget {
 }
 
 class _GSRawRadioState<T> extends State<GSRawRadio<T>>
-    with TickerProviderStateMixin, ToggleableStateMixin {
+    with TickerProviderStateMixin, custom_toggleable.ToggleableStateMixin {
   bool focused = false;
 
   void _handleChanged(bool? selected) {
@@ -150,7 +150,7 @@ class _GSRawRadioState<T> extends State<GSRawRadio<T>>
   }
 }
 
-class _RadioPainter extends ToggleablePainter {
+class _RadioPainter extends custom_toggleable.ToggleablePainter {
   final double? radioSize;
 
   _RadioPainter({

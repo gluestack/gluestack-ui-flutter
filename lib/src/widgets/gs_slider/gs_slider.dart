@@ -215,22 +215,12 @@ class _GSSliderState extends State<GSSlider> {
                               reverse: widget.isReversed,
                               length: length,
                               thickness: thickness,
-                              orientation: widget.orientation! ==
-                                      GSOrientations.horizontal
-                                  ? "horizontal"
-                                  : "vertical",
-                              thumbColor:
-                                  styler.thumbColor?.getColor(context) ??
-                                      thumbStyler.bg?.getColor(context) ??
-                                      GSTheme.of(context).background600!,
-                              filledTrackColor:
-                                  (styler.trackColorTrue?.getColor(context) ??
-                                      filledTrackStyler.bg?.getColor(context) ??
-                                      GSTheme.of(context).background100)!,
-                              unfilledTrackColor:
-                                  styler.trackColorFalse?.getColor(context) ??
-                                      trackStyler.bg?.getColor(context) ??
-                                      GSTheme.of(context).background100!),
+                              orientation: widget.orientation ??
+                                  GSOrientations.horizontal,
+                              styler: styler,
+                              thumbStyler: thumbStyler,
+                              trackStyler: trackStyler,
+                              filledTrackStyler: filledTrackStyler),
                         ),
                       ),
                     );
