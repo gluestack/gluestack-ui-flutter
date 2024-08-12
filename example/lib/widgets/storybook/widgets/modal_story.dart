@@ -20,7 +20,7 @@ final class ModalStory extends StoryWidget {
                    fontWeight: FontWeight.bold
                 )
                 ),
-                child: GSText(
+                child: const GSText(
                   text: "Invite your team",
                 ),
               ),

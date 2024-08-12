@@ -2,7 +2,6 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/drop_down.dart';
-import 'package:go_router/go_router.dart';
 
 class ModalExample extends StatefulWidget {
   const ModalExample({super.key});
