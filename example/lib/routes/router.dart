@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gluestack_ui_example/home.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/accordian_example.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/bottom_sheet_example.dart';
+import 'package:gluestack_ui_example/widgets/components/widgets/modal_example.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/navigation_rail_example.dart';
 import 'package:gluestack_ui_example/widgets/components/widgets/slider_example.dart';
 import 'package:gluestack_ui_example/widgets/storybook/storybook.dart';
@@ -197,6 +198,10 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: "slider-example",
           builder: (context, state) => const SliderExample(),
+        ),
+        GoRoute(
+          path: "modal-example",
+          builder: (context, state) => const ModalExample(),
         ),
 
         // Generate individual Storybook screens for every widget. This is referenced in docs website iframe.

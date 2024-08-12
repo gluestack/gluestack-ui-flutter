@@ -33,6 +33,7 @@ class GSStyle extends BaseStyle<GSStyle> {
   // Color? highlightColor;
   // Color? splashColor;
   GSStyle? badge;
+   GSStyle? modal;
   GSTextTransform? textTransform;
   GSSizes? iconSize;
 
@@ -110,6 +111,7 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.alignment,
     this.maxWidth,
     this.badge,
+    this.modal,
     // this.highlightColor,
     // this.splashColor,
     this.textTransform,
@@ -215,6 +217,7 @@ class GSStyle extends BaseStyle<GSStyle> {
         width: overrideStyle?.width ?? width,
         height: overrideStyle?.height ?? height,
         badge: overrideStyle?.badge ?? badge,
+        modal : overrideStyle?.modal ?? modal,
         dark: dark != null
             ? dark?.merge(overrideStyle?.dark)
             : overrideStyle?.dark,
@@ -335,6 +338,9 @@ class GSStyle extends BaseStyle<GSStyle> {
           : null,
       badge: styler.badge != null
           ? fromGSConfigStyle(styler.badge!, context)
+          : null,
+            modal: styler.modal != null
+          ? fromGSConfigStyle(styler.modal!, context)
           : null,
       item:
           styler.item != null ? fromGSConfigStyle(styler.item!, context) : null,

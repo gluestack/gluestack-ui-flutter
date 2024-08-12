@@ -137,7 +137,12 @@ double? resolveSpaceFromString(String? space) {
 }
 
 EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
-    {String? paddingy, String? side = 'b'}) {
+    {String? paddingy,
+    String? side = 'b',
+    String? paddingTop,
+    String? paddingBottom,
+    String? paddingLeft,
+    String? paddingRight}) {
   if (padding == null) {
     return null;
   }
@@ -157,7 +162,17 @@ EdgeInsetsGeometry? resolvePaddingFromString(String? padding, String type,
     return EdgeInsets.symmetric(vertical: resolveSpaceFromString(padding)!);
   }
   if (type == 'only') {
-    if (side == 'b') {
+    if (paddingTop != null &&
+        paddingBottom != null &&
+        paddingLeft != null &&
+        paddingRight != null) {
+      return EdgeInsets.only(
+        top: resolveSpaceFromString(paddingTop)!,
+        left: resolveSpaceFromString(paddingLeft)!,
+        right: resolveSpaceFromString(paddingRight)!,
+        bottom: resolveSpaceFromString(paddingBottom)!,
+      );
+    } else if (side == 'b') {
       return EdgeInsets.only(bottom: resolveSpaceFromString(padding)!);
     } else if (side == 'r') {
       return EdgeInsets.only(right: resolveSpaceFromString(padding)!);
