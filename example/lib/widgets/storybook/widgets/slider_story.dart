@@ -13,19 +13,17 @@ final class SliderStory extends StoryWidget {
     return Story(
         name: storyName,
         builder: (context) => GSSlider(
-              size: GSSliderSizes.values[context.knobs
-                  .options(label: 'Size', initial: 0, options: sizeOptions)],
-              orientation: GSOrientations.values[context.knobs.options(
-                  label: 'Orientation',
-                  initial: 0,
-                  options: orientationOptions)],
-              isDisabled:
-                  context.knobs.boolean(label: "isDisabled", initial: false),
-
-              isReversed:
-                  context.knobs.boolean(label: "isReversed", initial: false),
-              //  style: GSStyle(width: 30),
-            ));
+            size: GSSliderSizes.values[context.knobs
+                .options(label: 'Size', initial: 0, options: sizeOptions)],
+            orientation: GSOrientations.values[context.knobs.options(
+                label: 'Orientation', initial: 0, options: orientationOptions)],
+            isDisabled:
+                context.knobs.boolean(label: "isDisabled", initial: false),
+            isReversed:
+                context.knobs.boolean(label: "isReversed", initial: false),
+            minValue: 0,
+            maxValue: 10,
+            defaultValue: 3));
   }
 
   @override

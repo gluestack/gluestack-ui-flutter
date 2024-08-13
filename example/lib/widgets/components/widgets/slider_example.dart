@@ -67,6 +67,9 @@ GSSlider(
   isDisabled: $isDisabled,
   isReversed: $isReversed,
   orientation: $selectedOrientationOption,
+  defaultValue: 3,
+  minValue: 0,
+  maxValue: 10,
   onChanged: (value) {
     setState(() {
       currentValue = value;
@@ -87,9 +90,11 @@ GSSlider(
           isDisabled: isDisabled,
           isReversed: isReversed,
           orientation: selectedOrientationOption,
+          defaultValue: 3,
+          minValue: 0,
+          maxValue: 10,
           onChanged: (value) {
-            setState(() {
-            });
+            setState(() {});
           },
         ),
         controls: Column(

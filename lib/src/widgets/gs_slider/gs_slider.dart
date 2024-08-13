@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:gluestack_ui/src/style/gs_config_style_internal.dart';
+import 'package:flutter/services.dart';
+import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_filled_track_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_painter.dart';
 import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_thumb_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_slider/gs_slider_track_style.dart';
@@ -10,33 +11,47 @@ import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart'
 class GSSlider extends StatefulWidget {
   final bool isReversed;
   final bool isDisabled;
-  final double max;
-  final double min;
+  final double maxValue;
+  final double minValue;
   final GSSliderSizes? size;
   final GSOrientations? orientation;
   final GSStyle? style;
   final ValueChanged<double>? onChanged;
+  final int? step;
+  final double? defaultValue;
+
   const GSSlider(
       {super.key,
       this.style,
       this.size,
-      this.min = 0,
-      this.max = 10,
+      this.minValue = 0,
+      this.maxValue = 10,
       this.isReversed = false,
       this.isDisabled = false,
-      this.orientation,
-      this.onChanged});
+      this.orientation = GSOrientations.horizontal,
+      this.onChanged,
+      this.step,
+      this.defaultValue});
 
   @override
   State<GSSlider> createState() => _GSSliderState();
 }
 
 class _GSSliderState extends State<GSSlider> {
-  late double _sliderValue;
+  late double _currentValue;
+  late FocusNode _focusNode;
+
   @override
   void initState() {
     super.initState();
-    _sliderValue = widget.min;
+    _currentValue = widget.defaultValue ?? widget.minValue;
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -46,8 +61,9 @@ class _GSSliderState extends State<GSSlider> {
         widget.orientation ?? sliderStyle.props?.orientation;
 
     return GSStyleBuilder(
-        isDisabled: widget.isDisabled,
-        child: Builder(builder: (context) {
+      isDisabled: widget.isDisabled,
+      child: Builder(
+        builder: (context) {
           GSConfigStyle styler = resolveStyles(
             context: context,
             styles: [
@@ -60,9 +76,10 @@ class _GSSliderState extends State<GSSlider> {
           );
 
           GSConfigStyle thumbStyler = resolveStyles(
-              context: context,
-              styles: [sliderThumbStyle],
-              inlineStyle: widget.style);
+            context: context,
+            styles: [sliderThumbStyle],
+            inlineStyle: widget.style,
+          );
 
           GSConfigStyle trackStyler = resolveStyles(
             context: context,
@@ -75,12 +92,67 @@ class _GSSliderState extends State<GSSlider> {
             styles: [sliderFilledTrackStyle],
             inlineStyle: widget.style,
           );
-          int quarterTurns;
-          if (widget.orientation == GSOrientations.horizontal) {
-            quarterTurns = 0;
-          } else {
-            quarterTurns = widget.isReversed ? 1 : 3;
+
+          void updateValue(double newValue) {
+            setState(() {
+              if (widget.step != null) {
+                final int step = widget.step!;
+                final double divisionWidth =
+                    (widget.maxValue - widget.minValue) / step;
+                _currentValue =
+                    ((newValue / divisionWidth).round() * divisionWidth)
+                        .clamp(widget.minValue, widget.maxValue);
+              } else {
+                _currentValue =
+                    newValue.clamp(widget.minValue, widget.maxValue);
+              }
+              if (widget.onChanged != null) {
+                widget.onChanged!(_currentValue);
+              }
+            });
           }
+
+          void handleKeyEvent(KeyEvent event) {
+            if (event is KeyDownEvent) {
+              final double step = widget.step != null
+                  ? (widget.maxValue - widget.minValue) / widget.step!
+                  : (widget.maxValue - widget.minValue) / 100;
+              if (event.logicalKey == LogicalKeyboardKey.arrowRight ||
+                  event.logicalKey == LogicalKeyboardKey.arrowUp) {
+                updateValue(_currentValue + (widget.isReversed ? -step : step));
+              } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft ||
+                  event.logicalKey == LogicalKeyboardKey.arrowDown) {
+                updateValue(_currentValue + (widget.isReversed ? step : -step));
+              }
+            }
+          }
+
+          void handleDragUpdate(DragUpdateDetails details, double length) {
+            double delta = widget.orientation == GSOrientations.horizontal
+                ? details.localPosition.dx
+                : details.localPosition.dy;
+            if (widget.isReversed) {
+              delta = length - delta;
+            }
+            final double newValue =
+                (delta / length) * (widget.maxValue - widget.minValue) +
+                    widget.minValue;
+            updateValue(newValue);
+          }
+
+          void handleTapDown(TapDownDetails details, double length) {
+            double delta = widget.orientation == GSOrientations.horizontal
+                ? details.localPosition.dx
+                : details.localPosition.dy;
+            if (widget.isReversed) {
+              delta = length - delta;
+            }
+            final double newValue =
+                (delta / length) * (widget.maxValue - widget.minValue) +
+                    widget.minValue;
+            updateValue(newValue);
+          }
+
           return GSAncestor(
             decedentStyles: styler.descendantStyles,
             child: Directionality(
@@ -88,46 +160,81 @@ class _GSSliderState extends State<GSSlider> {
                       widget.orientation == GSOrientations.horizontal
                   ? TextDirection.rtl
                   : TextDirection.ltr,
-              child: RotatedBox(
-                quarterTurns: quarterTurns,
-                child: Opacity(
-                  opacity: widget.isDisabled ? 0.6 : 1,
-                  child: SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      activeTrackColor: filledTrackStyler.bg?.getColor(context),
-                      inactiveTrackColor: trackStyler.bg?.getColor(context),
-                      thumbColor: thumbStyler.bg?.getColor(context),
-                      trackHeight:
-                          widget.orientation == GSOrientations.horizontal
-                              ? styler.trackHeight
-                              : styler.trackWidth ?? 10,
-                      trackShape: const RoundedRectSliderTrackShape(),
-                      thumbShape: RoundSliderThumbShape(
-                          enabledThumbRadius: (styler.thumbHeight ?? 40) / 2),
-                      overlayShape: RoundSliderOverlayShape(
-                          overlayRadius: (styler.thumbHeight ?? 40) / 2),
-                    ),
-                    child: Slider(
-                      value: _sliderValue,
-                      min: widget.min,
-                      max: widget.max,
-                      label: _sliderValue.round().toString(),
-                      onChanged: widget.isDisabled
-                          ? (value) {}
-                          : (double value) {
-                              setState(() {
-                                _sliderValue = value;
-                              });
-                              if (widget.onChanged != null) {
-                                widget.onChanged!(value);
-                              }
-                            },
-                    ),
-                  ),
+              child: Opacity(
+                opacity: widget.isDisabled ? 0.6 : 1,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    double length =
+                        widget.orientation == GSOrientations.horizontal
+                            ? (styler.trackWidth ?? constraints.maxWidth)
+                                .clamp(0.0, constraints.maxWidth)
+                            : (styler.trackHeight ?? constraints.maxHeight)
+                                .clamp(0.0, constraints.maxHeight);
+                    if (length == double.infinity) {
+                      length = styler.trackHeight ?? 200;
+                    }
+                    final double thickness = styler.thumbHeight ?? 20.00;
+                    return Focus(
+                      focusNode: _focusNode,
+                      onKeyEvent: (FocusNode node, KeyEvent event) {
+                        handleKeyEvent(event);
+                        return KeyEventResult.handled;
+                      },
+                      child: GestureDetector(
+                        onHorizontalDragUpdate: widget.isDisabled ||
+                                widget.orientation == GSOrientations.vertical
+                            ? null
+                            : (details) {
+                                _focusNode.requestFocus();
+                                handleDragUpdate(details, length);
+                              },
+                        onVerticalDragUpdate: widget.isDisabled ||
+                                widget.orientation == GSOrientations.horizontal
+                            ? null
+                            : (details) {
+                                _focusNode.requestFocus();
+                                handleDragUpdate(details, length);
+                              },
+                        onTapDown: widget.isDisabled
+                            ? null
+                            : (details) {
+                                _focusNode.requestFocus();
+                                handleTapDown(details, length);
+                              },
+                        child: CustomPaint(
+                          size: widget.orientation == GSOrientations.horizontal
+                              ? Size(length, thickness)
+                              : Size(thickness, length),
+                          painter: SliderPainter(
+                              thumbHeight: styler.thumbHeight,
+                              context: context,
+                              value: _currentValue,
+                              minValue: widget.minValue,
+                              maxValue: widget.maxValue,
+                              trackWidth: widget.orientation ==
+                                      GSOrientations.horizontal
+                                  ? styler.trackHeight
+                                  : styler.trackWidth ?? 5,
+                              step: widget.step,
+                              reverse: widget.isReversed,
+                              length: length,
+                              thickness: thickness,
+                              orientation: widget.orientation ??
+                                  GSOrientations.horizontal,
+                              styler: styler,
+                              thumbStyler: thumbStyler,
+                              trackStyler: trackStyler,
+                              filledTrackStyler: filledTrackStyler),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
           );
-        }));
+        },
+      ),
+    );
   }
 }
