@@ -11,26 +11,27 @@ import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart'
 class GSSlider extends StatefulWidget {
   final bool isReversed;
   final bool isDisabled;
-  final double max;
-  final double min;
+  final double maxValue;
+  final double minValue;
   final GSSliderSizes? size;
   final GSOrientations? orientation;
   final GSStyle? style;
   final ValueChanged<double>? onChanged;
-  final int? divisions;
+  final int? step;
+  final double? defaultValue;
 
-  const GSSlider({
-    super.key,
-    this.style,
-    this.size,
-    this.min = 0,
-    this.max = 10,
-    this.isReversed = false,
-    this.isDisabled = false,
-    this.orientation = GSOrientations.horizontal,
-    this.onChanged,
-    this.divisions,
-  });
+  const GSSlider(
+      {super.key,
+      this.style,
+      this.size,
+      this.minValue = 0,
+      this.maxValue = 10,
+      this.isReversed = false,
+      this.isDisabled = false,
+      this.orientation = GSOrientations.horizontal,
+      this.onChanged,
+      this.step,
+      this.defaultValue});
 
   @override
   State<GSSlider> createState() => _GSSliderState();
@@ -43,7 +44,7 @@ class _GSSliderState extends State<GSSlider> {
   @override
   void initState() {
     super.initState();
-    _currentValue = widget.min;
+    _currentValue = widget.defaultValue ?? widget.minValue;
     _focusNode = FocusNode();
   }
 
@@ -94,15 +95,16 @@ class _GSSliderState extends State<GSSlider> {
 
           void updateValue(double newValue) {
             setState(() {
-              if (widget.divisions != null) {
-                final int divisions = widget.divisions!;
+              if (widget.step != null) {
+                final int step = widget.step!;
                 final double divisionWidth =
-                    (widget.max - widget.min) / divisions;
+                    (widget.maxValue - widget.minValue) / step;
                 _currentValue =
                     ((newValue / divisionWidth).round() * divisionWidth)
-                        .clamp(widget.min, widget.max);
+                        .clamp(widget.minValue, widget.maxValue);
               } else {
-                _currentValue = newValue.clamp(widget.min, widget.max);
+                _currentValue =
+                    newValue.clamp(widget.minValue, widget.maxValue);
               }
               if (widget.onChanged != null) {
                 widget.onChanged!(_currentValue);
@@ -112,9 +114,9 @@ class _GSSliderState extends State<GSSlider> {
 
           void handleKeyEvent(KeyEvent event) {
             if (event is KeyDownEvent) {
-              final double step = widget.divisions != null
-                  ? (widget.max - widget.min) / widget.divisions!
-                  : (widget.max - widget.min) / 100;
+              final double step = widget.step != null
+                  ? (widget.maxValue - widget.minValue) / widget.step!
+                  : (widget.maxValue - widget.minValue) / 100;
               if (event.logicalKey == LogicalKeyboardKey.arrowRight ||
                   event.logicalKey == LogicalKeyboardKey.arrowUp) {
                 updateValue(_currentValue + (widget.isReversed ? -step : step));
@@ -133,7 +135,8 @@ class _GSSliderState extends State<GSSlider> {
               delta = length - delta;
             }
             final double newValue =
-                (delta / length) * (widget.max - widget.min) + widget.min;
+                (delta / length) * (widget.maxValue - widget.minValue) +
+                    widget.minValue;
             updateValue(newValue);
           }
 
@@ -145,7 +148,8 @@ class _GSSliderState extends State<GSSlider> {
               delta = length - delta;
             }
             final double newValue =
-                (delta / length) * (widget.max - widget.min) + widget.min;
+                (delta / length) * (widget.maxValue - widget.minValue) +
+                    widget.minValue;
             updateValue(newValue);
           }
 
@@ -205,13 +209,13 @@ class _GSSliderState extends State<GSSlider> {
                               thumbHeight: styler.thumbHeight,
                               context: context,
                               value: _currentValue,
-                              min: widget.min,
-                              max: widget.max,
+                              minValue: widget.minValue,
+                              maxValue: widget.maxValue,
                               trackWidth: widget.orientation ==
                                       GSOrientations.horizontal
                                   ? styler.trackHeight
                                   : styler.trackWidth ?? 5,
-                              divisions: widget.divisions,
+                              step: widget.step,
                               reverse: widget.isReversed,
                               length: length,
                               thickness: thickness,

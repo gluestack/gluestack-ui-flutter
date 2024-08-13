@@ -2,9 +2,9 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 class SliderPainter extends CustomPainter {
   final double value;
-  final double min;
-  final double max;
-  final int? divisions;
+  final double minValue;
+  final double maxValue;
+  final int? step;
   final bool reverse;
   final double length;
   final double thickness;
@@ -17,22 +17,23 @@ class SliderPainter extends CustomPainter {
   final GSConfigStyle? thumbStyler;
   final GSConfigStyle styler;
 
-  SliderPainter(
-      {required this.value,
-      required this.min,
-      required this.max,
-      this.divisions,
-      required this.reverse,
-      required this.length,
-      required this.thickness,
-      required this.orientation,
-      required this.trackWidth,
-      this.filledTrackStyler,
-      required this.context,
-      this.trackStyler,
-      this.thumbStyler,
-      required this.styler,
-      required this.thumbHeight,});
+  SliderPainter({
+    required this.value,
+    required this.minValue,
+    required this.maxValue,
+    this.step,
+    required this.reverse,
+    required this.length,
+    required this.thickness,
+    required this.orientation,
+    required this.trackWidth,
+    this.filledTrackStyler,
+    required this.context,
+    this.trackStyler,
+    this.thumbStyler,
+    required this.styler,
+    required this.thumbHeight,
+  });
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
@@ -40,24 +41,21 @@ class SliderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint filledTrackPaint = Paint()
-      ..color = 
-      (styler.trackColorTrue?.getColor(context) ??
+      ..color = (styler.trackColorTrue?.getColor(context) ??
           filledTrackStyler?.bg?.getColor(context) ??
           GSTheme.of(context).background100)!
       ..strokeWidth = trackWidth ?? 5.0
       ..strokeCap = StrokeCap.round;
 
     final Paint unfilledTrackPaint = Paint()
-      ..color = 
-      styler.trackColorFalse?.getColor(context) ??
+      ..color = styler.trackColorFalse?.getColor(context) ??
           trackStyler?.bg?.getColor(context) ??
           GSTheme.of(context).background100!
       ..strokeWidth = trackWidth ?? 5.0
       ..strokeCap = StrokeCap.round;
 
     final Paint thumbPaint = Paint()
-      ..color =
-       styler.thumbColor?.getColor(context) ??
+      ..color = styler.thumbColor?.getColor(context) ??
           thumbStyler?.bg?.getColor(context) ??
           GSTheme.of(context).background600!
       ..style = PaintingStyle.fill;
@@ -71,7 +69,7 @@ class SliderPainter extends CustomPainter {
 
     // Calculate the thumb position on the track
     final double thumbPos =
-        ((value - min) / (max - min)) * (trackEnd - trackStart) + trackStart;
+        ((value - minValue) / (maxValue - minValue)) * (trackEnd - trackStart) + trackStart;
 
     // Adjust the thumb position if the slider is reversed
     final double adjustedThumbPos =
