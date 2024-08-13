@@ -13,7 +13,7 @@ const Map<String, dynamic> modalCloseButtonData = {
       "color": '\$background700',
     },
     "_text": {
-      "colo": '\$background700',
+      "color": '\$background700',
     },
   },
   ':active': {

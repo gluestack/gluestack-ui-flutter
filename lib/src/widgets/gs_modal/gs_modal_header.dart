@@ -5,8 +5,9 @@ import 'package:gluestack_ui/src/widgets/gs_modal/gs_modal_header_style.dart';
 
 class GSModalHeader extends StatelessWidget {
   final Widget? child;
+  final GSButton? closeButton;
   final GSStyle? style;
-  const GSModalHeader({super.key, this.child, this.style});
+  const GSModalHeader({super.key, this.child, this.closeButton, this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +18,20 @@ class GSModalHeader extends StatelessWidget {
     );
     final y = resolveAlignment(styler.alignItems),
         x = resolveAlignment(styler.justifyContent);
-    return Container(
-      color: styler.bg?.getColor(context),
-      alignment: Alignment(x, y),
-      padding: styler.padding,
-      height: styler.height,
-      width: styler.width ?? double.infinity,
-      child: child,
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            color: styler.bg?.getColor(context),
+            alignment: Alignment(x, y),
+            padding: styler.padding,
+            height: styler.height,
+            width: styler.width ?? double.infinity,
+            child: child,
+          ),
+        ),
+        closeButton ?? SizedBox.shrink(),
+      ],
     );
   }
 }
