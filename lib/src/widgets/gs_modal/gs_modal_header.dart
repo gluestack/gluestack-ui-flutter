@@ -34,7 +34,7 @@ class GSModalHeader extends StatelessWidget {
             color: styler.bg?.getColor(context),
             alignment: Alignment(x, y),
             padding: styler.padding,
-            child: closeButton ?? SizedBox.shrink()),
+            child: closeButton ?? const SizedBox.shrink()),
       ],
     );
   }
