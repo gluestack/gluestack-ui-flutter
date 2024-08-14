@@ -13,6 +13,7 @@ class GSModal extends StatefulWidget {
   final bool? barrierDismissible;
   final bool isOpen;
   final Function()? onClose;
+  final bool showBackdrop;
 
   const GSModal({
     super.key,
@@ -24,6 +25,7 @@ class GSModal extends StatefulWidget {
     this.alignment,
     this.onClose,
     this.isOpen = false,
+    this.showBackdrop = true,
   });
 
   @override
@@ -42,16 +44,6 @@ class _GSModalState extends State<GSModal> {
       _showModal();
     }
   }
-
-  // @override
-  // void didUpdateWidget(GSModal oldWidget) {
-  //   super.didUpdateWidget(oldWidget);
-  //   if (widget.isOpen && !_isOpen) {
-  //     _showModal();
-  //   } else if (!widget.isOpen && _isOpen) {
-  //     _removeModal();
-  //   }
-  // }
 
   @override
   void didUpdateWidget(GSModal oldWidget) {
@@ -110,10 +102,12 @@ class _GSModalState extends State<GSModal> {
                           }
                         },
                         child: Container(
-                          color: backdropStyler.bg
-                                  ?.getColor(context)
-                                  .withOpacity(0.5) ??
-                              const Color.fromRGBO(0, 0, 0, 0.5),
+                          color: widget.showBackdrop
+                              ? backdropStyler.bg
+                                      ?.getColor(context)
+                                      .withOpacity(0.5) ??
+                                  const Color.fromRGBO(0, 0, 0, 0.5)
+                              : const Color.fromRGBO(0, 0, 0, 0),
                         ),
                       ),
                     ),
