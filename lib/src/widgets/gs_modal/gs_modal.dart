@@ -1,6 +1,7 @@
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_modal/gs_modal_backdrop_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_modal/gs_modal_provider.dart';
 import 'package:gluestack_ui/src/widgets/gs_modal/gs_modal_style.dart';
 import 'package:gluestack_ui/src/widgets/gs_style_builder/gs_style_builder.dart';
 
@@ -89,43 +90,46 @@ class _GSModalState extends State<GSModal> {
                 inlineStyle: widget.style,
               );
 
-              return GSAncestor(
-                decedentStyles: styler.descendantStyles,
-                child: Stack(
-                  children: [
-                    MouseRegion(
-                      cursor: SystemMouseCursors.basic,
-                      child: GestureDetector(
+              return GSModalProvider(
+                removeModal: _removeModal,
+                child: GSAncestor(
+                  decedentStyles: styler.descendantStyles,
+                  child: Stack(
+                    children: [
+                      MouseRegion(
+                        cursor: SystemMouseCursors.basic,
+                        child: GestureDetector(
+                          onTap: () {
+                            if (widget.barrierDismissible == true) {
+                              _removeModal();
+                            }
+                          },
+                          child: Container(
+                            color: widget.showBackdrop
+                                ? backdropStyler.bg
+                                        ?.getColor(context)
+                                        .withOpacity(0.5) ??
+                                    const Color.fromRGBO(0, 0, 0, 0.5)
+                                : const Color.fromRGBO(0, 0, 0, 0),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
                         onTap: () {
-                          if (widget.barrierDismissible == true) {
-                            _removeModal();
-                          }
+                          // Do nothing to prevent the modal from closing when tapped
                         },
-                        child: Container(
-                          color: widget.showBackdrop
-                              ? backdropStyler.bg
-                                      ?.getColor(context)
-                                      .withOpacity(0.5) ??
-                                  const Color.fromRGBO(0, 0, 0, 0.5)
-                              : const Color.fromRGBO(0, 0, 0, 0),
+                        child: Align(
+                          alignment: styler.alignment ?? Alignment.center,
+                          child: SizedBox(
+                            width: (styler.modal?.maxWidth ??
+                                1 * (styler.modal?.width ?? 1)),
+                            height: styler.modal?.height,
+                            child: widget.content,
+                          ),
                         ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        // Do nothing to prevent the modal from closing when tapped
-                      },
-                      child: Align(
-                        alignment: styler.alignment ?? Alignment.center,
-                        child: SizedBox(
-                          width: (styler.modal?.maxWidth ??
-                              1 * (styler.modal?.width ?? 1)),
-                          height: styler.modal?.height,
-                          child: widget.content,
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
@@ -135,7 +139,7 @@ class _GSModalState extends State<GSModal> {
     );
   }
 
-  void _removeModal() {
+   _removeModal() {
     // Guard clause to prevent double execution
     if (!_isOpen || _overlayEntry == null) {
       return; // Exit if modal is already closed or there's no overlay to remove

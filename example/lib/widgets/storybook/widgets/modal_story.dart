@@ -14,17 +14,14 @@ final class ModalStory extends StoryWidget {
             size: GSModalSizes.values[context.knobs
                 .options(label: 'Size', initial: 0, options: sizeOptions)],
             content: GSModalContent(
-              header:  GSModalHeader(
-                 closeButton: GSModalCloseButton(
-                  icon: const GSIcon(icon: Icons.close),
-                  onPressed: () {},
+              header: GSModalHeader(
+                closeButton: const GSModalCloseButton(
+                  icon: GSIcon(icon: Icons.close),
                 ),
                 style: GSStyle(
-                textStyle: TextStyle(
-                   color: GSTheme.of(context).background900,
-                   fontWeight: FontWeight.bold
-                )
-                ),
+                    textStyle: TextStyle(
+                        color: GSTheme.of(context).background900,
+                        fontWeight: FontWeight.bold)),
                 child: const GSText(
                   text: "Invite your team",
                 ),
@@ -44,18 +41,14 @@ final class ModalStory extends StoryWidget {
                         child: const GSText(
                           text: "Cancel",
                         ),
-                        onPressed: () {
-                          // context.pop();
-                        }),
+                        onPressed: () {}),
                     GSButton(
                         action: GSButtonActions.primary,
                         variant: GSButtonVariants.solid,
                         child: const GSText(
                           text: "Explore",
                         ),
-                        onPressed: () {
-                          // context.pop();
-                        }),
+                        onPressed: () {}),
                   ],
                 ),
               ),

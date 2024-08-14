@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui/src/style/style_resolver.dart';
 import 'package:gluestack_ui/src/widgets/gs_modal/gs_modal_close_button_style.dart';
+import 'package:gluestack_ui/src/widgets/gs_modal/gs_modal_provider.dart';
 
 /// predefined sizes for [GSModalCloseButton], providing a consistent set of size options for icon buttons.
 enum GSModalCloseButtonSizes {
@@ -17,9 +18,6 @@ enum GSModalCloseButtonSizes {
 class GSModalCloseButton extends StatelessWidget {
   /// The icon to display within the button.
   final GSIcon icon;
-
-  /// The callback that is called when the button is tapped.
-  final VoidCallback onPressed;
 
   /// The callback that is called when the button is long-pressed.
   final VoidCallback? onLongPress;
@@ -44,7 +42,6 @@ class GSModalCloseButton extends StatelessWidget {
   const GSModalCloseButton({
     super.key,
     required this.icon,
-    required this.onPressed,
     this.onLongPress,
     this.onDoubleTap,
     this.style,
@@ -71,12 +68,14 @@ class GSModalCloseButton extends StatelessWidget {
       inlineStyle: style,
     );
 
-    // widget.
+    final removeModal = GSModalProvider.of(context)?.removeModal;
 
     return GSButton(
       variant: variant ?? GSButtonVariants.link,
       action: action ?? GSButtonActions.primary,
-      onPressed: onPressed,
+      onPressed: () {
+        removeModal!();
+      },
       onLongPress: onLongPress,
       onDoubleTap: onDoubleTap,
       semanticsLabel: semanticsLabel,

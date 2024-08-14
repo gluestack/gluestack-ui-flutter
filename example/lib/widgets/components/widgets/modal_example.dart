@@ -115,13 +115,9 @@ GSModal(
             size: selectedSizeOption,
             content: GSModalContent(
               header: GSModalHeader(
-                closeButton: GSModalCloseButton(
-                  icon: const GSIcon(icon: Icons.close),
-                  onPressed: () {
-                    setState(() {
-                      isOpen = false;
-                    });
-                  },
+                closeButton: const GSModalCloseButton(
+                  icon: GSIcon(icon: Icons.close),
+                 
                 ),
                 child: GSText(
                   text: "Invite your team",
