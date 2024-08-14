@@ -15,7 +15,7 @@ enum GSModalCloseButtonSizes {
 /// A widget that represents an icon button,
 /// [GSModalCloseButton] allows for the creation of buttons with icon content, supporting various interactions
 /// such as taps, long presses, and double taps.
-class GSModalCloseButton extends StatelessWidget {
+class GSModalCloseButton extends StatefulWidget {
   /// The icon to display within the button.
   final GSIcon icon;
 
@@ -52,6 +52,12 @@ class GSModalCloseButton extends StatelessWidget {
   });
 
   @override
+  State<GSModalCloseButton> createState() => _GSModalCloseButtonState();
+}
+
+class _GSModalCloseButtonState extends State<GSModalCloseButton> {
+  bool hovered = false;
+  @override
   Widget build(BuildContext context) {
     GSButtonSizes? sizeAdapt(GSModalCloseButtonSizes buttonSize) {
       for (GSButtonSizes bSize in GSButtonSizes.values) {
@@ -65,29 +71,42 @@ class GSModalCloseButton extends StatelessWidget {
     GSConfigStyle styler = resolveStyles(
       context: context,
       styles: [gsModalCloseButtonStyle],
-      inlineStyle: style,
+      inlineStyle: widget.style,
     );
-
     final removeModal = GSModalProvider.of(context)?.removeModal;
 
-    return GSButton(
-      variant: variant ?? GSButtonVariants.link,
-      action: action ?? GSButtonActions.primary,
-      onPressed: () {
-        removeModal!();
+    void _handleHoveHighlight(bool value) {
+      setState(() {
+        hovered = value;
+      });
+    }
+
+    return FocusableActionDetector(
+      onShowHoverHighlight: (value) {
+        _handleHoveHighlight(value);
       },
-      onLongPress: onLongPress,
-      onDoubleTap: onDoubleTap,
-      semanticsLabel: semanticsLabel,
-      style: style ??
-          GSStyle(
-            color: styler.color?.getColor(context),
-            iconColor: styler.iconColor?.getColor(context),
-            padding: styler.padding,
-            borderRadius: style?.borderRadius,
-          ),
-      size: sizeAdapt(size!),
-      child: icon,
+      child: GSButton(
+          variant: widget.variant ?? GSButtonVariants.link,
+          action: widget.action ?? GSButtonActions.primary,
+          onPressed: () {
+            removeModal!();
+          },
+          onLongPress: widget.onLongPress,
+          onDoubleTap: widget.onDoubleTap,
+          semanticsLabel: widget.semanticsLabel,
+          style: widget.style ??
+              GSStyle(
+                color: styler.color?.getColor(context),
+                iconColor: styler.iconColor?.getColor(context),
+                padding: styler.padding,
+                borderRadius: widget.style?.borderRadius,
+              ),
+          size: sizeAdapt(widget.size!),
+          child: Icon(widget.icon.icon,
+              size: styler.width ?? styler.height,
+              color: hovered == true
+                  ? styler.onHover?.color?.getColor(context)
+                  : styler.iconColor?.getColor(context))),
     );
   }
 }
