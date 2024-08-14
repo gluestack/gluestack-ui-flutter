@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
 import 'base_story_widget.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
@@ -14,6 +15,10 @@ final class ModalStory extends StoryWidget {
                 .options(label: 'Size', initial: 0, options: sizeOptions)],
             content: GSModalContent(
               header:  GSModalHeader(
+                 closeButton: GSModalCloseButton(
+                  icon: const GSIcon(icon: Icons.close),
+                  onPressed: () {},
+                ),
                 style: GSStyle(
                 textStyle: TextStyle(
                    color: GSTheme.of(context).background900,

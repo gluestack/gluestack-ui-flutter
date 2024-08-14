@@ -5,7 +5,7 @@ import 'package:gluestack_ui/src/widgets/gs_modal/gs_modal_header_style.dart';
 
 class GSModalHeader extends StatelessWidget {
   final Widget? child;
-  final GSButton? closeButton;
+  final GSModalCloseButton? closeButton;
   final GSStyle? style;
   const GSModalHeader({super.key, this.child, this.closeButton, this.style});
 
@@ -30,7 +30,11 @@ class GSModalHeader extends StatelessWidget {
             child: child,
           ),
         ),
-        closeButton ?? SizedBox.shrink(),
+        Container(
+            color: styler.bg?.getColor(context),
+            alignment: Alignment(x, y),
+            padding: styler.padding,
+            child: closeButton ?? SizedBox.shrink()),
       ],
     );
   }

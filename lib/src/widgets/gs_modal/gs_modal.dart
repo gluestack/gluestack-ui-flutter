@@ -11,104 +11,163 @@ class GSModal extends StatefulWidget {
   final GSModalContent content;
   final AlignmentGeometry? alignment;
   final bool? barrierDismissible;
+  final bool isOpen;
+  final Function()? onClose;
 
-  const GSModal(
-      {super.key,
-      required this.size,
-      required this.child,
-      this.style,
-      required this.content,
-      this.barrierDismissible = true,
-      this.alignment});
+  const GSModal({
+    super.key,
+    required this.size,
+    required this.child,
+    this.style,
+    required this.content,
+    this.barrierDismissible = true,
+    this.alignment,
+    this.onClose,
+    this.isOpen = false,
+  });
 
   @override
   State<GSModal> createState() => _GSModalState();
 }
 
 class _GSModalState extends State<GSModal> {
+  OverlayEntry? _overlayEntry;
+  late bool _isOpen;
+
+  @override
+  void initState() {
+    super.initState();
+    _isOpen = widget.isOpen;
+    if (_isOpen) {
+      _showModal();
+    }
+  }
+
+  // @override
+  // void didUpdateWidget(GSModal oldWidget) {
+  //   super.didUpdateWidget(oldWidget);
+  //   if (widget.isOpen && !_isOpen) {
+  //     _showModal();
+  //   } else if (!widget.isOpen && _isOpen) {
+  //     _removeModal();
+  //   }
+  // }
+
+  @override
+  void didUpdateWidget(GSModal oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.isOpen && !_isOpen) {
+      _showModal();
+    } else if (!widget.isOpen && _isOpen) {
+      _removeModal();
+    }
+  }
+
+  void _showModal() {
+    _overlayEntry = _createOverlayEntry();
+    Overlay.of(context).insert(_overlayEntry!);
+    setState(() {
+      _isOpen = true;
+    });
+  }
+
+  OverlayEntry _createOverlayEntry() {
+    return OverlayEntry(
+      builder: (context) {
+        final modalSize = widget.size.toGSSize ?? modalStyle.props?.size;
+
+        return GSStyleBuilder(
+          child: Builder(
+            builder: (context) {
+              GSConfigStyle styler = resolveStyles(
+                context: context,
+                styles: [
+                  modalStyle,
+                  modalStyle.sizeMap(modalSize),
+                ],
+                inlineStyle: widget.style,
+              );
+
+              GSConfigStyle backdropStyler = resolveStyles(
+                context: context,
+                styles: [
+                  gsModalBackdropStyle,
+                ],
+                inlineStyle: widget.style,
+              );
+
+              return GSAncestor(
+                decedentStyles: styler.descendantStyles,
+                child: Stack(
+                  children: [
+                    MouseRegion(
+                      cursor: SystemMouseCursors.basic,
+                      child: GestureDetector(
+                        onTap: () {
+                          if (widget.barrierDismissible == true) {
+                            _removeModal();
+                          }
+                        },
+                        child: Container(
+                          color: backdropStyler.bg
+                                  ?.getColor(context)
+                                  .withOpacity(0.5) ??
+                              const Color.fromRGBO(0, 0, 0, 0.5),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        // Do nothing to prevent the modal from closing when tapped
+                      },
+                      child: Align(
+                        alignment: styler.alignment ?? Alignment.center,
+                        child: SizedBox(
+                          width: (styler.modal?.maxWidth ??
+                              1 * (styler.modal?.width ?? 1)),
+                          height: styler.modal?.height,
+                          child: widget.content,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  void _removeModal() {
+    // Guard clause to prevent double execution
+    if (!_isOpen || _overlayEntry == null) {
+      return; // Exit if modal is already closed or there's no overlay to remove
+    }
+    // Remove the overlay entry
+    _overlayEntry!.remove();
+    _overlayEntry = null;
+
+    // Update the state to closed
+    _isOpen = false;
+
+    // Defer the onClose callback to avoid conflicts with the current build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.onClose != null) {
+        widget.onClose!();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GsGestureDetector(
       onPressed: () {
-        showCustomModal(context,
-            size: widget.size,
-            content: widget.content,
-            barrierDismissible: widget.barrierDismissible);
+        _isOpen ? _removeModal() : _showModal();
       },
       child: widget.child,
     );
   }
-}
-
-void showCustomModal(
-  BuildContext context, {
-  GSStyle? style,
-  GSModalSizes? size,
-  bool? barrierDismissible,
-  required GSModalContent content,
-}) {
-  final overlayState = Overlay.of(context);
-  late OverlayEntry overlayEntry;
-
-  overlayEntry = OverlayEntry(
-    builder: (context) {
-      final modalSize = size?.toGSSize ?? modalStyle.props?.size;
-      return GSStyleBuilder(child: Builder(builder: (context) {
-        GSConfigStyle styler = resolveStyles(
-          context: context,
-          styles: [
-            modalStyle,
-            modalStyle.sizeMap(modalSize),
-          ],
-          inlineStyle: style,
-        );
-
-        GSConfigStyle backdropStyler = resolveStyles(
-          context: context,
-          styles: [
-            gsModalBackdropStyle,
-          ],
-          inlineStyle: style,
-        );
-
-        return GSAncestor(
-          decedentStyles: styler.descendantStyles,
-          child: Stack(
-            children: [
-              MouseRegion(
-                cursor: SystemMouseCursors.basic,
-                child: GestureDetector(
-                  onTap: () {
-                    if (barrierDismissible == true) {
-                      overlayEntry
-                          .remove(); // Remove the overlay when tapping outside the content
-                    }
-                  },
-                  child: Container(
-                    color:
-                        backdropStyler.bg?.getColor(context).withOpacity(0.5) ??
-                            const Color.fromRGBO(0, 0, 0, 0.5),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Do nothing to prevent the modal from closing when tapped
-                },
-                child: Align(
-                  alignment: styler.alignment ?? Alignment.center,
-                  child: SizedBox(
-                      width: (styler.modal?.maxWidth ??
-                          200 * (styler.modal?.width ?? 1)),
-                      child: content),
-                ),
-              ),
-            ],
-          ),
-        );
-      }));
-    },
-  );
-
-  overlayState.insert(overlayEntry);
 }
