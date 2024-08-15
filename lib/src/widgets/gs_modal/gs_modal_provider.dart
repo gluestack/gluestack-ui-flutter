@@ -4,12 +4,13 @@ class GSModalProvider extends InheritedWidget {
   final VoidCallback removeModal;
 
   const GSModalProvider({
+    Key? key,
     required this.removeModal,
     required Widget child,
-  }) : super(child: child);
+  }) : super(key: key, child: child);
 
   @override
-  bool updateShouldNotify(GSModalProvider oldWidget) {
+  bool updateShouldNotify(covariant GSModalProvider oldWidget) {
     return removeModal != oldWidget.removeModal;
   }
 

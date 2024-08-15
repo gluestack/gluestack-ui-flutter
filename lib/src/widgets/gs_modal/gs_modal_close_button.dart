@@ -75,7 +75,7 @@ class _GSModalCloseButtonState extends State<GSModalCloseButton> {
     );
     final removeModal = GSModalProvider.of(context)?.removeModal;
 
-    void _handleHoveHighlight(bool value) {
+    void handleHoveHighlight(bool value) {
       setState(() {
         hovered = value;
       });
@@ -83,7 +83,7 @@ class _GSModalCloseButtonState extends State<GSModalCloseButton> {
 
     return FocusableActionDetector(
       onShowHoverHighlight: (value) {
-        _handleHoveHighlight(value);
+        handleHoveHighlight(value);
       },
       child: GSButton(
           variant: widget.variant ?? GSButtonVariants.link,
