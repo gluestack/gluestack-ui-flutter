@@ -17,7 +17,9 @@ enum GSModalCloseButtonSizes {
 /// such as taps, long presses, and double taps.
 class GSModalCloseButton extends StatefulWidget {
   /// The icon to display within the button.
-  final GSIcon icon;
+  final GSIcon? icon;
+
+  final GSText? text;
 
   /// The callback that is called when the button is long-pressed.
   final VoidCallback? onLongPress;
@@ -41,7 +43,8 @@ class GSModalCloseButton extends StatefulWidget {
   ///Constructor for [GSModalCloseButton]
   const GSModalCloseButton({
     super.key,
-    required this.icon,
+    this.icon,
+    this.text,
     this.onLongPress,
     this.onDoubleTap,
     this.style,
@@ -82,31 +85,78 @@ class _GSModalCloseButtonState extends State<GSModalCloseButton> {
     }
 
     return FocusableActionDetector(
-      onShowHoverHighlight: (value) {
-        handleHoveHighlight(value);
-      },
-      child: GSButton(
-          variant: widget.variant ?? GSButtonVariants.link,
-          action: widget.action ?? GSButtonActions.primary,
-          onPressed: () {
-            removeModal!();
-          },
-          onLongPress: widget.onLongPress,
-          onDoubleTap: widget.onDoubleTap,
-          semanticsLabel: widget.semanticsLabel,
-          style: widget.style ??
-              GSStyle(
-                color: styler.color?.getColor(context),
-                iconColor: styler.iconColor?.getColor(context),
-                padding: styler.padding,
-                borderRadius: widget.style?.borderRadius,
-              ),
-          size: sizeAdapt(widget.size!),
-          child: Icon(widget.icon.icon,
-              size: styler.width ?? styler.height,
-              color: hovered == true
-                  ? styler.onHover?.color?.getColor(context)
-                  : styler.iconColor?.getColor(context))),
-    );
+        onShowHoverHighlight: (value) {
+          handleHoveHighlight(value);
+        },
+        child: GSButton(
+            variant: widget.variant ?? GSButtonVariants.link,
+            action: widget.action ?? GSButtonActions.primary,
+            onPressed: () {
+              if (widget.icon == null && widget.text == null) {
+              } else {
+                removeModal!();
+              }
+            },
+            onLongPress: widget.onLongPress,
+            onDoubleTap: widget.onDoubleTap,
+            semanticsLabel: widget.semanticsLabel,
+            style: widget.style ??
+                GSStyle(
+                  color: styler.color?.getColor(context),
+                  iconColor: styler.iconColor?.getColor(context),
+                  padding: styler.padding,
+                  borderRadius: widget.style?.borderRadius,
+                ),
+            size: sizeAdapt(widget.size!),
+            child: widget.icon == null && widget.text == null
+                ? SizedBox.shrink()
+                : widget.icon != null
+                    ? Icon(
+                        widget.icon?.icon,
+                        size: widget.icon?.style?.width ??
+                            styler.width ??
+                            widget.icon?.style?.height ??
+                            styler.height,
+                        color: hovered == true
+                            ? widget.icon?.style?.onHover?.color ??
+                                styler.onHover?.iconColor?.getColor(context)
+                            : widget.icon?.style?.iconColor ??
+                                styler.iconColor?.getColor(context),
+                        fill: widget.icon?.fill,
+                        grade: widget.icon?.grade,
+                        opticalSize: widget.icon?.opticalSize,
+                        semanticLabel: widget.icon?.semanticLabel,
+                        shadows: widget.icon?.shadows,
+                        textDirection: widget.icon?.textDirection,
+                        weight: widget.icon?.weight,
+                      )
+                    : Text(widget.text!.text,
+                        locale: widget.text!.locale,
+                        maxLines: widget.text!.maxLines,
+                        overflow: widget.text!.overflow,
+                        selectionColor: widget.text!.selectionColor,
+                        semanticsLabel: widget.text!.semanticsLabel,
+                        softWrap: widget.text!.softWrap,
+                        strutStyle: widget.text!.strutStyle,
+                        textAlign: widget.text!.style?.textAlign,
+                        textDirection: widget.text!.textDirection,
+                        textHeightBehavior: widget.text!.textHeightBehavior,
+                        textScaler: widget.text!.textScaler,
+                        textWidthBasis: widget.text!.textWidthBasis,
+                        style: widget.text?.style?.textStyle?.copyWith(
+                              color: hovered == true
+                                  ? styler.onHover?.color?.getColor(context)
+                                  : styler.color?.getColor(context),
+                            ) ??
+                            TextStyle(
+                                color: hovered == true
+                                    ? styler.onHover?.color?.getColor(context)
+                                    : styler.color?.getColor(context),
+                                fontSize:
+                                    widget.text?.style?.textStyle?.fontSize,
+                                fontWeight:
+                                    widget.text?.style?.textStyle?.fontWeight,
+                                fontFamily: widget
+                                    .text?.style?.textStyle?.fontFamily))));
   }
 }
