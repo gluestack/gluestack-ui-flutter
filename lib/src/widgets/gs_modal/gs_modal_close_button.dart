@@ -109,7 +109,7 @@ class _GSModalCloseButtonState extends State<GSModalCloseButton> {
                 ),
             size: sizeAdapt(widget.size!),
             child: widget.icon == null && widget.text == null
-                ? SizedBox.shrink()
+                ? const SizedBox.shrink()
                 : widget.icon != null
                     ? Icon(
                         widget.icon?.icon,
