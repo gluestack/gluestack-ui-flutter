@@ -23,7 +23,7 @@ final class SelectStory extends StoryWidget {
               height: 200,
               padding: const EdgeInsets.all(5)),
         ),
-        hintText: const GSSelectHeaderText("Select option"),
+        initialLabel: const GSSelectHeaderText("Select option"),
         icon: const GSSelectIcon(
           iconData: Icons.arrow_drop_down_outlined,
         ),

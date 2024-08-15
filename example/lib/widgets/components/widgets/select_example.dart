@@ -78,6 +78,11 @@ GSSelect(
       body: BaseLayout(
         code: code,
         component: GSSelect(
+          onClose: () {
+            setState(() {});
+          },
+          onOpen: () {},
+          onValueChange: (value) {},
           content: GSSelectContent(
             style: GSStyle(
               width: 300,
@@ -85,7 +90,7 @@ GSSelect(
               padding: const EdgeInsets.symmetric(horizontal: 15),
             ),
           ),
-          hintText: const GSSelectHeaderText("Select option"),
+          initialLabel: const GSSelectHeaderText("Select option"),
           style: GSStyle(
             width: 300,
           ),

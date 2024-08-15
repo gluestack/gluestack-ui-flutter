@@ -16,10 +16,14 @@ class GSSelect extends StatefulWidget {
   final GSSelectSizes? size;
   final GSSelectVariants? variant;
   final GSStyle? style;
-  final GSSelectHeaderText hintText;
+  final GSSelectHeaderText initialLabel;
   final GSSelectIcon icon;
   final GSSelectContent content;
-  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onValueChange;
+  final bool isDisabled;
+  final bool closeOnOverlayClick;
+  final Function()? onClose;
+  final Function()? onOpen;
 
   const GSSelect({
     super.key,
@@ -28,10 +32,14 @@ class GSSelect extends StatefulWidget {
     required this.options,
     this.disabledOptions,
     required this.icon,
-    required this.hintText,
+    required this.initialLabel,
     this.style,
-    this.onChanged,
+    this.onValueChange,
+    this.isDisabled = false,
+    this.closeOnOverlayClick = true,
     required this.content,
+    this.onClose,
+    this.onOpen,
   });
 
   @override
@@ -57,6 +65,11 @@ class _GSSelectState extends State<GSSelect> {
     overlayEntry?.remove();
     overlayEntry = null;
     hoveredIndex = null;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.onClose != null) {
+        widget.onClose!();
+      }
+    });
   }
 
   void _selectOption(String option) {
@@ -171,6 +184,11 @@ class _GSSelectState extends State<GSSelect> {
 
         void toggleDropdown() {
           if (overlayEntry == null) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (widget.onOpen != null) {
+                widget.onOpen!();
+              }
+            });
             final renderBox =
                 _key.currentContext!.findRenderObject() as RenderBox;
             final size = renderBox.size;
@@ -180,7 +198,7 @@ class _GSSelectState extends State<GSSelect> {
               builder: (context) => Stack(
                 children: [
                   GestureDetector(
-                    onTap: _removeOverlay,
+                    onTap: widget.closeOnOverlayClick ? _removeOverlay : null,
                     behavior: HitTestBehavior.translucent,
                     child: Container(
                       color: const Color.fromARGB(0, 228, 9, 9),
@@ -245,7 +263,7 @@ class _GSSelectState extends State<GSSelect> {
                                           ),
                                         const SizedBox(width: 6.0),
                                         Text(
-                                          widget.hintText.text,
+                                          widget.initialLabel.text,
                                           style: currentTextStyle?.copyWith(
                                             color: textStyler.color
                                                 ?.getColor(context)
@@ -284,9 +302,13 @@ class _GSSelectState extends State<GSSelect> {
                                           onPressed: () {
                                             if (!isDisabled) {
                                               _selectOption(option);
-                                              if (widget.onChanged != null) {
-                                                widget.onChanged!(option);
-                                              }
+                                              WidgetsBinding.instance
+                                                  .addPostFrameCallback((_) {
+                                                if (widget.onValueChange !=
+                                                    null) {
+                                                  widget.onValueChange!(option);
+                                                }
+                                              });
                                             }
                                           },
                                           // select options
@@ -409,65 +431,71 @@ class _GSSelectState extends State<GSSelect> {
             selectVariant: selectVariant,
             headerFontSize: headerFontSize,
             textSize: textSize,
-            child: IntrinsicWidth(
-              child: FocusableActionDetector(
-                onShowHoverHighlight: (value) {
-                  setState(() => _isHovered = value);
-                },
-                child: CompositedTransformTarget(
-                  link: _layerLink,
-                  child: GsGestureDetector(
-                    key: _key,
-                    onPressed: toggleDropdown,
-                    // select box
-                    child: Container(
-                      padding: widget.style?.padding ??
-                          triggerStyler.padding ??
-                          const EdgeInsets.symmetric(horizontal: 15),
-                      height: triggerStyler.height,
-                      width: triggerStyler.width,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(0, 0, 0, 0),
-                        // triggerStyler.bg?.getColor(context),
-                        border: widget.variant == GSSelectVariants.underlined
-                            ? Border(
-                                bottom: BorderSide(
-                                  color: borderColor ??
-                                      triggerStyler.borderColor!
-                                          .getColor(context),
+            child: Opacity(
+              opacity: widget.isDisabled == true ? 0.7 : 1,
+              child: IntrinsicWidth(
+                child: FocusableActionDetector(
+                  onShowHoverHighlight: (value) {
+                    widget.isDisabled == true
+                        ? null
+                        : setState(() => _isHovered = value);
+                  },
+                  child: CompositedTransformTarget(
+                    link: _layerLink,
+                    child: GsGestureDetector(
+                      key: _key,
+                      onPressed:
+                          widget.isDisabled == true ? null : toggleDropdown,
+                      // select box
+                      child: Container(
+                        padding: widget.style?.padding ??
+                            triggerStyler.padding ??
+                            const EdgeInsets.symmetric(horizontal: 15),
+                        height: triggerStyler.height,
+                        width: triggerStyler.width,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(0, 0, 0, 0),
+                          // triggerStyler.bg?.getColor(context),
+                          border: widget.variant == GSSelectVariants.underlined
+                              ? Border(
+                                  bottom: BorderSide(
+                                    color: borderColor ??
+                                        triggerStyler.borderColor!
+                                            .getColor(context),
+                                    width: borderWidth ??
+                                        triggerStyler.borderBottomWidth ??
+                                        0,
+                                  ),
+                                )
+                              : Border.all(
                                   width: borderWidth ??
                                       triggerStyler.borderBottomWidth ??
                                       0,
+                                  color: borderColor ??
+                                      triggerStyler.borderColor!
+                                          .getColor(context),
+                                ),
+                          borderRadius: BorderRadius.circular(
+                              triggerStyler.borderRadius ?? 0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (selectedOption != null)
+                              Expanded(
+                                child: Text(
+                                  selectedOption!,
+                                  overflow: TextOverflow.fade,
+                                  softWrap: false,
+                                  style: currentTextStyle,
                                 ),
                               )
-                            : Border.all(
-                                width: borderWidth ??
-                                    triggerStyler.borderBottomWidth ??
-                                    0,
-                                color: borderColor ??
-                                    triggerStyler.borderColor!
-                                        .getColor(context),
-                              ),
-                        borderRadius: BorderRadius.circular(
-                            triggerStyler.borderRadius ?? 0),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (selectedOption != null)
-                            Expanded(
-                              child: Text(
-                                selectedOption!,
-                                overflow: TextOverflow.fade,
-                                softWrap: false,
-                                style: currentTextStyle,
-                              ),
-                            )
-                          else
-                            widget.hintText,
-                          widget.icon
-                        ],
+                            else
+                              widget.initialLabel,
+                            widget.icon
+                          ],
+                        ),
                       ),
                     ),
                   ),
