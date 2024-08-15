@@ -2,13 +2,12 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 
 class GSModalProvider extends InheritedWidget {
   final VoidCallback removeModal;
-  final Widget child;
 
   const GSModalProvider({
-    Key? key,
+   super.key, 
     required this.removeModal,
-    required this.child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   @override
   bool updateShouldNotify(covariant GSModalProvider oldWidget) {
