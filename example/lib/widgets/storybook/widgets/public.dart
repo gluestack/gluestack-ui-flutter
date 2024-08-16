@@ -1,3 +1,4 @@
+import 'package:gluestack_ui_example/widgets/storybook/widgets/alert_story.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/header_story.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/slider_story.dart';
 import 'package:gluestack_ui_example/widgets/storybook/widgets/tab_story.dart';
@@ -37,6 +38,7 @@ import 'accordion_story.dart';
 
 final List<StoryWidget> kStories = [
   AlertDialogStory(),
+  AlertStory(),
   AccordionStory(),
   AvatarStory(),
   BadgeStory(),

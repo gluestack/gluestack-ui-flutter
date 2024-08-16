@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gluestack_ui/gluestack_ui.dart';
-import 'gs_toggleable.dart';
 
 const Size _size = Size(18.0, 18.0);
 const double _kOuterRadius = 8.0;
