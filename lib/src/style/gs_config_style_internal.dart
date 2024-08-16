@@ -343,6 +343,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
   // String? highlightColor;
   // String? splashColor;
   GSConfigStyle? badge;
+  GSConfigStyle? modal;
   GSTextTransform? textTransform;
   GSSizes? iconSize;
 
@@ -425,6 +426,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
     this.alignment,
     this.maxWidth,
     this.badge,
+    this.modal,
     // this.highlightColor,
     // this.splashColor,
     this.textTransform,
@@ -565,6 +567,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
         width: overrideStyle?.width ?? width,
         height: overrideStyle?.height ?? height,
         badge: overrideStyle?.badge ?? badge,
+        modal: overrideStyle?.modal ?? modal,
         dark: dark != null
             ? dark?.merge(overrideStyle?.dark)
             : overrideStyle?.dark,
@@ -684,6 +687,9 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       badge: gsStyle.badge != null
           ? GSConfigStyle.fromGSStyle(gsStyle.badge!)
           : null,
+      modal: gsStyle.modal != null
+          ? GSConfigStyle.fromGSStyle(gsStyle.modal!)
+          : null,
       item: gsStyle.item != null
           ? GSConfigStyle.fromGSStyle(gsStyle.item!)
           : null,
@@ -738,6 +744,18 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           data?['_badge']?['w'],
         ),
       ),
+      modal: GSConfigStyle(
+        maxWidth: data?['_content']?['maxWidth'],
+        width: data?['_content']?['width'] != null
+            ? data?['_content']?['width']?.contains('100%')
+                ? double.infinity
+                : data?['_content']?['width']?.contains('%')
+                    ? double.tryParse(
+                            data?['_content']?['width']?.replaceAll('%', ''))! /
+                        100
+                    : resolveSpaceFromString(data?['_content']?['width'])
+            : resolveSpaceFromString(data?['_content']?['width']),
+      ),
       textTransform: resolveTextTransformFromString(data?['textTransform']),
       maxWidth: data?['maxWidth'] != null
           ? double.tryParse(data?['maxWidth']?.toString() ?? "")
@@ -747,16 +765,24 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           : data?['px'] != null && data?['py'] != null
               ? resolvePaddingFromString(data?['px'].toString(), 'symmetric',
                   paddingy: data?['py'].toString())
-              : data?['px'] != null
-                  ? resolvePaddingFromString(
-                      data?['px'].toString(), 'horizontal')
-                  : data?['py'] != null
+              : data?['px'] != null &&
+                      data?["paddingTop"] != null &&
+                      data?["paddingBottom"] != null
+                  ? resolvePaddingFromString(data?['px'].toString(), 'only',
+                      paddingTop: data?["paddingTop"].toString(),
+                      paddingBottom: data?["paddingBottom"].toString(),
+                      paddingLeft: data?['px'].toString(),
+                      paddingRight: data?['px'].toString())
+                  : data?['px'] != null
                       ? resolvePaddingFromString(
-                          data?['py'].toString(), 'vertical')
-                      : data?['pb'] != null
+                          data?['px'].toString(), 'horizontal')
+                      : data?['py'] != null
                           ? resolvePaddingFromString(
-                              data?['pb'].toString(), 'only')
-                          : null,
+                              data?['py'].toString(), 'vertical')
+                          : data?['pb'] != null
+                              ? resolvePaddingFromString(
+                                  data?['pb'].toString(), 'only')
+                              : null,
       margin: data?['m'] != null
           ? resolvePaddingFromString(data?['m'].toString(), 'all')
           : data?['mx'] != null && data?['my'] != null
@@ -998,7 +1024,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       ),
       onDisabled: GSConfigStyle(
         opacity: data?[':disabled']?['opacity'],
-        bg :  resolveColorTokenFromString(data?[':disabled']?['bg']),
+        bg: resolveColorTokenFromString(data?[':disabled']?['bg']),
         // textStyle: TextStyle(
         //   color: resolveColorFromString(data?[':disabled']?['color']),
         // ),
@@ -1147,7 +1173,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           ),
         ),
         onDisabled: GSConfigStyle(
-          bg :   resolveColorTokenFromString(data?[':disabled']?['bg']),
+          bg: resolveColorTokenFromString(data?[':disabled']?['bg']),
           borderColor: resolveColorTokenFromString(
               data?['_dark']?[':disabled']?['borderColor']),
           trackColorTrue: resolveColorTokenFromString(
@@ -1260,7 +1286,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
               ? (data?['transform'].first as Map)['scale']
               : null
           : null,
-           trackHeight: data?['_track'] != null
+      trackHeight: data?['_track'] != null
           ? (data?['_track']['height'] is int
               ? double.parse('${data?['_track']['height']}.0')
               : resolveSpaceFromString(
@@ -1268,7 +1294,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
                       data?['_track']['height'].toString(),
                 ))
           : null,
-             trackWidth: data?['_track'] != null
+      trackWidth: data?['_track'] != null
           ? (data?['_track']['width'] is int
               ? double.parse('${data?['_track']['width']}.0')
               : resolveSpaceFromString(

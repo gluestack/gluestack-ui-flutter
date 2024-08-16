@@ -146,6 +146,15 @@ class GluestackCustomConfig {
   Map<String, dynamic>? sliderThumb;
   Map<String, dynamic>? sliderFilledTrack;
 
+  //modal
+  Map<String, dynamic>? modal;
+  Map<String, dynamic>? modalHeader;
+  Map<String, dynamic>? modalFooter;
+  Map<String, dynamic>? modalContent;
+  Map<String, dynamic>? modalCloseButton;
+  Map<String, dynamic>? modalBody;
+  Map<String, dynamic>? modalBackdrop;
+
   //GS Layout
   Map<String, dynamic>? layout;
 
@@ -156,6 +165,16 @@ class GluestackCustomConfig {
     this.sliderTrack,
     this.sliderThumb,
     this.sliderFilledTrack,
+
+    // modal
+
+    this.modal,
+    this.modalBackdrop,
+    this.modalBody,
+    this.modalCloseButton,
+    this.modalContent,
+    this.modalFooter,
+    this.modalHeader,
     //tabs
     this.tabs,
     this.tabsTab,
@@ -315,6 +334,16 @@ class GluestackCustomConfig {
     sliderTrack = mergeConfigs(sliderTrackData, sliderTrack);
     sliderThumb = mergeConfigs(sliderThumbData, sliderThumb);
     sliderFilledTrack = mergeConfigs(sliderFilledTrackData, sliderFilledTrack);
+
+    // modal
+
+    modal = mergeConfigs(modalData, modal);
+    modalBackdrop = mergeConfigs(modalBackdropData, modalBackdrop);
+    modalBody = mergeConfigs(modalBodyData, modalBody);
+    modalFooter = mergeConfigs(modalFooterData, modalFooter);
+    modalHeader = mergeConfigs(modalHeaderData, modalHeader);
+    modalContent = mergeConfigs(modalContentData, modalContent);
+    modalCloseButton = mergeConfigs(modalCloseButtonData, modalCloseButton);
 
     //tabs
     tabs = mergeConfigs(tabsData, tabs);

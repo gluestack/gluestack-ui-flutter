@@ -300,3 +300,5 @@ enum GSSliderSizes {
   $md,
   $lg,
 }
+
+enum GSModalSizes { $xs, $sm, $md, $lg, $full }
