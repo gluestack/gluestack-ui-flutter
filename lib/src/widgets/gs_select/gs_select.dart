@@ -431,6 +431,7 @@ class _GSSelectState extends State<GSSelect> {
             selectVariant: selectVariant,
             headerFontSize: headerFontSize,
             textSize: textSize,
+            selectedOption : selectedOption,
             child: Opacity(
               opacity: widget.isDisabled == true ? 0.7 : 1,
               child: IntrinsicWidth(

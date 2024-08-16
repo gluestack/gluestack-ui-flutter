@@ -31,7 +31,7 @@ class GSSelectContent extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius:
             BorderRadius.all(Radius.circular(style?.borderRadius ?? 6)),
-        color: contentStyler.bg?.getColor(context),
+        color: style?.color ?? contentStyler.bg?.getColor(context),
       ),
       child: null, // Placeholder for the internal child
     );
@@ -74,7 +74,7 @@ class GSSelectContent extends StatelessWidget {
             width: style?.borderWidth ?? 1),
         borderRadius:
             BorderRadius.all(Radius.circular(style?.borderRadius ?? 6)),
-        color: contentStyler.bg?.getColor(context),
+        color: style?.color ?? contentStyler.bg?.getColor(context),
       ),
       child: child,
     );

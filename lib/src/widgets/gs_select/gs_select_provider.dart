@@ -9,6 +9,7 @@ class GSSelectProvider extends InheritedWidget {
   final GSSizes? headerFontSize;
   final GSVariants? selectVariant;
   final GSSizes? textSize;
+  final String? selectedOption;
 
   /// Constructor for GSSelectProvider:
   const GSSelectProvider({
@@ -19,6 +20,7 @@ class GSSelectProvider extends InheritedWidget {
     required this.headerFontSize,
     this.selectVariant,
     this.textSize,
+    this.selectedOption,
   });
 
   /// Overrides the method to determine whether an update notification is needed.
@@ -28,7 +30,8 @@ class GSSelectProvider extends InheritedWidget {
         iconSize != oldWidget.iconSize ||
         headerFontSize != oldWidget.headerFontSize ||
         selectVariant != oldWidget.selectVariant ||
-        textSize != oldWidget.textSize;
+        textSize != oldWidget.textSize ||
+        selectedOption != oldWidget.selectedOption;
   }
 
   /// Static method to obtain the GSSelectProvider instance from the given context.
