@@ -41,6 +41,14 @@ class _AlertBoxExampleState extends State<AlertBoxExample> {
   @override
   Widget build(BuildContext context) {
     var code = '''
+  GSAlert(
+            description: const GSAlertText('Description of alert!'),
+            icon: const GSAlertBoxIcon(
+              iconData: Icons.info_outline,
+            ),
+            variant: $selectedVariantOption,
+            action: $selectedActionOption,
+          ),
          
 ''';
     return CustomGSLayout(
