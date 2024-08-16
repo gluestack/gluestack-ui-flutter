@@ -11,7 +11,7 @@ class GSModal extends StatefulWidget {
   final GSStyle? style;
   final GSModalContent content;
   final AlignmentGeometry? alignment;
-  final bool? barrierDismissible;
+  final bool barrierDismissible;
   final bool isOpen;
   final Function()? onClose;
   final bool showBackdrop;
@@ -139,7 +139,7 @@ class _GSModalState extends State<GSModal> {
     );
   }
 
-   _removeModal() {
+  _removeModal() {
     // Guard clause to prevent double execution
     if (!_isOpen || _overlayEntry == null) {
       return; // Exit if modal is already closed or there's no overlay to remove

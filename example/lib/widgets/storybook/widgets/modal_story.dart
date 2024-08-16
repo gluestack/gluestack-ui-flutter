@@ -13,6 +13,10 @@ final class ModalStory extends StoryWidget {
         builder: (context) => GSModal(
             size: GSModalSizes.values[context.knobs
                 .options(label: 'Size', initial: 0, options: sizeOptions)],
+            barrierDismissible: context.knobs
+                .boolean(label: "barrierDismissible", initial: true),
+            showBackdrop:
+                context.knobs.boolean(label: "showBackdrop", initial: true),
             content: GSModalContent(
               header: GSModalHeader(
                 closeButton: const GSModalCloseButton(

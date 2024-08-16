@@ -3,6 +3,7 @@ import 'package:gluestack_ui/gluestack_ui.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/base_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/custom_gs_layout.dart';
 import 'package:gluestack_ui_example/widgets/components/layout/drop_down.dart';
+import 'package:gluestack_ui_example/widgets/components/layout/toggle.dart';
 
 class ModalExample extends StatefulWidget {
   const ModalExample({super.key});
@@ -12,6 +13,9 @@ class ModalExample extends StatefulWidget {
 }
 
 class _ModalExampleState extends State<ModalExample> {
+  bool barrierDismissible = false;
+  bool isOpen = false;
+  bool showBackdrop = false;
   final List dropdownSizeOptions = [
     GSModalSizes.$xs,
     GSModalSizes.$sm,
@@ -27,16 +31,25 @@ class _ModalExampleState extends State<ModalExample> {
     });
   }
 
-  bool isOpen = false;
+  void updateBarrierDismissible(bool value) {
+    setState(() {
+      barrierDismissible = value;
+    });
+  }
+
+  void updateShowBackdrop(bool value) {
+    setState(() {
+      showBackdrop = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     var code = '''
 GSModal(
   isOpen: $isOpen,
-  onClose: () {
-    setState(() {});
-  },
+       barrierDismissible: $barrierDismissible,
+            showBackdrop: $showBackdrop,
   size: $selectedSizeOption,
   content: GSModalContent(
     header: GSModalHeader(
@@ -106,6 +119,8 @@ GSModal(
             onClose: () {
               setState(() {});
             },
+            barrierDismissible: barrierDismissible,
+            showBackdrop: showBackdrop,
             isOpen: isOpen,
             size: selectedSizeOption,
             content: GSModalContent(
@@ -168,6 +183,18 @@ GSModal(
               dropdownOptions: dropdownSizeOptions,
               selectedOption: selectedSizeOption,
               onChanged: updateSizeSelectedOption,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "barrierDismissible",
+              value: barrierDismissible,
+              onToggle: updateBarrierDismissible,
+            ),
+            const SizedBox(height: 20),
+            CustomToggle(
+              title: "showBackdrop",
+              value: showBackdrop,
+              onToggle: updateShowBackdrop,
             ),
           ],
         ),
