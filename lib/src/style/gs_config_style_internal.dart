@@ -357,6 +357,9 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
   double? trackWidth;
   double? thumbHeight;
   double? thumbWidth;
+  double? borderTopLeftRadius;
+  double? borderTopRightRadius;
+
 
   GSCursors? cursors;
   GSPlacement? placement;
@@ -437,6 +440,8 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
     this.trackHeight,
     this.trackWidth,
     this.thumbHeight,
+    this.borderTopLeftRadius,
+    this.borderTopRightRadius,
     this.thumbWidth,
     this.outlineColor,
     this.cursors,
@@ -591,6 +596,8 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
         trackWidth: overrideStyle?.trackWidth ?? trackWidth,
         thumbHeight: overrideStyle?.thumbHeight ?? thumbHeight,
         thumbWidth: overrideStyle?.thumbWidth ?? thumbWidth,
+        borderTopLeftRadius: overrideStyle?.borderTopLeftRadius ?? borderTopLeftRadius,
+        borderTopRightRadius: overrideStyle?.borderTopRightRadius ?? borderTopRightRadius,
         cursors: overrideStyle?.cursors ?? cursors,
         isVisible: overrideStyle?.isVisible ?? isVisible,
         direction: overrideStyle?.direction ?? direction,
@@ -647,6 +654,8 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       trackWidth: gsStyle.trackWidth,
       thumbHeight: gsStyle.thumbHeight,
       thumbWidth: gsStyle.thumbWidth,
+      borderTopLeftRadius: gsStyle.borderTopLeftRadius,
+      borderTopRightRadius: gsStyle.borderTopRightRadius,
       cursors: gsStyle.cursors,
       placement: gsStyle.placement,
       isVisible: gsStyle.isVisible,
@@ -720,8 +729,8 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       flexDirection: resolveFlexDirectionFromString(data?['flexDirection']),
       height: data?['h'] is int
           ? double.parse('${data?['h']}.0')
-          : resolveSpaceFromString(
-              data?['h'].toString() ?? data?['height'].toString(),
+          : resolveSpaceFromString((
+              data?['h'] ?? data?['height']).toString(),
             ),
       width: data?['w'] != null
           ? data!['w']?.contains('100%')
@@ -826,7 +835,8 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       bg: resolveColorTokenFromString(
         data?['bg'] ??
             data?['_item']?['backgroundColor'] ??
-            data?['backgroundColor'],
+            data?['backgroundColor'] ??
+            data?['_sectionHeaderBackground'],
       ),
       borderWidth: data?['borderWidth'] != null
           ? double.tryParse(data!['borderWidth']!.toString()) ??
@@ -998,7 +1008,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       ),
       onDisabled: GSConfigStyle(
         opacity: data?[':disabled']?['opacity'],
-        bg :  resolveColorTokenFromString(data?[':disabled']?['bg']),
+        bg: resolveColorTokenFromString(data?[':disabled']?['bg']),
         // textStyle: TextStyle(
         //   color: resolveColorFromString(data?[':disabled']?['color']),
         // ),
@@ -1147,7 +1157,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
           ),
         ),
         onDisabled: GSConfigStyle(
-          bg :   resolveColorTokenFromString(data?[':disabled']?['bg']),
+          bg: resolveColorTokenFromString(data?[':disabled']?['bg']),
           borderColor: resolveColorTokenFromString(
               data?['_dark']?[':disabled']?['borderColor']),
           trackColorTrue: resolveColorTokenFromString(
@@ -1260,7 +1270,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
               ? (data?['transform'].first as Map)['scale']
               : null
           : null,
-           trackHeight: data?['_track'] != null
+      trackHeight: data?['_track'] != null
           ? (data?['_track']['height'] is int
               ? double.parse('${data?['_track']['height']}.0')
               : resolveSpaceFromString(
@@ -1268,7 +1278,7 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
                       data?['_track']['height'].toString(),
                 ))
           : null,
-             trackWidth: data?['_track'] != null
+      trackWidth: data?['_track'] != null
           ? (data?['_track']['width'] is int
               ? double.parse('${data?['_track']['width']}.0')
               : resolveSpaceFromString(
@@ -1292,6 +1302,13 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
                       data?['_thumb']['w'].toString(),
                 ))
           : null,
+          borderTopLeftRadius: data?['borderTopLeftRadius'] != null ? double.tryParse(data!['borderTopLeftRadius'].toString()) ??
+              resolveRadiusFromString(data['borderTopLeftRadius'].toString()) : null,
+          borderTopRightRadius: data?['borderTopLeftRadius'] != null ? double.tryParse(data!['borderTopLeftRadius'].toString()) ??
+              resolveRadiusFromString(data['borderTopLeftRadius'].toString()) : null,
+
+          
+
       iconColor: resolveColorTokenFromString(
         data?['_icon']?['color'] ?? data?['_selectedIcon']?['color'],
       ),

@@ -1,3 +1,12 @@
+import 'package:gluestack_ui/src/theme/config/select/select.dart';
+import 'package:gluestack_ui/src/theme/config/select/select_content.dart';
+import 'package:gluestack_ui/src/theme/config/select/select_icon.dart';
+import 'package:gluestack_ui/src/theme/config/select/select_item.dart';
+import 'package:gluestack_ui/src/theme/config/select/select_selected_input.dart';
+import 'package:gluestack_ui/src/theme/config/select/select_selection_header_text.dart';
+import 'package:gluestack_ui/src/theme/config/select/select_text.dart';
+import 'package:gluestack_ui/src/theme/config/select/select_trigger.dart';
+
 import 'provider.dart';
 
 final getIt = GetIt.instance;
@@ -146,6 +155,15 @@ class GluestackCustomConfig {
   Map<String, dynamic>? sliderThumb;
   Map<String, dynamic>? sliderFilledTrack;
 
+  Map<String, dynamic>? select;
+  Map<String, dynamic>? selectTrigger;
+  Map<String, dynamic>? selectText;
+  Map<String, dynamic>? selectSelectionHeaderText;
+  Map<String, dynamic>? selectSelectedInput;
+  Map<String, dynamic>? selectIcon;
+  Map<String, dynamic>? selectContent;
+  Map<String, dynamic>? selectItem;
+
   //GS Layout
   Map<String, dynamic>? layout;
 
@@ -156,6 +174,17 @@ class GluestackCustomConfig {
     this.sliderTrack,
     this.sliderThumb,
     this.sliderFilledTrack,
+
+    // select
+
+    this.select,
+    this.selectContent,
+    this.selectItem,
+    this.selectIcon,
+    this.selectSelectionHeaderText,
+    this.selectSelectedInput,
+    this.selectText,
+    this.selectTrigger,
     //tabs
     this.tabs,
     this.tabsTab,
@@ -315,6 +344,18 @@ class GluestackCustomConfig {
     sliderTrack = mergeConfigs(sliderTrackData, sliderTrack);
     sliderThumb = mergeConfigs(sliderThumbData, sliderThumb);
     sliderFilledTrack = mergeConfigs(sliderFilledTrackData, sliderFilledTrack);
+
+    // select
+    select = mergeConfigs(selectData, select);
+    selectIcon = mergeConfigs(selectIconData, selectIcon);
+    selectItem = mergeConfigs(selectItemData, selectItem);
+    selectContent = mergeConfigs(selectContentData, selectContent);
+    selectSelectedInput =
+        mergeConfigs(selectSelectedInputData, selectSelectedInput);
+    selectTrigger = mergeConfigs(selectTriggerData, selectTrigger);
+    selectText = mergeConfigs(selectTextData, selectText);
+    selectSelectionHeaderText =
+        mergeConfigs(selectSelectionHeaderTextData, selectSelectionHeaderText);
 
     //tabs
     tabs = mergeConfigs(tabsData, tabs);

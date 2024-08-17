@@ -46,6 +46,8 @@ class GSStyle extends BaseStyle<GSStyle> {
   double? trackHeight;
   double? trackWidth;
   double? thumbHeight;
+  double? borderTopLeftRadius;
+  double? borderTopRightRadius;
   double? thumbWidth;
   GSCursors? cursors;
   GSPlacement? placement;
@@ -123,6 +125,8 @@ class GSStyle extends BaseStyle<GSStyle> {
     this.trackWidth,
     this.thumbHeight,
     this.thumbWidth,
+    this.borderTopLeftRadius,
+    this.borderTopRightRadius,
     this.outlineColor,
     this.cursors,
     this.iconSize,
@@ -241,6 +245,10 @@ class GSStyle extends BaseStyle<GSStyle> {
         trackWidth: overrideStyle?.trackWidth ?? trackWidth,
         thumbHeight: overrideStyle?.thumbHeight ?? thumbHeight,
         thumbWidth: overrideStyle?.thumbWidth ?? thumbWidth,
+        borderTopLeftRadius:
+            overrideStyle?.borderTopLeftRadius ?? borderTopLeftRadius,
+        borderTopRightRadius:
+            overrideStyle?.borderTopRightRadius ?? borderTopRightRadius,
         cursors: overrideStyle?.cursors ?? cursors,
         isVisible: overrideStyle?.isVisible ?? isVisible,
         direction: overrideStyle?.direction ?? direction,
@@ -301,6 +309,8 @@ class GSStyle extends BaseStyle<GSStyle> {
       trackWidth: styler.trackWidth,
       thumbHeight: styler.thumbHeight,
       thumbWidth: styler.thumbWidth,
+      borderTopLeftRadius: styler.borderTopLeftRadius,
+      borderTopRightRadius: styler.borderTopRightRadius,
       cursors: styler.cursors,
       placement: styler.placement,
       isVisible: styler.isVisible,
