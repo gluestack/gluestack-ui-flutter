@@ -22,8 +22,15 @@ final class SelectStory extends StoryWidget {
               width: 300,
               height: 200,
               padding: const EdgeInsets.all(5)),
+          options: const [
+            'UX Research',
+            'Web Development',
+            'Cross Platform Development Process',
+            'UI Designing',
+            'Backend Development',
+          ],
         ),
-        initialLabel: const GSSelectHeaderText("Select option"),
+        label: const GSSelectHeaderText("Select option"),
         icon: const GSSelectIcon(
           iconData: Icons.arrow_drop_down_outlined,
         ),
@@ -31,17 +38,6 @@ final class SelectStory extends StoryWidget {
             .options(label: 'Variant', initial: 0, options: variantOptions)],
         size: GSSelectSizes.values[context.knobs
             .options(label: 'Size', initial: 0, options: sizeOptions)],
-        options: const [
-          'UX Research',
-          'Web Development',
-          'Cross Platform Development Process',
-          'UI Designing',
-          'Backend Development',
-        ],
-        disabledOptions: const [
-          'Cross Platform Development Process',
-          'UI Designing',
-        ],
       ),
     );
   }

@@ -49,6 +49,14 @@ GSSelect(
       height: 200,
       padding: const EdgeInsets.symmetric(horizontal: 15),
     ),
+    options: const [
+    'UX Research',
+    'Web Development',
+    'Cross Platform Development Process',
+    'UI Designing',
+    'Backend Development'
+  ],
+  disabledOptions: const ['UI Designing', 'Backend Development'],
   ),
   hintText: const GSSelectHeaderText("Select option"),
   style: GSStyle(
@@ -59,14 +67,6 @@ GSSelect(
   ),
   size: $selectedSizeOption,
   variant: $selectedVariantOption,
-  options: const [
-    'UX Research',
-    'Web Development',
-    'Cross Platform Development Process',
-    'UI Designing',
-    'Backend Development'
-  ],
-  disabledOptions: const ['UI Designing', 'Backend Development'],
 ),
   ''';
 
@@ -89,8 +89,16 @@ GSSelect(
               height: 200,
               padding: const EdgeInsets.symmetric(horizontal: 15),
             ),
+            options: const [
+              'UX Research',
+              'Web Development',
+              'Cross Platform Development Process',
+              'UI Designing',
+              'Backend Development'
+            ],
+            disabledOptions: const ['UI Designing', 'Backend Development'],
           ),
-          initialLabel: const GSSelectHeaderText("Select option"),
+          label: const GSSelectHeaderText("Select option"),
           style: GSStyle(
             width: 300,
           ),
@@ -99,14 +107,6 @@ GSSelect(
           ),
           size: selectedSizeOption,
           variant: selectedVariantOption,
-          options: const [
-            'UX Research',
-            'Web Development',
-            'Cross Platform Development Process',
-            'UI Designing',
-            'Backend Development'
-          ],
-          disabledOptions: const ['UI Designing', 'Backend Development'],
         ),
         controls: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
