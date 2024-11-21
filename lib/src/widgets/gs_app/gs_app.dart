@@ -32,8 +32,8 @@ class GSApp extends StatefulWidget {
     this.localeResolutionCallback,
     this.supportedLocales = const <Locale>[Locale('en', 'US')],
     this.showPerformanceOverlay = false,
-    this.checkerboardRasterCacheImages = false,
-    this.checkerboardOffscreenLayers = false,
+    // this.checkerboardRasterCacheImages = false,
+    // this.checkerboardOffscreenLayers = false,
     this.showSemanticsDebugger = false,
     this.debugShowCheckedModeBanner = true,
     this.shortcuts,
@@ -74,8 +74,8 @@ class GSApp extends StatefulWidget {
     this.localeResolutionCallback,
     this.supportedLocales = const <Locale>[Locale('en', 'US')],
     this.showPerformanceOverlay = false,
-    this.checkerboardRasterCacheImages = false,
-    this.checkerboardOffscreenLayers = false,
+    // this.checkerboardRasterCacheImages = false,
+    // this.checkerboardOffscreenLayers = false,
     this.showSemanticsDebugger = false,
     this.debugShowCheckedModeBanner = true,
     this.shortcuts,
@@ -160,8 +160,8 @@ class GSApp extends StatefulWidget {
 
   /// Flags for enabling various development aids.
   final bool showPerformanceOverlay;
-  final bool checkerboardRasterCacheImages;
-  final bool checkerboardOffscreenLayers;
+  // final bool checkerboardRasterCacheImages;
+  // final bool checkerboardOffscreenLayers;
   final bool showSemanticsDebugger;
   final bool debugShowCheckedModeBanner;
 
@@ -284,8 +284,8 @@ class _GSAppState extends State<GSApp> {
         localeListResolutionCallback: widget.localeListResolutionCallback,
         supportedLocales: widget.supportedLocales,
         showPerformanceOverlay: widget.showPerformanceOverlay,
-        checkerboardRasterCacheImages: widget.checkerboardRasterCacheImages,
-        checkerboardOffscreenLayers: widget.checkerboardOffscreenLayers,
+        // checkerboardRasterCacheImages: widget.checkerboardRasterCacheImages,
+        // checkerboardOffscreenLayers: widget.checkerboardOffscreenLayers,
         showSemanticsDebugger: widget.showSemanticsDebugger,
         debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
         shortcuts: widget.shortcuts,
@@ -310,8 +310,8 @@ class _GSAppState extends State<GSApp> {
       localeResolutionCallback: widget.localeResolutionCallback,
       supportedLocales: widget.supportedLocales,
       showPerformanceOverlay: widget.showPerformanceOverlay,
-      checkerboardRasterCacheImages: widget.checkerboardRasterCacheImages,
-      checkerboardOffscreenLayers: widget.checkerboardOffscreenLayers,
+      // checkerboardRasterCacheImages: widget.checkerboardRasterCacheImages,
+      // checkerboardOffscreenLayers: widget.checkerboardOffscreenLayers,
       showSemanticsDebugger: widget.showSemanticsDebugger,
       debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
       shortcuts: widget.shortcuts,
