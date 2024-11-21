@@ -26,6 +26,14 @@ enum GSFlexDirections { row, column }
 
 enum GSCursors { pointer, notAllowed }
 
+extension ColorToString on Color {
+  String? toColorString() {
+    //using the same format as expected in parseColor method
+    final String finalValue = '(0x${value.toRadixString(16)})';
+    return finalValue;
+  }
+}
+
 class ShadowOffset {
   final double? height;
   final double? width;
@@ -599,15 +607,15 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
   factory GSConfigStyle.fromGSStyle(GSStyle gsStyle) {
     return GSConfigStyle(
       borderWidth: gsStyle.borderWidth,
-      borderColor: gsStyle.borderColor?.toString(),
+      borderColor: gsStyle.borderColor?.toColorString(),
       borderRadius: gsStyle.borderRadius,
       padding: gsStyle.padding,
       margin: gsStyle.margin,
       opacity: gsStyle.opacity,
-      color: gsStyle.color?.toString(),
-      bg: gsStyle.bg?.toString(),
+      color: gsStyle.color?.toColorString(),
+      bg: gsStyle.bg?.toColorString(),
       gap: gsStyle.gap,
-      borderBottomColor: gsStyle.borderBottomColor?.toString(),
+      borderBottomColor: gsStyle.borderBottomColor?.toColorString(),
       height: gsStyle.height,
       width: gsStyle.width,
       borderBottomWidth: gsStyle.borderBottomWidth,
@@ -624,23 +632,23 @@ class GSConfigStyle extends BaseStyle<GSConfigStyle> {
       left: gsStyle.left,
       textTransform: gsStyle.textTransform,
       iconSize: gsStyle.iconSize,
-      trackColorTrue: gsStyle.trackColorTrue?.toString(),
-      trackColorFalse: gsStyle.trackColorFalse?.toString(),
-      thumbColor: gsStyle.thumbColor?.toString(),
-      activeThumbColor: gsStyle.activeThumbColor?.toString(),
-      iosBackgroundColor: gsStyle.iosBackgroundColor?.toString(),
+      trackColorTrue: gsStyle.trackColorTrue?.toColorString(),
+      trackColorFalse: gsStyle.trackColorFalse?.toColorString(),
+      thumbColor: gsStyle.thumbColor?.toColorString(),
+      activeThumbColor: gsStyle.activeThumbColor?.toColorString(),
+      iosBackgroundColor: gsStyle.iosBackgroundColor?.toColorString(),
       scale: gsStyle.scale,
       cursors: gsStyle.cursors,
       placement: gsStyle.placement,
       isVisible: gsStyle.isVisible,
       direction: gsStyle.direction,
       outlineWidth: gsStyle.outlineWidth,
-      outlineColor: gsStyle.outlineColor?.toString(),
+      outlineColor: gsStyle.outlineColor?.toColorString(),
       outlineStyle: gsStyle.outlineStyle,
       indent: gsStyle.indent,
       endIndent: gsStyle.endIndent,
-      iconColor: gsStyle.iconColor?.toString(),
-      shadowColor: gsStyle.shadowColor?.toString(),
+      iconColor: gsStyle.iconColor?.toColorString(),
+      shadowColor: gsStyle.shadowColor?.toColorString(),
       shadowRadius: gsStyle.shadowRadius,
       shadowOpacity: gsStyle.shadowOpacity,
       elevation: gsStyle.elevation,
