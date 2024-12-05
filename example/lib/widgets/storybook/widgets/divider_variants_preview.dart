@@ -10,6 +10,7 @@ class DividerVariantsPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Divider',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Divider',

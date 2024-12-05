@@ -10,11 +10,15 @@ class ControlledCheckboxPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Checkbox',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Checkbox',
             builder: (context) => GSBox(
-              style: GSStyle(width: 150, height: 200),
+              style: GSStyle(
+                width: 130,
+                height: 120,
+              ),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

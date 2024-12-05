@@ -10,7 +10,9 @@ pageDescription: GSToast is a widget that can display alerts, notifications, or 
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -18,50 +20,47 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Feedback/Toast" />
 
 This is an illustration of a **Themed GSToast** widget with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/toastPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "toast-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="831px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSButton(
+      size: GSButtonSizes.$lg,
+      child: const GSButtonText(text: "Click Me"),
+      onPressed: () {
+        showToast(
+          context,
+          child: const GSToast(
+            variant: GSToastVariants.solid,
+            action: GSToastActions.success,
+            child: const GSVStack(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GSToastTitle(
+                  title: "Toast Title",
+                ),
+                GSToastDescription(
+                  description: "Here is the toast description!",
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    )
 
-GSButton(
-  size: GSSizes.$lg,
-  child: const GSButtonText(text: "Click Me"),
-  onPressed: () {
-    showToast(
-      context,
-      child: GSToast(
-        action: GSActions.values[context.knobs.options(
-            label: 'Action', initial: 9, options: actionOptions)],
-        variant: GSVariants.values[context.knobs.options(
-            label: 'Variant', initial: 0, options: variantOptions)],
-        child: const GSVStack(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            GSToastTitle(
-              title: "Hey",
-            ),
-            GSToastDescription(
-              description: "Desc Desc Desc Desc Desc Desc ",
-            ),
-          ],
-        ),
-      ),
-    );
-  },
-)
-```
+`}
+/>
 
 <br />
 
@@ -71,7 +70,7 @@ GSButton(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -104,10 +103,6 @@ We have outlined the various features that ensure the GSToast widget is accessib
 #### Screen Reader
 
 - VoiceOver: When the toast is focused, the screen reader will announce the toast's title.
-
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
 
 ### Parameters
 

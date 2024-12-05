@@ -10,7 +10,9 @@ pageDescription: With links, users can navigate seamlessly throughout a website.
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -18,28 +20,27 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Forms/Link" />
 
 This is an illustration of a **Themed GSLink** widget with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/linkPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "link-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="532px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSLink(
+      style: GSStyle(),
+      url: 'https://gluestack.io/',
+      text: const GSLinkText(text: 'gluestack'),
+    )
 
-GSLink(
-  style: GSStyle(),
-  url: 'https://gluestack.io/',
-  text: const GSLinkText(text: 'gluestack'),
-)
-```
+`}
+/>
 
 <br />
 
@@ -49,7 +50,7 @@ GSLink(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -152,74 +153,64 @@ We have outlined the various features that ensure the GSLink widget is accessibl
 
 - VoiceOver: When a link receives focus, screen readers should announce a descriptive link name.
 
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
-
 ### Examples
 
 The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.
 
 #### Default
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/linkWithTextPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "link-with-text-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="667px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSHStack(
+      children: [
+        const GSText(text: 'Design inspiration from'),
+        const SizedBox(width: 10),
+        GSLink(
+          style: GSStyle(),
+          url: 'https://gluestack.io/',
+          text: GSLinkText(
+            text: 'gluestack',
+            style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
+          ),
+        ),
+      ],
+    )
 
-
-GSHStack(
-  children: [
-    const GSText(text: 'Design inspiration from'),
-    const SizedBox(
-      width: 10,
-    ),
-    GSLink(
-      style: GSStyle(),
-      url: 'https://gluestack.io/',
-      text: GSLinkText(
-        text: 'gluestack',
-        style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
-      ),
-    ),
-  ],
-)
-
-```
+`}
+/>
 
 #### Link with icon
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/linkWithIconPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "link-with-icon-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="696px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSHStack(
+      children: [
+        const GSText(text: 'Go to'),
+        const SizedBox(width: 10),
+        GSLink(
+          style: GSStyle(),
+          url: 'https://gluestack.io/',
+          text: GSLinkText(
+            text: 'gluestack',
+            style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
+          ),
+        ),
+        const SizedBox(width: 10),
+        const GSIcon(icon: Icons.arrow_circle_right_outlined),
+      ],
+    )
 
+`}
+/>
 
-GSHStack(
-  children: [
-    const GSText(text: 'Go to'),
-    const SizedBox(width: 10),
-    GSLink(
-      style: GSStyle(),
-      url: 'https://gluestack.io/',
-      text: GSLinkText(
-        text: 'gluestack',
-        style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
-      ),
-    ),
-    const SizedBox(width: 10),
-    const GSIcon(icon: Icons.arrow_circle_right_outlined),
-  ],
-)
-
-```
+<br />

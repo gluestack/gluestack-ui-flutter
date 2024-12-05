@@ -10,11 +10,12 @@ class MultipleCheckboxHorizontalPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Checkbox',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Checkbox',
             builder: (context) => GSBox(
-              style: GSStyle(width: 400, height: 50),
+              style: GSStyle(width: 305, height: 25),
               child: GSHStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

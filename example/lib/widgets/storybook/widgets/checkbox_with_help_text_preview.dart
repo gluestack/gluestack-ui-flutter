@@ -10,61 +10,63 @@ class CheckboxWithHelpTextPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Checkbox',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Checkbox',
-            builder: (context) => Center(
-              child: GSBox(
-                style: GSStyle(width: 400, height: 150),
-                child: GSVStack(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GSCheckBox(
-                      icon: GSCheckBoxIndicator(
-                        style: GSStyle(
-                            margin: EdgeInsets.only(
-                          right: $GSSpace.$4,
-                        )),
-                        child: const GSCheckBoxIcon(),
-                      ),
-                      value: "Design",
-                      onChanged: (value) {},
-                      label: const GSVStack(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GSCheckBoxLabel(text: "Design"),
-                          GSText(
-                              text: 'Subscribe to updates from the Design Feed')
-                        ],
-                      ),
+            builder: (context) => GSBox(
+              style: GSStyle(
+                width: 370,
+                height: 120,
+              ),
+              child: GSVStack(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GSCheckBox(
+                    icon: GSCheckBoxIndicator(
+                      style: GSStyle(
+                          margin: EdgeInsets.only(
+                        right: $GSSpace.$4,
+                      )),
+                      child: const GSCheckBoxIcon(),
                     ),
-                    const SizedBox(
-                      height: 20,
+                    value: "Design",
+                    onChanged: (value) {},
+                    label: const GSVStack(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GSCheckBoxLabel(text: "Design"),
+                        GSText(
+                            text: 'Subscribe to updates from the Design Feed')
+                      ],
                     ),
-                    GSCheckBox(
-                      icon: GSCheckBoxIndicator(
-                        style: GSStyle(
-                            margin: EdgeInsets.only(
-                          right: $GSSpace.$4,
-                        )),
-                        child: const GSCheckBoxIcon(),
-                      ),
-                      value: "Marketing",
-                      onChanged: (value) {},
-                      label: const GSVStack(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GSCheckBoxLabel(text: "Marketing"),
-                          GSText(
-                              text:
-                                  'Subscribe to updates from the Marketing Feed')
-                        ],
-                      ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  GSCheckBox(
+                    icon: GSCheckBoxIndicator(
+                      style: GSStyle(
+                          margin: EdgeInsets.only(
+                        right: $GSSpace.$4,
+                      )),
+                      child: const GSCheckBoxIcon(),
                     ),
-                  ],
-                ),
+                    value: "Marketing",
+                    onChanged: (value) {},
+                    label: const GSVStack(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GSCheckBoxLabel(text: "Marketing"),
+                        GSText(
+                            text:
+                                'Subscribe to updates from the Marketing Feed')
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

@@ -10,7 +10,9 @@ pageDescription: Looking to add text to your gluestack-ui project? Check out our
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -18,31 +20,28 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Typography/Text" />
 
 This is an illustration of a **Themed GSText** widget with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/textPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "text-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="547px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSText(
+      text: 'This is an example of a simple text.',
+      style: GSStyle(
+        textStyle: TextStyle(letterSpacing: $GSLetterSpacing.$lg),
+      ),
+    )
 
-GSText(
-  text: 'test 1',
-  bold: true,
-  underline: true,
-  style: GSStyle(
-    textStyle: const TextStyle(letterSpacing: \$GSLetterSpacing.\$lg),
-  ),
-)
-```
+`}
+/>
 
 <br />
 
@@ -52,7 +51,7 @@ GSText(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -63,10 +62,6 @@ This section provides a comprehensive reference list for the widget parameters, 
 #### GSText
 
 It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutter/widgets/Text-class.html) widget.
-
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
 
 ### Parameters
 

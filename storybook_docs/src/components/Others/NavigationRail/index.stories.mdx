@@ -1,0 +1,109 @@
+---
+title: GSNavigationRail | gluestack-ui | Installation, Usage, and API
+
+description: The GSNavigationRail widget is a customizable side navigation bar designed for Flutter applications. It supports a variety of customization options to fit different design requirements and interaction patterns.
+
+pageTitle: GSNavigationRail
+
+pageDescription: The GSNavigationRail widget is a customizable side navigation bar designed for Flutter applications. It supports a variety of customization options to fit different design requirements and interaction patterns.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from "@gluestack/design-system";
+
+<Meta title="Components/Others/Navigation Rail" />
+
+The `GSNavigationRail` widget provides a vertical navigation rail that can be used to navigate between different sections or pages of your application. It supports a range of customization options to tailor its appearance and behavior to your specific needs. The following is an illustration of a **Themed GSNavigationRail** widget with default configuration:
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "navigation-rail-preview"}
+  title="Example"
+  height="851px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+    
+    //...
+    GSNavigationRail(
+      selectedIndex: _selectedIndex,
+      groupAlignment: groupAlignment,
+      onDestinationSelected: (int index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      labelType: labelType,
+      destinations: const <GSNavigationRailDestination>[
+        GSNavigationRailDestination(
+          icon: Icon(Icons.favorite_border),
+          selectedIcon: Icon(Icons.favorite),
+          label: Text('First'),
+        ),
+        GSNavigationRailDestination(
+          icon: Badge(child: Icon(Icons.bookmark_border)),
+          selectedIcon: Badge(child: Icon(Icons.book)),
+          label: Text('Second'),
+        ),
+        GSNavigationRailDestination(
+          icon: Badge(
+            label: Text('4'),
+            child: Icon(Icons.star_border),
+          ),
+          selectedIcon: Badge(
+            label: Text('4'),
+            child: Icon(Icons.star),
+          ),
+          label: Text('Third'),
+        ),
+      ],
+    ),
+
+`}
+/>
+
+<br />
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+#### Parameters
+
+- `backgroundColor`: The background color of the navigation rail.
+- `extended`: Whether the navigation rail is extended.
+- `leading`: A widget to be placed at the leading edge of the navigation rail.
+- `trailing`: A widget to be placed at the trailing edge of the navigation rail.
+- `destinations`: A list of `GSNavigationRailDestination` objects representing the destinations in the navigation rail.
+- `selectedIndex`: The index of the currently selected destination.
+- `onDestinationSelected`: A callback function to be called when a destination is selected.
+- `elevation`: The elevation of the navigation rail.
+- `groupAlignment`: The alignment of the destination groups within the navigation rail.
+- `labelType`: The type of labels to display for the destinations.
+- `unselectedLabelTextStyle`: The text style for unselected labels.
+- `selectedLabelTextStyle`: The text style for selected labels.
+- `unselectedIconTheme`: The icon theme for unselected icons.
+- `selectedIconTheme`: The icon theme for selected icons.
+- `minWidth`: The minimum width of the navigation rail.
+- `minExtendedWidth`: The minimum width of the navigation rail when extended.
+- `useIndicator`: Whether to display an indicator for the selected destination.
+- `indicatorColor`: The color of the indicator.
+- `indicatorWidth`: The width of the indicator.
+- `indicatorShape`: The shape of the indicator.
+- `style`: The style configuration for the navigation rail.
+- `size`: The size configuration for the navigation rail.

@@ -1,0 +1,35 @@
+---
+title: Default Widget
+description: gluestack-ui-flutter comes with Default Widget theme that provide access to theme values.
+---
+
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+
+<Meta title="Theme Configuration/Theme/Default Components" />
+
+# Default Widget
+
+The `@gluestack-ui-flutter` package comes with a pre-configured default theme, which can be integrated with the `GluestackProvider` as demonstrated below.
+
+### Usage
+
+```
+
+import 'package:gluestack_ui/gluestack_ui.dart';
+
+
+void main() {
+  runApp(
+    GluestackProvider(
+      child: GSApp.router(
+        {/* Your app code */}
+        // ....
+      ),
+    ),
+  );
+}
+
+
+```
+
+You can view default theme config [here](https://github.com/gluestack/gluestack-ui-flutter/tree/main/lib/src/theme/config). To see all the widgets with the default theme, please visit [All Widgets](https://github.com/gluestack/gluestack-ui-flutter/tree/main/lib/src/widgets) section.

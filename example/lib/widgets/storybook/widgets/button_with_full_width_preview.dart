@@ -41,11 +41,7 @@ class ButtonWithFullWidthPreview extends StatelessWidget {
                 maxWidth: 280,
                 maxHeight: 40,
               ),
-              // labelText: "New password",
-              // labelStyle: TextStyle(fontSize: 12),
-              // errorStyle: TextStyle(
-              //   fontSize: 7,
-              // ),
+              hintText: "New password",
             ),
             const GSInput(
               size: GSInputSizes.$sm,
@@ -55,11 +51,7 @@ class ButtonWithFullWidthPreview extends StatelessWidget {
                 maxWidth: 280,
                 maxHeight: 40,
               ),
-              // labelText: "Confirm new password",
-              // labelStyle: TextStyle(fontSize: 12),
-              // errorStyle: TextStyle(
-              //   fontSize: 7,
-              // ),
+              hintText: "Confirm new password",
             ),
             GSBox(
               style: GSStyle(

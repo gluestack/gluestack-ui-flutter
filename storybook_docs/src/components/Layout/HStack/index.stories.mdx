@@ -10,7 +10,9 @@ pageDescription: GSHStack arranges its child widgets horizontally, making it a s
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -18,42 +20,41 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Layout/HStack" />
 
 This is an illustration of a **Themed GSHStack** widget with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/hstackPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "hstack-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  height="749px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSHStack(
+      mainAxisAlignment: MainAxisAlignment.center,
+      isReversed: false,
+      space: GSSpaces.$none,
+      children: [
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
+          child: const Text('1'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
+          child: const Text('2'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
+          child: const Text('3'),
+        ),
+      ],
+    )
 
-GSHStack(
-  mainAxisAlignment: MainAxisAlignment.center,
-  isReversed: false,
-  space: GSSpaces.$none,
-  children: [
-    GSBox(
-      style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
-      child: const Text('1'),
-    ),
-    GSBox(
-      style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
-      child: const Text('2'),
-    ),
-    GSBox(
-      style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
-      child: const Text('3'),
-    ),
-  ],
-)
-```
+`}
+/>
 
 <br />
 
@@ -63,7 +64,7 @@ GSHStack(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -78,10 +79,6 @@ It inherits all the properties of Flutter's [Row](https://api.flutter.dev/flutte
 ### Accessibility
 
 The accessibility of a GSHStack is primarily determined by the accessibility information of the widgets it contains. When you pass an accessible widget inside a GSHStack, its accessibility attributes, such as labels and hints, will be utilized by assistive technologies like screen readers.
-
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
 
 ### Parameters
 
@@ -154,9 +151,33 @@ The Examples section provides visual representations of the different variants o
 
 An GSHStack widget with the reversed parameter reverses the order of horizontally stacked elements, allowing for customized layouts and visual arrangements of content within a user interface.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/hstackReversedPreview"
+<IframeModule
+   src={process.env.NEXT_PUBLIC_PREVIEW + "hstack-reversed-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSHStack(
+      mainAxisAlignment: MainAxisAlignment.center,
+      isReversed: true,
+      space: GSSpaces.$none,
+      children: [
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue300),
+          child: const Text('1'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue400),
+          child: const Text('2'),
+        ),
+        GSBox(
+          style: GSStyle(height: 100, width: 100, color: $GSColors.blue500),
+          child: const Text('3'),
+        ),
+      ],
+    )
+
+`}
+/>
+
+<br />

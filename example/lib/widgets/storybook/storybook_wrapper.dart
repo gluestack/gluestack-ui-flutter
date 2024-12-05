@@ -19,6 +19,7 @@ class StorybookWrapper extends StatelessWidget {
     return materialWrapper(
       context,
       Storybook(
+        initialLayout: Layout.compact,
         initialStory: storyName,
         stories: [story],
       ),

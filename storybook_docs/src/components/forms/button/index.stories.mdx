@@ -1,5 +1,5 @@
 ---
-title: gluestack-ui GSButton Widget | Installation, Usage, and API
+title: GSButton | gluestack-ui | Installation, Usage, and API
 
 description: A button widget is a graphical user interface element that enables users to act by clicking or tapping. It can be customized in size, shape, color, and behavior to fit the design of the application or website.
 
@@ -10,7 +10,10 @@ pageDescription: A button widget is a graphical user interface element that enab
 showHeader: true
 ---
 
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { env } from "process";
+
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -18,35 +21,34 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Forms/Button" />
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/buttonPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "button-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  height="667px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSButton(
+      action: GSActions.primary,
+      variant: GSVariants.solid,
+      size: GSSize.$md,
+      isDisabled: false,
+      isFocusVisible: false,
+      onPressed: () {},
+      child: const GSHStack(
+        children: [
+          GSButtonText(text: "Add"),
+          GSButtonIcon(icon: Icons.add)
+        ],
+      ),
+    )
 
-GSButton(
-  action: GSActions.primary,
-  variant: GSVariants.solid,
-  size: GSSize.$md,
-  isDisabled: false,
-  isFocusVisible: false,
-  onPressed: () {},
-  child: const GSHStack(
-    children: [
-      GSButtonText(text: "Add"),
-      GSButtonIcon(icon: Icons.add)
-    ],
-  ),
-)
-```
+`}
+/>
 
 <br />
 
@@ -56,7 +58,7 @@ GSButton(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -134,119 +136,6 @@ Parameters to style child widgets.
 
 Contains all text related layout style, properties and actions. It inherits all the properties of Flutter's [Text](https://api.flutter.dev/flutter/widgets/Text-class.html) widget.
 
-#### GSBox
-
-Contains all container related layout style, properties and actions. It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
-
-<AppProvider>
-  <TableContainer>
-    <Table>
-      <Table.THead>
-        <Table.TR>
-          <Table.TH>
-            <Table.TText>Prop</Table.TText>
-          </Table.TH>
-          <Table.TH>
-            <Table.TText>Type</Table.TText>
-          </Table.TH>
-          <Table.TH>
-            <Table.TText>Default</Table.TText>
-          </Table.TH>
-          <Table.TH>
-            <Table.TText>Description</Table.TText>
-          </Table.TH>
-        </Table.TR>
-      </Table.THead>
-      <Table.TBody>
-        <Table.TR>
-          <Table.TD>
-            <Table.TText>
-              <InlineCode>direction</InlineCode>
-            </Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>'column' | 'row'</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>'row'</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>
-              Set the direction of Button group to vertical or horizontal
-            </Table.TText>
-          </Table.TD>
-        </Table.TR>
-        <Table.TR>
-          <Table.TD>
-            <Table.TText>
-              <InlineCode>isDisabled</InlineCode>
-            </Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>bool</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>false</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>{`When true, this will disable all the buttons in a ButtonGroup.`}</Table.TText>
-          </Table.TD>
-        </Table.TR>
-        <Table.TR>
-          <Table.TD>
-            <Table.TText>
-              <InlineCode>isAttached</InlineCode>
-            </Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>bool</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>false</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>{`When attached, all buttons will be attached to each other.`}</Table.TText>
-          </Table.TD>
-        </Table.TR>
-        <Table.TR>
-          <Table.TD>
-            <Table.TText>
-              <InlineCode>reversed</InlineCode>
-            </Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>bool</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>false</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>{`To reverse the order of components.`}</Table.TText>
-          </Table.TD>
-        </Table.TR>
-        <Table.TR>
-          <Table.TD>
-            <Table.TText>
-              <InlineCode>space</InlineCode>
-            </Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>string</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>md</Table.TText>
-          </Table.TD>
-          <Table.TD>
-            <Table.TText>
-              It sets the space between different buttons.
-            </Table.TText>
-          </Table.TD>
-        </Table.TR>
-      </Table.TBody>
-    </Table>
-  </TableContainer>
-</AppProvider>
-
 **Descendants Styling Parameters**
 Parameters to style child widgets.
 
@@ -312,10 +201,6 @@ We have outlined the various features that ensure the GSButton widget is accessi
 
 - The `onFocusChange`, `onHover` and `onLongPress` parameters to manage focus states and provide visual cues to users. This is especially important for users who rely on keyboard navigation.
 
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
-
 ### Parameters
 
 GSButton widget is created using ElevatedButton widget from flutter. It extends all the parameters, methods supported by [Flutter ElevatedButton](https://api.flutter.dev/flutter/material/ElevatedButton-class.html#instance-properties) and additionally the properties mentioned below.
@@ -347,7 +232,7 @@ GSButton widget is created using ElevatedButton widget from flutter. It extends 
           </Table.TD>
           <Table.TD>
             <Table.TText>
-              {'primary | secondary | positive | negative'}
+              {"primary | secondary | positive | negative"}
             </Table.TText>
           </Table.TD>
           <Table.TD>
@@ -395,309 +280,302 @@ The Examples section provides visual representations of the different variants o
 
 A loading button is a type of button widget that provides visual feedback to the user during an action that takes some time to complete. It typically displays an animated loading icon or spinner indicating the action is in progress.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/loadingButtonPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "loading-button-preview"}
   title="Example"
-  width="1000"
-  height="300"
-></iframe>
+  height="787px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-GSButton(
-  child: GSHStack(
-    children: [
-      GSSpinner(
-        strokeWidth: 2,
-        style: GSStyle(
-          color: $GSColors.white,
-          bg: $GSColors.blueGray300,
-          width: 20,
-          height: 20,
-        ),
+    GSButton(
+      child: GSHStack(
+        children: [
+          GSSpinner(
+            strokeWidth: 2,
+            style: GSStyle(
+              color: $GSColors.white,
+              bg: $GSColors.blueGray300,
+              width: 20,
+              height: 20,
+            ),
+          ),
+          const SizedBox(
+            width: 7,
+          ),
+          GSButtonText(
+            text: "Please wait",
+          ),
+        ],
       ),
-      const SizedBox(
-        width: 7,
-      ),
-      GSButtonText(
-        text: "Please wait",
-      ),
-    ],
-  ),
-  onPressed: () {},
-)
+      onPressed: () {},
+    )
 
-
-```
+`}
+/>
 
 #### Icon Button
 
 A button with an icon integrates a visual symbol within the button widget, enhancing its appearance and providing a recognizable and intuitive representation of its associated action or functionality.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/iconButtonPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "icon-button-preview"}
   title="Example"
-  width="1000"
-  height="300"
-></iframe>
+  height="562px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSButton(
+      style: GSStyle(width: 55, height: 55, borderRadius: 30),
+      child: const GSButtonIcon(
+        icon: Icons.calendar_view_week_outlined,
+      ),
+      onPressed: () {},
+    )
 
-GSButton(
-  style: GSStyle(width: 55, height: 55, borderRadius: 30),
-  child: const GSButtonIcon(
-    icon: Icons.calendar_view_week_outlined,
-  ),
-  onPressed: () {},
-)
-
-
-```
+`}
+/>
 
 #### Link Button
 
 A button with a link combines the interactive behavior of a button widget with the ability to navigate to a specified URL, providing a clickable element for users to access external resources or internal pages.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/buttonWithLinkPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "button-with-link-preview"}
   title="Example"
-  width="1000"
-  height="300"
-></iframe>
+  height="591px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSButton(
+      variant: GSButtonVariants.link,
+      style: GSStyle(
+        color: Colors.transparent,
+        onHover: GSStyle(bg: Colors.transparent),
+      ),
+      child: const GSText(text: 'Back to top'),
+      onPressed: () {},
+    )
+
+`}
+/>
 
 #### Button Group in a Card
 
 A button group within a card widget incorporates multiple button widgets, providing a cohesive and organized interface for selecting various actions or options within the context of the card.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/buttonGroupPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "button-group-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  height="1289px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
-
- GSBox(
-  style: GSStyle(
-    borderColor: $GSColors.warmGray500,
-    width: 600,
-    height: 200,
-    borderRadius: 8,
-    borderWidth: 1.2,
-  ),
-  child: GSHStack(
-    mainAxisAlignment: MainAxisAlignment.spaceAround,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      GSBox(
-        style: GSStyle(width: 300),
-        child: const GSVStack(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            GSHeading(
-              text: 'Was this page helpful?',
-            ),
-            GSText(
-              text:
-                  'We use this feedback to improve the quality of our documentation.',
-            ),
-          ],
-        ),
+    GSBox(
+      style: GSStyle(
+        borderColor: $GSColors.warmGray500,
+        width: 1000,
+        height: 200,
+        borderRadius: 8,
+        borderWidth: 1.2,
       ),
-      GSHStack(
+      child: GSHStack(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          GSButton(
-            variant: GSVariants.outline,
-            action: GSActions.secondary,
-            child: GSButtonText(
-              text: "No",
-              style: GSStyle(),
+          GSBox(
+            style: GSStyle(width: 300),
+            child: const GSVStack(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GSHeading(
+                  text: 'Was this page helpful?',
+                ),
+                GSText(
+                  text: 'We use this feedback to improve the quality of our documentation.',
+                ),
+              ],
             ),
-            onPressed: () {},
           ),
-          const SizedBox(
-            width: 20,
-          ),
-          GSButton(
-            variant: GSVariants.solid,
-            action: GSActions.positive,
-            child: GSButtonText(
-              text: "Yes",
-              style: GSStyle(),
-            ),
-            onPressed: () {},
+          GSHStack(
+            children: [
+              GSButton(
+                variant: GSVariants.outline,
+                action: GSActions.secondary,
+                child: GSButtonText(
+                  text: "No",
+                  style: GSStyle(),
+                ),
+                onPressed: () {},
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              GSButton(
+                variant: GSVariants.solid,
+                action: GSActions.positive,
+                child: GSButtonText(
+                  text: "Yes",
+                  style: GSStyle(),
+                ),
+                onPressed: () {},
+              ),
+            ],
           ),
         ],
-      )
-    ],
-  ),
-)
+      ),
+    )
 
-
-```
+`}
+/>
 
 #### Button With Icon
 
 The icon widget incorporates a button widget, combining visual representation with interactive functionality for seamless user interaction.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/buttonWithIconsPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "button-with-icons-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  height="1191px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-GSBox(
-  style: GSStyle(
-    width: 300,
-    height: 100,
-  ),
-  child: GSVStack(
-    children: [
-      GSButton(
-        child: GSHStack(
-          children: [
-            GSIcon(
-              icon: Icons.edit,
-              style: GSStyle(color: $GSColors.white),
-            ),
-            const SizedBox(
-              width: 5,
-            ),
-            GSButtonText(
-              text: "Left Icon",
-              style: GSStyle(),
-            ),
-          ],
-        ),
-        onPressed: () {},
+    GSBox(
+      style: GSStyle(
+        width: 300,
+        height: 100,
       ),
-      const SizedBox(
-        height: 20,
+      child: GSVStack(
+        children: [
+          GSButton(
+            child: GSHStack(
+              children: [
+                GSIcon(
+                  icon: Icons.edit,
+                  style: GSStyle(color: $GSColors.white),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                GSButtonText(
+                  text: "Left Icon",
+                  style: GSStyle(),
+                ),
+              ],
+            ),
+            onPressed: () {},
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          GSButton(
+            child: GSHStack(
+              children: [
+                GSButtonText(
+                  text: "Right Icon",
+                  style: GSStyle(),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                GSIcon(
+                  icon: Icons.add,
+                  style: GSStyle(color: $GSColors.white),
+                ),
+              ],
+            ),
+            onPressed: () {},
+          ),
+        ],
       ),
-      GSButton(
-        child: GSHStack(
-          children: [
-            GSButtonText(
-              text: "Right Icon",
-              style: GSStyle(),
-            ),
-            const SizedBox(
-              width: 5,
-            ),
-            GSIcon(
-              icon: Icons.add,
-              style: GSStyle(color: $GSColors.white),
-            ),
-          ],
-        ),
-        onPressed: () {},
-      ),
-    ],
-  ),
-)
+    )
 
-
-```
+`}
+/>
 
 #### Button with Full Width
 
 The button with full width widget utilizes a button widget, expanding its width to occupy the entire available space, creating a visually prominent and easily accessible interface element.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/buttonWithFullWidthPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "button-with-fullwidth-preview"}
   title="Example"
-  width="1000"
-  height="500"
-></iframe>
+  height="1513px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-
-import 'package:gluestack_ui/gluestack_ui.dart';
-
-GSBox(
-  style: GSStyle(
-    borderColor: $GSColors.warmGray500,
-    width: 320,
-    height: 350,
-    borderRadius: 8,
-    borderWidth: 1.2,
-    padding: const EdgeInsets.symmetric(horizontal: 20),
-  ),
-  child: GSVStack(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const GSVStack(
+    GSBox(
+      style: GSStyle(
+        borderColor: $GSColors.warmGray500,
+        width: 320,
+        height: 350,
+        borderRadius: 8,
+        borderWidth: 1.2,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+      ),
+      child: GSVStack(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          GSHeading(
-            text: 'Set new password',
+          const GSVStack(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GSHeading(
+                text: 'Set new password',
+              ),
+              GSText(
+                text:
+                    'Almost done. Enter your new password and you are all set.',
+              ),
+            ],
           ),
-          GSText(
-            text:
-                'Almost done. Enter your new password and you are all set.',
+          const GSInput(
+            size: GSSizes.$sm,
+            variant: GSVariants.outline,
+            cursorHeight: 12,
+            constraints: BoxConstraints(
+              maxWidth: 280,
+              maxHeight: 40,
+            ),
+            labelText: "New password",
+            labelStyle: TextStyle(fontSize: 12),
+            errorStyle: TextStyle(
+              fontSize: 7,
+            ),
+          ),
+          const GSInput(
+            size: GSSizes.$sm,
+            variant: GSVariants.outline,
+            cursorHeight: 12,
+            constraints: BoxConstraints(
+              maxWidth: 280,
+              maxHeight: 40,
+            ),
+            labelText: "Confirm new password",
+            labelStyle: TextStyle(fontSize: 12),
+            errorStyle: TextStyle(
+              fontSize: 7,
+            ),
+          ),
+          GSBox(
+            style: GSStyle(
+              width: double.maxFinite,
+            ),
+            child: GSButton(
+              variant: GSVariants.solid,
+              action: GSActions.primary,
+              size: GSSizes.$lg,
+              child: const GSButtonText(
+                text: "Submit",
+              ),
+              onPressed: () {},
+            ),
           ),
         ],
       ),
-      const GSInput(
-        size: GSSizes.$sm,
-        variant: GSVariants.outline,
-        cursorHeight: 12,
-        constraints: BoxConstraints(
-          maxWidth: 280,
-          maxHeight: 40,
-        ),
-        labelText: "New password",
-        labelStyle: TextStyle(fontSize: 12),
-        errorStyle: TextStyle(
-          fontSize: 7,
-        ),
-      ),
-      const GSInput(
-        size: GSSizes.$sm,
-        variant: GSVariants.outline,
-        cursorHeight: 12,
-        constraints: BoxConstraints(
-          maxWidth: 280,
-          maxHeight: 40,
-        ),
-        labelText: "Confirm new password",
-        labelStyle: TextStyle(fontSize: 12),
-        errorStyle: TextStyle(
-          fontSize: 7,
-        ),
-      ),
-      GSBox(
-        style: GSStyle(
-          width: double.maxFinite,
-        ),
-        child: GSButton(
-          variant: GSVariants.solid,
-          action: GSActions.primary,
-          size: GSSizes.$lg,
-          child: const GSButtonText(
-            text: "Submit",
-          ),
-          onPressed: () {},
-        ),
-      ),
-    ],
-  ),
-),
+    )
 
+`}
+/>
 
-```
-
-#### Custom Button
-
-The custom button widget leverages the functionality of a button widget while offering additional customization options to tailor its appearance and behavior according to specific design requirements.
+<br />

@@ -21,6 +21,7 @@ class _RadioButtonControlledPreviewState
       context,
       Storybook(
         initialStory: 'RadioButton',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'RadioButton',

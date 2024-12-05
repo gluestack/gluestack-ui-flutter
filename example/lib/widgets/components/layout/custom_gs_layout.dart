@@ -22,9 +22,14 @@ class CustomGSLayout extends StatelessWidget {
           floatingActionButton: floatingActionButton,
           body: GSVStack(
             children: [
-              CustomAppBar(
-                title: title,
-                hideBackButton: hideBackButton ?? false,
+              GSHeader(
+                centerChild: true,
+                style: GSStyle(bg: Colors.transparent),
+                child: GSText(
+                  text: title,
+                  style: GSStyle(textStyle: const TextStyle(fontSize: 24)),
+                ),
+                // hideBackButton: hideBackButton ?? false,
               ),
               Expanded(child: body),
             ],

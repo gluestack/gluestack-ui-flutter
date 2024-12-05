@@ -1,0 +1,129 @@
+---
+title: GSScrollView | gluestack-ui | Installation, Usage, and API
+
+description: The GSScrollView widget is a scrollable list of widgets arranged linearly, extending the BoxScrollView class. It offers flexibility in creating various types of list layouts, such as fixed or variable item extents, or layouts based on a prototype item's size.
+
+pageTitle: GSScrollView
+
+pageDescription: The GSScrollView widget is a scrollable list of widgets arranged linearly, extending the BoxScrollView class. It offers flexibility in creating various types of list layouts, such as fixed or variable item extents, or layouts based on a prototype item's size.
+
+showHeader: true
+---
+
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
+
+import {
+  AppProvider,
+  CodePreview,
+  Table,
+  TableContainer,
+  InlineCode,
+} from "@gluestack/design-system";
+
+<Meta title="Components/Layout/Scroll" />
+
+This is an illustration of a **GSScrollView** widget with default configuration.
+
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "scroll-preview"}
+  title="Example"
+  height="749px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
+
+    GSScrollView(
+        children: [
+          for (int i = 0; i < 100; i++)
+              GSText(
+                  text: 'Child No. \$i',
+                  textAlign: TextAlign.center,
+              ),
+        ],
+    ),
+
+`}
+/>
+
+<br />
+
+## Features
+
+- **Flexible Item Sizing**: Supports fixed extent, varied extent, and prototype extent for list items.
+- **Customizable Scroll Direction**: Configure the scroll direction to be vertical or horizontal.
+- **Efficient Item Management**: Utilizes delegates to efficiently manage the list of children.
+- **Built-in Customization Options**: Includes options for automatic keep-alives, repaint boundaries, and semantic indexes.
+
+## API Reference
+
+### Import
+
+To use this widget in your project, include the following import statement in your file.
+
+```
+import 'package:gluestack_ui/gluestack_ui.dart';
+```
+
+### Widget Parameters
+
+- **scrollDirection**: `Axis`
+  - The axis along which the scroll view scrolls. Defaults to `Axis.vertical`.
+- **reverse**: `bool`
+  - Whether the scroll view scrolls in the reverse direction. Defaults to `false`.
+- **controller**: `ScrollController?`
+  - An object that can be used to control the position to which this scroll view is scrolled.
+- **primary**: `bool?`
+  - Whether this is the primary scroll view associated with the parent [PrimaryScrollController].
+- **physics**: `ScrollPhysics?`
+  - How the scroll view should respond to user input.
+- **shrinkWrap**: `bool`
+  - Whether the extent of the scroll view should be determined by the contents being viewed. Defaults to `false`.
+- **padding**: `EdgeInsetsGeometry?`
+  - The amount of space by which to inset the children.
+- **itemExtent**: `double?`
+  - The fixed extent (height or width, depending on the scroll direction) of each item when using `SliverFixedExtentList`.
+- **itemExtentBuilder**: `ItemExtentBuilder?`
+  - A builder function that provides item extents dynamically for each child in the list when using `SliverVariedExtentList`.
+- **prototypeItem**: `Widget?`
+  - A prototype item whose size is used to estimate the size of other items in the list when using `SliverPrototypeExtentList`.
+- **addAutomaticKeepAlives**: `bool`
+  - Whether to wrap each child in an `AutomaticKeepAlive` widget. Defaults to `true`.
+- **addRepaintBoundaries**: `bool`
+  - Whether to wrap each child in a `RepaintBoundary` widget. Defaults to `true`.
+- **addSemanticIndexes**: `bool`
+  - Whether to annotate each child with a semantic index. Defaults to `true`.
+- **cacheExtent**: `double?`
+  - The extent the scroll view should cache before and after the current scroll position.
+- **children**: `List<Widget>`
+  - The list of children to display. Defaults to an empty list.
+- **semanticChildCount**: `int?`
+  - The number of children that will contribute semantic information. Defaults to the length of the children list.
+- **dragStartBehavior**: `DragStartBehavior`
+  - Determines the way that drag start behavior is handled. Defaults to `DragStartBehavior.start`.
+- **keyboardDismissBehavior**: `ScrollViewKeyboardDismissBehavior`
+  - Configures how the scroll view should dismiss the on-screen keyboard. Defaults to `ScrollViewKeyboardDismissBehavior.manual`.
+- **restorationId**: `String?`
+  - The restoration ID to save and restore the scroll offset of the scrollable.
+- **clipBehavior**: `Clip`
+  - How to clip the contents of the scroll view. Defaults to `Clip.hardEdge`.
+
+## Item Sizing Strategies
+
+### Fixed Extent
+
+Use the `itemExtent` parameter to create a list where each item has a fixed height or width.
+
+### Varied Extent
+
+Use the `itemExtentBuilder` parameter to create a list where each item can have a different height or width.
+
+### Prototype Item
+
+Use the `prototypeItem` parameter to create a list where item sizes are estimated based on a prototype item's size.
+
+### Default
+
+If none of the above strategies are provided, the list defaults to using `SliverList`.
+
+Refer to flutter's [BoxScrollView](https://api.flutter.dev/flutter/widgets/BoxScrollView-class.html) for further information.

@@ -10,7 +10,9 @@ pageDescription: GSAlertDialog effectively interrupts a user's flow and prompts 
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -18,53 +20,62 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Overlay/AlertDialog" />
 
 This is an illustration of a **Themed GSAlertDialog** widget with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/alertDialogPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "alert-dialog-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="1087px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSButton(
+      size: GSButtonSizes.$lg,
+      child: const GSButtonText(text: "Click Me"),
+      onPressed: () {
+        GSAlertDialog.show(
+          context,
+          size: GSAlertDialogSizes.$full,
+          content: GSAlertDialogContent(
+            header: GSAlertDialogHeader(
+              style: GSStyle(
+                bg: Colors.pink,
+              ),
+              child: const Text("Header"),
+            ),
+            body: const GSAlertDialogBody(
+              child: Text(
+                "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
+            ),
+            footer: GSAlertDialogFooter(
+              child: GSButtonGroup(
+                buttons: [
+                  GSButton(
+                    action: GSButtonActions.positive,
+                    variant: GSButtonVariants.outline,
+                    child: const Text("Yes"),
+                    onPressed: () {},
+                  ),
+                  GSButton(
+                    action: GSButtonActions.negative,
+                    variant: GSButtonVariants.outline,
+                    child: const Text("No"),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    )
 
-GSButton(
-  size: GSSizes.$lg,
-  child: const GSButtonText(text: "Click Me"),
-  onPressed: () {
-    GSAlertDialog.show(
-      context,
-      size: GSSizes.$md,
-      content: GSAlertDialogContent(
-        header: GSAlertDialogHeader(
-          style: GSStyle(
-            bg: Colors.pink,
-          ),
-          child: const Text("Header"),
-        ),
-        body: const GSAlertDialogBody(
-          child: Text(
-              "Are you sure you want to deactivate your account? Your data will be permanently removed and cannot be undone."),
-        ),
-        footer: GSAlertDialogFooter(
-          child: GSButtonGroup(
-            buttons: [
-              GSButton(child: const Text("hey"), onPressed: () {}),
-              GSButton(child: const Text("click"), onPressed: () {}),
-            ],
-          ),
-        ),
-      ),
-    );
-  },
-),
-```
+`}
+/>
 
 <br />
 
@@ -74,7 +85,7 @@ GSButton(
 
 To use this component in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -102,10 +113,6 @@ It inherits all the properties of Flutter's [Container](https://api.flutter.dev/
 #### GSAlertDialogFooter
 
 It inherits all the properties of Flutter's [Container](https://api.flutter.dev/flutter/widgets/Container-class.html) widget.
-
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
 
 ### Parameters
 

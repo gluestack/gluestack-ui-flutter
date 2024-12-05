@@ -6,7 +6,9 @@ pageDescription: Icons are often used to enhance the usability and accessibility
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -14,27 +16,26 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Media And Icons/Icon" />
 
 This is an illustration of a **Themed GSIcon** component with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/iconPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "icon-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="537px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSIcon(
+      icon: Icons.calendar_month,
+      size: GSIconSizes.$md,
+    )
 
-GSIcon(
-  icon: Icons.calendar_month,
-  size: GSSizes.$md,
-)
-```
+`}
+/>
 
 <br />
 
@@ -44,7 +45,7 @@ GSIcon(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -59,10 +60,6 @@ Pre built icons provided by gluestack-ui inherits all the properties of Flutter 
 ### Accessibility
 
 We have outlined the various features that ensure the GSIcon widget is accessible to all users, including those with disabilities. These features help ensure that your application is inclusive and meets accessibility standards.
-
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
 
 ### Parameters
 
@@ -94,7 +91,7 @@ GSIcon widget is created using Icon widget from flutter. It extends all the prop
             </Table.TText>
           </Table.TD>
           <Table.TD>
-            <Table.TText>{'2xs | xs | sm | md | lg | xl'}</Table.TText>
+            <Table.TText>{"2xs | xs | sm | md | lg | xl"}</Table.TText>
           </Table.TD>
           <Table.TD>
             <Table.TText>md</Table.TText>
@@ -106,7 +103,3 @@ GSIcon widget is created using Icon widget from flutter. It extends all the prop
 </AppProvider>
 
 > Note: These properties are exclusively applicable when utilizing the default configuration of gluestack-ui/config. If you are using a custom theme, these props may not be available.
-
-### Examples
-
-The Examples section provides visual representations of the different variants of the widget, allowing you to quickly and easily determine which one best fits your needs. Simply copy the code and integrate it into your project.

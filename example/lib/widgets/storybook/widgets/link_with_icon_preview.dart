@@ -11,11 +11,15 @@ class LinkWithIconPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Link',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Link',
             builder: (context) => GSBox(
-              style: GSStyle(width: 200, height: 50),
+              style: GSStyle(
+                width: 160,
+                height: 25,
+              ),
               child: GSHStack(
                 children: [
                   const GSText(text: 'Go to'),
@@ -29,6 +33,7 @@ class LinkWithIconPreview extends StatelessWidget {
                       text: 'gluestack',
                       style: GSStyle(textStyle: const TextStyle(fontSize: 18)),
                     ),
+                    isExternal: true,
                   ),
                   const SizedBox(
                     width: 10,

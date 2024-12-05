@@ -10,7 +10,9 @@ pageDescription: The GSProgress widget is designed to display the progress of a 
 showHeader: true
 ---
 
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from "@storybook/addon-docs";
+import { env } from "process";
+import IframeModule from "../../../IframeModule";
 
 import {
   AppProvider,
@@ -18,27 +20,26 @@ import {
   Table,
   TableContainer,
   InlineCode,
-} from '@gluestack/design-system';
+} from "@gluestack/design-system";
 
 <Meta title="Components/Feedback/Progress" />
 
 This is an illustration of a **Themed GSProgress** widget with default configuration.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/progressPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "progress-preview"}
   title="Example"
-  width="800"
-  height="350"
-></iframe>
+  height="517px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSProgress(
+      value: 0.4,
+      size: GSSizes.$md,
+    )
 
-GSProgress(
-  value: 0.4,
-  size: GSSizes.$md,
-)
-```
+`}
+/>
 
 <br />
 
@@ -48,7 +49,7 @@ GSProgress(
 
 To use this widget in your project, include the following import statement in your file.
 
-```dart
+```
 import 'package:gluestack_ui/gluestack_ui.dart';
 ```
 
@@ -146,10 +147,6 @@ We have outlined the various features that ensure the GSProgress widget is acces
 
 - VoiceOver: When the Progress is focused, the screen reader will announce it's a progress and it's current progress indicator.
 
-## Themed
-
-The themed version of the widget is a pre-styled version of the widget, which allows you to quickly integrate the widget into your project. The widget's design and functionality are fully defined, allowing you to focus on the more important aspects of your project. To know more about Themed Library please visit this [link](https://gluestack.io/ui/docs/core-concepts/themed-library).
-
 ### Parameters
 
 GSProgress widget is created using LinearProgressIndicator widget from flutter. It extends all the arguments supported by [Flutter LinearProgressIndicator](https://api.flutter.dev/flutter/material/LinearProgressIndicator-class.html) and additionally the properties mentioned below.
@@ -201,113 +198,107 @@ The Examples section provides visual representations of the different variants o
 
 GSProgress widget with value
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/progressValuePreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "progress-value-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  height="637px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSText(text: "Downloading 55%"),
+        SizedBox(
+          height: 5,
+        ),
+        GSProgress(
+          value: 0.55,
+        ),
+      ],
+    )
 
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSText(text: "Downloading 55%"),
-    SizedBox(
-      height: 5,
-    ),
-    GSProgress(
-      value: 0.55,
-    ),
-  ],
-)
-
-```
+`}
+/>
 
 #### Color
 
 You can add track color to progress bar as per our needs.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/progressColorsPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "progress-colors-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  height="907px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GSProgress(
+          value: 0.55,
+          style: GSStyle(progressValueColor: $GSColors.rose400),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSProgress(
+          value: 0.55,
+          style: GSStyle(progressValueColor: $GSColors.blue500),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSProgress(
+          value: 0.55,
+          style: GSStyle(progressValueColor: $GSColors.green500),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GSProgress(
+          value: 0.55,
+          style: GSStyle(progressValueColor: $GSColors.orange500),
+        ),
+      ],
+    )
 
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    GSProgress(
-      value: 0.55,
-      style: GSStyle(progressValueColor: $GSColors.rose400),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSProgress(
-      value: 0.55,
-      style: GSStyle(progressValueColor: $GSColors.blue500),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSProgress(
-      value: 0.55,
-      style: GSStyle(progressValueColor: $GSColors.green500),
-    ),
-    const SizedBox(
-      height: 20,
-    ),
-    GSProgress(
-      value: 0.55,
-      style: GSStyle(progressValueColor: $GSColors.orange500),
-    ),
-  ],
-)
-
-
-```
+`}
+/>
 
 #### Custom
 
 You can customize the progress bar. Below is the example where we have change the theme of progress bar.
 
-<iframe
-  src="https://gluestack-flutter.web.app/#/progressCustomPreview"
+<IframeModule
+  src={process.env.NEXT_PUBLIC_PREVIEW + "progress-custom-preview"}
   title="Example"
-  width="1000"
-  height="400"
-></iframe>
+  height="757px"
+  code={`
+    import 'package:gluestack_ui/gluestack_ui.dart';
 
-```dart
-import 'package:gluestack_ui/gluestack_ui.dart';
+    GSVStack(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const GSHeading(text: "Internal Storage"),
+        const SizedBox(
+          height: 5,
+        ),
+        GSProgress(
+          value: 0.55,
+          style: GSStyle(
+            progressValueColor: $GSColors.green500,
+            bg: $GSColors.green50,
+          ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        const GSText(text: "14GB"),
+      ],
+    )
 
-GSVStack(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    const GSHeading(text: "Internal Storage"),
-    const SizedBox(
-      height: 5,
-    ),
-    GSProgress(
-      value: 0.55,
-      style: GSStyle(
-        progressValueColor: $GSColors.green500,
-        bg: $GSColors.green50,
-      ),
-    ),
-    const SizedBox(
-      height: 5,
-    ),
-    const GSText(text: "14GB"),
-  ],
-),
+`}
+/>
 
-
-```
+<br />

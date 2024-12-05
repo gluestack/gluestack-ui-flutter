@@ -11,15 +11,14 @@ class InputWithIconPreview extends StatelessWidget {
       context,
       Storybook(
         initialStory: 'Input',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'Input',
             builder: (context) => GSBox(
               style: GSStyle(
-                  width: 250,
-                  height: 100,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15)),
+                width: 250,
+              ),
               child: const GSInput(
                 prefixIcon: GSIcon(icon: Icons.search),
                 obscureText: true,

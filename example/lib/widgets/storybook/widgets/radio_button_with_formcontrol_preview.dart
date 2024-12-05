@@ -22,11 +22,15 @@ class _RadioButtonWithFormControlPreviewState
       context,
       Storybook(
         initialStory: 'RadioButton',
+        initialLayout: Layout.compact,
         stories: [
           Story(
             name: 'RadioButton',
             builder: (context) => GSBox(
-              style: GSStyle(width: 320, height: 200),
+              style: GSStyle(
+                width: 310,
+                height: 190,
+              ),
               child: GSVStack(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
